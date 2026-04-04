@@ -5,3 +5,5 @@
   - type: AntiSkillIssueMeasurement
   - type: TimedDespawn
     lifetime: 2.5
+  - type: SpawnOnDespawn
+    prototype: GrenadeFlashEffect
