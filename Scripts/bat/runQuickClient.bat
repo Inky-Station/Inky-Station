@@ -1,6 +1,6 @@
 @echo off
 cd ../../
 
-call dotnet run --project Content.Trauma.Client --no-build %*
+call dotnet run --project Content.Inky.Client --no-build %*
 
 pause

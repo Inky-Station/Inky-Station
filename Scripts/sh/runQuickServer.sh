@@ -6,4 +6,4 @@ if [ "$(dirname $0)" != "." ]; then
 fi
 
 cd ../../
-dotnet run --project Content.Trauma.Server --no-build
+dotnet run --project Content.Inky.Server --no-build

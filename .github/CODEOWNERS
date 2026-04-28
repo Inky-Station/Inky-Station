@@ -1,2 +1,14 @@
-# GOIDA
-/* @deltanedas
+.github/ @pheenty @Shegare
+
+# Game logic
+*.Server/ @pheenty
+*.Shared/ @pheenty
+
+# UI
+*.Client/ @LuciferEOS
+
+# Resources/Prototypes/*
+
+# Resources/Maps/*
+
+Resources/Textures/* @zagreastyas # le gooner
