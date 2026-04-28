@@ -21,6 +21,10 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip3 install --ignore-installed --user pillow jsonschema
+      # inky start
+      - name: Patch RSI Schema
+        run: cp Schemas/_Inky/rsi.json RobustToolbox/Schemas/rsi.json
+      # inky end
       - name: Validate RSIs
         run: |
           python3 RobustToolbox/Schemas/validate_rsis.py Resources/
