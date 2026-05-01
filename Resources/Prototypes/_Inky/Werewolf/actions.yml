@@ -25,8 +25,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 6 # todo 600
-    startDelay: false
     itemIconStyle: NoItem
     icon:
       sprite: _Inky/Actions/Werewolf/werewolf.rsi
@@ -122,7 +120,7 @@
       sprite: _Inky/Actions/Werewolf/werewolf.rsi
       state: regen
   - type: InstantAction
-    event: !type:EventWerewolfRegen {}
+    event: !type:EventWerewolfRegen
   - type: WerewolfAction
     hungerCost: 65
 #    requireTransfurmed: true
@@ -134,12 +132,14 @@
   description: Stun your enemies with a quick jump. Costs 30 hunger.
   components:
   - type: Action
+    checkCanInteract: false
     priority: 0
     useDelay: 20
     icon:
       sprite: _Inky/Actions/Werewolf/werewolf.rsi
       state: ambush
   - type: TargetAction
+    checkCanAccess: false
     range: 10
   - type: WorldTargetAction
     event: !type:WerewolfAmbushActionEvent
@@ -193,3 +193,21 @@
   - type: WerewolfAction
     hungerCost: 20
     requireTransfurmed: true
+
+# white specific
+
+
+- type: entity
+  parent: BaseAction
+  id: ActionWerewolfTransfurmWhite
+  name: Transfurm
+  description: Transfurm into a werewolf. Be warned as you can transfurm back only after 2 minutes.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Inky/Actions/Werewolf/werewolf.rsi
+      state: transfurm
+  - type: InstantAction
+    event: !type:TransfurmEvent {}

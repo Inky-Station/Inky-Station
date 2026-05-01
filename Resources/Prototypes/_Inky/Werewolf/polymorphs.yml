@@ -6,7 +6,7 @@
     inventory: None
     transferName: false
     transferDamage: true
-    revertOnCrit: false
+    revertOnCrit: true
     revertOnDeath: false
     duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg # goida
@@ -20,7 +20,7 @@
     entity: WerewolfWerehuman
     forced: true
     inventory: None
-    revertOnCrit: false
+    revertOnCrit: true
     revertOnDeath: false
     transferName: false
     transferDamage: true
@@ -35,7 +35,39 @@
   configuration:
     entity: WerewolfDirewolf
     forced: true
-    revertOnCrit: false
+    revertOnCrit: true
+    revertOnDeath: false
+    inventory: None
+    transferName: false
+    transferDamage: true
+    duration: 480
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
+    componentsToTransfer:
+    - component: WerewolfBasicAbilities
+    - component: Store
+
+- type: polymorph
+  id: WerewolfTransformWhite
+  configuration:
+    entity: WerewolfWhite
+    forced: true
+    revertOnCrit: true
+    revertOnDeath: false
+    inventory: None
+    transferName: false
+    transferDamage: true
+    duration: 480
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
+    componentsToTransfer:
+    - component: WerewolfBasicAbilities
+    - component: Store
+
+- type: polymorph
+  id: WerewolfTransformWhiteClaws # goida
+  configuration:
+    entity: WerewolfWhiteClaws
+    forced: true
+    revertOnCrit: true
     revertOnDeath: false
     inventory: None
     transferName: false

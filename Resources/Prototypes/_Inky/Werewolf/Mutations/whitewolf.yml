@@ -1,0 +1,47 @@
+- type: entity
+  id: WerewolfWhite
+  parent:
+  - BaseWerewolf
+  description: Let's hope you haven't sinned.
+  components:
+  - type: Sprite
+    sprite: _Inky/Mobs/Werewolf/Mutations/white.rsi
+    state: wolf
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.35
+        Heat: 0.1
+  #  - type: GrantWerewolfMoves // TODO WEREWOLF MA
+  #  - type: LanguageSpeaker
+  #    speaks:
+  #    - Draconic
+  #    understands:
+  #    - TauCetiBasic
+  #    - Draconic
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Blunt: 5
+        Slash: 12
+
+- type: entity
+  id: WerewolfWhiteClaws # holy goida
+  parent: WerewolfWhite
+  components:
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Blunt: 5
+        Slash: 12
+        Holy: 8 # thats actually insane

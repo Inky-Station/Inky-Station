@@ -1,15 +1,26 @@
 - type: entity
   parent:
-  - BaseMob
-  - MobAtmosExposed
-  - MobCombat
+  - SimpleMobBase
   - MobBloodstream
   - MobRespirator
+  - MobAtmosStandard
+  - MobFlammable
   id: BaseWerewolf
   name: wolf
   description: Let's hope he doesnt bite.
   abstract: true
   components:
+      # inky
+  - type: ConcussionThreshold
+    thresholds:
+      0: Sane
+      5: Minor
+      50: Hard
+      100: Overwhelmed
+    healRate: 1 # lower than humans because this guy is already so fucking fast, people may ask sec fo flashbangs if the chaplain is a bitch
+    speedModifierThresholds:
+      Hard: 0.7
+      # /inky
   - type: Sprite
     sprite: _Inky/Mobs/Werewolf/Mutations/base.rsi
     state: werewolf
@@ -93,14 +104,29 @@
     damageContainer: Biological
     damageModifierSet: WerewolfBase
   - type: NoSlip
+  - type: KnowledgeGrant # todo werewolf doesnt work?
+    skills:
+      MartialArtLyCqc: 65
+      StrengthKnowledge: 65
+      AthleticsKnowledge: 65
+  - type: Targeting
+  - type: Internals
+
+- type: entity
+  id: BaseWerewolfUnholy
+  abstract: true
+  components:
+  - type: ShouldTakeHoly
+  - type: Damageable
+    damageContainer: BiologicalMetaphysical
+    damageModifierSet: WerewolfBase
 
 - type: damageModifierSet # todo werewolf its own file
   id: WerewolfBase
   coefficients:
-    Blunt: 0.15
+    Blunt: 0.15 # GO KILL HIM WITH HOLY DAMAGE YOU BUMS
     Slash: 0.15
     Piercing: 0.15
-    Heat: 0.30
+    Heat: 0.35 # mfw lasersec
     Cold: 0.85 # fur
-    Holy: 3.0
-  ignoreArmorPierceFlags: All
+    Holy: 1.0

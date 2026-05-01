@@ -2,75 +2,88 @@ using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
 using Content.Inky.Shared.Werewolf.Systems;
 using Content.Medical.Shared.Wounds;
-using Content.Server.Body.Systems;
-using Content.Server.DoAfter;
-using Content.Server.Fluids.EntitySystems;
 using Content.Server.Mind;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Popups;
 using Content.Server.Store.Systems;
 using Content.Shared.Body;
+using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Systems;
+using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
+using Content.Shared.Fluids;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Polymorph;
 using Content.Shared.Store.Components;
-using Robust.Server.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Inky.Server.Werewolf.Systems;
 
-
-public partial class WerewolfBasicAbilitiesSystem : EntitySystem
+public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
 {
-
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly DoAfterSystem _doAfter = default!;
+    [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly SharedWerewolfBasicAbilitiesSystem _werewolf = default!; // hell.
+    [Dependency] private readonly HungerSystem _hunger = default!;
+
+    // holy fuck
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly BloodstreamSystem _blood = default!;
-    [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly SharedBloodstreamSystem _blood = default!;
     [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly IRobustRandom _gambling = default!;
     [Dependency] private readonly WoundSystem _wound = default!;
-    [Dependency] private readonly SharedWerewolfBasicAbilitiesSystem _sharedWerewolf = default!; // hell.
-    [Dependency] private readonly HungerSystem _hunger = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly PuddleSystem _puddle = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        InitializeWerewolfSide();
-        InitializeWerewolfDire();
 
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, TransfurmEvent>(TryTransfurm);
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfChangeType>(OnChangeType);
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfOpenStore>(OnOpenStore);
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, PolymorphedEvent>(OnPolymorphed);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfRegen>(TryRegen);
+
+        InitializeWerewolfSide();
     }
+
     # region basic handlers
     private void TryTransfurm(EntityUid uid, WerewolfBasicAbilitiesComponent component, TransfurmEvent args)
     {
-        if (component.Transfurmed)
+        if (!_mind.TryGetMind(uid, out var mindId, out _)
+            || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
+            return;
+
+        if (mindComp.Accumulator < mindComp.TransfurmOnCommandDelay)
         {
-            component.Transfurmed = false;
-            _polymorph.Revert(uid);
-            // _sharedWerewolf.SyncActions(uid, component);
+            _popup.PopupEntity(Loc.GetString("werewolf-transfurm-cooldown"), uid, uid); // todo werewolf locale & timeLeft
             args.Handled = true;
             return;
         }
 
+        if (component.Transfurmed)
+        {
+            component.Transfurmed = false;
+            mindComp.TransfurmReady = false;
+            _polymorph.Revert(uid);
+            // _sharedWerewolf.SyncActions(uid, component);
+            args.Handled = true;
+            mindComp.Accumulator = 0f;
+            return;
+        }
+
         component.Transfurmed = true;
+        mindComp.TransfurmReady = false;
         _polymorph.PolymorphEntity(uid, component.CurrentMutation);
         component.Transfurmed = false; // trust this is really important, the fucking polymorph is shit!!!!
+        mindComp.Accumulator = 0f;
         args.Handled = true;
     }
 
@@ -95,7 +108,7 @@ public partial class WerewolfBasicAbilitiesSystem : EntitySystem
         // _sharedWerewolf.SyncActions(args.NewEntity, Comp<WerewolfBasicAbilitiesComponent>(args.NewEntity)); // todo
         var werewolf = Comp<WerewolfBasicAbilitiesComponent>(args.NewEntity);
         // werewolf.ActionEntities.Clear();
-        _sharedWerewolf.SyncActions(args.NewEntity, werewolf);
+        _werewolf.SyncActions(args.NewEntity, werewolf);
     }
 
     private void OnOpenStore(Entity<WerewolfBasicAbilitiesComponent> ent, ref EventWerewolfOpenStore args)

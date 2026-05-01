@@ -16,6 +16,11 @@
   priority: 1
 
 - type: storeCategory
+  id: WerewolfWhite
+  name: werewolf-store-white
+  priority: 2
+
+- type: storeCategory
   id: WerewolfSide
   name: werewolf-store-side
   priority: 99

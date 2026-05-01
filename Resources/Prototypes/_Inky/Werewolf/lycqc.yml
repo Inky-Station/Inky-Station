@@ -1,0 +1,62 @@
+- type: entity
+  parent: BaseMartialArtsKnowledge
+  id: MartialArtLyCqc
+  name: LyCqc
+  components:
+  - type: CanPerformCombo
+    roundstartCombos:
+    - OpenVein
+    - ViciousToss
+    - Dismemberment
+  - type: SneakAttack
+    secondsTillHidden: 2
+
+
+- type: combo
+  id: OpenVein
+  attacks:
+  - Grab
+  - Harm
+  - Harm
+  userEffects:
+  - !type:PlaySoundEffect
+    sound: /Audio/Weapons/genhit3.ogg
+  opponentEffects:
+  - !type:ModifyBleed
+    amount: 30
+  - !type:HealthChange
+    damage:
+      types:
+        Slash: 30
+  levelRequired: 10
+
+- type: combo
+  id: ViciousToss
+  attacks:
+  - Disarm
+  - Grab
+  - Disarm
+  userEffects:
+  - !type:PlaySoundEffect
+    sound: /Audio/Weapons/genhit3.ogg
+  opponentEffects:
+  - !type:ThrowDirection
+    speed: 6
+  - !type:ModifyKnockdown
+    time: 3
+  levelRequired: 10
+
+- type: combo
+  id: Dismemberment
+  attacks:
+  - Disarm
+  - Harm
+  - Disarm
+  - Harm
+  userEffects:
+  - !type:PlaySoundEffect
+    sound: /Audio/Weapons/genhit2.ogg
+  opponentEffects:
+  - !type:AmputateLimb
+    limbName: Arm
+  levelRequired: 10

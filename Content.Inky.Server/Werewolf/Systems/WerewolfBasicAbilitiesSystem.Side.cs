@@ -2,8 +2,6 @@ using System.Linq;
 using Content.Goobstation.Shared.Changeling.Components;
 using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
-using Content.Medical.Common.Body;
-using Content.Medical.Common.Targeting;
 using Content.Medical.Shared.Wounds;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
@@ -12,9 +10,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
-using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
-using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;
 
 namespace Content.Inky.Server.Werewolf.Systems;
@@ -24,7 +20,6 @@ namespace Content.Inky.Server.Werewolf.Systems;
 /// </summary>
 public sealed partial class WerewolfBasicAbilitiesSystem
 {
-
     public void InitializeWerewolfSide()
     {
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfDevour>(TryDevour);
@@ -37,7 +32,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem
     {
         if (component.Transfurmed != true)
         {
-            _popup.PopupEntity(Loc.GetString("werewolf-action-fail-transfurmed"), uid, uid);
+            _popup.PopupPredictedCursor(Loc.GetString("werewolf-action-fail-transfurmed"), uid);
             return;
         }
 
@@ -45,17 +40,17 @@ public sealed partial class WerewolfBasicAbilitiesSystem
 
         if (HasComp<WerewolfBitComponent>(target))
         {
-            _popup.PopupEntity(Loc.GetString("werewolf-devour-fail-devoured"), uid, uid);
+            _popup.PopupPredictedCursor(Loc.GetString("werewolf-devour-fail-devoured"), uid);
             return;
         }
         if (!HasComp<AbsorbableComponent>(target)) // i mean... it works? also less wizden files changes
         {
-            _popup.PopupEntity(Loc.GetString("changeling-absorb-fail-unabsorbable"), uid, uid);
+            _popup.PopupPredicted(Loc.GetString("changeling-absorb-fail-unabsorbable"), uid, uid);
             return;
         }
 
         var popupOthers = Loc.GetString("werewolf-devour-start", ("user", uid), ("target", target));
-        _popup.PopupEntity(popupOthers, uid, PopupType.LargeCaution);
+        _popup.PopupPredicted(popupOthers, uid, uid, PopupType.LargeCaution);
 
         var dargs = new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(4), new WerewolfDevourDoAfterEvent(), uid, target) // todo werewolf unhardcode duration
         {
@@ -119,7 +114,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem
         }
 
         var popupOthers = Loc.GetString("werewolf-gut-start", ("user", uid), ("target", target)); // todo locale
-        _popup.PopupEntity(popupOthers, uid, PopupType.LargeCaution);
+        _popup.PopupPredicted(popupOthers, uid, uid, PopupType.LargeCaution);
 
         var dargs = new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(4), new WerewolfGutDoAfterEvent(), uid, target)// todo werewolf unhardcode duration
         {
@@ -165,11 +160,11 @@ public sealed partial class WerewolfBasicAbilitiesSystem
         if (!TryComp<BodyComponent>(target, out var body))
             return false;
 
-        var organs = _body.GetOrgans((target, body))
+        var organs = _body.GetInternalOrgans((target, body))
             .Where(organ => !HasComp<BrainComponent>(organ.Owner))
             .ToList();
 
-        if (organs.Count < 0)
+        if (organs.Count < 1)
         {
             _popup.PopupEntity(Loc.GetString("werewolf-gut-no-organs-left"), user, user);
             return false;
@@ -179,7 +174,8 @@ public sealed partial class WerewolfBasicAbilitiesSystem
         var picked = organs[nextOrgan];
         removedOrgan = picked.Owner;
 
-        _body.RemoveOrgan((target, body), new Entity<OrganComponent?>(picked.Owner, picked.Comp)); // this is horrible
+        if (TryComp<OrganComponent>(picked.Owner, out var organComp))
+            _body.RemoveOrgan((target, body), new Entity<OrganComponent?>(picked.Owner, organComp)); // this is horrible
         QueueDel(picked.Owner);
 
         _popup.PopupEntity(Loc.GetString("werewolf-gut-success"), user, user);
@@ -209,31 +205,6 @@ public sealed partial class WerewolfBasicAbilitiesSystem
             return;
 
         _wound.AmputateWoundableSafely(woundable.ParentWoundable.Value, picked.Owner, woundable);
-    }
-
-    public bool TryInjectReagents(EntityUid uid, Dictionary<string, FixedPoint2> reagents)
-    {
-        var solution = new Solution();
-        foreach (var (reagentId, quantity) in reagents)
-            solution.AddReagent(reagentId, quantity);
-
-        if (!_solution.TryGetInjectableSolution(uid, out var targetSolution, out _))
-            return false;
-
-        return _solution.TryAddSolution(targetSolution.Value, solution);
-    }
-
-    private void TryRegen(EntityUid uid, WerewolfBasicAbilitiesComponent comp, EventWerewolfRegen args)
-    {
-        var reagents = new Dictionary<string, FixedPoint2> // i hate fixedpoint bru
-        {
-            ["Ichor"] = FixedPoint2.New(10), // todo werewolf unhardcode, put into a comp idk
-            ["TranexamicAcid"] = FixedPoint2.New(5)
-        };
-
-        if (TryInjectReagents(uid, reagents))
-            _popup.PopupEntity(Loc.GetString("werewolf-action-regen-success"), uid, uid);
-        args.Handled = true;
     }
     # endregion
 }

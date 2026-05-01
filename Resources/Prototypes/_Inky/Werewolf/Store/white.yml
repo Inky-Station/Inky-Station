@@ -1,0 +1,43 @@
+- type: listing
+  id: WerewolfWhite
+  name: werewolf-store-choose-white-name
+  description: werewolf-store-choose-white-desc
+  icon:
+    sprite: _Inky/Mobs/Werewolf/Mutations/white.rsi
+    state: icon
+  productEvent: !type:EventWerewolfChangeType
+    werewolfType: WerewolfTransformWhite
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfChoose
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    blacklist:
+    - WerewolfDirewolf
+
+- type: listing
+  id: WerewolfWhiteClaws
+  name: werewolf-store-white-mg-name
+  description: werewolf-store-white-dmg-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: claws
+  productEvent: !type:EventWerewolfChangeType
+    werewolfType: WerewolfTransformWhiteClaws # holy goida
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 10
+  categories:
+  - WerewolfWhite
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfWhite
+    blacklist:
+    - WerewolfDirewolf

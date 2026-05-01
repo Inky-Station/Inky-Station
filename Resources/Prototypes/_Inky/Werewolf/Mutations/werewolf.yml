@@ -1,6 +1,8 @@
 - type: entity
   id: WerewolfWerewolf
-  parent: BaseWerewolf
+  parent:
+  - BaseWerewolf
+  - BaseWerewolfUnholy
   components:
   - type: Sprite
     sprite: _Inky/Mobs/Werewolf/Mutations/base.rsi

@@ -1,19 +1,14 @@
-using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
-using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 
-namespace Content.Inky.Server.Werewolf.Systems;
+namespace Content.Inky.Shared.Werewolf.Systems;
 
-/// <summary>
-/// Handles Dire werewolf abilities
-/// </summary>
-public partial class WerewolfBasicAbilitiesSystem
+public partial class SharedWerewolfBasicAbilitiesSystem
 {
     public void InitializeWerewolfDire()
     {
@@ -25,11 +20,11 @@ public partial class WerewolfBasicAbilitiesSystem
     {
         if (TryComp<MobStateComponent>(args.Target, out var mobState) && mobState.CurrentState == MobState.Dead) // to prevent wolves from biting corpses for heals and whatnot
         {
-            _popup.PopupClient(Loc.GetString("werewolf-bite-fail-state"), uid, PopupType.Large);
+            _popup.PopupEntity(Loc.GetString("werewolf-bite-fail-state"), uid, uid, PopupType.Large);
             return;
         }
 
-        _popup.PopupEntity(Loc.GetString("werewolf-bite-start", ("user", uid), ("target", args.Target)), uid, PopupType.LargeCaution); // todo locale
+        _popup.PopupEntity(Loc.GetString("werewolf-bite-start", ("user", uid), ("target", args.Target)), uid, uid, PopupType.LargeCaution); // todo locale
 
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(1), new WerewolfBleedingBiteDoAfterEvent(), uid, args.Target)
         {

@@ -1,6 +1,8 @@
 - type: entity
   id: WerewolfDirewolf
-  parent: BaseWerewolf
+  parent:
+  - BaseWerewolf
+  - BaseWerewolfUnholy
   description: A dark, forboding feeling overtakes you. You know what will come, you can feel his intentions.
   components:
   - type: Sprite

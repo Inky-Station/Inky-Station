@@ -1,8 +1,18 @@
 using System.Numerics;
 using Content.Inky.Shared.Werewolf.Components;
+using Content.Medical.Shared.Wounds;
 using Content.Shared.Actions;
+using Content.Shared.Body;
+using Content.Shared.Body.Systems;
 using Content.Shared.Camera;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Damage.Systems;
+using Content.Shared.DoAfter;
+using Content.Shared.FixedPoint;
+using Content.Shared.Fluids;
 using Content.Shared.Mind;
+using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
@@ -10,10 +20,12 @@ using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
 
-public sealed class SharedWerewolfBasicAbilitiesSystem : EntitySystem
+public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
@@ -28,6 +40,11 @@ public sealed class SharedWerewolfBasicAbilitiesSystem : EntitySystem
     [Dependency] private readonly ThrownItemSystem _throwingItem = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private readonly SharedPuddleSystem _puddle = default!;
+
+    private float _updateTimer = 0f;
 
     public override void Initialize()
     {
@@ -37,6 +54,50 @@ public sealed class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfAmbushActionEvent>(OnAmbush);
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, ThrowDoHitEvent>(OnHit);
+
+        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfRegen>(TryRegen);
+        InitializeWerewolfDire();
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+        _updateTimer += frameTime;
+        if (_updateTimer < 0.5f)
+            return;
+
+        var timePassed = _updateTimer;
+        _updateTimer = 0f;
+
+        var eqe = EntityQueryEnumerator<WerewolfBasicAbilitiesComponent>();
+        while (eqe.MoveNext(out var uid, out var comp))
+        {
+            if (!_mind.TryGetMind(uid, out var mindId, out _)
+                || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
+                continue;
+
+            mindComp.Accumulator += timePassed;
+
+            if (mindComp.Accumulator >= mindComp.TransfurmWarnDelay && !mindComp.HasWarned)
+            {
+                _popup.PopupEntity(Loc.GetString(mindComp.TransfurmPopup), uid, uid, PopupType.LargeCaution); // todo werewolf predict
+                mindComp.HasWarned = true;
+            }
+
+            if (mindComp.Accumulator >= mindComp.TransfurmOnCommandDelay && !mindComp.TransfurmReady)
+            {
+                _popup.PopupEntity(Loc.GetString(mindComp.TransfurmReadyPopup), uid, uid, PopupType.Medium);
+                mindComp.TransfurmReady = true;
+            }
+
+            if (mindComp.Accumulator >= mindComp.TransfurmCycle)
+            {
+                mindComp.TransfurmReady = false;
+                mindComp.HasWarned = false;
+
+                RaiseLocalEvent(uid, new TransfurmEvent());
+            }
+        }
     }
 
     private const string DogTag = "VulpEmotes";
@@ -160,4 +221,30 @@ public sealed class SharedWerewolfBasicAbilitiesSystem : EntitySystem
         }
     }
     #endregion
+
+
+    public bool TryInjectReagents(EntityUid uid, Dictionary<string, FixedPoint2> reagents)
+    {
+        var solution = new Solution();
+        foreach (var (reagentId, quantity) in reagents)
+            solution.AddReagent(reagentId, quantity);
+
+        if (!_solution.TryGetInjectableSolution(uid, out var targetSolution, out _))
+            return false;
+
+        return _solution.TryAddSolution(targetSolution.Value, solution);
+    }
+
+    private void TryRegen(EntityUid uid, WerewolfBasicAbilitiesComponent comp, EventWerewolfRegen args)
+    {
+        var reagents = new Dictionary<string, FixedPoint2> // i hate fixedpoint bru // todo werewolf unhardcode, put into a comp idk
+        {
+            ["Ichor"] = FixedPoint2.New(10),
+            ["TranexamicAcid"] = FixedPoint2.New(5)
+        };
+
+        if (TryInjectReagents(uid, reagents))
+            _popup.PopupPredicted(Loc.GetString("werewolf-action-regen-success"), uid, uid);
+        args.Handled = true;
+    }
 }

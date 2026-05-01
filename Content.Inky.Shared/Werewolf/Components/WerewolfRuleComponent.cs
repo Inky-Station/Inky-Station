@@ -12,6 +12,7 @@ public sealed partial class WerewolfRuleComponent : Component
     {
         "WerewolfChoose",
         "WerewolfSide",
-        "WerewolfDire"
+        "WerewolfDire",
+        "WerewolfWhite"
     };
 }
