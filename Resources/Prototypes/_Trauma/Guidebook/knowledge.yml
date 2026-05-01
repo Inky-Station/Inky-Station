@@ -1,4 +1,6 @@
-- type: guideEntry
-  id: Skills
-  name: guide-entry-skills
-  text: "/ServerInfo/_Trauma/Guidebook/Skills.xml"
+# inky edit start - kill skills
+#- type: guideEntry
+#  id: Skills
+#  name: guide-entry-skills
+#  text: "/ServerInfo/_Trauma/Guidebook/Skills.xml"
+# inky edit end
