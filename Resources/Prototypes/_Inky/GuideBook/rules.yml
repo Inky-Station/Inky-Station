@@ -1,5 +1,5 @@
 - type: guideEntry
-  id: DefaultRulesetInky
+  id: DefaultRuleset
   name: guide-entry-rules
   priority: 60
   text: "/ServerInfo/_Inky/Guidebook/ServerRules/Rules.xml"
@@ -52,6 +52,9 @@
   - RuleC8
   - RuleC9
   - RuleC10
+  - RuleC11
+  - RuleC12
+  - RuleC13
 
 - type: guideEntry
   id: RuleC0
@@ -131,6 +134,26 @@
   priority: 11
   text: "/ServerInfo/_Inky/Guidebook/ServerRules/Core/RuleC10NLR.xml"
 
+- type: guideEntry
+  id: RuleC11
+  name: guide-entry-rules-c11
+  ruleEntry: true
+  priority: 12
+  text: "/ServerInfo/_Inky/Guidebook/ServerRules/Core/RuleC11MultAcc.xml"
+
+- type: guideEntry
+  id: RuleC12
+  name: guide-entry-rules-c12
+  ruleEntry: true
+  priority: 13
+  text: "/ServerInfo/_Inky/Guidebook/ServerRules/Core/RuleC12ExploitUse.xml"
+
+- type: guideEntry
+  id: RuleC13
+  name: guide-entry-rules-c13
+  ruleEntry: true
+  priority: 14
+  text: "/ServerInfo/_Inky/Guidebook/ServerRules/Core/RuleC13MiniMod.xml"
 ## Roleplay Rules
 
 - type: guideEntry
