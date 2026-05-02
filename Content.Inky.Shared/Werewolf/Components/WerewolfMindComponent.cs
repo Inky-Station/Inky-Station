@@ -7,6 +7,18 @@ public sealed partial class WerewolfMindComponent : Component
     [DataField]
     public List<EntityUid> BittenPeople = new(); // would be used in the manifest TODO WEREWOLF
 
+    /// <summary>
+    /// The ent currently being hunted by this werewolf
+    /// </summary>
+    [DataField]
+    public EntityUid? CurrentMarkedVictim;
+
+    /// <summary>
+    /// If true, this werewolf wouldnt be counted for marking by other wolves
+    /// </summary>
+    [DataField]
+    public bool MarkImmune; // also holy shit this is starting to look like a bloated comp
+
     [DataField]
     public List<string> UnlockedActions = new();
 
@@ -48,4 +60,7 @@ public sealed partial class WerewolfMindComponent : Component
 
     [ViewVariables]
     public float Accumulator = 0f;
+
+    [ViewVariables] // supriisngly used for marked guys
+    public float AccumulatorPopup = 0f;
 }

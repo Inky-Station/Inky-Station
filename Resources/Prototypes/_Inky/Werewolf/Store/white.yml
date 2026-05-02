@@ -21,7 +21,7 @@
 
 - type: listing
   id: WerewolfWhiteClaws
-  name: werewolf-store-white-mg-name
+  name: werewolf-store-white-dmg-name
   description: werewolf-store-white-dmg-desc
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
@@ -31,6 +31,31 @@
   raiseProductEventOnUser: true
   cost:
     Fury: 10
+  categories:
+  - WerewolfWhite
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfWhite
+    blacklist:
+    - WerewolfDirewolf
+
+
+- type: listing
+  id: WerewolfWhiteBloodhound
+  name: werewolf-store-white-track-name
+  description: werewolf-store-white-track-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: transfurm # todo werewolf another icon
+  productEvent: !type:EventWerewolfUpgradeAbility
+    oldActionId: ActionWerewolfTransfurm
+    newActionId: ActionWerewolfTransfurmWhite
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 6
   categories:
   - WerewolfWhite
   conditions:

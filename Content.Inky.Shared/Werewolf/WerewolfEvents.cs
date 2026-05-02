@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
 using Robust.Shared.Serialization;
@@ -10,6 +11,14 @@ public sealed partial class HowlEvent : InstantActionEvent
     [DataField] public int StunDuration = 1;
 }
 public sealed partial class TransfurmEvent : InstantActionEvent { }
+
+public sealed partial class TransfurmWhiteEvent : InstantActionEvent
+{
+    /// <summary>
+    /// Searching radius, when any one werewolf but the entity is in that radius, they will be marked
+    /// </summary>
+    [DataField] public float Radius = 50f;
+}
 public sealed partial class EventWerewolfOpenStore : InstantActionEvent {}
 public sealed partial class EventWerewolfDevour : EntityTargetActionEvent {}
 public sealed partial class EventWerewolfGut : EntityTargetActionEvent {}
@@ -52,3 +61,9 @@ public sealed partial class EventWerewolfUpgradeAbility : InstantActionEvent
     [DataField]
     public string NewActionId;
 }
+
+public sealed class WerewolfPositionQueryEvent : EntityEventArgs
+{
+    public Dictionary<EntityUid, Vector2> Positions { get; } = new();
+}
+

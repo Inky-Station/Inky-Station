@@ -210,4 +210,4 @@
       sprite: _Inky/Actions/Werewolf/werewolf.rsi
       state: transfurm
   - type: InstantAction
-    event: !type:TransfurmEvent {}
+    event: !type:TransfurmWhiteEvent {}

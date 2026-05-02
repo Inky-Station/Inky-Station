@@ -14,11 +14,13 @@ using Content.Shared.Fluids;
 using Content.Shared.Mind;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
+using Content.Shared.Station;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
+using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -43,6 +45,11 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly SharedPuddleSystem _puddle = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedStationSystem _station = default!;
+    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
+
 
     private float _updateTimer = 0f;
 
@@ -56,7 +63,9 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, ThrowDoHitEvent>(OnHit);
 
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfRegen>(TryRegen);
+
         InitializeWerewolfDire();
+        InitializeWhite();
     }
 
     public override void Update(float frameTime)
