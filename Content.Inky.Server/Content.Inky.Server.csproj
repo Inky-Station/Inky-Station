@@ -22,15 +22,7 @@
     <ProjectReference Include="../Content.Medical.Server/Content.Medical.Server.csproj" />
     <ProjectReference Include="../Content.Server/Content.Server.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Test\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Test\ShitPoo14ServerComponent.cs" />
-  </ItemGroup>
-
+  
   <Import Project="../RobustToolbox/Imports/Server.props" />
   <Import Project="../RobustToolbox/Imports/Shared.props" />
   <Import Project="../RobustToolbox/MSBuild/Robust.Properties.targets" />
