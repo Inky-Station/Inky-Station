@@ -107,6 +107,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
                 RaiseLocalEvent(uid, new TransfurmEvent());
             }
         }
+        UpdateMark(timePassed);
     }
 
     private const string DogTag = "VulpEmotes";

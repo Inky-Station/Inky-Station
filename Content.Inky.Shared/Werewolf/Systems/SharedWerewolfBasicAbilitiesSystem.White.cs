@@ -30,16 +30,20 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
             return;
         }
 
-        Calc(uid, comp, args);
+        var victimMindUid = Calc(uid, comp, args);
 
         RaiseLocalEvent(uid, new TransfurmEvent());
 
         if (mindComp.CurrentMarkedVictim != null)
         {
-            // to not have 2 or more marked guys be hunted by the same guy
-            RemComp<WerewolfMarkedComponent>(mindComp.CurrentMarkedVictim.Value);
+            var oldVictimEntity = GetMindShit(mindComp.CurrentMarkedVictim.Value);
+            if (oldVictimEntity != null)
+                RemComp<WerewolfMarkedComponent>(oldVictimEntity.Value);
             mindComp.CurrentMarkedVictim = null;
         }
+
+        if (victimMindUid != null)
+            mindComp.CurrentMarkedVictim = victimMindUid;
 
         args.Handled = true;
     }
@@ -51,12 +55,13 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
     }
 
     /// <summary>
-    /// Calculates the closest werewolf to the hunter wolf
+    /// Calculates the closest werewolf to the hunter wolf (the mind)
     /// </summary>
-    private void Calc(EntityUid uid, WerewolfBasicAbilitiesComponent comp, TransfurmWhiteEvent args)
+    private EntityUid? Calc(EntityUid uid, WerewolfBasicAbilitiesComponent comp, TransfurmWhiteEvent args)
     {
         var entMapCoords = _transform.GetMapCoordinates(uid);
         EntityUid? closestUid = null;
+        EntityUid? closestMindId = null;
         var minDistanceSq = args.Radius * args.Radius;
 
         if (_mind.TryGetMind(uid, out var initMind, out _) && TryComp<WerewolfMindComponent>(initMind, out var initMindComp))
@@ -82,14 +87,12 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
             {
                 minDistanceSq = distSq;
                 closestUid = otherUid;
+                closestMindId = mind; // fuck!
             }
         }
 
         if (closestUid == null)
-        {
-            args.Handled = true;
-            return;
-        }
+            return null;
 
         var mark = EnsureComp<WerewolfMarkedComponent>(closestUid.Value);
         mark.MarkedBy = uid;
@@ -98,11 +101,12 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
             closestUid.Value,
             closestUid.Value,
             PopupType.LargeCaution);
+
+        return closestMindId;
     }
 
-    public void UpdateMark(float frameTime) // todo werewolf doesnt workkkkkk
+    public void UpdateMark(float frameTime) // its not frameTime but who cares lmao
     {
-        base.Update(frameTime);
         var eqe = EntityQueryEnumerator<WerewolfBasicAbilitiesComponent>();
         while (eqe.MoveNext(out var uid, out var comp))
         {
@@ -113,10 +117,19 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
             if (mindComp.CurrentMarkedVictim == null)
                 continue;
 
-            var victim = mindComp.CurrentMarkedVictim.Value;
+            var victimEnt = GetMindShit(mindComp.CurrentMarkedVictim.Value);
+            if (victimEnt == null)
+            {
+                mindComp.CurrentMarkedVictim = null;
+                continue;
+            }
+
+            var victim = victimEnt.Value;
+
             if (TryComp<MobStateComponent>(uid, out var hunterState) && hunterState.CurrentState == MobState.Dead)
             {
-                RemComp<WerewolfMarkedComponent>(victim);
+                if (TryComp<MobStateComponent>(victim, out _))
+                    RemComp<WerewolfMarkedComponent>(victim);
                 mindComp.CurrentMarkedVictim = null;
                 continue;
             }
@@ -128,9 +141,12 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
             }
 
             mindComp.AccumulatorPopup -= frameTime;
+            if (mindComp.AccumulatorPopup > 0)
+                continue;
+
             if (victimState == null)
                 return;
-            if (mindComp.AccumulatorPopup < 0)
+            if (mindComp.AccumulatorPopup <= 0)
             {
                 mindComp.AccumulatorPopup = MarkNotificationInterval;
                 string loc;
@@ -170,5 +186,17 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
             }
         }
     }
+
+    private EntityUid? GetMindShit(EntityUid targetMind)
+    {
+        var eqe = EntityQueryEnumerator<MindContainerComponent>();
+        while (eqe.MoveNext(out var entityUid, out var mindContainer))
+        {
+            if (mindContainer.Mind == targetMind)
+                return entityUid;
+        }
+        return null;
+    }
+
 
 }

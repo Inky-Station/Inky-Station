@@ -2,7 +2,7 @@ namespace Content.Inky.Shared.Werewolf.Components;
 
 // fucking KILL YOURSELF!!!!
 [RegisterComponent]
-public sealed partial class WerewolfMindComponent : Component
+public sealed partial class WerewolfMindComponent : Component // todo werewolf debloat?
 {
     [DataField]
     public List<EntityUid> BittenPeople = new(); // would be used in the manifest TODO WEREWOLF
