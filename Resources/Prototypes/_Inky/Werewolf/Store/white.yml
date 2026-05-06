@@ -44,18 +44,86 @@
 
 
 - type: listing
-  id: WerewolfWhiteBloodhound
+  id: WerewolfWhiteBloodhound1 # todo werewolf
   name: werewolf-store-white-track-name
   description: werewolf-store-white-track-desc
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
-    state: transfurm # todo werewolf another icon
+    state: bloodhound
   productEvent: !type:EventWerewolfUpgradeAbility
     oldActionId: ActionWerewolfTransfurm
     newActionId: ActionWerewolfTransfurmWhite
   raiseProductEventOnUser: true
   cost:
     Fury: 6
+  categories:
+  - WerewolfWhite
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfWhite
+    blacklist:
+    - WerewolfDirewolf
+
+#- type: listing
+#  id: WerewolfWhiteBloodhound
+#  name: werewolf-store-white-track-name
+#  description: werewolf-store-white-track-desc
+#  icon:
+#    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+#    state: bloodhound
+#  productEvent: !type:EventWerewolfUpgradeAbility
+#    newActionId: ActionWerewolfBloodhound
+#  raiseProductEventOnUser: true
+#  cost:
+#    Fury: 6
+#  categories:
+#  - WerewolfWhite
+#  conditions:
+#  - !type:ListingLimitedStockCondition
+#    stock: 1
+#  - !type:BuyBeforeCondition
+#    whitelist:
+#    - WerewolfWhite
+#    blacklist:
+#    - WerewolfDirewolf
+
+- type: listing
+  id: WerewolfWhiteLunar
+  name: werewolf-store-white-lunar-name
+  description: werewolf-store-lunar-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: lunar-white
+  productEvent: !type:WerewolfAddCollectivemind
+    popup: werewolf-white-lunar-popup
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfWhite
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfWhite
+    blacklist:
+    - WerewolfDirewolf
+
+- type: listing
+  id: WerewolfWhiteRevelation
+  name: werewolf-store-white-revelation-name
+  description: werewolf-store-revelation-desc # todo werewolf dont forget to say that it blocks you from buying new shit
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: revelation
+  productEvent: !type:WerewolfRevelationEvent
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 20
   categories:
   - WerewolfWhite
   conditions:

@@ -67,3 +67,10 @@ public sealed class WerewolfPositionQueryEvent : EntityEventArgs
     public Dictionary<EntityUid, Vector2> Positions { get; } = new();
 }
 
+public sealed partial class WerewolfAddCollectivemind : InstantActionEvent
+{
+    [DataField] public string NewChannel = "LunarMind";
+    [DataField] public string? Popup;
+}
+
+public sealed partial class WerewolfRevelationEvent : InstantActionEvent;

@@ -6,6 +6,7 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
+using Content.Trauma.Common.CollectiveMind;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
 
@@ -16,6 +17,8 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
     {
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, TransfurmWhiteEvent>(TryTransfurmWhite);
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfPositionQueryEvent>(OnPosQuery);
+        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfAddCollectivemind>(OnCollectiveMindBuy);
+        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfRevelationEvent>(OnRevelation);
     }
 
     private void TryTransfurmWhite(EntityUid uid, WerewolfBasicAbilitiesComponent comp, TransfurmWhiteEvent args)
@@ -186,6 +189,29 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
             }
         }
     }
+
+    private void OnCollectiveMindBuy(EntityUid uid,
+        WerewolfBasicAbilitiesComponent comp,
+        WerewolfAddCollectivemind args)
+    {
+        EnsureComp<CollectiveMindComponent>(uid, out var m);
+        m.Channels.Add(args.NewChannel);
+        if (args.Popup != null)
+            _popup.PopupEntity(Loc.GetString(args.Popup), uid, uid, PopupType.Medium);
+    }
+
+    private void OnRevelation(EntityUid uid,
+        WerewolfBasicAbilitiesComponent comp,
+        WerewolfRevelationEvent args)
+    {
+        if (!_mind.TryGetMind(uid, out var mindId, out _)
+            || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
+            return;
+
+        RaiseLocalEvent(uid, new TransfurmEvent());
+        mindComp.BlockTransfurm = true;
+    }
+
 
     private EntityUid? GetMindShit(EntityUid targetMind)
     {

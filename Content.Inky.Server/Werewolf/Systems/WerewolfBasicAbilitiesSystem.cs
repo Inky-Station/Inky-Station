@@ -17,6 +17,7 @@ using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Polymorph;
 using Content.Shared.Store.Components;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -60,6 +61,13 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
         if (!_mind.TryGetMind(uid, out var mindId, out _)
             || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
             return;
+
+        if (mindComp.BlockTransfurm)
+        {
+            _popup.PopupEntity(Loc.GetString("werewolf-transfurm-block"), uid, uid);
+            args.Handled = true;
+            return;
+        }
 
         if (mindComp.Accumulator < mindComp.TransfurmOnCommandDelay)
         {

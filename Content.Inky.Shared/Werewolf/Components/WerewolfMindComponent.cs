@@ -25,6 +25,8 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
     [DataField]
     public int Currency; // needed becasue polymorph & store shitcode
 
+    #region transform
+
     /// <summary>
     /// Transforms the werewolf automatically after the timer passes
     /// </summary>
@@ -50,6 +52,9 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
     public bool TransfurmReady;
 
     [DataField]
+    public bool BlockTransfurm;
+
+    [DataField]
     public bool HasWarned; // to not spam shit
 
     [ViewVariables]
@@ -63,4 +68,5 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
 
     [ViewVariables] // supriisngly used for marked guys
     public float AccumulatorPopup = 0f;
+    #endregion
 }

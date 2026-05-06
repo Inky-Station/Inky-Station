@@ -1,0 +1,5 @@
+- type: collectiveMind
+  id: LunarMind
+  name: collective-mind-lunarmind
+  keycode: 'l'
+  color: "#d600bd"
