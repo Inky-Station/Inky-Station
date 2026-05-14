@@ -1,5 +1,17 @@
 # Last match in file takes precedence.
 
-/* @Trauma-Station/Maintainers
-/Resources/Maps/* @Trauma-Station/Maptainers
-/Resources/Prototypes/Maps/* @Trauma-Station/Maptainers
+.github/ @pheenty @Shegare
+
+# Game logic
+*.Server/ @pheenty
+*.Shared/ @pheenty
+
+# UI
+*.Client/ @LuciferEOS
+
+# Resources/Prototypes/*
+
+# Resources/Maps/*
+# Resources/Prototypes/Maps/*
+
+Resources/Textures/* @zagreastyas # le gooner

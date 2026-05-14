@@ -26,11 +26,11 @@ public sealed class FloorCleanerSystem : EntitySystem
 
     private void OnAfterInteract(Entity<FloorCleanerComponent> ent, ref AfterInteractEvent args)
     {
-        if (args.CanReach && !args.Handled && CleanDecals(ent, args.ClickLocation))
+        if (args.CanReach && !args.Handled && CleanDecals(ent, args.ClickLocation, args.User))
             args.Handled = true;
     }
 
-    public bool CleanDecals(Entity<FloorCleanerComponent> ent, EntityCoordinates coords)
+    public bool CleanDecals(Entity<FloorCleanerComponent> ent, EntityCoordinates coords, EntityUid? user)
     {
         if (Transform(ent).GridUid is not {} grid ||
             TryComp<UseDelayComponent>(ent, out var delay) && _delay.IsDelayed((ent, delay)))
@@ -40,20 +40,19 @@ public sealed class FloorCleanerSystem : EntitySystem
         var decals = _decal.GetDecalsInRange(grid, pos, ent.Comp.Radius);
         var cleaned = false;
 
-        // actually clean them. not predicted since decal shitcode is serverside
         foreach (var decal in decals)
         {
-            if (!decal.Decal.Cleanable)
+            if (!decal.Comp.Data.Cleanable)
                 continue;
-            _decal.RemoveDecal(grid, decal.Index);
+
+            PredictedDel(decal.Owner);
             cleaned = true;
         }
 
         if (!cleaned)
             return false;
 
-        // TODO: change to PlayPredicted if decals ever gets moved to shared (lol never happening)
-        _audio.PlayPvs(ent.Comp.Sound, ent);
+        _audio.PlayPredicted(ent.Comp.Sound, ent, user);
 
         if (delay != null)
             _delay.TryResetDelay((ent, delay));

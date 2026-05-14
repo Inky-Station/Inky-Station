@@ -10,6 +10,9 @@
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
+    # inky
+    - FunGameruleChooser
+    # /inky
 
 - type: gamePreset
   id: KesslerSyndrome
@@ -25,6 +28,9 @@
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
+  # inky
+    - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: AllAtOnce
@@ -53,6 +59,9 @@
     - Changeling
     - Insurgency
     # </Trauma>
+  # inky
+    - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: AllerAtOnce
@@ -89,6 +98,9 @@
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
+  # inky
+    - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Extended
@@ -103,6 +115,9 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Greenshift
@@ -131,6 +146,9 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Secret
@@ -143,6 +161,9 @@
   rules:
   - Insurgency # Trauma
   - Secret
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Sandbox
@@ -154,6 +175,9 @@
   maxPlayers: 5
   rules:
     - Sandbox
+  # inky
+    - FunGameruleChooser # for debugging and devving more i guess its fine geg
+  # /inky
 
 - type: gamePreset
   id: Traitor
@@ -175,6 +199,9 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Deathmatch
@@ -208,6 +235,9 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Revolutionary
@@ -230,6 +260,9 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Xenoborgs
@@ -250,6 +283,9 @@
   # - MeteorSwarmScheduler - Trauma
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Zombie
@@ -272,6 +308,9 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Zombieteors
@@ -292,3 +331,6 @@
   - KesslerSyndromeScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  # inky
+  - FunGameruleChooser
+  # /inky

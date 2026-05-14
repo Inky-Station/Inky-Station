@@ -8,8 +8,8 @@
         <PanelContainer StyleClasses="BackgroundPanel" />
         <BoxContainer Orientation="Vertical" MinSize="300 200">
             <BoxContainer Orientation="Horizontal">
-                <Label Margin="8 0 0 0" Text="{Loc 'connecting-title-trauma'}"
-                       StyleClasses="LabelHeading" VAlign="Center" /> <!-- Trauma - custom text -->
+                <Label Margin="8 0 0 0" Text="{Loc 'connecting-title-inky'}"
+                       StyleClasses="LabelHeading" VAlign="Center" /> <!-- inky - custom text -->
                 <Button Name="ExitButton" Text="{Loc 'connecting-exit'}"
                         HorizontalAlignment="Right" HorizontalExpand="True" />
             </BoxContainer>

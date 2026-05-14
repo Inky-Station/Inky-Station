@@ -1,5 +1,19 @@
 - type: entity
   parent: BaseGameRule
+  id: FunGameruleChooser
+  components:
+  - type: RoundstartGameruleChooserRule
+    funOnly: true
+    rules:
+    - CrematoriumFunRule
+    - FentbotFunRule
+    - EngiSentryFunRule
+    - FunSkeletonGibRule
+    - HeartRipFunRule
+    - WilhelmFtlFunRule
+
+- type: entity
+  parent: BaseGameRule
   id: CrematoriumFunRule
   components:
   - type: CrematoriumFunRule

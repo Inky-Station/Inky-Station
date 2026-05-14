@@ -16,6 +16,9 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
   - Insurgency
+  # inky
+  - FunGameruleChooser # chudshift 90% of the time
+  # /inky
 
 - type: gamePreset
   id: Heretics
@@ -35,6 +38,9 @@
   - SubGamemodesRuleNoHeretic
   - HereticGamemode
   - CalmTraitor
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Shadowlings
@@ -54,6 +60,9 @@
   - SubGamemodesRule
   - ShadowlingGamemode
   - CalmTraitor
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Wraith
@@ -74,3 +83,6 @@
   - SubGamemodesRule
   - WraithRoundstart
   - CalmTraitor
+  # inky
+  - FunGameruleChooser
+  # /inky

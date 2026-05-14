@@ -24,11 +24,17 @@ dont make it obvious
 
 ## Building
 
-1. Clone this repo.
-2. Run `RUN_THIS.py` to init submodules and download the engine.
-3. Compile the solution.
+You probably know. If you don't, just run this in the terminal (on windows, right-click taskbar and select powershell). You'll need git and dotnet 10 sdk (google it).
 
-[More detailed instructions on building the project.](https://docs.goobstation.com/en/general-development/setup.html)
+```
+git clone https://github.com/Inky-Station/Inky-Station
+dotnet build -c Release
+dotnet run --project Content.Server
+```
+
+And in another terminal, `dotnet run --project Content.Client`.
+
+Also check out Scripts/ directory and a [site with more detailed instructions on building the project.](https://docs.goobstation.com/en/general-development/setup.html)
 
 ## License
 

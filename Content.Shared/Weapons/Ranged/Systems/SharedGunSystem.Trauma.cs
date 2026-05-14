@@ -2,6 +2,7 @@
 
 using System.Numerics;
 using Content.Goobstation.Common.Weapons.Ranged;
+using Content.Shared.Power;
 using Content.Shared.Projectiles;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Weapons.Ranged.Components;
@@ -21,7 +22,7 @@ namespace Content.Shared.Weapons.Ranged.Systems;
 public abstract partial class SharedGunSystem
 {
     [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly CommonKnowledgeSystem _knowledge = default!;
+    // [Dependency] private readonly CommonKnowledgeSystem _knowledge = default!; // inky
 
     private static readonly EntProtoId ShootingKnowledge = "ShootingKnowledge";
     private static readonly EntProtoId WeaponsKnowledge = "WeaponsKnowledge";
@@ -40,9 +41,10 @@ public abstract partial class SharedGunSystem
     {
     }
 
-    private void ShootOrThrow(EntityUid uid, Vector2 mapDirection, Vector2 gunVelocity, GunComponent gun, EntityUid gunUid, EntityUid? user, Vector2? targetCoordinates = null) // Goobstation
+    private void ShootOrThrow(EntityUid uid, Vector2 mapDirection, Vector2 gunVelocity, Entity<GunComponent> gun, EntityUid? user,
+        Vector2? targetCoordinates = null)
     {
-        if (gun.Target is { } target && !TerminatingOrDeleted(target))
+        if (gun.Comp.Target is { } target && !TerminatingOrDeleted(target))
         {
             var targeted = EnsureComp<TargetedProjectileComponent>(uid);
             targeted.Target = GetNetEntity(target);
@@ -54,11 +56,12 @@ public abstract partial class SharedGunSystem
         {
             RemoveShootable(uid);
             // TODO: Someone can probably yeet this a billion miles so need to pre-validate input somewhere up the call stack.
-            ThrowingSystem.TryThrow(uid, mapDirection, gun.ProjectileSpeedModified, user);
+            ThrowingSystem.TryThrow(uid, mapDirection, gun.Comp.ProjectileSpeedModified, user);
             return;
         }
 
-        ShootProjectile(uid, mapDirection, gunVelocity, gunUid, user, gun.ProjectileSpeedModified, targetCoordinates); // Goobstation
+        ShootProjectile(uid, mapDirection, gunVelocity, gun, user, gun.Comp.ProjectileSpeedModified,
+            targetCoordinates);
     }
 
     /// <summary>
@@ -113,6 +116,10 @@ public abstract partial class SharedGunSystem
     /// </summary>
     private float GetRecoilScale(EntityUid? userUid, EntityUid gun)
     {
+        // inky - kill skills
+        return 1;
+        /*
+
         if (userUid is not {} user || !HasComp<KnowledgeHolderComponent>(user))
             return 1;
 
@@ -126,5 +133,17 @@ public abstract partial class SharedGunSystem
         return level < 26
             ? 3.0f - level / 26.0f - _knowledge.SharpCurve(shooting)
             : (float) Math.Max(1.0f - Math.Pow((level - 50) / 50.0f, 2), 0.2f);
+
+        */ // /inky
+    }
+
+    public (float, float) GetBatteryShotsFloat(Entity<BatteryAmmoProviderComponent> ent)
+    {
+        var ev = new GetChargeEvent();
+        RaiseLocalEvent(ent, ref ev);
+        var currentShots = ev.CurrentCharge / ent.Comp.FireCost;
+        var maxShots = ev.MaxCharge / ent.Comp.FireCost;
+
+        return (currentShots, maxShots);
     }
 }

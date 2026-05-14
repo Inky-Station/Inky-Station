@@ -18,6 +18,9 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
   - Changeling
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 # no subgamemodes for the mixed presets
 
@@ -38,6 +41,9 @@
   - SpaceTrafficControlEventScheduler
   - CalmLing
   - CalmTraitor
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: NukeTraitor
@@ -57,6 +63,9 @@
   - SpaceTrafficControlEventScheduler
   - Calmops
   - CalmTraitor
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: NukeLing
@@ -75,6 +84,9 @@
   - SpaceTrafficControlEventScheduler
   - Calmops
   - CalmLing
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: RevTraitor
@@ -94,6 +106,9 @@
   - SpaceTrafficControlEventScheduler
   - CalmRevs
   - CalmTraitor
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: RevLing
@@ -112,6 +127,9 @@
   - SpaceTrafficControlEventScheduler
   - CalmRevs
   - CalmLing
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Blob
@@ -130,6 +148,9 @@
   - SubGamemodesRule
   - BlobGameMode
   - CalmTraitor
+  # inky
+  - FunGameruleChooser # chudshift 99% of the time
+  # /inky
 
 - type: gamePreset
   id: Honkops
@@ -147,6 +168,9 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
   - Honkops
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Xenomorphs
@@ -165,3 +189,6 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
   - XenomorphsInfestationRoundstart
+  # inky
+  - FunGameruleChooser
+  # /inky
