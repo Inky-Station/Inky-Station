@@ -11,7 +11,6 @@
   - type: SneakAttack
     secondsTillHidden: 2
 
-
 - type: combo
   id: OpenVein
   attacks:
@@ -41,7 +40,7 @@
     sound: /Audio/Weapons/genhit3.ogg
   opponentEffects:
   - !type:ThrowDirection
-    speed: 6
+    speed: 20
   - !type:ModifyKnockdown
     time: 3
   levelRequired: 10
@@ -58,5 +57,5 @@
     sound: /Audio/Weapons/genhit2.ogg
   opponentEffects:
   - !type:AmputateLimb
-    limbName: Arm
+    limbName: ArmLeft # GOIDA!!
   levelRequired: 10

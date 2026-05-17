@@ -82,7 +82,8 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
         while (eqe.MoveNext(out var uid, out var comp))
         {
             if (!_mind.TryGetMind(uid, out var mindId, out _)
-                || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
+                || !TryComp<WerewolfMindComponent>(mindId, out var mindComp)
+                || mindComp.BlockTransfurm)
                 continue;
 
             mindComp.Accumulator += timePassed;

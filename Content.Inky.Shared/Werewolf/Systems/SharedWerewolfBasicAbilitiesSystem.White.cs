@@ -208,7 +208,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
             || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
             return;
 
-        RaiseLocalEvent(uid, new TransfurmEvent());
+        RaiseLocalEvent(uid, new TransfurmWhiteEvent());
         mindComp.BlockTransfurm = true;
     }
 

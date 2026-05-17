@@ -1,4 +1,6 @@
 using Content.Shared.EntityEffects;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Throwing;
 using Robust.Shared.Prototypes;
 
@@ -15,6 +17,9 @@ public sealed partial class ThrowDirection : EntityEffectBase<ThrowDirection>
     [DataField]
     public bool Predicted = true;
 
+    [DataField]
+    public bool StopPull = true;
+
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => null;
 }
@@ -22,6 +27,7 @@ public sealed partial class ThrowDirection : EntityEffectBase<ThrowDirection>
 public sealed class ThrowDirectionEffectSystem : EntityEffectSystem<MetaDataComponent, ThrowDirection>
 {
     [Dependency] private readonly ThrowingSystem _JOHNCENA = default!;
+    [Dependency] private readonly PullingSystem _pulling = default!;
 
     protected override void Effect(Entity<MetaDataComponent> ent, ref EntityEffectEvent<ThrowDirection> args)
     {
@@ -35,9 +41,11 @@ public sealed class ThrowDirectionEffectSystem : EntityEffectSystem<MetaDataComp
 
         var effect = args.Effect;
         _JOHNCENA.TryThrow(ent,
-            -target,
+            target,
             baseThrowSpeed: effect.Speed,
             user: args.User,
             predicted: effect.Predicted);
+        if (effect.StopPull && TryComp<PullableComponent>(ent, out var pullable))
+            _pulling.TryStopPull(ent, pullable);
     }
 }

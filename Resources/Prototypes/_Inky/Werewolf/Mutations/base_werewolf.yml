@@ -104,11 +104,6 @@
     damageContainer: Biological
     damageModifierSet: WerewolfBase
   - type: NoSlip
-  - type: KnowledgeGrant # todo werewolf doesnt work?
-    skills:
-      MartialArtLyCqc: 65
-      StrengthKnowledge: 65
-      AthleticsKnowledge: 65
   - type: Targeting
   - type: Internals
 
@@ -130,3 +125,12 @@
     Heat: 0.35 # mfw lasersec
     Cold: 0.85 # fur
     Holy: 1.0
+
+- type: entityEffect
+  id: WerewolfSkills
+  effects:
+  - !type:GrantSkills
+    skills:
+      MartialArtLyCqc: 65
+      StrengthKnowledge: 65
+      AthleticsKnowledge: 65

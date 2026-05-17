@@ -31,3 +31,7 @@
       lateJoinAdditional: true
       mindRoles:
       - MindRoleWerewolf
+  - type: AntagPlayerEffects
+    effects:
+    - !type:NestedEffect
+      proto: WerewolfSkills
