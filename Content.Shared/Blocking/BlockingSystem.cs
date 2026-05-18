@@ -10,6 +10,8 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Movement.Components; // inky
+using Content.Shared.Movement.Systems; // inky
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Toggleable;
@@ -42,10 +44,13 @@ public sealed partial class BlockingSystem : EntitySystem
     [Dependency] private EntityQuery<MobStateComponent> _mobQuery = default!;
     [Dependency] private EntityQuery<BlockingUserComponent> _userQuery = default!;
 
+    [Dependency] private MovementSpeedModifierSystem _movement = default!; // inky
+
     public override void Initialize()
     {
         base.Initialize();
         InitializeUser();
+        InitializeInky(); // inky
 
         SubscribeLocalEvent<BlockingComponent, GotEquippedHandEvent>(OnEquip);
         SubscribeLocalEvent<BlockingComponent, GotUnequippedHandEvent>(OnUnequip);
@@ -77,6 +82,10 @@ public sealed partial class BlockingSystem : EntitySystem
             var userComp = EnsureComp<BlockingUserComponent>(args.User);
             userComp.BlockingItem = uid;
             userComp.OriginalBodyType = physicsComponent.BodyType;
+
+            // inky start
+            userComp.MovementModifier = component.MovementModifier;
+            // inky end
         }
     }
 
@@ -187,12 +196,15 @@ public sealed partial class BlockingSystem : EntitySystem
         }
 
         //Don't allow someone to block if they're somehow not anchored.
+        /* inky start - new shields
         _transformSystem.AnchorEntity(user, xform);
         if (!xform.Anchored)
         {
             CantBlockError(user);
             return false;
         }
+        inky end */
+
         _actionsSystem.SetToggled(component.BlockingToggleActionEntity, true);
         _popupSystem.PopupPredicted(msgUser, msgOther, user, user);
 
@@ -208,6 +220,12 @@ public sealed partial class BlockingSystem : EntitySystem
 
         component.IsBlocking = true;
         Dirty(item, component);
+
+        // inky start
+        TryComp(user, out MovementSpeedModifierComponent? moveMod);
+            _movement.RefreshMovementSpeedModifiers(user, moveMod); // cursed? i might be retarded here but it works idk
+        RaiseLocalEvent(user, new RefreshMovementSpeedModifiersEvent());
+        // inky end
 
         return true;
     }
@@ -261,6 +279,11 @@ public sealed partial class BlockingSystem : EntitySystem
         component.IsBlocking = false;
         Dirty(item, component);
 
+        // inky start
+        TryComp(user, out MovementSpeedModifierComponent? moveMod);
+        _movement.RefreshMovementSpeedModifiers(user, moveMod);
+        // inky end
+
         return true;
     }
 
@@ -286,6 +309,11 @@ public sealed partial class BlockingSystem : EntitySystem
             if (HasComp<BlockingComponent>(shield) && _userQuery.TryGetComponent(user, out var blockingUserComponent))
             {
                 blockingUserComponent.BlockingItem = shield;
+
+                // inky start
+                RaiseLocalEvent(user, new RefreshMovementSpeedModifiersEvent());
+                // inky end
+
                 return;
             }
         }
