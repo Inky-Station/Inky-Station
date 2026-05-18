@@ -13,7 +13,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  parent: ClothingEyesBase
+  parent:
+  - ClothingEyesBase
+  - BaseClothingViewconeBlinding # inky edit
   id: ClothingEyesBlindfold
   name: blindfold
   description: The bind leading the blind.
@@ -22,9 +24,12 @@
     sprite: Clothing/Eyes/Misc/blindfold.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Misc/blindfold.rsi
-    equipDelay: 3
-    unequipDelay: 3
-  - type: Blindfold
+    # inky
+#    equipDelay: 3
+#    unequipDelay: 3
+#  - type: Blindfold
+  # /inky
+  - type: EyeProtection
   - type: Construction
     graph: Blindfold
     node: blindfold

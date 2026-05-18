@@ -208,4 +208,8 @@
     interfaces:
       enum.SelfRenamerUIKey.Key:
         type: SelfRenamerBoundUserInterface
+  - type: RadarBlip
+    scale: 5
+    shape: Ring
+    visibleFromOtherGrids: true
   # inky end

@@ -50,7 +50,7 @@
               acts: [ "Destruction" ]
         - trigger:
             !type:DamageTrigger
-            damage: 50 # Trauma, was 100
+            damage: 120 # Trauma, was 100 // inky - fuck you let it be 120, what could go wrong
           behaviors:
             - !type:DoActsBehavior
               acts: [ "Destruction" ]
