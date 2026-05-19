@@ -222,7 +222,7 @@ public sealed partial class BlockingSystem : EntitySystem
         Dirty(item, component);
 
         // inky start
-        TryComp(user, out MovementSpeedModifierComponent? moveMod);
+        if (TryComp(user, out MovementSpeedModifierComponent? moveMod))
             _movement.RefreshMovementSpeedModifiers(user, moveMod); // cursed? i might be retarded here but it works idk
         RaiseLocalEvent(user, new RefreshMovementSpeedModifiersEvent());
         // inky end
@@ -280,8 +280,8 @@ public sealed partial class BlockingSystem : EntitySystem
         Dirty(item, component);
 
         // inky start
-        TryComp(user, out MovementSpeedModifierComponent? moveMod);
-        _movement.RefreshMovementSpeedModifiers(user, moveMod);
+        if (TryComp(user, out MovementSpeedModifierComponent? moveMod))
+            _movement.RefreshMovementSpeedModifiers(user, moveMod);
         // inky end
 
         return true;
