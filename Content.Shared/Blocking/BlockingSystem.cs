@@ -223,8 +223,10 @@ public sealed partial class BlockingSystem : EntitySystem
 
         // inky start
         if (TryComp(user, out MovementSpeedModifierComponent? moveMod))
+        {
             _movement.RefreshMovementSpeedModifiers(user, moveMod); // cursed? i might be retarded here but it works idk
-        RaiseLocalEvent(user, new RefreshMovementSpeedModifiersEvent());
+            RaiseLocalEvent(user, new RefreshMovementSpeedModifiersEvent());
+        }
         // inky end
 
         return true;
