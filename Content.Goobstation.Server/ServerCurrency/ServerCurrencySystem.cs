@@ -29,7 +29,6 @@ public sealed partial class ServerCurrencySystem : EntitySystem
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly IPlayerManager _players = default!;
-    [Dependency] private readonly GameTicker _gameTicker = default!;
 
     private int _goobcoinsPerPlayer = 0;
     private int _goobcoinsNonAntagMultiplier = 1;
