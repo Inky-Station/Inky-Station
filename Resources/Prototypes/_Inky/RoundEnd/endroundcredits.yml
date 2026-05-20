@@ -1,0 +1,11 @@
+- type: localizedDataset
+  id: EndRoundCredits
+  values:
+    prefix: end-round-credits-inky-
+    count: 28
+
+- type: localizedDataset
+  id: ShoutoutDataset
+  values:
+    prefix: end-round-credits-shoutout-inky-
+    count: 17

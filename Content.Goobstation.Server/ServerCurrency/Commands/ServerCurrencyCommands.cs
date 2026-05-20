@@ -302,7 +302,7 @@ public sealed partial class WipeServerCurrencyCommand : IConsoleCommand
 
     public async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (args.Length != 1 || args[0] != "La-li-lu-le-lo")
+        if (args.Length != 1 || args[0] != "comrade-ilya-hello-make-so-that-any-mouse-has-a-65%-chance-to-be-blob") // inky edit
         {
             shell.WriteError("EVA, say the password.");
             return;
@@ -316,7 +316,7 @@ public sealed partial class WipeServerCurrencyCommand : IConsoleCommand
     {
         return args.Length switch
         {
-            1 => CompletionResult.FromHint("Who are the patriots?"),
+            1 => CompletionResult.FromHint("comrade ilya"), // inky edit
             _ => CompletionResult.Empty
         };
     }

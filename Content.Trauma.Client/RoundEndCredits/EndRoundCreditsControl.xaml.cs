@@ -10,6 +10,10 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Utility;
+// inky
+using Content.Shared.Dataset;
+using Robust.Shared.Random;
+// /inky
 
 namespace Content.Trauma.Client.RoundEndCredits;
 
@@ -18,6 +22,9 @@ public sealed partial class EndRoundCreditsControl : ScrollContainer
 {
     [Dependency] private IEntitySystemManager _entitySystem = default!;
     private readonly ClientGameTicker _gameTicker;
+    // inky
+    [Dependency] private IRobustRandom _gamba = default!;
+    // /iniky
 
     private static readonly ResPath Logo = new("/Textures/Logo/logo.png");
     private static readonly ResPath Pixellari = new("/Fonts/_Trauma/Pixellari.ttf");
@@ -27,6 +34,9 @@ public sealed partial class EndRoundCreditsControl : ScrollContainer
     private const int NormalFontSize = 16;
     private const int BigFontSize = 24;
     private const int HeaderFontSize = 42;
+
+    // inky
+    private const string datasetId = "EndRoundCredits";
 
     public EndRoundCreditsControl()
     {
@@ -69,8 +79,11 @@ public sealed partial class EndRoundCreditsControl : ScrollContainer
         // Image mgsv episode number and jargon
         ServerImageBox.AddChild(serverImage);
         EpisodeNumber.Text = Loc.GetString("round-end-credits-trauma-episode", ("roundid", message.RoundId), ("title", message.GamemodeTitle));
-        IntroJargonLabel.Text = Loc.GetString("round-end-credits-trauma-jargon", ("station", stationName));
-
+        // inky start
+        // IntroJargonLabel.Text = Loc.GetString("round-end-credits-trauma-jargon", ("station", stationName));
+        if (proto.TryIndex<LocalizedDatasetPrototype>(datasetId, out var datasetPrototype))
+            IntroJargonLabel.Text = Loc.GetString(_gamba.Pick(datasetPrototype.Values));
+        // /inky
         // The fonts
         EpisodeNumber.FontOverride = bigFont;
         IntroJargonLabel.FontOverride = bigFont;
