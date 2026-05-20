@@ -51,7 +51,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 16
+        Heat: 16 # inky edit
 
 # Longarms
 
@@ -75,7 +75,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 20
+        Heat: 20 # inky edit
 
 - type: entity
   parent: SidearmBulletBase
