@@ -94,3 +94,5 @@ end-round-credits-shoutout-inky-14 = Polaks
 end-round-credits-shoutout-inky-15 = John Mango
 end-round-credits-shoutout-inky-16 = 🐟 fish 🐟
 end-round-credits-shoutout-inky-17 = Homelander
+end-round-credits-shoutout-inky-18 = The Remains Of BSO
+end-round-credits-shoutout-inky-19 = The Remains Of Brigmed
