@@ -82,7 +82,7 @@ public sealed partial class EndRoundCreditsControl : ScrollContainer
         // <Inky>
         // IntroJargonLabel.Text = Loc.GetString("round-end-credits-trauma-jargon", ("station", stationName));
         if (proto.TryIndex(datasetId, out var datasetPrototype))
-            IntroJargonLabel.Text = _gamba.Pick(proto.Index(datasetId).Values);
+            IntroJargonLabel.Text = Loc.GetString(_gamba.Pick(datasetPrototype.Values)); // it needs loc.getstring because... it just needs it ok? idk
         // </Inky>
         // The fonts
         EpisodeNumber.FontOverride = bigFont;
