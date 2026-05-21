@@ -23,7 +23,7 @@ public sealed partial class InkyCVars
     /// If amount of players is less than this number, people wont get their coins
     /// </summary>
     public static readonly CVarDef<int> CurrencyMinPlayers =
-        CVarDef.Create("inky.currency_multiplier", 0, CVar.SERVERONLY);
+        CVarDef.Create("inky.currency_min_players", 0, CVar.SERVERONLY);
 
     #endregion
 }
