@@ -1,13 +1,15 @@
-- type: antag
-  id: Insurgent
-  name: roles-antag-insurgent-name
-  objective: roles-antag-insurgent-objective
-  antagonist: true
-  setPreference: true
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 5h
-  guides: [ Insurgents ]
+#- type: antag
+#  id: Insurgent
+#  name: roles-antag-insurgent-name
+#  objective: roles-antag-insurgent-objective
+#  antagonist: true
+#  setPreference: true
+#  requirements:
+#  - !type:OverallPlaytimeRequirement
+#    time: 5h
+#  guides: [ Insurgents ]
+# inky # kill insurgents
+# buuuurp
 
 - type: startingGear
   id: Insurgent

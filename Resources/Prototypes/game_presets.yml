@@ -57,7 +57,7 @@
     - BlobGameMode
     - LoneAbductorSpawn
     - Changeling
-    - Insurgency
+#    - Insurgency # inky - kill insurgents
     # </Trauma>
   # inky
     - FunGameruleChooser
@@ -83,7 +83,7 @@
     - LoneAbductorSpawn
     - Changeling
     - Shadowling
-    - Insurgency
+#    - Insurgency # inky - kill insurgents
     # </Trauma>
     - Nukeops
     - Traitor
@@ -159,7 +159,7 @@
   showInVote: true
   description: secret-description
   rules:
-  - Insurgency # Trauma
+#  - Insurgency # Trauma # inky kill insurgents
   - Secret
   # inky
   - FunGameruleChooser
