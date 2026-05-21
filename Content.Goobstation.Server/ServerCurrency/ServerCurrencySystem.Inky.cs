@@ -1,3 +1,4 @@
+using Content.Inky.Common.CCVar;
 using Content.Server.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
@@ -6,6 +7,7 @@ using Content.Shared.Players;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Server.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 
 namespace Content.Goobstation.Server.ServerCurrency;
@@ -16,20 +18,22 @@ public sealed partial class ServerCurrencySystem
     [Dependency] private SharedJobSystem _jobs = default!;
     [Dependency] private IPlayerManager _players = default!;
     [Dependency] private SharedPlayerSystem _playerSystem = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
-    private int _goobcoinsNonAntagMultiplier = 1;
-    private int _goobcoinsServerMultiplier = 1;
-    private int _goobcoinsMinPlayers = 0;
-
+    private int _minPlayersRequired;
+    private int _currencyServerMultiplier; // why is it int...
 
     public void InitializeInky()
     {
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndTextAppend);
+
+        _minPlayersRequired = _cfg.GetCVar(InkyCVars.CurrencyMinPlayers);
+        _currencyServerMultiplier = _cfg.GetCVar(InkyCVars.CurrencyServerMultiplier);
     }
 
     private void OnRoundEndTextAppend(RoundEndTextAppendEvent ev)
         {
-            if (_players.PlayerCount < _goobcoinsMinPlayers) // 0 default unless changed
+            if (_players.PlayerCount < _minPlayersRequired)
                 return;
 
             var query = EntityQueryEnumerator<MindContainerComponent>();
@@ -52,14 +56,10 @@ public sealed partial class ServerCurrencySystem
                     {
                         int money = 0;
                         if (session is not null)
-                        {
                             money += GetJobGoobcoins(session);
-                            if (!_jobs.CanBeAntag(session))
-                                money *= _goobcoinsNonAntagMultiplier;
-                        }
 
-                        if (_goobcoinsServerMultiplier != 1)
-                            money *= _goobcoinsServerMultiplier;
+                        if (_currencyServerMultiplier != 1)
+                            money *= _currencyServerMultiplier;
 
                         // if (session != null && _linkAccount.GetPatron(session)?.Tier != null) // no p2w (for now at least lul)
                         //     money *= 2;
