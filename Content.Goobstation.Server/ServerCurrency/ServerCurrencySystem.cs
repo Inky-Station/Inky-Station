@@ -3,17 +3,6 @@
 using Content.Goobstation.Common.ServerCurrency;
 using Content.Shared.Popups;
 using Robust.Shared.Configuration;
-// inky start
-using Content.Shared.Roles.Jobs;
-using Content.Shared.Silicons.Borgs.Components;
-using Robust.Server.Player;
-using Content.Server.GameTicking;
-using Content.Server.LinkAccount;
-using Content.Server.Popups;
-using Content.Shared.Humanoid;
-using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
-// /inky
 
 namespace Content.Goobstation.Server.ServerCurrency;
 
@@ -25,23 +14,13 @@ public sealed partial class ServerCurrencySystem : EntitySystem
     [Dependency] private ICommonCurrencyManager _currencyMan = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
-    // inky start todo purge
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedJobSystem _jobs = default!;
-    [Dependency] private readonly IPlayerManager _players = default!;
-
-    private int _goobcoinsPerPlayer = 0;
-    private int _goobcoinsNonAntagMultiplier = 1;
-    private int _goobcoinsServerMultiplier = 1;
-    private int _goobcoinsMinPlayers = 0;
-    // /inky
     public override void Initialize()
     {
         base.Initialize();
 
-        // inky start
+        // <inky>
         InitializeInky();
-        // /inky
+        // </inky>
 
         _currencyMan.BalanceChange += OnBalanceChange;
         SubscribeNetworkEvent<PlayerBalanceRequestEvent>(OnBalanceRequest);

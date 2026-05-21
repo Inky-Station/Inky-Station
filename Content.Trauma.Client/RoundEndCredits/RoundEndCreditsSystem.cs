@@ -32,9 +32,9 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
     private float _uiScale;
     private bool Debug = false; // Set this to true if you want a bunch of dummy characters to spawn
 
-    // inky
-    private const string datasetId = "ShoutoutDataset";
-    // /inky
+    // <inky>
+    private ProtoId<LocalizedDatasetPrototype> datasetId = "ShoutoutDataset";
+    // </inky>
 
     public override void Initialize()
     {
@@ -60,10 +60,10 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
             return;
 
         var shoutout = "John Nanotrasen";
-        // inky
-        if (_proto.TryIndex<LocalizedDatasetPrototype>(datasetId, out var datasetPrototype))
-            shoutout = Loc.GetString(_random.Pick(datasetPrototype.Values));
-        // /inky
+        // <inky>
+        if (_proto.TryIndex(datasetId, out var dataset))
+            shoutout = _random.Pick(_proto.Index(datasetId));
+        // </inky>
         if (_linkAccount.GetPatrons().Count != 0)
             shoutout = _random.Pick(_linkAccount.GetPatrons()).Name;
 

@@ -1,9 +1,10 @@
 end-round-credits-inky-1 = Any resemblance of real life events is purely coincidental, even if it's not.
-end-round-credits-inky-2 = No mice have been injured in the last shift and everyone who says otherwise is a ratweirdo
-    and shall be punished by comrade ilya himself.
+end-round-credits-inky-2 = Comrade Ilya, hello. Please make it so that any mouse has a 65% chance to be blob.
 end-round-credits-inky-3 = Any stunts performed in the episode are not to be attempted, ever.
-end-round-credits-inky-4 = This game contains use of drugs, strong language, gore, violence, blood, alcohol, decapitations,
-    warfare, smoking and other themes that may not be suitable for work, or at least we hope so
+end-round-credits-inky-4 = Hello, and thank you for your contribution!
+    At the moment maintainers are facing a high backlog and unfortunately can’t review every single pull request.
+    As this PR pertains to the addition of new content and/or balance changes deemed low-impact, we have opted to close it instead of leaving it open indefinitely.
+    PRs may be reopened in the future once the backlog has been reduced, and we encourage you to keep contributing in other areas of the codebase.
 end-round-credits-inky-5 = Any information about Dr. Fih is a hoax and you should not wake up.
     you should not wake up.
 
@@ -35,19 +36,10 @@ end-round-credits-inky-15 = @babel moth you stupid clown.
     You are funded by RBB.
     I gave you order but why you did not listen to me.
 end-round-credits-inky-16 = "your explanation fucking blows. costs way more than that to try and solo fund an antag company."
-end-round-credits-inky-17 = >be me
-    >in dms
-    >get threatened
-    >say im sorry im taken
-    >"what"
-    >what
-    >This isnt
-    >No bro im
-    >Threatening your life
-    >I dont want you
-    >Also who the fuck did you get with
-    >Poor guy
-    >Praying for him
+end-round-credits-inky-17 = Hear my call, I'm chippin' in
+    Total war, I'm chippin' in
+    Casings fall, I'm chippin' in
+    Kill them all!
 end-round-credits-inky-18 = I tried to follow my passion for art
     but now im 32 and unemployed
 end-round-credits-inky-19 = A Nanotrasen Data Center in my town caused a water drought killing 650565 tiders.
@@ -76,12 +68,18 @@ end-round-credits-inky-26 = Inkymed ETA: 6.5 years
 end-round-credits-inky-27 = Fun fact blindfolds can give you their special martial arts
     Go try it and tell nobody.
 end-round-credits-inky-28 = The previous sentence is false, for now.
+end-round-credits-inky-29 = I hate those ads that have
+    small text in them so you click on them
+    and it opens up a tab of their shitty site
+end-round-credits-inky-30 = Also DONT Try Dota!
+end-round-credits-inky-31 = Congrats to whoever parried the nuke last shift.
+end-round-credits-inky-32 = Also Try Orbit Fight!
 
 end-round-credits-shoutout-inky-1 = Lebron James
 end-round-credits-shoutout-inky-2 = CopperCrow
 end-round-credits-shoutout-inky-3 = Ben-10ke
 end-round-credits-shoutout-inky-4 = Shegare
-end-round-credits-shoutout-inky-5 = Pheenty
+end-round-credits-shoutout-inky-5 = pheenty
 end-round-credits-shoutout-inky-6 = Maintainers
 end-round-credits-shoutout-inky-7 = Admins
 end-round-credits-shoutout-inky-8 = YOU
@@ -96,3 +94,4 @@ end-round-credits-shoutout-inky-16 = 🐟 fish 🐟
 end-round-credits-shoutout-inky-17 = Homelander
 end-round-credits-shoutout-inky-18 = The Remains Of BSO
 end-round-credits-shoutout-inky-19 = The Remains Of Brigmed
+end-round-credits-shoutout-inky-20 = Comrade Ilya

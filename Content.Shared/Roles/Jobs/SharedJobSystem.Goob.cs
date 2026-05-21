@@ -21,16 +21,4 @@ public abstract partial class SharedJobSystem
         job = null;
         return false;
     }
-
-    // inky start
-    // todo SharedJobSysten.Inky ?
-    public int GetJobGoobcoins(ICommonSession player)
-    {
-        if (_playerSystem.ContentData(player) is not { Mind: { } mindId }
-            || !MindTryGetJob(mindId, out var prototype))
-            return 1;
-
-        return prototype.Currency;
-    }
-    // /inky
 }
