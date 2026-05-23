@@ -7,7 +7,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 5h
-  guides: [ Insurgents ]
+  guides: [  ] # inky # kill insurgents
 
 - type: startingGear
   id: Insurgent
