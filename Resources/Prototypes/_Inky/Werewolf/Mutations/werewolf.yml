@@ -12,7 +12,6 @@
       types:
         Blunt: 0.35
         Heat: 0.1
-#  - type: GrantWerewolfMoves # not in the base because of white wolf (no sec meta) // TODO WEREWOLF MA
 #  - type: LanguageKnowledge # Einstein Engines - Languages
 #    speaks:
 #    - Draconic # the furry vulp language (swapped to draconic cuz trauma were based enough to get rid of it)
