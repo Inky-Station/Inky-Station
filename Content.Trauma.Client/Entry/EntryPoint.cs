@@ -5,16 +5,15 @@ using Content.Trauma.Client.Input;
 using Content.Trauma.Client.IoC;
 using Content.Trauma.Client.ItemSlotRenderer;
 using Content.Trauma.Client.UserInterface;
-using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Shared.ContentPack;
 
 namespace Content.Trauma.Client.Entry;
 
-public sealed class EntryPoint : GameClient
+public sealed partial class EntryPoint : GameClient
 {
-    [Dependency] private readonly IInputManager _input = default!;
-    [Dependency] private readonly IOverlayManager _overlay = default!;
+    [Dependency] private IInputManager _input = default!;
+    [Dependency] private IOverlayManager _overlay = default!;
 
     public override void PreInit()
     {

@@ -2,8 +2,6 @@
 
 using Content.Shared.Clothing.Components;
 using Content.Shared.Item;
-using Robust.Client.GameObjects;
-using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 
 namespace Content.Trauma.Client.Viewcone.Overlays;
@@ -12,9 +10,9 @@ namespace Content.Trauma.Client.Viewcone.Overlays;
 /// After <see cref="ViewconeSetAlphaOverlay"/> has run,
 /// resets the alpha of affected entities back to normal.
 /// </summary>
-public sealed class ViewconeResetAlphaOverlay : Overlay
+public sealed partial class ViewconeResetAlphaOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _ent = default!;
+    [Dependency] private IEntityManager _ent = default!;
     private readonly ViewconeOverlaySystem _cone;
     private readonly SpriteSystem _sprite;
 

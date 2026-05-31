@@ -9,14 +9,19 @@ namespace Content.Goobstation.Server.ServerCurrency;
 /// <summary>
 /// Connects <see cref="ServerCurrencyManager"/> to the simulation state.
 /// </summary>
-public sealed class ServerCurrencySystem : EntitySystem
+public sealed partial class ServerCurrencySystem : EntitySystem
 {
-    [Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private ICommonCurrencyManager _currencyMan = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        // <inky>
+        InitializeInky();
+        // </inky>
+
         _currencyMan.BalanceChange += OnBalanceChange;
         SubscribeNetworkEvent<PlayerBalanceRequestEvent>(OnBalanceRequest);
     }

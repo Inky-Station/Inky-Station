@@ -3,14 +3,13 @@
 using Content.Goobstation.Shared.Waddle;
 using Content.Shared.Movement.Components;
 using Robust.Client.Animations;
-using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
 
 namespace Content.Goobstation.Client.Waddle;
 
-public sealed class WaddleAnimationSystem : SharedWaddleAnimationSystem
+public sealed partial class WaddleAnimationSystem : SharedWaddleAnimationSystem
 {
-    [Dependency] private readonly AnimationPlayerSystem _animation = default!;
+    [Dependency] private AnimationPlayerSystem _animation = default!;
 
     public override void Initialize()
     {

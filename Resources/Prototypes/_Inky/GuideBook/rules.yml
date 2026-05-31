@@ -217,7 +217,7 @@
   - RuleS2
   - RuleS3
   - RuleS4
-  - RuleS5
+#  - RuleS5 # kill insurgents
   - RuleS6
 
 - type: guideEntry
@@ -248,12 +248,13 @@
   priority: 4
   text: "/ServerInfo/_Inky/Guidebook/ServerRules/Specific/RuleS4Command.xml"
 
-- type: guideEntry
-  id: RuleS5
-  name: guide-entry-rules-s5
-  ruleEntry: true
-  priority: 5
-  text: "/ServerInfo/_Inky/Guidebook/ServerRules/Specific/RuleS5Insurgents.xml"
+# kill insurgents
+#- type: guideEntry
+#  id: RuleS5
+#  name: guide-entry-rules-s5
+#  ruleEntry: true
+#  priority: 5
+#  text: "/ServerInfo/_Inky/Guidebook/ServerRules/Specific/RuleS5Insurgents.xml"
 
 - type: guideEntry
   id: RuleS6

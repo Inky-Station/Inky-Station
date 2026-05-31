@@ -31,6 +31,7 @@ public sealed partial class AccessibilityTab : Control
         Control.AddOptionCheckBox(TraumaCVars.ChatHighlightSound, HighlightSoundCheckBox);
         // Control.AddOptionCheckBox(TraumaCVars.SkillPopups, SkillPopupsCheckBox); // inky - kill skills
         Control.AddOptionCheckBox(TraumaCVars.PlayMovieEndCredits, MovieCreditsCheckBox);
+        Control.AddOptionPercentSlider(TraumaCVars.VisionGrainScale, VisionGrainScaleSlider);
         // </Trauma>
         // inky - concussion
         Control.AddOptionCheckBox(InkyCVars.ConcussionSound, ConcussionNoise);

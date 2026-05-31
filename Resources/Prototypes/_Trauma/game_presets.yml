@@ -63,26 +63,3 @@
   # inky
   - FunGameruleChooser
   # /inky
-
-- type: gamePreset
-  id: Wraith
-  alias:
-  - wraith
-  - ayyghost
-  - ghostie
-  name: wraith-title
-  description: wraith-description
-  showInVote: false
-  rules:
-  - BasicRoundstartVariation
-  - BasicStationEventScheduler
-  - BasicAntagEventScheduler
-  - ModerateAntagEventScheduler
-  - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
-  - SubGamemodesRule
-  - WraithRoundstart
-  - CalmTraitor
-  # inky
-  - FunGameruleChooser
-  # /inky
