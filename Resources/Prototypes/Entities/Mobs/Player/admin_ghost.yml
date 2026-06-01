@@ -16,6 +16,7 @@
     - NoConsoleSound
     - SilentStorageUser
     - PreventAccessLogging
+    - BypassMindshieldAccessRequirement
     - AllowBiomeLoading
     - NotGhostnadoWarpable
     - AllowPortalTraversal
