@@ -1,3 +1,4 @@
+using Content.Inky.Common.Events.Werewolf;
 using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
 using Content.Inky.Shared.Werewolf.Systems;
@@ -117,6 +118,9 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
         var werewolf = Comp<WerewolfBasicAbilitiesComponent>(args.NewEntity);
         // werewolf.ActionEntities.Clear();
         _werewolf.SyncActions(args.NewEntity, werewolf);
+
+        var ev = new SelectFirstMartialArtEvent(args.NewEntity); // when you polymorph, it resets your current selected martial art
+        RaiseLocalEvent(ev); // this is a very lazy solution but hey it works
     }
 
     private void OnOpenStore(Entity<WerewolfBasicAbilitiesComponent> ent, ref EventWerewolfOpenStore args)

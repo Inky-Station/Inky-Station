@@ -49,6 +49,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
     [Dependency] private readonly SharedStationSystem _station = default!;
     [Dependency] private readonly IMapManager _mapMan = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private IRobustRandom _gambling = default!;
 
 
     private float _updateTimer = 0f;
@@ -64,8 +65,9 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfRegen>(TryRegen);
 
-        InitializeWerewolfDire();
+        InitializeWerewolfDire(); // todo consistency
         InitializeWhite();
+        InitializeBlack();
     }
 
     public override void Update(float frameTime)
@@ -109,6 +111,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
             }
         }
         UpdateMark(timePassed);
+        UpdateBlack(timePassed);
     }
 
     private const string DogTag = "VulpEmotes";

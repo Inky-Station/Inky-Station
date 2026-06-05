@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
 using Content.Inky.Shared.Werewolf.Systems;
 using Content.Server.Antag;
@@ -36,6 +37,8 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
 
         SubscribeLocalEvent<WerewolfRuleComponent, AfterAntagEntitySelectedEvent>(OnSelectAntag);
         // SubscribeLocalEvent<WerewolfRuleComponent, ObjectivesTextPrependEvent>(OnTextPrepend);
+
+        SubscribeLocalEvent<WerewolfInfectionFinishedEvent>(OnInfectionFinished); // goida
     }
 
     private void OnSelectAntag(EntityUid uid, WerewolfRuleComponent comp, ref AfterAntagEntitySelectedEvent args)
@@ -43,7 +46,18 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
         MakeWerewolf(args.EntityUid, comp);
     }
 
-    public bool MakeWerewolf(EntityUid target, WerewolfRuleComponent rule)
+    /// <summary>
+    /// Makes the entity into a werewolf.
+    /// </summary>
+    /// <param name="target">EntityUid of an entity that is going to become a werewolf</param>
+    /// <param name="rule">WerewolfRule</param>
+    /// <param name="evolution">Can this werewolf evolve into other werewolf types?</param>
+    /// <param name="apprentice">Should this werewolf have access to the blackappentice category?</param> // todo werewolf UNFUCK ME
+    /// <returns></returns>
+    public bool MakeWerewolf(EntityUid target,
+        WerewolfRuleComponent rule,
+        bool evolution = true, // todo werewolf maybe rename? first thing that came into my mind
+        bool apprentice = false)
     {
         if (!_mind.TryGetMind(target, out var mindId, out var mind))
             return false;
@@ -63,15 +77,34 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
         _werewolf.SyncActions(target, werewolfComp);
 
         // add store
+
         var store = EnsureComp<StoreComponent>(target);
-        foreach (var category in rule.StoreCategories)
-            store.Categories.Add(category);
+        if (evolution)
+        {
+            foreach (var category in rule.StoreCategories)
+                store.Categories.Add(category);
+        }
+
+        if (apprentice)
+            store.Categories.Add(rule.StoreApprentice);
+
+        store.Categories.Add(rule.StoreSide); // maybe its better to make its own bool for it too? but if both evo & side is off, then its no point in adding a store at all
         store.CurrencyWhitelist.Add(Currency);
         store.Balance.Add(Currency, StartingCurrency);
 
         rule.WerewolfMinds.Add(mindId);
         _antag.SendBriefing(target, briefing, Color.Brown, BriefingSound);
         return true;
+    }
+
+    private void OnInfectionFinished(ref WerewolfInfectionFinishedEvent ev) // RABIES
+    {
+        var query = QueryActiveRules();
+        while (query.MoveNext(out _, out var rule, out _))
+        {
+            MakeWerewolf(ev.Entity, rule, false, true); // no evo for you
+            return;
+        }
     }
 
     // todo OnTextPrepend

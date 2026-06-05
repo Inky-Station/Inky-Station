@@ -11,8 +11,11 @@ public sealed partial class WerewolfRuleComponent : Component
     public readonly List<ProtoId<StoreCategoryPrototype>> StoreCategories = new()
     {
         "WerewolfChoose",
-        "WerewolfSide",
         "WerewolfDire",
-        "WerewolfWhite"
+        "WerewolfWhite",
+        "WerewolfBlack"
     };
+
+    public readonly ProtoId<StoreCategoryPrototype> StoreSide = new("WerewolfSide");
+    public readonly ProtoId<StoreCategoryPrototype> StoreApprentice = new("WerewolfBlackApprentice"); // goida
 }

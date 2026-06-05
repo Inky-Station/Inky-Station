@@ -23,6 +23,7 @@ public sealed partial class EventWerewolfOpenStore : InstantActionEvent {}
 public sealed partial class EventWerewolfDevour : EntityTargetActionEvent {}
 public sealed partial class EventWerewolfGut : EntityTargetActionEvent {}
 public sealed partial class EventWerewolfBleedingBite : EntityTargetActionEvent {}
+public sealed partial class EventWerewolfBlackBite : EntityTargetActionEvent {}
 public sealed partial class EventWerewolfChangeType : InstantActionEvent
 {
     [DataField] public string WerewolfType;
@@ -43,6 +44,8 @@ public sealed partial class WerewolfDevourDoAfterEvent : SimpleDoAfterEvent { }
 public sealed partial class WerewolfGutDoAfterEvent : SimpleDoAfterEvent { }
 [Serializable, NetSerializable]
 public sealed partial class WerewolfBleedingBiteDoAfterEvent : SimpleDoAfterEvent { }
+[Serializable, NetSerializable]
+public sealed partial class WerewolfBlackBiteDoAfterEvent : SimpleDoAfterEvent { }
 
 // upgrade events idk
 // event raised when any werewolf ability is upgraded
@@ -74,3 +77,5 @@ public sealed partial class WerewolfAddCollectivemind : InstantActionEvent
 }
 
 public sealed partial class WerewolfRevelationEvent : InstantActionEvent;
+[ByRefEvent]
+public readonly record struct WerewolfInfectionFinishedEvent(EntityUid Entity);

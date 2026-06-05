@@ -1,0 +1,93 @@
+- type: listing
+  id: WerewolfBlack
+  name: werewolf-store-choose-black-name
+  description: werewolf-store-choose-black-desc
+  icon:
+    sprite: _Inky/Mobs/Werewolf/Mutations/black.rsi
+    state: icon
+  productEvent: !type:EventWerewolfChangeType
+    werewolfType: WerewolfTransformBlack
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfChoose
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    blacklist:
+    - WerewolfWhite
+    - WerewolfDirewolf
+
+- type: listing
+  id: WerewolfBiteBlack
+  name: werewolf-store-bite-black-name
+  description: werewolf-store-bite-black-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: black-bite
+  productEvent: !type:EventWerewolfUpgradeAbility
+    newActionId: ActionWerewolfBiteBlack
+    oldActionId: ActionWerewolfAbsorb
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 10
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlack
+    blacklist:
+    - WerewolfWhite
+    - WerewolfDirewolf
+
+- type: listing
+  id: WerewolfBlackLunar
+  name: werewolf-store-black-lunar-name
+  description: werewolf-store-lunar-black-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: beckon # there isnt a sprite for it lmao
+  productEvent: !type:WerewolfAddCollectivemind
+    popup: werewolf-black-lunar-popup
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 6
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlack
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+
+- type: listing
+  id: WerewolfBlackLunarApprentice
+  name: werewolf-store-black-lunar-name
+  description: werewolf-store-lunar-black-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: beckon
+  productEvent: !type:WerewolfAddCollectivemind
+    popup: werewolf-black-lunar-popup
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 2
+  categories:
+  - WerewolfBlackApprentice
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+    - WerewolfBlack

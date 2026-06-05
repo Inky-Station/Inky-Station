@@ -82,3 +82,20 @@
     - component: WerewolfBasicAbilities
     - component: Store
     - component: CollectiveMind
+
+- type: polymorph
+  id: WerewolfTransformBlack
+  configuration:
+    entity: WerewolfBlackwolf
+    forced: true
+    revertOnCrit: true
+    revertOnDeath: false
+    inventory: None
+    transferName: false
+    transferDamage: true
+    duration: 480
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
+    componentsToTransfer:
+    - component: WerewolfBasicAbilities
+    - component: Store
+    - component: CollectiveMind

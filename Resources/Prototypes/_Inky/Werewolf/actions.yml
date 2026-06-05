@@ -211,3 +211,30 @@
       state: transfurm
   - type: InstantAction
     event: !type:TransfurmWhiteEvent {}
+
+# black specific
+
+- type: entity
+  parent: BaseAction
+  id: ActionWerewolfBiteBlack
+  name: Bleeding bite
+  description: Bite a victim, causing massive blood loss. Has a 50% chance to infect the victim into a Werewolf under your rule.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 30
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Inky/Actions/Werewolf/werewolf.rsi
+      state: black-bite
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+    event: !type:EventWerewolfBlackBite { }
+  - type: WerewolfAction
+    hungerCost: -30
+    requireTransfurmed: true

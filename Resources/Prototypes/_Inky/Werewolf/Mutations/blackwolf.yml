@@ -1,0 +1,10 @@
+- type: entity
+  id: WerewolfBlackwolf
+  parent:
+  - BaseWerewolf
+  - BaseWerewolfUnholy
+  # todo description i cant come up with anything
+  components:
+  - type: Sprite
+    sprite: _Inky/Mobs/Werewolf/Mutations/black.rsi
+    state: wolf

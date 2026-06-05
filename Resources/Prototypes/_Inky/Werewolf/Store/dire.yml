@@ -18,6 +18,7 @@
   - !type:BuyBeforeCondition
     blacklist:
     - WerewolfWhite
+    - WerewolfBlack
 
 - type: listing
   id: WerewolfHowlUpgrade
@@ -42,7 +43,7 @@
     - WerewolfDirewolf
     blacklist:
     - WerewolfWhite
-
+    - WerewolfBlack
 
 - type: listing
   id: WerewolfBiteDire
@@ -66,3 +67,4 @@
     - WerewolfDirewolf
     blacklist:
     - WerewolfWhite
+    - WerewolfBlack
