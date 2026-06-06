@@ -18,6 +18,11 @@ using Robust.Shared.Timing;
 using Robust.Shared.Spawners;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Map;
+// inky
+using Robust.Shared.Player;
+using Content.Inky.Common.Whale;
+using Content.Lavaland.Shared.Audio;
+// /inky
 
 namespace Content.Goobstation.Server.SpaceWhale.StationProximity;
 
@@ -34,7 +39,7 @@ public sealed partial class StationProximitySystem : EntitySystem
     [Dependency] private MovementSpeedModifierSystem _moveSpeed = default!;
 
     private bool _spaceWhaleEnabled;
-    private float _spaceWhaleSpawnDistance = 2000f;
+    private float _spaceWhaleSpawnDistance; // inky edit
 
     private static readonly TimeSpan CheckDelay = TimeSpan.FromSeconds(60);
     private TimeSpan _nextCheck = TimeSpan.Zero;
@@ -50,6 +55,10 @@ public sealed partial class StationProximitySystem : EntitySystem
 
         Subs.CVar(_cfg, GoobCVars.SpaceWhaleSpawn, x => _spaceWhaleEnabled = x, true);
         Subs.CVar(_cfg, GoobCVars.SpaceWhaleSpawnDistance, x => _spaceWhaleSpawnDistance = x, true);
+
+        // inky
+        InitializeInky();
+        // /inky
     }
 
     private void OnTargetDeath(Entity<SpaceWhaleTargetComponent> ent, ref MobStateChangedEvent args)
@@ -58,6 +67,10 @@ public sealed partial class StationProximitySystem : EntitySystem
             return;
 
         RemComp<SpaceWhaleTargetComponent>(ent.Owner);
+
+        // inky
+        StopFollowing(ent.Owner);
+        // /inky
     }
 
     private void OnTargetShutdown(Entity<SpaceWhaleTargetComponent> ent, ref ComponentShutdown args)
@@ -77,6 +90,11 @@ public sealed partial class StationProximitySystem : EntitySystem
                 EnsureComp<TimedDespawnComponent>(item).Lifetime = 15f;
                 _moveSpeed.ChangeBaseSpeed(item, 11, 30, 1);
                 _moveSpeed.RefreshMovementSpeedModifiers(item);
+
+                // inky
+                if (TryComp<ActorComponent>(ent.Owner, out var actor))
+                    RaiseNetworkEvent(new LeviathanMusicStopEvent(), actor.PlayerSession.Channel);
+                // /inky
             }
         }
 

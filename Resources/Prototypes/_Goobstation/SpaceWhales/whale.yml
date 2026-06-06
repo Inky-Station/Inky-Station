@@ -41,6 +41,11 @@
     whitelist:
       tags:
       - SpaceWhaleSegment
+  # inky
+  - type: FTLSmashImmune
+  - type: SupermatterImmune
+  - type: EventHorizonIgnore
+  # /inky
 
 - type: entity
   id: SpaceLeviathan
@@ -143,6 +148,12 @@
         Slash: 45
         Structural: 800 #lol
   - type: NoRotateOnMove
+  # inky
+  - type: FTLSmashImmune
+  - type: SupermatterImmune
+  - type: EventHorizonIgnore
+  - type: SpaceLeviathan
+  # /inky
 
 - type: entity
   parent: [MobSpaceLeviathanSegmentBase, FlyingMobBase]
@@ -178,9 +189,11 @@
   categories: [HideSpawnMenu]
   components:
   - type: MobCaller
-    spawnProto: SpaceLeviathanDespawn
+    spawnProto: SpaceLeviathan # inky
     maxAlive: 1
     needAnchored: false
     needPower: false
-    minDistance: 100
+    minDistance: 650 # inky
+    maxDistance: 1000 # inky
     spawnSpacing: 30
+    isSpaceWhaleCaller: true # inky GOIDAAAAAAAAA

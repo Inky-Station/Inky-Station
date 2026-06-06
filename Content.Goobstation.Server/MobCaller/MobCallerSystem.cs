@@ -12,6 +12,9 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System;
 using System.Linq;
+using Content.Inky.Common.CCVar; // inky
+using Content.Inky.Common.Whale; // inky
+using Robust.Shared.Configuration; // inky
 
 namespace Content.Goobstation.Server.MobCaller;
 
@@ -25,11 +28,21 @@ public sealed partial class MobCallerSystem : EntitySystem
     [Dependency] private IMapManager _map = default!;
     [Dependency] private IRobustRandom _random = default!;
 
+    // inky
+    [Dependency] private IConfigurationManager _cfg = default!;
+
+    private int _maxSpaceWhales;
+    // /inky
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<MobCallerComponent, ExaminedEvent>(OnExamined);
+
+        // inky
+        Subs.CVar(_cfg, InkyCVars.MaxSpaceWhales, x => _maxSpaceWhales = x, true);
+        // /inky
     }
 
     private void OnExamined(Entity<MobCallerComponent> ent, ref ExaminedEvent args)
@@ -85,6 +98,15 @@ public sealed partial class MobCallerSystem : EntitySystem
             // check happens after we increment accumulator, this is intentional
             if (caller.SpawnedEntities.Count >= caller.MaxAlive)
                 continue;
+
+            // inky
+            if (caller.IsSpaceWhaleCaller)
+            {
+                var livingWhales = EntityQuery<SpaceLeviathanComponent>().Count();
+                if (livingWhales >= _maxSpaceWhales)
+                    continue;
+            }
+            // /inky
 
             // choose a direction to spawn the mob in
             var candidates = GetSpawnDirections((uid, caller, xform));
