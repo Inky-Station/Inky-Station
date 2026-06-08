@@ -16,12 +16,13 @@
         - BulletImpassable
         - LowImpassable
         - MidImpassable
+        - WallLayer # inky edit
   - type: DamageOnCollide
     inverted: true # fuck you wrath components!
     damage:
       types:
         Structural: 5000
-        Blunt: 10
+#        Blunt: 0.1 # inky edit - its damage per tick :tear:
     ignoreWhitelist:
       components:
       - ContainmentField
@@ -49,7 +50,7 @@
 
 - type: entity
   id: SpaceLeviathan
-  parent: [MobSpaceLeviathanSegmentBase, SimpleSpaceMobBase, FlyingMobBase, MobCombat]
+  parent: [MobSpaceLeviathanSegmentBase] # inky edit
   name: space whale
   description: When the space becomes too quiet, there is no hope, there is no escape, but there is this.
   components:
@@ -60,11 +61,19 @@
   - type: MovementSpeedModifier
     baseSprintSpeed: 40
     baseWalkSpeed: 11
-    baseWeightlessFriction: 4
-    weightlessFriction: 4
-    weightlessFrictionNoInput: 4
+    baseWeightlessFriction: 1 # inky edit
+    weightlessFriction: 1 # inky edit
+    weightlessFrictionNoInput: 1 # inky edit
+    weightlessAcceleration: 0.65 # inky edit
   - type: DamageOnHighSpeedImpact
-    minimumSpeed: 50
+    minimumSpeed: 90 # inky edit
+    # inky start
+    soundHit:
+      collection: MetalThud
+    damage:
+      types:
+        Blunt: 5
+    # /inky
   - type: RadarBlip
     scale: 3
     shape: hexagon
@@ -103,12 +112,12 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      4000: Dead # todo maybe add some good loot in the future to make space salv go whale hunting
+      2000: Dead # inky edit
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 4000
+        damage: 18000 # inky edit (it breaks a lot of shit)
       behaviors:
       - !type:GibBehavior
   - type: ContentEye
@@ -144,8 +153,8 @@
       path: /Audio/Effects/bite.ogg
     damage:
       types:
-        Blunt: 50
-        Slash: 45
+        Blunt: 33 # inky edit
+        Slash: 33 # inky edit
         Structural: 800 #lol
   - type: NoRotateOnMove
   # inky
@@ -153,6 +162,60 @@
   - type: SupermatterImmune
   - type: EventHorizonIgnore
   - type: SpaceLeviathan
+  - type: AngerPlayerScaling
+    hpScale: 1.2 # :trol:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 2.5
+        density: 137992
+        mask:
+        - FlyingMobMask
+        layer:
+        - Opaque
+        - BulletImpassable
+        - LowImpassable
+        - MidImpassable
+        - WallLayer
+  - type: SpawnLootOnDeath
+    table: !type:AllSelector
+      children:
+      - id: MaterialGoliathHide1 # todo
+      - id: MaterialGoliathHide1 # todo
+      - id: MaterialGoliathHide1 # todo
+    deleteOnDeath: true
+  - type: NoSlip
+  - type: MovementAlwaysTouching
+  - type: CanMoveInAir
+  # HATE below, this is needed
+  - type: Clickable
+  - type: InteractionOutline
+  - type: InputMover
+  - type: Input
+    context: "human"
+  - type: LagCompensation
+  - type: MobMover
+  - type: Actions
+  - type: Appearance
+  - type: RotationVisuals
+    defaultRotation: 0
+    horizontalRotation: 0
+  - type: DoAfter
+  - type: Examiner
+  - type: Eye
+  - type: RequireProjectileTarget
+    active: False
+  - type: MobState
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Leviathan # no lasers
+  - type: Physics
+    bodyType: Dynamic
+    bodyStatus: InAir
+    linearDamping: 0.0005
+    angularDamping: 0.05
   # /inky
 
 - type: entity
@@ -193,7 +256,14 @@
     maxAlive: 1
     needAnchored: false
     needPower: false
-    minDistance: 650 # inky
-    maxDistance: 1000 # inky
+    minDistance: 300 # inky
+    maxDistance: 400 # inky
     spawnSpacing: 30
     isSpaceWhaleCaller: true # inky GOIDAAAAAAAAA
+
+# inky
+- type: damageModifierSet
+  id: Leviathan
+  coefficients:
+    Heat: 0.5 # no lasers
+# /inky

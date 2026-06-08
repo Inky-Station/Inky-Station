@@ -16,12 +16,6 @@ public sealed class LeviathanMusicSystem : EntitySystem // i tried to use bossmu
     [Dependency] private ContentAudioSystem _audioContent = default!;
 
     private Entity<AudioComponent?>? _stream;
-    private bool _fadingOut;
-
-    private const float FadeOutDuration = 3f;
-    private const float MinVolume = -32f;
-    private float _fadeVolumePerSecond;
-    private float _startVolume;
 
     private static readonly SoundPathSpecifier Music = new("/Audio/_Inky/Mobs/Bosses/spacecalls.ogg");
 
@@ -55,60 +49,17 @@ public sealed class LeviathanMusicSystem : EntitySystem // i tried to use bossmu
             Music,
             Filter.Local(),
             false,
-            AudioParams.Default.WithLoop(true));
+            AudioParams.Default.WithLoop(false));
 
         if (stream != null)
             _stream = (stream.Value.Entity, stream.Value.Component);
     }
 
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        if (!_fadingOut
-            || _stream == null)
-            return;
-
-        if (!TryComp(_stream.Value.Owner, out AudioComponent? component))
-        {
-            _fadingOut = false;
-            _stream = null;
-            return;
-        }
-
-        var volume = component.Volume - _fadeVolumePerSecond * frameTime;
-        volume = MathF.Max(MinVolume, volume);
-        _audio.SetVolume(_stream.Value.Owner, volume, component);
-
-        if (component.Volume <= MinVolume)
-        {
-            _stream = _audio.Stop(_stream);
-            _fadingOut = false;
-        }
-    }
-
     private void OnStop(LeviathanMusicStopEvent _)
-        => BeginFadeOut();
-
-    private void BeginFadeOut()
-    {
-        if (_stream == null)
-            return;
-
-        if (!TryComp(_stream.Value.Owner, out AudioComponent? component))
-        {
-            StopMusic();
-            return;
-        }
-
-        _startVolume = component.Volume;
-        _fadeVolumePerSecond = (_startVolume - MinVolume) / FadeOutDuration;
-        _fadingOut = true;
-    }
+        => StopMusic();
 
     private void StopMusic()
     {
-        _fadingOut = false;
         _stream = _audio.Stop(_stream);
     }
 }

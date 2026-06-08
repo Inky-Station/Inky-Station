@@ -230,7 +230,7 @@ public abstract partial class SharedGrapplingGunSystem : VirtualController
             // Rope should just break, instantly, if the user is teleported past its max length
             if (ropeLength >= distance.MaxLength + grappling.RopeMargin)
             {
-                Ungrapple((uid, grappling), true);
+                // Ungrapple((uid, grappling), true); // inky edit
                 continue;
             }
 

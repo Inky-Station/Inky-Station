@@ -1,21 +1,31 @@
 using Content.Goobstation.Server.MobCaller;
 using Content.Inky.Common.Whale;
+using Content.Server.Body.Systems;
+using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Robust.Shared.Player;
 
 namespace Content.Goobstation.Server.SpaceWhale.StationProximity;
 
 public sealed partial class StationProximitySystem
 {
+    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
+
+    private const float AdrenalineAmount = 60f;
+
     public void InitializeInky()
     {
         SubscribeLocalEvent<SpaceLeviathanComponent, MapInitEvent>(OnLeviathanSpawned);
+        SubscribeLocalEvent<SpaceLeviathanComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<SpaceLeviathanComponent, MobStateChangedEvent>(OnWhaleDeath);
         // SubscribeLocalEvent<SpaceWhaleTargetComponent, EntParentChangedMessage>(OnParentChanged);
-        SubscribeLocalEvent<SpaceLeviathanComponent, EntityTerminatingEvent>(OnLeviathanDeleted);
     }
 
-    private void OnLeviathanDeleted(Entity<SpaceLeviathanComponent> ent, ref EntityTerminatingEvent args)
+    private void OnShutdown(Entity<SpaceLeviathanComponent> entity, ref ComponentShutdown args)
         => StopAllMusic();
 
     private void OnWhaleDeath(Entity<SpaceLeviathanComponent> ent, ref MobStateChangedEvent ev)
@@ -24,6 +34,14 @@ public sealed partial class StationProximitySystem
             return;
 
         StopAllMusic();
+        foreach (var target in ent.Comp.Targets)
+        {
+            if (target == null)
+                continue;
+
+            StopFollowing(target.Value);
+            RemComp<SpaceWhaleTargetComponent>(target.Value);
+        }
     }
 
     private void OnLeviathanSpawned(Entity<SpaceLeviathanComponent> ent, ref MapInitEvent args)
@@ -38,6 +56,14 @@ public sealed partial class StationProximitySystem
                 continue;
 
             RaiseNetworkEvent(new LeviathanMusicStartEvent(), actor.PlayerSession.Channel); // hate
+
+            // adrenaline stuff
+            var solution = new Solution();
+            solution.AddReagent(new ReagentId("Adrenaline", null), AdrenalineAmount);
+            if (!_solution.TryGetInjectableSolution(playerUid, out var targetSolution, out _))
+                return;
+
+            _solution.TryAddSolution(targetSolution.Value, solution);
             return;
         }
     }
@@ -50,6 +76,12 @@ public sealed partial class StationProximitySystem
             if (TryComp<ActorComponent>(playerUid, out var actor))
                 RaiseNetworkEvent(new LeviathanMusicStopEvent(), actor.PlayerSession.Channel);
         }
+    }
+
+    private bool AnyLeviathan()
+    {
+        var eqe = EntityQueryEnumerator<SpaceLeviathanComponent>();
+        return eqe.MoveNext(out _, out _);
     }
 
 }

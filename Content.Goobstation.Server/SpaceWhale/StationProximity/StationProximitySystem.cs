@@ -87,7 +87,7 @@ public sealed partial class StationProximitySystem : EntitySystem
         {
             foreach (var item in caller.SpawnedEntities)
             {
-                EnsureComp<TimedDespawnComponent>(item).Lifetime = 15f;
+                EnsureComp<TimedDespawnComponent>(item).Lifetime = 60f; // inky edit
                 _moveSpeed.ChangeBaseSpeed(item, 11, 30, 1);
                 _moveSpeed.RefreshMovementSpeedModifiers(item);
 
@@ -106,7 +106,7 @@ public sealed partial class StationProximitySystem : EntitySystem
     {
         base.Update(frameTime);
 
-        if (_timing.CurTime > _nextCheck)
+        if (_timing.CurTime < _nextCheck) // inky edit - oh my fucking god, it was inverted
             return;
 
         _nextCheck = _timing.CurTime + CheckDelay;
@@ -117,6 +117,11 @@ public sealed partial class StationProximitySystem : EntitySystem
     {
         if (!_spaceWhaleEnabled)
             return;
+
+        // inky
+        if (!AnyLeviathan()) // if it dies offscreen youre left with music infinitely looping
+            StopAllMusic(); // lazy solution but it works lol
+        // /inky
 
         var stationQuery = EntityQueryEnumerator<BecomesStationComponent, MapGridComponent, TransformComponent>();
         _stations.Clear();

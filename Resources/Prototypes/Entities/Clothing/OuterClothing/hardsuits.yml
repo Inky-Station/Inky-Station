@@ -132,8 +132,8 @@
         Heat: 0.8
         Radiation: 0.1
   - type: ClothingSpeedModifier
-    walkModifier: 0.75
-    sprintModifier: 0.75
+    walkModifier: 0.9 # inky edit
+    sprintModifier: 0.9 # inky edit
   - type: HeldSpeedModifier
   - type: ToggleableClothing # Goobstation - Modsuits change
     clothingPrototypes:
@@ -598,14 +598,14 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.7
-        Slash: 0.7
+        Blunt: 0.4 # inky edit
+        Slash: 0.6 # inky edit
         Piercing: 0.7
         Heat: 0.8
         Radiation: 0.1
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+    walkModifier: 0.75 # inky edit
+    sprintModifier: 0.75 # inky edit
   - type: HeldSpeedModifier
   - type: ToggleableClothing # Goobstation - Modsuits change
     clothingPrototypes:
