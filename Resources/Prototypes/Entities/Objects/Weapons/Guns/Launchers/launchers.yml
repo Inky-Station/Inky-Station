@@ -348,6 +348,11 @@
             True: { state: base-unshaded }
             False: { state: base-unshaded-off }
     - type: PacifismAllowedGun
+    # inky
+    - type: Construction
+      graph: LeviathanGrappling
+      node: start
+    # /inky
 
 # Admeme
 - type: entity
