@@ -162,8 +162,6 @@
   - type: SupermatterImmune
   - type: EventHorizonIgnore
   - type: SpaceLeviathan
-  - type: AngerPlayerScaling
-    hpScale: 1.2 # :trol:
   - type: Fixtures
     fixtures:
       fix1:
@@ -182,9 +180,8 @@
   - type: SpawnLootOnDeath
     table: !type:AllSelector
       children:
-      - id: MaterialGoliathHide1 # todo
-      - id: MaterialGoliathHide1 # todo
-      - id: MaterialGoliathHide1 # todo
+      - id: MaterialLeviathanScale1
+      - id: MaterialLeviathanScale1
     deleteOnDeath: true
   - type: NoSlip
   - type: MovementAlwaysTouching
@@ -261,9 +258,86 @@
     spawnSpacing: 30
     isSpaceWhaleCaller: true # inky GOIDAAAAAAAAA
 
-# inky
+# inky - this shit is here because i am a lazy fucking bitch
 - type: damageModifierSet
   id: Leviathan
   coefficients:
     Heat: 0.5 # no lasers
+
+- type: entity
+  id: LeviathanGrapplingGun
+  parent: WeaponGrapplingGun
+  name: leviathan maker hook
+  description: A modified grappling hook used by senior salvage specialists to ride the young space whales. To use, attach directly to the head of the whale, and steer it left and right. Beware that the whale can enter hyperspace if brought too close to the station.
+  components:
+  - type: GrapplingGun
+    leviathanControl: true
+  - type: Construction
+    graph: LeviathanGrappling
+    node: hook
+  - type: Sprite
+    sprite: _Inky/Objects/Guns/Launchers/leviathan_gun.rsi
+    layers:
+    - state: base
+    - state: base-unshaded
+      map: [ "unshaded" ]
+      visible: true
+
+- type: entity
+  parent: MaterialBase
+  id: MaterialLeviathanScale
+  name: leviathan scale plates
+  description: Shards shed from a space leviathan, exceptionally rare. Favored by salvagers, and by megacorpos for luxury goods stitched from endangered starlife.
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _Inky/Objects/Materials/leviathan.rsi
+    layers:
+    - state: scale
+      map: [ "base" ]
+  - type: StaticPrice
+    price: 3000
+  - type: StackPrice
+    price: 15000
+  - type: Appearance
+  - type: Stack
+    stackType: Leviathan
+    baseLayer: base
+    layerStates:
+    - scale
+    - scale1
+    - scale2
+  - type: Item
+    size: Large
+    sprite: _Inky/Objects/Materials/leviathan.rsi
+    shape:
+    - 0,0,2,2
+
+- type: entity
+  parent: MaterialLeviathanScale
+  id: MaterialLeviathanScale1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: stack
+  parent: BaseVerySmallStack
+  id: Leviathan
+  name: stack-leviathan-hide
+  icon: { sprite: /Textures/_Inky/Objects/Materials/leviathan.rsi, state: scale }
+  spawn: MaterialLeviathanScale1
+
+- type: constructionGraph
+  id: LeviathanGrappling
+  graph:
+  - node: start
+    edges:
+    - to: hook
+      steps:
+      - material: Leviathan
+        amount: 1
+        doAfter: 2
+  - node: hook
+    entity: LeviathanGrapplingGun
 # /inky
