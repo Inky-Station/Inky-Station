@@ -3,7 +3,9 @@ using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
 using Content.Inky.Shared.Werewolf.Systems;
 using Content.Medical.Shared.Wounds;
+using Content.Server.Chat.Systems;
 using Content.Server.Mind;
+using Content.Server.Pinpointer;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Popups;
 using Content.Server.Store.Systems;
@@ -27,22 +29,24 @@ namespace Content.Inky.Server.Werewolf.Systems;
 
 public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
 {
-    [Dependency] private readonly PolymorphSystem _polymorph = default!;
-    [Dependency] private readonly StoreSystem _store = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly SharedWerewolfBasicAbilitiesSystem _werewolf = default!; // hell.
-    [Dependency] private readonly HungerSystem _hunger = default!;
+    [Dependency] private PolymorphSystem _polymorph = default!;
+    [Dependency] private StoreSystem _store = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private SharedWerewolfBasicAbilitiesSystem _werewolf = default!; // hell.
+    [Dependency] private HungerSystem _hunger = default!;
 
     // holy fuck
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly SharedBloodstreamSystem _blood = default!;
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly IRobustRandom _gambling = default!;
-    [Dependency] private readonly WoundSystem _wound = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private SharedBloodstreamSystem _blood = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private IRobustRandom _gambling = default!;
+    [Dependency] private WoundSystem _wound = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ChatSystem _chat = default!;
 
     public override void Initialize()
     {
@@ -54,10 +58,13 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, PolymorphedEvent>(OnPolymorphed);
 
         InitializeWerewolfSide();
+        InitializeBlack();
     }
 
     # region basic handlers
-    private void TryTransfurm(EntityUid uid, WerewolfBasicAbilitiesComponent component, TransfurmEvent args)
+    private void TryTransfurm(EntityUid uid,
+        WerewolfBasicAbilitiesComponent component,
+        TransfurmEvent args)
     {
         if (!_mind.TryGetMind(uid, out var mindId, out _)
             || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
@@ -70,7 +77,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
             return;
         }
 
-        if (mindComp.Accumulator < mindComp.TransfurmOnCommandDelay)
+        if (!args.Forced && mindComp.Accumulator < mindComp.TransfurmOnCommandDelay)
         {
             _popup.PopupEntity(Loc.GetString("werewolf-transfurm-cooldown"), uid, uid); // todo werewolf locale & timeLeft
             args.Handled = true;
@@ -100,8 +107,6 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
     {
         if (!comp.Transfurmed)
         {
-            // RemComp<MartialArtsKnowledgeComponent>(uid); // bruh we love MA shitcod
-            // RemComp<CanPerformComboComponent>(uid);
             _polymorph.CopyPolymorphComponent<HungerComponent>(uid, args.NewEntity);
 
             if (TryComp<HungerComponent>(uid, out var oldHunger)) // Transfer hunger value

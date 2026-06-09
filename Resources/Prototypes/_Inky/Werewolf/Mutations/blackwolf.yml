@@ -4,7 +4,11 @@
   - BaseWerewolf
   - BaseWerewolfUnholy
   # todo description i cant come up with anything
+  name: black wolf
   components:
   - type: Sprite
     sprite: _Inky/Mobs/Werewolf/Mutations/black.rsi
     state: wolf
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 4.5
+    baseWalkSpeed: 2.5

@@ -10,7 +10,7 @@ namespace Content.Inky.Shared.Werewolf.Systems;
 
 public partial class SharedWerewolfBasicAbilitiesSystem
 {
-    public void InitializeWerewolfDire()
+    public void InitializeDire()
     {
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfBleedingBite>(TryBite);
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfBleedingBiteDoAfterEvent>(DoBite);

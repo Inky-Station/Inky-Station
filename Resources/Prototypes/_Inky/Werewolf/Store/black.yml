@@ -70,6 +70,55 @@
     - WerewolfWhite
 
 - type: listing
+  id: WerewolfBlackOrder
+  name: werewolf-store-black-order-name
+  description: werewolf-store-lunar-order-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: howl-green
+  productEvent: !type:EventWerewolfUpgradeAbility
+    oldActionId: ActionWerewolfHowl
+    newActionId: ActionWerewolfHowlBlack
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 6
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlack
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+
+- type: listing
+  id: WerewolfBlackBeckon
+  name: werewolf-store-black-beckon-name
+  description: werewolf-store-beckon-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: beckon
+  productEvent: !type:EventWerewolfUpgradeAbility
+    newActionId: ActionWerewolfBeckon
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 10
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlackLunar
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+
+- type: listing
   id: WerewolfBlackLunarApprentice
   name: werewolf-store-black-lunar-name
   description: werewolf-store-lunar-black-desc

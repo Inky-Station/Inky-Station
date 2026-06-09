@@ -168,6 +168,7 @@
       stunDuration: 2
   - type: WerewolfAction
     hungerCost: 45 # since its more powerful
+    requireTransfurmed: true
 
 - type: entity
   parent: BaseAction
@@ -238,3 +239,44 @@
   - type: WerewolfAction
     hungerCost: -30
     requireTransfurmed: true
+
+- type: entity
+  parent: BaseAction
+  id: ActionWerewolfHowlBlack
+  name: Alpha order
+  description: Howl and command every werewolf in radius to transform into their superior form, and heal those who already are transformed.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 30
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Inky/Actions/Werewolf/werewolf.rsi
+      state: howl-green
+  - type: InstantAction
+    event: !type:HowlEvent
+      shriekPower: 4
+      stunDuration: 0.5
+      forceTransfurm: true
+      healNearby: true
+  - type: WerewolfAction
+    hungerCost: 30
+    requireTransfurmed: true
+
+- type: entity
+  parent: BaseAction
+  id: ActionWerewolfBeckon
+  name: Beckon
+  description: Silently transmits your location to your allied Werewolves
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 30
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Inky/Actions/Werewolf/werewolf.rsi
+      state: beckon
+  - type: InstantAction
+    event: !type:WerewolfBeckonEvent
+  - type: WerewolfAction
+    hungerCost: 0

@@ -9,8 +9,32 @@ public sealed partial class HowlEvent : InstantActionEvent
 {
     [DataField] public float ShriekPower = 2.5f;
     [DataField] public int StunDuration = 1;
+
+    /// <summary>
+    /// Transforms every werewolf in radius if true
+    /// </summary>
+    [DataField] public bool ForceTransfurm; // fucking goida bro
+    /// <summary>
+    /// Raises EventWerewolfRegen on every werewolf in radius if true
+    /// </summary>
+    [DataField] public bool HealNearby;
+
+    /// <summary>
+    /// whether or not should healing & transforms work only on bitten people
+    /// </summary>
+    [DataField] public bool OnlyWorkForBittenPeople = true; // todo rename idk
 }
-public sealed partial class TransfurmEvent : InstantActionEvent { }
+
+public sealed partial class TransfurmEvent : InstantActionEvent
+{
+    [DataField] public bool Forced;
+
+    public TransfurmEvent() {}
+    public TransfurmEvent(bool forced)
+    {
+        Forced = forced;
+    }
+}
 
 public sealed partial class TransfurmWhiteEvent : InstantActionEvent
 {
@@ -79,3 +103,4 @@ public sealed partial class WerewolfAddCollectivemind : InstantActionEvent
 public sealed partial class WerewolfRevelationEvent : InstantActionEvent;
 [ByRefEvent]
 public readonly record struct WerewolfInfectionFinishedEvent(EntityUid Entity);
+public sealed partial class WerewolfBeckonEvent : InstantActionEvent;

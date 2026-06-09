@@ -3,6 +3,7 @@
   parent:
   - BaseWerewolf
   - BaseWerewolfUnholy
+  name: dire wolf
   description: A dark, forboding feeling overtakes you. You know what will come, you can feel his intentions.
   components:
   - type: Sprite

@@ -5,6 +5,7 @@ using Content.Shared.Actions;
 using Content.Shared.Body;
 using Content.Shared.Body.Systems;
 using Content.Shared.Camera;
+using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Systems;
@@ -13,6 +14,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Mind;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Pinpointer;
 using Content.Shared.Popups;
 using Content.Shared.Station;
 using Content.Shared.Stunnable;
@@ -29,28 +31,27 @@ namespace Content.Inky.Shared.Werewolf.Systems;
 
 public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly ISharedPlayerManager _player = default!;
-    [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private SharedCameraRecoilSystem _recoil = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private EntityLookupSystem _entityLookup = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private TagSystem _tag = default!;
 
-    [Dependency] private readonly ThrownItemSystem _throwingItem = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
-    [Dependency] private readonly SharedPuddleSystem _puddle = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedStationSystem _station = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private ThrownItemSystem _throwingItem = default!;
+    [Dependency] private ThrowingSystem _throwing = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private SharedPuddleSystem _puddle = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedStationSystem _station = default!;
+    [Dependency] private IMapManager _mapMan = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private IRobustRandom _gambling = default!;
-
 
     private float _updateTimer = 0f;
 
@@ -65,7 +66,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfRegen>(TryRegen);
 
-        InitializeWerewolfDire(); // todo consistency
+        InitializeDire();
         InitializeWhite();
         InitializeBlack();
     }
@@ -150,6 +151,34 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
             {
                 _stun.TryUpdateStunDuration(entity, TimeSpan.FromSeconds(args.StunDuration));
                 _stun.TryKnockdown(entity, TimeSpan.FromSeconds(args.StunDuration), true);
+            }
+        }
+
+        if (args.ForceTransfurm || args.HealNearby)
+        {
+            List<EntityUid>? bittenPeople = null;
+            if (args.OnlyWorkForBittenPeople)
+            {
+                if (!_mind.TryGetMind(uid, out var mindId, out _)
+                    || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
+                    return;
+
+                bittenPeople = mindComp.BittenPeople;
+            }
+
+            foreach (var wolf in _entityLookup.GetEntitiesInRange(uid, args.ShriekPower))
+            {
+                if (!HasComp<WerewolfBasicAbilitiesComponent>(wolf))
+                    continue;
+
+                if (bittenPeople != null && !bittenPeople.Contains(wolf)) // oughhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                    continue;
+
+                if (args.ForceTransfurm)
+                    RaiseLocalEvent(wolf, new TransfurmEvent(true));
+
+                if (args.HealNearby)
+                    RaiseLocalEvent(wolf, new EventWerewolfRegen());
             }
         }
         // _audio.PlayGlobal(comp.DistantSound, uid); // when you howl, everyone on the station hears a quiet distant howl, which breaks the metashield for the chaplain, "allegedly" todo uncomment when better sound is found

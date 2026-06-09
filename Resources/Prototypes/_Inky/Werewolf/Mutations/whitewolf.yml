@@ -2,6 +2,7 @@
   id: WerewolfWhite
   parent:
   - BaseWerewolf
+  name: white wolf
   description: Let's hope you haven't sinned.
   components:
   - type: Sprite
