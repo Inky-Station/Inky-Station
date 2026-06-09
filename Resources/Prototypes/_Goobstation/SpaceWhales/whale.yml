@@ -158,6 +158,9 @@
         Structural: 800 #lol
   - type: NoRotateOnMove
   # inky
+  - type: LimitedInstances
+    key: SpaceLeviathan
+    limit: 1
   - type: FTLSmashImmune
   - type: SupermatterImmune
   - type: EventHorizonIgnore
@@ -256,7 +259,6 @@
     minDistance: 300 # inky
     maxDistance: 400 # inky
     spawnSpacing: 30
-    isSpaceWhaleCaller: true # inky GOIDAAAAAAAAA
 
 # inky - this shit is here because i am a lazy fucking bitch
 - type: damageModifierSet
