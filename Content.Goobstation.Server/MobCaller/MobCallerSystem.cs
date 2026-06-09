@@ -25,7 +25,6 @@ public sealed partial class MobCallerSystem : EntitySystem
     [Dependency] private IMapManager _map = default!;
     [Dependency] private IRobustRandom _random = default!;
 
-
     public override void Initialize()
     {
         base.Initialize();
