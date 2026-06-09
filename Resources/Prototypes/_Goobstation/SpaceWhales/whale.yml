@@ -209,7 +209,7 @@
     damageContainer: Biological
     damageModifierSet: Leviathan # no lasers
   - type: Physics
-    bodyType: Dynamic
+    bodyType: KinematicController
     bodyStatus: InAir
     linearDamping: 0.0005
     angularDamping: 0.05
