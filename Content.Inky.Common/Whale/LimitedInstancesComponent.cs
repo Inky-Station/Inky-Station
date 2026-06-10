@@ -12,4 +12,6 @@ public sealed partial class LimitedInstancesComponent : Component
 
     [DataField]
     public int Limit = 1;
+
+    [DataField] public bool ServerOnly = true; // in case if some net thing breaks this shit in the future (IDK MAN)
 }
