@@ -208,8 +208,9 @@
   - type: RequireProjectileTarget
     active: False
   - type: MobState
-  - type: Damageable
+  - type: Injurable
     damageContainer: Biological
+  - type: Damageable
     damageModifierSet: Leviathan # no lasers
   - type: Physics
     bodyType: KinematicController

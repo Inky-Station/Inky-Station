@@ -8,25 +8,9 @@
   - type: AntagSelection
     useCharacterNames: true
     agentName: apprentice-roundend-name
-    definitions:
-    - prefRoles: [ Apprentice ]
-      playerRatio: 1
-      min: 1
-      max: 1
-      pickPlayer: false
-      mindRoles:
-      - MindRoleApprentice
-      components:
-      - type: Apprentice
-      - type: CanEnchant
-      - type: LanguageSpeaker
-        speaks: []
-        understands: []
-      - type: UniversalLanguageSpeaker
-      - type: TowerOfBabel
-      - type: NpcFactionMember
-        factions:
-        - Wizard
+    antags:
+    - !type:FixedAntagCount
+      proto: WizardApprentice
   - type: AntagPlayerEffects
     effects:
     - !type:NestedEffect
