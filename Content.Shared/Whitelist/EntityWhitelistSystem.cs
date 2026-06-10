@@ -9,8 +9,7 @@ public sealed partial class EntityWhitelistSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private TagSystem _tag = default!;
-
-    private EntityQuery<ItemComponent> _itemQuery; // inky edit removed dependency KILL ME NOWWWWWWWWWWW TODO inky KILL
+    [Dependency] private EntityQuery<ItemComponent> _itemQuery;
 
     private string _itemComponentName = string.Empty;
     private string _tagComponentName = string.Empty;
@@ -22,10 +21,6 @@ public sealed partial class EntityWhitelistSystem : EntitySystem
         // caching for minor performance improvement
         _itemComponentName = Factory.GetComponentName<ItemComponent>();
         _tagComponentName = Factory.GetComponentName<TagComponent>();
-
-        // inky - HOLY SLOP TESTS KILL ME NOWWWWWWWW TODO inky KILL
-        _itemQuery = GetEntityQuery<ItemComponent>();
-        // /inky
     }
 
     /// <summary>
