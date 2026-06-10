@@ -667,7 +667,7 @@
       maxCharge: 35
       startingCharge: 35
     - type: BatterySelfRecharger
-      autoRechargeRate: 2
+      autoRechargeRate: 1 # inky edit - was 3
     - type: RechargeableBlocking
       dischargedRechargeRate: 2
       chargedRechargeRate: 3
@@ -757,11 +757,7 @@
     - type: StaticPrice
       price: 350
       # WD EDIT START
-    - type: Battery
-      maxCharge: 35
-      startingCharge: 35
-    - type: BatterySelfRecharger
-      autoRechargeRate: 1 # inky edit - was 3
+
     - type: RechargeableBlocking
       dischargedRechargeRate: 2
       chargedRechargeRate: 1 # inky edit - was 2
