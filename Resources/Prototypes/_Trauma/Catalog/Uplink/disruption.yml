@@ -16,7 +16,7 @@
   productEntity: CrateSyndicateSuperSurplusBundle
   cost:
     Telecrystal: 200
-  discountCategory: null # WAY too free
+#  discountCategory: null # WAY too free # inky edit
   categories:
   - UplinkDisruption
   conditions:
