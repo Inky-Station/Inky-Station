@@ -106,10 +106,12 @@ public sealed partial class StationProximitySystem : EntitySystem
     {
         base.Update(frameTime);
 
-        if (_timing.CurTime < _nextCheck) // inky edit - oh my fucking god, it was inverted
+        var now = _timing.CurTime;
+
+        if (now < _nextCheck)
             return;
 
-        _nextCheck = _timing.CurTime + CheckDelay;
+        _nextCheck = now + CheckDelay;
         CheckStationProximity();
     }
 

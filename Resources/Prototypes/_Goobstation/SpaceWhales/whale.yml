@@ -123,7 +123,7 @@
   - type: ContentEye
     maxZoom: 1.5,1.5
     targetZoom: 1.5,1.5
-  - type: SolutionContainerManager
+  - type: SolutionManager
   - type: InjectableSolution
     solution: chemicals
   - type: Bloodstream
@@ -237,6 +237,8 @@
   - type: Physics
     bodyType: Dynamic
   - type: TailedEntitySegment
+  - type: ViewconeOccludable
+    useMemory: false
 
 - type: entity
   id: SpaceLeviathanDespawn

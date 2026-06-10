@@ -40,25 +40,26 @@
   description: all-at-once-description
   showInVote: false
   rules:
+    # <Trauma>
+    - Thief
+    - HereticRoundstart
+    - BlobGameMode
+    - LoneAbductorSpawn
+    - Changeling
+    - Insurgency
+    - CosmicCult
+    - XenomorphsInfestationRoundstart
+    # </Trauma>
     - Nukeops
     - Traitor
     - Revolutionary
     - Zombie
     - Wizard
-    - CosmicCult # DeltaV
     - Xenoborgs
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
-    # <Trauma>
-    - Thief
-    - Heretic
-    - BlobGameMode
-    - LoneAbductorSpawn
-    - Changeling
-#    - Insurgency # inky - kill insurgents
-    # </Trauma>
   # inky
     - FunGameruleChooser
   # /inky
@@ -78,12 +79,13 @@
     - BasicAntagEventScheduler
     - ModerateAntagEventScheduler
     - Thief
-    - Heretic
+    - HereticRoundstart
     - BlobGameMode
     - LoneAbductorSpawn
     - Changeling
-    - Shadowling
-#    - Insurgency # inky - kill insurgents
+    - ShadowlingRoundstart
+  #    - Insurgency # inky - kill insurgents
+    - CosmicCult
     # </Trauma>
     - Nukeops
     - Traitor

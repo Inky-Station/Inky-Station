@@ -149,8 +149,9 @@
     speechVerb: Slime
     speechSounds: Morph
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Morph
+  - type: Injurable
+    damageContainer: Biological
   - type: NpcFactionMember
     factions:
     - SimpleHostile
@@ -174,7 +175,7 @@
     description: ghost-role-information-morph-description
     rules: ghost-role-information-rules-team-antagonist
     mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
+    - MindRoleMorph
   - type: GhostTakeoverAvailable
 
 - type: entity
