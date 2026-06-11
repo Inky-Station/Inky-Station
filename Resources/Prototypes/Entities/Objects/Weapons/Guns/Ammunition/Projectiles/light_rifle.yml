@@ -74,7 +74,7 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 10 #rad bullet dont do rad damage in trauma what
+        Radiation: 10 # inky rad bullet dont do rad damage in trauma what
         Piercing: 11
         # armorPenetration: 0.5 # Trauma
 
