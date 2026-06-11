@@ -7,10 +7,14 @@
   - type: AntagObjectives
     objectives:
     - ShadowlingAscendObjective
+  - type: AntagSelection
+    antags:
+    - !type:FixedAntagCount
+      proto: Shadowling
 
 - type: entity
-  parent: BaseShadowlingRule
-  id: Shadowling
+  parent: [ BaseShadowlingRule, BaseRoundstartAntagRule ]
+  id: ShadowlingRoundstart
   components:
   # inky
   - type: DynamicRuleCost
@@ -18,13 +22,3 @@
   # /inky
   - type: GameRule
     minPlayers: 30
-  - type: AntagSelection
-    definitions:
-    - prefRoles: [ Shadowling ]
-      max: 1
-      playerRatio: 30
-      blacklist:
-        components:
-        - CommandStaff
-      mindRoles:
-      - MindRoleShadowling

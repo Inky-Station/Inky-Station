@@ -15,6 +15,7 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Rejuvenate;
+using Content.Shared.Speech.Components;
 using Content.Trauma.Common.Language.Components;
 using Content.Trauma.Common.Language.Systems;
 using Robust.Server.Audio;
