@@ -40,7 +40,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 17
+        Piercing: 17 #inky
 
 - type: entity
   parent: BaseBulletPractice
@@ -62,8 +62,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 12
-        Heat: 5 
+        Piercing: 12 #inky
+        Heat: 5 #inky 
 
 - type: entity
   parent: BaseBulletUranium
@@ -74,6 +74,6 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 9
-        Piercing: 10 
-      armorPenetration: 0.5 # Trauma
+        Radiation: 9 #inky
+        Piercing: 10 #inky
+      # armorPenetration: 0.5 # Trauma

@@ -151,7 +151,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 10 # is 10
+        Piercing: 10 # inky
         Structural: 15
 
 - type: entity
@@ -173,7 +173,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 7 
+        Piercing: 7 #inky
         Heat: 3 
   - type: IgnitionSource
     ignited: true
@@ -306,9 +306,9 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 5 
+        Radiation: 5 #inky
         Piercing: 5
-      armorPenetration: 0.5 # Trauma
+      # armorPenetration: 0.5 # Trauma
 
 - type: entity
   parent: PelletShotgunUranium
@@ -317,7 +317,7 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunUranium
-    count: 5
+    count: 5 #inky
     spread: 6
 
 - type: entity

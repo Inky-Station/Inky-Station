@@ -40,7 +40,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 19
+        Piercing: 19 #inky
 
 - type: entity
   parent: BaseBulletPractice
@@ -62,7 +62,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 14
+        Piercing: 14 #inky
         Heat: 5 
 
 - type: entity
@@ -74,6 +74,7 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 10 
+        Radiation: 10 #rad bullet dont do rad damage in trauma what
         Piercing: 11
-      armorPenetration: 0.5 # Trauma
+        # armorPenetration: 0.5 # Trauma
+
