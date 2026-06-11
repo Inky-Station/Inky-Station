@@ -151,7 +151,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 7 # Trauma, was 10
+        Piercing: 10 # is 10
         Structural: 15
 
 - type: entity
@@ -173,8 +173,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 5 # Trauma, was 7
-        # Heat: 3 # Trauma
+        Piercing: 7 
+        Heat: 3 
   - type: IgnitionSource
     ignited: true
 
@@ -185,7 +185,7 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunIncendiary
-    count: 6 # Trauma, was 4
+    count: 4 
     spread: 15
 
 - type: entity
@@ -310,7 +310,7 @@
   - type: Projectile
     damage:
       types:
-        # Radiation: 5 # Trauma
+        Radiation: 5 
         Piercing: 5
       armorPenetration: 0.5 # Trauma
 
@@ -321,7 +321,7 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunUranium
-    count: 6 # Trauma, was 5
+    count: 5
     spread: 6
 
 - type: entity
