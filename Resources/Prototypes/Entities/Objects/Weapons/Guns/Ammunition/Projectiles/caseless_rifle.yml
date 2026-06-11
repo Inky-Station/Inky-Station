@@ -7,8 +7,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 25 #back to being cool baby
-      armorPenetration: -0.3 
+        Piercing: 14 # Trauma, was 25
+      armorPenetration: -0.39
 
 - type: entity
   parent: BaseBulletPractice
