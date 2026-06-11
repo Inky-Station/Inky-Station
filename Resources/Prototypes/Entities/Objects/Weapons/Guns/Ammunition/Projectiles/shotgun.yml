@@ -174,7 +174,7 @@
     damage:
       types:
         Piercing: 7 #inky
-        Heat: 3 
+        Heat: 3 # inky
   - type: IgnitionSource
     ignited: true
 
