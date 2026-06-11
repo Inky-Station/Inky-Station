@@ -14,6 +14,9 @@ public sealed partial class InkyCVars
     public static readonly CVarDef<bool> ConcussionSound =
         CVarDef.Create("inky.concussion_sound", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
+    public static readonly CVarDef<int> MaxSpaceWhales =
+        CVarDef.Create("inky.max_space_whales", 1, CVar.SERVER);
+
     #region currency
 
     public static readonly CVarDef<int> CurrencyServerMultiplier =
