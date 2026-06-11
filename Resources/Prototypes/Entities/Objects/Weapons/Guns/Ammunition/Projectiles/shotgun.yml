@@ -185,7 +185,7 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunIncendiary
-    count: 4 
+    count: 4 #inky
     spread: 15
 
 - type: entity

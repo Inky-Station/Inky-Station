@@ -63,7 +63,7 @@
     damage:
       types:
         Piercing: 14 #inky
-        Heat: 5 
+        Heat: 5 #inky
 
 - type: entity
   parent: [BaseBulletUranium, BaseBulletKinetic] # Trauma
