@@ -4,12 +4,10 @@
   equipment:
     head: ClothingHeadHatFedoraBrown
 
-
 - type: loadout
   id: DetectiveFedoraGrey
   equipment:
     head: ClothingHeadHatFedoraGrey
-
 
 # Neck
 - type: loadout
@@ -23,18 +21,15 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitDetective
 
-
 - type: loadout
   id: DetectiveJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtDetective
 
-
 - type: loadout
   id: NoirJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitDetectiveGrey
-
 
 - type: loadout
   id: NoirJumpskirt
@@ -56,3 +51,48 @@
   id: DetectiveCoatGrey
   equipment:
     outerClothing: ClothingOuterCoatDetectiveLoadoutGrey
+
+# === LARP OUTFIT AND YOU KNOW THE THING ===
+- type: loadout
+  id: LoadoutClothingOuterCoatDiscoBlazer
+  equipment:
+    outerClothing: ClothingOuterCoatDiscoBlazer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 1500
+
+- type: loadout
+  id: LoadoutClothingUniformJumpsuitElysium
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitElysium
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 1500
+
+- type: loadout
+  id: LoadoutClothingNeckTieElysium
+  equipment:
+    neck: ClothingNeckTieElysium
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 1500
+
+- type: loadout
+  id: LoadoutClothingShoesElysiumShoes
+  equipment:
+    shoes: ClothingShoesElysiumShoes
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 1500
