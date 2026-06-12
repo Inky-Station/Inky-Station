@@ -2,11 +2,13 @@ namespace Content.Inky.Shared.Werewolf.Components;
 
 /// <summary>
 /// Marks the person as bitten by a werewolf
-/// this is given when an entity is a target for the werewolfdevour
+/// this is given when an entity is a target for the werewolfdevour & other path specific bitings
 /// </summary>
 [RegisterComponent]
 public sealed partial class WerewolfBitComponent : Component // todo loc strings for popups?
 {
+    [DataField] public WerewolfMindComponent? BittenBy;
+
     /// <summary>
     /// If the entity is in the proccess of turning into a werewolf
     /// </summary>
@@ -22,4 +24,4 @@ public sealed partial class WerewolfBitComponent : Component // todo loc strings
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
     public float LycTimer = 30f; // todo 600
-} // todo werewolf all this shit isnt in use yet
+}

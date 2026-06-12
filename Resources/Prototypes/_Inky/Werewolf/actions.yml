@@ -256,7 +256,7 @@
   - type: InstantAction
     event: !type:HowlEvent
       shriekPower: 4
-      stunDuration: 0.5
+      stunDuration: 1
       forceTransfurm: true
       healNearby: true
   - type: WerewolfAction
@@ -280,3 +280,27 @@
     event: !type:WerewolfBeckonEvent
   - type: WerewolfAction
     hungerCost: 0
+
+- type: entity
+  parent: BaseAction
+  id: ActionWerewolfBequeath
+  name: Bequeath
+  description: Crown an Unmutated Werewolf in your pack to become the next Black Wolf in case of your death.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Inky/Actions/Werewolf/werewolf.rsi
+      state: bequeath
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - WerewolfBasicAbilities
+    canTargetSelf: false
+    event: !type:EventWerewolfBequeath {}
+  - type: WerewolfAction
+    hungerCost: 0
+    requireTransfurmed: true

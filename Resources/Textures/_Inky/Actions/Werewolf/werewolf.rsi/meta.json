@@ -60,6 +60,9 @@
         },
         {
             "name": "beckon"
+        },
+        {
+            "name": "bequeath"
         }
     ]
 }

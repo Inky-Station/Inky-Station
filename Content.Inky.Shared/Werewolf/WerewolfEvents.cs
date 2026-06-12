@@ -20,9 +20,9 @@ public sealed partial class HowlEvent : InstantActionEvent
     [DataField] public bool HealNearby;
 
     /// <summary>
-    /// whether or not should healing & transforms work only on bitten people
+    /// whether or not should healing & transforms work only on your pack
     /// </summary>
-    [DataField] public bool OnlyWorkForBittenPeople = true; // todo rename idk
+    [DataField] public bool PackOnly = true;
 }
 
 public sealed partial class TransfurmEvent : InstantActionEvent
@@ -104,3 +104,4 @@ public sealed partial class WerewolfRevelationEvent : InstantActionEvent;
 [ByRefEvent]
 public readonly record struct WerewolfInfectionFinishedEvent(EntityUid Entity);
 public sealed partial class WerewolfBeckonEvent : InstantActionEvent;
+public sealed partial class EventWerewolfBequeath : EntityTargetActionEvent {}

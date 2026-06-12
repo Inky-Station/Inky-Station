@@ -143,8 +143,9 @@
   - type: NpcFactionMember
     factions:
     - Wizard # too lazy to make a separate faction just for werewolf, its fine trust
-  - type: Damageable
+  - type: Injurable
     damageContainer: Biological
+  - type: Damageable
     damageModifierSet: WerewolfBase
   - type: NoSlip
   - type: Targeting
@@ -155,8 +156,9 @@
   abstract: true
   components:
   - type: ShouldTakeHoly
-  - type: Damageable
+  - type: Injurable
     damageContainer: BiologicalMetaphysical
+  - type: Damageable
     damageModifierSet: WerewolfBase
 
 - type: damageModifierSet # todo werewolf its own file

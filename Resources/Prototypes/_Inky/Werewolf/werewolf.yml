@@ -5,6 +5,26 @@
   setPreference: true
   objective: roles-antag-werewolf-desc
   requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 43200 # 12h
+  - !type:SpeciesRequirement
+    inverted: true
+    species:
+    - IPC
+    - Plasmaman
   guides: [  ]
+  creditImage: /Textures/_Trauma/EndCredits/Antags/zombies.png # todo werewolf
+
+- type: antagSpecifier
+  id: Werewolf
+  blacklist:
+    components:
+    - AntagImmune
+    - Changeling
+  prefRoles:
+  - Werewolf
+  briefing:
+    text: werewolf-role-greeting
+    color: Brown
+    sound: "/Audio/_Inky/Antag/Werewolf/werewolf_start.ogg"
+#  components:
+  mindRoles:
+  - MindRoleWerewolf

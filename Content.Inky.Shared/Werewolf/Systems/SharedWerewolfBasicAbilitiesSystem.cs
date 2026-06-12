@@ -156,14 +156,14 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 
         if (args.ForceTransfurm || args.HealNearby)
         {
-            List<EntityUid>? bittenPeople = null;
-            if (args.OnlyWorkForBittenPeople)
+            List<EntityUid>? pack = null;
+            if (args.PackOnly)
             {
                 if (!_mind.TryGetMind(uid, out var mindId, out _)
                     || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
                     return;
 
-                bittenPeople = mindComp.BittenPeople;
+                pack = mindComp.PackMembers;
             }
 
             foreach (var wolf in _entityLookup.GetEntitiesInRange(uid, args.ShriekPower))
@@ -171,7 +171,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
                 if (!HasComp<WerewolfBasicAbilitiesComponent>(wolf))
                     continue;
 
-                if (bittenPeople != null && !bittenPeople.Contains(wolf)) // oughhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+                if (pack != null && !pack.Contains(wolf)) // oughhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
                     continue;
 
                 if (args.ForceTransfurm)

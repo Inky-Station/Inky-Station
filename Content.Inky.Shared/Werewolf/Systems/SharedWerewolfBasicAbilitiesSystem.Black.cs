@@ -56,6 +56,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
 
         mindComp.Currency += comp.AmountDevour;
         mindComp.BittenPeople.Add(args.Target.Value);
+        targetComp.BittenBy = mindComp;
 
         targetComp.Infected = _gambling.Prob(0.5f); // todo werewolf unhardcode the 50% chance?
 
@@ -77,6 +78,10 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
                 continue;
 
             RemComp<WerewolfBitComponent>(uid);
+
+            if (bit.BittenBy != null)
+                bit.BittenBy.PackMembers.Add(uid);
+
             var ev = new WerewolfInfectionFinishedEvent(uid);
             RaiseLocalEvent(ref ev);
         }

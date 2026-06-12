@@ -82,7 +82,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem
         _damage.TryChangeDamage(target, dmg, true, true);
         RipLimb(target, body);
 
-        EnsureComp<WerewolfBitComponent>(target);
+        var targetComp = EnsureComp<WerewolfBitComponent>(target);
 
         if (!_mind.TryGetMind(uid, out var mindId, out _)
             || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
@@ -90,6 +90,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem
 
         mindComp.Currency += comp.AmountDevour;
         mindComp.BittenPeople.Add(args.Args.Target.Value);
+        targetComp.BittenBy = mindComp;
 
         _hunger.ModifyHunger(uid, +80); // todo werewolf maybe put as a var inside a comp or sdome shit
         _audio.PlayPvs(comp.RipSound, uid);

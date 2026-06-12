@@ -8,6 +8,12 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
     public List<EntityUid> BittenPeople = new(); // would be used in the manifest TODO WEREWOLF
 
     /// <summary>
+    /// Used by the black wolf to show which entities were turned into werewolves by him.
+    /// </summary>
+    [DataField]
+    public List<EntityUid> PackMembers = new();
+
+    /// <summary>
     /// The ent currently being hunted by this werewolf
     /// </summary>
     [DataField]

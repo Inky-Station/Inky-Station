@@ -4,34 +4,16 @@
   components:
   - type: WerewolfRule
   - type: GameRule
-    minPlayers: 15 # same as changeling
-  - type: DynamicRuleCost
-    cost: 225
-  #  - type: AntagRandomObjectives # todo werewolf
-  #    sets:
-  #    - groups: ChangelingObjectiveGroups
-  #    maxDifficulty: 5
-  #  - type: AntagObjectives
-  #    objectives:
-  #    - ChangelingSurviveObjective
-  #    - ChangelingStealDNAObjective
-  #    - ChangelingAbsorbObjective
-  #    - EscapeIdentityObjective
-  - type: AntagSelection
-    selectionTime: PrePlayerSpawn
-    agentName: roles-antag-werewolf-name
-    definitions:
-    - prefRoles: [ Werewolf ]
-      max: 6
-      playerRatio: 10
-      jobBlacklist: [ Chaplain ]
-      blacklist:
-        components:
-        - CommandStaff
-      lateJoinAdditional: true
-      mindRoles:
-      - MindRoleWerewolf
+    minPlayers: 20 # Trauma, was 20
   - type: AntagPlayerEffects
     effects:
     - !type:NestedEffect
       proto: WerewolfSkills
+  - type: AntagSelection
+    antags:
+    - !type:LinearAntagCount
+      proto: Werewolf
+      range:
+        min: 2
+        max: 5
+      playerRatio: 12
