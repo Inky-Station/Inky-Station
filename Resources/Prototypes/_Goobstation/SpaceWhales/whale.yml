@@ -46,6 +46,7 @@
   - type: FTLSmashImmune
   - type: SupermatterImmune
   - type: EventHorizonIgnore
+  - type: GravityAffected
   # /inky
 
 - type: entity
@@ -123,7 +124,7 @@
   - type: ContentEye
     maxZoom: 1.5,1.5
     targetZoom: 1.5,1.5
-  - type: SolutionContainerManager
+  - type: SolutionManager
   - type: InjectableSolution
     solution: chemicals
   - type: Bloodstream
@@ -204,12 +205,13 @@
     horizontalRotation: 0
   - type: DoAfter
   - type: Examiner
-  - type: Eye
+#  - type: Eye
   - type: RequireProjectileTarget
     active: False
   - type: MobState
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Leviathan # no lasers
   - type: Physics
     bodyType: KinematicController
@@ -237,6 +239,8 @@
   - type: Physics
     bodyType: Dynamic
   - type: TailedEntitySegment
+  - type: ViewconeOccludable
+    useMemory: false
 
 - type: entity
   id: SpaceLeviathanDespawn
@@ -297,8 +301,6 @@
     layers:
     - state: scale
       map: [ "base" ]
-  - type: StaticPrice
-    price: 3000
   - type: StackPrice
     price: 15000
   - type: Appearance
