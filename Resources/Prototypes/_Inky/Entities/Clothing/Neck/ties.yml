@@ -8,5 +8,4 @@
     sprite: _Inky/Clothing/Neck/Ties/elysiumtie.rsi
     state: icon
   - type: Clothing
-    sprite: _Inky/Clothing/Neck/Ties/elysiumtie.rsi
-    state: equipped-NECK                     
+    sprite: _Inky/Clothing/Neck/Ties/elysiumtie.rsi 

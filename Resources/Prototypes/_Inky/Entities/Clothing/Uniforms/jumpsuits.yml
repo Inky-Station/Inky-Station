@@ -6,7 +6,6 @@
   components:
   - type: Sprite
     sprite: _Inky/Clothing/Uniforms/Jumpsuit/Elysium.rsi
-    state: icon                              
+    state: icon                               
   - type: Clothing
-    sprite: _Inky/Clothing/Uniforms/Jumpsuit/Elysium.rsi
-    state: equipped-INNERCLOTHING            
+    sprite: _Inky/Clothing/Uniforms/Jumpsuit/Elysium.rsi 

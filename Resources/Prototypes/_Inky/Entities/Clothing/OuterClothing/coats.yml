@@ -8,5 +8,4 @@
     sprite: _Inky/Clothing/OuterClothing/Coats/ElysiumCoat.rsi
     state: icon
   - type: Clothing
-    sprite: _Inky/Clothing/OuterClothing/Coats/ElysiumCoat.rsi
-    state: equipped-OUTERCLOTHING
+    sprite: _Inky/Clothing/OuterClothing/Coats/ElysiumCoat.rsi 

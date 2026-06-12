@@ -8,7 +8,6 @@
     sprite: _Inky/Clothing/Shoes/Specific/elysiumshoes.rsi
     state: icon
   - type: Clothing
-    sprite: _Inky/Clothing/Shoes/Specific/elysiumshoes.rsi
-    state: equipped-FEET                     
+    sprite: _Inky/Clothing/Shoes/Specific/elysiumshoes.rsi 
   - type: ClothingSlowOnDamageModifier
     modifier: 0.5
