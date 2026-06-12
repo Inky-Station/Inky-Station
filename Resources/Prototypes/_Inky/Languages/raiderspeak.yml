@@ -1,6 +1,5 @@
 - type: language
   id: RaiderSpeak
-  isVisibleLanguage: true
   speech:
     color: "#656565aa"
     fontId: Soviet

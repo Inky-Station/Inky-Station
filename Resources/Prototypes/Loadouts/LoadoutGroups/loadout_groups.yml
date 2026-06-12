@@ -1406,6 +1406,7 @@
   - DetectiveCoatGrey
   - LoadoutClothingOuterCoatDiscoBlazer
   - LoadoutClothingShoesElysiumShoes #inky, so the shoes appear with it? this is mostly a test idk
+  - SecurityOfficerWintercoat
 
 - type: loadoutGroup
   id: DetectiveJobTrinkets
