@@ -174,7 +174,7 @@
     damage:
       types:
         Piercing: 7 #inky
-        Heat: 3 
+        Heat: 3 # inky
   - type: IgnitionSource
     ignited: true
 
@@ -308,7 +308,7 @@
       types:
         Radiation: 5 #inky
         Piercing: 5
-      # armorPenetration: 0.5 # Trauma
+      # armorPenetration: 0.5 # inky
 
 - type: entity
   parent: PelletShotgunUranium

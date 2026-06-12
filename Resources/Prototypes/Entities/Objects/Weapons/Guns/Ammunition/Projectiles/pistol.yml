@@ -71,5 +71,5 @@
     damage:
       types:
         Radiation: 6 #inky
-        Piercing: 10
+        Piercing: 10 # inky
       armorPenetration: 0.5 # Trauma
