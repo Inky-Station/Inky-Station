@@ -16,11 +16,6 @@
   id: DetectiveTie
   equipment:
     neck: ClothingNeckTieDet
-    
-- type: loadout
-  id: ClothingNeckTieElysium
-  equipment:
-    neck: ClothingNeckBase
 
 # Jumpsuit
 - type: loadout
@@ -46,13 +41,6 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtDetectiveGrey
 
-
-- type: loadout 
-  id: ClothingUniformJumpsuitElysium
-  equipment:
-    jumpsuit: ClothingUniformBase
-    
-    
 # OuterClothing
 - type: loadout
   id: DetectiveArmorVest
@@ -68,15 +56,3 @@
   id: DetectiveCoatGrey
   equipment:
     outerClothing: ClothingOuterCoatDetectiveLoadoutGrey
-
-- type: loadout #inky
-  id: ClothingOuterCoatDiscoBlazer
-  equipment:
-    outerClothing: ClothingOuterCoatDetectiveLoadout
-    
-#shoes or boots??
-
-- type: loadout
-  id: ClothingShoesElysiumShoes
-  equipment:
-    outerClothing: ClothingShoesMilitaryBase
