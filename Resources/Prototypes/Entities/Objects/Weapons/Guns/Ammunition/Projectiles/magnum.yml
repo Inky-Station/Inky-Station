@@ -7,7 +7,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 35 #  Inky   #i need my revolver to kill people
+        Piercing: 25 #  Inky   #GRRRRRRRRRRRGRRRRRRRR
 
 - type: entity
   parent: BaseBulletPractice
@@ -30,7 +30,7 @@
     damage:
       types:
         Piercing: 20 #inky, from 26 to 20 the bullet stacks fire anyway
-        Heat: 9 #inky
+        Heat: 5 #inky
         
 - type: entity
   parent: [BaseBulletAP, BaseBulletKinetic] # Trauma
@@ -41,7 +41,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 28 #inky
+        Piercing: 25 #inky
       armorPenetration: 0.75 # Goobstation
 
 - type: entity
@@ -53,6 +53,6 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 15 #inky
+        Radiation: 10 #inky
         Piercing: 20 #inky
       armorPenetration: 0.5 # Trauma
