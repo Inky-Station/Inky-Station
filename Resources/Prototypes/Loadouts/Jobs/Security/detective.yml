@@ -62,7 +62,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
-      time: 1500
+      time: 90000
 
 - type: loadout
   id: LoadoutClothingUniformJumpsuitElysium
@@ -73,7 +73,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
-      time: 1500
+      time: 90000
 
 - type: loadout
   id: LoadoutClothingNeckTieElysium
@@ -84,7 +84,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
-      time: 1500
+      time: 90000
 
 - type: loadout
   id: LoadoutClothingShoesElysiumShoes
@@ -95,4 +95,4 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
-      time: 1500
+      time: 90000
