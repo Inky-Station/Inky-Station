@@ -1,0 +1,13 @@
+#Tc Miner Plushie
+
+- type: entity
+  parent: BasePlushie
+  id: TcMinerPlushie
+  name: Tc Miner Plushie
+  description: Cheap Syndicate Land plushie, it does absolutely nothing!
+  components:
+  - type: Sprite
+    sprite: _Inky/Objects/Fun/toys.rsi
+    state: alive #its alive???
+    noRot: true
+
