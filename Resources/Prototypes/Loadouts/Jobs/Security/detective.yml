@@ -16,6 +16,11 @@
   id: DetectiveTie
   equipment:
     neck: ClothingNeckTieDet
+    
+- type: loadout
+  id: ClothingNeckTieElysium
+  equipment:
+    neck: ClothingNeckBase
 
 # Jumpsuit
 - type: loadout
@@ -42,6 +47,12 @@
     jumpsuit: ClothingUniformJumpskirtDetectiveGrey
 
 
+- type: loadout 
+  id: ClothingUniformJumpsuitElysium
+  equipment:
+    jumpsuit: ClothingUniformBase
+    
+    
 # OuterClothing
 - type: loadout
   id: DetectiveArmorVest
@@ -58,11 +69,14 @@
   equipment:
     outerClothing: ClothingOuterCoatDetectiveLoadoutGrey
 
-- type: loadoutEffectGroup
-  id: ElysiumDetective
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Security
-      time: 1500 # 25 hours could be more lwk
+- type: loadout #inky
+  id: ClothingOuterCoatDiscoBlazer
+  equipment:
+    outerClothing: ClothingOuterCoatDetectiveLoadout
+    
+#shoes or boots??
+
+- type: loadout
+  id: ClothingShoesElysiumShoes
+  equipment:
+    outerClothing: ClothingShoesMilitaryBase
