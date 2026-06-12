@@ -1384,7 +1384,7 @@
   loadouts:
   - DetectiveTie
   - Bodycam # Goobstation - Body cameras
-  - ClothingNeckTieElysium #inky
+  - LoadoutClothingNeckTieElysium
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
@@ -1394,7 +1394,8 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
-  - ClothingUniformJumpsuitElysium #inky
+  - LoadoutClothingUniformJumpsuitElysium
+  - LoadoutClothingShoesElysiumShoes
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
@@ -1403,7 +1404,7 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
-  - ClothingOuterCoatDiscoBlazer #inky
+  - LoadoutClothingOuterCoatDiscoBlazer
   - LoadoutClothingShoesElysiumShoes #inky, so the shoes appear with it? this is mostly a test idk
 
 - type: loadoutGroup
