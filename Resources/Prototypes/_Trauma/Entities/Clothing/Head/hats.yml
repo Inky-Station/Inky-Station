@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingHeadHatBeret, BaseSecurityContraband, BaseClothingViewconeSmallIncrease]
+  parent: [ClothingHeadHatBeret, BaseSecurityContraband] # inky edit removed BaseClothingViewconeSmallIncrease
   id: ClothingHeadHatBeretSergeant
   name: sergeant beret
   description: The beret of a security member who has seen more than anyone. Make sure you salute them, they're probably the reason why you're alive today.

@@ -153,7 +153,7 @@
     - Hair
 
 - type: entity
-  parent: [ClothingHeadBase, BaseCommandContraband, BaseClothingViewconeSmallIncrease] # Trauma
+  parent: [ClothingHeadBase, BaseCommandContraband] # Trauma # inky edit removed BaseClothingViewconeSmallIncrease
   id: ClothingHeadHatBeretHeadOfSecurityAdvanced
   name: head of security's parade beret
   description: A particularly gilded beret, designed for the Head of Security.

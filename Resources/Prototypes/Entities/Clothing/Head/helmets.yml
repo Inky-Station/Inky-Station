@@ -328,7 +328,7 @@
 
 #Fire Helmet
 - type: entity
-  parent: [ClothingHeadLightBase, BaseClothingViewconeSmall]
+  parent: [ClothingHeadLightBase] # inky edit removed BaseClothingViewconeSmall
   id: ClothingHeadHelmetFire
   name: fire helmet
   description: An atmos tech's best friend. Provides some heat resistance and looks cool.
@@ -368,7 +368,7 @@
 
 #Atmos Fire Helmet
 - type: entity
-  parent: [ClothingHeadLightBase, BaseEngineeringContraband, BaseClothingViewconeSmall] # Trauma
+  parent: [ClothingHeadLightBase, BaseEngineeringContraband] # Trauma # inky edit removed BaseClothingViewconeSmall
   id: ClothingHeadHelmetAtmosFire
   name: atmos fire helmet
   description: An atmos fire helmet, able to keep the user cool in any situation.

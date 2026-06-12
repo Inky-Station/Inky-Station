@@ -110,7 +110,7 @@
 
 - type: entity
   abstract: true
-  parent: [ClothingHeadBase, BaseClothingViewconeSmall] # Trauma
+  parent: [ClothingHeadBase] # Trauma # inky edit removed BaseClothingViewconeSmall
   id: ClothingHeadEVAHelmetBase
   name: base space helmet
   components:
