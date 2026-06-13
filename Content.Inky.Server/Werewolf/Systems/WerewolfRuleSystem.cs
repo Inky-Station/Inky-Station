@@ -5,6 +5,8 @@ using Content.Inky.Shared.Werewolf.Systems;
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
+using Content.Shared.EntityEffects;
+using Content.Shared.EntityEffects.Effects;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Content.Shared.Store;
@@ -20,6 +22,7 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly SharedRoleSystem _role = default!;
     [Dependency] private readonly SharedWerewolfBasicAbilitiesSystem _werewolf = default!; // hell.
+    [Dependency] private readonly SharedEntityEffectsSystem _effects = default!;
 
     public readonly SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/_Inky/Antag/Werewolf/werewolf_start.ogg");
 
@@ -30,6 +33,8 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
     public readonly int StartingCurrency = 2; // to buy either regen or ambush, choose your game
 
     [ValidatePrototypeId<EntityPrototype>] EntProtoId mindRole = "MindRoleWerewolf";
+
+    public readonly ProtoId<EntityEffectPrototype> WerewolfSkills = "WerewolfSkills";
 
     public override void Initialize()
     {
@@ -97,12 +102,17 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
         return true;
     }
 
-    private void OnInfectionFinished(ref WerewolfInfectionFinishedEvent ev) // RABIES
+    private void OnInfectionFinished(ref WerewolfInfectionFinishedEvent ev)
     {
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out var rule, out _))
         {
-            MakeWerewolf(ev.Entity, rule, false, true); // no evo for you
+            RemComp<WerewolfBitComponent>(ev.Entity);
+            EnsureComp<WerewolfInfectionImmuneComponent>(ev.Entity);
+            MakeWerewolf(ev.Entity, rule, false, true);
+
+            _effects.ApplyEffects(ev.Entity, [new NestedEffect { Proto = WerewolfSkills }], predicted: false); // :face_holding_back_tears:
+
             return;
         }
     }

@@ -12,6 +12,8 @@ public sealed partial class WerewolfActionComponent : Component
     [DataField]
     public bool RequireTransfurmed = false;
 
+    [DataField]
+    public bool OneTimeUse;
 
     [DataField]
     public LocId NotTransfurmedPopup = "werewolf-action-fail-transfurmed";

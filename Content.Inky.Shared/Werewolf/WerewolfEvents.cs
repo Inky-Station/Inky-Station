@@ -105,3 +105,8 @@ public sealed partial class WerewolfRevelationEvent : InstantActionEvent;
 public readonly record struct WerewolfInfectionFinishedEvent(EntityUid Entity);
 public sealed partial class WerewolfBeckonEvent : InstantActionEvent;
 public sealed partial class EventWerewolfBequeath : EntityTargetActionEvent {}
+public sealed class WerewolfActionRemoveEvent : EntityEventArgs
+{
+    public readonly EntityUid ActionEnt;
+    public WerewolfActionRemoveEvent(EntityUid actionEnt) => ActionEnt = actionEnt;
+}

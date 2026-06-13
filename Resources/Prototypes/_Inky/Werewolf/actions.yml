@@ -304,3 +304,4 @@
   - type: WerewolfAction
     hungerCost: 0
     requireTransfurmed: true
+    oneTimeUse: true

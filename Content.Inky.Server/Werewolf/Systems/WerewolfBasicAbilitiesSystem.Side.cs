@@ -30,12 +30,6 @@ public sealed partial class WerewolfBasicAbilitiesSystem
     # region devour
     private void TryDevour(EntityUid uid, WerewolfBasicAbilitiesComponent component, EventWerewolfDevour args)
     {
-        if (component.Transfurmed != true)
-        {
-            _popup.PopupPredictedCursor(Loc.GetString("werewolf-action-fail-transfurmed"), uid);
-            return;
-        }
-
         var target = args.Target;
 
         if (HasComp<WerewolfBitComponent>(target))
@@ -46,6 +40,12 @@ public sealed partial class WerewolfBasicAbilitiesSystem
         if (!HasComp<AbsorbableComponent>(target)) // i mean... it works? also less wizden files changes
         {
             _popup.PopupPredicted(Loc.GetString("changeling-absorb-fail-unabsorbable"), uid, uid);
+            return;
+        }
+
+        if (HasComp<WerewolfBasicAbilitiesComponent>(target))
+        {
+            _popup.PopupPredicted(Loc.GetString("werewolf-devour-fail-werewolf"), uid, uid); // no to eating each other
             return;
         }
 

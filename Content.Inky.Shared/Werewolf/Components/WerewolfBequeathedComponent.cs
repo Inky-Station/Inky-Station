@@ -1,3 +1,6 @@
+using Content.Shared.Store;
+using Robust.Shared.Prototypes;
+
 namespace Content.Inky.Shared.Werewolf.Components;
 
 /// <summary>
@@ -6,5 +9,6 @@ namespace Content.Inky.Shared.Werewolf.Components;
 [RegisterComponent]
 public sealed partial class WerewolfBequeathedComponent : Component
 {
-    [DataField] public EntityUid OriginalLeader;
+    [DataField] public WerewolfMindComponent? OriginalLeader;
+    public readonly ProtoId<StoreCategoryPrototype> Store = new("WerewolfBlack"); // goida
 }

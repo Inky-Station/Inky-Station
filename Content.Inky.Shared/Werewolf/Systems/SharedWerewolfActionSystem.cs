@@ -48,6 +48,10 @@ public sealed class SharedWerewolfActionSystem : EntitySystem
                 return;
             }
         }
+
         _hunger.ModifyHunger(user, -comp.HungerCost);
+
+        if (comp.OneTimeUse)
+            RaiseLocalEvent(user, new WerewolfActionRemoveEvent(ent.Owner));
     }
 }

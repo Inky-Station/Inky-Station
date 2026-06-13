@@ -54,6 +54,12 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
     [Dependency] private IRobustRandom _gambling = default!;
 
     private float _updateTimer = 0f;
+    /*
+     * transfurmevent triggers polymorph shitcode that alters WerewolfBasicAbilitiesComponent
+     * which makes the eqe shit itself and crash the server
+     * so we are collecting ents that need to transform to proccess them after
+     */
+    private List<EntityUid> _transfurmQueue = new();
 
     public override void Initialize()
     {
@@ -65,6 +71,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, ThrowDoHitEvent>(OnHit);
 
         SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfRegen>(TryRegen);
+        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfActionRemoveEvent>(WerewolfActionRemoveEvent);
 
         InitializeDire();
         InitializeWhite();
@@ -81,6 +88,8 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
         var timePassed = _updateTimer;
         _updateTimer = 0f;
 
+        _transfurmQueue.Clear();
+
         var eqe = EntityQueryEnumerator<WerewolfBasicAbilitiesComponent>();
         while (eqe.MoveNext(out var uid, out var comp))
         {
@@ -93,7 +102,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 
             if (mindComp.Accumulator >= mindComp.TransfurmWarnDelay && !mindComp.HasWarned)
             {
-                _popup.PopupEntity(Loc.GetString(mindComp.TransfurmPopup), uid, uid, PopupType.LargeCaution); // todo werewolf predict
+                _popup.PopupEntity(Loc.GetString(mindComp.TransfurmPopup), uid, uid, PopupType.LargeCaution);
                 mindComp.HasWarned = true;
             }
 
@@ -107,12 +116,15 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
             {
                 mindComp.TransfurmReady = false;
                 mindComp.HasWarned = false;
-
-                RaiseLocalEvent(uid, new TransfurmEvent());
+                _transfurmQueue.Add(uid);
             }
         }
+
+        foreach (var uid in _transfurmQueue)
+            RaiseLocalEvent(uid, new TransfurmEvent());
+
         UpdateMark(timePassed);
-        UpdateBlack(timePassed);
+        UpdateBlack(timePassed); // if there would ever be an infection cure for this, use same shit as _transfurmQueue because it'll probably make eqe shit itself too
     }
 
     private const string DogTag = "VulpEmotes";
@@ -262,6 +274,27 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
                     comp.ActionEntities[actionId] = actionEnt.Value;
             }
         }
+    }
+
+    private void WerewolfActionRemoveEvent(EntityUid uid, WerewolfBasicAbilitiesComponent comp, WerewolfActionRemoveEvent args)
+    {
+        string? protoId = null;
+        foreach (var (id, ent) in comp.ActionEntities)
+        {
+            if (ent != args.ActionEnt)
+                continue;
+            protoId = id;
+            break;
+        }
+
+        if (protoId == null)
+            return;
+
+        if (_mind.TryGetMind(uid, out var mindId, out _)
+            && TryComp<WerewolfMindComponent>(mindId, out var mindComp))
+            mindComp.UnlockedActions.Remove(protoId);
+
+        SyncActions(uid, comp);
     }
     #endregion
 

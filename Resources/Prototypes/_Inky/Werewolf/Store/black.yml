@@ -51,7 +51,7 @@
   description: werewolf-store-lunar-black-desc
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
-    state: beckon # there isnt a sprite for it lmao
+    state: lunar-black
   productEvent: !type:WerewolfAddCollectivemind
     popup: werewolf-black-lunar-popup
   raiseProductEventOnUser: true
@@ -95,6 +95,30 @@
     - WerewolfWhite
 
 - type: listing
+  id: WerewolfBlackBequeath
+  name: werewolf-store-black-bequeath-name
+  description: werewolf-store-bequeath-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: bequeath
+  productEvent: !type:EventWerewolfUpgradeAbility
+    newActionId: ActionWerewolfBequeath
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlack
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+
+- type: listing
   id: WerewolfBlackBeckon
   name: werewolf-store-black-beckon-name
   description: werewolf-store-beckon-desc
@@ -124,7 +148,7 @@
   description: werewolf-store-lunar-black-desc
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
-    state: beckon
+    state: lunar-black
   productEvent: !type:WerewolfAddCollectivemind
     popup: werewolf-black-lunar-popup
   raiseProductEventOnUser: true
