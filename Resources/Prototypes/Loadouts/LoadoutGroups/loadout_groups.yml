@@ -1354,6 +1354,7 @@
   - JackBoots
   - CombatBoots # Goobstation
   - SecurityWinterBoots
+  - LoadoutClothingShoesElysiumShoes #inky, ts shoooould only appear in the det loadout now idk
 
 - type: loadoutGroup
   id: SecurityPDA
@@ -1405,7 +1406,6 @@
   - DetectiveCoat
   - DetectiveCoatGrey
   - LoadoutClothingOuterCoatDiscoBlazer
-  - LoadoutClothingShoesElysiumShoes #inky, so the shoes appear with it? this is mostly a test idk
   - SecurityOfficerWintercoat
 
 - type: loadoutGroup
