@@ -103,7 +103,7 @@ public static class ServerPackaging
                 ArgumentList =
                 {
                     "build",
-                    Path.Combine("Content.Inky.Server", "Content.Inky.Server.csproj"), // Trauma - Trauma.Server depends on everything // inky edit - fix client crash?
+                    Path.Combine("Content.Trauma.Server", "Content.Trauma.Server.csproj"), // Trauma - Trauma.Server depends on everything
                     "-c", configuration,
                     "--nologo",
                     "/v:m",
