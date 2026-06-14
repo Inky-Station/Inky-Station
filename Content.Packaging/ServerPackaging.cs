@@ -104,6 +104,7 @@ public static class ServerPackaging
                 {
                     "build",
                     Path.Combine("Content.Trauma.Server", "Content.Trauma.Server.csproj"), // Trauma - Trauma.Server depends on everything
+                    Path.Combine("Content.Inky.Server", "Content.Inky.Server.csproj"), // inky - OH MY GODDDDDDDDDD
                     "-c", configuration,
                     "--nologo",
                     "/v:m",
