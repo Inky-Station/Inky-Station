@@ -1,6 +1,6 @@
 # Syndicate
 
-#- type: selectableSet
+# - type: selectableSet
 #  id: SyndicateLawyerSet
 #  name: selectable-set-syndicate-lawyer-name
 #  description: selectable-set-syndicate-lawyer-description
@@ -100,7 +100,7 @@
   - ClothingShoesBootsWork
   - EncryptionKeySyndie
 
-#- type: selectableSet
+# - type: selectableSet
 #  id: SyndicateDoorKickerSet
 #  name: selectable-set-syndicate-door-kicker-name
 #  description: selectable-set-syndicate-door-kicker-description

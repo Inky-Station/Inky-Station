@@ -284,8 +284,8 @@
     - DehydratedHolocarp # 5
     - ClothingOuterHardsuitCarp
     - FireExtinguisher
-
-#- type: selectableSet         #holocigs are dead in trauma pmo
+ 
+# - type: selectableSet         #holocigs are dead in trauma pmo
 #  id: SyndicateWesternSet
 #  name: selectable-set-syndicate-western-name
 #  description: selectable-set-syndicate-western-description
