@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingMaskPullableBase, BaseClothingViewconeSmall] # Trauma
+  parent: [ClothingMaskPullableBase] # Trauma # inky edit removed BaseClothingViewconeSmall
   id: ClothingMaskGas
   name: gas mask
   description: A face-covering mask that can be connected to an air supply.
@@ -967,7 +967,7 @@
     - IPCMaskWearable # EE - IPCs
 
 - type: entity
-  parent: [ClothingMaskBase, BaseClothingViewconeSmall]
+  parent: [ClothingMaskBase] # inky edit removed BaseClothingViewconeSmall
   id: ClothingMaskWeldingGas
   name: welding gas mask
   description: A gas mask with built in welding goggles and face shield. Looks like a skull, clearly designed by a nerd.

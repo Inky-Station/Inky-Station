@@ -56,7 +56,7 @@
         Heat: 0.85
 
 - type: entity
-  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
+  parent: [ ClothingUniformBase ]
   id: ClothingUniformJumpsuitOliveDrabs
   name: olive drabs
   description: Standard-issue military uniform in a plain olive pattern. Lacks a good camo index.
@@ -69,7 +69,7 @@
     foldedEquippedPrefix: naked
 
 - type: entity
-  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
+  parent: [ ClothingUniformBase ]
   id: ClothingUniformJumpsuitTigerStripes
   name: tiger stripes
   description: A military uniform used in special covert operations. Boons a good camo index.

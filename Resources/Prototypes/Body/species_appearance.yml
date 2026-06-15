@@ -39,9 +39,9 @@
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]
-    - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]
+    - map: [ "belt" ] #inky - belts over outerwear. was a goobchange that was skipped on trauma.
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "suitstorage" ]

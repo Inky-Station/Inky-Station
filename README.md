@@ -6,7 +6,7 @@ If you want to host or create content for SS14, go to the [Space Station 14 repo
 
 ## Links
 
-no discord server sadly right now | [Devbus Discord Server](https://discord.gg/f3rJaCuK) | [SS14 Forums](https://forum.spacestation14.com/) | [SS14 Website](https://spacestation14.com/)
+[Inky Station Discord Server](https://discord.gg/Tmjfu6Mt9p) | [Devbus Discord Server](https://discord.gg/f3rJaCuK) | [SS14 Forums](https://forum.spacestation14.com/) | [SS14 Website](https://spacestation14.com/)
 
 ## Documentation/Wiki
 

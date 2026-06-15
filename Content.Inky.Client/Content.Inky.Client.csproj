@@ -11,11 +11,9 @@
   </PropertyGroup>
   <Import Project="../MSBuild/Content.props" />
   <ItemGroup>
-    <ProjectReference Include="../Content.Goobstation.Client/Content.Goobstation.Client.csproj" />
+    <ProjectReference Include="../Content.Inky.Shared/Content.Inky.Shared.csproj" />
     <ProjectReference Include="../Content.Trauma.Client/Content.Trauma.Client.csproj" />
-    <ProjectReference Include="../Content.Lavaland.Client/Content.Lavaland.Client.csproj" />
-    <ProjectReference Include="../Content.Medical.Client/Content.Medical.Client.csproj" />
-    <ProjectReference Include="..\Content.Inky.Shared\Content.Inky.Shared.csproj" />
+    <ProjectReference Include="../Content.Client/Content.Client.csproj" />
   </ItemGroup>
 
   <Import Project="../RobustToolbox/Imports/Client.props" />

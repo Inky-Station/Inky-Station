@@ -28,9 +28,9 @@
   description: A loose worn durathread shirt with a grey pants, its resilient fibres provide some protection to the wearer.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/durathread_jumpsuit.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Civilian/durathread_jumpsuit.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/durathread_jumpsuit.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Civilian/durathread_jumpsuit.rsi
   - type: Armor
     coverage:
     - Torso
@@ -50,9 +50,9 @@
   description: Lets not play too rough. Neither you nor I can reach it just yet…
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/breverb.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Syndicate/breverb.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/breverb.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Syndicate/breverb.rsi
 
 - type: entity
   parent: [ClothingUniformJumpsuitResonant, BaseMajorContraband]
@@ -79,9 +79,9 @@
   description: A black suit worn by officials.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/nanotrasen_representative.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/nanotrasen_representative.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/nanotrasen_representative.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/nanotrasen_representative.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -90,9 +90,9 @@
   description: A fancy black suit worn by officials, embellished with more golden threads than Normal.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/fancy_nanotrasen_representative.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/fancy_nanotrasen_representative.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/fancy_nanotrasen_representative.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/fancy_nanotrasen_representative.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -101,9 +101,9 @@
   description: Short sleeves, short temper.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualsyndicate.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualsyndicate.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualsyndicate.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualsyndicate.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -112,9 +112,9 @@
   description: Paperwork's tough.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualcentcom.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualcentcom.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualcentcom.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualcentcom.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -123,9 +123,9 @@
   description: Wait, where's my PDA?.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualcommand.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualcommand.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualcommand.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualcommand.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -134,9 +134,9 @@
   description: Sparks? Fiberglass? What about 'em?
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualengineer.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualengineer.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualengineer.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualengineer.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -145,9 +145,9 @@
   description: Enemy of dogs everywhere.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/mailman.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Cargo/mailman.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/mailman.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Cargo/mailman.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -156,9 +156,9 @@
   description: Hunt down the Freeman.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/hecu.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/hecu.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/hecu.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/hecu.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCentcommContraband]
@@ -167,9 +167,9 @@
   description: A suit worn by high-ranking Central Command members. The rest is classified.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/navy_gold.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/navy_gold.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/navy_gold.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/navy_gold.rsi
   - type: Armor
     coverage:
     - Torso
@@ -191,9 +191,9 @@
   description: A suit worn by high-ranking spec ops officers. The rest is classified.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/specialoperations.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/specialoperations.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/specialoperations.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/specialoperations.rsi
   - type: Armor
     coverage:
     - Torso
@@ -215,9 +215,9 @@
   description: A suit worn by diplomacy focused Central Command workers.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/diplomat.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/diplomat.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/diplomat.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/diplomat.rsi
   - type: Armor
     coverage:
     - Torso
@@ -269,9 +269,9 @@
   description: Only someone who would try to run away with Earth's deadliest bioweapon would want to wear this.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/mercer.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Civilian/mercer.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/mercer.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Civilian/mercer.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -280,9 +280,9 @@
   description: The head of security's custom-commissioned summer outfit, for when chasing tiders gets hot.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_hos.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_hos.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_hos.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_hos.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -291,9 +291,9 @@
   description: The research director's custom-commissioned summer outfit, for when those fire anomalies are making you sweat.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_rd.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_rd.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_rd.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_rd.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -302,9 +302,9 @@
   description: The quartermaster's custom-commissioned summer outfit, for when you want to show off your cash to the other departments.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_qm.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_qm.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_qm.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_qm.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -313,9 +313,9 @@
   description: The captain's custom-commissioned summer outfit, for when you've been in the green for a while.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_captain.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_captain.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_captain.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_captain.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -324,9 +324,9 @@
   description: The head of personnel's custom-commissioned summer outfit, for when you want to comfortably do paperwork.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_hop.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_hop.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_hop.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_hop.rsi
 
 - type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
@@ -335,9 +335,9 @@
   description: The chief engineer's custom-commissioned summer outfit, for when you just want to lay down and look at the tesla.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_ce.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_ce.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/casualshirt_ce.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Casual/casualshirt_ce.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -346,9 +346,9 @@
   description: A quarterzip for the sophisticated assistant.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/passenger_quarterzip.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Civilian/passenger_quarterzip.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/passenger_quarterzip.rsi
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Civilian/passenger_quarterzip.rsi
 
 - type: entity
   parent: ClothingUniformJumpsuitAncient
@@ -356,3 +356,95 @@
   suffix: Unremoveable
   components:
   - type: Unremoveable
+# Cargo
+
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  id: ClothingUniformJumpsuitShaftMiner
+  name: shaft miner's jumpsuit
+  description: It's a snappy jumpsuit, looks a bit burnt.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Cargo/shaft_miner.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Cargo/shaft_miner.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformOverallsCargo
+  name: cargo tech's overalls
+  description: It's a sturdy set of overalls. It's a bit dusty.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Uniforms/Other/Overalls/Cargo/cargotech.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Uniforms/Other/Overalls/Cargo/cargotech.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformOverallsSalvageSpecialist
+  name: salvage specialist's overalls
+  description: It's a sturdy set of overalls. It's very dirty.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Uniforms/Other/Overalls/Cargo/salvage.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Uniforms/Other/Overalls/Cargo/salvage.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformOverallsShaftMiner
+  name: shaft miner's overalls
+  description: It's a sturdy set of overalls, looks a bit burnt.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Uniforms/Other/Overalls/Cargo/shaft_miner.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Uniforms/Other/Overalls/Cargo/shaft_miner.rsi
+
+# RND
+
+- type: entity
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitResearchDirectorAlt
+  name: research director's turtleneck
+  description: It's a turtleneck worn by those with the know-how to achieve the position of Research Director. Its fabric provides minor protection from biological contaminants.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/RND/rndturtle.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/RND/rndturtle.rsi
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#620b73"
+        sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/color/color.rsi
+      right:
+      - state: inhand-right
+        color: "#620b73"
+        sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/color/color.rsi
+
+#senior sec
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitVeteranSecurity
+  name: Airy Security Jumpsuit
+  description: An airy version of the standard security jumpsuit, normally given on shifts with a lacking atmos department
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Security/security_black.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Security/security_black.rsi
+
+# Golden liaison jumpsuit
+- type: entity
+  parent: [ ClothingUniformBase, BaseCentcommContraband ]
+  id: ClothingUniformJumpsuitGoldenLiaison
+  name: Golden Liaison CentCom Jumpsuit
+  description: A finely-tailored white-and-gold uniform worn by senior officials of Central Command.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/golden_liaison.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Centcom/golden_liaison.rsi

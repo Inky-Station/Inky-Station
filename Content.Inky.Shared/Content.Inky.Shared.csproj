@@ -8,7 +8,7 @@
   <Import Project="../MSBuild/Content.props" />
 
   <ItemGroup>
-    <ProjectReference Include="../Content.Goobstation.Shared/Content.Goobstation.Shared.csproj" />
+    <ProjectReference Include="../Content.Trauma.Shared/Content.Trauma.Shared.csproj" />
     <ProjectReference Include="../Content.Shared/Content.Shared.csproj" />
   </ItemGroup>
 
