@@ -1,30 +1,30 @@
 # Syndicate
 
-- type: selectableSet
-  id: SyndicateLawyerSet
-  name: selectable-set-syndicate-lawyer-name
-  description: selectable-set-syndicate-lawyer-description
-  sprite:
-    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
-    state: icon
-  content:
-  - ClothingUniformJumpsuitLawyerRed
-  - ClothingNeckLawyerbadge
-  - LawyerPDA
-  - ClothingEyesGlassesHiddenSecurity
-  - ClothingHeadsetChameleon
-  - ClothingBackpackChameleon
-  - EncryptionKeySyndie
-  - BookSpaceLaw
-  - CyberPen
-  - RubberStampLawyer
-  - RubberStampSyndicate
-  - CaneSheathFilled
-  - DnaScramblerImplanter
-  - WeaponSubMachineGunBriefcase
-  - MagazinePistolSubMachineGun # 1
-  - MagazinePistolSubMachineGun # 2
-  - MagazinePistolSubMachineGun # 3
+#- type: selectableSet
+#  id: SyndicateLawyerSet
+#  name: selectable-set-syndicate-lawyer-name
+#  description: selectable-set-syndicate-lawyer-description
+#  sprite:
+#    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+#    state: icon
+#  content:
+#  - ClothingUniformJumpsuitLawyerRed
+#  - ClothingNeckLawyerbadge
+#  - LawyerPDA
+#  - ClothingEyesGlassesHiddenSecurity
+#  - ClothingHeadsetChameleon
+#  - ClothingBackpackChameleon
+#  - EncryptionKeySyndie
+#  - BookSpaceLaw
+#  - CyberPen
+#  - RubberStampLawyer
+#  - RubberStampSyndicate
+#  - CaneSheathFilled
+#  - DnaScramblerImplanter
+#  - WeaponSubMachineGunBriefcase
+#  - MagazinePistolSubMachineGun # 1
+#  - MagazinePistolSubMachineGun # 2
+#  - MagazinePistolSubMachineGun # 3
 
 - type: selectableSet
   id: SyndicateNoRussianSet
@@ -39,8 +39,11 @@
   - ClothingEyesGlassesHiddenSecurity
   - EncryptionKeySyndie
   - WeaponLightMachineGunL6
-  - MagazineLightRifleBox
-
+  - MagazineLightRifleBox # 1
+  - MagazineLightRifleBox # 2
+  - MagazineLightRifleBox # 3
+  - MagazineLightRifleBox # 4 /inky   
+  
 - type: selectableSet
   id: SyndicatePirateCaptainSet
   name: selectable-set-syndicate-pirate-captain-name
@@ -97,28 +100,28 @@
   - ClothingShoesBootsWork
   - EncryptionKeySyndie
 
-- type: selectableSet
-  id: SyndicateDoorKickerSet
-  name: selectable-set-syndicate-door-kicker-name
-  description: selectable-set-syndicate-door-kicker-description
-  sprite:
-    sprite: _Goobstation/Objects/Weapons/Guns/Lever/combatshotgun.rsi
-    state: icon
-  content:
-  - ClothingUniformJumpsuitOperative
-  - ClothingBeltMilitaryWebbing
-  - ClothingHeadHelmetSwatSyndicate
-  - ClothingOuterVestWeb
-  - ClothingEyesThermalVisionGogglesSyndie
-  - ClothingHandsGlovesCombat
-  - SyndiOperativePDA
-  - SyndicateJawsOfLife
-  - WeaponShotgunCombat
-  - MagazineBoxShotgunHighCaliber
-  - ClothingMaskGasSyndicate
-  - EncryptionKeySyndie
-  - C4 # 1
-  - C4 # 2
+#- type: selectableSet
+#  id: SyndicateDoorKickerSet
+#  name: selectable-set-syndicate-door-kicker-name
+#  description: selectable-set-syndicate-door-kicker-description
+#  sprite:
+#    sprite: _Goobstation/Objects/Weapons/Guns/Lever/combatshotgun.rsi
+#    state: icon
+#  content:
+#  - ClothingUniformJumpsuitOperative
+#  - ClothingBeltMilitaryWebbing
+#  - ClothingHeadHelmetSwatSyndicate
+#  - ClothingOuterVestWeb
+#  - ClothingEyesThermalVisionGogglesSyndie
+#  - ClothingHandsGlovesCombat
+#  - SyndiOperativePDA
+#  - SyndicateJawsOfLife
+#  - WeaponShotgunCombat
+#  - MagazineBoxShotgunHighCaliber
+#  - ClothingMaskGasSyndicate
+#  - EncryptionKeySyndie
+#  - C4 # 1
+#  - C4 # 2
   
 # Fugitives
 
