@@ -4,10 +4,12 @@
   equipment:
     head: ClothingHeadHatFedoraBrown
 
+
 - type: loadout
   id: DetectiveFedoraGrey
   equipment:
     head: ClothingHeadHatFedoraGrey
+
 
 # Neck
 - type: loadout
@@ -21,20 +23,24 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitDetective
 
+
 - type: loadout
   id: DetectiveJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtDetective
+
 
 - type: loadout
   id: NoirJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitDetectiveGrey
 
+
 - type: loadout
   id: NoirJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtDetectiveGrey
+
 
 # OuterClothing
 - type: loadout
@@ -52,7 +58,7 @@
   equipment:
     outerClothing: ClothingOuterCoatDetectiveLoadoutGrey
 
-# === LARP OUTFIT AND YOU KNOW THE THING ===
+# === LARP OUTFIT AND YOU KNOW THE THING === # inky start
 - type: loadout
   id: LoadoutClothingOuterCoatDiscoBlazer
   equipment:
@@ -96,3 +102,4 @@
       !type:DepartmentTimeRequirement
       department: Security
       time: 90000
+# /inky
