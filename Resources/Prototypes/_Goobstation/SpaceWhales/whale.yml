@@ -290,7 +290,7 @@
       visible: true
 
 - type: entity
-  parent: MaterialBase
+  parent: BaseItem
   id: MaterialLeviathanScale
   name: leviathan scale plates
   description: Shards shed from a space leviathan, exceptionally rare. Favored by salvagers, and by megacorpos for luxury goods stitched from endangered starlife.
@@ -302,9 +302,10 @@
     - state: scale
       map: [ "base" ]
   - type: StackPrice
-    price: 15000
+    price: 4000
   - type: Appearance
   - type: Stack
+    count: 5
     stackType: Leviathan
     baseLayer: base
     layerStates:

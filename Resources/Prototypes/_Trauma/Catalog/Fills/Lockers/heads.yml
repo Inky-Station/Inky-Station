@@ -14,7 +14,7 @@
     - id: CommandMegaphone
     - id: ReinforcementCallerHoP
     - id: ArmoryOverrideKeyComponents
-    - id: BoxSkillChipsService
+#    - id: BoxSkillChipsService  # inky edit - kill chips
 
 - type: entityTable
   id: LockerFillChiefEngineerTrauma
