@@ -298,10 +298,9 @@
   - type: EntityTargetAction
     whitelist:
       components:
-      - WerewolfBasicAbilities
+      - WerewolfAbilities
     canTargetSelf: false
     event: !type:EventWerewolfBequeath {}
   - type: WerewolfAction
     hungerCost: 0
     requireTransfurmed: true
-    oneTimeUse: true

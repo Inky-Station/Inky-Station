@@ -18,17 +18,17 @@ namespace Content.Inky.Server.Werewolf.Systems;
 /// <summary>
 /// Handles side abilities and helpers for the werewolf
 /// </summary>
-public sealed partial class WerewolfBasicAbilitiesSystem
+public sealed partial class WerewolfAbilitiesSystem
 {
     public void InitializeWerewolfSide()
     {
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfDevour>(TryDevour);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfDevourDoAfterEvent>(DoDevour);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfGut>(TryGut);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfGutDoAfterEvent>(DoGut);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfDevour>(TryDevour);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfDevourDoAfterEvent>(DoDevour);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfGut>(TryGut);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfGutDoAfterEvent>(DoGut);
     }
     # region devour
-    private void TryDevour(EntityUid uid, WerewolfBasicAbilitiesComponent component, EventWerewolfDevour args)
+    private void TryDevour(EntityUid uid, WerewolfAbilitiesComponent component, EventWerewolfDevour args)
     {
         var target = args.Target;
 
@@ -43,7 +43,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem
             return;
         }
 
-        if (HasComp<WerewolfBasicAbilitiesComponent>(target))
+        if (HasComp<WerewolfAbilitiesComponent>(target))
         {
             _popup.PopupPredicted(Loc.GetString("werewolf-devour-fail-werewolf"), uid, uid); // no to eating each other
             return;
@@ -66,7 +66,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem
     }
 
     public ProtoId<DamageGroupPrototype> DevourDamage = "Brute"; // bro
-    private void DoDevour(EntityUid uid, WerewolfBasicAbilitiesComponent comp, WerewolfDevourDoAfterEvent args)
+    private void DoDevour(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfDevourDoAfterEvent args)
     {
         if (args.Args.Target == null)
             return;
@@ -96,7 +96,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem
         _audio.PlayPvs(comp.RipSound, uid);
     }
 
-    private void TryGut(EntityUid uid, WerewolfBasicAbilitiesComponent comp, EventWerewolfGut args)
+    private void TryGut(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfGut args)
     {
         var target = args.Target;
 
@@ -132,7 +132,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem
 
     #endregion
     #region helpers
-    private void DoGut(EntityUid uid, WerewolfBasicAbilitiesComponent comp, WerewolfGutDoAfterEvent args)
+    private void DoGut(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfGutDoAfterEvent args)
     {
         if (args.Args.Target == null)
             return;

@@ -29,7 +29,7 @@ using Robust.Shared.Random;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
 
-public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
+public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
 {
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedMindSystem _mind = default!;
@@ -55,7 +55,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 
     private float _updateTimer = 0f;
     /*
-     * transfurmevent triggers polymorph shitcode that alters WerewolfBasicAbilitiesComponent
+     * transfurmevent triggers polymorph shitcode that alters WerewolfAbilitiesComponent
      * which makes the eqe shit itself and crash the server
      * so we are collecting ents that need to transform to proccess them after
      */
@@ -63,15 +63,15 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, HowlEvent>(DoHowl);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfUpgradeAbility>(OnUpgradeAbility);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, HowlEvent>(DoHowl);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfUpgradeAbility>(OnUpgradeAbility);
 
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfAmbushActionEvent>(OnAmbush);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, ThrowDoHitEvent>(OnHit);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfAmbushActionEvent>(OnAmbush);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, ThrowDoHitEvent>(OnHit);
 
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfRegen>(TryRegen);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfActionRemoveEvent>(WerewolfActionRemoveEvent);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfRegen>(TryRegen);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfActionRemoveEvent>(WerewolfActionRemoveEvent);
 
         InitializeDire();
         InitializeWhite();
@@ -90,7 +90,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 
         _transfurmQueue.Clear();
 
-        var eqe = EntityQueryEnumerator<WerewolfBasicAbilitiesComponent>();
+        var eqe = EntityQueryEnumerator<WerewolfAbilitiesComponent>();
         while (eqe.MoveNext(out var uid, out var comp))
         {
             if (!_mind.TryGetMind(uid, out var mindId, out _)
@@ -128,7 +128,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
     }
 
     private const string DogTag = "VulpEmotes";
-    public void OnStartup(EntityUid uid, WerewolfBasicAbilitiesComponent comp, ref ComponentStartup args)
+    public void OnStartup(EntityUid uid, WerewolfAbilitiesComponent comp, ref ComponentStartup args)
     {
         if (_tag.HasTag(uid, DogTag))
         {
@@ -139,7 +139,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
     }
 
     # region action handlers
-    private void DoHowl(EntityUid uid, WerewolfBasicAbilitiesComponent comp, ref HowlEvent args) //kill me for copying changeling system please
+    private void DoHowl(EntityUid uid, WerewolfAbilitiesComponent comp, ref HowlEvent args) //kill me for copying changeling system please
     {
         _audio.PlayPredicted(comp.ShriekSound, uid, uid);
 
@@ -180,7 +180,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
 
             foreach (var wolf in _entityLookup.GetEntitiesInRange(uid, args.ShriekPower))
             {
-                if (!HasComp<WerewolfBasicAbilitiesComponent>(wolf))
+                if (!HasComp<WerewolfAbilitiesComponent>(wolf))
                     continue;
 
                 if (pack != null && !pack.Contains(wolf)) // oughhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
@@ -196,7 +196,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
         // _audio.PlayGlobal(comp.DistantSound, uid); // when you howl, everyone on the station hears a quiet distant howl, which breaks the metashield for the chaplain, "allegedly" todo uncomment when better sound is found
         args.Handled = true;
     }
-    private void OnAmbush(EntityUid uid, WerewolfBasicAbilitiesComponent comp, WerewolfAmbushActionEvent args) // partially taken from xenos jump
+    private void OnAmbush(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfAmbushActionEvent args) // partially taken from xenos jump
     {
         if (args.Handled
             || _container.IsEntityInContainer(uid))
@@ -207,7 +207,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnHit(EntityUid uid, WerewolfBasicAbilitiesComponent comp, ThrowDoHitEvent args)
+    private void OnHit(EntityUid uid, WerewolfAbilitiesComponent comp, ThrowDoHitEvent args)
     {
         // if (args.Handled)
         //     return;
@@ -227,7 +227,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
     /// <summary>
     /// Deletes and replaces the args.OldActionId with the args.NewActionId, also adding it to the mind
     /// </summary>
-    private void OnUpgradeAbility(EntityUid uid, WerewolfBasicAbilitiesComponent comp, EventWerewolfUpgradeAbility args)
+    private void OnUpgradeAbility(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfUpgradeAbility args)
     {
         if (!_mind.TryGetMind(uid, out var mindId, out _)
             || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
@@ -246,7 +246,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
     }
 
     // used for polymorph ent recieving actions from the mind
-    public void SyncActions(EntityUid uid, WerewolfBasicAbilitiesComponent comp) // todo the SERVER gives out an error when you polymorph, tries to remove shit that isnt there, fix before merg Attempted to remove an action Howl (9413/n9413, ActionWerewolfHowl) from an entity that it was never attached to: wolf
+    public void SyncActions(EntityUid uid, WerewolfAbilitiesComponent comp) // todo the SERVER gives out an error when you polymorph, tries to remove shit that isnt there, fix before merg Attempted to remove an action Howl (9413/n9413, ActionWerewolfHowl) from an entity that it was never attached to: wolf
     {
         // foreach (var actionEnt in comp.ActionEntities.Values)
         //     if (TryComp<ActionComponent>(actionEnt, out var actComp) && actComp.AttachedEntity == uid) // dont remove stuff from the wolf if it doesnt exist
@@ -276,7 +276,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
         }
     }
 
-    private void WerewolfActionRemoveEvent(EntityUid uid, WerewolfBasicAbilitiesComponent comp, WerewolfActionRemoveEvent args)
+    private void WerewolfActionRemoveEvent(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfActionRemoveEvent args)
     {
         string? protoId = null;
         foreach (var (id, ent) in comp.ActionEntities)
@@ -311,7 +311,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem : EntitySystem
         return _solution.TryAddSolution(targetSolution.Value, solution);
     }
 
-    private void TryRegen(EntityUid uid, WerewolfBasicAbilitiesComponent comp, EventWerewolfRegen args)
+    private void TryRegen(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfRegen args)
     {
         var reagents = new Dictionary<string, FixedPoint2> // i hate fixedpoint bru // todo werewolf unhardcode, put into a comp idk
         {

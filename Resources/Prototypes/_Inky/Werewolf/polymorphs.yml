@@ -11,10 +11,11 @@
     duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg # goida
     componentsToTransfer:
-    - component: WerewolfBasicAbilities
+    - component: WerewolfAbilities
     - component: Store
     - component: CollectiveMind
     - component: WerewolfBit
+    - component: WerewolfInfectionImmune
 
 - type: polymorph
   id: WerewolfTransformWerehuman
@@ -29,10 +30,11 @@
     duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg # goida
     componentsToTransfer:
-    - component: WerewolfBasicAbilities
+    - component: WerewolfAbilities
     - component: Store
     - component: CollectiveMind
     - component: WerewolfBit
+    - component: WerewolfInfectionImmune
 
 - type: polymorph
   id: WerewolfTransformDirewolf
@@ -47,10 +49,11 @@
     duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
     componentsToTransfer:
-    - component: WerewolfBasicAbilities
+    - component: WerewolfAbilities
     - component: Store
     - component: CollectiveMind
     - component: WerewolfBit
+    - component: WerewolfInfectionImmune
 
 - type: polymorph
   id: WerewolfTransformWhite
@@ -65,10 +68,11 @@
     duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
     componentsToTransfer:
-    - component: WerewolfBasicAbilities
+    - component: WerewolfAbilities
     - component: Store
     - component: CollectiveMind
     - component: WerewolfBit
+    - component: WerewolfInfectionImmune
 
 - type: polymorph
   id: WerewolfTransformWhiteClaws # goida
@@ -83,10 +87,11 @@
     duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
     componentsToTransfer:
-    - component: WerewolfBasicAbilities
+    - component: WerewolfAbilities
     - component: Store
     - component: CollectiveMind
     - component: WerewolfBit
+    - component: WerewolfInfectionImmune
 
 - type: polymorph
   id: WerewolfTransformBlack
@@ -101,7 +106,8 @@
     duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
     componentsToTransfer:
-    - component: WerewolfBasicAbilities
+    - component: WerewolfAbilities
     - component: Store
     - component: CollectiveMind
     - component: WerewolfBit
+    - component: WerewolfInfectionImmune

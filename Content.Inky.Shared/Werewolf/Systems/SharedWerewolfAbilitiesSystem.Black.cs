@@ -10,18 +10,18 @@ using Robust.Shared.Random;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
 
-public sealed partial class SharedWerewolfBasicAbilitiesSystem
+public sealed partial class SharedWerewolfAbilitiesSystem
 {
     public void InitializeBlack()
     {
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfBlackBite>(TryBite);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfBlackBiteDoAfterEvent>(DoBite);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfBlackBite>(TryBite);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBlackBiteDoAfterEvent>(DoBite);
 
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfBequeath>(OnBequeath);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, MobStateChangedEvent>(OnLeaderDied);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfBequeath>(OnBequeath);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, MobStateChangedEvent>(OnLeaderDied);
     }
 
-    private void TryBite(EntityUid uid, WerewolfBasicAbilitiesComponent comp, EventWerewolfBlackBite args)
+    private void TryBite(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfBlackBite args)
     {
         if (TryComp<MobStateComponent>(args.Target, out var mobState) && mobState.CurrentState == MobState.Dead)
         {
@@ -36,6 +36,11 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
         if (TryComp<WerewolfInfectionImmuneComponent>(args.Target, out var immune)) // todo werewolf use for chaplain and holy stuff
         {
             _popup.PopupEntity(Loc.GetString("werewolf-bite-fail-immune"), uid, uid, PopupType.Large);
+            return;
+        }
+        if (HasComp<WerewolfAbilitiesComponent>(args.Target))
+        {
+            _popup.PopupPredicted(Loc.GetString("werewolf-devour-fail-werewolf"), uid, uid); // no to eating each other
             return;
         }
 
@@ -53,7 +58,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
         args.Handled = true;
     }
 
-    private void DoBite(EntityUid uid, WerewolfBasicAbilitiesComponent comp, WerewolfBlackBiteDoAfterEvent args)
+    private void DoBite(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBlackBiteDoAfterEvent args)
     {
         if (args.Cancelled || args.Target == null
                            || HasComp<WerewolfBitComponent>(args.Target)
@@ -78,13 +83,26 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
         _audio.PlayPvs(comp.RipSound, uid);
     }
 
-    private void OnBequeath(EntityUid uid, WerewolfBasicAbilitiesComponent comp, EventWerewolfBequeath args)
+    private void OnBequeath(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfBequeath args)
     {
-        if (!_mind.TryGetMind(uid, out var leadMin, out _)
-            || !TryComp<WerewolfMindComponent>(leadMin, out var leadMindComp))
+        if (!_mind.TryGetMind(uid, out var leadMind, out _)
+            || !TryComp<WerewolfMindComponent>(leadMind, out var leadMindComp))
             return;
 
-        if (!leadMindComp.PackMembers.Contains(args.Target))
+        var inPack = leadMindComp.PackMembers.Contains(args.Target);
+        if (!inPack && _mind.TryGetMind(args.Target, out var targetMind, out _))
+        {
+            foreach (var member in leadMindComp.PackMembers)
+            {
+                if (_mind.TryGetMind(member, out var memberMind, out _) && memberMind == targetMind)
+                {
+                    inPack = true;
+                    break;
+                }
+            }
+        }
+
+        if (!inPack)
         {
             _popup.PopupEntity(Loc.GetString("werewolf-bequeath-fail-not-pack"), uid, uid, PopupType.Large);
             return;
@@ -93,14 +111,16 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
         if (!_mind.TryGetMind(args.Target, out var targetMindId, out _))
             return;
 
-        var bequeathed = EnsureComp<WerewolfBequeathedComponent>(targetMindId);
-        bequeathed.OriginalLeader = leadMindComp;
+        var qthead = EnsureComp<WerewolfBequeathedComponent>(targetMindId);
+        qthead.OriginalLeader = leadMindComp;
 
         _popup.PopupEntity(Loc.GetString("werewolf-bequeath-success"), uid, uid, PopupType.Medium);
         args.Handled = true;
+
+        RaiseLocalEvent(uid, new WerewolfActionRemoveEvent(args.Action)); // one time use FUCK THEM PROPER ECS INFRASTRUCTURE NO comp.OneTimeUse
     }
 
-    private void OnLeaderDied(EntityUid uid, WerewolfBasicAbilitiesComponent comp, MobStateChangedEvent args)
+    private void OnLeaderDied(EntityUid uid, WerewolfAbilitiesComponent comp, MobStateChangedEvent args)
     {
         if (args.NewMobState != MobState.Dead)
             return;
@@ -119,7 +139,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
                 || mindComponent.OwnedEntity is not { } quEnt)
                 continue;
 
-            if (!TryComp<WerewolfBasicAbilitiesComponent>(quEnt, out var wComp))
+            if (!TryComp<WerewolfAbilitiesComponent>(quEnt, out var wComp))
                 continue;
 
             wComp.CurrentMutation = "WerewolfTransformBlack";

@@ -28,7 +28,7 @@ public sealed class SharedWerewolfActionSystem : EntitySystem
 
         if (comp.RequireTransfurmed)
         {
-            if (!TryComp<WerewolfBasicAbilitiesComponent>(user, out var wolf) || !wolf.Transfurmed)
+            if (!TryComp<WerewolfAbilitiesComponent>(user, out var wolf) || !wolf.Transfurmed)
             {
                 _popup.PopupClient(Loc.GetString(comp.NotTransfurmedPopup), user, user);
                 args.Cancelled = true;
@@ -50,8 +50,5 @@ public sealed class SharedWerewolfActionSystem : EntitySystem
         }
 
         _hunger.ModifyHunger(user, -comp.HungerCost);
-
-        if (comp.OneTimeUse)
-            RaiseLocalEvent(user, new WerewolfActionRemoveEvent(ent.Owner));
     }
 }

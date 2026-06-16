@@ -27,13 +27,13 @@ using Robust.Shared.Random;
 
 namespace Content.Inky.Server.Werewolf.Systems;
 
-public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
+public sealed partial class WerewolfAbilitiesSystem : EntitySystem
 {
     [Dependency] private PolymorphSystem _polymorph = default!;
     [Dependency] private StoreSystem _store = default!;
     [Dependency] private PopupSystem _popup = default!;
     [Dependency] private MindSystem _mind = default!;
-    [Dependency] private SharedWerewolfBasicAbilitiesSystem _werewolf = default!; // hell.
+    [Dependency] private SharedWerewolfAbilitiesSystem _werewolf = default!; // hell.
     [Dependency] private HungerSystem _hunger = default!;
 
     // holy fuck
@@ -52,10 +52,10 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, TransfurmEvent>(TryTransfurm);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfChangeType>(OnChangeType);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfOpenStore>(OnOpenStore);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, PolymorphedEvent>(OnPolymorphed);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, TransfurmEvent>(TryTransfurm);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfChangeType>(OnChangeType);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfOpenStore>(OnOpenStore);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, PolymorphedEvent>(OnPolymorphed);
 
         InitializeWerewolfSide();
         InitializeBlack();
@@ -63,7 +63,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
 
     # region basic handlers
     private void TryTransfurm(EntityUid uid,
-        WerewolfBasicAbilitiesComponent component,
+        WerewolfAbilitiesComponent component,
         TransfurmEvent args)
     {
         if (!_mind.TryGetMind(uid, out var mindId, out _)
@@ -103,7 +103,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnPolymorphed(EntityUid uid, WerewolfBasicAbilitiesComponent comp, PolymorphedEvent args)
+    private void OnPolymorphed(EntityUid uid, WerewolfAbilitiesComponent comp, PolymorphedEvent args)
     {
         if (!comp.Transfurmed)
         {
@@ -113,14 +113,14 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
                 _hunger.SetHunger(args.NewEntity, _hunger.GetHunger(oldHunger));
             return;
         }
-        _polymorph.CopyPolymorphComponent<WerewolfBasicAbilitiesComponent>(uid, args.NewEntity);
+        _polymorph.CopyPolymorphComponent<WerewolfAbilitiesComponent>(uid, args.NewEntity);
         _polymorph.CopyPolymorphComponent<HungerComponent>(uid, args.NewEntity);
 
         if (TryComp<HungerComponent>(uid, out var oldHungerTakeTwo)) // Transfer hunger value
             _hunger.SetHunger(args.NewEntity, _hunger.GetHunger(oldHungerTakeTwo));
 
-        // _sharedWerewolf.SyncActions(args.NewEntity, Comp<WerewolfBasicAbilitiesComponent>(args.NewEntity)); // todo
-        var werewolf = Comp<WerewolfBasicAbilitiesComponent>(args.NewEntity);
+        // _sharedWerewolf.SyncActions(args.NewEntity, Comp<WerewolfAbilitiesComponent>(args.NewEntity)); // todo
+        var werewolf = Comp<WerewolfAbilitiesComponent>(args.NewEntity);
         // werewolf.ActionEntities.Clear();
         _werewolf.SyncActions(args.NewEntity, werewolf);
 
@@ -128,7 +128,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
         RaiseLocalEvent(ev); // this is a very lazy solution but hey it works
     }
 
-    private void OnOpenStore(Entity<WerewolfBasicAbilitiesComponent> ent, ref EventWerewolfOpenStore args)
+    private void OnOpenStore(Entity<WerewolfAbilitiesComponent> ent, ref EventWerewolfOpenStore args)
     {
         if (!TryComp<StoreComponent>(ent, out var store)
             || ent.Comp.Transfurmed == true)
@@ -150,7 +150,7 @@ public sealed partial class WerewolfBasicAbilitiesSystem : EntitySystem
         ent.Comp.StoreOpened = true;
     }
 
-    private void OnChangeType(EntityUid uid, WerewolfBasicAbilitiesComponent comp, EventWerewolfChangeType args)
+    private void OnChangeType(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfChangeType args)
     {
         comp.CurrentMutation = args.WerewolfType;
         _popup.PopupEntity(Loc.GetString("werewolf-mutation-changed", ("mutation", args.WerewolfType)), uid, uid); // todo locale

@@ -21,7 +21,7 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly SharedRoleSystem _role = default!;
-    [Dependency] private readonly SharedWerewolfBasicAbilitiesSystem _werewolf = default!; // hell.
+    [Dependency] private readonly SharedWerewolfAbilitiesSystem _werewolf = default!; // hell.
     [Dependency] private readonly SharedEntityEffectsSystem _effects = default!;
 
     public readonly SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/_Inky/Antag/Werewolf/werewolf_start.ogg");
@@ -75,7 +75,7 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
         if (_role.MindHasRole<WerewolfRuleComponent>(mindId, out var mr))
                 AddComp(mr.Value, new RoleBriefingComponent { Briefing = briefingShort }, overwrite: true);
 
-        EnsureComp<WerewolfBasicAbilitiesComponent>(target, out var werewolfComp);
+        EnsureComp<WerewolfAbilitiesComponent>(target, out var werewolfComp);
         EnsureComp<WerewolfMindComponent>(mindId, out var werewolfMind);
 
         werewolfMind.UnlockedActions = werewolfComp.WerewolfActions.Select(id => (string)id).ToList(); // add the actions to the werewolf mind (polymorph shitcode)

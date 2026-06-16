@@ -5,15 +5,15 @@ using Robust.Shared.Utility;
 
 namespace Content.Inky.Server.Werewolf.Systems;
 
-public sealed partial class WerewolfBasicAbilitiesSystem
+public sealed partial class WerewolfAbilitiesSystem
 {
     /// <inheritdoc/>
     public void InitializeBlack()
     {
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfBeckonEvent>(OnBeckon);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBeckonEvent>(OnBeckon);
     }
 
-    private void OnBeckon(EntityUid uid, WerewolfBasicAbilitiesComponent comp, WerewolfBeckonEvent args)
+    private void OnBeckon(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBeckonEvent args)
     {
         var locationName = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(uid));
 

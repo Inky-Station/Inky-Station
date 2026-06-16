@@ -6,7 +6,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Inky.Shared.Werewolf.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class WerewolfBasicAbilitiesComponent : Component
+public sealed partial class WerewolfAbilitiesComponent : Component
 {
     [DataField] public SoundSpecifier ShriekSound = new SoundPathSpecifier("/Audio/_Goobstation/Changeling/Effects/changeling_shriek.ogg"); // todo werewolf
     [DataField] public SoundSpecifier DistantSound = new SoundPathSpecifier("/Audio/_Goobstation/Changeling/Effects/changeling_shriek.ogg"); // todo werewolf

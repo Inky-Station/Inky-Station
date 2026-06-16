@@ -3,6 +3,7 @@
   parent:
   - BaseWerewolf
   name: white wolf
+  categories: [ HideSpawnMenu ] # goida
   description: Let's hope you haven't sinned.
   components:
   - type: Sprite

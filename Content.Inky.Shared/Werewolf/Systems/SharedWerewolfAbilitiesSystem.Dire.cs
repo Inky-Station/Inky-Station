@@ -8,21 +8,22 @@ using Content.Shared.Popups;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
 
-public partial class SharedWerewolfBasicAbilitiesSystem
+public partial class SharedWerewolfAbilitiesSystem
 {
     public void InitializeDire()
     {
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, EventWerewolfBleedingBite>(TryBite);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfBleedingBiteDoAfterEvent>(DoBite);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfBleedingBite>(TryBite);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBleedingBiteDoAfterEvent>(DoBite);
     }
 
-    private void TryBite(EntityUid uid, WerewolfBasicAbilitiesComponent component, EventWerewolfBleedingBite args)
+    private void TryBite(EntityUid uid, WerewolfAbilitiesComponent component, EventWerewolfBleedingBite args)
     {
         if (TryComp<MobStateComponent>(args.Target, out var mobState) && mobState.CurrentState == MobState.Dead) // to prevent wolves from biting corpses for heals and whatnot
         {
             _popup.PopupEntity(Loc.GetString("werewolf-bite-fail-state"), uid, uid, PopupType.Large);
             return;
         }
+        // also intentionally no check for WerewolfAbilitiesComponent so you can actually fight other werewolf for health and shit
 
         _popup.PopupEntity(Loc.GetString("werewolf-bite-start", ("user", uid), ("target", args.Target)), uid, uid, PopupType.LargeCaution); // todo locale
 
@@ -38,7 +39,7 @@ public partial class SharedWerewolfBasicAbilitiesSystem
         args.Handled = true;
     }
 
-    private void DoBite(EntityUid uid, WerewolfBasicAbilitiesComponent comp, WerewolfBleedingBiteDoAfterEvent args)
+    private void DoBite(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBleedingBiteDoAfterEvent args)
     {
         if (args.Cancelled || args.Target == null)
             return;

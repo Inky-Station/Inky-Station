@@ -10,18 +10,18 @@ using Content.Trauma.Common.CollectiveMind;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
 
-public sealed partial class SharedWerewolfBasicAbilitiesSystem
+public sealed partial class SharedWerewolfAbilitiesSystem
 {
     private const float MarkNotificationInterval = 15f; // in seconds todo werewolf unhardcode?
     public void InitializeWhite()
     {
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, TransfurmWhiteEvent>(TryTransfurmWhite);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfPositionQueryEvent>(OnPosQuery);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfAddCollectivemind>(OnCollectiveMindBuy);
-        SubscribeLocalEvent<WerewolfBasicAbilitiesComponent, WerewolfRevelationEvent>(OnRevelation);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, TransfurmWhiteEvent>(TryTransfurmWhite);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfPositionQueryEvent>(OnPosQuery);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfAddCollectivemind>(OnCollectiveMindBuy);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfRevelationEvent>(OnRevelation);
     }
 
-    private void TryTransfurmWhite(EntityUid uid, WerewolfBasicAbilitiesComponent comp, TransfurmWhiteEvent args)
+    private void TryTransfurmWhite(EntityUid uid, WerewolfAbilitiesComponent comp, TransfurmWhiteEvent args)
     {
         if (!_mind.TryGetMind(uid, out var mindId, out _)
             || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
@@ -51,7 +51,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
         args.Handled = true;
     }
 
-    private void OnPosQuery(EntityUid uid, WerewolfBasicAbilitiesComponent comp, WerewolfPositionQueryEvent args)
+    private void OnPosQuery(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfPositionQueryEvent args)
     {
         var pos = Transform(uid).MapPosition;
         args.Positions[uid] = pos.Position;
@@ -60,7 +60,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
     /// <summary>
     /// Calculates the closest werewolf to the hunter wolf (the mind)
     /// </summary>
-    private EntityUid? Calc(EntityUid uid, WerewolfBasicAbilitiesComponent comp, TransfurmWhiteEvent args)
+    private EntityUid? Calc(EntityUid uid, WerewolfAbilitiesComponent comp, TransfurmWhiteEvent args)
     {
         var entMapCoords = _transform.GetMapCoordinates(uid);
         EntityUid? closestUid = null;
@@ -110,7 +110,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
 
     public void UpdateMark(float frameTime) // its not frameTime but who cares lmao
     {
-        var eqe = EntityQueryEnumerator<WerewolfBasicAbilitiesComponent>();
+        var eqe = EntityQueryEnumerator<WerewolfAbilitiesComponent>();
         while (eqe.MoveNext(out var uid, out var comp))
         {
             if (!_mind.TryGetMind(uid, out var mindId, out _)
@@ -191,7 +191,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
     }
 
     private void OnCollectiveMindBuy(EntityUid uid,
-        WerewolfBasicAbilitiesComponent comp,
+        WerewolfAbilitiesComponent comp,
         WerewolfAddCollectivemind args)
     {
         EnsureComp<CollectiveMindComponent>(uid, out var m);
@@ -201,7 +201,7 @@ public sealed partial class SharedWerewolfBasicAbilitiesSystem
     }
 
     private void OnRevelation(EntityUid uid,
-        WerewolfBasicAbilitiesComponent comp,
+        WerewolfAbilitiesComponent comp,
         WerewolfRevelationEvent args)
     {
         if (!_mind.TryGetMind(uid, out var mindId, out _)
