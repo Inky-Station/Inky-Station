@@ -1,0 +1,34 @@
+- type: entity
+  parent: [BaseItem, BaseSecurityContraband, ClothingBeltBase]
+  id: PoliceBaton
+  name: police baton
+  description: A wooden truncheon for beating criminal scum.
+  components:
+  - type: Sprite
+    sprite: _Inky/Objects/Weapons/Melee/baton.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Inky/Objects/Weapons/Melee/baton.rsi
+  - type: Item
+    size: Normal
+  - type: MeleeWeapon
+    canWideSwing: false
+    attackRate: 0.8
+    damage:
+      types:
+        Blunt: 12
+    angle: 0
+    animation: WeaponArcThrust
+  - type: UseDelay
+    delays:
+      hit:
+        length: 2
+  - type: UseDelayBlockMelee
+    delays:
+    - hit
+  - type: TelescopicBaton
+  - type: KnockdownOnHit
+    duration: 1.5
+  - type: StaminaDamageOnHit
+    damage: 45
+    sound: /Audio/_Goobstation/Weapons/Baton/woodhit.ogg
