@@ -49,7 +49,7 @@
   - WhiteCane
   - OffsetCane
   - OffsetCaneWood
-  #- JetInjector # Trauma - le quirky syringe
+  - JetInjector # Trauma - le quirky syringe # inky - godo
 
 - type: latheRecipePack
   id: RollerBedsStatic
@@ -103,7 +103,7 @@
   - SyringeBluespace
   #- LauncherSyringe # Trauma - goob syringe gun instead
   #- MiniSyringe # Trauma
-  #- AdvancedJetInjector # Trauma - le quirky syringe
+  - AdvancedJetInjector # Trauma - le quirky syringe # inky - godo
 
 - type: latheRecipePack
   parent:

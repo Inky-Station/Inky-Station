@@ -43,7 +43,7 @@
     ClothingBeltMedicalFilled: 2
     # Shared Essential
     HandheldHealthAnalyzer: 3
-    #JetInjector: 3 # Trauma - le quirky syringe
+    JetInjector: 3 # Trauma - le quirky syringe # inky - godo
     # Paramed Essential Gear
     ClothingBeltMedicalEMTFilled: 1
     EmergencyRollerBedSpawnFolded: 1
@@ -68,7 +68,7 @@
     PillCanisterTricordrazine: 4
     ClothingOuterHospitalGown: 2 # Not a popular item, so less stock
     # <Trauma>
-    MedicalHyposprayFilled: 4
+    # MedicalHyposprayFilled: 4 # inky - kill yourself
     ChemistryEmptyVial: 4
     MedicalPatchPrefilledBicaridine: 3
     MedicalPatchPrefilledDermaline: 3

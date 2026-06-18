@@ -35,7 +35,7 @@
   - type: SolutionContainerManager
     solutions:
       hypospray:
-        maxVol: 50 # Trauma - was 30, buffed capacity to make it better than crew hypospray (30u vials)
+        maxVol: 30 # Trauma - was 30, buffed capacity to make it better than crew hypospray (30u vials) # inky - kys
   - type: RefillableSolution
     solution: hypospray
   - type: UseDelay
@@ -71,7 +71,7 @@
   - type: SolutionContainerManager
     solutions:
       hypospray:
-        maxVol: 40 # Trauma - was 20, buffed to be stronger than crew hypo
+        maxVol: 20 # Trauma - was 20, buffed to be stronger than crew hypo # inky - kys
   - type: SolutionContainerVisuals
     maxFillLevels: 4
     fillBaseName: hypo_fill

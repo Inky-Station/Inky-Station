@@ -5,13 +5,13 @@
   - TraumaCyberneticsStatic
   id: TraumaMedicalStatic
   recipes:
-  - MedicalHyposprayEmpty
+  #- MedicalHyposprayEmpty # inky
   - MedicalCigCarton
 
 - type: latheRecipePack
   id: TraumaCyberneticsStatic
-  recipes:
-  - Hypoport
+  recipes: [] # inky - fuck hypoports
+  # - Hypoport
 
 ## Dynamic
 

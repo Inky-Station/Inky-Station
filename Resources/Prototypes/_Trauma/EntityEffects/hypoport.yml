@@ -39,8 +39,9 @@
       - BorgChassis
     guidebookText: entity-condition-guidebook-hypoport-target
   effects:
-  - !type:NestedEffect
-    proto: InstallHypoport
+  # inky - fuck hypoports
+  #- !type:NestedEffect
+  #  proto: InstallHypoport
   - !type:RemoveComponents
     components:
     - type: NoHypoport # leave no trace

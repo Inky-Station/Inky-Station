@@ -907,7 +907,7 @@
     hands:
     - item: HandheldHealthAnalyzer
     # <Trauma>
-    - item: MedicalHyposprayFilled # hypo replaces chud injector
+    # - item: MedicalHyposprayFilled # hypo replaces chud injector # Inky - no kill yourself
     - item: Syringe # for patients with no hypoport
     - item: ChemistryEmptyVial
       hand:

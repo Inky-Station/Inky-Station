@@ -638,7 +638,7 @@
   icon: { sprite: /Textures/Objects/Misc/pens.rsi, state: pen }
   productEntity: HypopenBox
   cost:
-    Telecrystal: 10 # Trauma - was 30, hypos are a common crew item now so this is purely to look less sus
+    Telecrystal: 30 # Trauma - was 30, hypos are a common crew item now so this is purely to look less sus # inky - kys
   categories:
   - UplinkChemicals
 
@@ -650,7 +650,7 @@
   icon: { sprite: /Textures/Objects/Fun/Darts/dart_red.rsi, state: icon }
   productEntity: HypoDartBox
   cost:
-    Telecrystal: 25 # Trauma - was 5, with hypoports existing this is much stronger
+    Telecrystal: 5 # Trauma - was 5, with hypoports existing this is much stronger # inky - kys
   categories:
   - UplinkChemicals
 

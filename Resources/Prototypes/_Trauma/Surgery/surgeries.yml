@@ -1,44 +1,45 @@
 # Hypoport
 
-- type: entity
-  parent: SurgeryOpenCavityBase
-  id: SurgeryOpenCavityHypoport
-  name: Open hypoport cavity
-  components:
-  - type: Surgery
-    requirement: SurgeryOpenIncision
-    steps:
-    - SurgeryStepRearrangeTissue
-    - SurgeryStepStitchVessels
-    - SurgeryStepOpenOrganSlot
-  - type: SurgeryPartCondition
-    parts: [ Head ]
-  - type: SurgeryOrganSlotCondition
-    organSlot: Hypoport
-
-- type: entity
-  parent: BaseSurgeryInsertOrgan
-  id: SurgeryInsertHypoport
-  name: Install Hypoport
-  components:
-  - type: Surgery
-    steps:
-    - SurgeryStepOpenIncisionScalpel
-    - SurgeryStepClampBleeders
-    - SurgeryStepInsertHypoport
-    - SurgeryStepSealOrganWound
-  - type: SurgeryOrganSlotCondition
-    organSlot: Hypoport
-  - type: SurgeryOrganCondition
-    organ: Hypoport
-
-- type: entity
-  parent: BaseSurgeryRemoveOrgan
-  id: SurgeryRemoveHypoport
-  name: Extract Hypoport
-  components:
-  - type: SurgeryOrganCondition
-    organ: Hypoport
+# Inky - fuck hypoports
+# - type: entity
+#   parent: SurgeryOpenCavityBase
+#   id: SurgeryOpenCavityHypoport
+#   name: Open hypoport cavity
+#   components:
+#   - type: Surgery
+#     requirement: SurgeryOpenIncision
+#     steps:
+#     - SurgeryStepRearrangeTissue
+#     - SurgeryStepStitchVessels
+#     - SurgeryStepOpenOrganSlot
+#   - type: SurgeryPartCondition
+#     parts: [ Head ]
+#   - type: SurgeryOrganSlotCondition
+#     organSlot: Hypoport
+#
+# - type: entity
+#   parent: BaseSurgeryInsertOrgan
+#   id: SurgeryInsertHypoport
+#   name: Install Hypoport
+#   components:
+#   - type: Surgery
+#     steps:
+#     - SurgeryStepOpenIncisionScalpel
+#     - SurgeryStepClampBleeders
+#     - SurgeryStepInsertHypoport
+#     - SurgeryStepSealOrganWound
+#   - type: SurgeryOrganSlotCondition
+#     organSlot: Hypoport
+#   - type: SurgeryOrganCondition
+#     organ: Hypoport
+#
+# - type: entity
+#   parent: BaseSurgeryRemoveOrgan
+#   id: SurgeryRemoveHypoport
+#   name: Extract Hypoport
+#   components:
+#   - type: SurgeryOrganCondition
+#    organ: Hypoport
 
 # Brain Chip
 

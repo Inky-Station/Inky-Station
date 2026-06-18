@@ -201,7 +201,7 @@
   - RightFootCybernetic
   - BasicCyberneticEyes
   - BasicCyberneticLungs
-  - HypoportSecure
+  # - HypoportSecure # inky - fuck hypoports
   position: -6,4
   technologyPrerequisites:
   - BasicAugmentation

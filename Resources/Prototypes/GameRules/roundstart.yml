@@ -169,8 +169,9 @@
     - NukeopsDetonateObjective
   - type: AntagPlayerEffects # Trauma - nukies get nukie-locked hypoports and skillchip
     effects:
-    - !type:NestedEffect
-      proto: InstallHypoportNukie
+    # inky - fuck hypoports
+    #- !type:NestedEffect
+    #  proto: InstallHypoportNukie
     - !type:NestedEffect
       proto: InstallSkillChipNukie
 
