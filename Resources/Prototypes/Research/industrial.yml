@@ -165,7 +165,7 @@
   - RipleyPeripheralsElectronics
   - MechEquipmentGrabber
   # Goobstation R&D Console rework start
-  position: -6,2
+  position: -5,2 # inky
   technologyPrerequisites:
   - BasicRobotics
   # Goobstation R&D Console rework end

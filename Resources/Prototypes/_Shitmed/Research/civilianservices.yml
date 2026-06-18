@@ -12,7 +12,7 @@
   tier: 2
   cost: 10000
   recipeUnlocks:
-  - DefibrillatorCompact
+  #- DefibrillatorCompact # inky
   - EnergyScalpel
   - AdvancedRetractor
   - EnergyCautery
@@ -20,8 +20,8 @@
   - BorgModuleAdvancedSurgery
   - MedicalBiofabMachineBoard
   technologyPrerequisites:
-  - AdvancedEntertainment
-  position: -1,4
+  - RescueTechnology # inky
+  position: -1,5 # inky
 
 - type: technology
   id: Autodoc
@@ -34,7 +34,7 @@
   cost: 10000
   recipeUnlocks:
   - AutodocCircuitboard
-  position: -1,5
+  position: -2,5 # inky
   technologyPrerequisites:
   - AdvancedTreatment
 
@@ -55,4 +55,4 @@
   - OmnimedTool
   technologyPrerequisites:
   - Autodoc
-  position: -1,6
+  position: -3,5 # inky

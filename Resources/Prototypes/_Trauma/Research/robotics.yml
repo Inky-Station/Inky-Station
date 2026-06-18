@@ -16,9 +16,9 @@
   - EDAiCoreElectronics
   - EDIFFElectronics
   - EDWeaponControlsElectronics
-  position: -9,1
+  position: -8,0
   technologyPrerequisites:
-  - Gygax
+  - ExplosiveMechAmmunition # inky
 
 - type: technology
   id: BasicMechEquipment
@@ -32,7 +32,7 @@
   recipeUnlocks:
   - MechEquipmentDrillDiamond
   - MechEquipmentDrill
-  position: -6,3
+  position: -6,2 # inky
   technologyPrerequisites:
   - RipleyAPLU
 
@@ -49,7 +49,7 @@
   - RipleyMKIIHarness
   - RipleyUpgradeKit
   technologyPrerequisites:
-  - RipleyAPLU
+  - BasicMechEquipment # inky
   position: -7,2
 
 - type: technology
@@ -70,8 +70,8 @@
   - ClarkeCentralElectronics
   - ClarkePeripheralsElectronics
   technologyPrerequisites:
-  - Ripley2
-  position: -7,1
+  - BasicMechEquipment # inky
+  position: -6,3 # inky
 
 - type: technology
   id: HONKWeapons
@@ -85,9 +85,9 @@
   recipeUnlocks:
   - MechEquipmentHonkerBananaMortar
   - MechEquipmentHonkerMousetrapMortar
-  position: -7,3
+  position: -7,0 # inky
   technologyPrerequisites:
-  - BasicMechEquipment
+  - HONKMech # inky
 
 - type: technology
   id: Gygax
@@ -111,9 +111,9 @@
   - GygaxTargetingElectronics
   - WeaponMechCombatUltraRifle
   technologyPrerequisites:
-  - RipleyAPLU
+  - Ripley2 # inky
   - PortableMicrofusionWeaponry
-  position: -8,2
+  position: -7,1 # inky
 
 - type: technology
   id: ExplosiveMechAmmunition
@@ -128,8 +128,8 @@
   - WeaponMechCombatMissileRack8
   technologyPrerequisites:
   - Gygax
-  - BasicMechEquipment
-  position: -8,3
+  # - BasicMechEquipment # inky
+  position: -8,1 # inky
 
 - type: technology
   id: Durand
@@ -154,8 +154,8 @@
   - WeaponMechCombatShotgun
   - WeaponMechCombatShotgunIncendiary
   technologyPrerequisites:
-  - Gygax
-  position: -9,2
+  - ExplosiveMechAmmunition # inky
+  position: -8,2 # inky
 
 - type: technology
   id: AdvancedCybernetics
@@ -215,7 +215,7 @@
   discipline: Robotics
   tier: 2
   cost: 5000
-  position: -5,3
+  position: -5,4 # inky
   technologyPrerequisites:
   - BasicRobotics
   recipeUnlocks:

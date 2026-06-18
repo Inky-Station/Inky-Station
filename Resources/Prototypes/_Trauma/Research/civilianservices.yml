@@ -11,6 +11,6 @@
   - EnergyFoodSynthesizerMachineCircuitboard
   - EnergyBoozeDispenserMachineCircuitboard
   - EnergySodaDispenserMachineCircuitboard
-  position: -4,7
+  position: -2,3 # inky
   technologyPrerequisites:
-  - MeatManipulation
+  - MedicalDefense # inky

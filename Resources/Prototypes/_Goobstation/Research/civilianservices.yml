@@ -31,9 +31,9 @@
   - PrescriptionGlasses
   - EnvirosuitExtinguisherRefill
   - TinfoilHats
-  position: 3,4
+  position: 3,3 # inky
   technologyPrerequisites:
-  - AdvancedEntertainment
+  - FauxAstroTiles # inky
 
 - type: technology
   id: MedicalDefense
@@ -46,9 +46,9 @@
   cost: 5000
   recipeUnlocks:
   - SyringeGun
-  position: 3,6
+  position: -2,4 # inky
   technologyPrerequisites:
-  - BiochemicalStasis
+  - RescueTechnology # inky
 
 - type: technology
   id: RescueTechnology
@@ -61,9 +61,10 @@
   cost: 7500
   recipeUnlocks:
   - HandheldCrewMonitor
-  position: 4,6
+  - DefibrillatorCompact # inky
+  position: -1,4 # inky
   technologyPrerequisites:
-  - BiochemicalStasis
+  - AdvancedEntertainment # inky
 
 # Tier 2
 
@@ -78,7 +79,7 @@
   cost: 10000
   recipeUnlocks:
   - TelecomTransmitterCircuitboard
-  position: 2,5
+  position: 1,5 # inky
   technologyPrerequisites:
   - AudioVisualCommunication
 
@@ -96,7 +97,7 @@
   - TapeDeckCircuitboard
   - StationRadioServerCircuitboard
   - StationRadioRigCircuitboard
-  position: 2,6
+  position: 2,5 # inky
   technologyPrerequisites:
   - ExtendedCommunications
 

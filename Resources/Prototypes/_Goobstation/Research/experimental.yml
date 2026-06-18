@@ -14,7 +14,7 @@
   - PinpointerArtifact
   - PinpointerAnomaly
   - PinpointerBorg
-  position: -7,-6
+  position: -4,-4 # inky
   technologyPrerequisites:
   - DeterrenceTechnologies
 
@@ -34,7 +34,7 @@
   - ModsuitGauntlets
   - ModsuitShell
   - ModsuitPlatingExternal
-  position: -6,-7
+  position: -2,-2 # inky
   technologyPrerequisites:
   - MagnetsTech
 
@@ -50,9 +50,9 @@
   recipeUnlocks:
   - SlimeGrinderMachineCircuitboard
   - ClothingBackpackXenoBioTank
-  position: -6,-2
+  position: -3,2 # inky
   technologyPrerequisites:
-  - BasicXenoArcheology
+  - BasicRobotics
 
 - type: technology
   id: BluespaceTheory
@@ -65,7 +65,7 @@
   cost: 5000
   recipeUnlocks:
   - MaterialBSCrystal
-  position: -8,-6
+  position: -3,-5 # inky
   technologyPrerequisites:
   - DeterrenceTechnologies
 
@@ -80,9 +80,9 @@
   cost: 7500
   recipeUnlocks:
   - ExperimentalCircuitBoard
-  position: -7,-5
+  position: -6,-1 # inky
   technologyPrerequisites:
-  - AdvancedAnomalyResearch
+  - BasicAnomalousResearch
 
 - type: technology
   id: XenoBiology # :trollface:
@@ -95,7 +95,7 @@
   cost: 15000
   recipeUnlocks:
   - XenoCompatibilityImplanter
-  position: -8,-5
+  position: -7,-1 # inky
   technologyPrerequisites:
   - ExperimentalScience
 
@@ -110,6 +110,6 @@
   cost: 10000
   recipeUnlocks:
   - ClothingBeltChemBagXenobiologyHolding
-  position: -4,3
+  position: -2,2 # inky
   technologyPrerequisites:
   - Xenobiology

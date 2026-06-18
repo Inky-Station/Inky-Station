@@ -428,6 +428,7 @@
       - Wooden
       - RawMaterial
       - Plastic
+      - Ingot # inky - kills another test fail and yourself
   - type: ContainerContainer
     containers:
       blueprint: !type:Container
