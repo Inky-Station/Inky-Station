@@ -16,7 +16,7 @@
   - EDAiCoreElectronics
   - EDIFFElectronics
   - EDWeaponControlsElectronics
-  position: -8,0
+  position: -8,0 # inky
   technologyPrerequisites:
   - ExplosiveMechAmmunition # inky
 

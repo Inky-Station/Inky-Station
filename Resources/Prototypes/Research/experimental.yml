@@ -61,9 +61,9 @@
   - APECircuitboard
   - AnomalyVesselCircuitboard
   # Goobstation R&D Console rework start
-  position: -5,-1
+  position: -5,-1 # inky
   technologyPrerequisites:
-  - BasicRobotics
+  - BasicRobotics # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -80,9 +80,9 @@
   - AnalysisComputerCircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: -3,-1
+  position: -3,-1 # inky
   technologyPrerequisites:
-  - BasicRobotics # inkyd
+  - BasicRobotics # inky
   # Goobstation R&D Console rework end
 
 - type: technology

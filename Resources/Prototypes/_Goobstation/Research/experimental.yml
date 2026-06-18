@@ -82,7 +82,7 @@
   - ExperimentalCircuitBoard
   position: -6,-1 # inky
   technologyPrerequisites:
-  - BasicAnomalousResearch
+  - BasicAnomalousResearch # inky
 
 - type: technology
   id: XenoBiology # :trollface:
