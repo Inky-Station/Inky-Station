@@ -20,6 +20,7 @@ public sealed partial class AccessibilityTab : Control
         Control.AddOptionCheckBox(CCVars.ChatEnableColorName, EnableColorNameCheckBox);
         Control.AddOptionCheckBox(CCVars.AccessibilityColorblindFriendly, ColorblindFriendlyCheckBox);
         Control.AddOptionCheckBox(CCVars.ReducedMotion, ReducedMotionCheckBox);
+        Control.AddOptionCheckBox(CCVars.DisableAiStatic, DisableAiStaticCheckBox);
         Control.AddOptionPercentSlider(CCVars.ScreenShakeIntensity, ScreenShakeIntensitySlider);
         Control.AddOptionPercentSlider(CCVars.ChatWindowOpacity, ChatWindowOpacitySlider);
         Control.AddOptionPercentSlider(CCVars.SpeechBubbleTextOpacity, SpeechBubbleTextOpacitySlider);
@@ -31,6 +32,7 @@ public sealed partial class AccessibilityTab : Control
         Control.AddOptionCheckBox(TraumaCVars.ChatHighlightSound, HighlightSoundCheckBox);
         // Control.AddOptionCheckBox(TraumaCVars.SkillPopups, SkillPopupsCheckBox); // inky - kill skills
         Control.AddOptionCheckBox(TraumaCVars.PlayMovieEndCredits, MovieCreditsCheckBox);
+        Control.AddOptionPercentSlider(TraumaCVars.VisionGrainScale, VisionGrainScaleSlider);
         // </Trauma>
         // inky - concussion
         Control.AddOptionCheckBox(InkyCVars.ConcussionSound, ConcussionNoise);

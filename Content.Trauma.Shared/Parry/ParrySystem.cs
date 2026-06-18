@@ -4,7 +4,6 @@ using Content.Trauma.Shared.Wizard.Projectiles;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Hands;
@@ -29,20 +28,20 @@ namespace Content.Trauma.Shared.Parry;
 /// <summary>
 /// This handles logic for <see cref="ParryComponent" />.
 /// </summary>
-public sealed class ParrySystem : EntitySystem
+public sealed partial class ParrySystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedKnowledgeSystem _knowledge = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly ISharedPlayerManager _player = default!;
-    [Dependency] private readonly EntityQuery<PhysicsComponent> _physicsQuery = default!;
-    [Dependency] private readonly EntityQuery<ReflectiveComponent> _reflectiveQuery = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedKnowledgeSystem _knowledge = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
+    [Dependency] private EntityQuery<ReflectiveComponent> _reflectiveQuery = default!;
 
     public override void Initialize()
     {
@@ -104,7 +103,7 @@ public sealed class ParrySystem : EntitySystem
         || !_physicsQuery.TryComp(projectile, out var physics)
         || (reflector.Comp.Reflects & reflective.Reflective) == 0x0 // Check if the reflective types match
         || !_toggle.IsActivated(reflector.Owner) // If the item can be toggled (e.g. esword) check if it's on
-        || !CheckKnowledge(user, reflector.Comp.RequiredSkill, reflector.Comp.ReflectMinSkill)
+        // || !CheckKnowledge(user, reflector.Comp.RequiredSkill, reflector.Comp.ReflectMinSkill) // inky edit KILL MEEEEEEEEEEEEEEEEEEEE
         || !CheckAndUpdateExhaustion(user, reflector))
             return false;
 
@@ -230,8 +229,8 @@ public sealed class ParrySystem : EntitySystem
         var result = exhComp.Exhaustion < 1f;
         var level = Math.Max(skill.Comp.NetLevel, 1); // Evil division by 0
         var exhGain = useParryValues ?
-            1f / item.Comp.MaxParries * (100f / level) :
-            1f / item.Comp.MaxReflects * (100f / level);
+            1f / item.Comp.MaxParries : // inky edit - killed * (100f / level)
+            1f / item.Comp.MaxReflects; // inky edit - killed * (100f / level)
         exhComp.Exhaustion = Math.Min(exhComp.Exhaustion + exhGain, 1f);
         exhComp.ExhaustionRegenTimer = _timing.CurTime + exhComp.ExhaustionRegenDelay;
         Dirty(user, exhComp);
@@ -253,13 +252,13 @@ public sealed class ParrySystem : EntitySystem
             return;
 
         var level = skill.Comp.NetLevel;
-        if (level < ent.Comp.ParryMinSkill)
+        if (level < -10) // inky edit - was ent.Comp.ParryMinSkill instead of 0 :trol:
         {
             args.PushMarkup(Loc.GetString("parry-component-examine-lowskill"));
             return;
         }
         var value = Math.Ceiling(ent.Comp.MaxParries * (level / 100f));
-        args.PushMarkup(Loc.GetString("parry-component-examine", ("value", value)));
+        args.PushMarkup(Loc.GetString("parry-component-examine", ("value", ent.Comp.MaxParries))); // inky edit - replaced value with ent.Comp.MaxParries
     }
 
     private void AppendReflectExamine(Entity<ParryComponent> ent, ref ExaminedEvent args)
@@ -279,12 +278,12 @@ public sealed class ParrySystem : EntitySystem
         var msg = ContentLocalizationManager.FormatListToOr(typeList);
 
         var level = skill.Comp.NetLevel;
-        if (level < ent.Comp.ReflectMinSkill)
+        if (level < -10) // inky edit - was ent.Comp.ReflectMinSkill instead of 0 :trol:
         {
             args.PushMarkup(Loc.GetString("parry-component-examine-reflect-lowskill", ("type", msg)));
             return;
         }
         var value = Math.Ceiling(ent.Comp.MaxReflects * (level / 100f));
-        args.PushMarkup(Loc.GetString("parry-component-examine-reflect", ("value", value), ("type", msg)));
+        args.PushMarkup(Loc.GetString("parry-component-examine-reflect", ("value", ent.Comp.MaxReflects), ("type", msg))); // inky edit - replaced value with ent.Comp.MaxReflects
     }
 }

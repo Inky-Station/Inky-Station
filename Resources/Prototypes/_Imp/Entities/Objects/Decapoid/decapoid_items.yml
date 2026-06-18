@@ -115,16 +115,16 @@
       enum.TransferAmountUiKey.Key:
         type: TransferAmountBoundUserInterface
   - type: GasTank
-    outputPressure: 21.3
+    releasePressure: 21.3
     air:
       volume: 5
       moles:
         WaterVapor: 2.051379050
       temperature: 293.15
-  - type: SolutionContainerManager
-    solutions:
-      waterTank:
-        maxVol: 30
+  - type: Solution
+    id: waterTank
+    solution:
+      maxVol: 30
   - type: RefillableSolution
     solution: waterTank
   - type: ExaminableSolution

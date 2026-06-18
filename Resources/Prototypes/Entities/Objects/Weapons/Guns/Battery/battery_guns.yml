@@ -259,7 +259,7 @@
     storedOffset: 0,-5
   - type: BatteryAmmoProvider
     proto: LaserGunBullet # Trauma
-    fireCost: 62.5 # Trauma, was 25
+    fireCost: 62.5 # inky edit
   - type: MagazineVisuals
     magState: mag
     steps: 5
@@ -352,7 +352,7 @@
       path: /Audio/_Trauma/Weapons/Guns/Gunshots/laser2.ogg # Trauma
   - type: BatteryAmmoProvider
     proto: LaserGunBullet # Trauma
-    fireCost: 20 # Trauma, was 25, 50 shots
+    fireCost: 62.5 # inky edit?
   - type: Item
     size: Large
   - type: Sprite

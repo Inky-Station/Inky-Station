@@ -16,7 +16,7 @@
     - type: CanBuildWindowOnTop
     - type: Sprite
       drawdepth: Walls
-      sprite: _Trauma/Structures/Walls/grille.rsi # Trauma
+      sprite: Structures/Walls/grille.rsi # inky edit - de-barratry textures
       layers:
         - state: grille
         - state: electrified
@@ -25,15 +25,16 @@
           shader: unshaded
           visible: false
     - type: Icon
-      sprite: _Trauma/Structures/Walls/grille.rsi # Trauma
+      sprite: Structures/Walls/grille.rsi # inky edit - de-barratry textures
       state: grille
     - type: Construction
       graph: Grille
       node: grille
       deconstructionTarget: start
     - type: Damageable
-      damageContainer: StructuralInorganic
       damageModifierSet: PerforatedMetallic
+    - type: Injurable
+      damageContainer: StructuralInorganic
     - type: Electrified
       requirePower: true
       noWindowInTile: true
@@ -59,6 +60,8 @@
           shape:
             !type:PhysShapeAabb
             bounds: "-0.5,-0.5,0.5,0.5"
+          mask:
+          - FullTileMask
           layer:
           - GlassLayer
     - type: Destructible
@@ -116,10 +119,10 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: _Trauma/Structures/Walls/grille.rsi # Trauma
+    sprite: Structures/Walls/grille.rsi # inky edit - de-barratry textures
     state: grille_broken
   - type: Icon
-    sprite: _Trauma/Structures/Walls/grille.rsi # Trauma
+    sprite: Structures/Walls/grille.rsi # inky edit - de-barratry textures
     state: grille_broken
   - type: RCDDeconstructable
     cost: 6
@@ -137,8 +140,9 @@
     tags:
     - ForceNoFixRotations
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: FlimsyMetallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -174,7 +178,7 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite:  _Trauma/Structures/Walls/grille.rsi # Trauma
+    sprite:  Structures/Walls/grille.rsi # inky edit - de-barratry textures
     layers:
     - state: grille_diagonal
     - state: electrified_diagonal
@@ -183,7 +187,7 @@
       shader: unshaded
       visible: false
   - type: Icon
-    sprite:  _Trauma/Structures/Walls/grille.rsi # Trauma
+    sprite:  Structures/Walls/grille.rsi # inky edit - de-barratry textures
     state: grille_diagonal
   - type: Tag
     tags:

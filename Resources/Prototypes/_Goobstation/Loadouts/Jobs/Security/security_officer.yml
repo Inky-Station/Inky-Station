@@ -10,6 +10,15 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+- type: loadoutEffectGroup
+  id: VeteranOfficer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 100h # 100 hrs
+
 - type: loadout
   id: WinterCoatSeniorSecArmored
   effects:
@@ -54,3 +63,27 @@
   id: SecurityHelmetAlt
   equipment:
     head: ClothingHeadHelmetBasicAlt
+
+- type: loadout
+  id: ClothingNeckMantleVeteranSecurity
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: VeteranOfficer
+  equipment:
+    neck: ClothingNeckMantleVeteranSecurity
+
+- type: loadout
+  id: VeteranOfficerArmor
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: VeteranOfficer
+  equipment:
+    outerClothing: ClothingOuterArmorVeteranSecurity
+
+- type: loadout
+  id: VeteranOfficerBlackJumpsuit
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: VeteranOfficer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVeteranSecurity

@@ -26,8 +26,8 @@
       Max: 4
       PotencyDivisor: 25
     ChlorineTrifluoride:
-      Min: 1
-      Max: 2
+      Min: 2
+      Max: 3
       PotencyDivisor: 100
 
 - type: seed
@@ -74,18 +74,18 @@
   nutrientConsumption: 1
   idealLight: 8
   chemicals:
-    CoconutWater:
+    CoconutFlesh:
       Min: 1
       Max: 20
-      PotencyDivisor: 5
+      PotencyDivisor: 2
     Vitamin:
       Min: 1
       Max: 10
-      PotencyDivisor: 5
-    Nutriment:
+      PotencyDivisor: 2
+    CoconutWater:
       Min: 1
       Max: 10
-      PotencyDivisor: 5
+      PotencyDivisor: 2
 
 - type: seed
   id: CherryBomb

@@ -5,17 +5,15 @@ using Content.Client.Construction.UI;
 using Content.Goobstation.Shared.Factory;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Whitelist;
-using Robust.Client.GameObjects;
-using Robust.Client.Graphics;
-using Robust.Client.UserInterface;
-using Robust.Client.UserInterface.Controls;
+using Content.Trauma.Common.Knowledge.Systems;
 using System.Linq;
 
 namespace Content.Goobstation.Client.Factory.UI;
 
-public sealed class ConstructorBUI : BoundUserInterface
+public sealed partial class ConstructorBUI : BoundUserInterface
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    private readonly CommonKnowledgeSystem _knowledge = default!;
     private readonly ConstructionSystem _construction;
     private readonly EntityWhitelistSystem _whitelist;
     private readonly SpriteSystem _sprite;
@@ -28,6 +26,7 @@ public sealed class ConstructorBUI : BoundUserInterface
 
     public ConstructorBUI(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
+        _knowledge = EntMan.System<CommonKnowledgeSystem>();
         _construction = EntMan.System<ConstructionSystem>();
         _whitelist = EntMan.System<EntityWhitelistSystem>();
         _sprite = EntMan.System<SpriteSystem>();

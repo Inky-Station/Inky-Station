@@ -1,0 +1,18 @@
+- type: reagent
+  id: Adrenaline
+  name: reagent-name-adrenaline
+  group: Narcotics
+  desc: reagent-desc-adrenaline
+  physicalDesc: reagent-physical-desc-powdery
+  contrabandSeverity: Minor
+  flavor: bitter
+  color: "#FAFAFA"
+  boilingPoint: 187.0
+  meltingPoint: 98.0
+  metabolisms:
+    Bloodstream:
+      effects:
+      - !type:GenericStatusEffect
+        key: Adrenaline
+        component: IgnoreSlowOnDamage
+        time: 5.0

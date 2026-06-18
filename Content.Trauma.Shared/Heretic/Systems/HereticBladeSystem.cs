@@ -2,9 +2,7 @@
 
 
 using System.Linq;
-using System.Numerics;
 using Content.Goobstation.Common.BlockTeleport;
-using Content.Goobstation.Common.Physics;
 using Content.Goobstation.Common.Weapons;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Components;
@@ -16,10 +14,13 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Trauma.Shared.Heretic.Components;
 using Content.Trauma.Shared.Heretic.Components.PathSpecific.Blade;
+using Content.Trauma.Shared.Heretic.Components.PathSpecific.Cosmos;
+using Content.Trauma.Shared.Heretic.Components.StatusEffects;
 using Content.Trauma.Shared.Heretic.Events;
 using Content.Trauma.Shared.Heretic.Systems.PathSpecific.Cosmos;
 using Content.Trauma.Shared.Teleportation;
@@ -29,28 +30,28 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Trauma.Shared.Heretic.Systems;
 
-public sealed class HereticBladeSystem : EntitySystem
+public sealed partial class HereticBladeSystem : EntitySystem
 {
-    [Dependency] private readonly CosmosComboSystem _combo = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly RandomTeleportSystem _teleport = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combat = default!;
-    [Dependency] private readonly SharedEntityEffectsSystem _effects = default!;
-    [Dependency] private readonly SharedHereticCombatMarkSystem _combatMark = default!;
-    [Dependency] private readonly SharedHereticSystem _heretic = default!;
-    [Dependency] private readonly SharedMeleeWeaponSystem _melee = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedSanguineStrikeSystem _sanguine = default!;
-    [Dependency] private readonly SharedTransformSystem _xform = default!;
+    [Dependency] private CosmosComboSystem _combo = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private RandomTeleportSystem _teleport = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedCombatModeSystem _combat = default!;
+    [Dependency] private SharedEntityEffectsSystem _effects = default!;
+    [Dependency] private SharedHereticCombatMarkSystem _combatMark = default!;
+    [Dependency] private SharedHereticSystem _heretic = default!;
+    [Dependency] private SharedMeleeWeaponSystem _melee = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedSanguineStrikeSystem _sanguine = default!;
+    [Dependency] private SharedTransformSystem _xform = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
 
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -79,7 +80,7 @@ public sealed class HereticBladeSystem : EntitySystem
 
         var aliveMobsCount = args.Args.HitEntities.Count(x => x != user && _mobState.IsAlive(x));
 
-        args.BonusDamage += args.Args.BaseDamage * maelstrom.ExtraDamageMultiplier;
+        args.Args.BonusDamage += args.Args.BaseDamage * maelstrom.ExtraDamageMultiplier;
         if (aliveMobsCount <= 0 || !TryComp<DamageableComponent>(user, out var dmg))
             return;
 
@@ -126,14 +127,16 @@ public sealed class HereticBladeSystem : EntitySystem
         if (args.Target == null)
             return;
 
-        if (!_heretic.TryGetHereticComponent(args.User, out var heretic, out _))
+        var user = args.User;
+
+        if (!_heretic.TryGetHereticComponent(user, out var heretic, out _))
             return;
 
-        if (ent.Comp.Path != heretic.CurrentPath || heretic.PathStage < 7)
+        if (ent.Comp.Path != heretic.CurrentPath)
             return;
 
         // Required for seeking blade, client weapon code should send attack event regardless of distance
-        if (heretic.CurrentPath == HereticPath.Void)
+        if (heretic.CurrentPath == HereticPath.Void && heretic.PathStage >= 7)
         {
             if (_net.IsServer)
                 return;
@@ -146,7 +149,7 @@ public sealed class HereticBladeSystem : EntitySystem
         if (heretic.CurrentPath != HereticPath.Cosmos)
             return;
 
-        if (HasComp<Trauma.Shared.Heretic.Components.PathSpecific.Cosmos.StarMarkComponent>(args.Target.Value))
+        if (HasComp<StarMarkComponent>(args.Target.Value) && heretic.PathStage >= 7)
         {
             if (heretic.Ascended)
             {
@@ -157,11 +160,8 @@ public sealed class HereticBladeSystem : EntitySystem
             args.Range = Math.Max(args.Range, 2.5f);
         }
 
-        var netEnt = GetNetEntity(args.User);
-        var id = SharedStarTouchSystem.StarTouchBeamDataId;
-
-        if (TryComp(args.Target.Value, out ComplexJointVisualsComponent? joint) &&
-            joint.Data.Any(kvp => kvp.Key == netEnt && kvp.Value.Id == id))
+        if (_status.TryEffectsWithComp<StarTouchedStatusEffectComponent>(args.Target.Value, out var effects) &&
+            effects.Any(x => x.Comp1.User == user))
             args.Range = Math.Max(args.Range, 3.5f);
     }
 

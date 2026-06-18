@@ -1,4 +1,5 @@
 using Content.Inky.Common.CCVar;
+using Content.Inky.Server.Fun.Components.Rules;
 using Content.Server.GameTicking;
 using Robust.Shared.Configuration;
 using Robust.Shared.Random;
@@ -22,18 +23,16 @@ public sealed class FunnyThingsSystem : EntitySystem
             return;
 
         var prob = _cfg.GetCVar(InkyCVars.FunProb);
-        if (_gambling.Prob(prob / 100f))
-            _gameTicker.AddGameRule("CrematoriumFunRule"); // todo i have no fucking idea how to make this system expandable without making its either be 100% hell shift with random shit or 100% nothing
-        if (_gambling.Prob(prob / 100f)) // this is what i was talking about
-            _gameTicker.AddGameRule("FentbotFunRule");
-        if (_gambling.Prob(prob / 100f))
-            _gameTicker.AddGameRule("EngiSentryFunRule");
-        if (_gambling.Prob(prob / 100f))
-            _gameTicker.AddGameRule("FunSkeletonGibRule");
-        if (_gambling.Prob(prob / 100f))
-            _gameTicker.AddGameRule("HeartRipFunRule");
-        if (_gambling.Prob(prob / 100f))
-            _gameTicker.AddGameRule("WilhelmFtlFunRule");
+
+        var eqe = EntityQueryEnumerator<RoundstartGameruleChooserRuleComponent>();
+        while (eqe.MoveNext(out var uid, out var chooser))
+        {
+            foreach (var rule in chooser.Rules)
+            {
+                if (!chooser.FunOnly || _gambling.Prob(prob))
+                    _gameTicker.AddGameRule(rule);
+            }
+        }
     }
 
     public bool CheckRule<T>() where T : Component

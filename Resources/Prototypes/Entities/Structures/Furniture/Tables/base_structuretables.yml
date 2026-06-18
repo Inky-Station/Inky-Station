@@ -34,8 +34,9 @@
   components:
   - type: Animateable
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: PlaceableSurface
   - type: Fixtures
     fixtures:
@@ -66,6 +67,7 @@
       collection: FootstepHull
   - type: Tag
     tags:
+    - Table # Trauma
     - ForceFixRotations
   - type: RequireProjectileTarget # Goobstation - Crawling
     ignoreThrow: true

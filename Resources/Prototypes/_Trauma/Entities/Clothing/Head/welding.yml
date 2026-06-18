@@ -1,6 +1,4 @@
 - type: entity
   abstract: true
-  parent: WeldingMaskBaseNoBlind
+  parent: [WeldingMaskBaseNoBlind ] # inky edit removed BaseClothingViewconeLarge
   id: WeldingMaskBase
-  components:
-  - type: Blindfold # TODO: replace with proper vision masks stuff

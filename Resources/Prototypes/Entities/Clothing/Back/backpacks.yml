@@ -204,7 +204,7 @@
   description: A robust backpack for stealing cargo's loot.
   components:
     - type: Sprite
-      sprite: Clothing/Back/Backpacks/cargo.rsi
+      sprite: _Goobstation/Clothing/Back/Backpacks/cargo.rsi
 
 - type: entity
   parent: ClothingBackpack
@@ -371,7 +371,7 @@
     deleteOnDrop: false
 
 - type: entity
-  parent: ClothingBackpack
+  parent: [ ClothingBackpack, BaseBatteryShock ] # Trauma - add BaseBatteryShock
   id: ClothingBackpackElectropack
   name: electropack
   suffix: SelfUnremovable

@@ -8,6 +8,7 @@
   - CaptainMask # Goobstation - Lollypops!
   - CaptainBackpack
   - CaptainOuterClothing
+  - CaptainPDA # Trauma
   - Survival
   - Trinkets
   #- CaptainJobTrinkets
@@ -28,6 +29,7 @@
   - HoPJumpsuit
   - HoPBackpack
   - HoPOuterClothing
+  - HoPPDA # Trauma
   - Glasses
   - Survival
   - Trinkets
@@ -92,6 +94,7 @@
   - BartenderEnvirohelm
   - BartenderEnvirosuit
   - BartenderEnvirogloves
+  - BartenderWeapon # Trauma
   - ExclusiveItems # Trauma
 
 - type: roleLoadout
@@ -338,6 +341,7 @@
   - GroupTankHarness
   - SalvageSpecialistNeck # Goobstation
   - SalvageSpecialistBackpack
+  - SalvageSpecialistJumpsuit # Goobstation
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
   - Glasses
@@ -510,7 +514,6 @@
   - HeadofSecurityEnvirohelm
   - HeadofSecurityEnvirosuit
   - HeadofSecurityEnvirogloves
-  - HeadofSecurityGloves
   - ExclusiveItems # Trauma
 
 - type: roleLoadout

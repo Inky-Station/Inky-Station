@@ -18,23 +18,28 @@ using Robust.Shared.Timing;
 using Robust.Shared.Spawners;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Map;
+// inky
+using Robust.Shared.Player;
+using Content.Inky.Common.Whale;
+using Content.Lavaland.Shared.Audio;
+// /inky
 
 namespace Content.Goobstation.Server.SpaceWhale.StationProximity;
 
 /// <summary>
 /// Hardcoded to space whale spawn
 /// </summary>
-public sealed class StationProximitySystem : EntitySystem
+public sealed partial class StationProximitySystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _moveSpeed = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private MovementSpeedModifierSystem _moveSpeed = default!;
 
     private bool _spaceWhaleEnabled;
-    private float _spaceWhaleSpawnDistance = 2000f;
+    private float _spaceWhaleSpawnDistance; // inky edit
 
     private static readonly TimeSpan CheckDelay = TimeSpan.FromSeconds(60);
     private TimeSpan _nextCheck = TimeSpan.Zero;
@@ -50,6 +55,10 @@ public sealed class StationProximitySystem : EntitySystem
 
         Subs.CVar(_cfg, GoobCVars.SpaceWhaleSpawn, x => _spaceWhaleEnabled = x, true);
         Subs.CVar(_cfg, GoobCVars.SpaceWhaleSpawnDistance, x => _spaceWhaleSpawnDistance = x, true);
+
+        // inky
+        InitializeInky();
+        // /inky
     }
 
     private void OnTargetDeath(Entity<SpaceWhaleTargetComponent> ent, ref MobStateChangedEvent args)
@@ -58,6 +67,10 @@ public sealed class StationProximitySystem : EntitySystem
             return;
 
         RemComp<SpaceWhaleTargetComponent>(ent.Owner);
+
+        // inky
+        StopFollowing(ent.Owner);
+        // /inky
     }
 
     private void OnTargetShutdown(Entity<SpaceWhaleTargetComponent> ent, ref ComponentShutdown args)
@@ -74,9 +87,14 @@ public sealed class StationProximitySystem : EntitySystem
         {
             foreach (var item in caller.SpawnedEntities)
             {
-                EnsureComp<TimedDespawnComponent>(item).Lifetime = 15f;
+                EnsureComp<TimedDespawnComponent>(item).Lifetime = 60f; // inky edit
                 _moveSpeed.ChangeBaseSpeed(item, 11, 30, 1);
                 _moveSpeed.RefreshMovementSpeedModifiers(item);
+
+                // inky
+                if (TryComp<ActorComponent>(ent.Owner, out var actor))
+                    RaiseNetworkEvent(new LeviathanMusicStopEvent(), actor.PlayerSession.Channel);
+                // /inky
             }
         }
 
@@ -88,10 +106,12 @@ public sealed class StationProximitySystem : EntitySystem
     {
         base.Update(frameTime);
 
-        if (_timing.CurTime > _nextCheck)
+        var now = _timing.CurTime;
+
+        if (now < _nextCheck)
             return;
 
-        _nextCheck = _timing.CurTime + CheckDelay;
+        _nextCheck = now + CheckDelay;
         CheckStationProximity();
     }
 
@@ -99,6 +119,11 @@ public sealed class StationProximitySystem : EntitySystem
     {
         if (!_spaceWhaleEnabled)
             return;
+
+        // inky
+        if (!AnyLeviathan()) // if it dies offscreen youre left with music infinitely looping
+            StopAllMusic(); // lazy solution but it works lol
+        // /inky
 
         var stationQuery = EntityQueryEnumerator<BecomesStationComponent, MapGridComponent, TransformComponent>();
         _stations.Clear();

@@ -3,11 +3,23 @@
   name: roles-antag-insurgent-name
   objective: roles-antag-insurgent-objective
   antagonist: true
-  setPreference: true
+  setPreference: false # inky # kill insurgents
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 5h
-  guides: [ Insurgents ]
+  guides: [  ] # inky # kill insurgents
+
+- type: antagSpecifier
+  id: Insurgent
+  spawnerPrototype: GhostRoleSpawnerInsurgent
+  startingGear: Insurgent
+  unequipOldGear: true
+  prefRoles: [ Insurgent ]
+  mindRoles: [ MindRoleInsurgent ]
+  roleLoadout: [ RoleSurvivalStandard ]
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: true
 
 - type: startingGear
   id: Insurgent

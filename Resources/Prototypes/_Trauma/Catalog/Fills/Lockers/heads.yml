@@ -14,6 +14,7 @@
     - id: CommandMegaphone
     - id: ReinforcementCallerHoP
     - id: ArmoryOverrideKeyComponents
+#    - id: BoxSkillChipsService  # inky edit - kill chips
 
 - type: entityTable
   id: LockerFillChiefEngineerTrauma
@@ -66,6 +67,7 @@
     - id: TelescopicShield
     - id: ArmoryOverrideKeyComponents
     - id: SecAntagSummoner
+    - id: ClothingHandsGlovesGorilla
 
 - type: entityTable
   id: LockerFillCaptainTrauma

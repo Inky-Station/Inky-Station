@@ -1,4 +1,3 @@
-# inky - fuck hypoports
 # this is basically just for reinforcements as they don't get free hypoports.
 # - type: listing
 #   id: UplinkHypoportSecureNukie
@@ -14,6 +13,21 @@
 #     whitelist:
 #       tags:
 #       - NukeOpsUplink
+
+- type: listing
+  id: UplinkDeathRattleImplanter
+  name: uplink-deathrattle-implanter-name
+  description: uplink-deathrattle-implanter-desc
+  productEntity: DeathRattleImplanter
+  cost:
+    Telecrystal: 10
+  categories:
+  - UplinkImplants
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
 
 - type: listing
   id: UplinkAutosurgeonStatvekaSandevistan

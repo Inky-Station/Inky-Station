@@ -117,7 +117,12 @@
     - state: icon
   - type: SetSelector
     possibleSets:
-    - SyndicateWesternSet
+#    - SyndicateLawyerSet #inky
+    - SyndicateNoRussianSet
+    - SyndicatePirateCaptainSet
+    - SyndicateEngineerSet
+#    - SyndicateDoorKickerSet #inky
+#    - SyndicateWesternSet #inky
     - SyndicateSpySet
     - SyndicateHitmanSet
     - SyndicateImplantsSet
@@ -151,7 +156,7 @@
         - MachineLayer
   - type: StaticPrice
     price: 5000
-
+    
 - type: entity
   parent: CrateSyndicate
   id: CrateSyndicateStarterKit

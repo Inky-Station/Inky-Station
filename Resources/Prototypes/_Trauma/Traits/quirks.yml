@@ -7,5 +7,6 @@
 #   blacklist:
 #     components:
 #     - BorgChassis
+#     - Silicon
 #   components:
 #   - type: NoHypoport

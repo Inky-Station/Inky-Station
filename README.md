@@ -1,4 +1,4 @@
-<p align="center"> <img alt="Space Station 14" width="750" height="600" src="https://github.com/Inky-Station/Inky-Station/blob/master/Resources/Textures/Logo/logo.png" /></p>
+<p align="center"> <img alt="Space Station 14" width="1200" height="1300" src="https://github.com/Inky-Station/Inky-Station/blob/master/Resources/Textures/Logo/logo.png" /></p> 
 
 This is a fork from the primary repo for Trauma Station called Inky Station. To prevent people forking RobustToolbox, a "content" pack is loaded by the client and server. This content pack contains everything needed to play the game on one specific server this is the content pack for Trauma Station.
 
@@ -6,7 +6,7 @@ If you want to host or create content for SS14, go to the [Space Station 14 repo
 
 ## Links
 
-no discord server sadly right now | [Devbus Discord Server](https://discord.gg/f3rJaCuK) | [SS14 Forums](https://forum.spacestation14.com/) | [SS14 Website](https://spacestation14.com/)
+[Inky Station Discord Server](https://discord.gg/Tmjfu6Mt9p) | [Devbus Discord Server](https://discord.gg/f3rJaCuK) | [SS14 Forums](https://forum.spacestation14.com/) | [SS14 Website](https://spacestation14.com/)
 
 ## Documentation/Wiki
 

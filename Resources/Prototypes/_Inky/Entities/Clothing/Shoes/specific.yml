@@ -1,0 +1,13 @@
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesElysiumShoes
+  name: Snake-skin shoes
+  description: They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly.
+  components:
+  - type: Sprite
+    sprite: _Inky/Clothing/Shoes/Specific/elysiumshoes.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Inky/Clothing/Shoes/Specific/elysiumshoes.rsi 
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.5

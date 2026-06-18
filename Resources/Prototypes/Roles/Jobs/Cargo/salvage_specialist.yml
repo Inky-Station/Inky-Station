@@ -22,7 +22,6 @@
   - !type:AddObjectiveSpecial
     objectives:
     - SalvageMineObjective
-
 - type: startingGear
   id: SalvageSpecialistGear
   equipment:
@@ -32,7 +31,6 @@
   storage: # DeltaV: Add mining voucher
     back:
     - MiningVoucher
-
 - type: chameleonOutfit
   id: SalvageSpecialistChameleonOutfit
   job: SalvageSpecialist

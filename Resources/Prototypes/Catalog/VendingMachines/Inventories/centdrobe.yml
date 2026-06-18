@@ -25,7 +25,6 @@
     ClothingUniformJumpsuitCentcomAgent: 3
     ClothingUniformJumpsuitCentcomFormal: 3
     ClothingUniformJumpskirtCentcomFormalDress: 3
-    ClothingUniformJumpsuitCasualCentcom: 3 # Goobstation
     ClothingHeadHatCentcom: 3
     ClothingHeadHatCentcomcap: 3
     ClothingMaskGasCentcom: 3
@@ -34,9 +33,24 @@
     ClothingOuterCoatExpensive: 1
     ClothingNeckScarfStripedCentcom: 3
     ClothingNeckCloakCentcom: 3
+    #<goob>
+    ClothingUniformJumpsuitCasualCentcom: 3 
+    ClothingOuterArmoredJacketCentralCommand: 2
+    ClothingUniformJumpskirtCentcomPencilSkirt: 3
+    ClothingNeckCloakHighCommand: 3
+    ClothingNeckCloakHighCommandCape: 2
+    ClothingNeckCloakCentComPoncho: 3
+    ClothingNeckMantleEpaulettes: 1
+    #</goob>
   contrabandInventory:
+    #<goob>
+    ClothingUniformJumpsuitGoldenLiaison: 2
+    ClothingNeckCloakGoldenCentComm: 2
+    ClothingHeadHatGoldCentcom: 2
+    #</goob>
     ToyFigurineCaptain: 1
     ToyFigurineHeadOfPersonnel: 1
+
   # <Trauma>
   emaggedInventory:
     PenCentcom: 1

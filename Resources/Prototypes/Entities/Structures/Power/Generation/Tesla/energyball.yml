@@ -30,6 +30,7 @@
     bodyStatus: InAir
     sleepingAllowed: false
   - type: CanMoveInAir
+  - type: TileFrictionModifier
   - type: ChasingWalk
     minSpeed: 1
     maxSpeed: 3
@@ -165,6 +166,11 @@
         type: SelfRenamerBoundUserInterface
   - type: MovementSpeedModifier # no lightning (ha get it) fast tesla
     baseSprintSpeed: 2.5
+  - type: RadarBlip
+    radarColor: cyan
+    scale: 5
+    shape: Ring
+    visibleFromOtherGrids: true
   # inky end
 
 - type: entity

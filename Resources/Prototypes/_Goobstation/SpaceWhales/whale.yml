@@ -16,12 +16,13 @@
         - BulletImpassable
         - LowImpassable
         - MidImpassable
+        - WallLayer # inky edit
   - type: DamageOnCollide
     inverted: true # fuck you wrath components!
     damage:
       types:
         Structural: 5000
-        Blunt: 10
+#        Blunt: 0.1 # inky edit - its damage per tick :tear:
     ignoreWhitelist:
       components:
       - ContainmentField
@@ -41,10 +42,16 @@
     whitelist:
       tags:
       - SpaceWhaleSegment
+  # inky
+  - type: FTLSmashImmune
+  - type: SupermatterImmune
+  - type: EventHorizonIgnore
+  - type: GravityAffected
+  # /inky
 
 - type: entity
   id: SpaceLeviathan
-  parent: [MobSpaceLeviathanSegmentBase, SimpleSpaceMobBase, FlyingMobBase, MobCombat]
+  parent: [MobSpaceLeviathanSegmentBase] # inky edit
   name: space whale
   description: When the space becomes too quiet, there is no hope, there is no escape, but there is this.
   components:
@@ -55,11 +62,19 @@
   - type: MovementSpeedModifier
     baseSprintSpeed: 40
     baseWalkSpeed: 11
-    baseWeightlessFriction: 4
-    weightlessFriction: 4
-    weightlessFrictionNoInput: 4
+    baseWeightlessFriction: 1 # inky edit
+    weightlessFriction: 1 # inky edit
+    weightlessFrictionNoInput: 1 # inky edit
+    weightlessAcceleration: 0.65 # inky edit
   - type: DamageOnHighSpeedImpact
-    minimumSpeed: 50
+    minimumSpeed: 90 # inky edit
+    # inky start
+    soundHit:
+      collection: MetalThud
+    damage:
+      types:
+        Blunt: 5
+    # /inky
   - type: RadarBlip
     scale: 3
     shape: hexagon
@@ -98,18 +113,18 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      4000: Dead # todo maybe add some good loot in the future to make space salv go whale hunting
+      2000: Dead # inky edit
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 4000
+        damage: 18000 # inky edit (it breaks a lot of shit)
       behaviors:
       - !type:GibBehavior
   - type: ContentEye
     maxZoom: 1.5,1.5
     targetZoom: 1.5,1.5
-  - type: SolutionContainerManager
+  - type: SolutionManager
   - type: InjectableSolution
     solution: chemicals
   - type: Bloodstream
@@ -139,10 +154,71 @@
       path: /Audio/Effects/bite.ogg
     damage:
       types:
-        Blunt: 50
-        Slash: 45
+        Blunt: 33 # inky edit
+        Slash: 33 # inky edit
         Structural: 800 #lol
   - type: NoRotateOnMove
+  # inky
+  - type: LimitedInstances
+    key: SpaceLeviathan
+    limit: 1
+  - type: FTLSmashImmune
+  - type: SupermatterImmune
+  - type: EventHorizonIgnore
+  - type: SpaceLeviathan
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 2.5
+        density: 137992
+        mask:
+        - FlyingMobMask
+        layer:
+        - Opaque
+        - BulletImpassable
+        - LowImpassable
+        - MidImpassable
+        - WallLayer
+  - type: SpawnLootOnDeath
+    table: !type:AllSelector
+      children:
+      - id: MaterialLeviathanScale1
+      - id: MaterialLeviathanScale1
+    deleteOnDeath: true
+  - type: NoSlip
+  - type: MovementAlwaysTouching
+  - type: CanMoveInAir
+  # HATE below, this is needed
+  - type: Clickable
+  - type: InteractionOutline
+  - type: InputMover
+  - type: Input
+    context: "human"
+  - type: LagCompensation
+  - type: MobMover
+  - type: Actions
+  - type: Appearance
+  - type: RotationVisuals
+    defaultRotation: 0
+    horizontalRotation: 0
+  - type: DoAfter
+  - type: Examiner
+#  - type: Eye
+  - type: RequireProjectileTarget
+    active: False
+  - type: MobState
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Damageable
+    damageModifierSet: Leviathan # no lasers
+  - type: Physics
+    bodyType: KinematicController
+    bodyStatus: InAir
+    linearDamping: 0.0005
+    angularDamping: 0.05
+  # /inky
 
 - type: entity
   parent: [MobSpaceLeviathanSegmentBase, FlyingMobBase]
@@ -163,6 +239,8 @@
   - type: Physics
     bodyType: Dynamic
   - type: TailedEntitySegment
+  - type: ViewconeOccludable
+    useMemory: false
 
 - type: entity
   id: SpaceLeviathanDespawn
@@ -178,9 +256,93 @@
   categories: [HideSpawnMenu]
   components:
   - type: MobCaller
-    spawnProto: SpaceLeviathanDespawn
+    spawnProto: SpaceLeviathan # inky
     maxAlive: 1
     needAnchored: false
     needPower: false
-    minDistance: 100
+    minDistance: 300 # inky
+    maxDistance: 400 # inky
     spawnSpacing: 30
+
+# inky - this shit is here because i am a lazy fucking bitch
+- type: damageModifierSet
+  id: Leviathan
+  coefficients:
+    Heat: 0.5 # no lasers
+
+- type: entity
+  id: LeviathanGrapplingGun
+  parent: WeaponGrapplingGun
+  name: leviathan maker hook
+  description: A modified grappling hook used by senior salvage specialists to ride the young space whales. To use, attach directly to the head of the whale, and steer it left and right. Beware that the whale can enter hyperspace if brought too close to the station.
+  components:
+  - type: GrapplingGun
+    leviathanControl: true
+  - type: Construction
+    graph: LeviathanGrappling
+    node: hook
+  - type: Sprite
+    sprite: _Inky/Objects/Guns/Launchers/leviathan_gun.rsi
+    layers:
+    - state: base
+    - state: base-unshaded
+      map: [ "unshaded" ]
+      visible: true
+
+- type: entity
+  parent: BaseItem
+  id: MaterialLeviathanScale
+  name: leviathan scale plates
+  description: Shards shed from a space leviathan, exceptionally rare. Favored by salvagers, and by megacorpos for luxury goods stitched from endangered starlife.
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _Inky/Objects/Materials/leviathan.rsi
+    layers:
+    - state: scale
+      map: [ "base" ]
+  - type: StackPrice
+    price: 4000
+  - type: Appearance
+  - type: Stack
+    count: 5
+    stackType: Leviathan
+    baseLayer: base
+    layerStates:
+    - scale
+    - scale1
+    - scale2
+  - type: Item
+    size: Large
+    sprite: _Inky/Objects/Materials/leviathan.rsi
+    shape:
+    - 0,0,2,2
+
+- type: entity
+  parent: MaterialLeviathanScale
+  id: MaterialLeviathanScale1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: stack
+  parent: BaseVerySmallStack
+  id: Leviathan
+  name: stack-leviathan-hide
+  icon: { sprite: /Textures/_Inky/Objects/Materials/leviathan.rsi, state: scale }
+  spawn: MaterialLeviathanScale1
+
+- type: constructionGraph
+  id: LeviathanGrappling
+  graph:
+  - node: start
+    edges:
+    - to: hook
+      steps:
+      - material: Leviathan
+        amount: 1
+        doAfter: 2
+  - node: hook
+    entity: LeviathanGrapplingGun
+# /inky
