@@ -36,7 +36,6 @@
         damage: 1
       behaviors:
       - !type:GibBehavior
-        gibContents: Skip
 
 - type: startingGear
   id: FunnySkeletonGear
