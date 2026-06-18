@@ -255,8 +255,8 @@ public abstract partial class SharedMoverController : VirtualController
         {
             var limit = moveSpeedComponent?.BackwardsAngle
                 ?? MovementSpeedModifierComponent.DefaultBackwardsAngle;
-            var backwardsScale = moveSpeedComponent?.BackwardsSpeed
-                ?? MovementSpeedModifierComponent.DefaultBackwardsSpeed;
+            var backwardsScale = 1f; // moveSpeedComponent?.BackwardsSpeed // inky - no kys
+                // ?? MovementSpeedModifierComponent.DefaultBackwardsSpeed;
             var worldRot = _transform.GetWorldRotation(xform);
             var velAngle = velocity.ToWorldAngle();
             if (Math.Abs(Angle.ShortestDistance(velAngle, worldRot).Theta) > limit.Theta)
