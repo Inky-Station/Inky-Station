@@ -14,9 +14,9 @@
   - PinpointerArtifact
   - PinpointerAnomaly
   - PinpointerBorg
-  position: -4,-4 # inky
+  position: -3,-3 # inky
   technologyPrerequisites:
-  - DeterrenceTechnologies
+  - AbnormalArtifactManipulation # inky
 
 - type: technology
   id: ModsuitsTech
@@ -34,7 +34,7 @@
   - ModsuitGauntlets
   - ModsuitShell
   - ModsuitPlatingExternal
-  position: -2,-2 # inky
+  position: -2,-1 # inky
   technologyPrerequisites:
   - MagnetsTech
 
@@ -65,9 +65,9 @@
   cost: 5000
   recipeUnlocks:
   - MaterialBSCrystal
-  position: -3,-5 # inky
+  position: -6,-2 # inky
   technologyPrerequisites:
-  - DeterrenceTechnologies
+  - AnomalyCoreHarnessing # inky
 
 - type: technology
   id: ExperimentalScience

@@ -98,8 +98,8 @@
   - TechDiskComputerCircuitboard
   # Goobstation R&D Console rework start
   technologyPrerequisites:
-  - BasicAnomalousResearch
-  position: -3,-3 # inky
+  - BasicXenoArcheology # inky
+  position: -3,0 # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -115,7 +115,7 @@
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
   # Goobstation R&D Console rework start
-  position: -2,-1 # inky
+  position: -2,0 # inky
   technologyPrerequisites:
   - AlternativeResearch
   # Goobstation R&D Console rework end
@@ -170,7 +170,7 @@
   - AnomalySynchronizerCircuitboard
   - AnomalyVesselExperimentalCircuitboard
   technologyPrerequisites:
-  - BasicAnomalousResearch # inky
+  - AnomalyCoreHarnessing # inky
   position: -4,-2 # inky
 
 - type: technology
@@ -188,7 +188,7 @@
   # Goobstation R&D Console rework start
   position: -3,-4 # inky
   technologyPrerequisites:
-  - AlternativeResearch
+  - Pinpointers # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -224,7 +224,7 @@
   recipeUnlocks:
   - DeviceQuantumSpinInverter
   # Goobstation R&D Console rework start
-  position: -5,-5 # inky
+  position: -4,-4 # inky
   technologyPrerequisites:
   - GravityManipulation
   # Goobstation R&D Console rework end
@@ -241,7 +241,7 @@
   recipeUnlocks:
   - DeviceDesynchronizer
   # Goobstation R&D Console rework start
-  position: -5,-4 # inky
+  position: -4,-3 # inky
   technologyPrerequisites:
   - GravityManipulation
   # Goobstation R&D Console rework end
