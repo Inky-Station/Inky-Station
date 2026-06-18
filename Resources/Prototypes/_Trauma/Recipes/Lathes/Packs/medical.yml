@@ -17,8 +17,8 @@
 
 - type: latheRecipePack
   id: TraumaCybernetics
-  recipes:
-  - HypoportSecure
+  recipes: [] # inky - fuck hypoports
+  # - HypoportSecure
 
 - type: latheRecipePack
   id: TraumaChemistry
