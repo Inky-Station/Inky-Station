@@ -19,7 +19,7 @@ public sealed partial class ViewconeAngleSystem : EntitySystem
 {
     [Dependency] private BodySystem _body = default!;
     [Dependency] private StatusEffectsSystem _status = default!;
-    [Dependency] private EntityQuery<ViewconeComponent> _query = default!;
+    // [Dependency] private EntityQuery<ViewconeComponent> _query = default!; // inky - kys
     [Dependency] private EntityQuery<WieldableComponent> _wieldableQuery = default!;
 
     public override void Initialize()
@@ -76,6 +76,8 @@ public sealed partial class ViewconeAngleSystem : EntitySystem
     /// </summary>
     public float GetAngle(Entity<ViewconeComponent?> ent)
     {
+        return 360f; /* inky - just kys
+
         if (!_query.Resolve(ent, ref ent.Comp))
             return 0f;
 
@@ -84,6 +86,7 @@ public sealed partial class ViewconeAngleSystem : EntitySystem
 
         // clamps to 0, 360 since this is could easily go over with stacking equipment items and shit
         return Math.Clamp(ent.Comp.BaseConeAngle * ev.AngleModifier, 0f, 360f);
+        */
     }
 }
 

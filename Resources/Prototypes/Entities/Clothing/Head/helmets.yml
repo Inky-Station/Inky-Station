@@ -25,7 +25,7 @@
   #    HeadSide : HEAD
 
 - type: entity
-  parent: [ ClothingHeadHelmetBase ] # Trauma - helmet reduces vision cone // inky - removed BaseClothingViewconeMedium because WHAT THE FUCK BRO
+  parent: [ ClothingHeadHelmetBase, BaseClothingViewconeMedium ] # Trauma - helmet reduces vision cone
   id: ClothingHeadHelmetArmoredBase
   abstract: true
   components:
@@ -444,7 +444,7 @@
 #ERT HELMETS
 #ERT Leader Helmet
 - type: entity
-  parent: [ BaseCentcommContraband, ClothingHeadHelmetArmoredBase, ClothingHeadHelmetBaseFoldable] # Trauma - less vision restriction, ClothingHeadHelmetBaseFoldable // inky removed BaseClothingViewconeSmall
+  parent: [ BaseClothingViewconeSmall, BaseCentcommContraband, ClothingHeadHelmetArmoredBase, ClothingHeadHelmetBaseFoldable] # Trauma - less vision restriction, ClothingHeadHelmetBaseFoldable
   id: ClothingHeadHelmetERTLeader
   name: ERT leader helmet
   description: An in-atmosphere helmet worn by the leader of a Nanotrasen Emergency Response Team. Has blue highlights.
