@@ -89,27 +89,14 @@ public sealed partial class SharedWerewolfAbilitiesSystem
             || !TryComp<WerewolfMindComponent>(leadMind, out var leadMindComp))
             return;
 
-        var inPack = leadMindComp.PackMembers.Contains(args.Target);
-        if (!inPack && _mind.TryGetMind(args.Target, out var targetMind, out _))
-        {
-            foreach (var member in leadMindComp.PackMembers)
-            {
-                if (_mind.TryGetMind(member, out var memberMind, out _) && memberMind == targetMind)
-                {
-                    inPack = true;
-                    break;
-                }
-            }
-        }
+        if (!_mind.TryGetMind(args.Target, out var targetMindId, out _))
+            return;
 
-        if (!inPack)
+        if (!leadMindComp.PackMembers.Contains(targetMindId))
         {
             _popup.PopupEntity(Loc.GetString("werewolf-bequeath-fail-not-pack"), uid, uid, PopupType.Large);
             return;
         }
-
-        if (!_mind.TryGetMind(args.Target, out var targetMindId, out _))
-            return;
 
         var qthead = EnsureComp<WerewolfBequeathedComponent>(targetMindId);
         qthead.OriginalLeader = leadMindComp;
@@ -169,8 +156,8 @@ public sealed partial class SharedWerewolfAbilitiesSystem
 
             RemComp<WerewolfBitComponent>(uid);
 
-            if (bit.BittenBy != null)
-                bit.BittenBy.PackMembers.Add(uid);
+            if (bit.BittenBy != null && _mind.TryGetMind(uid, out var mind, out _))
+                bit.BittenBy.PackMembers.Add(mind);
 
             var ev = new WerewolfInfectionFinishedEvent(uid);
             RaiseLocalEvent(ref ev);

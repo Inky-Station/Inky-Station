@@ -183,8 +183,12 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
                 if (!HasComp<WerewolfAbilitiesComponent>(wolf))
                     continue;
 
-                if (pack != null && !pack.Contains(wolf)) // oughhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-                    continue;
+                if (pack != null)
+                {
+                    if (!_mind.TryGetMind(wolf, out var mind, out _)
+                        || !pack.Contains(mind))
+                        continue;
+                }
 
                 if (args.ForceTransfurm)
                     RaiseLocalEvent(wolf, new TransfurmEvent(true));

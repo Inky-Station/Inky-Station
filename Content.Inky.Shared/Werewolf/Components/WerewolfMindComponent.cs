@@ -9,6 +9,7 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
 
     /// <summary>
     /// Used by the black wolf to show which entities were turned into werewolves by him.
+    /// Stores MIND ent uids, not body uids, bodies change on polymorph, minds dont.
     /// </summary>
     [DataField]
     public List<EntityUid> PackMembers = new();
