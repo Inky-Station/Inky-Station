@@ -128,3 +128,21 @@
 #         - Azaziba
 #       languagesUnderstood:
 #         - Azaziba
+
+#inky edit
+- type: trait
+  id: SignLanguage
+  name: trait-language-signlanguage-name
+  description: trait-language-signlanguage-desc
+  category: LanguageTraits
+  cost: 4 #sign language players think they deserve to live
+  blacklist:
+    components:
+      - BorgChassis
+      - mime
+  components:
+  - type: LanguageSpeaker
+  languagesSpoken:
+    - Sign
+  languagesUnderstood:
+    - Sign
