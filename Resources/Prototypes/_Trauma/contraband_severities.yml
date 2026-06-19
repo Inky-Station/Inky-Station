@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: contrabandSeverity
   id: RevMinor
   examineText: contraband-examine-text-RevMinor

@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   name: bloodtrak
   description: A handheld tracking device, capable of tracking someone from their DNA. This particular model only works on puddles, and only functions for a short duration.

@@ -502,7 +502,7 @@
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
-#  - SecurityMelee # Goobstation # inky
+  - SecurityMelee # Goobstation
   - SecurityBelt
   - HeadofSecurityOuterClothing
   - HeadofSecurityShoes # Goobstation edit
@@ -522,7 +522,7 @@
   - WardenHead
   - WardenJumpsuit
   - SecurityBackpack
-  #  - SecurityMelee # Goobstation # inky
+  - SecurityMelee # Goobstation
   - SecurityNeck
   - SecurityBelt
   - WardenOuterClothing
@@ -543,7 +543,7 @@
   - SecurityHead
   - SecurityJumpsuit
   - SecurityBackpack
-  #  - SecurityMelee # Goobstation # inky
+  - SecurityMelee # Goobstation
   - SecurityOuterClothing
   - SecurityShoes
   - SecurityNeck
@@ -554,9 +554,9 @@
   - SecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
   # Goobstation - EE Plasmeme Change.
-#  - SecurityOfficerEnvirohelm # inky
-#  - SecurityOfficerEnvirosuit # inky
-#  - SecurityOfficerEnvirogloves # inky
+  - SecurityOfficerEnvirohelm
+  - SecurityOfficerEnvirosuit
+  - SecurityOfficerEnvirogloves
   - ExclusiveItems # Trauma
 
 - type: roleLoadout
@@ -573,9 +573,9 @@
   - DetectiveJobTrinkets
   - GroupSpeciesBreathToolSecurity
   # Goobstation - EE Plasmeme Change.
-#  - DetectiveEnvirohelm # inky
-#  - DetectiveEnvirosuit # inky
-#  - DetectiveEnvirogloves # inky
+  - DetectiveEnvirohelm
+  - DetectiveEnvirosuit
+  - DetectiveEnvirogloves
   - DetectiveGloves
   - ExclusiveItems # Trauma
 
@@ -584,7 +584,7 @@
   groups:
   - SecurityCadetJumpsuit
   - SecurityBackpack
-  #  - SecurityMelee # Goobstation # inky
+  - SecurityMelee # Goobstation
   - SurvivalSecurity
   - SecurityNeck
   - SecurityOuterClothing # Goobstation - Why not.
@@ -592,9 +592,9 @@
   #- SecurityCadetJobTrinkets
   - GroupSpeciesBreathToolSecurity
   # Goobstation - EE Plasmeme Change.
-#  - SecurityCadetEnvirohelm # inky
-#  - SecurityCadetEnvirosuit # inky
-#  - SecurityCadetEnvirogloves # inky
+  - SecurityCadetEnvirohelm
+  - SecurityCadetEnvirosuit
+  - SecurityCadetEnvirogloves
   - ExclusiveItems # Trauma
 
 # Wildcards
@@ -612,9 +612,9 @@
   #- ReporterJobTrinkets
   - GroupSpeciesBreathTool
   # Goobstation - EE Plasmeme Change.
-#  - ReporterEnvirohelm # inky
-#  - ReporterEnvirosuit # inky
-#  - ReporterEnvirogloves # inky
+  - ReporterEnvirohelm
+  - ReporterEnvirosuit
+  - ReporterEnvirogloves
   - ExclusiveItems # Trauma
 
 - type: roleLoadout
@@ -629,9 +629,9 @@
   #- PsychologistJobTrinkets
   - GroupSpeciesBreathTool
   # Goobstation - EE Plasmeme Change.
-#  - PsychologistEnvirohelm # inky
-#  - PsychologistEnvirosuit # inky
-#  - PsychologistEnvirogloves # inky
+  - PsychologistEnvirohelm
+  - PsychologistEnvirosuit
+  - PsychologistEnvirogloves
   - ExclusiveItems # Trauma
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs

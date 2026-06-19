@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
 using Content.Shared.Crayon;
 using Content.Shared.Damage.Systems;
@@ -68,7 +67,6 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private HereticRitualEffectSystem _effects = default!;
     [Dependency] private SharedHereticRitualSystem _ritual = default!;
-    [Dependency] private SharedActionsSystem _actions = default!;
 
     private readonly HashSet<Entity<MobStateComponent>> _lookupMobs = new();
 
@@ -126,11 +124,11 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
 
     private bool InfuseOurBlades(EntityUid uid)
     {
-        if (!_heretic.TryGetHereticComponent(uid, out var heretic, out var mind) ||
+        if (!_heretic.TryGetHereticComponent(uid, out var heretic, out _) ||
             heretic.CurrentPath != HereticPath.Blade || heretic.PathStage < 7)
             return false;
 
-        if (!_heretic.TryGetRitual((mind, heretic), BladeBladeRitualTag, out var ritual))
+        if (!_heretic.TryGetRitual((uid, heretic), BladeBladeRitualTag, out var ritual))
             return false;
 
         var xformQuery = GetEntityQuery<TransformComponent>();
@@ -438,21 +436,15 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
         TouchSpell.InvokeTouchSpell(uid, args.User, TimeSpan.Zero);
     }
 
-    public void ResetRustGraspDelay(Entity<RustGraspComponent, UseDelayComponent, TouchSpellComponent?> ent,
+    public void ResetRustGraspDelay(Entity<RustGraspComponent, UseDelayComponent> ent,
         int pathStage,
         float multiplier = 1f)
     {
-        var (uid, comp, delay, touch) = ent;
-
-        if (!Resolve(uid, ref touch))
-            return;
-
+        var (uid, comp, delay) = ent;
         // Less delay the higher the path stage is
         var length = float.Lerp(comp.MaxUseDelay, comp.MinUseDelay, pathStage / 10f) * multiplier;
-        var time = TimeSpan.FromSeconds(length);
-        _delay.SetLength((uid, delay), time, comp.Delay);
+        _delay.SetLength((uid, delay), TimeSpan.FromSeconds(length), comp.Delay);
         _delay.TryResetDelay((uid, delay), false, comp.Delay);
-        _actions.SetIfBiggerCooldown(touch.Action, time);
     }
 
     private void OnAfterInteract(Entity<TagComponent> ent, ref AfterInteractEvent args)

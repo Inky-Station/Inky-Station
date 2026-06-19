@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: storyTemplate
   id: ServiceDocumentTemplate
   locId: ntr-document-service-document-text

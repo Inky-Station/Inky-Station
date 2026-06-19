@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: currency
   id: Spesos
   displayName: store-currency-display-spesos

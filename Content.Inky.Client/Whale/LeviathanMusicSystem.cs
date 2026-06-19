@@ -10,7 +10,7 @@ using Robust.Shared.Player;
 
 namespace Content.Inky.Client.Whale;
 
-public sealed partial class LeviathanMusicSystem : EntitySystem // i tried to use bossmusicsystem, its fucking horrible.
+public sealed class LeviathanMusicSystem : EntitySystem // i tried to use bossmusicsystem, its fucking horrible.
 {
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private ContentAudioSystem _audioContent = default!;

@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: antag
   id: Shadowling
   name: roles-antag-shadowling-name
@@ -8,13 +6,13 @@
   objective: roles-antag-shadowling-description
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 5h
+    time: 54000 # 15 hours
   - !type:DepartmentTimeRequirement
     department: Medical
-    time: 1h
+    time: 7200 # 2 hours
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 1h
+    time: 18000 # 5 hours
   guides: [ Shadowlings ]
 
 - type: antag

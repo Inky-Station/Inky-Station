@@ -1,5 +1,5 @@
 - type: entity
-  id: BaseLatheNoSilo # Trauma - add NoSilo, BaseLathe has OreSiloClient
+  id: BaseLathe
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   abstract: true
   name: lathe
@@ -124,7 +124,7 @@
 
 - type: entity
   id: Autolathe
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseSiloUtilizer] # Goob edit
   name: autolathe
   description: It produces basic items using metal and glass. Has the ability to process blueprints to print new recipes.
   components:
@@ -149,7 +149,6 @@
         - Sheet
         - RawMaterial
         - Ingot
-  - type: OreSiloClient
   - type: Lathe
     idleState: icon
     runningState: building
@@ -210,7 +209,7 @@
 
 - type: entity
   id: Protolathe
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseSiloUtilizer] # Goob edit
   name: protolathe
   description: Converts raw materials into advanced items.
   components:
@@ -231,7 +230,6 @@
     board: ProtolatheMachineCircuitboard
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
-  - type: OreSiloClient
   - type: Lathe
     idleState: icon
     runningState: building
@@ -292,7 +290,7 @@
 
 - type: entity
   id: CircuitImprinter
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseSiloUtilizer] # Goob edit
   name: circuit imprinter
   description: Prints circuit boards for machines.
   components:
@@ -337,7 +335,6 @@
     - SharedBoards
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
-  - type: OreSiloClient
   - type: RequireProjectileTarget
 
 - type: entity
@@ -353,7 +350,7 @@
 
 - type: entity
   id: ExosuitFabricator
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseSiloUtilizer] # Goob edit
   name: exosuit fabricator
   description: Creates parts for robotics and other mechanical needs.
   components:
@@ -414,7 +411,6 @@
     - MechWeaponsSecurityLight
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
-  - type: OreSiloClient
   - type: GuideHelp
     guides:
     - Robotics
@@ -462,7 +458,7 @@
 
 - type: entity
   id: SecurityTechFab
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseSiloUtilizer] # Goob edit
   name: security techfab
   description: Prints equipment and circuitboards for use by security crew. #Goobstation - Circuitboards description
   components:
@@ -526,13 +522,10 @@
   #   # - SyndicateAmmoStatic # Trauma
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
-  - type: OreSiloClient
-  #- type: LatheAnnouncing # Trauma - not cherry picked
-  #  channels: [Security]
 
 - type: entity
   id: AmmoTechFab
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseSiloUtilizer] # Goob edit
   name: ammo techfab
   description: Prints the bare minimum of bullets that any budget military or armory could need. Nothing fancy.
   components:
@@ -563,19 +556,13 @@
       # - SyndicateAmmoStatic # Trauma
     - type: MaterialStorage
       whitelist: *StandardMaterialWhitelist
-    - type: OreSiloClient
 
 - type: entity
   id: MedicalTechFab
-  parent: BaseLatheLube
+  parent: [BaseLatheLube, BaseSiloUtilizer] #Goobstation - Circuitboards description
   name: medical techfab
   description: Prints equipment and circuitboards for use by the medbay.
   components:
-  # <Trauma>
-  - type: EmagLatheRecipes
-    emagStaticPacks:
-    - SyndicateCatridgesStatic
-  # </Trauma>
   - type: Sprite
     sprite: Structures/Machines/techfab.rsi
     layers:
@@ -595,7 +582,14 @@
     unlitIdleState: unlit
     unlitRunningState: unlit-building
     staticPacks:
-    # <Trauma>
+    - TopicalsStatic
+    - ChemistryStatic
+    - MedicalStatic
+    - RollerBedsStatic
+    - MedicalClothingStatic
+    - EmptyMedkitsStatic
+    - SurgeryStatic
+    # Goobstation Packs
     - ParamedHypoStatic
     - MedicalPatchesStatic
     - SurgeryStaticGoob
@@ -604,18 +598,12 @@
     - MedicalBoardsStaticGoob
     - PowerCellsStatic
     - GrenadeTriggersStatic
+    # Einstein Engines Packs
     - SyringeCase
-    - TraumaMedicalStatic
-    # </Trauma>
-    - TopicalsStatic
-    - ChemistryStatic
-    - MedicalStatic
-    - RollerBedsStatic
-    - MedicalClothingStatic
-    - EmptyMedkitsStatic
-    - SurgeryStatic
+    - TraumaMedicalStatic # Trauma
     dynamicPacks:
-    # <Trauma>
+    - Chemistry
+    # Goobstation Packs
     - Surgery
     - MedicalCybernetics
     - EnvirosuitExtinguisherRefill
@@ -625,21 +613,20 @@
     - MedicalBoards
     - Janitor
     - Genetics
-    #    - Translators # Language # inky edit start - kill translators
-    #    - TranslatorImplanters # Language # inky edit start - kill translators
-    - TraumaCybernetics
-    # </Trauma>
-    - Chemistry
+    # Einstein Engines Packs
+#    - Translators # Language # inky edit start - kill translators
+#    - TranslatorImplanters # Language # inky edit start - kill translators
+    - TraumaCybernetics # Trauma
   - type: Machine
     board: MedicalTechFabCircuitboard
+  - type: EmagLatheRecipes # Goobstation Packs
+    emagStaticPacks:
+    - SyndicateCatridgesStatic
   - type: StealTarget
     stealGroup: MedicalTechFabCircuitboard
-  - type: OreSiloClient
-  #- type: LatheAnnouncing # Trauma - not cherry picked
-  #  channels: [Medical]
 
 - type: entity
-  parent: BaseLathe
+  parent: [BaseLathe, BaseSiloUtilizer] # Trauma - was BaseLathe
   id: UniformPrinter
   name: uniform printer
   description: Prints new or replacement uniforms.
@@ -734,7 +721,7 @@
     - HostileCubesStatic
 
 - type: entity
-  parent: BaseLatheNoSilo # Trauma - oreproc doesnt need to use silos
+  parent: [BaseLathe, BaseSiloUtilizer] # Goob edit
   id: OreProcessor
   name: ore processor
   description: It produces sheets and ingots using ores.
@@ -754,10 +741,10 @@
     - type: Machine
       board: OreProcessorMachineCircuitboard
     - type: MaterialStorage
-      # <Trauma>
-      ignoreMaterialWhiteList: true
-      disallowOreEjection: false
-      # </Trauma>
+      ignoreMaterialWhiteList: true # Goob edit
+      connectToSilo: true # Goob edit
+      disconnectSiloOffMap: true # Goob edit
+      disallowOreEjection: false # Goob edit
       ignoreColor: true
       whitelist:
         tags:

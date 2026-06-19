@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client.LinkAccount;
 using Content.Shared.Dataset; // inky
 using Content.Shared.GameTicking;
 using Content.Shared.Random.Helpers;
 using Content.Trauma.Common.CCVar;
-using Content.Trauma.Common.LinkAccount;
 using Robust.Client.ResourceManagement;
 using Robust.Shared;
 using Robust.Shared.Configuration;
@@ -16,10 +16,10 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
 {
     [Dependency] private IUserInterfaceManager _ui = default!;
     [Dependency] private IClyde _clyde = default!;
-    [Dependency] private ILinkAccountManager _linkAccount = default!;
     [Dependency] private IResourceCache _cache = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private LinkAccountManager _linkAccount = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
 
     private float _timer;
@@ -60,10 +60,9 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
         // <inky>
         if (_proto.TryIndex(datasetId, out var dataset))
             shoutout = _random.Pick(_proto.Index(datasetId));
-        // var patrons = _linkAccount.GetPatrons();
-        // if (patrons.Count != 0)
-        //     shoutout = _random.Pick(patrons).Name;
         // </inky>
+        if (_linkAccount.GetPatrons().Count != 0)
+            shoutout = _random.Pick(_linkAccount.GetPatrons()).Name;
 
         var credits = new EndRoundCreditsControl();
         credits.SetSize = _clyde.MainWindow.Size / _uiScale;

@@ -6,27 +6,23 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 5h
+      time: 1h # Trauma was 5
   startingGear: ChemistGear
   icon: "JobIconChemist"
   supervisors: job-supervisors-cmo
+  guides: # goobstation
+  - Chemist
+  - Chemicals
   access:
   - Medical
   - Chemistry
   - Maintenance
-  # <Trauma>
-  guides:
-  - Chemist
-  - Chemicals
+  # Shitmed Change
   special:
-  - !type:OrganChipsSpecial
-    chips:
-    - SkillChipChemist
   - !type:AddComponentSpecial
     components:
     - type: SurgerySpeedModifier
       speedModifier: 1.25
-  # </Trauma>
 
 - type: startingGear
   id: ChemistGear

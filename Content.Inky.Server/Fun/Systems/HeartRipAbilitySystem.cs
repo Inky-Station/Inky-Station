@@ -17,15 +17,15 @@ using Robust.Server.Audio;
 
 namespace Content.Inky.Server.Fun.Systems;
 
-public sealed partial class HeartRipAbilitySystem : EntitySystem
+public sealed class HeartRipAbilitySystem : EntitySystem
 {
-    [Dependency] private BodySystem _body = default!;
-    [Dependency] private DoAfterSystem _doAfter = default!;
-    [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private SharedHandsSystem _hands = default!;
-    [Dependency] private FunnyThingsSystem _fun = default!;
-    [Dependency] private SharedStunSystem _stunSystem = default!;
-    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private readonly BodySystem _body = default!;
+    [Dependency] private readonly DoAfterSystem _doAfter = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly FunnyThingsSystem _fun = default!;
+    [Dependency] private readonly SharedStunSystem _stunSystem = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     public override void Initialize()
     {

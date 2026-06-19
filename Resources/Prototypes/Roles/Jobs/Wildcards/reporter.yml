@@ -9,13 +9,7 @@
   access:
   - Service
   - Maintenance
-  # <Trauma>
-  - Journalism
-  special:
-  - !type:OrganChipsSpecial
-    chips:
-    - SkillChipReporter
-  # </Trauma>
+  - Journalism # goob
 
 - type: startingGear
   id: ReporterGear
@@ -23,14 +17,12 @@
     shoes: ClothingShoesColorWhite
     id: ReporterPDA
     ears: ClothingHeadsetService
-  # <Trauma>
-  storage:
+  storage: # DeltaV: Give reporters tape recording equipment
     back:
     - TapeRecorder
     - CassetteTape
     - CassetteTape
-    - MicrophoneInstrument
-  # </Trauma>
+    - MicrophoneInstrument # Goobstation
 
 - type: chameleonOutfit
   id: ReporterChameleonOutfit

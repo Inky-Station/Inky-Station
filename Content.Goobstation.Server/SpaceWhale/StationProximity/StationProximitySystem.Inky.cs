@@ -13,7 +13,7 @@ namespace Content.Goobstation.Server.SpaceWhale.StationProximity;
 
 public sealed partial class StationProximitySystem
 {
-    [Dependency] private SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
 
     private const float AdrenalineAmount = 60f;
 

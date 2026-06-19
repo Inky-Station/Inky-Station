@@ -13,17 +13,10 @@
   startingGear: ResearchAssistantGear
   icon: "JobIconResearchAssistant"
   supervisors: job-supervisors-science
+  guides: [ Science ] # Trauma
   access:
   - Research
   - Maintenance
-  # <Trauma>
-  guides:
-  - Science
-  special:
-  - !type:OrganChipsSpecial
-    chips:
-    - SkillChipResearchAssistant
-  # </Trauma>
 
 - type: startingGear
   id: ResearchAssistantGear

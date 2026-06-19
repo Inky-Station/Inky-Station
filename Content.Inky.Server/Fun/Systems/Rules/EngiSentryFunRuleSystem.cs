@@ -6,9 +6,9 @@ using Content.Shared.Stacks;
 
 namespace Content.Inky.Server.Fun.Systems.Rules;
 
-public sealed partial class EngiSentryFunRuleSystem : GameRuleSystem<EngiSentryFunRuleComponent>
+public sealed class EngiSentryFunRuleSystem : GameRuleSystem<EngiSentryFunRuleComponent>
 {
-    [Dependency] private FunnyThingsSystem _fun = default!;
+    [Dependency] private readonly FunnyThingsSystem _fun = default!;
 
     public override void Initialize()
     {

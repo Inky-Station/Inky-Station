@@ -4,7 +4,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Inky.Shared;
 
-public sealed partial class LimitedInstancesSystem : EntitySystem
+public sealed class LimitedInstancesSystem : EntitySystem
 {
     [Dependency] private INetManager _net = default!;
     public override void Initialize()

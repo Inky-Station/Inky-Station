@@ -407,55 +407,55 @@
 
 # Security Officer
 
-#- type: loadoutGroup
-#  id: SecurityOfficerEnvirohelm
-#  name: loadout-group-security-officer-envirohelm
-#  minLimit: 1
-#  maxLimit: 1
-#  loadouts:
-#  - SecurityOfficerEnvirohelm
-#
-#- type: loadoutGroup
-#  id: SecurityOfficerEnvirosuit
-#  name: loadout-group-security-officer-envirosuit
-#  minLimit: 1
-#  maxLimit: 1
-#  loadouts:
-#  - SecurityOfficerEnvirosuit
-#
-#- type: loadoutGroup
-#  id: SecurityOfficerEnvirogloves
-#  name: loadout-group-security-officer-envirogloves
-#  minLimit: 1
-#  maxLimit: 1
-#  loadouts:
-#  - BlackEnvirogloves
-#
-## Security Cadet
-#
-#- type: loadoutGroup
-#  id: SecurityCadetEnvirohelm
-#  name: loadout-group-security-cadet-envirohelm
-#  minLimit: 1
-#  maxLimit: 1
-#  loadouts:
-#  - SecurityOfficerEnvirohelm
-#
-#- type: loadoutGroup
-#  id: SecurityCadetEnvirosuit
-#  name: loadout-group-security-cadet-envirosuit
-#  minLimit: 1
-#  maxLimit: 1
-#  loadouts:
-#  - SecurityOfficerEnvirosuit
-#
-#- type: loadoutGroup
-#  id: SecurityCadetEnvirogloves
-#  name: loadout-group-security-cadet-envirogloves
-#  minLimit: 1
-#  maxLimit: 1
-#  loadouts:
-#  - BlackEnvirogloves
+- type: loadoutGroup
+  id: SecurityOfficerEnvirohelm
+  name: loadout-group-security-officer-envirohelm
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - SecurityOfficerEnvirohelm
+
+- type: loadoutGroup
+  id: SecurityOfficerEnvirosuit
+  name: loadout-group-security-officer-envirosuit
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - SecurityOfficerEnvirosuit
+
+- type: loadoutGroup
+  id: SecurityOfficerEnvirogloves
+  name: loadout-group-security-officer-envirogloves
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - BlackEnvirogloves
+
+# Security Cadet
+
+- type: loadoutGroup
+  id: SecurityCadetEnvirohelm
+  name: loadout-group-security-cadet-envirohelm
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - SecurityOfficerEnvirohelm
+
+- type: loadoutGroup
+  id: SecurityCadetEnvirosuit
+  name: loadout-group-security-cadet-envirosuit
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - SecurityOfficerEnvirosuit
+
+- type: loadoutGroup
+  id: SecurityCadetEnvirogloves
+  name: loadout-group-security-cadet-envirogloves
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - BlackEnvirogloves
 
 # Detective
 
@@ -1014,8 +1014,8 @@
   minLimit: 0
   loadouts:
   - Bodycam
-#  - ClothingNeckCWPSec # inky
-#  - ClothingNeckMantleVeteranSecurity # inky
+  - ClothingNeckCWPSec
+  - ClothingNeckMantleVeteranSecurity
 
 #honkops
 
@@ -1293,11 +1293,11 @@
 
 # Security
 
-#- type: loadoutGroup # inky
-#  id: SecurityMelee
-#  name: loadout-group-security-melee
-#  loadouts:
-#  - SecurityMeleeKnife
+- type: loadoutGroup
+  id: SecurityMelee
+  name: loadout-group-security-melee
+  loadouts:
+  - SecurityMeleeKnife
 
 # Plasmamen
 

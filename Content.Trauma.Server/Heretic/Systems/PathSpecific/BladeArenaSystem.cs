@@ -405,9 +405,7 @@ public sealed partial class BladeArenaSystem : SharedBladeArenaSystem
         Entity<MapGridComponent> grid)
     {
         var spawned = Spawn(proto, coords);
-        var xform = Transform(spawned);
-        if (!xform.Anchored)
-            _transform.AnchorEntity((spawned, xform), grid);
+        _transform.AnchorEntity((spawned, Transform(spawned)), grid);
         arena.SpawnedEntities.Add(spawned);
     }
 

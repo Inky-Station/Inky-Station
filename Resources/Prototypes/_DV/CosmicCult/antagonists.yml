@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: antag
   id: CosmicAntagCultist
   name: roles-antag-cosmiccult-name
@@ -8,7 +6,7 @@
   objective: roles-antag-cosmiccult-description
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 2h
+    time: 43200 # 12h
   guides: [ CosmicCult ]
   creditImage: /Textures/_Trauma/EndCredits/Antags/cosmiccult.png
 

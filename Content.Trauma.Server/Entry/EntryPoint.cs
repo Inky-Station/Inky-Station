@@ -9,6 +9,6 @@ public sealed class EntryPoint : GameServer
 {
     public override void PreInit()
     {
-        ServerTraumaIoC.Register(Dependencies);
+        ServerTraumaContentIoC.Register(Dependencies);
     }
 }

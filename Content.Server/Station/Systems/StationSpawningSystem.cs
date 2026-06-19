@@ -169,7 +169,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
         return entity.Value;
     }
 
-    public void DoJobSpecials(ProtoId<JobPrototype>? job, EntityUid entity) // Trauma - made public
+    private void DoJobSpecials(ProtoId<JobPrototype>? job, EntityUid entity)
     {
         if (!_prototypeManager.Resolve(job, out JobPrototype? prototype))
             return;

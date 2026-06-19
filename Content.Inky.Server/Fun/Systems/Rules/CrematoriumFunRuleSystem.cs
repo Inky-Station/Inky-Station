@@ -10,13 +10,13 @@ using Robust.Shared.Random;
 
 namespace Content.Inky.Server.Fun.Systems.Rules;
 
-public sealed partial class CrematoriumFunRuleSystem : GameRuleSystem<CrematoriumFunRuleComponent>
+public sealed class CrematoriumFunRuleSystem : GameRuleSystem<CrematoriumFunRuleComponent>
 {
-    [Dependency] private IRobustRandom _gambling = default!;
-    [Dependency] private ChatSystem _chat = default!;
-    [Dependency] private IPrototypeManager _protoMan = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
-    [Dependency] private FunnyThingsSystem _fun = default!;
+    [Dependency] private readonly IRobustRandom _gambling = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly IPrototypeManager _protoMan = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly FunnyThingsSystem _fun = default!;
 
     private const float CancelProb = 0.8f; // todo put this inside a gamerule idk
     private static readonly ProtoId<LocalizedDatasetPrototype> Dataset = "CrematoriumFun";

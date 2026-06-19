@@ -5,9 +5,9 @@ using Content.Shared.Silicons.Bots;
 
 namespace Content.Inky.Server.Fun.Systems.Rules;
 
-public sealed partial class FentbotFunRuleSystem : GameRuleSystem<FentbotFunRuleComponent>
+public sealed class FentbotFunRuleSystem : GameRuleSystem<FentbotFunRuleComponent>
 {
-    [Dependency] private FunnyThingsSystem _fun = default!;
+    [Dependency] private readonly FunnyThingsSystem _fun = default!;
     public override void Initialize()
     {
         base.Initialize();

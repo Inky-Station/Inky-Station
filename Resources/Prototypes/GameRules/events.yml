@@ -461,11 +461,9 @@
     table: !type:GroupSelector
       rolls: 4, 8
       children:
-      # <Trauma>
-      - id: MobPurpleSnakeVent
-      - id: MobSmallPurpleSnakeVent
-      - id: MobCobraSpaceVent
-      # </Trauma>
+      - id: MobPurpleSnake
+      - id: MobSmallPurpleSnake
+      - id: MobCobraSpace
 
 - type: entity
   id: SpiderSpawnHorde

@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: reagent ##RMC14
   id: JuiceMango
   name: reagent-name-juice-mango

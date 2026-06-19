@@ -14,12 +14,6 @@ binds:
 - function: Strafe
   type: State
   key: Shift
-- function: RotateMod
-  type: State
-  key: Control
-- function: TargetingMod
-  type: State
-  key: Shift
 # </Trauma>
 - function: UIClick
   type: State

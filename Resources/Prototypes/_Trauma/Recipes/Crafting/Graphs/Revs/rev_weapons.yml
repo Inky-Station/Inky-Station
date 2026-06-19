@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 # TODO add hammering and shit as well just touching it with wood shouldn't complete it
 - type: constructionGraph
   id: RevSword

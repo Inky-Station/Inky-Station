@@ -1,5 +1,4 @@
 // <Trauma>
-using Content.Trauma.Common.Sprite;
 using Content.Trauma.Common.Wizard;
 // </Trauma>
 using Content.Client.Movement.Systems;
@@ -15,8 +14,7 @@ namespace Content.Client.Ghost
     public sealed partial class GhostSystem : SharedGhostSystem
     {
         // <Trauma>
-        [Dependency] private CommonGhostVisibilitySystem _ghostVis = default!;
-        [Dependency] private CommonSpriteVisibilitySystem _spriteVis = default!;
+        [Dependency] private CommonGhostVisibilitySystem _ghostVisSystem = default!;
         // </Trauma>
         [Dependency] private IClientConsoleHost _console = default!;
         [Dependency] private IPlayerManager _playerManager = default!;
@@ -31,10 +29,10 @@ namespace Content.Client.Ghost
 
         private bool GhostVisibility
         {
-            get => _ghostVis.GhostsVisible() || _ghostVisibility; // Goob edit
+            get => _ghostVisSystem.GhostsVisible() || _ghostVisibility; // Goob edit
             set
             {
-                if (_ghostVis.GhostsVisible()) // Goobstation
+                if (_ghostVisSystem.GhostsVisible()) // Goobstation
                     value = true;
 
                 if (_ghostVisibility == value)
@@ -44,13 +42,11 @@ namespace Content.Client.Ghost
 
                 _ghostVisibility = value;
 
-                // <Trauma> - use sprite visibility system instead of SetVisible, removed Sprite from the query
-                var query = AllEntityQuery<GhostComponent>();
-                while (query.MoveNext(out var uid, out _))
+                var query = AllEntityQuery<GhostComponent, SpriteComponent>();
+                while (query.MoveNext(out var uid, out _, out var sprite))
                 {
-                    _spriteVis.UpdateVisibilityModifiers(uid, nameof(GhostComponent), value || uid == _playerManager.LocalEntity);
+                    _sprite.SetVisible((uid, sprite), value || uid == _playerManager.LocalEntity);
                 }
-                // </Trauma>
             }
         }
 
@@ -85,9 +81,8 @@ namespace Content.Client.Ghost
 
         private void OnStartup(EntityUid uid, GhostComponent component, ComponentStartup args)
         {
-            // <Trauma> - use sprite visibility system instead of SetVisible
-            _spriteVis.UpdateVisibilityModifiers(uid, nameof(GhostComponent), GhostVisibility || uid == _playerManager.LocalEntity);
-            // </Trauma>
+            if (TryComp(uid, out SpriteComponent? sprite))
+                _sprite.SetVisible((uid, sprite), GhostVisibility || uid == _playerManager.LocalEntity);
         }
 
         private void OnToggleLighting(EntityUid uid, EyeComponent component, ToggleLightingActionEvent args)
@@ -131,7 +126,7 @@ namespace Content.Client.Ghost
 
         private void OnToggleGhosts(EntityUid uid, EyeComponent component, ToggleGhostsActionEvent args) // Goob edit
         {
-            if (args.Handled || _ghostVis.GhostsVisible()) // Goob edit
+            if (args.Handled || _ghostVisSystem.GhostsVisible()) // Goob edit
                 return;
 
             var locId = GhostVisibility ? "ghost-gui-toggle-ghost-visibility-popup-off" : "ghost-gui-toggle-ghost-visibility-popup-on";

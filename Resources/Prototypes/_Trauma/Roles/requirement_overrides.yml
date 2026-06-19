@@ -1,9 +1,7 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: jobRequirementOverride
   id: Trauma
   jobs:
-    # Dignitary
+    # Dignitrary
     NanotrasenRepresentative:
     - !type:DepartmentTimeRequirement
       department: Command
@@ -76,23 +74,18 @@
       time: 3h
       inverted: true
     ServiceWorker:
-    # consider removing this if it gets turned into waiter
+      # consider removing this if it gets turned into waiter
     - !type:DepartmentTimeRequirement
       department: Service
       time: 3h
       inverted: true
-    # Service
+    #Civilian
     Chef: # Anti-raider ops
     - !type:DepartmentTimeRequirement
       department: Civilian
       time: 1h
-    Bartender: []
-    # Cargo
-    SalvageSpecialist:
-    - !type:DepartmentTimeRequirement
-      department: Cargo
-      time: 1h
-    # Engineering
+    #Cargo - No intern role, so no limits lmao.
+    #Engineering
     StationEngineer:
     - !type:DepartmentTimeRequirement
       department: Engineering
@@ -101,7 +94,7 @@
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 1h
-    # Medical
+    #Medical
     Chemist:
     - !type:DepartmentTimeRequirement
       department: Medical
@@ -114,12 +107,24 @@
     - !type:DepartmentTimeRequirement
       department: Medical
       time: 1h
-    # Science
+    Virologist:
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 2h
+    #Science
     Scientist:
     - !type:DepartmentTimeRequirement
       department: Science
       time: 1h
-    # Security
+    Roboticist:
+    - !type:DepartmentTimeRequirement
+      department: Science
+      time: 1.5h
+    Geneticist:
+    - !type:DepartmentTimeRequirement
+      department: Science
+      time: 1.5h
+    #Security
     SecurityOfficer:
     - !type:DepartmentTimeRequirement
       department: Security
@@ -132,7 +137,7 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 2h # muh intermediary role, also kinda has to know a bit more law.
-    # Silicon
+    #Silicon
     StationAi:
     - !type:RoleTimeRequirement
       role: JobBorg
@@ -141,13 +146,38 @@
     - !type:OverallPlaytimeRequirement
       time: 2h
   antags:
+    AbductorAgentAntag:
+    - !type:OverallPlaytimeRequirement
+      time: 2h
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 1h
+    AbductorScientistAntag:
+    - !type:OverallPlaytimeRequirement
+      time: 2h
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 1h
+    Blob:
+    - !type:OverallPlaytimeRequirement
+      time: 2h
     Changeling:
     - !type:OverallPlaytimeRequirement
       time: 2h
+    CosmicAntagCultist:
+    - !type:OverallPlaytimeRequirement
+      time: 2h
+    Devil:
+    - !type:RoleTimeRequirement
+      role: JobLawyer
+      time: 1h
     HeadRev:
     - !type:DepartmentTimeRequirement
       department: Command
       time: 2h
+    Heretic:
+    - !type:OverallPlaytimeRequirement
+      time: 5h
     Nukeops:
     - !type:OverallPlaytimeRequirement
       time: 5h
@@ -166,6 +196,15 @@
     NukeopsCommander:
     - !type:OverallPlaytimeRequirement
       time: 3h
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 1h
+    Shadowling:
+    - !type:OverallPlaytimeRequirement
+      time: 5h
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 1h
     - !type:DepartmentTimeRequirement
       department: Security
       time: 1h

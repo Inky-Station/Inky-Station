@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   abstract: true
   parent: [ BaseItem, BaseRevMajorContraband ]
@@ -221,7 +219,7 @@
   - type: Solution
     id: melee
     solution:
-      maxVol: 5
+      maxVol: 3
   - type: MeleeChemicalInjector
     transferAmount: 5
     solution: melee

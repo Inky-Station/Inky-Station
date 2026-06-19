@@ -9,7 +9,7 @@
   guides: [ Blob ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 2h
+    time: 5h
   creditImage: /Textures/_Trauma/EndCredits/Antags/blob.png
 
 - type: antagSpecifier

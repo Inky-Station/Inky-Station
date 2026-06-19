@@ -1,14 +1,12 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: job
   id: Virologist
   name: job-name-virologist
   description: job-description-virologist
   playTimeTracker: JobVirologist
   requirements:
-  - !type:DepartmentTimeRequirement
-    department: Medical
-    time: 2h
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 14400 #4 hrs
   startingGear: VirologistGear
   icon: "JobIconVirologist"
   supervisors: job-supervisors-cmo
@@ -23,9 +21,6 @@
   extendedAccess:
   - Chemistry
   special:
-  - !type:OrganChipsSpecial
-    chips:
-    - SkillChipVirologist
   - !type:AddComponentSpecial
     components:
     - type: SurgerySpeedModifier

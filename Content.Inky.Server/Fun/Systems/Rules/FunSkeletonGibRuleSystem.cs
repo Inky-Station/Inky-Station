@@ -9,12 +9,12 @@ using Robust.Shared.Audio;
 
 namespace Content.Inky.Server.Fun.Systems.Rules;
 
-public sealed partial class FunSkeletonGibSystem : GameRuleSystem<FunSkeletonGibRuleComponent>
+public sealed class FunSkeletonGibSystem : GameRuleSystem<FunSkeletonGibRuleComponent>
 {
-    [Dependency] private FunnyThingsSystem _fun = default!;
-    [Dependency] private PolymorphSystem _polymorph = default!;
-    [Dependency] private AudioSystem _audio = default!;
-    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private readonly FunnyThingsSystem _fun = default!;
+    [Dependency] private readonly PolymorphSystem _polymorph = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly MindSystem _mind = default!;
     private readonly SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Goobstation/Voice/badtothebone.ogg");
 
     public override void Initialize()

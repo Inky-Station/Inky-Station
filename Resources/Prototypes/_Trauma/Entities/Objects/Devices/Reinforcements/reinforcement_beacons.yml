@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   abstract: true
   id: BaseReinforcementBeacon
@@ -486,7 +484,6 @@
     components:
     - type: Loadout
       prototypes: [ ReinforcementBeaconLawyer ]
-    - type: Lawyer
 
 - type: entity
   parent: BaseReinforcementBeacon

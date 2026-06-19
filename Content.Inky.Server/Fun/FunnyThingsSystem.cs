@@ -6,11 +6,11 @@ using Robust.Shared.Random;
 
 namespace Content.Inky.Server.Fun;
 
-public sealed partial class FunnyThingsSystem : EntitySystem
+public sealed class FunnyThingsSystem : EntitySystem
 {
-    [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private IRobustRandom _gambling = default!;
-    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IRobustRandom _gambling = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
 
     public override void Initialize()
     {

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Common.Silo;
 using Content.Lavaland.Common.Mining;
 using Content.Shared.Access.Systems;
 using Content.Shared.Lathe;
@@ -37,7 +38,10 @@ public sealed partial class MiningPointsSystem : CommonMiningPointsSystem
     private void OnMaterialEntityInserted(Entity<MiningPointsLatheComponent> ent, ref MaterialEntityInsertedEvent args)
     {
         if (!_timing.IsFirstTimePredicted
-            || !TryComp<UnclaimedOreComponent>(args.Inserted, out var unclaimedOre))
+            || !TryComp<UnclaimedOreComponent>(args.Inserted, out var unclaimedOre)
+            || !TryComp<SiloUtilizerComponent>(ent, out var utilizer)
+            || !utilizer.Silo.HasValue
+            || Transform(utilizer.Silo.Value).MapID != Transform(ent).MapID)
             return;
 
         var points = unclaimedOre.MiningPoints * args.Count;
@@ -48,6 +52,7 @@ public sealed partial class MiningPointsSystem : CommonMiningPointsSystem
     private void OnClaimMiningPoints(Entity<MiningPointsLatheComponent> ent, ref LatheClaimMiningPointsMessage args)
     {
         var user = args.Actor;
+        // <Trauma> - raises event too
         var comp = _query.Comp(ent);
         var points = comp.Points;
         if (points == 0)
@@ -60,12 +65,13 @@ public sealed partial class MiningPointsSystem : CommonMiningPointsSystem
 
         var ev = new MiningPointsClaimedEvent(user, (int) points);
         RaiseLocalEvent(ent, ref ev, true);
+        // </Trauma>
     }
 
     #endregion
     #region Public API
 
-    public override bool CanClaimPoints(EntityUid user)
+    public override bool CanClaimPoints(EntityUid user) // Goobstation - borg Miningpoints
     {
         if (TryComp<MiningPointsComponent>(user, out var comp))
             return true;

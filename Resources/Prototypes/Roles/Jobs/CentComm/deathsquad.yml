@@ -15,9 +15,6 @@
   - NanotrasenRepresentative
   # <Trauma>
   special:
-  - !type:OrganChipsSpecial
-    chips:
-    - SkillChipDeathSquad
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
   - !type:AddComponentSpecial

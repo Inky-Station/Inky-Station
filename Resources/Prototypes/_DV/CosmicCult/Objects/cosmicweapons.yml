@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   name: entropic blade
   parent: [BaseSword, BaseCosmicContraband] # Trauma - Contraband marker (YES WE ARE MAKING A NEW ONE)

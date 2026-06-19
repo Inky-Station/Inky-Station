@@ -5,9 +5,6 @@
   - AreaKitchen # for chef CQC
   - AreaMaints # for ambience and maints spawn rules
   - AreaHallway # for carp migration
-  requiredEntities:
-  - MachineMaterialSilo # for main departments
-  - MachineMasterMaterialSilo # for cargo to easily distribute mats to department silos
   maps:
   - Atlas
   - Amber

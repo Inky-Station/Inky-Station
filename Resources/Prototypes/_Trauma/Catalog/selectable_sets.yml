@@ -16,8 +16,8 @@
   - MagazineLightRifleBox # 1
   - MagazineLightRifleBox # 2
   - MagazineLightRifleBox # 3
-  - MagazineLightRifleBox # 4 /inky
-
+  - MagazineLightRifleBox # 4 /inky   
+  
 - type: selectableSet
   id: SyndicatePirateCaptainSet
   name: selectable-set-syndicate-pirate-captain-name
@@ -73,9 +73,7 @@
   - ClothingUniformJumpsuitRepairmanSyndie
   - ClothingShoesBootsWork
   - EncryptionKeySyndie
-
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
+  
 # Fugitives
 
 - type: selectableSet

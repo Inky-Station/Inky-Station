@@ -106,7 +106,7 @@
   name: head
   abstract: true
   components:
-  # <Trauma>
+  # <Shitmed>
   - type: BodyPart
     partType: Head
     slots:
@@ -114,6 +114,7 @@
     - Eyes
     - Tongue
     - Ears
+#    - BrainChip # everyone starts with a brain chip so # inky edit - kill chips
   - type: ChildOrgan
     parents: [ Torso ]
   - type: Woundable
@@ -135,6 +136,8 @@
       Dismemberment: 0.5
   - type: WoundableVisuals
     bleedingOverlay: _Shitmed/Mobs/Effects/bleeding_damage.rsi
+  # </Shitmed>
+  # <Trauma>
   - type: BrainSplatterer
   # </Trauma>
   - type: Organ
@@ -373,7 +376,7 @@
   name: brain
   abstract: true
   components:
-  # <Trauma>
+  # <Shitmed>
   - type: InternalOrgan
     intCap: 28
     integrity: 28
@@ -383,13 +386,7 @@
       Destroyed: 0
   - type: ChildOrgan
     parents: [ Head ]
-  - type: OrganChipContainer
-    limit: 1 # TODO: change to 3 once skillchips are split up more
-  - type: ContainerContainer
-    containers:
-      knowledge: !type:Container
-      organ_chips: !type:Container
-  # </Trauma>
+  # </Shitmed>
   - type: GibbableOrgan
   - type: Organ
     category: Brain

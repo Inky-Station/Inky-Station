@@ -11,8 +11,6 @@ public static class TraumaInputContexts
     {
         var common = contexts.GetContext("common");
         common.AddFunction(TraumaKeyFunctions.NetBandwidth);
-        common.AddFunction(TraumaKeyFunctions.ZoomMod);
-        common.AddFunction(TraumaKeyFunctions.RotateMod);
 
         var human = contexts.GetContext("human");
         human.AddFunction(TraumaKeyFunctions.ResistGrab);
@@ -20,9 +18,7 @@ public static class TraumaInputContexts
         human.AddFunction(TraumaKeyFunctions.OpenMartialArtsMenu);
         human.AddFunction(TraumaKeyFunctions.Tackle);
         human.AddFunction(TraumaKeyFunctions.Strafe);
-
-        // Targeting
-        human.AddFunction(TraumaKeyFunctions.TargetingMod);
+        // TODO: change to cycling x/y
         human.AddFunction(TraumaKeyFunctions.TargetHead);
         human.AddFunction(TraumaKeyFunctions.TargetChest);
         human.AddFunction(TraumaKeyFunctions.TargetGroin);

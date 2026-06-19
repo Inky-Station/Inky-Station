@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
   icon: { sprite: _CorvaxGoob/Structures/Machines/stasis_operation_table.rsi, state: icon_lathe }

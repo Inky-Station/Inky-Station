@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: [BaseItem, BaseSecurityContraband]
   id: WeaponBillyClub
@@ -20,7 +18,6 @@
     damage:
       types:
         Blunt: 7
-    attackRate: 1.5
     bluntStaminaDamageFactor: 2.0
     soundHit:
       path: /Audio/_Goobstation/Weapons/Baton/woodhit.ogg

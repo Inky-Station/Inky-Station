@@ -16,14 +16,9 @@
   - CentralCommand
   # Goobstation
   - NanotrasenRepresentative
-  # <Trauma>
-  special:
-  - !type:OrganChipsSpecial
-    chips:
-    - SkillChipCaptain # TODO: better chip
+  special: # Goobstation
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
-  # </Trauma>
 
 - type: startingGear
   parent: ERTLeaderGearEVA

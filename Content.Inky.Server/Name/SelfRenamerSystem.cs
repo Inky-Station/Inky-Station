@@ -5,11 +5,11 @@ using Robust.Shared.Player;
 
 namespace Content.Inky.Server.Name;
 
-public sealed partial class SelfRenamerSystem : SharedSelfRenamerSystem
+public sealed class SelfRenamerSystem : SharedSelfRenamerSystem
 {
-    [Dependency] private ActionsSystem _actions = default!;
-    [Dependency] private UserInterfaceSystem _ui = default!;
-    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
 
     public override void Initialize()
     {

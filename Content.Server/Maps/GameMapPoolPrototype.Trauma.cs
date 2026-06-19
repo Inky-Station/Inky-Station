@@ -10,12 +10,5 @@ public sealed partial class GameMapPoolPrototype
     /// Areas that must be mapped on every map in this pool, or tests will fail.
     /// </summary>
     [DataField]
-    public List<EntProtoId> RequiredAreas = new();
-
-    /// <summary>
-    /// Entities that must be mapped on every map in this pool, or tests will fail.
-    /// Can be ignored per-map using <c>IgnoredRequiredEntities</c>.
-    /// </summary>
-    [DataField]
-    public List<EntProtoId> RequiredEntities = new();
+    public List<EntProtoId>? RequiredAreas;
 }

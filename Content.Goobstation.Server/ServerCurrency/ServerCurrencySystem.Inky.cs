@@ -18,7 +18,7 @@ public sealed partial class ServerCurrencySystem
     [Dependency] private SharedJobSystem _jobs = default!;
     [Dependency] private IPlayerManager _players = default!;
     [Dependency] private SharedPlayerSystem _playerSystem = default!;
-    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private int _minPlayersRequired;
     private int _currencyServerMultiplier; // why is it int...

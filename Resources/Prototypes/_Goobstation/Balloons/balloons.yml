@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2025 Arraydeess <arraygitbash@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
@@ -437,6 +440,7 @@
 #            max: 4
 #      - !type:DoActsBehavior
 #        acts: [ "Destruction" ]
+#
 #- type: entity
 #  name: B.R.B.
 #  parent: BaseMonkeyBalloon
@@ -469,6 +473,7 @@
 #            max: 4
 #      - !type:DoActsBehavior
 #        acts: [ "Destruction" ]
+#
 #- type: entity
 #  name: Z.O.M.B.
 #  parent: BaseMonkeyBalloon
@@ -501,3 +506,4 @@
 #            max: 4
 #      - !type:DoActsBehavior
 #        acts: [ "Destruction" ]
+#

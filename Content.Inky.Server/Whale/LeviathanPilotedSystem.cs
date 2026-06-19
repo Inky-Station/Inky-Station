@@ -13,10 +13,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Inky.Server.Whale;
 
-public sealed partial class LeviathanControlSystem : EntitySystem // half of it is taken from PilotedByClothing
+public sealed class LeviathanControlSystem : EntitySystem // half of it is taken from PilotedByClothing
 {
-    [Dependency] private SharedPhysicsSystem _physics = default!;
-    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private const float TurnSpeed = 1.8f;
     private const float ForwardSpeed = 30f;

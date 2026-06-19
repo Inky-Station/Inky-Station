@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: lobbyBackground
   id: hereticLobbyArt
   background: /Textures/_Trauma/LobbyScreens/hereticLobbyArt.webp

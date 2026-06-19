@@ -38,7 +38,7 @@ public sealed partial class CharacterUIController : UIController, IOnStateEntere
     {
         base.Initialize();
 
-        SubscribeAllEvent<MindRoleTypeChangedEvent>(OnRoleTypeChanged); // Trauma - Network -> All
+        SubscribeNetworkEvent<MindRoleTypeChangedEvent>(OnRoleTypeChanged);
     }
 
     private CharacterWindow? _window;

@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 # Default for any species that has no knowledge profile of its own
 - type: knowledgeProfile
   id: Human

@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 # This one is the standard coefficients for quality.
 - type: quality
   id: BaseQuality

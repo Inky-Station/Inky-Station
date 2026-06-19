@@ -9,11 +9,11 @@ using Robust.Shared.Player;
 
 namespace Content.Inky.Client.Concussion;
 
-public sealed partial class ConcussionSystem : SharedConcussionSystem
+public sealed class ConcussionSystem : SharedConcussionSystem
 {
-    [Dependency] private IPlayerManager _player = default!;
-    [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     private static readonly SoundSpecifier ConcussionSound =
         new SoundPathSpecifier("/Audio/_Inky/Ambient/highpitch.ogg");

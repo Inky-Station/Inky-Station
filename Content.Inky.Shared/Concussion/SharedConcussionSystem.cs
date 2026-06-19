@@ -5,12 +5,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Inky.Shared.Concussion;
 
-public abstract partial class SharedConcussionSystem : EntitySystem
+public abstract class SharedConcussionSystem : EntitySystem
 {
     private const float _absoluteCap = 200f; // imagine maxcapping yourself, having 4k concussion damage and being revived at med forced to sit for 11 hours to heal
 
-    [Dependency] private InventorySystem _inventory = default!;
-    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     /// <summary>
     /// updates <see cref="ConcussionThresholdComponent.CurrentState"/> based on
     /// <see cref="ConcussionThresholdComponent.StoredDamage"/> and raises

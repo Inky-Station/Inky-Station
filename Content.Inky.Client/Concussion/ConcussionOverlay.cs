@@ -9,14 +9,14 @@ using Robust.Shared.Timing;
 namespace Content.Inky.Client.Concussion;
 
 // damageoverlay copypaste hell yeah (kill me)
-public sealed partial class ConcussionOverlay : Overlay
+public sealed class ConcussionOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> CircleMaskShader = "GradientCircleMask";
 
-    [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
-    [Dependency] private IEntityManager _entMan = default!;
-    [Dependency] private IPlayerManager _gamerMan = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!;
+    [Dependency] private readonly IPlayerManager _gamerMan = default!;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     private readonly ShaderInstance _concussionShader;

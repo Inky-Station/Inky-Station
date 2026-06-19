@@ -28,12 +28,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Inky.Server.Concussion;
 
-public sealed partial class ConcussionSystem : SharedConcussionSystem
+public sealed class ConcussionSystem : SharedConcussionSystem
 {
-    [Dependency] private CommonLanguageSystem _theTowerOfBabel = default!;
-    [Dependency] private MovementSpeedModifierSystem _movement = default!;
-    [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private AlertsSystem _alertsSystem = default!;
+    [Dependency] private readonly CommonLanguageSystem _theTowerOfBabel = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly AlertsSystem _alertsSystem = default!;
 
     private ProtoId<AlertPrototype> _alert = "Concussion";
 

@@ -19,7 +19,7 @@ public sealed partial class EntryPoint : GameClient
     {
         base.PreInit();
 
-        ClientTraumaIoC.Register(Dependencies);
+        ContentTraumaClientIoC.Register(Dependencies);
         IoCManager.InjectDependencies(this);
     }
 

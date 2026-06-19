@@ -181,13 +181,13 @@
   - type: AntagObjectives # Goobstation
     objectives:
     - NukeopsDetonateObjective
-#  - type: AntagPlayerEffects # Trauma - nukies get nukie-locked hypoports and skillchip
-#    effects:
+  - type: AntagPlayerEffects # Trauma - nukies get nukie-locked hypoports and skillchip
+    effects:
     # inky - fuck hypoports
     #- !type:NestedEffect
     #  proto: InstallHypoportNukie
-#    - !type:NestedEffect
-#      proto: InstallSkillChipNukie
+    - !type:NestedEffect
+      proto: InstallSkillChipNukie
 
 - type: entity
   parent: [ BaseNukeopsRule, BaseRoundstartAntagRule ]

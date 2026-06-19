@@ -1,5 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: xenobiologyBounty
   id: BountyExtractAnyThree
   pointsAwarded: 2500
