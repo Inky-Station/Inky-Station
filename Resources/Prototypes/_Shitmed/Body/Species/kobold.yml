@@ -26,12 +26,12 @@
       Tail: OrganKoboldTail
       ArmLeft: OrganKoboldArmLeft
       ArmRight: OrganKoboldArmRight
-      HandRight: OrganKoboldHandRight
-      HandLeft: OrganKoboldHandLeft
+#      HandRight: OrganKoboldHandRight inkymed
+#      HandLeft: OrganKoboldHandLeft inkymed
       LegLeft: OrganKoboldLegLeft
       LegRight: OrganKoboldLegRight
-      FootLeft: OrganKoboldFootLeft
-      FootRight: OrganKoboldFootRight
+#      FootLeft: OrganKoboldFootLeft inkymed
+#      FootRight: OrganKoboldFootRight inkymed
       Brain: OrganReptilianBrain
       Eyes: OrganReptilianEyes
       Tongue: OrganReptilianTongue
@@ -61,6 +61,8 @@
     sprite: Mobs/Animals/kobold.rsi
   - type: VisualOrgan
     data:
+      sprite: Mobs/Animals/kobold.rsi
+    secondData: # inkymed
       sprite: Mobs/Animals/kobold.rsi
   - type: VisualOrganMarkings
     markingData:

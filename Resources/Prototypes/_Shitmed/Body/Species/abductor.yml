@@ -13,12 +13,12 @@
       Head: OrganAbductorHead
       ArmLeft: OrganAbductorArmLeft
       ArmRight: OrganAbductorArmRight
-      HandRight: OrganAbductorHandRight
-      HandLeft: OrganAbductorHandLeft
+#      HandRight: OrganAbductorHandRight inkymed
+#      HandLeft: OrganAbductorHandLeft inkymed
       LegLeft: OrganAbductorLegLeft
       LegRight: OrganAbductorLegRight
-      FootLeft: OrganAbductorFootLeft
-      FootRight: OrganAbductorFootRight
+#      FootLeft: OrganAbductorFootLeft inkymed
+#      FootRight: OrganAbductorFootRight inkymed
       Brain: OrganAbductorBrain
       Eyes: OrganAbductorEyes
       Tongue: OrganAbductorTongue
@@ -98,6 +98,8 @@
     sprite: _Shitmed/Mobs/Species/Abductor/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _Shitmed/Mobs/Species/Abductor/parts.rsi
+    secondData: # inkymed
       sprite: _Shitmed/Mobs/Species/Abductor/parts.rsi
   - type: WoundableVisuals
     damageGroupColors:

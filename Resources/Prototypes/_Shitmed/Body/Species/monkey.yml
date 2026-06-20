@@ -15,12 +15,12 @@
       Tail: OrganMonkeyTail
       ArmLeft: OrganMonkeyArmLeft
       ArmRight: OrganMonkeyArmRight
-      HandRight: OrganMonkeyHandRight
-      HandLeft: OrganMonkeyHandLeft
+#      HandRight: OrganMonkeyHandRight inkymed
+#      HandLeft: OrganMonkeyHandLeft inkymed
       LegLeft: OrganMonkeyLegLeft
       LegRight: OrganMonkeyLegRight
-      FootLeft: OrganMonkeyFootLeft
-      FootRight: OrganMonkeyFootRight
+#      FootLeft: OrganMonkeyFootLeft inkymed
+#      FootRight: OrganMonkeyFootRight inkymed
       Brain: OrganHumanBrain
       Eyes: OrganHumanEyes
       Tongue: OrganHumanTongue

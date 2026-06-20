@@ -12,8 +12,8 @@
       Torso: OrganSlaughterDemonTorso
       ArmLeft: OrganSlaughterDemonArmLeft
       ArmRight: OrganSlaughterDemonArmRight
-      HandLeft: OrganSlaughterDemonHandLeft
-      HandRight: OrganSlaughterDemonHandRight
+#      HandLeft: OrganSlaughterDemonHandLeft inkymed
+#      HandRight: OrganSlaughterDemonHandRight inkymed
       # Organs
       Heart: OrganShadowDemonHeart
       Lungs: OrganCarpLungs
