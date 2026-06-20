@@ -811,33 +811,33 @@
       storagebase: !type:GroupSelector
         children:
         - id: PillDexalin
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillDylovene
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillHyronalin
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillPotassiumIodide
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillIron
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillCopper
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillKelotane
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillDermaline
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillTricordrazine
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillBicaridine
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillCharcoal
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: PillSpaceDrugs
           weight: 0.75
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
         - id: StrangePill
           weight: 0.75
-          amount: 1, 16 # inky
+          amount: 1, 15 # inky
 
 # Syringes
 - type: entity
