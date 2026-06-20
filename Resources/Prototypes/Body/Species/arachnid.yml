@@ -54,8 +54,8 @@
       Wings: OrganArachnidAppendages # Trauma
       ArmLeft: OrganArachnidArmLeft
       ArmRight: OrganArachnidArmRight
-#      HandRight: OrganArachnidHandRight # inkymed
-#      LegLeft: OrganArachnidLegLeft #inkymed
+#      HandRight: OrganArachnidHandRight # inkymed they didnt have a handleft????
+      LegLeft: OrganArachnidLegLeft
       LegRight: OrganArachnidLegRight
 #      FootLeft: OrganArachnidFootLeft # inky edit
 #      FootRight: OrganArachnidFootRight # inky edit
