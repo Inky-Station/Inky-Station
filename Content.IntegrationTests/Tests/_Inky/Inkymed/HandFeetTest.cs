@@ -16,9 +16,7 @@ public sealed class HandFeetTest : GameTest
     [Test]
     public async Task ArmorCoverageCheckTest()
     {
-        await using var pair = await PoolManager.GetServerClient(); // there's probably a better way to do this but i cbb
-        var server = pair.Server;
-
+        var server = Pair.Server;
         var protoMan = server.ResolveDependency<IPrototypeManager>();
         var shitParts = new[]
         {
@@ -51,19 +49,12 @@ public sealed class HandFeetTest : GameTest
                 + string.Join("\n", fail)
             );
         });
-
-        await pair.CleanReturnAsync();
     }
 
-    /// <summary>
-    /// checks for bad slots on entities with InitialBodyComp
-    /// </summary>
     [Test]
     public async Task BadOrgansCheckTest()
     {
-        await using var pair = await PoolManager.GetServerClient();
-        var server = pair.Server;
-
+        var server = Pair.Server;
         var protoMan = server.ResolveDependency<IPrototypeManager>();
         var shitSlots = new HashSet<string>
         {
@@ -99,6 +90,6 @@ public sealed class HandFeetTest : GameTest
             );
         });
 
-        await pair.CleanReturnAsync();
+        await Pair.CleanReturnAsync();
     }
 }
