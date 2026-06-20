@@ -77,9 +77,18 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
         if (_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
             _sprite.LayerSetData(target, index, ent.Comp.Data); // inkymed change - shortened
 
-        // inkymed
-        if (ent.Comp.SecondLayer != null && ent.Comp.SecondData != null && _sprite.LayerMapTryGet(target, ent.Comp.SecondLayer, out var addIndex, false))
-            _sprite.LayerSetData(target, addIndex, ent.Comp.SecondData);
+        // inkymed - inherits the rsi path from the first layer if not specified because checkfail misery and 200 yaml files that require to be changed
+        if (ent.Comp.SecondLayer == null
+            || ent.Comp.SecondData == null)
+            return;
+
+        if (!_sprite.LayerMapTryGet(target, ent.Comp.SecondLayer, out var addIndex, false))
+            return;
+
+        _sprite.LayerSetData(target, addIndex, ent.Comp.SecondData);
+
+        if (ent.Comp.SecondData.RsiPath == null && ent.Comp.Data.RsiPath != null && ent.Comp.SecondData.State != null)
+            _sprite.LayerSetSprite(target, addIndex, new SpriteSpecifier.Rsi(new ResPath(ent.Comp.Data.RsiPath), ent.Comp.SecondData.State));
         // /inkymed
     }
 
