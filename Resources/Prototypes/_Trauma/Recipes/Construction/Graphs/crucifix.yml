@@ -108,7 +108,7 @@
             damage:
               types:
                 Piercing: 15
-            targetPart: Leg # inkymed
+            targetPart: Legs # inkymed
           - !type:ModifyBleed
             amount: 10 # perish
           - !type:PopupMessage
