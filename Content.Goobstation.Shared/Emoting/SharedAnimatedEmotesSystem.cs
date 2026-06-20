@@ -9,18 +9,21 @@ namespace Content.Goobstation.Shared.Emoting;
 
 public abstract partial class SharedAnimatedEmotesSystem : EntitySystem
 {
+    /* inky
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private StatusEffectsSystem _status = default!;
     [Dependency] private VomitSystem _vomit = default!;
+    */
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<AnimatedEmotesComponent, EmoteEvent>(OnEmote);
-        SubscribeLocalEvent<AnimatedEmotesComponent, BeforeEmoteEvent>(OnBeforeEmote);
+        // SubscribeLocalEvent<AnimatedEmotesComponent, BeforeEmoteEvent>(OnBeforeEmote); // inky
     }
 
+    /* inky
     private void OnBeforeEmote(Entity<AnimatedEmotesComponent> ent, ref BeforeEmoteEvent args)
     {
         var emote = _proto.Index<EmotePrototype>(args.Emote);
@@ -30,11 +33,13 @@ public abstract partial class SharedAnimatedEmotesSystem : EntitySystem
         if (_status.HasStatusEffect(ent, ent.Comp.BlockVomitEmoteStatus))
             args.Cancel();
     }
+    */
 
     private void OnEmote(Entity<AnimatedEmotesComponent> ent, ref EmoteEvent args)
     {
         PlayEmoteAnimation(ent.AsNullable(), args.Emote.ID);
 
+        /* inky
         var emote = _proto.Index<EmotePrototype>(args.Emote);
         if (emote.Event is not AnimationEmoteEvent { CausesVomit: true })
             return;
@@ -55,6 +60,7 @@ public abstract partial class SharedAnimatedEmotesSystem : EntitySystem
 
         _vomit.Vomit(ent);
         _status.TryAddStatusEffect(ent, ent.Comp.BlockVomitEmoteStatus, out _, ent.Comp.BlockVomitStatusTime);
+        */
     }
 
     public void PlayEmoteAnimation(Entity<AnimatedEmotesComponent?> ent, ProtoId<EmotePrototype> prot)
