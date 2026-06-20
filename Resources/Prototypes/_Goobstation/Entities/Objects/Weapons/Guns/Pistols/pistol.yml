@@ -84,7 +84,7 @@
     - suitStorage
     - Belt
   - type: Gun
-    fireRate: 3
+    fireRate: 4 # inky goida
     availableModes:
       - SemiAuto
     soundGunshot:
@@ -94,7 +94,7 @@
     capacity: 7
     count: 7
   - type: RechargeBasicEntityAmmo
-    rechargeCooldown: 4
+    rechargeCooldown: 2 # inky goida
     rechargeSound:
       path: /Audio/Weapons/Guns/Cock/shotgun_close.ogg
   - type: AmmoCounter

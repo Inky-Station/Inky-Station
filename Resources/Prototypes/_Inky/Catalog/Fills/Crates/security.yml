@@ -2,7 +2,7 @@
   parent: [ CrateWeaponSecure, BaseSecurityContraband ]
   id: CrateArmoryWeaponsRandom
   name: security surplus crate
-  suffix: 1 per secoff
+  suffix: 1 per secoff, GOIDARMORY
   description: Contains various weaponry and equipment from Nanotrasen warehouses, hopefully enough to gear one officer. Requires Armory access to open.
   components:
   - type: EntityTableContainerFill

@@ -1187,3 +1187,17 @@ CratePartsT4: null
 
 # 2026-06-02, inky
 ClothingNeckCloakCe: ClothingNeckCloakWhiteCe
+
+# 2026-06-21 inky goidarmory TODO remove this and map CrateArmoryWeaponsRandom instead
+GunSafeLaserCarbine: null
+GunSafeShotguns: null
+GunSafeLaserSpec: null
+GunSafeMelee: null
+GunSafeJudo: null
+GunSafeRiotLauncher: null
+SuitStorageSec: null
+ClothingOuterVoidsuitSecurity: null
+ClothingOuterArmorReflective: null
+ClothingHeadHelmetRiot: null
+ClothingOuterArmorRiot: null
+ClothingOuterArmorBulletproof: null

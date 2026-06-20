@@ -44,7 +44,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Melee/e_sword.rsi, state: icon }
   productEntity: EnergySword
   cost:
-    Telecrystal: 33 # inky
+    Telecrystal: 32 # inky
   categories:
   - UplinkWeaponry
 
@@ -120,11 +120,11 @@
     Telecrystal: 30 # Trauma, was 8, 5x and less expensive
   categories:
   - UplinkWeaponry
-  conditions: # Trauma, more expensive for nukies
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+  #conditions: # Trauma, more expensive for nukies # inky - nah
+  #- !type:StoreWhitelistCondition
+  #  blacklist:
+  #    tags:
+  #    - NukeOpsUplink
 
 - type: listing
   id: uplinkRiggedBoxingGloves
@@ -144,21 +144,21 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
   productEntity: BriefcaseSyndieSniperBundleFilled
   cost:
-    Telecrystal: 50 # Trauma - was 10, 5x make sure to not ask any question regarding if a specific type of violence counts
+    Telecrystal: 65 # Trauma - was 10, 5x make sure to not ask any question regarding if a specific type of violence counts # inky
   categories:
   - UplinkWeaponry
 
-
-- type: listing
-  id: UplinkHushpup
-  name: uplink-hushpup-name
-  description: uplink-hushpup-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/hushpup.rsi, state: icon }
-  productEntity: BriefcaseWeaponHushpupFilled
-  cost:
-    Telecrystal: 30 # inky
-  categories:
-  - UplinkWeaponry
+# inky
+#- type: listing
+#  id: UplinkHushpup
+#  name: uplink-hushpup-name
+#  description: uplink-hushpup-desc
+#  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/hushpup.rsi, state: icon }
+#  productEntity: BriefcaseWeaponHushpupFilled
+#  cost:
+#    Telecrystal: 30 # inky
+#  categories:
+#  - UplinkWeaponry
 
 - type: listing
   id: UplinkC20R

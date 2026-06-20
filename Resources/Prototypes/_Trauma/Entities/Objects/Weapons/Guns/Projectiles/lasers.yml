@@ -77,7 +77,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 20 # inky edit
+        Heat: 14 # inky edit
 
 - type: entity
   parent: SidearmBulletBase
