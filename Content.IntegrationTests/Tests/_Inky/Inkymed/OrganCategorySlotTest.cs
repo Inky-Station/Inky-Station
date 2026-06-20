@@ -47,7 +47,5 @@ public sealed class OrganCategorySlotTest : GameTest // todo inkymed: nuke it as
                 + string.Join("\n", fail)
             );
         });
-
-        await Pair.CleanReturnAsync();
     }
 }

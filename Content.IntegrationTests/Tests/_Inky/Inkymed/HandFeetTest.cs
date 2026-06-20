@@ -89,7 +89,5 @@ public sealed class HandFeetTest : GameTest
                 + string.Join("\n", fail)
             );
         });
-
-        await Pair.CleanReturnAsync();
     }
 }
