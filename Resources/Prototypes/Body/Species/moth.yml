@@ -259,6 +259,8 @@
   - type: VisualOrgan
     data:
       sprite: Mobs/Species/Moth/parts.rsi
+    secondData: # inkymed
+      sprite: Mobs/Species/Moth/parts.rsi
   - type: VisualOrganMarkings
     markingData:
       group: Moth

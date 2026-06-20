@@ -169,8 +169,8 @@
     - ArmRight
     - LegLeft
     - LegRight
-    - FootLeft
-    - FootRight
+#    - FootLeft inkymed
+#    - FootRight inkymed
   - type: ClothingSpeedModifier
     walkModifier: 0.6
     sprintModifier: 0.6
@@ -181,9 +181,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Other
     traumaDeductions: # having a suit on saves your limbs
@@ -264,8 +264,8 @@
     - ArmRight
     - LegLeft
     - LegRight
-    - FootLeft
-    - FootRight
+#    - FootLeft inkymed
+#    - FootRight inkymed
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8

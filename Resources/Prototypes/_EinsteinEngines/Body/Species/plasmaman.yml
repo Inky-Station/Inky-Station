@@ -52,12 +52,12 @@
       Head: OrganPlasmamanHead
       ArmLeft: OrganPlasmamanArmLeft
       ArmRight: OrganPlasmamanArmRight
-      HandLeft: OrganPlasmamanHandLeft
-      HandRight: OrganPlasmamanHandRight
+#      HandLeft: OrganPlasmamanHandLeft inkymed
+#      HandRight: OrganPlasmamanHandRight inkymed
       LegLeft: OrganPlasmamanLegLeft
       LegRight: OrganPlasmamanLegRight
-      FootLeft: OrganPlasmamanFootLeft
-      FootRight: OrganPlasmamanFootRight
+#      FootLeft: OrganPlasmamanFootLeft inkymed
+#      FootRight: OrganPlasmamanFootRight inkymed
       # Organs
       Brain: OrganPlasmamanBrain
       Eyes: OrganPlasmamanEyes
@@ -100,7 +100,7 @@
     damage:
       types:
         Heat: 2
-    targetParts: Hands
+    targetParts: Arms #inkymed
   - type: Speech
     speechVerb: Skeleton
   - type: Vocal
@@ -232,6 +232,8 @@
     sprite: _EinsteinEngines/Mobs/Species/Plasmaman/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _EinsteinEngines/Mobs/Species/Plasmaman/parts.rsi
+    secondData: # inkymed
       sprite: _EinsteinEngines/Mobs/Species/Plasmaman/parts.rsi
   - type: VisualOrganMarkings
     markingData:

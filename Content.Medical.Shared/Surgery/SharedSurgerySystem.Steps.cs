@@ -820,10 +820,10 @@ public abstract partial class SharedSurgerySystem
         {
             BodyPartType.Head => SlotFlags.HEAD,
             BodyPartType.Torso => SlotFlags.OUTERCLOTHING | SlotFlags.INNERCLOTHING,
-            BodyPartType.Arm => SlotFlags.OUTERCLOTHING | SlotFlags.INNERCLOTHING,
-            BodyPartType.Hand => SlotFlags.GLOVES,
-            BodyPartType.Leg => SlotFlags.OUTERCLOTHING | SlotFlags.LEGS,
-            BodyPartType.Foot => SlotFlags.FEET,
+            BodyPartType.Arm => SlotFlags.OUTERCLOTHING | SlotFlags.INNERCLOTHING | SlotFlags.GLOVES,   // inkymed
+            // BodyPartType.Hand => SlotFlags.GLOVES,                                                   // inkymed
+            BodyPartType.Leg => SlotFlags.OUTERCLOTHING | SlotFlags.LEGS | SlotFlags.FEET,              // inkymed
+            // BodyPartType.Foot => SlotFlags.FEET,                                                     // inkymed
             BodyPartType.Tail => SlotFlags.NONE,
             BodyPartType.Other => SlotFlags.NONE,
             _ => SlotFlags.NONE,

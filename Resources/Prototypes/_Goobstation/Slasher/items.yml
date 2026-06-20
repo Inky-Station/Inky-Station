@@ -117,7 +117,7 @@
   components:
   - type: Armor
     coverage:
-    - Hand
+    - Arm # inkymed
     modifiers:
       coefficients:
         Blunt: 0.90
@@ -134,7 +134,7 @@
   components:
   - type: Armor
     coverage:
-    - Foot
+    - Leg # inktmed
     modifiers:
       coefficients:
         Blunt: 0.90

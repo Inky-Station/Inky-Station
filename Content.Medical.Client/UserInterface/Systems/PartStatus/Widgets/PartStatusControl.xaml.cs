@@ -30,13 +30,13 @@ public sealed partial class PartStatusControl : UIWidget
             { "Head", DollHead },
             { "Torso", DollTorso },
             { "ArmLeft", DollLeftArm },
-            { "HandLeft", DollLeftHand },
+            // { "HandLeft", DollLeftHand }, inkymed
             { "ArmRight", DollRightArm },
-            { "HandRight", DollRightHand },
+            // { "HandRight", DollRightHand }, inkymed
             { "LegLeft", DollLeftLeg },
-            { "FootLeft", DollLeftFoot },
+            // { "FootLeft", DollLeftFoot }, inkymed
             { "LegRight", DollRightLeg },
-            { "FootRight", DollRightFoot },
+            // { "FootRight", DollRightFoot }, inkymed
         };
         MouseFilter = MouseFilterMode.Stop;
         OnKeyBindDown += OnClicked;

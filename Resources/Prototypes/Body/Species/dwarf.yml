@@ -17,12 +17,12 @@
       Head: OrganDwarfHead # Trauma - Human -> Dwarf
       ArmLeft: OrganHumanArmLeft
       ArmRight: OrganHumanArmRight
-      HandRight: OrganHumanHandRight
-      HandLeft: OrganHumanHandLeft
+#      HandRight: OrganHumanHandRight #inkymed
+#      HandLeft: OrganHumanHandLeft #inkymed
       LegLeft: OrganHumanLegLeft
       LegRight: OrganHumanLegRight
-      FootLeft: OrganHumanFootLeft
-      FootRight: OrganHumanFootRight
+#      FootLeft: OrganHumanFootLeft # inkymed
+#      FootRight: OrganHumanFootRight #inkymed
       Brain: OrganHumanBrain
       Eyes: OrganHumanEyes
       Tongue: OrganHumanTongue

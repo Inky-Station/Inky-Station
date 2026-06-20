@@ -31,22 +31,23 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                         <TextureRect
                             TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/rightarm.png"
                             Stretch="KeepAspectCentered"
-                            SetSize="12 24"
+                            SetSize="18 30"
+                            Margin="3 9 0 0"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"/>
                     </TextureButton>
-                    <TextureButton
-                        Name="RightHandButton"
-                        MinSize="18 18"
-                        VerticalAlignment="Bottom"
-                        StyleClasses="TargetDollButtonRightHand">
-                        <TextureRect
-                            TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/righthand.png"
-                            Stretch="KeepAspectCentered"
-                            SetSize="12 12"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"/>
-                    </TextureButton>
+                    <!-- <TextureButton -->
+                    <!--     Name="RightHandButton" -->
+                    <!--     MinSize="18 18" -->
+                    <!--     VerticalAlignment="Bottom" -->
+                    <!--     StyleClasses="TargetDollButtonRightHand"> -->
+                    <!--     <TextureRect -->
+                    <!--         TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/righthand.png" -->
+                    <!--         Stretch="KeepAspectCentered" -->
+                    <!--         SetSize="12 12" -->
+                    <!--         VerticalAlignment="Center" -->
+                    <!--         HorizontalAlignment="Center"/> -->
+                    <!-- </TextureButton> -->
                 </PanelContainer>
                 <PanelContainer
                     SetSize="51 90"
@@ -63,6 +64,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                             TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/head.png"
                             Stretch="KeepAspectCentered"
                             SetSize="27 21"
+                            Margin="2 5 0 0"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"/>
                         <!--<PanelContainer
@@ -94,14 +96,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                     <TextureButton
                         Name="ChestButton"
                         SetSize="33 36"
-                        Margin="0 21 0 0"
+                        Margin="3 27 0 0"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Center"
                         StyleClasses="TargetDollButtonChest">
                         <TextureRect
                             TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/torso.png"
                             Stretch="KeepAspectCentered"
-                            SetSize="27 30"
+                            SetSize="33 36"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"/>
                     </TextureButton>
@@ -109,19 +111,19 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                         MinSize="45 42"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Center">
-                        <TextureButton
-                            Name="GroinButton"
-                            MinSize="33 18"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Center"
-                            StyleClasses="TargetDollButtonGroin">
-                            <TextureRect
-                                TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/groin.png"
-                                Stretch="KeepAspectCentered"
-                                SetSize="27 12"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"/>
-                        </TextureButton>
+                        <!-- <TextureButton -->
+                        <!--     Name="GroinButton" -->
+                        <!--     MinSize="33 18" -->
+                        <!--     VerticalAlignment="Top" -->
+                        <!--     HorizontalAlignment="Center" -->
+                        <!--     StyleClasses="TargetDollButtonGroin"> -->
+                        <!--     <TextureRect -->
+                        <!--         TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/groin.png" -->
+                        <!--         Stretch="KeepAspectCentered" -->
+                        <!--         SetSize="27 12" -->
+                        <!--         VerticalAlignment="Center" -->
+                        <!--         HorizontalAlignment="Center"/> -->
+                        <!-- </TextureButton> -->
                         <PanelContainer
                             MinSize="24 36"
                             VerticalAlignment="Bottom"
@@ -135,22 +137,23 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                 <TextureRect
                                     TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/leftleg.png"
                                     Stretch="KeepAspectCentered"
-                                    SetSize="12 27"
+                                    SetSize="18 33"
+                                    Margin="9 22 3 33"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"/>
                             </TextureButton>
-                            <TextureButton
-                                Name="LeftFootButton"
-                                MinSize="24 12"
-                                VerticalAlignment="Bottom"
-                                StyleClasses="TargetDollButtonLeftFoot">
-                                    <TextureRect
-                                        TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/leftfoot.png"
-                                        Stretch="KeepAspectCentered"
-                                        SetSize="18 9"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"/>
-                            </TextureButton>
+                            <!-- <TextureButton -->
+                            <!--     Name="LeftFootButton" -->
+                            <!--     MinSize="24 12" -->
+                            <!--     VerticalAlignment="Bottom" -->
+                            <!--     StyleClasses="TargetDollButtonLeftFoot"> -->
+                            <!--         <TextureRect -->
+                            <!--             TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/leftfoot.png" -->
+                            <!--             Stretch="KeepAspectCentered" -->
+                            <!--             SetSize="18 9" -->
+                            <!--             VerticalAlignment="Center" -->
+                            <!--             HorizontalAlignment="Center"/> -->
+                            <!-- </TextureButton> -->
                         </PanelContainer>
                         <PanelContainer
                             MinSize="24 36"
@@ -165,23 +168,24 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                 <TextureRect
                                     TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/rightleg.png"
                                     Stretch="KeepAspectCentered"
-                                    SetSize="12 27"
+                                    SetSize="18 33"
+                                    Margin="0 22 3 33"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"/>
                             </TextureButton>
-                            <TextureButton
-                                Name="RightFootButton"
-                                MinSize="24 12"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                StyleClasses="TargetDollButtonRightFoot">
-                                <TextureRect
-                                    TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/rightfoot.png"
-                                    Stretch="KeepAspectCentered"
-                                    SetSize="18 9"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"/>
-                            </TextureButton>
+                            <!-- <TextureButton -->
+                            <!--     Name="RightFootButton" -->
+                            <!--     MinSize="24 12" -->
+                            <!--     VerticalAlignment="Bottom" -->
+                            <!--     HorizontalAlignment="Center" -->
+                            <!--     StyleClasses="TargetDollButtonRightFoot"> -->
+                            <!--     <TextureRect -->
+                            <!--         TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/rightfoot.png" -->
+                            <!--         Stretch="KeepAspectCentered" -->
+                            <!--         SetSize="18 9" -->
+                            <!--         VerticalAlignment="Center" -->
+                            <!--         HorizontalAlignment="Center"/> -->
+                            <!-- </TextureButton> -->
                         </PanelContainer>
                     </PanelContainer>
                 </PanelContainer>
@@ -197,22 +201,23 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                         <TextureRect
                             TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/leftarm.png"
                             Stretch="KeepAspectCentered"
-                            SetSize="12 24"
+                            SetSize="18 30"
+                            Margin="3 9 0 0"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"/>
                     </TextureButton>
-                    <TextureButton
-                        Name="LeftHandButton"
-                        MinSize="18 18"
-                        VerticalAlignment="Bottom"
-                        StyleClasses="TargetDollButtonLeftHand">
-                        <TextureRect
-                            TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/lefthand.png"
-                            Stretch="KeepAspectCentered"
-                            SetSize="12 12"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"/>
-                    </TextureButton>
+                    <!-- <TextureButton -->
+                    <!--     Name="LeftHandButton" -->
+                    <!--     MinSize="18 18" -->
+                    <!--     VerticalAlignment="Bottom" -->
+                    <!--     StyleClasses="TargetDollButtonLeftHand"> -->
+                    <!--     <TextureRect -->
+                    <!--         TexturePath="/Textures/_Shitmed/Interface/Targeting/Doll/lefthand.png" -->
+                    <!--         Stretch="KeepAspectCentered" -->
+                    <!--         SetSize="12 12" -->
+                    <!--         VerticalAlignment="Center" -->
+                    <!--         HorizontalAlignment="Center"/> -->
+                    <!-- </TextureButton> -->
                 </PanelContainer>
             </PanelContainer>
         </TextureRect>

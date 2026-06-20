@@ -17,8 +17,8 @@
     - Arm
     - Leg
     - Tail
-    - Hand
-    - Foot
+#    - Hand inkymed
+#    - Foot inkymed
     traumaDeductions:
       Dismemberment: 0.25
       OrganDamage: 0.25

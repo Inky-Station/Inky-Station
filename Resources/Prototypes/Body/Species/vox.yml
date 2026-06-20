@@ -148,12 +148,12 @@
       Tail: OrganVoxTail # Trauma
       ArmLeft: OrganVoxArmLeft
       ArmRight: OrganVoxArmRight
-      HandRight: OrganVoxHandRight
-      HandLeft: OrganVoxHandLeft
+#      HandRight: OrganVoxHandRight #inkymed
+#      HandLeft: OrganVoxHandLeft #inkymned
       LegLeft: OrganVoxLegLeft
       LegRight: OrganVoxLegRight
-      FootLeft: OrganVoxFootLeft
-      FootRight: OrganVoxFootRight
+#      FootLeft: OrganVoxFootLeft #inkymed
+#      FootRight: OrganVoxFootRight #inkymed
       Brain: OrganVoxBrain
       Eyes: OrganVoxEyes
       Tongue: OrganVoxTongue
@@ -288,6 +288,8 @@
   components:
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Vox/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Vox/parts.rsi
   - type: VisualOrganMarkings
     markingData:

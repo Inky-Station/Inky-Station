@@ -31,7 +31,7 @@
     - type: PreventableStepTrigger
     - type: DamageOnTrigger
       targetUser: true
-      targetPart: Feet # Trauma
+      targetPart: Legs # Trauma #inkymed
       damage:
         types:
           Blunt: 1 # Trauma - was 2, it instagibbed mice

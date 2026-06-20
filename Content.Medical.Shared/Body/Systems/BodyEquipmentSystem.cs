@@ -22,9 +22,11 @@ public sealed partial class BodyEquipmentSystem : EntitySystem
     public static readonly Dictionary<BodyPartType, string[]> PartInventorySlots = new()
     {
         { BodyPartType.Head, [ "eyes", "ears", "head", "mask" ] },
-        { BodyPartType.Torso, [ "innerclothing", "outerclothing" ] },
+        { BodyPartType.Torso, [ "innerclothing", "outerclothing" ] }
+        /*
         { BodyPartType.Hand, [ "gloves" ] },
         { BodyPartType.Foot, [ "shoes" ] }
+        */ // inkymed
     };
 
     public override void Initialize()
@@ -79,8 +81,8 @@ public sealed partial class BodyEquipmentSystem : EntitySystem
             // TODO SHITMED: HOLY SHITCODE
             "innerclothing" or "outerclothing" => BodyPartType.Torso,
             "eyes" or "ears" or "head" or "mask" => BodyPartType.Head,
-            "gloves" => BodyPartType.Hand,
-            "shoes" => BodyPartType.Foot,
+            "gloves" => BodyPartType.Arm, // inkymed - was hand
+            "shoes" => BodyPartType.Leg, // inkymed - was foot
             _ => null
         };
 

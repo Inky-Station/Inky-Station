@@ -67,12 +67,12 @@
       Head: OrganHumanHead
       ArmLeft: OrganHumanArmLeft
       ArmRight: OrganHumanArmRight
-      HandRight: OrganHumanHandRight
-      HandLeft: OrganHumanHandLeft
+#      HandRight: OrganHumanHandRight #inkymed
+#      HandLeft: OrganHumanHandLeft #inkymed
       LegLeft: OrganHumanLegLeft
       LegRight: OrganHumanLegRight
-      FootLeft: OrganHumanFootLeft
-      FootRight: OrganHumanFootRight
+#      FootLeft: OrganHumanFootLeft #inkymed
+#      FootRight: OrganHumanFootRight #inkymed
       Brain: OrganHumanBrain
       Eyes: OrganHumanEyes
       Tongue: OrganHumanTongue
@@ -146,6 +146,8 @@
     sprite: Mobs/Species/Human/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Human/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Human/parts.rsi
   - type: VisualOrganMarkings
     markingData:

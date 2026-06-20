@@ -35,7 +35,7 @@ public sealed partial class BodyPartComponent : Component, ISurgeryToolComponent
     /// Please do not add this part's category to it I will be very sad.
     /// TODO NUBODY: Write a test that nobody ever does this
     /// </remarks>
-    [DataField(required: true), AutoNetworkedField]
+    [DataField, AutoNetworkedField] // inkymed - removed required
     public HashSet<ProtoId<OrganCategoryPrototype>> Slots = new();
 
     /// <summary>

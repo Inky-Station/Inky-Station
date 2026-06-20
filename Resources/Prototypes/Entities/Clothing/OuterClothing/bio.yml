@@ -13,9 +13,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand # inkymed
     - Leg
-    - Foot
+#    - Foot #inkymed
     - Tail
     modifiers:
       coefficients:
@@ -98,9 +98,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand #inkymed
     - Leg
-    - Foot
+#    - Foot #inkymed
     - Tail
     modifiers:
       coefficients:

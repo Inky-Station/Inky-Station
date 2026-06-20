@@ -14,12 +14,12 @@
       Head: OrganShatteredHead
       ArmLeft: OrganShatteredArmLeft
       ArmRight: OrganShatteredArmRight
-      HandLeft: OrganShatteredHandLeft
-      HandRight: OrganShatteredHandRight
+#      HandLeft: OrganShatteredHandLeft inkymed
+#      HandRight: OrganShatteredHandRight inkymed
       LegLeft: OrganShatteredLegLeft
       LegRight: OrganShatteredLegRight
-      FootLeft: OrganShatteredFootLeft
-      FootRight: OrganShatteredFootRight
+#      FootLeft: OrganShatteredFootLeft inkymed
+#      FootRight: OrganShatteredFootRight inkymed
       # Organs
       Brain: OrganHumanBrain
   - type: HumanoidProfile
@@ -245,6 +245,8 @@
     sprite: _Goobstation/Heretic/Mobs/Shattered/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _Goobstation/Heretic/Mobs/Shattered/parts.rsi
+    secondData: # inkymed
       sprite: _Goobstation/Heretic/Mobs/Shattered/parts.rsi
   - type: VisualOrganMarkings
     markingData:

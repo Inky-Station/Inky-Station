@@ -310,9 +310,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand #inkymed
     - Leg
-    - Foot
+#    - Foot #inkymed
     - Tail
     traumaDeductions:
       Dismemberment: 0.5
@@ -471,9 +471,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand #inkymed
     - Leg
-    - Foot
+#    - Foot #inkymed
     - Tail
     traumaDeductions: # prevents traumas at all (kinda)
       Dismemberment: 1
@@ -577,9 +577,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand #inkymed
     - Leg
-    - Foot
+#    - Foot #inkymed
     - Tail
     - Other
     traumaDeductions:

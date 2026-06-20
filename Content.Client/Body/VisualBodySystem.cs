@@ -74,10 +74,13 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
 
     private void ApplyVisual(Entity<VisualOrganComponent> ent, EntityUid target)
     {
-        if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
-            return;
+        if (_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
+            _sprite.LayerSetData(target, index, ent.Comp.Data); // inkymed change - shortened
 
-        _sprite.LayerSetData(target, index, ent.Comp.Data);
+        // inkymed
+        if (ent.Comp.SecondLayer != null && ent.Comp.SecondData != null && _sprite.LayerMapTryGet(target, ent.Comp.SecondLayer, out var addIndex, false))
+            _sprite.LayerSetData(target, addIndex, ent.Comp.SecondData);
+        // /inkymed
     }
 
     private void RemoveVisual(Entity<VisualOrganComponent> ent, EntityUid target)
@@ -86,10 +89,13 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
         if (ent.Comp.Data.Color is {} color && !HasComp<InternalOrganComponent>(ent))
             _sprite.SetColor(ent.Owner, color);
         // </Trauma>
-        if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
-            return;
+        if (_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
+            _sprite.LayerSetRsiState(target, index, RSI.StateId.Invalid); // inkymed change - shortened
 
-        _sprite.LayerSetRsiState(target, index, RSI.StateId.Invalid);
+        // inkymed
+        if (ent.Comp.SecondLayer != null && _sprite.LayerMapTryGet(target, ent.Comp.SecondLayer, out var addIndex, false))
+            _sprite.LayerSetRsiState(target, addIndex, RSI.StateId.Invalid);
+        // /inkymed
     }
 
     private void OnMarkingsGotInserted(Entity<VisualOrganMarkingsComponent> ent, ref OrganGotInsertedEvent args)
