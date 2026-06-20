@@ -1,5 +1,11 @@
 ## SPDX-License-Identifier: AGPL-3.0-or-later
 #
+# it's all inky lol
+- type: loadout
+  id: SecurityJudoBelt
+  equipment:
+    belt: ClothingBeltCorporateJudoFilled
+#
 #- type: loadoutEffectGroup
 #  id: VeteranOfficer
 #  effects:
@@ -25,11 +31,23 @@
 #  equipment:
 #    neck: ClothingNeckCWPSec
 #
-#- type: loadout
-#  id: SecurityMeleeKnife
-#  storage:
-#    back:
-#    - CombatKnife
+- type: loadout
+  id: SecurityMeleeKnife
+  storage:
+    back:
+    - CombatKnife
+
+- type: loadout
+  id: SecurityMeleePolyBaton
+  storage:
+    back:
+    - PolymerBaton
+
+- type: loadout
+  id: SecurityMeleeSpear
+  storage:
+    back:
+    - SpearTelescopic
 #
 #- type: loadout
 #  id: SecurityOfficerEnvirosuit

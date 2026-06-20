@@ -1343,6 +1343,7 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
+  - SecurityJudoBelt # inky
 
 - type: loadoutGroup
   id: SecurityOuterClothing

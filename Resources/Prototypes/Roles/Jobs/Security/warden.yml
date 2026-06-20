@@ -46,11 +46,12 @@
     eyes: ClothingEyesGlassesSecurity
     id: WardenPDA
     ears: ClothingHeadsetAltWarden # Goobstation
-    pocket1: WeaponLaserSidearm
+    pocket1: WeaponPistolMk58 # Trauma # inky
   storage:
     back:
     - Flash
     - ClothingMaskGasSecurity # Goobstation
+    - MagazinePistol # inky fuck - Trauma
 
 - type: chameleonOutfit
   id: WardenChameleonOutfit

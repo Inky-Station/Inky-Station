@@ -171,7 +171,7 @@
   - type: BallisticAmmoProvider
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
-    fireRate: 1 # Trauma, was 2
+    fireRate: 1.7 # Trauma, was 2 # inky
 - type: entity
   parent: WeaponShotgunEnforcer
   id: WeaponShotgunEnforcerRubber

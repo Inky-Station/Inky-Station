@@ -230,8 +230,8 @@
     mask: ClothingMaskGasSecurity # Goobstation
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterArmorBasic
-    pocket1: WeaponLaserSidearm # Trauma
-#    pocket2: MagazinePistol - Truama
+    pocket1: WeaponPistolMk58 # Trauma # inky
+    pocket2: MagazinePistol # inky - fuck Truama
   inhand:
   - FlashlightSeclite
 
@@ -249,8 +249,8 @@
     mask: ClothingMaskGasSecurity # Goobstation
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterArmorBasicSlim
-    pocket1: WeaponLaserSidearm # Trauma
-#    pocket2: MagazinePistol - Trauma
+    pocket1: WeaponPistolMk58 # Trauma # inky
+    pocket2: MagazinePistol # inky - fuck Truama
   inhand:
   - FlashlightSeclite
 
@@ -267,8 +267,9 @@
     mask: ClothingMaskGasSecurity # Goobstation
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterArmorBasic
-    pocket1: WeaponLaserSidearm # Trauma
-#    pocket2: MagazinePistol - Trauma
+    pocket1: WeaponPistolMk58 # Trauma # inky
+    pocket2: MagazinePistol # inky - fuck Truama
+
   inhand:
   - FlashlightSeclite
 
@@ -286,8 +287,8 @@
     mask: ClothingMaskGasSecurity # Goobstation
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterArmorBasicSlim
-    pocket1: WeaponLaserSidearm # Trauma
-#    pocket2: MagazinePistol - Trauma
+    pocket1: WeaponPistolMk58 # Trauma # inky
+    pocket2: MagazinePistol # inky - fuck Truama
   inhand:
   - FlashlightSeclite
 

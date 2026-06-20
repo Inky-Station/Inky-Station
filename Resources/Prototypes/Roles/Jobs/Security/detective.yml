@@ -46,7 +46,7 @@
     - ForensicPad
     - ForensicScanner
     - ClothingMaskGasSecurity # Goobstation
-    - PoliceBaton # Inky
+    - WeaponBillyClub # inky
 
 - type: chameleonOutfit
   id: DetectiveChameleonOutfit

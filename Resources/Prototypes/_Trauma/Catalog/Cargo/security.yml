@@ -1,25 +1,28 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: cargoProduct
-  id: SecurityWeaponLaserSidearm
-  icon:
-    sprite: _Trauma/Objects/Weapons/Guns/Battery/laser_pistor.rsi
-    state: icon
-  product: CrateSecurityWeaponLaserSidearm
-  cost: 3600
-  category: cargoproduct-category-name-armory
-  group: market
-
-- type: cargoProduct
-  id: SecurityGunpowderCrate
-  icon:
-    sprite: _Trauma/Objects/Storage/gunpowderbottle.rsi
-    state: closed
-  product: CrateSecurityGunpowder
-  cost: 15000
-  category: cargoproduct-category-name-armory
-  group: market
-
+# inky - fuck phasers
+# - type: cargoProduct
+#   id: SecurityWeaponLaserSidearm
+#   icon:
+#     sprite: _Trauma/Objects/Weapons/Guns/Battery/laser_pistor.rsi
+#     state: icon
+#   product: CrateSecurityWeaponLaserSidearm
+#   cost: 3600
+#   category: cargoproduct-category-name-armory
+#   group: market
+#
+# # inky - fuck gunpowder
+# - type: cargoProduct
+#   id: SecurityGunpowderCrate
+#   icon:
+#     sprite: _Trauma/Objects/Storage/gunpowderbottle.rsi
+#     state: closed
+#   product: CrateSecurityGunpowder
+#   cost: 15000
+#   category: cargoproduct-category-name-armory
+#   group: market
+#
+# inky - fuck chips
 #- type: cargoProduct
 #  id: SecuritySkillChips
 #  icon:
@@ -29,4 +32,3 @@
 #  cost: 8000
 #  category: cargoproduct-category-name-security
 #  group: market
-# inky edit kill skills

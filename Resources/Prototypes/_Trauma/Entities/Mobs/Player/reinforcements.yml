@@ -39,7 +39,8 @@
     shoes: ClothingShoesBootsJackFilled
     belt: ClothingBeltSecurityFilled
     id: SecurityPDA
-    pocket1: WeaponLaserSidearm
+    pocket1: WeaponPistolMk58 # inky
+    pocket2: MagazinePistol # inky
     ears: ClothingHeadsetAltSecurityRegular
     gloves: ClothingHandsGlovesSecurity
 
@@ -50,7 +51,8 @@
     head: ClothingHeadHelmetBasicAlt
     outerClothing: ClothingOuterArmorBasicSlim
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponLaserSidearm
+    pocket1: WeaponPistolMk58 # inky
+    pocket2: MagazinePistol # inky
     suitstorage: WeaponLaserCarbine
 
 - type: startingGear
@@ -60,7 +62,8 @@
     head: ClothingHeadHelmetRiot
     outerClothing: ClothingOuterArmorRiot
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponLaserSidearm
+    pocket1: WeaponPistolMk58 # inky
+    pocket2: MagazinePistol # inky
   inhand:
   - PolymerBaton
   - RiotShield
@@ -76,7 +79,8 @@
     head: ClothingHeadHelmetRiot
     outerClothing: ClothingOuterArmorRiot
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponLaserSidearm
+    pocket1: WeaponPistolMk58 # inky
+    pocket2: MagazinePistol # inky
     suitstorage: WeaponShotgunEnforcerRubber
   storage:
     back:
@@ -92,7 +96,8 @@
     head: ClothingHeadHelmetBasicAlt
     outerClothing: ClothingOuterArmorBasicSlim
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponLaserSidearm
+    pocket1: WeaponPistolMk58 # inky
+    pocket2: MagazinePistol # inky
     suitstorage: WeaponLaserCannon
 
 - type: startingGear
@@ -102,7 +107,7 @@
     head: ClothingHeadHelmetBasicAlt
     outerClothing: ClothingOuterArmorBasicSlim
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponLaserSidearm
+    pocket1: MagazinePistol # inky
     pocket2: WeaponPistolMk58
   inhand:
   - RiotBulletShield
@@ -124,7 +129,7 @@
     gloves: ClothingHandsGlovesNitrile
     outerClothing: ClothingOuterCoatAMG
     belt: ClothingBeltMedicalEMTFilled
-    pocket1: WeaponLaserSidearm
+    pocket1: WeaponDisabler # inky
   storage:
     back:
     - MedkitCombatFilled
