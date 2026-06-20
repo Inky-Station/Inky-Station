@@ -5,6 +5,8 @@ using Content.Medical.Shared.Body;
 using Content.Shared.Body;
 using Robust.Shared.Prototypes;
 
+namespace Content.IntegrationTests.Tests._Inky.Inkymed;
+
 public sealed class OrganCategorySlotTest : GameTest // todo inkymed: nuke it asap
 {
     /// <summary>
