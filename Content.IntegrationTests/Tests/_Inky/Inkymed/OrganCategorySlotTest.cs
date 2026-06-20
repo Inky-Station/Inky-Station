@@ -14,8 +14,7 @@ public sealed class OrganCategorySlotTest : GameTest // todo inkymed: nuke it as
     [Test]
     public async Task OrganCategoryCheckSlotTest()
     {
-        await using var pair = await PoolManager.GetServerClient();
-        var server = pair.Server;
+        var server = Pair.Server;
 
         var protoMan = server.ResolveDependency<IPrototypeManager>();
 
@@ -47,6 +46,6 @@ public sealed class OrganCategorySlotTest : GameTest // todo inkymed: nuke it as
             );
         });
 
-        await pair.CleanReturnAsync();
+        await Pair.CleanReturnAsync();
     }
 }
