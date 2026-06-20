@@ -11,7 +11,7 @@
     # inky
 #    equipDelay: 3
 #    unequipDelay: 3
-#  - type: Blindfold
+  - type: Blindfold
   - type: EyeProtection
     # /inky
   - type: Construction

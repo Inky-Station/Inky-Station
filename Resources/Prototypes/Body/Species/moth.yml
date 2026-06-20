@@ -213,6 +213,23 @@
       289: 0.9
       275: 0.8
       250: 0.7
+  # inky
+  - type: Fixtures
+    fixtures: # TODO: This needs a second fixture just for mob collisions.
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 173 # 6.5% lighter
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: DashAction # dark souls
+    actionProto: ActionDashMoth
+  # /inky
+
 
 - type: entity
   parent: OrganBaseFleshy # Shitmed - Fleshy

@@ -134,7 +134,7 @@ public sealed partial class ViewconeSetAlphaOverlay : Overlay
             // calculate opacity for the actual entity first
             var angleAlpha = (float) Math.Clamp((angleDist - halfAngle) + (radConeFeather * 0.5f), 0f, radConeFeather) / radConeFeather;
             var distAlpha = Math.Clamp((distLength - cone.ConeIgnoreRadius) + (cone.ConeIgnoreFeather * 0.5f), 0f, cone.ConeIgnoreFeather) / cone.ConeIgnoreFeather;
-            var targetAlpha = 1f - Math.Min(angleAlpha, distAlpha);
+            var targetAlpha = 1f; // - Math.Min(angleAlpha, distAlpha); // inky goida
 
             // simplified logic for effects that dont spawn memories or anything likely stealthed
             if (!comp.UseMemory || ((!sprite.Visible || sprite.Color.A < 0.4) && !_occludedQuery.HasComp(uid)))
