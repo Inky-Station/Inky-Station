@@ -54,6 +54,10 @@
   - type: ToggleCellDraw
   - type: PowerCellDraw
     useCharge: 100
+  # inkymed
+  - type: Defibrillator
+    bpmZapHeal: -90 # more massive and med-grade defib
+  # /inkymed
 
 - type: entity
   id: DefibrillatorEmpty
@@ -106,6 +110,11 @@
   name: interdyne defibrillator
   description: Doubles as a self-defense weapon against war-crime inclined tiders.
   components:
+  # inkymed
+  - type: Defibrillator
+    autoStabilisation: true # combat defib
+    doAfterDuration: 2
+  #/inkymed
   - type: Sprite
     sprite: Objects/Specific/Medical/defibsyndi.rsi
     layers:

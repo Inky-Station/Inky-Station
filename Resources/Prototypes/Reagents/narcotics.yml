@@ -78,6 +78,10 @@
         - !type:ReagentCondition
           reagent: Desoxyephedrine
           min: 20
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 2.5
+      # /inkymed
 
 - type: reagent
   id: Ephedrine

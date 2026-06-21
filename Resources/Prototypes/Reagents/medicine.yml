@@ -901,6 +901,13 @@
           Toxin: -2
           Airloss: -2
           Brute: -2
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 5
+        heartRestart: true
+        autoStabilisation: true
+      # /inkymed
+
 
 - type: reagent
   id: Ultravasculine
