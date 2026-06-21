@@ -112,8 +112,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 1.5
-        Slash: 1.5
+        Piercing: 3 # inky
+        Slash: 3 # inky
 
 - type: entity
   parent: PelletShotgunImprovised
