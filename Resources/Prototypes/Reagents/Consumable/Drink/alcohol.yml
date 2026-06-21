@@ -207,6 +207,10 @@
           inverted: true
       - !type:Drunk
         boozePower: 2
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -1.2
+      # /inkymed
 
 - type: reagent
   id: Gin

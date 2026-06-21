@@ -59,6 +59,11 @@
         emote: Scream
         probability: 0.05
         #It's balanced I swear!
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 2
+        autoStabilisation: true
+      # /inkymed
 
 - type: reagent
   id: Luxurium
@@ -108,6 +113,12 @@
           inverted: true
           min: 0
           max: 50
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 4
+        heartRestart: true
+        autoStabilisation: true
+    # /inkymed
 
 - type: reagent
   id: VitriumFroth

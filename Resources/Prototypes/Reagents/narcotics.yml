@@ -142,6 +142,10 @@
         - !type:ReagentCondition
           reagent: Ephedrine
           min: 30
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 2 # less than desox
+      # /inkymed
 
 - type: reagent
   id: Stimulants
@@ -274,6 +278,10 @@
         effectProto: StatusEffectSeeingRainbow
         time: 16
         type: Add
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -1.5
+      # /inkymed
 
 - type: reagent
   id: Nicotine
@@ -332,6 +340,10 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 5
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -1.8
+    # /inkymed
 
 - type: reagent
   id: Bananadine
