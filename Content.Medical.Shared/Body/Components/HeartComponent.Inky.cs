@@ -39,7 +39,7 @@ public sealed partial class HeartComponent
     /// to prevent updating dead hearts
     /// </summary>
     [ViewVariables, AutoNetworkedField]
-    public bool CurrentlyActive = false;
+    public bool CurrentlyActive { get; set; }
 
     /// <summary>
     /// If true, will stop stabilisation

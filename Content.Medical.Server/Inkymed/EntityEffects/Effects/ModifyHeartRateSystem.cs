@@ -5,14 +5,14 @@ using Content.Shared.EntityEffects;
 
 namespace Content.Medical.Server.Inkymed.EntityEffects.Effects;
 
-public sealed partial class ModifyHeartRateSystem : EntityEffectSystem<MetaDataComponent, ModifyHeartRate>
+public sealed partial class ModifyHeartRateSystem : EntityEffectSystem<BodyComponent, ModifyHeartRate>
 {
     [Dependency] private HeartSystem _heart = default!;
     [Dependency] private BodySystem _body = default!;
 
     public static readonly ProtoId<OrganCategoryPrototype> HeartCategory = "Heart";
 
-    protected override void Effect(Entity<MetaDataComponent> entity, ref EntityEffectEvent<ModifyHeartRate> args)
+    protected override void Effect(Entity<BodyComponent> entity, ref EntityEffectEvent<ModifyHeartRate> args)
     {
         var heartUid = _body.GetOrgan(entity, HeartCategory);
         if (heartUid == null

@@ -81,19 +81,19 @@ public sealed partial class HeartSystem : EntitySystem
             if (heart.CurrentHeartRate <= heart.MinHeartRate)
                 return;
 
-            var reductionidk = Math.Max(heart.CurrentHeartRate - (int)Math.Round(heart.StabilisationRate), heart.MinHeartRate);
-            if (reductionidk == heart.CurrentHeartRate)
+            var devariation = Math.Max(heart.CurrentHeartRate - (int)Math.Round(heart.StabilisationRate), heart.MinHeartRate);
+            if (devariation == heart.CurrentHeartRate)
                 return;
 
-            heart.CurrentHeartRate = reductionidk;
+            heart.CurrentHeartRate = devariation;
             if (body is { } deadBody)
                 UpdateAlerts(deadBody, heart);
             Dirty(uid, heart);
             return;
         }
 
-        var shit = Math.Abs(heart.CurrentHeartRate - heart.StartingHeartRate);
-        var shouldFibrillate = shit >= heart.FibrillationCap;
+        var change = Math.Abs(heart.CurrentHeartRate - heart.StartingHeartRate);
+        var shouldFibrillate = change >= heart.FibrillationCap;
 
         if (heart.CurrentlyFibrillating != shouldFibrillate)
         {
@@ -104,8 +104,8 @@ public sealed partial class HeartSystem : EntitySystem
         }
 
 
-        if (heart.CurrentHeartRate == heart.StartingHeartRate)
-            return;
+        // if (heart.CurrentHeartRate == heart.StartingHeartRate)
+        //     return;
 
         /*
          * Being in Fibrillations drifts AWAY from the startingheartrate
