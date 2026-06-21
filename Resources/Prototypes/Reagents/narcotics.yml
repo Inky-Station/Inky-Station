@@ -257,8 +257,8 @@
         factor: 1
       # inkymed
       - !type:ModifyHeartRate
-      amount: 2
-      autoStabilisation: true
+        amount: 2
+        autoStabilisation: true
       # /inkymed
 
 - type: reagent
