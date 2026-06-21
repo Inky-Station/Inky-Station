@@ -43,8 +43,8 @@ public sealed partial class OrganChipSystem : EntitySystem
         SubscribeLocalEvent<OrganChipContainerComponent, EntInsertedIntoContainerMessage>(OnChipInserted);
         SubscribeLocalEvent<OrganChipContainerComponent, EntRemovedFromContainerMessage>(OnChipRemoved);
 
-        SubscribeLocalEvent<OrganChipContainerComponent, GetVerbsEvent<InteractionVerb>>(OnGetVerbs);
-        SubscribeLocalEvent<OrganChipContainerComponent, BodyRelayedEvent<GetVerbsEvent<InteractionVerb>>>(OnGetVerbs);
+        //SubscribeLocalEvent<OrganChipContainerComponent, GetVerbsEvent<InteractionVerb>>(OnGetVerbs); // inky kill chips
+        //SubscribeLocalEvent<OrganChipContainerComponent, BodyRelayedEvent<GetVerbsEvent<InteractionVerb>>>(OnGetVerbs); // inky kill chips
         SubscribeLocalEvent<OrganChipContainerComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<OrganChipContainerComponent, BodyRelayedEvent<InteractUsingEvent>>(OnInteractUsing);
         SubscribeLocalEvent<OrganChipContainerComponent, OrganChipInsertDoAfterEvent>(OnInsertDoAfter);
