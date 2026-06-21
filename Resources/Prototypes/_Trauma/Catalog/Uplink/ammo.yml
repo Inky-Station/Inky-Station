@@ -1,15 +1,16 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: listing
-  id: Uplink20rdLightRifleMagazine
-  name: uplink-ammo-20rdmagazine-name
-  description: uplink-ammo-20rdmagazine-desc
-  icon: { sprite: _Trauma/Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/straight_light_rifle_mag.rsi, state: base }
-  productEntity: MagazineLightRifle20rd
-  cost:
-    Telecrystal: 5
-  categories:
-  - UplinkAmmo
+# inky - bloat
+#- type: listing
+#  id: Uplink20rdLightRifleMagazine
+#  name: uplink-ammo-20rdmagazine-name
+#  description: uplink-ammo-20rdmagazine-desc
+#  icon: { sprite: _Trauma/Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/straight_light_rifle_mag.rsi, state: base }
+#  productEntity: MagazineLightRifle20rd
+#  cost:
+#    Telecrystal: 5
+#  categories:
+#  - UplinkAmmo
 
 - type: listing
   id: UplinkSpeedLoaderMagnumAP
@@ -18,17 +19,18 @@
   icon: { sprite: Objects/Weapons/Guns/Ammunition/SpeedLoaders/Magnum/magnum_speed_loader.rsi, state: icon }
   productEntity: SpeedLoaderMagnumAP
   cost:
-    Telecrystal: 10
+    Telecrystal: 4 # inky
   categories:
   - UplinkAmmo
 
-- type: listing
-  id: UplinkBoxShotgunShells
-  name: uplink-ammo-shotgun-name
-  description: uplink-ammo-shotgun-desc
-  icon: { sprite: Objects/Weapons/Guns/Ammunition/Boxes/shotgun.rsi, state: icon-lethal }
-  productEntity: BoxLethalshot
-  cost:
-    Telecrystal: 10
-  categories:
-  - UplinkAmmo
+# inky - bloat
+#- type: listing
+#  id: UplinkBoxShotgunShells
+#  name: uplink-ammo-shotgun-name
+#  description: uplink-ammo-shotgun-desc
+#  icon: { sprite: Objects/Weapons/Guns/Ammunition/Boxes/shotgun.rsi, state: icon-lethal }
+#  productEntity: BoxLethalshot
+#  cost:
+#    Telecrystal: 10
+#  categories:
+#  - UplinkAmmo
