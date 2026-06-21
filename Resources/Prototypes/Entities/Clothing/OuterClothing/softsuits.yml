@@ -135,9 +135,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Other
     modifiers:

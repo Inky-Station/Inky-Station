@@ -58,12 +58,12 @@
       Head: OrganSkeletonPersonHead
       ArmLeft: OrganSkeletonPersonArmLeft
       ArmRight: OrganSkeletonPersonArmRight
-      HandRight: OrganSkeletonPersonHandRight
-      HandLeft: OrganSkeletonPersonHandLeft
+#      HandRight: OrganSkeletonPersonHandRight #inikymed
+#      HandLeft: OrganSkeletonPersonHandLeft #inkymed
       LegLeft: OrganSkeletonPersonLegLeft
       LegRight: OrganSkeletonPersonLegRight
-      FootLeft: OrganSkeletonPersonFootLeft
-      FootRight: OrganSkeletonPersonFootRight
+#      FootLeft: OrganSkeletonPersonFootLeft #inkymed
+#      FootRight: OrganSkeletonPersonFootRight #nkym\ed
   - type: HumanoidProfile
     species: Skeleton
 
@@ -230,6 +230,8 @@
     sprite: Mobs/Species/Skeleton/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Skeleton/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Skeleton/parts.rsi
   - type: VisualOrganMarkings
     markingData:

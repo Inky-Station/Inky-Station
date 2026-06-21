@@ -103,7 +103,7 @@ namespace Content.Server.EUI
             IsShutDown = true;
         }
 
-        internal void DoStateUpdate()
+        public void DoStateUpdate() // Inky - make public, what can go wrong
         {
             _isStateDirty = false;
 

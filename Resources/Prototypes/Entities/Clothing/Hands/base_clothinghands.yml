@@ -33,7 +33,7 @@
         Heat: 5 # the average lightbulb only does around four damage!
   - type: Armor # provide minimal covering to your hands
     coverage:
-    - Hand
+    - Arm # inkymed
     modifiers:
       coefficients:
         Blunt: 0.95

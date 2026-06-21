@@ -15,5 +15,5 @@ public sealed partial class DamageUserOnTriggerComponent : Component
     /// Shitmed Change: Lets mousetraps, etc. target the feet.
     /// </summary>
     [DataField]
-    public TargetBodyPart? TargetPart = TargetBodyPart.Feet;
+    public TargetBodyPart? TargetPart = TargetBodyPart.Legs; // inkymed - was .Feet
 }

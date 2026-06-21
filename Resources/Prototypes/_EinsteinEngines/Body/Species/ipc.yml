@@ -70,12 +70,12 @@
       Head: OrganIPCHead
       ArmLeft: OrganIPCArmLeft
       ArmRight: OrganIPCArmRight
-      HandRight: OrganIPCHandRight
-      HandLeft: OrganIPCHandLeft
+#      HandRight: OrganIPCHandRight inkymed
+#      HandLeft: OrganIPCHandLeft inkymed
       LegLeft: OrganIPCLegLeft
       LegRight: OrganIPCLegRight
-      FootLeft: OrganIPCFootLeft
-      FootRight: OrganIPCFootRight
+#      FootLeft: OrganIPCFootLeft inkymed
+#      FootRight: OrganIPCFootRight inkymed
       # Organs
       Eyes: OrganIPCEyes
       Tongue: OrganIPCTongue
@@ -291,6 +291,8 @@
     sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
+    secondData: # inkymed
       sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
   - type: VisualOrganMarkings
     markingData:

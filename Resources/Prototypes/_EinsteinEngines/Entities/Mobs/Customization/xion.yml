@@ -42,7 +42,7 @@
 
 - type: marking
   id: CyberLimbsMarkingXionLHand
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/xion/xion_main.rsi
@@ -63,7 +63,7 @@
 
 - type: marking
   id: CyberLimbsMarkingXionLFoot
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/xion/xion_main.rsi
@@ -87,7 +87,7 @@
 
 - type: marking
   id: CyberLimbsMarkingXionRHand
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/xion/xion_main.rsi
@@ -108,7 +108,7 @@
 
 - type: marking
   id: CyberLimbsMarkingXionRFoot
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/xion/xion_main.rsi

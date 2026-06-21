@@ -25,12 +25,12 @@
       Head: OrganShadowHead
       ArmLeft: OrganShadowArmLeft
       ArmRight: OrganShadowArmRight
-      HandLeft: OrganShadowHandLeft
-      HandRight: OrganShadowHandRight
+#      HandLeft: OrganShadowHandLeft inkymed
+#      HandRight: OrganShadowHandRight inkymed
       LegLeft: OrganShadowLegLeft
       LegRight: OrganShadowLegRight
-      FootLeft: OrganShadowFootLeft
-      FootRight: OrganShadowFootRight
+#      FootLeft: OrganShadowFootLeft inky,med
+#      FootRight: OrganShadowFootRight inkymed
       # Organs
       Brain: OrganHumanBrain
       Eyes: OrganShadowEyes
@@ -116,6 +116,8 @@
     sprite: _EinsteinEngines/Mobs/Species/Shadow/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _EinsteinEngines/Mobs/Species/Shadow/parts.rsi
+    secondData: # inkymed
       sprite: _EinsteinEngines/Mobs/Species/Shadow/parts.rsi
   - type: VisualOrganMarkings
     markingData:

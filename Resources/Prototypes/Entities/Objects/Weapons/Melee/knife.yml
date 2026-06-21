@@ -15,7 +15,7 @@
   - type: MeleeWeapon
     animationRotation: -135 # WWDP
     wideAnimationRotation: -135
-    canWideSwing: false # Trauma
+    # canWideSwing: false # Trauma # Inky - no kys
     damage:
       types:
         Slash: 10

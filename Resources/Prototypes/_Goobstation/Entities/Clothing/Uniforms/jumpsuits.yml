@@ -15,9 +15,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     modifiers:
       coefficients:
         Blunt: 0.85
@@ -44,9 +44,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     modifiers:
       coefficients:
         Blunt: 0.90
@@ -154,9 +154,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     modifiers:
       coefficients:
         Blunt: 0.65
@@ -178,9 +178,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand
     - Leg
-    - Foot
+#    - Foot inkymed
     modifiers:
       coefficients:
         Blunt: 0.60
@@ -202,9 +202,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     modifiers:
       coefficients:
         Blunt: 0.65

@@ -27,8 +27,8 @@ public sealed partial class DevilSystem
         || !HasComp<MobStateComponent>(args.Target)
         || HasComp<CondemnedComponent>(args.Target)
         || args.Target == args.User
-        || _part.FindBodyPart(uid, BodyPartType.Hand) == null // cant shake if you have no hands
-        || _part.FindBodyPart(uid, BodyPartType.Hand) == null // or if they have none
+        || _part.FindBodyPart(uid, BodyPartType.Arm) == null // cant shake if you have no hands      // inkymed (Why are you checking it twice)
+        || _part.FindBodyPart(uid, BodyPartType.Arm) == null // or if they have none                 // inkymed
         || !_contract.IsUserValid(args.Target, out _))
             return;
 

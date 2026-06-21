@@ -73,12 +73,12 @@
       Tail: OrganVulpkaninTail # Trauma
       ArmLeft: OrganVulpkaninArmLeft
       ArmRight: OrganVulpkaninArmRight
-      HandRight: OrganVulpkaninHandRight
-      HandLeft: OrganVulpkaninHandLeft
+#      HandRight: OrganVulpkaninHandRight #inkymed
+#      HandLeft: OrganVulpkaninHandLeft #inkymed
       LegLeft: OrganVulpkaninLegLeft
       LegRight: OrganVulpkaninLegRight
-      FootLeft: OrganVulpkaninFootLeft
-      FootRight: OrganVulpkaninFootRight
+#      FootLeft: OrganVulpkaninFootLeft #inkymed
+#      FootRight: OrganVulpkaninFootRight #inkymed
       Brain: OrganVulpkaninBrain
       Eyes: OrganVulpkaninEyes
       Tongue: OrganVulpkaninTongue
@@ -245,6 +245,8 @@
   components:
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Vulpkanin/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Vulpkanin/parts.rsi
   - type: VisualOrganMarkings
     markingData:

@@ -15,6 +15,7 @@
   jobEntity: StationAiBrain
   jobPreviewEntity: PlayerStationAiPreview
   applyTraits: false
+  whitelisted: true # inky - revert this later when https://github.com/Inky-Station/Inky-Station/issues/105 is fixed
 
 - type: job
   id: Borg

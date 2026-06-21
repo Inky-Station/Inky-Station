@@ -41,6 +41,8 @@
   - type: VisualOrgan
     data:
       sprite: _Shitmed/Mobs/Aliens/Carps/carp_parts.rsi
+    secondData: # inkymed
+      sprite: _Shitmed/Mobs/Aliens/Carps/carp_parts.rsi
   - type: VisualOrganMarkings
     markingData:
       group: None

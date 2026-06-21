@@ -36,10 +36,10 @@
   - type: Tag
     tags:
     - PlasmamanSafe
-  - type: IgniteFromGasImmunity
-    parts:
-    - HandLeft
-    - HandRight
+#  - type: IgniteFromGasImmunity inkymed
+#    parts:
+#    - HandLeft
+#    - HandRight
 
 - type: entity
   parent: ClothingHandModsuitBase

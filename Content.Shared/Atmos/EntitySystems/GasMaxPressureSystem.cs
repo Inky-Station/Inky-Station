@@ -101,10 +101,10 @@ public abstract partial class GasMaxPressureSystem<T> : EntitySystem where T : I
             Atmos.MergeContainingMixture(entity.Owner, entity.Comp.Air, excite: true);
             Audio.PlayPvs(entity.Comp.RuptureSound, Transform(entity).Coordinates, AudioParams.Default.WithVariation(0.125f));
 
-            // Integrity failure, destroy ourselves!
+            // Integrity failure, kill yourself!
             _destructible.DestroyEntity(entity);
 
-            var totalIntensity = (float)Math.Sqrt(Atmos.GetOverPressure(entity.Comp.Air));
+            var totalIntensity = (float)Math.Sqrt(Atmos.GetOverPressure(entity.Comp.Air)) * 65; // inky edit
             if (_maxExplosivePower > 0 && _maxExplosivePower < totalIntensity)
                 totalIntensity = _maxExplosivePower;
 

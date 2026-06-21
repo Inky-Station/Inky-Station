@@ -49,7 +49,7 @@ public sealed partial class AnimatedEmotesComponent : Component
     public TimeSpan VomitStatusTime = TimeSpan.FromSeconds(1);
 
     [DataField]
-    public int EmotesToVomit = 5;
+    public int EmotesToVomit = 7; // inky edit
 
     [DataField]
     public TimeSpan BlockVomitStatusTime = TimeSpan.FromSeconds(10);

@@ -83,8 +83,8 @@ public sealed partial class DamageOnInteractSystem : EntitySystem
         {
             targetPart = hand.Value.Location switch
             {
-                HandLocation.Left => TargetBodyPart.LeftHand,
-                HandLocation.Right => TargetBodyPart.RightHand,
+                HandLocation.Left => TargetBodyPart.LeftArm,   //inkymed - was LeftHand
+                HandLocation.Right => TargetBodyPart.RightArm, //inkymed - was RightHand
                 _ => null
             };
         }
