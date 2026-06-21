@@ -21,6 +21,8 @@
   - type: VisualOrgan
     data:
       sprite: _Shitmed/Mobs/Species/Misc/Pizza/parts.rsi
+    secondData: #inkymed
+      sprite: _Shitmed/Mobs/Species/Misc/Pizza/parts.rsi
   - type: VisualOrganMarkings
     markingData:
       group: None
