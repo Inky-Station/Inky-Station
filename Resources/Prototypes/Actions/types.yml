@@ -184,7 +184,7 @@
   #- type: LimitedCharges # inky
   #  maxCharges: 3
   - type: Action
-    checkCanInteract: false
+    # checkCanInteract: false # inky
     useDelay: 180 # inky
     itemIconStyle: BigAction
     priority: -20
