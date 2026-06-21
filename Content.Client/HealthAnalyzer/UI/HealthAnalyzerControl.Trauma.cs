@@ -28,6 +28,10 @@ namespace Content.Client.HealthAnalyzer.UI;
 
 public sealed partial class HealthAnalyzerControl
 {
+    // inkymed
+    private BodySystem _bodySystem = default!;
+    private static readonly ProtoId<OrganCategoryPrototype> HeartCategory = "Heart";
+    // /inkymed
 
     public event Action<ProtoId<OrganCategoryPrototype>?, EntityUid>? OnBodyPartSelected;
     public event Action<HealthAnalyzerMode, EntityUid>? OnModeChanged;
@@ -42,6 +46,10 @@ public sealed partial class HealthAnalyzerControl
     private void InitializeTrauma()
     {
         _wound = _entityManager.System<WoundSystem>();
+
+        // inkymed
+        _bodySystem = _entityManager.System<BodySystem>();
+        // /inkymed
 
         _bodyPartControls = new Dictionary<ProtoId<OrganCategoryPrototype>, TextureButton>
         {
@@ -231,6 +239,9 @@ public sealed partial class HealthAnalyzerControl
                 });
             }
         }
+        // inkymed
+        PopulateHeartConditions(target, identity);
+        // /inkymed
     }
 
     public void PopulateOrgans(HealthAnalyzerOrgansState state)

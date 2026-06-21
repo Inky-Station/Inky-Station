@@ -31,20 +31,20 @@ public sealed partial class HeartComponent
     [DataField]
     public int FibrillationCap = 50;
 
-    [ViewVariables]
+    [ViewVariables, AutoNetworkedField]
     public int CurrentHeartRate;
 
     /// <summary>
     /// Set to true if its in a body that has MobState and its not MobState.Dead
     /// to prevent updating dead hearts
     /// </summary>
-    [ViewVariables]
+    [ViewVariables, AutoNetworkedField]
     public bool CurrentlyActive = false;
 
     /// <summary>
     /// If true, will stop stabilisation
     /// </summary>
-    [ViewVariables]
+    [ViewVariables, AutoNetworkedField]
     public bool CurrentlyFibrillating = false;
 
     [DataField]
