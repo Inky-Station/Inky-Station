@@ -63,6 +63,9 @@
     layer: enum.HumanoidVisualLayers.Wings
     data:
       state: wings
+    secondData: #inkymed im so fucking tired im just gonna do this and not fuck with it
+      sprite: _Trauma/empty.rsi
+      state: empty
   - type: VisualOrganMarkings
     markingData:
       layers:
