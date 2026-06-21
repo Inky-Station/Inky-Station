@@ -260,7 +260,7 @@
         probability: 0.1
       # inkymed
       - !type:ModifyHeartRate
-        amount: -3
+        amount: -3 # todo inkymed
       # /inkymed
 
 - type: reagent

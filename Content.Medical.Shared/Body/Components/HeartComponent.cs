@@ -4,5 +4,5 @@
 namespace Content.Medical.Shared.Body;
 
 [RegisterComponent, NetworkedComponent]
-[AutoGenerateComponentState] //inkymed
+[AutoGenerateComponentState(raiseAfterAutoHandleState: true)] //inkymed
 public sealed partial class HeartComponent : Component;

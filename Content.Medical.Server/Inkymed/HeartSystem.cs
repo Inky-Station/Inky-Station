@@ -11,7 +11,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Medical.Server.Inkymed;
 
-public sealed partial class HeartSystem : EntitySystem
+public sealed partial class HeartSystem : EntitySystem // todo godmode bypass
 {
     [Dependency] private AlertsSystem _alerts = default!;
     [Dependency] private IGameTiming _timing = default!;
@@ -119,12 +119,10 @@ public sealed partial class HeartSystem : EntitySystem
         var newRate = (int)Math.Round(heart.CurrentHeartRate + delta); // bro thinks its double and it breaks
 
         // snap to target only when stabilising
-        if (!heart.CurrentlyFibrillating)
-        {
-            if (delta > 0 && newRate > heart.StartingHeartRate
-                || delta < 0 && newRate < heart.StartingHeartRate)
-                newRate = heart.StartingHeartRate;
-        }
+        if (!heart.CurrentlyFibrillating
+            && (delta > 0 && newRate > heart.StartingHeartRate
+                || delta < 0 && newRate < heart.StartingHeartRate))
+            newRate = heart.StartingHeartRate;
 
         newRate = Math.Clamp(newRate, heart.MinHeartRate, heart.MaxHeartRate);
 
@@ -134,7 +132,7 @@ public sealed partial class HeartSystem : EntitySystem
         {
             heart.CurrentHeartRate = heart.MinHeartRate;
             heart.CurrentlyActive = false;
-            heart.CurrentlyFibrillating = false;
+            heart.CurrentlyFibrillating = false; // todo inkymed enum
             if (body is { } b)
                 UpdateAlerts(b, heart);
             Dirty(uid, heart);
