@@ -1195,11 +1195,6 @@
 
 # Reporter
 
-- type: loadoutGroup
-  id: ReporterOuterClothing
-  name: loadout-group-reporter-outerclothing
-  loadouts:
-  - NoPro
 
 - type: loadoutGroup
   id: ReporterEnvirohelm
@@ -1233,7 +1228,7 @@
   minLimit: 0
   loadouts:
   - Bodycam # Goobstation - Body cameras
-  - ClothingNeckCWPSec
+  # - ClothingNeckCWPSec
   - ClothingNeckMantleVeteranSecurity
 
 #honkops
