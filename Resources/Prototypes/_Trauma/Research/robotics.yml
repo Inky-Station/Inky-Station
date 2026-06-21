@@ -18,7 +18,7 @@
   - EDAiCoreElectronics
   - EDIFFElectronics
   - EDWeaponControlsElectronics
-  position: -8,0 # inky
+  position: -1,0 # inky
   technologyPrerequisites:
   - ExplosiveMechAmmunition # inky
 
@@ -34,7 +34,7 @@
   recipeUnlocks:
   - MechEquipmentDrillDiamond
   - MechEquipmentDrill
-  position: -6,2 # inky
+  position: -3,2 # inky
   technologyPrerequisites:
   - RipleyAPLU
 
@@ -52,7 +52,7 @@
   - RipleyUpgradeKit
   technologyPrerequisites:
   - BasicMechEquipment # inky
-  position: -7,2
+  position: -2,2 # inky
 
 - type: technology
   id: Clarke
@@ -73,7 +73,7 @@
   - ClarkePeripheralsElectronics
   technologyPrerequisites:
   - BasicMechEquipment # inky
-  position: -6,3 # inky
+  position: -3,1 # inky
 
 - type: technology
   id: HONKWeapons
@@ -87,7 +87,7 @@
   recipeUnlocks:
   - MechEquipmentHonkerBananaMortar
   - MechEquipmentHonkerMousetrapMortar
-  position: -7,0 # inky
+  position: -6,1 # inky
   technologyPrerequisites:
   - HONKMech # inky
 
@@ -115,7 +115,7 @@
   technologyPrerequisites:
   - Ripley2 # inky
   - PortableMicrofusionWeaponry
-  position: -7,1 # inky
+  position: -2,1 # inky
 
 - type: technology
   id: ExplosiveMechAmmunition
@@ -131,7 +131,7 @@
   technologyPrerequisites:
   - Gygax
   # - BasicMechEquipment # inky
-  position: -8,1 # inky
+  position: -2,0 # inky
 
 - type: technology
   id: Durand
@@ -157,7 +157,7 @@
   - WeaponMechCombatShotgunIncendiary
   technologyPrerequisites:
   - ExplosiveMechAmmunition # inky
-  position: -8,2 # inky
+  position: -3,0 # inky
 
 - type: technology
   id: AdvancedCybernetics
@@ -179,7 +179,7 @@
   - DiagnosticCyberneticEyes
   - SecurityCyberneticEyes
   - MedicalCyberneticEyes
-  position: -7,4
+  position: -6,2 # inky
   technologyPrerequisites:
   - BasicCybernetics
 
@@ -204,7 +204,7 @@
   - BasicCyberneticEyes
   - BasicCyberneticLungs
   # - HypoportSecure # inky - fuck hypoports
-  position: -6,4
+  position: -6,3 # inky
   technologyPrerequisites:
   - BasicAugmentation
 
@@ -217,7 +217,7 @@
   discipline: Robotics
   tier: 2
   cost: 5000
-  position: -5,4 # inky
+  position: -5,3 # inky
   technologyPrerequisites:
   - BasicRobotics
   recipeUnlocks:
@@ -233,7 +233,7 @@
   discipline: Robotics
   tier: 2
   cost: 10000
-  position: -5,5
+  position: -5,4 # inky
   technologyPrerequisites:
   - BasicAugmentation
   recipeUnlocks:
@@ -251,7 +251,7 @@
   discipline: Robotics
   tier: 2
   cost: 10000
-  position: -6,5
+  position: -6,4 # inky
   technologyPrerequisites:
   - ImplantedTools
   recipeUnlocks:

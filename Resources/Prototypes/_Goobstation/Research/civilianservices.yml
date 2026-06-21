@@ -15,7 +15,7 @@
   - PrescriptionGlasses
   - EnvirosuitExtinguisherRefill
   - TinfoilHats
-  position: 3,3 # inky
+  position: 0,2 # inky
   technologyPrerequisites:
   - FauxAstroTiles # inky
 

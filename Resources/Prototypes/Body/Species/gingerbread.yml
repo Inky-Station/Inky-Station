@@ -17,12 +17,12 @@
       Head: OrganGingerbreadHead
       ArmLeft: OrganGingerbreadArmLeft
       ArmRight: OrganGingerbreadArmRight
-      HandRight: OrganGingerbreadHandRight
-      HandLeft: OrganGingerbreadHandLeft
+#      HandRight: OrganGingerbreadHandRight #inkymed
+#      HandLeft: OrganGingerbreadHandLeft #inkymed
       LegLeft: OrganGingerbreadLegLeft
       LegRight: OrganGingerbreadLegRight
-      FootLeft: OrganGingerbreadFootLeft
-      FootRight: OrganGingerbreadFootRight
+#      FootLeft: OrganGingerbreadFootLeft #inkymed
+#      FootRight: OrganGingerbreadFootRight #inkymed
       Brain: OrganHumanBrain
       Eyes: OrganHumanEyes
       Tongue: OrganHumanTongue
@@ -94,6 +94,8 @@
     sprite: Mobs/Species/Gingerbread/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Gingerbread/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Gingerbread/parts.rsi
   - type: VisualOrganMarkings
     markingData:

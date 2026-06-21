@@ -103,6 +103,12 @@
         - type: PainNumbness
         - type: LegsParalyzed
         guidebookText: entity-effect-guidebook-removes-disabilities
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 5
+        heartRestart: true
+        autoStabilisation: true
+    # /inkymed
 
 - type: reagent
   id: LingAdrenaline
@@ -302,6 +308,10 @@
         time: 4
       - !type:ModifyBleed
         amount: -0.25
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 3
+      # /inkymed
 
 # Patch/microdose meds, hilariously strong due to difficulties in making and using them
 

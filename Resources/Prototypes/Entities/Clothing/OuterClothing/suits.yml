@@ -15,9 +15,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Other
     modifiers:
@@ -72,9 +72,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymned
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Other
     traumaDeductions: # having a suit on saves your limbs
@@ -120,9 +120,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Other
     traumaDeductions: # having a suit on saves your limbs
@@ -163,9 +163,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Other
     modifiers:
@@ -205,9 +205,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot #inkymed
     - Tail
     - Other
     modifiers:

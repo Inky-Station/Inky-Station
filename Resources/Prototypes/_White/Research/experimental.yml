@@ -11,7 +11,7 @@
   discipline: Experimental
   tier: 2
   cost: 10000
-  position: -2,-2 # inky
+  position: -2,-3 # inky
   recipeUnlocks:
   - ClothingEyesNightVisionGoggles
   technologyPrerequisites:
@@ -26,7 +26,7 @@
   discipline: Experimental
   tier: 2
   cost: 10000
-  position: -2,-3 # inky
+  position: -2,-4 # inky
   recipeUnlocks:
   - ClothingEyesThermalVisionGoggles
   technologyPrerequisites:

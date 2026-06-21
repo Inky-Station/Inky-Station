@@ -549,14 +549,14 @@
   name: bananium peel
   components:
   - type: Sprite
-    sprite: _Trauma/Objects/Materials/materials.rsi # Trauma
+    sprite: Objects/Materials/materials.rsi #inky
     state: peel
   - type: Item
-    sprite: _Trauma/Objects/Materials/materials.rsi # Trauma
+    sprite: Objects/Materials/materials.rsi #inky
     heldPrefix: peel
   - type: Slippery
   - type: Clothing
-    sprite: _Trauma/Objects/Materials/materials.rsi # Trauma
+    sprite: Objects/Materials/materials.rsi #inky
     equippedPrefix: peel
 
 - type: entity

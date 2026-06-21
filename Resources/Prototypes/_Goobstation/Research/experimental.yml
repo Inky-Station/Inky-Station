@@ -34,7 +34,7 @@
   - ModsuitGauntlets
   - ModsuitShell
   - ModsuitPlatingExternal
-  position: -2,-1 # inky
+  position: -2,-2 # inky
   technologyPrerequisites:
   - MagnetsTech
 
@@ -50,9 +50,9 @@
   recipeUnlocks:
   - SlimeGrinderMachineCircuitboard
   - ClothingBackpackXenoBioTank
-  position: -3,2 # inky
+  position: -4,0 # inky
   technologyPrerequisites:
-  - BasicRobotics
+  - BasicXenoArcheology # inky
 
 - type: technology
   id: BluespaceTheory
@@ -95,9 +95,9 @@
   cost: 15000
   recipeUnlocks:
   - XenoCompatibilityImplanter
-  position: -7,-1 # inky
+  position: -5,0 # inky
   technologyPrerequisites:
-  - ExperimentalScience
+  - Xenobiology # inky
 
 - type: technology
   id: XenobagHolding
@@ -110,6 +110,6 @@
   cost: 10000
   recipeUnlocks:
   - ClothingBeltChemBagXenobiologyHolding
-  position: -2,2 # inky
+  position: -6,0 # inky
   technologyPrerequisites:
-  - Xenobiology
+  - XenoBiology # inky

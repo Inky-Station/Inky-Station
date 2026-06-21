@@ -117,13 +117,14 @@ public sealed partial class SurgeryBui : BoundUserInterface
                 {
                     BodyPartType.Head => 1,
                     BodyPartType.Torso => 2,
-                    BodyPartType.Arm => 2,
-                    BodyPartType.Hand => 3,
+                    BodyPartType.Arm => 3,   // inkymed - was 2????
+                    // BodyPartType.Hand => 3, // inkymed
                     BodyPartType.Leg => 4,
                     BodyPartType.Foot => 5,
+                    // BodyPartType.Foot => 5, // inkymed
                     // BodyPartType.Tail => 6, No tails yet!
-                    BodyPartType.Other => 7,
-                    _ => 8
+                    BodyPartType.Other => 5,  // inkymed - was 7, tails when?
+                    _ => 6  // inkymed - was 8
                 };
             }
 

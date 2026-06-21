@@ -20,7 +20,7 @@
 #
 - type: entity
   abstract: true
-  parent: BasePerishableFood # Trauma - most food is perishable
+  parent: FoodBase # Trauma - most food is perishable # inky - no
   id: FoodBaseTrash
   components:
   - type: SpaceGarbage

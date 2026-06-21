@@ -35,12 +35,12 @@ public sealed partial class BodySystem
         "Torso",
         "ArmLeft",
         "LegLeft",
-        "HandLeft",
-        "FootLeft",
+        // "HandLeft", // inkymed
+        // "FootLeft", // inkymed
         "ArmRight",
         "LegRight",
-        "HandRight",
-        "FootRight"
+        // "HandRight", // inkymed
+        // "FootRight" // inkymed
     ];
 
     /// <summary>
@@ -207,12 +207,12 @@ public sealed partial class BodySystem
             (BodyPartType.Torso, _) => TargetBodyPart.Chest,
             (BodyPartType.Arm, BodyPartSymmetry.Left) => TargetBodyPart.LeftArm,
             (BodyPartType.Arm, BodyPartSymmetry.Right) => TargetBodyPart.RightArm,
-            (BodyPartType.Hand, BodyPartSymmetry.Left) => TargetBodyPart.LeftHand,
-            (BodyPartType.Hand, BodyPartSymmetry.Right) => TargetBodyPart.RightHand,
+            // (BodyPartType.Hand, BodyPartSymmetry.Left) => TargetBodyPart.LeftHand, // inkymed
+            // (BodyPartType.Hand, BodyPartSymmetry.Right) => TargetBodyPart.RightHand, // inkymed
             (BodyPartType.Leg, BodyPartSymmetry.Left) => TargetBodyPart.LeftLeg,
             (BodyPartType.Leg, BodyPartSymmetry.Right) => TargetBodyPart.RightLeg,
-            (BodyPartType.Foot, BodyPartSymmetry.Left) => TargetBodyPart.LeftFoot,
-            (BodyPartType.Foot, BodyPartSymmetry.Right) => TargetBodyPart.RightFoot,
+            // (BodyPartType.Foot, BodyPartSymmetry.Left) => TargetBodyPart.LeftFoot, // inkymed
+            // (BodyPartType.Foot, BodyPartSymmetry.Right) => TargetBodyPart.RightFoot, // inkymed
             (BodyPartType.Tail, _) => TargetBodyPart.Tail,
             (BodyPartType.Wings, _) => TargetBodyPart.Wings,
             _ => TargetBodyPart.Chest,
@@ -228,15 +228,15 @@ public sealed partial class BodySystem
         {
             TargetBodyPart.Head => (BodyPartType.Head, BodyPartSymmetry.None),
             TargetBodyPart.Chest => (BodyPartType.Torso, BodyPartSymmetry.None),
-            TargetBodyPart.Groin => (BodyPartType.Torso, BodyPartSymmetry.None),
+            // TargetBodyPart.Groin => (BodyPartType.Torso, BodyPartSymmetry.None), // inkymed
             TargetBodyPart.LeftArm => (BodyPartType.Arm, BodyPartSymmetry.Left),
-            TargetBodyPart.LeftHand => (BodyPartType.Hand, BodyPartSymmetry.Left),
+            // TargetBodyPart.LeftHand => (BodyPartType.Hand, BodyPartSymmetry.Left), // inkymed
             TargetBodyPart.RightArm => (BodyPartType.Arm, BodyPartSymmetry.Right),
-            TargetBodyPart.RightHand => (BodyPartType.Hand, BodyPartSymmetry.Right),
+            // TargetBodyPart.RightHand => (BodyPartType.Hand, BodyPartSymmetry.Right), // inkymed
             TargetBodyPart.LeftLeg => (BodyPartType.Leg, BodyPartSymmetry.Left),
-            TargetBodyPart.LeftFoot => (BodyPartType.Foot, BodyPartSymmetry.Left),
+            // TargetBodyPart.LeftFoot => (BodyPartType.Foot, BodyPartSymmetry.Left), // inkymed
             TargetBodyPart.RightLeg => (BodyPartType.Leg, BodyPartSymmetry.Right),
-            TargetBodyPart.RightFoot => (BodyPartType.Foot, BodyPartSymmetry.Right),
+            // TargetBodyPart.RightFoot => (BodyPartType.Foot, BodyPartSymmetry.Right), // inkymed
             TargetBodyPart.Tail => (BodyPartType.Tail, BodyPartSymmetry.None),
             TargetBodyPart.Wings => (BodyPartType.Wings, BodyPartSymmetry.None),
             _ => (BodyPartType.Torso, BodyPartSymmetry.None)

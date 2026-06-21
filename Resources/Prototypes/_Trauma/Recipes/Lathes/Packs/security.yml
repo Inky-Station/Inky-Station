@@ -3,10 +3,10 @@
 - type: latheRecipePack
   id: TraumaSecurityWeapons
   recipes:
-  - PolymerBaton
-  - SpearTelescopic
+  #- PolymerBaton # inky
+  #- SpearTelescopic # inky
   - WeaponBillyClub
-  - WeaponLaserSidearm
+  # - WeaponLaserSidearm # inky
 
 - type: latheRecipePack
   id: TraumaMechParts

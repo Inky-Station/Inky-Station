@@ -68,7 +68,7 @@
         variation: 0.125
     activatedDamage:
       types:
-        Slash: 10 # Trauma, was 15
+        Slash: 15 # Trauma, was 15 # inky - kys
         Heat: 15
         Structural: 20
       woundSeverityMultipliers: # Goobstation

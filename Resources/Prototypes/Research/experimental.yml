@@ -13,7 +13,7 @@
   - ProximitySensor
   - Drone
   # Goobstation R&D Console rework start
-  position: -4,2
+  position: -4,3 # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -34,7 +34,7 @@
   # Goobstation R&D Console rework start
   position: -5,-1 # inky
   technologyPrerequisites:
-  - BasicRobotics # inky
+  - BasicXenoArcheology # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -51,9 +51,7 @@
   - AnalysisComputerCircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: -3,-1 # inky
-  technologyPrerequisites:
-  - BasicRobotics # inky
+  position: -4,-1 # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -70,7 +68,7 @@
   # Goobstation R&D Console rework start
   technologyPrerequisites:
   - BasicXenoArcheology # inky
-  position: -3,0 # inky
+  position: -3,-1 # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -86,7 +84,7 @@
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
   # Goobstation R&D Console rework start
-  position: -2,0 # inky
+  position: -2,-1 # inky
   technologyPrerequisites:
   - AlternativeResearch
   # Goobstation R&D Console rework end
@@ -124,7 +122,7 @@
   # Goobstation R&D Console rework start
   position: -3,-2 # inky
   technologyPrerequisites:
-  - BasicXenoArcheology
+  - AlternativeResearch # inky
   # Goobstation R&D Console rework end
 
 - type: technology

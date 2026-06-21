@@ -120,12 +120,12 @@
       Wings: OrganMothWings # Trauma
       ArmLeft: OrganMothArmLeft
       ArmRight: OrganMothArmRight
-      HandRight: OrganMothHandRight
-      HandLeft: OrganMothHandLeft
+#      HandRight: OrganMothHandRight inkymed
+#      HandLeft: OrganMothHandLeft inkymed
       LegLeft: OrganMothLegLeft
       LegRight: OrganMothLegRight
-      FootLeft: OrganMothFootLeft
-      FootRight: OrganMothFootRight
+#      FootLeft: OrganMothFootLeft inkymed
+#      FootRight: OrganMothFootRight inkymed
       Brain: OrganMothBrain
       Eyes: OrganMothEyes
       Tongue: OrganMothTongue
@@ -258,6 +258,8 @@
   components:
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Moth/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Moth/parts.rsi
   - type: VisualOrganMarkings
     markingData:

@@ -54,12 +54,11 @@
       Wings: OrganArachnidAppendages # Trauma
       ArmLeft: OrganArachnidArmLeft
       ArmRight: OrganArachnidArmRight
-      HandRight: OrganArachnidHandRight
-      HandLeft: OrganArachnidHandLeft
+#      HandRight: OrganArachnidHandRight # inkymed they didnt have a handleft????
       LegLeft: OrganArachnidLegLeft
       LegRight: OrganArachnidLegRight
-      FootLeft: OrganArachnidFootLeft
-      FootRight: OrganArachnidFootRight
+#      FootLeft: OrganArachnidFootLeft # inky edit
+#      FootRight: OrganArachnidFootRight # inky edit
       Brain: OrganArachnidBrain
       Eyes: OrganArachnidEyes
       Tongue: OrganArachnidTongue
@@ -178,6 +177,8 @@
   components:
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Arachnid/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Arachnid/parts.rsi
   - type: VisualOrganMarkings
     markingData:

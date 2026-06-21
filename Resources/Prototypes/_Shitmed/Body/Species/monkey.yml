@@ -15,12 +15,12 @@
       Tail: OrganMonkeyTail
       ArmLeft: OrganMonkeyArmLeft
       ArmRight: OrganMonkeyArmRight
-      HandRight: OrganMonkeyHandRight
-      HandLeft: OrganMonkeyHandLeft
+#      HandRight: OrganMonkeyHandRight inkymed
+#      HandLeft: OrganMonkeyHandLeft inkymed
       LegLeft: OrganMonkeyLegLeft
       LegRight: OrganMonkeyLegRight
-      FootLeft: OrganMonkeyFootLeft
-      FootRight: OrganMonkeyFootRight
+#      FootLeft: OrganMonkeyFootLeft inkymed
+#      FootRight: OrganMonkeyFootRight inkymed
       Brain: OrganHumanBrain
       Eyes: OrganHumanEyes
       Tongue: OrganHumanTongue
@@ -50,6 +50,8 @@
     sprite: Mobs/Animals/monkey.rsi
   - type: VisualOrgan
     data:
+      sprite: Mobs/Animals/monkey.rsi
+    secondData: #inkymed
       sprite: Mobs/Animals/monkey.rsi
   - type: VisualOrganMarkings
     markingData:

@@ -275,15 +275,15 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(TraumaKeyFunctions.TargetingMod);
             AddButton(TraumaKeyFunctions.TargetHead);
             AddButton(TraumaKeyFunctions.TargetChest);
-            AddButton(TraumaKeyFunctions.TargetGroin);
+            // AddButton(TraumaKeyFunctions.TargetGroin); # inkymed
             AddButton(TraumaKeyFunctions.TargetLeftArm);
-            AddButton(TraumaKeyFunctions.TargetLeftHand);
+            // AddButton(TraumaKeyFunctions.TargetLeftHand); # inkymed
             AddButton(TraumaKeyFunctions.TargetRightArm);
-            AddButton(TraumaKeyFunctions.TargetRightHand);
+            // AddButton(TraumaKeyFunctions.TargetRightHand); # inkymed
             AddButton(TraumaKeyFunctions.TargetLeftLeg);
-            AddButton(TraumaKeyFunctions.TargetLeftFoot);
+            // AddButton(TraumaKeyFunctions.TargetLeftFoot); # inkymed
             AddButton(TraumaKeyFunctions.TargetRightLeg);
-            AddButton(TraumaKeyFunctions.TargetRightFoot);
+            // AddButton(TraumaKeyFunctions.TargetRightFoot); # inkymed
             // </Trauma>
 
             AddHeader("ui-options-header-misc");

@@ -15,10 +15,6 @@
             "directions": 4
         },
         {
-            "name": "equipped-OUTERCLOTHING-vox",
-            "directions": 4
-        },
-        {
             "name": "inhand-left",
             "directions": 4
         },
@@ -44,15 +40,15 @@
             "directions": 4
         },
         {
-            "name": "winterbits-tan-equipped-OUTERCLOTHING",
-            "directions": 4
-        },
-        {
             "name": "coatybits-equipped-OUTERCLOTHING-vox",
             "directions": 4
         },
         {
             "name": "winterbits-equipped-OUTERCLOTHING-vox",
+            "directions": 4
+        },
+        {
+            "name": "winterbits-tan-equipped-OUTERCLOTHING",
             "directions": 4
         },
         {

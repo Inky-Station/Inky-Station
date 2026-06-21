@@ -36,11 +36,11 @@
   equipment:
     eyes: ClothingEyesGlassesSecurity
     ears: ClothingHeadsetAltSecurityRegular # Goobstation
-    pocket1: WeaponLaserSidearm # Trauma
+    pocket1: WeaponPistolMk58 # Trauma # inky
   storage:
     back:
     - Flash
-#    - MagazinePistol - Trauma
+    - MagazinePistol # inky fuck - Trauma
 
 - type: chameleonOutfit
   id: SecurityOfficerChameleonOutfit

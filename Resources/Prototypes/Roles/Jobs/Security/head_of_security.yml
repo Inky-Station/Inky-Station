@@ -60,11 +60,11 @@
     id: HoSPDA
     #gloves: ClothingHandsGlovesCombat - Goobstation, moved to loadouts
     ears: ClothingHeadsetAltSecurity
-#    pocket1: WeaponPistolMk58 - Trauma
+    pocket1: WeaponPistolMk58 # inky fuck - Trauma
   storage:
     back:
     - Flash
-#    - MagazinePistol - Trauma
+    - MagazinePistol # inky fuck - Trauma
 
 - type: chameleonOutfit
   id: HeadOfSecurityChameleonOutfit

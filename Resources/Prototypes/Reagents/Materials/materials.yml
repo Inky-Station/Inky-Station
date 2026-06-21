@@ -3,7 +3,7 @@
   stackEntity: MaterialBiomass1
   name: materials-biomass
   unit: materials-unit-piece
-  icon: { sprite: /Textures/Objects/Misc/monkeycube.rsi, state: cube }
+  icon: { sprite: Objects/Misc/monkeycube.rsi, state: cube }
   color: "#8A9A5B"
   price: 0.1
 
@@ -11,7 +11,7 @@
   id: Cardboard
   stackEntity: MaterialCardboard1
   name: materials-cardboard
-  icon: { sprite: /Textures/_Trauma/Objects/Materials/materials.rsi, state: cardboard } # Trauma
+  icon: { sprite: Objects/Materials/materials.rsi, state: cardboard } #inky
   color: "#70736c"
   price: 0.025
 
@@ -20,7 +20,7 @@
   stackEntity: MaterialCloth1
   name: materials-cloth
   unit: materials-unit-roll
-  icon: { sprite: /Textures/_Trauma/Objects/Materials/materials.rsi, state: cloth } # Trauma
+  icon: { sprite: Objects/Materials/materials.rsi, state: cloth } #inky
   color: "#e7e7de"
   price: 0.05
 
@@ -30,7 +30,7 @@
   name: materials-durathread
   # not exactly a sheet but its sprite suggests it cant be rolled like cloth
   unit: materials-unit-sheet
-  icon: { sprite: /Textures/_Trauma/Objects/Materials/materials.rsi, state: durathread } # Trauma
+  icon: { sprite: Objects/Materials/materials.rsi, state: durathread } #inky
   color: "#8291a1"
   price: 0.35 # 1-1 mix of plastic and cloth.
 
@@ -38,7 +38,7 @@
   id: Paper
   stackEntity: SheetPaper1
   name: materials-paper
-  icon: { sprite: _Trauma/Objects/Materials/Sheets/other.rsi, state: paper } # Trauma
+  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: paper } #inky
   color: "#d9d9d9"
   price: 0.01 # it's paper bro what do you expect?
 
@@ -46,7 +46,7 @@
   id: Plasma
   stackEntity: SheetPlasma1
   name: materials-plasma
-  icon: { sprite: _Trauma/Objects/Materials/Sheets/other.rsi, state: plasma } # Trauma
+  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: plasma } #inky
   color: "#7e009e"
   price: 0.35 # $35 for 1 unit
 
@@ -54,7 +54,7 @@
   id: Plastic
   stackEntity: SheetPlastic1
   name: materials-plastic
-  icon: { sprite: _Trauma/Objects/Materials/Sheets/other.rsi, state: plastic } # Trauma
+  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: plastic } #inky
   color: "#d9d9d9"
   price: 0.20 # $20 for 1 unit
 
@@ -63,7 +63,7 @@
   stackEntity: MaterialWoodPlank1
   name: materials-wood
   unit: materials-unit-plank
-  icon: { sprite: _Trauma/Objects/Materials/materials.rsi, state: wood } # Trauma
+  icon: { sprite: Objects/Materials/materials.rsi, state: wood } #inky
   color: "#966F33"
   price: 0.10 # $10 for 1 unit
 
@@ -71,7 +71,7 @@
   id: Uranium
   stackEntity: SheetUranium1
   name: materials-uranium
-  icon: { sprite: _Trauma/Objects/Materials/Sheets/other.rsi, state: uranium } # Trauma
+  icon: { sprite: Objects/Materials/Sheets/other.rsi, state: uranium } #inky
   color: "#32a852"
   price: 0.85 # $85 for 1 unit
 
@@ -80,7 +80,7 @@
   stackEntity: MaterialBananium1
   name: materials-bananium
   unit: materials-unit-bunch
-  icon: { sprite: _Trauma/Objects/Materials/materials.rsi, state: bananium } # Trauma
+  icon: { sprite: Objects/Materials/materials.rsi, state: bananium } #inky
   color: "#32a852"
   price: 1.0 # $100 for 1 unit
 
@@ -88,7 +88,7 @@
   id: Meaterial # you can't take this pun from me
   name: materials-meat
   unit: materials-unit-slab
-  icon: { sprite: _Trauma/Objects/Materials/Sheets/meaterial.rsi, state: meat } # Trauma
+  icon: { sprite: Objects/Materials/Sheets/meaterial.rsi, state: meat } #inky
   color: "#c53648"
   price: 0.05
 
@@ -96,7 +96,7 @@
   id: WebSilk
   name: materials-web
   unit: materials-unit-web
-  icon: { sprite: _Trauma/Objects/Materials/silk.rsi, state: icon } # Trauma
+  icon: { sprite: Objects/Materials/silk.rsi, state: icon } #inky
   color: "#eeeeee" #eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
   price: 0 # Maybe better for it to be priceless, knowing how greedy cargo is.
 
@@ -104,7 +104,7 @@
   id: Cotton
   name: materials-cotton
   unit: materials-unit-boll
-  icon: { sprite: _Trauma/Objects/Materials/materials.rsi, state: cotton } # Trauma
+  icon: { sprite: Objects/Materials/materials.rsi, state: cotton } #inky
   color: "#cccccc"
   price: 0.01 #Who knew cotton was infinitely more valuable than silk
 
@@ -113,7 +113,7 @@
   stackEntity: MaterialBones1 # Trauma
   name: materials-bones
   unit: materials-unit-piece
-  icon: { sprite: _Trauma/Objects/Materials/materials.rsi, state: bones } # Trauma
+  icon: { sprite: Objects/Materials/materials.rsi, state: bones } #inky
   color: "#896f5e"
   price: 0
 
@@ -140,6 +140,6 @@
   stackEntity: MaterialDiamond1
   name: materials-diamond
   unit: materials-unit-piece
-  icon: { sprite: _Trauma/Objects/Materials/materials.rsi, state: diamond } # Trauma
+  icon: { sprite: Objects/Materials/materials.rsi, state: diamond } #inky
   color: "#80ffff"
   price: 20 # big diamond gaslit us so hard diamonds actually became extremely rare

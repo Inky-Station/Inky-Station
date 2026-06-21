@@ -25,14 +25,14 @@ public static class TraumaInputContexts
         human.AddFunction(TraumaKeyFunctions.TargetingMod);
         human.AddFunction(TraumaKeyFunctions.TargetHead);
         human.AddFunction(TraumaKeyFunctions.TargetChest);
-        human.AddFunction(TraumaKeyFunctions.TargetGroin);
+        // human.AddFunction(TraumaKeyFunctions.TargetGroin); // inkymed
         human.AddFunction(TraumaKeyFunctions.TargetLeftArm);
-        human.AddFunction(TraumaKeyFunctions.TargetLeftHand);
+        // human.AddFunction(TraumaKeyFunctions.TargetLeftHand); // inkymed
         human.AddFunction(TraumaKeyFunctions.TargetRightArm);
-        human.AddFunction(TraumaKeyFunctions.TargetRightHand);
+        // human.AddFunction(TraumaKeyFunctions.TargetRightHand); // inkymed
         human.AddFunction(TraumaKeyFunctions.TargetLeftLeg);
-        human.AddFunction(TraumaKeyFunctions.TargetLeftFoot);
+        // human.AddFunction(TraumaKeyFunctions.TargetLeftFoot); // inkymed
         human.AddFunction(TraumaKeyFunctions.TargetRightLeg);
-        human.AddFunction(TraumaKeyFunctions.TargetRightFoot);
+        // human.AddFunction(TraumaKeyFunctions.TargetRightFoot); // inkymed
     }
 }

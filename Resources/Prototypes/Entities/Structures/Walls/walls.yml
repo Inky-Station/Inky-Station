@@ -773,6 +773,10 @@
     drawdepth: Walls
     sprite: Structures/Walls/reinforced_diagonal.rsi
     state: state0
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
   - type: Icon
     sprite: Structures/Walls/reinforced_diagonal.rsi
     state: state0
@@ -939,7 +943,7 @@
   - type: Icon
     sprite: Structures/Walls/shuttle_diagonal.rsi
     state: state0
-  #- type: Reflect # Trauma - annoying, serves no purpose
+  #- type: Reflect# Trauma - annoying, serves no purpose
   #  reflectProb: 1
   - type: Pullable
   - type: Airtight
@@ -1062,7 +1066,7 @@
           3: { state: shuttle_construct-3, visible: true}
           4: { state: shuttle_construct-4, visible: true}
           5: { state: shuttle_construct-5, visible: true}
-  #- type: Reflect # Trauma - annoying, serves no purpose
+  #- type: Reflect# Trauma - annoying, serves no purpose
   #  reflectProb: 1
   - type: Fixtures
     fixtures:

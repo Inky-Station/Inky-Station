@@ -164,11 +164,11 @@
   name: Activate EMP
   description: Triggers a small EMP pulse around you
   components:
-  - type: LimitedCharges
-    maxCharges: 3
+  #- type: LimitedCharges # inky
+  #  maxCharges: 3
   - type: Action
     checkCanInteract: false
-    useDelay: 5  # Trauma, was 30
+    useDelay: 30 # inky
     itemIconStyle: BigAction
     priority: -20
     icon:
@@ -181,11 +181,11 @@
   name: SCRAM!
   description: Randomly teleports you within a large distance.
   components:
-  - type: LimitedCharges
-    maxCharges: 3
+  #- type: LimitedCharges # inky
+  #  maxCharges: 3
   - type: Action
-    checkCanInteract: false
-    useDelay: 30 # Goobstation
+    # checkCanInteract: false # inky
+    useDelay: 300 # inky
     itemIconStyle: BigAction
     priority: -20
     icon:

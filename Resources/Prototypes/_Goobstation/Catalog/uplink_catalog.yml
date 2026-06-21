@@ -38,7 +38,7 @@
   description: uplink-sarin-gas-grenade-desc
   productEntity: SarinGasGrenade
   cost:
-    Telecrystal: 15 # Not on the same level as other grenades
+    Telecrystal: 12 # inky
   categories:
   - UplinkExplosives
   conditions:
@@ -55,7 +55,7 @@
   description: uplink-sarin-gas-grenade-desc
   productEntity: SarinGasGrenade
   cost:
-    Telecrystal: 10
+    Telecrystal: 6 # inky
   categories:
   - UplinkExplosives
   conditions:
@@ -70,7 +70,7 @@
   description: uplink-explosive-grenade-desc
   productEntity: ExGrenade
   cost:
-    Telecrystal: 5
+    Telecrystal: 4 # inky
   categories:
   - UplinkExplosives
   conditions:
@@ -160,7 +160,7 @@
   description: uplink-c4-bundle-desc
   productEntity: ClothingBackpackDuffelSyndicateC4tBundle
   cost:
-    Telecrystal: 24
+    Telecrystal: 25 # inky
   categories:
   - UplinkExplosives
   conditions:
@@ -319,14 +319,14 @@
   description: uplink-anaconda-desc
   productEntity: WeaponPistolAnaconda
   cost:
-    Telecrystal: 40
+    Telecrystal: 32 # inky goida
   categories:
   - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+  #conditions: # inky
+  #- !type:StoreWhitelistCondition
+  #  blacklist:
+  #    tags:
+  #    - NukeOpsUplink
 
 - type: listing
   id: UplinkBulkMosin
@@ -362,7 +362,7 @@
   icon: { sprite: /Textures/Clothing/Head/Helmets/swat_syndicate.rsi, state: icon }
   productEntity: ClothingHeadHelmetSwatSyndicate
   cost:
-    Telecrystal: 15
+    Telecrystal: 10 # inky
   categories:
   - UplinkWearables
 
@@ -470,10 +470,12 @@
   - !type:BuyerJobCondition
     whitelist:
     - Chaplain
-  - !type:BuyerWhitelistCondition
-    blacklist:
-      components:
-      - SurplusBundle
+  # inky
+  #- !type:BuyerWhitelistCondition
+  #  blacklist:
+  #    components:
+  #    - SurplusBundle
+
 
 
 - type: listing
@@ -945,11 +947,11 @@
     Telecrystal: 12 # Buying grenades this way is ~14% cheaper than getting them from china-lake bundles
   categories:
   - UplinkAmmo
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+  #conditions: # inky
+  #- !type:StoreWhitelistCondition
+  #  whitelist:
+  #    tags:
+  #    - NukeOpsUplink
 
 - type: listing
   id: UplinkGrenadeFrag
@@ -961,11 +963,11 @@
     Telecrystal: 12 # Buying grenades this way is ~14% cheaper than getting them from china-lake bundles
   categories:
   - UplinkAmmo
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+  #conditions: # inky
+  #- !type:StoreWhitelistCondition
+  #  whitelist:
+  #    tags:
+  #    - NukeOpsUplink
 
 - type: listing
   id: UplinkGrenadeMPAPERS
@@ -993,11 +995,11 @@
     Telecrystal: 20
   categories:
   - UplinkAmmo
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+  #conditions: # inky
+  #- !type:StoreWhitelistCondition
+  #  whitelist:
+  #    tags:
+  #    - NukeOpsUplink
 
 - type: listing
   id: UplinkMagazineHighCaliber
@@ -1009,11 +1011,11 @@
     Telecrystal: 8
   categories:
   - UplinkAmmo
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+  #conditions: #inky
+  #- !type:StoreWhitelistCondition
+  #  whitelist:
+  #    tags:
+  #    - NukeOpsUplink
 
 - type: listing
   id: UplinkMagazineHighCaliberExplosive
@@ -1038,7 +1040,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_high_capacity_mag.rsi, state: base-icon }
   productEntity: MagazinePistolHighCapacity
   cost:
-    Telecrystal: 7
+    Telecrystal: 3 # inky
   categories:
   - UplinkAmmo
 
@@ -1189,16 +1191,16 @@
       tags:
       - NukeOpsUplink
 
-- type: listing
-  id: UplinkRPOA
-  name: uplink-ExplosivePayloadBlueprint-name
-  description: uplink-ExplosivePayloadBlueprint-desc
-  productEntity: BlueprintExplosivePayload
-  icon: { sprite: _Goobstation/Objects/Devices/payload.rsi, state: icon }
-  cost:
-    Telecrystal: 40 #Should be alot, its an investment item
-  categories:
-  - UplinkExplosives
+#- type: listing # inky
+#  id: UplinkRPOA
+#  name: uplink-ExplosivePayloadBlueprint-name
+#  description: uplink-ExplosivePayloadBlueprint-desc
+#  productEntity: BlueprintExplosivePayload
+#  icon: { sprite: _Goobstation/Objects/Devices/payload.rsi, state: icon }
+#  cost:
+#    Telecrystal: 40 #Should be alot, its an investment item
+#  categories:
+#  - UplinkExplosives
 
 - type: listing
   id: UplinkExplosivePayloadBlueprint

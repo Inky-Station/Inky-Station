@@ -28,12 +28,12 @@
       Head: OrganShadowlingHead
       ArmLeft: OrganShadowlingArmLeft
       ArmRight: OrganShadowlingArmRight
-      HandLeft: OrganShadowlingHandLeft
-      HandRight: OrganShadowlingHandRight
+#      HandLeft: OrganShadowlingHandLeft inkymed
+#      HandRight: OrganShadowlingHandRight inkymed
       LegLeft: OrganShadowlingLegLeft
       LegRight: OrganShadowlingLegRight
-      FootLeft: OrganShadowlingFootLeft
-      FootRight: OrganShadowlingFootRight
+#      FootLeft: OrganShadowlingFootLeft inkymed
+#      FootRight: OrganShadowlingFootRight inkymed
       # Organs
       Brain: OrganHumanBrain
       Eyes: OrganHumanEyes
@@ -92,6 +92,8 @@
     sprite: _EinsteinEngines/Mobs/Species/Shadowling/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _EinsteinEngines/Mobs/Species/Shadowling/parts.rsi
+    secondData: # inkymed
       sprite: _EinsteinEngines/Mobs/Species/Shadowling/parts.rsi
   - type: VisualOrganMarkings
     markingData:

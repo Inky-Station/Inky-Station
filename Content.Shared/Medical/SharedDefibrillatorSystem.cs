@@ -107,7 +107,7 @@ public abstract partial class SharedDefibrillatorSystem : EntitySystem
         if (!_powerCell.HasActivatableCharge(ent.Owner, user: user, predicted: true))
             return false;
 
-        if (!targetCanBeAlive && _mobState.IsAlive(target, mobState))
+        if (!targetCanBeAlive && !ent.Comp.CanDefibAlive && _mobState.IsAlive(target, mobState)) // inkymed edit
             return false;
 
         if (!targetCanBeAlive && !ent.Comp.CanDefibCrit && _mobState.IsCritical(target, mobState))

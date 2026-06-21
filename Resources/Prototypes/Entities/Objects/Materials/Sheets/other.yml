@@ -5,9 +5,9 @@
   description: A sheet of material, used often on the station in various applications.
   components:
   - type: Sprite
-    sprite: _Trauma/Objects/Materials/Sheets/other.rsi # Trauma
+    sprite: Objects/Materials/Sheets/other.rsi #inky
   - type: Item
-    sprite: _Trauma/Objects/Materials/Sheets/other.rsi # Trauma
+    sprite: Objects/Materials/Sheets/other.rsi #inky
 
 - type: entity
   parent: SheetOtherBase
@@ -226,7 +226,7 @@
   suffix: Full
   components:
     - type: Sprite
-      sprite: _Trauma/Objects/Materials/Sheets/meaterial.rsi # Trauma
+      sprite: Objects/Materials/Sheets/meaterial.rsi #inky
       layers:
       - state: meat_3
         map: [ "base" ]
@@ -246,7 +246,7 @@
         - meat_2
         - meat_3
     - type: Item
-      sprite: _Trauma/Objects/Materials/Sheets/meaterial.rsi # Trauma
+      sprite: Objects/Materials/Sheets/meaterial.rsi #inky
       heldPrefix: meat
     - type: Solution
       solution:

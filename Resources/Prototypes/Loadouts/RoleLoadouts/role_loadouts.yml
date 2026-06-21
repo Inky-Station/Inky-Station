@@ -502,7 +502,7 @@
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
-#  - SecurityMelee # Goobstation # inky
+  - SecurityMelee # Goobstation
   - SecurityBelt
   - HeadofSecurityOuterClothing
   - HeadofSecurityShoes # Goobstation edit
@@ -522,7 +522,7 @@
   - WardenHead
   - WardenJumpsuit
   - SecurityBackpack
-  #  - SecurityMelee # Goobstation # inky
+  - SecurityMelee # Goobstation
   - SecurityNeck
   - SecurityBelt
   - WardenOuterClothing
@@ -543,7 +543,7 @@
   - SecurityHead
   - SecurityJumpsuit
   - SecurityBackpack
-  #  - SecurityMelee # Goobstation # inky
+  - SecurityMelee # Goobstation
   - SecurityOuterClothing
   - SecurityShoes
   - SecurityNeck
@@ -584,7 +584,7 @@
   groups:
   - SecurityCadetJumpsuit
   - SecurityBackpack
-  #  - SecurityMelee # Goobstation # inky
+  - SecurityMelee # Goobstation
   - SurvivalSecurity
   - SecurityNeck
   - SecurityOuterClothing # Goobstation - Why not.

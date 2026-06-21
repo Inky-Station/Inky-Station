@@ -181,7 +181,8 @@
     emagStaticPacks:
     - SecurityWeaponsStatic
     - SecurityAmmoStatic
-    # - SyndicateAmmoStatic # Trauma
+    - SyndicateAmmoStatic # Trauma # inky
+    - InkySecurityStatic # inky
     # Goobstation
     - ScienceExplosives
   - type: BlueprintReceiver
@@ -500,6 +501,7 @@
     - PowerCellsStatic
     - ScienceExplosives
     - GrenadeTriggersStatic
+    - InkySecurityStatic # inky
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -508,7 +510,7 @@
     - SecurityExplosives
     - SecurityAmmo
     - SecurityWeapons
-    # - SecurityDisablers # Trauma - disablers replaced with phasers
+    - SecurityDisablers # Trauma - disablers replaced with phasers # inky - nah
     # <Goob>
     - SecurityWeaponsGoob
     - RestraintTechnology
@@ -521,9 +523,9 @@
     - SpecOpsGoogles
     - PowerCells
     # </Goob>
-  # - type: EmagLatheRecipes
-  #   emagStaticPacks:
-  #   # - SyndicateAmmoStatic # Trauma
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - SyndicateAmmoStatic # Trauma # inky
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient

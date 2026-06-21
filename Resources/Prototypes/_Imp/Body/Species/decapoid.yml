@@ -95,12 +95,12 @@
       Head: HeadDecapoid
       ArmRight: RightArmDecapoid
       ArmLeft: LeftArmDecapoid
-      HandRight: RightHandDecapoid
-      HandLeft: LeftHandDecapoid
+#      HandRight: RightHandDecapoid inkymed
+#      HandLeft: LeftHandDecapoid inkymed
       LegRight: RightLegDecapoid
       LegLeft: LeftLegDecapoid
-      FootRight: RightFootDecapoid
-      FootLeft: LeftFootDecapoid
+#      FootRight: RightFootDecapoid inkymed
+#      FootLeft: LeftFootDecapoid inkymed
       Lungs: OrganDecapoidLungs
       Stomach: OrganDecapoidStomach
       Brain: OrganDecapoidBrain
@@ -225,6 +225,8 @@
     sprite: _Impstation/Mobs/Species/Decapoid/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _Impstation/Mobs/Species/Decapoid/parts.rsi
+    secondData: #innkymed
       sprite: _Impstation/Mobs/Species/Decapoid/parts.rsi
   - type: VisualOrganMarkings
     markingData:

@@ -19,9 +19,9 @@
     - SheetGlass
   # </Trauma>
   - type: Sprite
-    sprite: _Trauma/Objects/Materials/Sheets/glass.rsi # Trauma
+    sprite: Objects/Materials/Sheets/glass.rsi #inky
   - type: Item
-    sprite: _Trauma/Objects/Materials/Sheets/glass.rsi # Trauma
+    sprite: Objects/Materials/Sheets/glass.rsi #inky
   - type: Damageable
     damageModifierSet: Glass
   - type: Destructible

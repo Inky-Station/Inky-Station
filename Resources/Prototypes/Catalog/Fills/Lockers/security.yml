@@ -82,7 +82,13 @@
       prob: 0.3
     - id: ClothingHeadHelmetBasic
     - id: ClothingOuterArmorBasic
-    - id: ClothingBeltSecurityFilled
+    # inky
+    #- id: ClothingBeltSecurityFilled
+    - !type:GroupSelector
+      children:
+      - id: ClothingBeltSecurityFilled
+      - id: ClothingBeltCorporateJudoFilled
+    # /inky
     - id: Flash
       prob: 0.5
     - id: ClothingEyesGlassesSecurity

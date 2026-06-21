@@ -5,9 +5,9 @@
   description: A sheet of metal, used often on the station in various applications.
   components:
   - type: Sprite
-    sprite: _Trauma/Objects/Materials/Sheets/metal.rsi # Trauma
+    sprite: Objects/Materials/Sheets/metal.rsi #inky
   - type: Item
-    sprite: _Trauma/Objects/Materials/Sheets/metal.rsi # Trauma
+    sprite: Objects/Materials/Sheets/metal.rsi #inky
   - type: Tag
     tags:
     - DroneUsable # Trauma

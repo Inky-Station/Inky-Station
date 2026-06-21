@@ -1,7 +1,7 @@
 - type: cargoProduct
   id: MaterialGlass
   icon:
-    sprite: _Trauma/Objects/Materials/Sheets/glass.rsi # Trauma
+    sprite: Objects/Materials/Sheets/glass.rsi #inky
     state: glass_3
   product: CrateMaterialGlass
   cost: 1500
@@ -11,7 +11,7 @@
 - type: cargoProduct
   id: MaterialSteel
   icon:
-    sprite: _Trauma/Objects/Materials/Sheets/metal.rsi # Trauma
+    sprite: Objects/Materials/Sheets/metal.rsi #inky
     state: steel_3
   product: CrateMaterialSteel
   cost: 1500
@@ -21,7 +21,7 @@
 - type: cargoProduct
   id: MaterialPlastic
   icon:
-    sprite: _Trauma/Objects/Materials/Sheets/other.rsi # Trauma
+    sprite: Objects/Materials/Sheets/other.rsi # inky
     state: plastic_3
   product: CrateMaterialPlastic
   cost: 2000
@@ -31,7 +31,7 @@
 - type: cargoProduct
   id: MaterialBrass
   icon:
-    sprite: _Trauma/Objects/Materials/Sheets/metal.rsi # Trauma
+    sprite: Objects/Materials/Sheets/metal.rsi # inky
     state: brass_3
   product: CrateMaterialBrass
   cost: 2000 # Goobstation # this is mostly decorative
@@ -43,7 +43,7 @@
   name: cargoproduct-name-material-plasteel
   description: cargoproduct-description-material-plasteel
   icon:
-    sprite: _Trauma/Objects/Materials/Sheets/metal.rsi # Trauma
+    sprite: Objects/Materials/Sheets/metal.rsi # inky
     state: plasteel_3
   product: SheetPlasteel
   container:
@@ -58,7 +58,7 @@
   name: cargoproduct-name-material-gold
   description: cargoproduct-description-material-gold
   icon:
-    sprite: _Trauma/Objects/Materials/ingots.rsi # Trauma
+    sprite: Objects/Materials/ingots.rsi # inky
     state: gold_3
   product: IngotGold
   container:
@@ -73,7 +73,7 @@
   name: cargoproduct-name-material-silver
   description: cargoproduct-description-material-silver
   icon:
-    sprite: _Trauma/Objects/Materials/ingots.rsi # Trauma
+    sprite: Objects/Materials/ingots.rsi # inky
     state: silver_3
   product: IngotSilver
   container:
@@ -86,7 +86,7 @@
 - type: cargoProduct
   id: MaterialTextiles
   icon:
-    sprite: _Trauma/Objects/Materials/materials.rsi # Trauma
+    sprite: Objects/Materials/materials.rsi # inky
     state: cloth_3
   product: CrateMaterialTextiles
   cost: 1500
@@ -96,7 +96,7 @@
 - type: cargoProduct
   id: MaterialPlasma
   icon:
-    sprite: _Trauma/Objects/Materials/Sheets/other.rsi # Trauma
+    sprite: Objects/Materials/Sheets/other.rsi # inky
     state: plasma_3
   product: CrateMaterialPlasma
   cost: 1500
@@ -106,7 +106,7 @@
 - type: cargoProduct
   id: CardboardMaterial
   icon:
-    sprite: _Trauma/Objects/Materials/materials.rsi # Trauma
+    sprite: Objects/Materials/materials.rsi # inky
     state: cardboard_3
   product: CrateMaterialCardboard
   cost: 330
@@ -116,7 +116,7 @@
 - type: cargoProduct
   id: PaperMaterial
   icon:
-    sprite: _Trauma/Objects/Materials/Sheets/other.rsi # Trauma
+    sprite: Objects/Materials/Sheets/other.rsi # inky
     state: paper_3
   product: CrateMaterialPaper
   cost: 185
@@ -126,7 +126,7 @@
 - type: cargoProduct
   id: MaterialBasic
   icon:
-    sprite: _Trauma/Objects/Materials/Sheets/other.rsi # Trauma
+    sprite: Objects/Materials/Sheets/other.rsi # inky
     state: generic_materials
   product: CrateMaterialBasicResource
   cost: 1660

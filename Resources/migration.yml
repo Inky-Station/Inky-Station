@@ -50,9 +50,11 @@ BoxMagazineMagnumSubMachineGun: BoxMagazineRifle
 # 2025-01-01 Trauma Remove scurret poster
 PosterLegitHelio: null
 
-# 2026-01-07
-GunSafeDisabler: GunSafePhaser
-WeaponDisabler: WeaponLaserSidearm
+# 2026-01-07 # inky - kys
+# GunSafeDisabler: GunSafePhaser
+# WeaponDisabler: WeaponLaserSidearm
+GunSafePhaser: GunSafeDisabler
+WeaponLaserSidearm: WeaponDisabler
 
 # 2026-01-08 back to wizden mail
 MailTeleporter: CargoMailTeleporter
@@ -1185,3 +1187,20 @@ CratePartsT4: null
 
 # 2026-06-02, inky
 ClothingNeckCloakCe: ClothingNeckCloakWhiteCe
+
+# 2026-06-21 inky goidarmory TODO remove this and map CrateArmoryWeaponsRandom instead
+GunSafeLaserCarbine: null
+GunSafeShotguns: null
+GunSafeLaserSpec: null
+GunSafeMelee: null
+GunSafeJudo: null
+GunSafeRiotLauncher: null
+SuitStorageSec: null
+ClothingOuterVoidsuitSecurity: null
+ClothingOuterArmorReflective: null
+ClothingHeadHelmetRiot: null
+ClothingOuterArmorRiot: null
+ClothingOuterArmorBulletproof: null
+
+# 2026-06-21 inky
+WeaponTurretAntiInsurgent: null

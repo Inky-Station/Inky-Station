@@ -87,6 +87,10 @@
       - !type:Emote # Now a bunch of emotes
         emote: Scream
         probability: 0.05
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -6
+      # /inkymed
 
 - type: reagent
   id: BlindToxin
@@ -254,6 +258,10 @@
       - !type:Emote
         emote: Gasp
         probability: 0.1
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -3 # todo inkymed
+      # /inkymed
 
 - type: reagent
   id: MouseBites
@@ -375,6 +383,10 @@
         - !type:ReagentCondition
           reagent: Heroin
           min: 10.5
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -5
+      # /inkymed
 
 - type: reagent
   id: NitrosylPlasmide

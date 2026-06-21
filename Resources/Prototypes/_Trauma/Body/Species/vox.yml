@@ -10,7 +10,10 @@
     data:
       sprite: _Trauma/empty.rsi
       state: empty # no sprite since the markings actually control it
+    secondData: #inkymed im so fucking tired im just gonna do this and not fuck with it
+      sprite: _Trauma/empty.rsi
+      state: empty
   - type: OrganComponents
     onAdd:
     - type: Wagging
-      organ: Tail  
+      organ: Tail

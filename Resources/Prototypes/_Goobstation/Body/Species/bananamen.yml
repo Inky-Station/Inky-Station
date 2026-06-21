@@ -13,12 +13,12 @@
       Head: OrganBananaMenHead
       ArmLeft: OrganBananaMenArmLeft
       ArmRight: OrganBananaMenArmRight
-      HandRight: OrganBananaMenHandRight
-      HandLeft: OrganBananaMenHandLeft
+#      HandRight: OrganBananaMenHandRight inkymed
+#      HandLeft: OrganBananaMenHandLeft inkymed
       LegLeft: OrganBananaMenLegLeft
       LegRight: OrganBananaMenLegRight
-      FootLeft: OrganBananaMenFootLeft
-      FootRight: OrganBananaMenFootRight
+#      FootLeft: OrganBananaMenFootLeft inkymed
+#      FootRight: OrganBananaMenFootRight inkymed
       Brain: OrganBananaMenBrain
       Eyes: OrganBananaMenEyes
       Tongue: OrganBananaMenTongue
@@ -80,6 +80,8 @@
     sprite: _Goobstation/Mobs/Species/BananaMen/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _Goobstation/Mobs/Species/BananaMen/parts.rsi
+    secondData: # inkymed
       sprite: _Goobstation/Mobs/Species/BananaMen/parts.rsi
   - type: VisualOrganMarkings
     markingData:

@@ -310,21 +310,21 @@
   id: CrateWeaponSecure
   name: secure weapon crate
   components:
-  # <Trauma>
-  - type: Destructible
-    thresholds:
-    - trigger: !type:DamageTrigger
-        damage: 50
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-  - type: Damageable
-    damageModifierSet: StrongCrates
-  - type: Injurable
-    damageContainer: StructuralInorganic
+  # <Trauma> # inky - nope, kill yourself
+  # - type: Destructible
+  #   thresholds:
+  #   - trigger: !type:DamageTrigger
+  #       damage: 50
+  #     behaviors:
+  #     - !type:DoActsBehavior
+  #       acts: ["Destruction"]
+  #     - !type:PlaySoundBehavior
+  #       sound:
+  #         collection: MetalBreak
+  # - type: Damageable
+  #   damageModifierSet: StrongCrates
+  # - type: Injurable
+  #   damageContainer: StructuralInorganic
   # </Trauma>
   - type: Icon
     sprite: Structures/Storage/Crates/weapon.rsi
