@@ -21,9 +21,10 @@
   - ClothingMaskWeldingGas
   - ClothingShoesBootsJump
   # Goobstation R&D Console rework start
-  position: 0,-1
+  position: -1,-1 # inky
   technologyPrerequisites:
-  - SpaceScanning
+  - PowerGeneration # inky
+  - MagnetsTech # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -39,7 +40,7 @@
   - RadarConsoleCircuitboard
   - HandHeldMassScanner
   # Goobstation R&D Console rework start
-  position: 0,0
+  position: 1,-1 # inky
   technologyPrerequisites:
   - PowerGeneration
   # Goobstation R&D Console rework end
@@ -58,9 +59,9 @@
   - TurboItemRechargerCircuitboard
   - SMESAdvancedMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: 1,-3
+  position: 0,-2 # inky
   technologyPrerequisites:
-  - IndustrialEngineering
+  - PowerGeneration # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -75,9 +76,9 @@
   recipeUnlocks:
   - FlatpackerMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: 1,-1
+  position: 1,-3 # inky
   technologyPrerequisites:
-  - SpaceScanning
+  - IndustrialEngineering # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -107,7 +108,7 @@
   # Goobstation R&D Console rework start
   position: 1,-2
   technologyPrerequisites:
-  - MechanicalCompression
+  - AdvancedPowercells # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -126,7 +127,7 @@
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics
   - EmitterCircuitboard
-  position: 0,1
+  position: 0,-1 # inky
 
 - type: technology
   id: AtmosphericTech
@@ -141,9 +142,9 @@
   - ThermomachineFreezerMachineCircuitBoard
   - GasRecyclerMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: -1,-1
+  position: 2,-2 # inky
   technologyPrerequisites:
-  - SpaceScanning
+  - AdvancedToolsTechnology # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -165,7 +166,7 @@
   - RipleyPeripheralsElectronics
   - MechEquipmentGrabber
   # Goobstation R&D Console rework start
-  position: -5,2 # inky
+  position: -4,2 # inky
   technologyPrerequisites:
   - BasicRobotics
   # Goobstation R&D Console rework end
@@ -187,9 +188,9 @@
   - GyroscopeMachineCircuitboard
   - MiniGravityGeneratorCircuitboard
   # Goobstation R&D Console rework start
-  position: 2,-1
+  position: 3,-1 # inky
   technologyPrerequisites:
-  - MechanicalCompression
+  - AdvancedToolsTechnology # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -208,7 +209,7 @@
   technologyPrerequisites:
   - AtmosphericTech
   # Goobstation R&D Console rework start
-  position: -1,-2
+  position: 3,-2 # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -226,9 +227,9 @@
     - JawsOfLife
     - BorgModuleAdvancedTool
   # Goobstation R&D Console rework start
-  position: 2,-2
+  position: 2,-1 # inky
   technologyPrerequisites:
-  - Shuttlecraft
+  - SpaceScanning # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -246,9 +247,9 @@
     - AdvancedMineralScannerEmpty
     - BorgModuleAdvancedMining
   # Goobstation R&D Console rework start
-  position: 0,-2
+  position: -1,-3 # inky
   technologyPrerequisites:
-  - SalvageEquipment
+  - KineticModifications # inky
   # Goobstation R&D Console rework end
 
 # Tier 3
@@ -268,9 +269,9 @@
   - ClothingBackpackDuffelHolding
   - ClothingBackpackMessengerHolding # Frontier
   # Goobstation R&D Console rework start
-  position: 2,-4
+  position: 0,-4 # inky
   technologyPrerequisites:
-   - OptimizedMicrogalvanism
+   - BluespaceConstructionStorage # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -286,6 +287,6 @@
   - PowerCellMicroreactor
   - PowerCellHyper
   technologyPrerequisites:
-  - AdvancedToolsTechnology  # Goobstation R&D Console rework
-  - AdvancedPowercells  # Goobstation R&D Console rework
-  position: 2,-3   # Goobstation R&D Console rework
+  - MassExcavation  # Goobstation R&D Console rework # inky
+  #- AdvancedPowercells  # Goobstation R&D Console rework # inky
+  position: -1,-4   # Goobstation R&D Console rework

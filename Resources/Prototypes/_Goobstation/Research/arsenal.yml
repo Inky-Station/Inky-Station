@@ -29,9 +29,9 @@
   recipeUnlocks:
   - WeaponLaserCellRevolver
   - PowerCellIRRevolver
-  position: 6,0
+  position: 4,1 # inky
   technologyPrerequisites:
-  - DraconicMunitions
+  - SalvageWeapons # inky
 
 - type: technology
   id: RestraintTechnology
@@ -46,7 +46,7 @@
   - ClothingMaskMuzzleSecure
   - ClothingMaskMuzzleShock
   - WeaponBillyClub
-  position: 5,3
+  position: 4,3 # inky
   technologyPrerequisites:
   - SalvageWeapons
 
@@ -64,9 +64,9 @@
   - WeaponLaserCellSMG
   - PowerCellIRSMG
   - PowerCellIonSMG
-  position: 8,-1
+  position: 3,1 # inky
   technologyPrerequisites:
-  - WeaponizedLaserManipulation
+  - WeaponLaserCellRevolverTech # inky
 
 - type: technology
   id: EnergyBoltBasedWeaponry # for future energy bolt weapon
@@ -83,8 +83,8 @@
   - EnergyMagRifleDisabler
   - EnergyMagRifleLethal
   technologyPrerequisites:
-  - WaveParticleHarnessing
-  position: 9,1
+  - WeaponLaserCellSMGTech # inky
+  position: 3,0 # inky
 
 # Tier 3
 
@@ -101,9 +101,9 @@
   - WeaponLaserCellSniper
   - PowerCellIRSniper
   - PowerCellIonSniper
-  position: 9,-1
+  position: 2,0 # inky
   technologyPrerequisites:
-  - WeaponLaserCellSMGTech
+  - EnergyBoltBasedWeaponry # inky
 
 - type: technology
   id: WeaponLaserCellLMGTech
@@ -117,6 +117,6 @@
   recipeUnlocks:
   - ClothingBackpackLMGBattery
   - MilitaryPowerCellLMG
-  position: 9,-2
+  position: 1,0 # inky
   technologyPrerequisites:
-  - WeaponLaserCellSMGTech
+  - WeaponLaserCellSniperTech # inky
