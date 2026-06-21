@@ -15,10 +15,10 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<MobStateComponent, TargetDefibrillatedEvent>(OnFibbed);
+        SubscribeLocalEvent<BodyComponent, TargetDefibrillatedEvent>(OnFibbed);
     }
 
-    private void OnFibbed(EntityUid target, MobStateComponent _, ref TargetDefibrillatedEvent args)
+    private void OnFibbed(EntityUid target, BodyComponent _, ref TargetDefibrillatedEvent args)
     {
         var defib = args.Defibrillator.Comp;
 
