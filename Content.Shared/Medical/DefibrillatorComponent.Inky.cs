@@ -6,7 +6,7 @@ public sealed partial class DefibrillatorComponent
     /// amount of BPM being added/reduced on zap
     /// </summary>
     [DataField]
-    public int BpmZapHeal = -45;
+    public int BpmZapHeal = 45;
 
     /// <summary>
     /// amount of BPM being added/reduced on zap if the heart isnt active
@@ -19,7 +19,7 @@ public sealed partial class DefibrillatorComponent
     /// if the amount specified is negative it will try to de-stabilise it instead
     /// </summary>
     [DataField]
-    public bool AutoStabilisation;
+    public bool AutoStabilisation = true;
 
     [DataField]
     public bool CanDefibAlive = true;

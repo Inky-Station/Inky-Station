@@ -30,6 +30,7 @@
       soundDeactivate:
         path: /Audio/Items/Defib/defib_safety_off.ogg
     - type: Defibrillator
+      allowDoAfterMovement: false # inkymed
       zapHeal:
         types:
           Asphyxiation: -40
@@ -56,7 +57,8 @@
     useCharge: 100
   # inkymed
   - type: Defibrillator
-    bpmZapHeal: -90 # more massive and med-grade defib
+    bpmZapHeal: 90 # more massive and med-grade defib
+    autoStabilisation: true
   # /inkymed
 
 - type: entity

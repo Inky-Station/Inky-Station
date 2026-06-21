@@ -7,6 +7,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
 
 namespace Content.Medical.Server.Inkymed;
@@ -34,6 +35,15 @@ public sealed partial class HeartSystem : EntitySystem // todo godmode bypass
         _nextUpdate = _timing.CurTime + UpdateInterval;
 
         SubscribeLocalEvent<HeartComponent, ComponentInit>(OnHeartInit);
+        SubscribeLocalEvent<HeartComponent, RejuvenateEvent>(OnRejuvenate);
+    }
+
+    private void OnRejuvenate(EntityUid uid, HeartComponent heart, RejuvenateEvent args)
+    {
+        heart.CurrentHeartRate = heart.StartingHeartRate + 3; // alerts are bitchy
+        heart.CurrentlyFibrillating = false;
+        heart.CurrentlyActive = true;
+        Dirty(uid, heart);
     }
 
     private void OnHeartInit(EntityUid uid, HeartComponent heart, ComponentInit args)
