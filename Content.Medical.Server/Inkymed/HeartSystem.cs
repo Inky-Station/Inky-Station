@@ -1,6 +1,10 @@
 using Content.Medical.Shared.Body;
 using Content.Shared.Alert;
 using Content.Shared.Body;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
+using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Timing;
@@ -11,9 +15,18 @@ public sealed partial class HeartSystem : EntitySystem
 {
     [Dependency] private AlertsSystem _alerts = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
 
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
     private TimeSpan _nextUpdate;
+
+    private static readonly DamageSpecifier FlatlineDamage = new()
+    {
+        DamageDict = new Dictionary<ProtoId<DamageTypePrototype> , FixedPoint2>
+        {
+            { "Bloodloss", 8 } // goida hardcode gg
+        }
+    };
 
     public override void Initialize()
     {
@@ -58,6 +71,9 @@ public sealed partial class HeartSystem : EntitySystem
             heart.CurrentlyActive = isAlive;
             Dirty(uid, heart);
         }
+
+        if (isAlive && heart.CurrentHeartRate <= heart.MinHeartRate && body != null)
+            _damageable.TryChangeDamage(body.Value, FlatlineDamage, ignoreResistances: true);
 
         // if youre dead then bpm falls
         if (!heart.CurrentlyActive)

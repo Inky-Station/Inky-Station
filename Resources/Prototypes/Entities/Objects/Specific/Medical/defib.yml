@@ -114,6 +114,7 @@
   - type: Defibrillator
     autoStabilisation: true # combat defib
     doAfterDuration: 2
+    bpmZapHeal: 45 # lol its negative in the basedefib so due to autostabilisation it was inverted
   #/inkymed
   - type: Sprite
     sprite: Objects/Specific/Medical/defibsyndi.rsi
