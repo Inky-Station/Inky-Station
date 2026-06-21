@@ -104,8 +104,8 @@ public sealed partial class HeartSystem : EntitySystem
         }
 
 
-        // if (heart.CurrentHeartRate == heart.StartingHeartRate)
-        //     return;
+        if (heart.CurrentHeartRate == heart.StartingHeartRate) // it doesnt jiggle wiggle if you uncomment sadly and i cbb to make it do that rn todo inkymed
+            return;
 
         /*
          * Being in Fibrillations drifts AWAY from the startingheartrate
