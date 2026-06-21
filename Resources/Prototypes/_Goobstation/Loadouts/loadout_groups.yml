@@ -1229,7 +1229,7 @@
   loadouts:
   - Bodycam # Goobstation - Body cameras
   # - ClothingNeckCWPSec
-  - ClothingNeckMantleVeteranSecurity
+  #- ClothingNeckMantleVeteranSecurity
 
 #honkops
 
