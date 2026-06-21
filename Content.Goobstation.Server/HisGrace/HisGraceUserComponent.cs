@@ -9,13 +9,13 @@ public sealed partial class HisGraceUserComponent : Component
     ///  The current speed modifier of His Grace.
     /// </summary>
     [DataField]
-    public float SpeedMultiplier = 1.0f;
+    public float SpeedMultiplier = 1.2f; // inky edit
 
     /// <summary>
     /// The initial speed modifier of His Grace.
     /// </summary>
     [DataField]
-    public float BaseSpeedMultiplier = 1.0f;
+    public float BaseSpeedMultiplier = 1.2f; // inky edit
 
     /// <summary>
     /// The UID of the His Grace this entity is linked to.
