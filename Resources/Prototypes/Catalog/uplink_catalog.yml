@@ -1384,7 +1384,7 @@
     - UplinkImplants
 
 # inky - lmfao
-- type: listing - Trauma
+- type: listing
   id: UplinkScramImplanter
   name: uplink-scram-implanter-name
   description: uplink-scram-implanter-desc
