@@ -246,6 +246,11 @@
   id: LeftArmDecapoid
   name: "left decapoid arm"
   parent: [OrganBaseArmLeft, BaseDecapoidOrganExternal]
+  # inky
+  components:
+  - type: HandOrgan
+    startingItem: DecapoidClawItem
+  # inky
 
 - type: entity
   id: RightArmDecapoid
