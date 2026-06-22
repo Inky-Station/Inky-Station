@@ -8,6 +8,7 @@
     damage:
       types:
         Piercing: 14 # inky
+      armorPenetration: 0.2 # Trauma
 
 - type: entity
   parent: BaseBulletPractice
@@ -43,4 +44,4 @@
       types:
         # Radiation: 10 # Trauma, was 9 # inky
         Piercing: 11 # inky
-      armorPenetration: 0.5 # Trauma
+      armorPenetration: 0.6 # Trauma

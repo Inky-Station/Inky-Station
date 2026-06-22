@@ -42,7 +42,7 @@
     damage:
       types:
         Piercing: 21 # inky
-      armorPenetration: 0.75 # Goobstation
+      armorPenetration: 0.8 # Goobstation
 
 - type: entity
   parent: [BaseBulletUranium, BaseBulletKinetic] # Trauma
