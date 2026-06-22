@@ -15,28 +15,27 @@ public sealed partial class HealthAnalyzerControl
             return;
         }
 
-        BpmLabel.Text = heart.CurrentlyActive
+        var state = _heartRateSystem.GetState(heart);
+        BpmLabel.Text = state != HeartState.Stopped
             ? Loc.GetString("health-analyzer-window-entity-bpm-value-text", ("bpm", heart.CurrentHeartRate))
             : Loc.GetString("health-analyzer-window-entity-bpm-stopped-text");
 
-        if (!heart.CurrentlyActive)
+        switch (state)
         {
-            ConditionsListContainer.AddChild(new RichTextLabel
-            {
-                Text = Loc.GetString("condition-heart-stopped", ("entity", identity)),
-                Margin = new Thickness(0, 4),
-            });
-            return; // stopped implies not fibrillating
-        }
-
-        if (heart.CurrentlyFibrillating)
-        {
-            ConditionsListContainer.AddChild(new RichTextLabel
-            {
-                Text = Loc.GetString("condition-heart-fibrillating", ("entity", identity)),
-                Margin = new Thickness(0, 4),
-            });
+            case HeartState.Stopped:
+                ConditionsListContainer.AddChild(new RichTextLabel
+                {
+                    Text = Loc.GetString("condition-heart-stopped", ("entity", identity)),
+                    Margin = new Thickness(0, 4),
+                });
+                break;
+            case HeartState.Fibrillating:
+                ConditionsListContainer.AddChild(new RichTextLabel
+                {
+                    Text = Loc.GetString("condition-heart-fibrillating", ("entity", identity)),
+                    Margin = new Thickness(0, 4),
+                });
+                break;
         }
     }
-
 }
