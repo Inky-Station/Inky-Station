@@ -1,10 +1,17 @@
 using Content.Medical.Shared.Body;
+using Content.Medical.Shared.Inkymed;
+using Content.Shared.Body;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client.HealthAnalyzer.UI;
 
 public sealed partial class HealthAnalyzerControl
 {
+    private BodySystem _bodySystem = default!;
+    private HeartRateSystem _heartRateSystem = default!;
+    private static readonly ProtoId<OrganCategoryPrototype> HeartCategory = "Heart";
+
     private void PopulateHeartConditions(EntityUid target, string identity)
     {
         var heartUid = _bodySystem.GetOrgan(target, HeartCategory);

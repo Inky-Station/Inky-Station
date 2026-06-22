@@ -7,7 +7,7 @@ namespace Content.Medical.Server.Inkymed.EntityEffects.Effects;
 
 public sealed partial class ModifyHeartRateSystem : EntityEffectSystem<BodyComponent, ModifyHeartRate>
 {
-    [Dependency] private HeartRateSystem _heartRate = default!;
+    [Dependency] private Shared.Inkymed.HeartRateSystem _heartRate = default!;
     [Dependency] private BodySystem _body = default!;
 
     public static readonly ProtoId<OrganCategoryPrototype> HeartCategory = "Heart";

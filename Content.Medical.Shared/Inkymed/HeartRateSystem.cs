@@ -10,7 +10,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
 
-namespace Content.Medical.Server.Inkymed;
+namespace Content.Medical.Shared.Inkymed;
 
 public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypass
 {
