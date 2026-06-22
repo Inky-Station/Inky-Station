@@ -349,6 +349,7 @@
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
   - ServiceMJ # goob
+  - ClothingUniformJumpsuitWaiter #inky
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -395,7 +396,7 @@
   # <Trauma>
   - ServiceMJ
   - ClothingUniformJumpsuitDisgusting
-  - ClothingUniformJumpsuitWaiter
+ # - ClothingUniformJumpsuitWaiter - Inky
   # </Trauma>
 
 - type: loadoutGroup
@@ -935,7 +936,6 @@
   - ChiefEngineerTurtleneckSkirt
   - ChiefEngineerMJ # goob
   - CESummerShirt # goob
-  - ChiefEngineerNT # goob
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
@@ -1173,6 +1173,7 @@
   - SeniorResearcherJumpskirt
   - ResearchMJ # goob
   - ScientistFormal # goob
+  - SeniorResearcherMJ #goob
 
 - type: loadoutGroup
   id: ScientistBackpack
@@ -1378,9 +1379,6 @@
   id: SecurityShoes
   name: loadout-group-security-shoes
   loadouts:
-  # inky
-  - LoadoutClothingShoesElysiumShoes # ts shoooould only appear in the det loadout now idk
-  # /inky
   - JackBoots
   - CombatBoots # Goobstation
   - SecurityWinterBoots
@@ -1412,36 +1410,36 @@
   name: loadout-group-detective-neck
   minLimit: 0
   loadouts:
+  - DetectiveTie
+  - Bodycam # Goobstation - Body cameras
   # inky
   - LoadoutClothingNeckTieElysium
   # /inky
-  - DetectiveTie
-  - Bodycam # Goobstation - Body cameras
+
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
   name: loadout-group-detective-jumpsuit
   loadouts:
-  # inky
-  - LoadoutClothingUniformJumpsuitElysium
-  - LoadoutClothingShoesElysiumShoes
-  # /inky
   - DetectiveJumpsuit
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+  # inky
+  - LoadoutClothingUniformJumpsuitElysium
+  # /inky
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
   name: loadout-group-detective-outerclothing
   loadouts:
-  # inky
-  - LoadoutClothingOuterCoatDiscoBlazer
-  # /inky
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
   - SecurityOfficerWintercoat
+  # inky
+  - LoadoutClothingOuterCoatDiscoBlazer
+  # /inky
 
 - type: loadoutGroup
   id: DetectiveJobTrinkets

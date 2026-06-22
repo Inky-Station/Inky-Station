@@ -1026,8 +1026,7 @@
 ## SUPPLY
 - type: entity
   parent: ClothingUniformJumpsuitSalvageSpecialist
-  id: ClothingUniformJumpsuitMilitaryShaftMiner #Goob
-  name: shaft miner's jumpsuit
+  id: ClothingUniformJumpsuitMilitarySalvageSpecialist
   suffix: Military
   components:
   - type: Sprite

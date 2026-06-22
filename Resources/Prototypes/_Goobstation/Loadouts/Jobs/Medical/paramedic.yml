@@ -34,8 +34,3 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change.
     species:
     - Plasmaman
-
-- type: loadout
-  id: ParamedicJumpsuitNT
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitParamedicNT

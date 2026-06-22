@@ -798,7 +798,6 @@
   loadouts:
   - GreyEnvirohelm
   - BlackEnvirohelm
-  - PurpleEnvirohelm
   - WhiteEnvirohelm
   - DarkGreenEnvirohelm
   - MaroonEnvirohelm
@@ -823,7 +822,6 @@
   loadouts:
   - GreyEnvirosuit
   - BlackEnvirosuit
-  - PurpleEnvirosuit
   - WhiteEnvirosuit
   - DarkGreenEnvirosuit
   - MaroonEnvirosuit
@@ -850,7 +848,6 @@
   loadouts:
   - DarkGreyEnvirogloves
   - BlackEnvirogloves
-  - PurpleEnvirogloves
   - WhiteEnvirogloves
   - DarkGreenEnvirogloves
 
@@ -983,7 +980,6 @@
   minLimit: 0
   loadouts:
   - ClothingNeckScarfStripedCentcom
-  - NanotrasenRepresentativeEnsemble
 
 - type: loadoutGroup
   id: NanotrasenRepresentativeBackpack
@@ -1092,7 +1088,6 @@
   minLimit: 0
   loadouts:
   - BlueshieldOfficerOuterBlueshieldMantle
-  - BlueshieldOfficerEnsemble
 
 - type: loadoutGroup
   id: BlueshieldOfficerMask

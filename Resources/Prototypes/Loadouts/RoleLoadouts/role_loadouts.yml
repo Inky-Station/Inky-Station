@@ -572,7 +572,8 @@
   - DetectiveJumpsuit
   - SecurityBackpack
   - DetectiveOuterClothing
-  - SecurityShoes
+ # - SecurityShoes #inky
+  - DetectiveShoes #inky
   - SurvivalSecurity
   - Trinkets
   - DetectiveJobTrinkets
