@@ -76,10 +76,8 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
         // fibrillating drifts AWAY from the normal heart rate (towards min/max)
         // being stable drifts TOWARDS the normal heart rate
-        var delta = (heart.CurrentHeartRate < heart.NormalHeartRate) ^ (GetState(heart) == HeartState.Fibrillating)
-            ? heart.StabilisationRate
-            : -heart.StabilisationRate;
-
+        var sign = (heart.CurrentHeartRate < heart.NormalHeartRate) ^ (GetState(heart) == HeartState.Fibrillating) ? 1 : -1;
+        var delta = sign * heart.StabilisationRate;
         UpdateRate(uid, heart, delta);
 
         // apparently if your heart is dead you take damage
