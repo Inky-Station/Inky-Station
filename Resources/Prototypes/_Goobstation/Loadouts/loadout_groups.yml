@@ -409,15 +409,15 @@
 
 # Security Officer
 
-- type: loadoutGroup
-  id: SecurityOfficerEnvirohelm
-  name: loadout-group-security-officer-envirohelm
-  minLimit: 1
-  maxLimit: 1
-  loadouts:
-  - SecurityOfficerEnvirohelm
-  - SecurityOfficerEnvirohelmGrey
-  - SecurityOfficerEnvirohelmBlue
+#- type: loadoutGroup
+#  id: SecurityOfficerEnvirohelm
+#  name: loadout-group-security-officer-envirohelm
+#  minLimit: 1
+#  maxLimit: 1
+#  loadouts:
+#  - SecurityOfficerEnvirohelm
+#  - SecurityOfficerEnvirohelmGrey
+#  - SecurityOfficerEnvirohelmBlue
 
 #- type: loadoutGroup
 #  id: SecurityOfficerEnvirosuit
