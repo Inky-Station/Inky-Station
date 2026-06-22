@@ -28,13 +28,13 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
 
         if (_heartRate.GetState(heart) == HeartState.Stopped)
         {
-            _heartRate.SetRate(heartUid, heart, defib.BpmZapHealFlatline);
+            _heartRate.SetRate(heartUid, heart, defib.BpmZapHealFlatline, true);
             return;
         }
 
-        var sign = (heart.CurrentHeartRate > heart.NormalHeartRate) ^ defib.AutoStabilisation ? 1 : -1;
+        // if we're above normal and we have autostabilisation multiply by -1
+        var sign = (heart.CurrentHeartRate > heart.NormalHeartRate) && defib.AutoStabilisation ? -1 : 1;
         var delta = sign * defib.BpmZapHeal;
-
-        _heartRate.UpdateRate(heartUid, heart, delta);
+        _heartRate.UpdateRate(heartUid, heart, delta, false);
     }
 }

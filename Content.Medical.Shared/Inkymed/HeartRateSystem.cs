@@ -40,12 +40,12 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
     private void OnComponentInit(EntityUid uid, HeartComponent heart, ComponentInit args)
     {
-        SetRate(uid, heart, heart.NormalHeartRate);
+        SetRate(uid, heart, heart.NormalHeartRate, true);
     }
 
     private void OnRejuvenate(EntityUid uid, HeartComponent heart, RejuvenateEvent args)
     {
-        SetRate(uid, heart, heart.NormalHeartRate);
+        SetRate(uid, heart, heart.NormalHeartRate, true);
     }
 
     public override void Update(float frameTime)
@@ -70,7 +70,7 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
             || !TryComp<MobStateComponent>(body, out var mobState) // or the body is not a mob
             || mobState.CurrentState == MobState.Dead) // or the body is dead
         {
-            UpdateRate(uid, heart, -heart.StabilisationRate);
+            UpdateRate(uid, heart, -heart.StabilisationRate, false);
             return;
         }
 
@@ -78,7 +78,7 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         // being stable drifts TOWARDS the normal heart rate
         var sign = (heart.CurrentHeartRate < heart.NormalHeartRate) ^ (GetState(heart) == HeartState.Fibrillating) ? 1 : -1;
         var delta = sign * heart.StabilisationRate;
-        UpdateRate(uid, heart, delta);
+        UpdateRate(uid, heart, delta, false);
 
         // apparently if your heart is dead you take damage
         if (GetState(heart) == HeartState.Stopped)
@@ -90,8 +90,9 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     public void SetRate(EntityUid uid,
         HeartComponent heart,
         float rate,
-        bool canRestart = true)
+        bool canRestart)
     {
+        var oldState = GetState(heart);
         if (GetState(heart) == HeartState.Stopped && !canRestart)
             return;
 
@@ -102,34 +103,39 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         else
             heart.CurrentHeartRate = rate;
 
+        var newState = GetState(heart);
         Dirty(uid, heart);
 
-        // update alerts if inside a body
-        if (TryComp<OrganComponent>(uid, out var organ)
-            && organ.Body is { } body)
-        {
-            if (heart.FibrillationAlert is { } fibAlert)
-            {
-                if (GetState(heart) == HeartState.Fibrillating)
-                    _alerts.ShowAlert(body, fibAlert);
-                else
-                    _alerts.ClearAlert(body, fibAlert);
-            }
+        if (oldState == newState // nothing changed
+            || !TryComp<OrganComponent>(uid, out var organ) // or the heart is not an organ
+            || organ.Body is not { } body) // or it is outside of body
+            return;
 
-            if (heart.HeartStopAlert is { } stopAlert)
-            {
-                if (GetState(heart) == HeartState.Stopped)
-                    _alerts.ShowAlert(body, stopAlert);
-                else
-                    _alerts.ClearAlert(body, stopAlert);
-            }
+        var ev = new HeartStateChangedEvent(oldState, newState);
+        RaiseLocalEvent(body, ref ev);
+
+        // update alerts
+        if (heart.FibrillationAlert is { } fibAlert)
+        {
+            if (newState == HeartState.Fibrillating)
+                _alerts.ShowAlert(body, fibAlert);
+            else
+                _alerts.ClearAlert(body, fibAlert);
+        }
+
+        if (heart.HeartStopAlert is { } stopAlert)
+        {
+            if (newState == HeartState.Stopped)
+                _alerts.ShowAlert(body, stopAlert);
+            else
+                _alerts.ClearAlert(body, stopAlert);
         }
     }
 
     public void UpdateRate(EntityUid uid,
         HeartComponent heart,
         float delta,
-        bool canRestart = false)
+        bool canRestart)
     {
         SetRate(uid, heart, heart.CurrentHeartRate + delta, canRestart);
     }

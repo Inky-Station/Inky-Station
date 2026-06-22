@@ -41,6 +41,14 @@ public sealed partial class HeartComponent
     public ProtoId<AlertPrototype>? HeartStopAlert = "HeartStop";
 }
 
+/// raised on the body when its heart state changes
+[ByRefEvent]
+public struct HeartStateChangedEvent(HeartState oldState, HeartState newState)
+{
+    public readonly HeartState OldState = oldState;
+    public readonly HeartState NewState = newState;
+}
+
 public enum HeartState
 {
     Stable,
