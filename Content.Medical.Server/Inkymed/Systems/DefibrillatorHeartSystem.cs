@@ -1,4 +1,5 @@
 using Content.Medical.Shared.Body;
+using Content.Medical.Shared.Inkymed;
 using Content.Shared.Body;
 using Content.Shared.Medical;
 
@@ -6,7 +7,7 @@ namespace Content.Medical.Server.Inkymed.Systems;
 
 public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
 {
-    [Dependency] private Shared.Inkymed.HeartRateSystem _heartRate = default!;
+    [Dependency] private HeartRateSystem _heartRate = default!;
     [Dependency] private BodySystem _body = default!;
 
     public static readonly ProtoId<OrganCategoryPrototype> HeartCategory = "Heart";
