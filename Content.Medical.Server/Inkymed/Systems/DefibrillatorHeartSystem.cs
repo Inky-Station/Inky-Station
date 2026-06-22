@@ -32,7 +32,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             return;
         }
 
-        var sign = (heart.CurrentHeartRate > heart.StartingHeartRate) ^ defib.AutoStabilisation ? 1 : -1;
+        var sign = (heart.CurrentHeartRate > heart.NormalHeartRate) ^ defib.AutoStabilisation ? 1 : -1;
         var delta = sign * defib.BpmZapHeal;
 
         _heartRate.UpdateRate(heartUid, heart, delta);

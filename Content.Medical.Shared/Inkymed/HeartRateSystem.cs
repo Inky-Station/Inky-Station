@@ -40,12 +40,12 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
     private void OnComponentInit(EntityUid uid, HeartComponent heart, ComponentInit args)
     {
-        SetRate(uid, heart, heart.StartingHeartRate);
+        SetRate(uid, heart, heart.NormalHeartRate);
     }
 
     private void OnRejuvenate(EntityUid uid, HeartComponent heart, RejuvenateEvent args)
     {
-        SetRate(uid, heart, heart.StartingHeartRate);
+        SetRate(uid, heart, heart.NormalHeartRate);
     }
 
     public override void Update(float frameTime)
@@ -74,9 +74,9 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
             return;
         }
 
-        // fibrillating drifts AWAY from the starting heart rate, towards min/max
-        // and being stable drifts towards starting heart rate
-        var delta = (heart.CurrentHeartRate < heart.StartingHeartRate) ^ (GetState(heart) == HeartState.Fibrillating)
+        // fibrillating drifts AWAY from the normal heart rate (towards min/max)
+        // being stable drifts TOWARDS the normal heart rate
+        var delta = (heart.CurrentHeartRate < heart.NormalHeartRate) ^ (GetState(heart) == HeartState.Fibrillating)
             ? heart.StabilisationRate
             : -heart.StabilisationRate;
 
@@ -139,10 +139,10 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     // fuck invariants lmao
     public HeartState GetState(HeartComponent heart)
     {
-        if (heart.CurrentHeartRate <= heart.StartingHeartRate)
+        if (heart.CurrentHeartRate <= heart.MinHeartRate)
             return HeartState.Stopped;
 
-        if (Math.Abs(heart.StartingHeartRate - heart.CurrentHeartRate) >= heart.FibrillationCap)
+        if (Math.Abs(heart.NormalHeartRate - heart.CurrentHeartRate) >= heart.FibrillationCap)
             return HeartState.Fibrillating;
 
         return HeartState.Stable;

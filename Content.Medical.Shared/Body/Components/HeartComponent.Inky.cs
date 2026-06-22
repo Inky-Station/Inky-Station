@@ -8,7 +8,7 @@ public sealed partial class HeartComponent
     /// The starting heartrate AKA what it should be
     /// </summary>
     [DataField]
-    public float StartingHeartRate = 100f;
+    public float NormalHeartRate = 100f;
 
     [DataField]
     public float MaxHeartRate = 300f;
