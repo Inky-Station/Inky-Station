@@ -81,10 +81,10 @@
   parent: PlastitaniumWindowSquareBase
   suffix: indestructible
   components:
-  # Frontier: colored indestructible windows
-  - type: Sprite
-    color: "#cdf3cd"
-  # End Frontier
+  # Frontier: colored indestructible windows # inky
+  - type: Sprite # inky
+    color: "#cdf3cd" # inky
+  # End Frontier # inky
   - type: ExaminableDamage
     messages: null
 
@@ -180,10 +180,10 @@
   parent: PlastitaniumWindowDiagonalBase
   suffix: diagonal, indestructible
   components:
-  # Frontier: colored indestructible windows
-  - type: Sprite
-    color: "#cdf3cd"
-  # End Frontier
+  # Frontier: colored indestructible windows # inky
+  - type: Sprite # inky
+    color: "#cdf3cd" # inky
+  # End Frontier # inky
   - type: ExaminableDamage
     messages: null
 
