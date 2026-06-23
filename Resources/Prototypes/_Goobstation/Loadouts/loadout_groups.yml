@@ -813,6 +813,7 @@
   - TransEnvirohelm
   - BlackPinkEnvirohelm
   - BlackPinkAltEnvirohelm
+  - TealEnvirohelm
 
 - type: loadoutGroup
   id: AssistantEnvirosuit
@@ -821,6 +822,7 @@
   maxLimit: 1
   loadouts:
   - GreyEnvirosuit
+  - EnviroslacksTider
   - BlackEnvirosuit
   - WhiteEnvirosuit
   - DarkGreenEnvirosuit
@@ -838,7 +840,7 @@
   - BlackPinkEnvirosuit
   - BlackPinkAltEnvirosuit
   - NegativeEnvirosuit
-  - EnviroslacksTider
+  - TealEnvirosuit
 
 - type: loadoutGroup
   id: AssistantEnvirogloves
