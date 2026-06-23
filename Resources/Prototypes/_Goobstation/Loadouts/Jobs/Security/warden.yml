@@ -35,7 +35,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: PrisonGuardEnvirohelm # inky
   equipment: # inky
@@ -44,7 +44,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout
   id: WardenCoatBlue
   equipment:
@@ -52,7 +52,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: SeniorWarden
- # inky
+
 - type: loadout # inky
   id: WardenMJ # inky
   equipment: # inky

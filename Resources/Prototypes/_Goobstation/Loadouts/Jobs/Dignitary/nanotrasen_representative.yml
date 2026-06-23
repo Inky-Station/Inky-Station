@@ -97,7 +97,7 @@
   id: NTRMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryNTR # inky
- # inky
+
 
 - type: loadout
   id: NanotrasenRepresentativeEnvirosuit

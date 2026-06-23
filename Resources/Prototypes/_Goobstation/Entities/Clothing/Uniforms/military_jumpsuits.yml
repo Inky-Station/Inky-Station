@@ -47,7 +47,7 @@
         color: "#7B4E23" # inky
       - state: equipped-decor-shoulder-patch # inky
         color: "#0089ff" # inky
- # inky
+
 - type: entity # inky
   parent: ClothingUniformBase # inky
   id: ClothingUniformJumpsuitMilitaryColorBlackAlt # inky
@@ -82,7 +82,7 @@
         color: "#3e3e48" # inky
       - state: equipped-base-top-jumpsuit # inky
         color: "#3e3e48" # inky
- # inky
+
 - type: entity # inky
   parent: [ClothingUniformBase, BaseSecurityContraband] # inky
   id: ClothingUniformJumpsuitMilitarySecurity # inky
@@ -133,7 +133,7 @@
         color: "#A52F29" # inky
       - state: equipped-belt-buckle # inky
         color: "#D6D3D9" # inky
- # inky
+
 - type: entity # inky
   parent: [ClothingUniformBase, BaseSecurityContraband] # inky
   id: ClothingUniformJumpsuitMilitarySecuritySeniorOfficer # inky
@@ -192,7 +192,7 @@
         color: "#D6D3D9" # inky
       - state: equipped-decor-shoulder-patch # inky
         color: "#D6D3D9" # inky
- # inky
+
 - type: entity # inky
   parent: ClothingUniformBase # inky
   id: ClothingUniformJumpsuitMilitaryMailCarrier # inky
@@ -243,7 +243,7 @@
         color: "#F0990C" # inky
       - state: equipped-decor-shoulder-patch # inky
         color: "#D82927" # inky
- # inky
+
 - type: entity # inky
   parent: ClothingUniformJumpsuitScientist # inky
   id: ClothingUniformJumpsuitMilitarySeniorResearcher # inky
@@ -310,7 +310,7 @@
         color: "#D6D3D9" # inky
       - state: equipped-belt # inky
         color: "#3e3e48" # inky
- # inky
+
 - type: entity # inky
   parent: ClothingUniformJumpsuitHoS # inky
   id: ClothingUniformJumpsuitMilitaryHoS # inky
@@ -367,7 +367,7 @@
         color: "#f8c670" # inky
       - state: equipped-decor-epaulets # inky
         color: "#f8c670" # inky
- # inky
+
 - type: entity # inky
   parent: ClothingUniformJumpsuitNanotrasenRepresentative # inky
   id: ClothingUniformJumpsuitMilitaryNTR # inky
@@ -440,7 +440,7 @@
         color: "#804000" # inky
       - state: equipped-decor-epaulets # inky
         color: "#0082ff" # inky
- # inky
+
 - type: entity # inky
   parent: ClothingUniformJumpsuitWarden # inky
   id: ClothingUniformJumpsuitMilitaryWarden # inky
@@ -497,7 +497,7 @@
         color: "#D6D3D9" # inky
       - state: equipped-decor-epaulets # inky
         color: "#D6D3D9" # inky
- # inky
+
 - type: entity # inky
   parent: ClothingUniformJumpsuitBrigmedic # inky
   id: ClothingUniformJumpsuitMilitaryBrigmedic # inky

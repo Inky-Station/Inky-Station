@@ -61,7 +61,7 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Plasmaman
- # inky
+
 - type: loadout # inky
   id: HoSMJ # inky
   equipment: # inky

@@ -9,22 +9,22 @@
   id: BlackGloves # inky
   equipment: # inky
     gloves: ClothingHandsGlovesColorBlack # inky
- # inky
+
 - type: loadout # inky
   id: RedGloves # inky
   equipment: # inky
     gloves: ClothingHandsGlovesColorRed # inky
- # inky
+
 - type: loadout # inky
   id: RedShoes # inky
   equipment: # inky
     shoes: ClothingShoesColorRed # inky
- # inky
+
 - type: loadout # inky
   id: LaceupShoes # inky
   equipment: # inky
     shoes: ClothingShoesBootsLaceup # inky
- # inky
+
 - type: loadout # inky
   id: FingerlessGloves # inky
   equipment: # inky
@@ -65,7 +65,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: MaroonEnvirohelm # inky
   equipment: # inky
@@ -74,7 +74,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BlueEnvirosuit # inky
   equipment: # inky
@@ -83,7 +83,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BlueEnvirohelm # inky
   equipment: # inky
@@ -92,7 +92,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: PinkEnvirohelm # inky
   equipment: # inky
@@ -101,7 +101,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: PinkEnvirosuit # inky
   equipment: # inky
@@ -110,7 +110,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: DarkBlueEnvirosuit # inky
   equipment: # inky
@@ -119,7 +119,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: DarkBlueEnvirohelm # inky
   equipment: # inky
@@ -128,7 +128,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: TealEnvirosuit # inky
   equipment: # inky
@@ -137,7 +137,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: TealEnvirohelm # inky
   equipment: # inky
@@ -146,7 +146,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: LightBrownEnvirosuit # inky
   equipment: # inky
@@ -155,7 +155,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: LightBrownEnvirohelm # inky
   equipment: # inky
@@ -164,7 +164,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: RedEnvirosuit # inky
   equipment: # inky
@@ -173,7 +173,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: RedEnvirohelm # inky
   equipment: # inky
@@ -182,7 +182,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: OrangeEnvirosuit # inky
   equipment: # inky
@@ -191,7 +191,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: OrangeEnvirohelm # inky
   equipment: # inky
@@ -200,7 +200,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BlackEnvirosuit # inky
   equipment: # inky
@@ -209,7 +209,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BlackEnvirohelm # inky
   equipment: # inky
@@ -218,7 +218,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: YellowEnvirosuit # inky
   equipment: # inky
@@ -227,7 +227,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: YellowEnvirohelm # inky
   equipment: # inky
@@ -236,7 +236,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: GreenEnvirosuit # inky
   equipment: # inky
@@ -245,7 +245,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: GreenEnvirohelm # inky
   equipment: # inky
@@ -254,7 +254,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BrownEnvirosuit # inky
   equipment: # inky
@@ -263,7 +263,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BrownEnvirohelm # inky
   equipment: # inky
@@ -272,7 +272,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: TransEnvirosuit # inky
   equipment: # inky
@@ -281,7 +281,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: TransEnvirohelm # inky
   equipment: # inky
@@ -290,7 +290,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BlackPinkEnvirosuit # inky
   equipment: # inky
@@ -299,7 +299,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BlackPinkEnvirohelm # inky
   equipment: # inky
@@ -308,7 +308,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BlackPinkAltEnvirosuit # inky
   equipment: # inky
@@ -317,7 +317,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: BlackPinkAltEnvirohelm # inky
   equipment: # inky
@@ -326,7 +326,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: NegativeEnvirosuit # inky
   equipment: # inky
@@ -335,7 +335,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout
   id: DarkGreenEnvirosuit
   equipment:
@@ -416,7 +416,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: EnviroslacksBlue # inky
   equipment: # inky
@@ -425,7 +425,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: EnviroslacksRed # inky
   equipment: # inky
@@ -434,7 +434,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: EnviroslacksHelmGreen # inky
   equipment: # inky
@@ -443,7 +443,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: EnviroslacksHelmBlue # inky
   equipment: # inky
@@ -452,7 +452,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: EnviroslacksHelmRed # inky
   equipment: # inky
@@ -461,7 +461,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: EnviroslacksTider # inky
   equipment: # inky
@@ -472,7 +472,7 @@
     - Plasmaman # inky
   - !type:GroupLoadoutEffect # inky
     proto: SophisticatedTider # inky
- # inky
+
 - type: loadout
   id: LeatherEnvirogloves
   equipment:

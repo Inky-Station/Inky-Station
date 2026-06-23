@@ -64,7 +64,7 @@
   storage:
     back:
     - CrewCassette
- # inky
+
 #Recruit jumpsuit # inky
 - type: loadoutEffectGroup # inky
   id: Noob # inky
@@ -74,7 +74,7 @@
       !type:OverallPlaytimeRequirement # inky
       time: 18000 #5 hours # inky
       inverted: true # inky
- # inky
+
 #NTR Fancy suit # inky
 - type: loadoutEffectGroup # inky
   id: RespectedRep # inky

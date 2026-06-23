@@ -79,12 +79,12 @@
   id: ResearchMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryScientist # inky
- # inky
+
 - type: loadout # goob # inky
   id: ScientistFormal # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitScientistFormal # inky
- # inky
+
 # Back
 - type: loadout
   id: ScientistBackpack

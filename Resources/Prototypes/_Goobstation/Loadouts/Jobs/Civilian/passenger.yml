@@ -18,15 +18,15 @@
     proto: SophisticatedTider
   equipment:
     jumpsuit: ClothingUniformJumpsuitPassengerQuarterzip
- # inky
+
 # Overalls # inky
 - type: loadout # inky
   id: OverallsJumpsuit # inky
   equipment: # inky
     jumpsuit: ClothingUniformOveralls # inky
- # inky
+
 # recruit jumpsuit # inky
- # inky
+
 - type: loadout # inky
   id: JumpsuitRecruit # inky
   effects: # inky
@@ -34,115 +34,115 @@
     proto: Noob # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitRecruitNT # inky
- # inky
+
 #colored military jumpsuits # inky
- # inky
+
 - type: loadout # inky
   id: GreyMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorGrey # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: BlackMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorBlack # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: BlueMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorBlue # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: DarkBlueMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkBlue # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: TealMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorTeal # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: GreenMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorGreen # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: DarkGreenMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkGreen # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: OrangeMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorOrange # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: PinkMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorPink # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: RedMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorRed # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: YellowMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorYellow # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: PurpleMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorPurple # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: LightBrownMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorLightBrown # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: BrownMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorBrown # inky
- # inky
- # inky
+
+
 - type: loadout # inky
   id: MaroonMJ # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorMaroon # inky
- # inky
+
 - type: loadout # inky
   id: ContractorJumpsuit # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryContractor # inky
- # inky
+
 - type: loadout # inky
   id: ContractorJumpsuitTac # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryContractorTac # inky
- # inky
+
 - type: loadout # inky
   id: BlackMJAlt # inky
   equipment: # inky
     jumpsuit: ClothingUniformJumpsuitMilitaryColorBlackAlt # inky
- # inky
+
 # service jumpsuit - putting it here because frontier's only service jumpsuits are hydroponics and general lmao # goob change btw # inky
- # inky
+
 - type: loadout # inky
   id: ServiceMJ # inky
   equipment: # inky

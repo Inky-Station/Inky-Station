@@ -117,7 +117,7 @@
   id: CaptainOuterClothing
   equipment:
     outerClothing: ClothingOuterArmorCaptainCarapace
- # inky
+
 - type: loadout # inky
   id: CaptainWintercoat # inky
   equipment: # inky

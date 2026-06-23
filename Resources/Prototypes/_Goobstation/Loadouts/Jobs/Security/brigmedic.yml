@@ -60,7 +60,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change.
     species:
     - Plasmaman
- # inky
+
 - type: loadout # inky
   id: BrigmedicMJ # inky
   equipment: # inky

@@ -79,7 +79,7 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout # inky
   id: CourierEnvirohelm # inky
   equipment: # inky
@@ -88,13 +88,13 @@
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
     - Plasmaman # inky
- # inky
+
 - type: loadout
   id: CargoTechnicianOveralls
   equipment:
  No newline at end of file
     jumpsuit: ClothingUniformOverallsCargo # inky
- # inky
+- type: loadout
 - type: loadout # inky
   id: MailCarrierMJ # inky
   equipment: # inky

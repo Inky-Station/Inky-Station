@@ -418,7 +418,7 @@
 #  - SecurityOfficerEnvirohelm
 #  - SecurityOfficerEnvirohelmGrey # inky
 #  - SecurityOfficerEnvirohelmBlue # inky
- # inky
+
 #- type: loadoutGroup
 #  id: SecurityOfficerEnvirosuit
 #  name: loadout-group-security-officer-envirosuit
@@ -428,7 +428,7 @@
 #  - SecurityOfficerEnvirosuit
 #  - SecurityOfficerEnvirosuitGrey # inky
 #  - SecurityOfficerEnvirosuitBlue # inky
- # inky
+
 #- type: loadoutGroup
 #  id: SecurityOfficerEnvirogloves
 #  name: loadout-group-security-officer-envirogloves
@@ -436,9 +436,9 @@
 #  maxLimit: 1
 #  loadouts:
 #  - BlackEnvirogloves
- # inky
+
 # Security Cadet # inky
- # inky
+
 #- type: loadoutGroup
 #  id: SecurityCadetEnvirohelm
 #  name: loadout-group-security-cadet-envirohelm
@@ -446,7 +446,7 @@
 #  maxLimit: 1
 #  loadouts:
 #  - SecurityOfficerEnvirohelm
- # inky
+
 #- type: loadoutGroup
 #  id: SecurityCadetEnvirosuit
 #  name: loadout-group-security-cadet-envirosuit
@@ -454,7 +454,7 @@
 #  maxLimit: 1
 #  loadouts:
 #  - SecurityOfficerEnvirosuit
- # inky
+
 #- type: loadoutGroup
 #  id: SecurityCadetEnvirogloves
 #  name: loadout-group-security-cadet-envirogloves
@@ -776,7 +776,7 @@
   - WhiteGloves
   - BlackGloves # inky
   - RedGloves # inky
- # inky
+
 - type: loadoutGroup # inky
   id: MimeShoes # inky
   name: loadout-group-mime-shoes # inky
@@ -1049,7 +1049,7 @@
 
 # Reporter
 
- # inky
+
 - type: loadoutGroup
   id: ReporterEnvirohelm
   name: loadout-group-reporter-envirohelm
@@ -1139,7 +1139,7 @@
   - LaceupShoes # inky
   - CaptainLeatherShoes # inky
   - CaptainHeels # inky
- # inky
+
 - type: loadoutGroup
   id: CaptainMask
   name: loadout-group-captain-mask
@@ -1307,7 +1307,7 @@
   maxLimit: 1
   loadouts:
   - CombatEnvirogloves
- # inky
+
 # Brigmedic
 
 - type: loadoutGroup
@@ -1389,7 +1389,7 @@
   - BlackGloves # inky
   - RedGloves # inky
   - FingerlessGloves # inky
- # inky
+
 # Plasmamen
 
 - type: loadoutGroup
