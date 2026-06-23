@@ -36,6 +36,7 @@ $files | each {|file|
         $block | skip | enumerate | each {|line|
             if ($line.item | str contains --ignore-case $fork) { return }
             let num = $line.index + $line_start
+            if ($line.item | str trim) == "+" { return } # don't modify empty lines
             let line = $line.item | str replace --regex $line_rx $'$1 # ($fork)'
             let query = $'($num)c\($line)'
             sed -i $query $path

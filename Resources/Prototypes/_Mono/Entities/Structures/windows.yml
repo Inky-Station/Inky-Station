@@ -1,5 +1,5 @@
 # strong windows for outposts sir! # inky
- # inky
+
 - type: entity # inky
   id: ReinforcedWindowOutpost # inky
   suffix: OUTPOST ONLY # inky
@@ -31,7 +31,7 @@
             max: 2 # inky
       - !type:DoActsBehavior # inky
         acts: [ "Destruction" ] # inky
- # inky
+
 - type: entity # inky
   parent: ReinforcedWindowDiagonal # inky
   id: ReinforcedWindowDiagonalOutpost # inky
@@ -66,9 +66,9 @@
             max: 2 # inky
       - !type:DoActsBehavior # inky
         acts: [ "Destruction" ] # inky
- # inky
+
 # plastitanium # inky
- # inky
+
 - type: entity # inky
   id: PlastitaniumWindowOutpost # inky
   suffix: OUTPOST ONLY # inky
@@ -99,7 +99,7 @@
             max: 2 # inky
       - !type:DoActsBehavior # inky
         acts: [ "Destruction" ] # inky
- # inky
+
 - type: entity # inky
   parent: PlastitaniumWindowDiagonal # inky
   id: PlastitaniumWindowDiagonalOutpost # inky
@@ -134,9 +134,9 @@
             max: 2 # inky
       - !type:DoActsBehavior # inky
         acts: [ "Destruction" ] # inky
- # inky
+
 #plastitanium but blocks rads 100% # inky
- # inky
+
 - type: entity # inky
   id: PlasturaniumWindowDiagonalRadProof # inky
   parent: PlastitaniumWindowDiagonal # inky
@@ -154,7 +154,7 @@
     state: state0 # inky
 #  - type: ArmorThickness # Omu, we don't have this # inky
 #    thickness: 30 # inky
- # inky
+
 - type: entity # inky
   id: PlasturaniumWindowRadProof # inky
   parent: PlastitaniumWindow # inky
@@ -172,9 +172,9 @@
     state: full # inky
 #  - type: ArmorThickness # Omu, we don't have this # inky
 #    thickness: 30 # inky
- # inky
+
 #plastitanium but blocks rads 100% (industructible var.) # inky
- # inky
+
 - type: entity # inky
   id: PlasturaniumWindowDiagonalRadProofIndestructible # inky
   parent: PlastitaniumWindowDiagonalIndestructible # inky
@@ -192,7 +192,7 @@
     state: state0 # inky
 #  - type: ArmorThickness # Omu, we don't have this # inky
 #    thickness: 30 # inky
- # inky
+
 - type: entity # inky
   id: PlasturaniumWindowRadProofIndestructible # inky
   parent: PlastitaniumWindowIndestructible # inky
