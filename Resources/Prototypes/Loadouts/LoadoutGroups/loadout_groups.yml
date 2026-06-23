@@ -188,7 +188,7 @@
   name: loadout-group-captain-outerclothing
   loadouts:
   - CaptainOuterClothing
-  # - CaptainWintercoat
+  - CaptainWintercoat
   - CaptainJacket # Goobstation
   - CaptainWintercoatUnarmored #Goobstation
 
