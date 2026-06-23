@@ -114,10 +114,10 @@
   # </Trauma>
   - EmergencyNitrogen
   - EmergencyOxygen
-  - EmergencyPlasma
+  - EmergencyPlasma # inky
   - LoadoutSpeciesVoxNitrogen
-  - LoadoutSpeciesPlasma # Goobstation
-  - EmergencySilicon
+  - LoadoutSpeciesPlasma # Goobstation # inky
+  - EmergencySilicon # inky
 
 # nitrogen or oxygen tank, depending on what your species needs
 - type: loadoutGroup
@@ -188,9 +188,9 @@
   name: loadout-group-captain-outerclothing
   loadouts:
   - CaptainOuterClothing
-  - CaptainWintercoat
+  - CaptainWintercoat # inky
   - CaptainJacket # Goobstation
-  - CaptainWintercoatUnarmored #Goobstation
+  - CaptainWintercoatUnarmored #Goobstation # inky
 
 #- type: loadoutGroup
 #  id: CaptainJobTrinkets
@@ -257,8 +257,8 @@
   - RainbowJumpsuit
   - RainbowJumpskirt
  # goob changes start
-  - JumpsuitRecruit
-  - OverallsJumpsuit
+  - JumpsuitRecruit # inky
+  - OverallsJumpsuit # inky
   - GreyMJ
   - BlackMJ
   - BlueMJ
@@ -275,9 +275,9 @@
   - BrownMJ
   - MaroonMJ
   - QuarterzipJumpsuit
-  - ContractorJumpsuit
-  - ContractorJumpsuitTac
-  - BlackMJAlt
+  - ContractorJumpsuit # inky
+  - ContractorJumpsuitTac # inky
+  - BlackMJAlt # inky
  # goob changes end
 
 - type: loadoutGroup
@@ -847,7 +847,7 @@
   - CargoTechnicianJumpsuitMail # Goob/DeltaV - Mail
   - CargoTechnicianJumpskirtMail # Goob/DeltaV - Mail
   - CargoTechMJ # goob
-  - MailCarrierMJ #Goob
+  - MailCarrierMJ #Goob # inky
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
@@ -999,7 +999,7 @@
   - SeniorEngineerJumpsuit
   - SeniorEngineerJumpskirt
   - EngiMJ # goob
-  - StationEngineerJumpsuitCasual # goob
+  - StationEngineerJumpsuitCasual # goob # inky
 
 - type: loadoutGroup
   id: StationEngineerBackpack
@@ -1170,8 +1170,8 @@
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
   - ResearchMJ # goob
-  - ScientistFormal # goob
-  - SeniorResearcherMJ #goob
+  - ScientistFormal # goob # inky
+  - SeniorResearcherMJ #goob # inky
 
 - type: loadoutGroup
   id: ScientistBackpack
@@ -1259,7 +1259,7 @@
   - HeadofSecurityFormalSuit
   - HeadofSecurityFormalSkirt
   - HoSSummerShirt # goob
-  - HoSMJ # goob
+  - HoSMJ # goob # inky
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
@@ -1300,7 +1300,7 @@
   loadouts:
   - WardenJumpsuit
   - WardenJumpskirt
-  - WardenMJ # goob
+  - WardenMJ # goob # inky
 
 - type: loadoutGroup
   id: WardenOuterClothing
@@ -1343,8 +1343,8 @@
   - SergeantUniform # Trauma
   - SergeantSkirt # Trauma
 #  - VeteranOfficerBlackJumpsuit # Goobstation # inky
-  - SecurityMJ # Goob
-  - SecurityMJSenior # Goob
+  - SecurityMJ # Goob # inky
+  - SecurityMJSenior # Goob # inky
 
 - type: loadoutGroup
   id: SecurityBackpack
@@ -1361,7 +1361,7 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
-  - SecurityJudoBelt # Goobstation - Martial Arts
+  - SecurityJudoBelt # Goobstation - Martial Arts # inky
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1408,12 +1408,12 @@
   name: loadout-group-detective-neck
   minLimit: 0
   loadouts:
-  - DetectiveTie
-  - Bodycam # Goobstation - Body cameras
+  - DetectiveTie # inky
+  - Bodycam # Goobstation - Body cameras # inky
   # inky
   - LoadoutClothingNeckTieElysium
   # /inky
-
+ # inky
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
@@ -1424,7 +1424,7 @@
   - NoirJumpsuit
   - NoirJumpskirt
   # inky
-  - LoadoutClothingUniformJumpsuitElysium
+  - LoadoutClothingUniformJumpsuitElysium # inky
   # /inky
 
 - type: loadoutGroup
@@ -1436,7 +1436,7 @@
   - DetectiveCoatGrey
   - SecurityOfficerWintercoat
   # inky
-  - LoadoutClothingOuterCoatDiscoBlazer
+  - LoadoutClothingOuterCoatDiscoBlazer # inky
   # /inky
 
 - type: loadoutGroup
@@ -1452,7 +1452,7 @@
   loadouts:
   - RedJumpsuit
   - RedJumpskirt
-  - RedMJ #Goob
+  - RedMJ #Goob # inky
 
 #- type: loadoutGroup
 #  id: SecurityCadetJobTrinkets

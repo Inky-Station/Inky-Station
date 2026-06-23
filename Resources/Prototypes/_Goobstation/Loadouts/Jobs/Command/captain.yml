@@ -44,18 +44,18 @@
   id: CaptainSummerShirt
   equipment:
     jumpsuit: ClothingUniformJumpsuitCaptainSummer
-
-- type: loadout
-  id: CaptainWintercoatUnarmored
-  equipment:
-    outerClothing: ClothingOuterWinterCap
-
-- type: loadout
-  id: CaptainLeatherShoes
-  equipment:
-    shoes: ClothingShoesLeather
-
-- type: loadout
-  id: CaptainHeels
-  equipment:
-    shoes: ClothingShoesHighheelBoots
+ # inky
+- type: loadout # inky
+  id: CaptainWintercoatUnarmored # inky
+  equipment: # inky
+    outerClothing: ClothingOuterWinterCap # inky
+ # inky
+- type: loadout # inky
+  id: CaptainLeatherShoes # inky
+  equipment: # inky
+    shoes: ClothingShoesLeather # inky
+ # inky
+- type: loadout # inky
+  id: CaptainHeels # inky
+  equipment: # inky
+    shoes: ClothingShoesHighheelBoots # inky

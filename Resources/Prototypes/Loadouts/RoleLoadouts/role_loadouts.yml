@@ -8,7 +8,7 @@
   - CaptainMask # Goobstation - Lollypops!
   - CaptainBackpack
   - CaptainOuterClothing
-  - CaptainShoes # Goobstation
+  - CaptainShoes # Goobstation # inky
   - CaptainPDA # Trauma
   - Survival
   - Trinkets
@@ -261,8 +261,8 @@
   - MimeJumpsuit
   - MimeBackpack
   - MimeOuterClothing
-  - MimeGloves # Goobstation
-  - MimeShoes # Goobstation
+  - MimeGloves # Goobstation # inky
+  - MimeShoes # Goobstation # inky
   - MimeBelt
   - Glasses
   - SurvivalMime
@@ -508,7 +508,7 @@
   - SecurityBelt
   - HeadofSecurityOuterClothing
   - HeadofSecurityShoes # Goobstation edit
-  - SecurityGloves #goob
+  - SecurityGloves #goob # inky
   - SurvivalSecurity
   - Trinkets
   - HeadofSecurityJobTrinkets
@@ -530,7 +530,7 @@
   - SecurityBelt
   - WardenOuterClothing
   - SecurityShoes
-  - SecurityGloves #goob
+  - SecurityGloves #goob # inky
   - SurvivalSecurity
   - Trinkets
   - WardenJobTrinkets
@@ -550,7 +550,7 @@
   - SecurityMelee # Goobstation
   - SecurityOuterClothing
   - SecurityShoes
-  - SecurityGloves #goob
+  - SecurityGloves #goob # inky
   - SecurityNeck
   - SecurityPDA
   - SecurityBelt

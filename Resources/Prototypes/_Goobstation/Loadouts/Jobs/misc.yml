@@ -64,23 +64,23 @@
   storage:
     back:
     - CrewCassette
-
-#Recruit jumpsuit
-- type: loadoutEffectGroup
-  id: Noob
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:OverallPlaytimeRequirement
-      time: 18000 #5 hours
-      inverted: true
-
-#NTR Fancy suit
-- type: loadoutEffectGroup
-  id: RespectedRep
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobNanotrasenRepresentative
-      time: 72000 #20 hours
+ # inky
+#Recruit jumpsuit # inky
+- type: loadoutEffectGroup # inky
+  id: Noob # inky
+  effects: # inky
+  - !type:JobRequirementLoadoutEffect # inky
+    requirement: # inky
+      !type:OverallPlaytimeRequirement # inky
+      time: 18000 #5 hours # inky
+      inverted: true # inky
+ # inky
+#NTR Fancy suit # inky
+- type: loadoutEffectGroup # inky
+  id: RespectedRep # inky
+  effects: # inky
+  - !type:JobRequirementLoadoutEffect # inky
+    requirement: # inky
+      !type:RoleTimeRequirement # inky
+      role: JobNanotrasenRepresentative # inky
+      time: 72000 #20 hours # inky

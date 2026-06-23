@@ -18,132 +18,132 @@
     proto: SophisticatedTider
   equipment:
     jumpsuit: ClothingUniformJumpsuitPassengerQuarterzip
-
-# Overalls
-- type: loadout
-  id: OverallsJumpsuit
-  equipment:
-    jumpsuit: ClothingUniformOveralls
-
-# recruit jumpsuit
-
-- type: loadout
-  id: JumpsuitRecruit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: Noob
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitRecruitNT
-
-#colored military jumpsuits
-
-- type: loadout
-  id: GreyMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorGrey
-
-
-- type: loadout
-  id: BlackMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorBlack
-
-
-- type: loadout
-  id: BlueMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorBlue
-
-
-- type: loadout
-  id: DarkBlueMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkBlue
-
-
-- type: loadout
-  id: TealMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorTeal
-
-
-- type: loadout
-  id: GreenMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorGreen
-
-
-- type: loadout
-  id: DarkGreenMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkGreen
-
-
-- type: loadout
-  id: OrangeMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorOrange
-
-
-- type: loadout
-  id: PinkMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorPink
-
-
-- type: loadout
-  id: RedMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorRed
-
-
-- type: loadout
-  id: YellowMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorYellow
-
-
-- type: loadout
-  id: PurpleMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorPurple
-
-
-- type: loadout
-  id: LightBrownMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorLightBrown
-
-
-- type: loadout
-  id: BrownMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorBrown
-
-
-- type: loadout
-  id: MaroonMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorMaroon
-
-- type: loadout
-  id: ContractorJumpsuit
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryContractor
-
-- type: loadout
-  id: ContractorJumpsuitTac
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryContractorTac
-
-- type: loadout
-  id: BlackMJAlt
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryColorBlackAlt
-
-# service jumpsuit - putting it here because frontier's only service jumpsuits are hydroponics and general lmao # goob change btw
-
-- type: loadout
-  id: ServiceMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryService
+ # inky
+# Overalls # inky
+- type: loadout # inky
+  id: OverallsJumpsuit # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformOveralls # inky
+ # inky
+# recruit jumpsuit # inky
+ # inky
+- type: loadout # inky
+  id: JumpsuitRecruit # inky
+  effects: # inky
+  - !type:GroupLoadoutEffect # inky
+    proto: Noob # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitRecruitNT # inky
+ # inky
+#colored military jumpsuits # inky
+ # inky
+- type: loadout # inky
+  id: GreyMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorGrey # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: BlackMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorBlack # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: BlueMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorBlue # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: DarkBlueMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkBlue # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: TealMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorTeal # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: GreenMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorGreen # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: DarkGreenMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkGreen # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: OrangeMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorOrange # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: PinkMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorPink # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: RedMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorRed # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: YellowMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorYellow # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: PurpleMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorPurple # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: LightBrownMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorLightBrown # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: BrownMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorBrown # inky
+ # inky
+ # inky
+- type: loadout # inky
+  id: MaroonMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorMaroon # inky
+ # inky
+- type: loadout # inky
+  id: ContractorJumpsuit # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryContractor # inky
+ # inky
+- type: loadout # inky
+  id: ContractorJumpsuitTac # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryContractorTac # inky
+ # inky
+- type: loadout # inky
+  id: BlackMJAlt # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorBlackAlt # inky
+ # inky
+# service jumpsuit - putting it here because frontier's only service jumpsuits are hydroponics and general lmao # goob change btw # inky
+ # inky
+- type: loadout # inky
+  id: ServiceMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryService # inky

@@ -82,9 +82,9 @@
 
 - type: loadout
   id: NanotrasenRepresentativeFancyJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: RespectedRep
+  effects: # inky
+  - !type:GroupLoadoutEffect # inky
+    proto: RespectedRep # inky
   equipment:
     jumpsuit: ClothingUniformJumpsuitNanotrasenRepresentativeFancy
 
@@ -93,11 +93,11 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtNanotrasenRepresentative
 
-- type: loadout
-  id: NTRMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryNTR
-
+- type: loadout # inky
+  id: NTRMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryNTR # inky
+ # inky
 
 - type: loadout
   id: NanotrasenRepresentativeEnvirosuit

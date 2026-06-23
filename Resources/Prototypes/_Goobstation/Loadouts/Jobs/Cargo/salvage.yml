@@ -71,12 +71,12 @@
   equipment:
     jumpsuit: ClothingUniformOverallsSalvageSpecialist
 
-- type: loadout
-  id: SalvageSpecialistMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitarySalvageSpecialist
-
-
+- type: loadout # inky
+  id: SalvageSpecialistMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitarySalvageSpecialist # inky
+ # inky
+ # inky
 # Shaft Miner
 - type: loadout
   id: ShaftMinerJumpsuit
@@ -92,8 +92,8 @@
   id: ShaftMinerOveralls
   equipment:
     jumpsuit: ClothingUniformOverallsShaftMiner
-
-- type: loadout
-  id: ShaftMinerMJ
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryShaftMiner
+ # inky
+- type: loadout # inky
+  id: ShaftMinerMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryShaftMiner # inky

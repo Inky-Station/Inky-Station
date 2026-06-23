@@ -117,8 +117,8 @@
   id: CaptainOuterClothing
   equipment:
     outerClothing: ClothingOuterArmorCaptainCarapace
-
-- type: loadout
-  id: CaptainWintercoat
-  equipment:
-    outerClothing: ClothingOuterWinterCapArmored # Goob edit
+ # inky
+- type: loadout # inky
+  id: CaptainWintercoat # inky
+  equipment: # inky
+    outerClothing: ClothingOuterWinterCapArmored # Goob edit # inky
