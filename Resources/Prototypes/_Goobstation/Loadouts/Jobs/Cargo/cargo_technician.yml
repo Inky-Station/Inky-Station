@@ -92,9 +92,9 @@
 - type: loadout
   id: CargoTechnicianOveralls
   equipment:
- No newline at end of file
     jumpsuit: ClothingUniformOverallsCargo # inky
-- type: loadout
+
 - type: loadout # inky
   id: MailCarrierMJ # inky
   equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryMailCarrier # inky
