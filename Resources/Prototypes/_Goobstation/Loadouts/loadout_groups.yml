@@ -429,13 +429,13 @@
 #  - SecurityOfficerEnvirosuitGrey
 #  - SecurityOfficerEnvirosuitBlue
 
-- type: loadoutGroup
-  id: SecurityOfficerEnvirogloves
-  name: loadout-group-security-officer-envirogloves
-  minLimit: 1
-  maxLimit: 1
-  loadouts:
-  - BlackEnvirogloves
+#- type: loadoutGroup
+#  id: SecurityOfficerEnvirogloves
+#  name: loadout-group-security-officer-envirogloves
+#  minLimit: 1
+#  maxLimit: 1
+#  loadouts:
+#  - BlackEnvirogloves
 
 # Security Cadet
 
@@ -455,13 +455,13 @@
 #  loadouts:
 #  - SecurityOfficerEnvirosuit
 
-- type: loadoutGroup
-  id: SecurityCadetEnvirogloves
-  name: loadout-group-security-cadet-envirogloves
-  minLimit: 1
-  maxLimit: 1
-  loadouts:
-  - BlackEnvirogloves
+#- type: loadoutGroup
+#  id: SecurityCadetEnvirogloves
+#  name: loadout-group-security-cadet-envirogloves
+#  minLimit: 1
+#  maxLimit: 1
+#  loadouts:
+#  - BlackEnvirogloves
 
 # Detective
 
