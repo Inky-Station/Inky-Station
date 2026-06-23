@@ -11,6 +11,7 @@ const ignored_rx = [
     r#'^new file mode \d{6}$'#
     r#'^index .{10}\.\..{10}(?: \d{6})?$'# # index goidanabeg..nabeggoida 100644
     r#'^-.*$'# # who cares about removals
+    r#'^\\ No newline at end of file$'#
 ]
 
 # given this file is in Tools/, cd to repo root
