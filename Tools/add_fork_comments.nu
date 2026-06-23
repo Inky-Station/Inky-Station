@@ -5,7 +5,7 @@ let diff = git diff master... --unified=0 -- "*.yml"
 
 # regex hell
 const diff_rx = r#'^diff --git .*$'#
-const num_rx = r#'^@@ -\d*(?:,\d*)? \+(\d*)(?:,\d*)? @@$'# # @@ -65 +65 @@
+const num_rx = r#'^@@ -\d+(?:,\d+)? \+(\d+)(?:,\d+)? @@$'# # @@ -65 +65 @@
 const line_rx = r#'^\+(.*)$'#
 const ignored_rx = [
     r#'^new file mode \d{6}$'#
