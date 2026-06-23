@@ -74,5 +74,5 @@
 - type: entityTable
   id: LockerFillCaptainTrauma
   table: !type:AllSelector
-    children:
+    children: [] # inky
     #- id: ArmoryOverrideKeyComponents # inky
