@@ -25,6 +25,7 @@ public sealed class ManualDefibrillatorBui : BoundUserInterface
 
         _window.SetActiveSetting(defibState.ChargeSetting);
         _window.SetPulseState(defibState.PulseState);
+        _window.SetBpm(defibState.Bpm);
     }
 
     private void OnSettingSelected(DefibrillatorChargeSetting setting)

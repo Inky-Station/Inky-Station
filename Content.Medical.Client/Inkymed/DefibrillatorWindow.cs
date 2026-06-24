@@ -1,4 +1,5 @@
 using Content.Medical.Shared.Inkymed;
+using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Timing;
 
@@ -8,13 +9,15 @@ namespace Content.Medical.Client.Inkymed;
 public sealed partial class DefibrillatorWindow : DefaultWindow
 {
     [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IResourceCache _resourceCache = default!;
 
     private static ResPath SwitchRsi = new("_Inky/Inkymed/UserInterface/switches.rsi");
     private static ResPath OnOffRsi = new("_Inky/Inkymed/UserInterface/onoff.rsi");
+    private static ResPath BpmFont = new("/Fonts/_Trauma/Pixellari.ttf");
 
     // after not doing anything for .Delay time, sends a message to the server with the flips
     // is here because of fucking misspredicts on flips (picture id computer delay)
-    private const float Delay = 1.25f;
+    private const float Delay = 0.65f;
 
     private DefibrillatorChargeSetting _activeSetting;
     private DefibrillatorChargeSetting _serverSetting;
@@ -32,6 +35,7 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
 
         WindowHeader.Visible = false;
         ContentsContainer.Margin = new Thickness(0f);
+        BpmLabel.FontOverride = new VectorFont(_resourceCache.GetResource<FontResource>(BpmFont), 16);
 
         IOInit(IOTexture);
         PulseInit(PulseTexture);
@@ -45,7 +49,7 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
         LOW.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.FirstFlip);
         STN.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.SecondFlip);
         HGH.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.ThirdFlip);
-        MAX.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.FourthFlip);
+        MAX.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.FourthFlip); // todo inkymed compress this shit idk
 
         var transparent = new StyleBoxFlat // todo find something better
         {
@@ -92,6 +96,13 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
         _pulseState = pulseState;
         var proto = _prototypeManager.Index(pulseState);
         PulseTexture.SetFromSpriteSpecifier(proto.Sprite);
+    }
+
+    public void SetBpm(float? bpm)
+    {
+        BpmLabel.Text = bpm == null
+            ? "---"
+            : $"{MathF.Round(bpm.Value)}";
     }
 
     private void ApplySetting(DefibrillatorChargeSetting setting)

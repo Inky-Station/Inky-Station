@@ -12,7 +12,13 @@ public sealed partial class ManualDefibrillatorComponent : Component
     public DefibrillatorChargeSetting ChargeSetting = DefibrillatorChargeSetting.None;
 
     [DataField]
-    public ProtoId<PulseStatePrototype> PulseState = "Pulse100";
+    public ProtoId<PulseStatePrototype> PulseState = "Pulse0";
+
+    [DataField]
+    public EntityUid? TargetEntity;
+
+    [DataField]
+    public float Bpm;
 }
 
 [Flags]

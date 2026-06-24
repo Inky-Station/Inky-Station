@@ -22,6 +22,11 @@
                              SetSize="48 48"
                              Margin="477 120 0 0"
                              MouseFilter="Ignore"/>
+        <Label Name="BpmLabel"
+               Text="---"
+               SetSize="72 24"
+               Margin="474 185 0 0"
+               HorizontalAlignment="Center"/>
         <BoxContainer Orientation="Horizontal"
                       SeparationOverride="24"
                       Margin="162 123 162 21">
