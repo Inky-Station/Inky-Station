@@ -1,212 +1,212 @@
-# strong windows for outposts sir!
+# strong windows for outposts sir! # inky
 
-- type: entity
-  id: ReinforcedWindowOutpost
-  suffix: OUTPOST ONLY
-  name: reinforced window
-  parent: ReinforcedWindow
-  components:
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 10000 #excess damage (nuke?). avoid computational cost of spawning entities.
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
-    - trigger:
-        !type:DamageTrigger
-        damage: 5000
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlassReinforced:
-            min: 1
-            max: 2
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+- type: entity # inky
+  id: ReinforcedWindowOutpost # inky
+  suffix: OUTPOST ONLY # inky
+  name: reinforced window # inky
+  parent: ReinforcedWindow # inky
+  components: # inky
+  - type: Destructible # inky
+    thresholds: # inky
+    - trigger: # inky
+        !type:DamageTrigger # inky
+        damage: 10000 #excess damage (nuke?). avoid computational cost of spawning entities. # inky
+      behaviors: # inky
+      - !type:DoActsBehavior # inky
+        acts: [ "Destruction" ] # inky
+      - !type:PlaySoundBehavior # inky
+        sound: # inky
+          collection: WindowShatter # inky
+    - trigger: # inky
+        !type:DamageTrigger # inky
+        damage: 5000 # inky
+      behaviors: # inky
+      - !type:PlaySoundBehavior # inky
+        sound: # inky
+          collection: WindowShatter # inky
+      - !type:SpawnEntitiesBehavior # inky
+        spawn: # inky
+          ShardGlassReinforced: # inky
+            min: 1 # inky
+            max: 2 # inky
+      - !type:DoActsBehavior # inky
+        acts: [ "Destruction" ] # inky
 
-- type: entity
-  parent: ReinforcedWindowDiagonal
-  id: ReinforcedWindowDiagonalOutpost
-  suffix: diagonal, OUTPOST ONLY
-  placement:
-    mode: SnapgridCenter
-    snap:
-    - Window
-  components:
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 10000 #excess damage (nuke?). avoid computational cost of spawning entities.
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
-    - trigger:
-        !type:DamageTrigger
-        damage: 5000
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlassReinforced:
-            min: 1
-            max: 2
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+- type: entity # inky
+  parent: ReinforcedWindowDiagonal # inky
+  id: ReinforcedWindowDiagonalOutpost # inky
+  suffix: diagonal, OUTPOST ONLY # inky
+  placement: # inky
+    mode: SnapgridCenter # inky
+    snap: # inky
+    - Window # inky
+  components: # inky
+  - type: Destructible # inky
+    thresholds: # inky
+    - trigger: # inky
+        !type:DamageTrigger # inky
+        damage: 10000 #excess damage (nuke?). avoid computational cost of spawning entities. # inky
+      behaviors: # inky
+      - !type:DoActsBehavior # inky
+        acts: [ "Destruction" ] # inky
+      - !type:PlaySoundBehavior # inky
+        sound: # inky
+          collection: WindowShatter # inky
+    - trigger: # inky
+        !type:DamageTrigger # inky
+        damage: 5000 # inky
+      behaviors: # inky
+      - !type:PlaySoundBehavior # inky
+        sound: # inky
+          collection: WindowShatter # inky
+      - !type:SpawnEntitiesBehavior # inky
+        spawn: # inky
+          ShardGlassReinforced: # inky
+            min: 1 # inky
+            max: 2 # inky
+      - !type:DoActsBehavior # inky
+        acts: [ "Destruction" ] # inky
 
-# plastitanium
+# plastitanium # inky
 
-- type: entity
-  id: PlastitaniumWindowOutpost
-  suffix: OUTPOST ONLY
-  parent: PlastitaniumWindow
-  components:
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 30000 #excess damage (nuke?). avoid computational cost of spawning entities.
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
-    - trigger:
-        !type:DamageTrigger
-        damage: 25000
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlassReinforced:
-            min: 1
-            max: 2
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+- type: entity # inky
+  id: PlastitaniumWindowOutpost # inky
+  suffix: OUTPOST ONLY # inky
+  parent: PlastitaniumWindow # inky
+  components: # inky
+  - type: Destructible # inky
+    thresholds: # inky
+    - trigger: # inky
+        !type:DamageTrigger # inky
+        damage: 30000 #excess damage (nuke?). avoid computational cost of spawning entities. # inky
+      behaviors: # inky
+      - !type:DoActsBehavior # inky
+        acts: [ "Destruction" ] # inky
+      - !type:PlaySoundBehavior # inky
+        sound: # inky
+          collection: WindowShatter # inky
+    - trigger: # inky
+        !type:DamageTrigger # inky
+        damage: 25000 # inky
+      behaviors: # inky
+      - !type:PlaySoundBehavior # inky
+        sound: # inky
+          collection: WindowShatter # inky
+      - !type:SpawnEntitiesBehavior # inky
+        spawn: # inky
+          ShardGlassReinforced: # inky
+            min: 1 # inky
+            max: 2 # inky
+      - !type:DoActsBehavior # inky
+        acts: [ "Destruction" ] # inky
 
-- type: entity
-  parent: PlastitaniumWindowDiagonal
-  id: PlastitaniumWindowDiagonalOutpost
-  suffix: diagonal, OUTPOST ONLY
-  placement:
-    mode: SnapgridCenter
-    snap:
-    - Window
-  components:
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 30000 #excess damage (nuke?). avoid computational cost of spawning entities.
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
-    - trigger:
-        !type:DamageTrigger
-        damage: 20000
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: WindowShatter
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlassReinforced:
-            min: 1
-            max: 2
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+- type: entity # inky
+  parent: PlastitaniumWindowDiagonal # inky
+  id: PlastitaniumWindowDiagonalOutpost # inky
+  suffix: diagonal, OUTPOST ONLY # inky
+  placement: # inky
+    mode: SnapgridCenter # inky
+    snap: # inky
+    - Window # inky
+  components: # inky
+  - type: Destructible # inky
+    thresholds: # inky
+    - trigger: # inky
+        !type:DamageTrigger # inky
+        damage: 30000 #excess damage (nuke?). avoid computational cost of spawning entities. # inky
+      behaviors: # inky
+      - !type:DoActsBehavior # inky
+        acts: [ "Destruction" ] # inky
+      - !type:PlaySoundBehavior # inky
+        sound: # inky
+          collection: WindowShatter # inky
+    - trigger: # inky
+        !type:DamageTrigger # inky
+        damage: 20000 # inky
+      behaviors: # inky
+      - !type:PlaySoundBehavior # inky
+        sound: # inky
+          collection: WindowShatter # inky
+      - !type:SpawnEntitiesBehavior # inky
+        spawn: # inky
+          ShardGlassReinforced: # inky
+            min: 1 # inky
+            max: 2 # inky
+      - !type:DoActsBehavior # inky
+        acts: [ "Destruction" ] # inky
 
-#plastitanium but blocks rads 100%
+#plastitanium but blocks rads 100% # inky
 
-- type: entity
-  id: PlasturaniumWindowDiagonalRadProof
-  parent: PlastitaniumWindowDiagonal
-  name: plasturanium window
-  description: Don't smudge up the rads down there.
-  suffix: Rad-Proof
-  components:
-  - type: RadiationBlocker
-    resistance: 100
-  - type: Sprite
-    drawdepth: WallTops
-    sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi
-  - type: Icon
-    sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi
-    state: state0
-#  - type: ArmorThickness # Omu, we don't have this
-#    thickness: 30
+- type: entity # inky
+  id: PlasturaniumWindowDiagonalRadProof # inky
+  parent: PlastitaniumWindowDiagonal # inky
+  name: plasturanium window # inky
+  description: Don't smudge up the rads down there. # inky
+  suffix: Rad-Proof # inky
+  components: # inky
+  - type: RadiationBlocker # inky
+    resistance: 100 # inky
+  - type: Sprite # inky
+    drawdepth: WallTops # inky
+    sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi # inky
+  - type: Icon # inky
+    sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi # inky
+    state: state0 # inky
+#  - type: ArmorThickness # Omu, we don't have this # inky
+#    thickness: 30 # inky
 
-- type: entity
-  id: PlasturaniumWindowRadProof
-  parent: PlastitaniumWindow
-  name: plasturanium window
-  description: Don't smudge up the rads down there.
-  suffix: Rad-Proof
-  components:
-  - type: RadiationBlocker
-    resistance: 100
-  - type: Sprite
-    drawdepth: WallTops
-    sprite: _Mono/Structures/Windows/plasturanium_window.rsi
-  - type: Icon
-    sprite: _Mono/Structures/Windows/plasturanium_window.rsi
-    state: full
-#  - type: ArmorThickness # Omu, we don't have this
-#    thickness: 30
+- type: entity # inky
+  id: PlasturaniumWindowRadProof # inky
+  parent: PlastitaniumWindow # inky
+  name: plasturanium window # inky
+  description: Don't smudge up the rads down there. # inky
+  suffix: Rad-Proof # inky
+  components: # inky
+  - type: RadiationBlocker # inky
+    resistance: 100 # inky
+  - type: Sprite # inky
+    drawdepth: WallTops # inky
+    sprite: _Mono/Structures/Windows/plasturanium_window.rsi # inky
+  - type: Icon # inky
+    sprite: _Mono/Structures/Windows/plasturanium_window.rsi # inky
+    state: full # inky
+#  - type: ArmorThickness # Omu, we don't have this # inky
+#    thickness: 30 # inky
 
-#plastitanium but blocks rads 100% (industructible var.)
+#plastitanium but blocks rads 100% (industructible var.) # inky
 
-- type: entity
-  id: PlasturaniumWindowDiagonalRadProofIndestructible
-  parent: PlastitaniumWindowDiagonalIndestructible
-  name: plasturanium window
-  description: Don't smudge up the rads down there.
-  suffix: Rad-Proof, Indestructible
-  components:
-  - type: RadiationBlocker
-    resistance: 100
-  - type: Sprite
-    drawdepth: WallTops
-    sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi
-  - type: Icon
-    sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi
-    state: state0
-#  - type: ArmorThickness # Omu, we don't have this
-#    thickness: 30
+- type: entity # inky
+  id: PlasturaniumWindowDiagonalRadProofIndestructible # inky
+  parent: PlastitaniumWindowDiagonalIndestructible # inky
+  name: plasturanium window # inky
+  description: Don't smudge up the rads down there. # inky
+  suffix: Rad-Proof, Indestructible # inky
+  components: # inky
+  - type: RadiationBlocker # inky
+    resistance: 100 # inky
+  - type: Sprite # inky
+    drawdepth: WallTops # inky
+    sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi # inky
+  - type: Icon # inky
+    sprite: _Mono/Structures/Windows/plasturanium_window_diagonal.rsi # inky
+    state: state0 # inky
+#  - type: ArmorThickness # Omu, we don't have this # inky
+#    thickness: 30 # inky
 
-- type: entity
-  id: PlasturaniumWindowRadProofIndestructible
-  parent: PlastitaniumWindowIndestructible
-  name: plasturanium window
-  description: Don't smudge up the rads down there.
-  suffix: Rad-Proof, Indestructible
-  components:
-  - type: RadiationBlocker
-    resistance: 100
-  - type: Sprite
-    drawdepth: WallTops
-    sprite: _Mono/Structures/Windows/plasturanium_window.rsi
-  - type: Icon
-    sprite: _Mono/Structures/Windows/plasturanium_window.rsi
-    state: full
-#  - type: ArmorThickness # Omu, we don't have this
-#    thickness: 30
+- type: entity # inky
+  id: PlasturaniumWindowRadProofIndestructible # inky
+  parent: PlastitaniumWindowIndestructible # inky
+  name: plasturanium window # inky
+  description: Don't smudge up the rads down there. # inky
+  suffix: Rad-Proof, Indestructible # inky
+  components: # inky
+  - type: RadiationBlocker # inky
+    resistance: 100 # inky
+  - type: Sprite # inky
+    drawdepth: WallTops # inky
+    sprite: _Mono/Structures/Windows/plasturanium_window.rsi # inky
+  - type: Icon # inky
+    sprite: _Mono/Structures/Windows/plasturanium_window.rsi # inky
+    state: full # inky
+#  - type: ArmorThickness # Omu, we don't have this # inky
+#    thickness: 30 # inky

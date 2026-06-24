@@ -6,6 +6,7 @@ using System.Numerics;
 using Content.Goobstation.Shared.Disease.Components;
 using Content.Medical.Common.Body;
 using Content.Medical.Common.Wounds;
+using Content.Medical.Shared.Inkymed;
 using Content.Medical.Shared.Wounds;
 using Content.Shared.Atmos.Rotting;
 using Content.Shared.Body;
@@ -28,11 +29,6 @@ namespace Content.Client.HealthAnalyzer.UI;
 
 public sealed partial class HealthAnalyzerControl
 {
-    // inkymed
-    private BodySystem _bodySystem = default!;
-    private static readonly ProtoId<OrganCategoryPrototype> HeartCategory = "Heart";
-    // /inkymed
-
     public event Action<ProtoId<OrganCategoryPrototype>?, EntityUid>? OnBodyPartSelected;
     public event Action<HealthAnalyzerMode, EntityUid>? OnModeChanged;
 
@@ -49,6 +45,7 @@ public sealed partial class HealthAnalyzerControl
 
         // inkymed
         _bodySystem = _entityManager.System<BodySystem>();
+        _heartRateSystem = _entityManager.System<HeartRateSystem>();
         // /inkymed
 
         _bodyPartControls = new Dictionary<ProtoId<OrganCategoryPrototype>, TextureButton>

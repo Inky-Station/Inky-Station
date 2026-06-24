@@ -50,8 +50,6 @@
   storage:
     back:
     - Flash
-    - ClothingMaskGasSecurity # Goobstation
-    - MagazinePistol # inky fuck - Trauma
 
 - type: chameleonOutfit
   id: WardenChameleonOutfit

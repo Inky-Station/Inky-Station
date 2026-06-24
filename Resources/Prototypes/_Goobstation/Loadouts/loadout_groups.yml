@@ -249,6 +249,7 @@
   loadouts:
   - CargoTechnicianEnvirohelm
   - MailCarrierEnvirohelm
+  - CourierEnvirohelm # inky
 
 - type: loadoutGroup
   id: CargoTechnicianEnvirosuit
@@ -258,6 +259,7 @@
   loadouts:
   - CargoTechnicianEnvirosuit
   - MailCarrierEnvirosuit
+  - CourierEnvirosuit # inky
 
 - type: loadoutGroup
   id: CargoTechnicianEnvirogloves
@@ -414,7 +416,9 @@
 #  maxLimit: 1
 #  loadouts:
 #  - SecurityOfficerEnvirohelm
-#
+#  - SecurityOfficerEnvirohelmGrey # inky
+#  - SecurityOfficerEnvirohelmBlue # inky
+
 #- type: loadoutGroup
 #  id: SecurityOfficerEnvirosuit
 #  name: loadout-group-security-officer-envirosuit
@@ -422,7 +426,9 @@
 #  maxLimit: 1
 #  loadouts:
 #  - SecurityOfficerEnvirosuit
-#
+#  - SecurityOfficerEnvirosuitGrey # inky
+#  - SecurityOfficerEnvirosuitBlue # inky
+
 #- type: loadoutGroup
 #  id: SecurityOfficerEnvirogloves
 #  name: loadout-group-security-officer-envirogloves
@@ -430,9 +436,9 @@
 #  maxLimit: 1
 #  loadouts:
 #  - BlackEnvirogloves
-#
-## Security Cadet
-#
+
+# Security Cadet # inky
+
 #- type: loadoutGroup
 #  id: SecurityCadetEnvirohelm
 #  name: loadout-group-security-cadet-envirohelm
@@ -440,7 +446,7 @@
 #  maxLimit: 1
 #  loadouts:
 #  - SecurityOfficerEnvirohelm
-#
+
 #- type: loadoutGroup
 #  id: SecurityCadetEnvirosuit
 #  name: loadout-group-security-cadet-envirosuit
@@ -448,7 +454,7 @@
 #  maxLimit: 1
 #  loadouts:
 #  - SecurityOfficerEnvirosuit
-#
+
 #- type: loadoutGroup
 #  id: SecurityCadetEnvirogloves
 #  name: loadout-group-security-cadet-envirogloves
@@ -500,6 +506,7 @@
   maxLimit: 1
   loadouts:
   - WardenEnvirohelm
+  - PrisonGuardEnvirohelm # inky
 
 - type: loadoutGroup
   id: WardenEnvirosuit
@@ -508,6 +515,7 @@
   maxLimit: 1
   loadouts:
   - WardenEnvirosuit
+  - PrisonGuardEnvirosuit # inky
 
 - type: loadoutGroup
   id: WardenEnvirogloves
@@ -515,7 +523,7 @@
   minLimit: 1
   maxLimit: 1
   loadouts:
-  - BlackEnvirogloves
+  - CombatEnvirogloves # inky
 
 # Head of Personnel
 
@@ -766,6 +774,19 @@
   maxLimit: 1
   loadouts:
   - WhiteGloves
+  - BlackGloves # inky
+  - RedGloves # inky
+
+- type: loadoutGroup # inky
+  id: MimeShoes # inky
+  name: loadout-group-mime-shoes # inky
+  minLimit: 1 # inky
+  maxLimit: 1 # inky
+  loadouts: # inky
+  - WhiteShoes # inky
+  - BlackShoes # inky
+  - RedShoes # inky
+  - LaceupShoes # inky
 
 # Assistant
 
@@ -776,6 +797,23 @@
   maxLimit: 1
   loadouts:
   - GreyEnvirohelm
+  - BlackEnvirohelm # inky
+  - WhiteEnvirohelm # inky
+  - DarkGreenEnvirohelm # inky
+  - MaroonEnvirohelm # inky
+  - BlueEnvirohelm # inky
+  - PinkEnvirohelm # inky
+  - DarkBlueEnvirohelm # inky
+  - LightBrownEnvirohelm # inky
+  - RedEnvirohelm # inky
+  - OrangeEnvirohelm # inky
+  - YellowEnvirohelm # inky
+  - GreenEnvirohelm # inky
+  - BrownEnvirohelm # inky
+  - TransEnvirohelm # inky
+  - BlackPinkEnvirohelm # inky
+  - BlackPinkAltEnvirohelm # inky
+  - TealEnvirohelm # inky
 
 - type: loadoutGroup
   id: AssistantEnvirosuit
@@ -784,6 +822,25 @@
   maxLimit: 1
   loadouts:
   - GreyEnvirosuit
+  - EnviroslacksTider # inky
+  - BlackEnvirosuit # inky
+  - WhiteEnvirosuit # inky
+  - DarkGreenEnvirosuit # inky
+  - MaroonEnvirosuit # inky
+  - BlueEnvirosuit # inky
+  - PinkEnvirosuit # inky
+  - DarkBlueEnvirosuit # inky
+  - LightBrownEnvirosuit # inky
+  - RedEnvirosuit # inky
+  - OrangeEnvirosuit # inky
+  - YellowEnvirosuit # inky
+  - GreenEnvirosuit # inky
+  - BrownEnvirosuit # inky
+  - TransEnvirosuit # inky
+  - BlackPinkEnvirosuit # inky
+  - BlackPinkAltEnvirosuit # inky
+  - NegativeEnvirosuit # inky
+  - TealEnvirosuit # inky
 
 - type: loadoutGroup
   id: AssistantEnvirogloves
@@ -792,6 +849,9 @@
   maxLimit: 1
   loadouts:
   - DarkGreyEnvirogloves
+  - BlackEnvirogloves # inky
+  - WhiteEnvirogloves # inky
+  - DarkGreenEnvirogloves # inky
 
 # Musician
 
@@ -880,6 +940,9 @@
   maxLimit: 1
   loadouts:
   - WhiteEnvirohelm
+  - EnviroslacksHelmBlue # inky
+  - EnviroslacksHelmRed # inky
+  - EnviroslacksHelmGreen # inky
 
 - type: loadoutGroup
   id: LawyerEnvirosuit
@@ -888,6 +951,9 @@
   maxLimit: 1
   loadouts:
   - Enviroslacks
+  - EnviroslacksBlue # inky
+  - EnviroslacksRed # inky
+  - EnviroslacksGreen # inky
 
 - type: loadoutGroup
   id: LawyerEnvirogloves
@@ -932,6 +998,7 @@
   loadouts:
   - NanotrasenRepresentativeJumpsuit
   - NanotrasenRepresentativeJumpskirt
+  - NTRMJ # inky
   - NanotrasenRepresentativeFancyJumpsuit
 
 - type: loadoutGroup
@@ -946,7 +1013,7 @@
   id: NanotrasenRepresentativeShoes
   name: loadout-group-ntr-shoes
   loadouts:
-  - NanotrasenRepresentativeBoots
+  - LaceupShoes # inky
   - NanotrasenRepresentativeShoes
   - NanotrasenRepresentativeHeels
 
@@ -982,6 +1049,7 @@
 
 # Reporter
 
+
 - type: loadoutGroup
   id: ReporterEnvirohelm
   name: loadout-group-reporter-envirohelm
@@ -1013,9 +1081,9 @@
   name: loadout-group-security-neck
   minLimit: 0
   loadouts:
-  - Bodycam
-#  - ClothingNeckCWPSec # inky
-#  - ClothingNeckMantleVeteranSecurity # inky
+  - Bodycam # Goobstation - Body cameras # inky
+  # - ClothingNeckCWPSec # inky
+  #- ClothingNeckMantleVeteranSecurity # inky
 
 #honkops
 
@@ -1062,6 +1130,16 @@
   loadouts:
   - CaptainGloves
 
+- type: loadoutGroup # inky
+  id: CaptainShoes # inky
+  name: loadout-group-captain-shoes # inky
+  minLimit: 1 # inky
+  maxLimit: 1 # inky
+  loadouts: # inky
+  - LaceupShoes # inky
+  - CaptainLeatherShoes # inky
+  - CaptainHeels # inky
+
 - type: loadoutGroup
   id: CaptainMask
   name: loadout-group-captain-mask
@@ -1085,7 +1163,7 @@
   loadouts:
   - RoboticistJumpsuit
   - RoboticistJumpskirt
-  - ResearchMJ
+  - ResearchMJ # goob # inky
 
 - type: loadoutGroup
   id: RoboticistBackpack
@@ -1229,6 +1307,7 @@
   maxLimit: 1
   loadouts:
   - CombatEnvirogloves
+
 # Brigmedic
 
 - type: loadoutGroup
@@ -1237,6 +1316,7 @@
   loadouts:
   - BrigmedicJumpsuit
   - BrigmedicJumpskirt
+  - BrigmedicMJ # inky
 
 - type: loadoutGroup
   id: BrigmedicHead
@@ -1302,6 +1382,14 @@
   - SecurityMeleePolyBaton
   - SecurityMeleeSpear
 
+- type: loadoutGroup # inky
+  id: SecurityGloves # inky
+  name: loadout-group-security-gloves # inky
+  loadouts: # inky
+  - BlackGloves # inky
+  - RedGloves # inky
+  - FingerlessGloves # inky
+
 # Plasmamen
 
 - type: loadoutGroup
@@ -1319,7 +1407,7 @@
   loadouts:
    - VirologistJumpsuit
    - VirologistJumpskirt
-   - VirologistMJ
+   - VirologistMJ # goobin # inky
 
 - type: loadoutGroup
   id: VirologistBackpack
@@ -1388,6 +1476,7 @@
   - SalvageSpecialistJumpsuit
   - SalvageSpecialistJumpskirt
   - SalvageSpecialistOveralls
+  - SalvageSpecialistMJ # inky
 
 - type: loadoutGroup
   id: ShaftMinerJumpsuit
@@ -1396,3 +1485,4 @@
   - ShaftMinerJumpsuit
   - ShaftMinerJumpskirt
   - ShaftMinerOveralls
+  - ShaftMinerMJ # inky

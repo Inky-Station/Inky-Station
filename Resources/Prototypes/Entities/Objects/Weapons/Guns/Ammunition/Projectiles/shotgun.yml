@@ -207,7 +207,7 @@
   - type: ProjectileSpread
     proto: PelletShotgunUranium
     count: 6 # Trauma, was 5
-    spread: 6
+    spread: 15 # inky
 
 - type: entity
   parent: BaseBullet

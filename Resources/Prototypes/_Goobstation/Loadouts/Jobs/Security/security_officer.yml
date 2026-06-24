@@ -95,3 +95,52 @@
 #    proto: VeteranOfficer
 #  equipment:
 #    jumpsuit: ClothingUniformJumpsuitVeteranSecurity
+
+#- type: loadout # inky
+#  id: SecurityOfficerEnvirosuitBlue # inky
+#  equipment: # inky
+#    jumpsuit: ClothingUniformEnvirosuitSecBlue # inky
+#  effects: # inky
+#  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
+#    species: # inky
+#    - Plasmaman # inky
+
+#- type: loadout # inky
+#  id: SecurityOfficerEnvirohelmBlue # inky
+#  equipment: # inky
+#    head: ClothingHeadEnvirohelmSecBlue # inky
+#  effects: # inky
+#  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
+#    species: # inky
+#    - Plasmaman # inky
+
+#- type: loadout # inky
+#  id: SecurityOfficerEnvirosuitGrey # inky
+#  equipment: # inky
+#    jumpsuit: ClothingUniformEnvirosuitSecGrey # inky
+#  effects: # inky
+#  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
+#    species: # inky
+#    - Plasmaman # inky
+
+#- type: loadout # inky
+#  id: SecurityOfficerEnvirohelmGrey # inky
+#  equipment: # inky
+#    head: ClothingHeadEnvirohelmSecGrey # inky
+#  effects: # inky
+#  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
+#    species: # inky
+#    - Plasmaman # inky
+
+- type: loadout # inky
+  id: SecurityMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitarySecurity # inky
+
+- type: loadout # inky
+  id: SecurityMJSenior # inky
+  effects: # inky
+  - !type:GroupLoadoutEffect # inky
+    proto: SeniorOfficer # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitarySecuritySeniorOfficer # inky

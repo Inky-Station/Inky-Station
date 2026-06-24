@@ -29,7 +29,7 @@
   id: MimeGear
   equipment:
     #gloves: ClothingHandsGlovesColorWhite - Goobstation, moved to loadouts
-    shoes: ClothingShoesColorWhite
+    # shoes: ClothingShoesColorWhite - Goob: See above # inky
     id: MimePDA
     pocket1: CrayonMime
     ears: ClothingHeadsetService

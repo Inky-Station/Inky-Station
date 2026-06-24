@@ -8,13 +8,13 @@ public sealed partial class HeartComponent
     /// The starting heartrate AKA what it should be
     /// </summary>
     [DataField]
-    public int StartingHeartRate = 100;
+    public float NormalHeartRate = 100f;
 
     [DataField]
-    public int MaxHeartRate = 300;
+    public float MaxHeartRate = 300f;
 
     [DataField]
-    public int MinHeartRate = 0;
+    public float MinHeartRate = 0f;
 
     /// <summary>
     /// amount of heartrate being added or reduced per second
@@ -29,27 +29,29 @@ public sealed partial class HeartComponent
     /// eventually reaching either min or max cap on the heartrate
     /// </summary>
     [DataField]
-    public int FibrillationCap = 50;
+    public float FibrillationCap = 50f;
 
     [ViewVariables, AutoNetworkedField]
-    public int CurrentHeartRate;
-
-    /// <summary>
-    /// Set to true if its in a body that has MobState and its not MobState.Dead
-    /// to prevent updating dead hearts
-    /// </summary>
-    [ViewVariables, AutoNetworkedField]
-    public bool CurrentlyActive { get; set; }
-
-    /// <summary>
-    /// If true, will stop stabilisation
-    /// </summary>
-    [ViewVariables, AutoNetworkedField]
-    public bool CurrentlyFibrillating = false;
+    public float CurrentHeartRate;
 
     [DataField]
     public ProtoId<AlertPrototype>? FibrillationAlert = "Fibrillations";
 
     [DataField]
     public ProtoId<AlertPrototype>? HeartStopAlert = "HeartStop";
+}
+
+/// raised on the body when its heart state changes
+[ByRefEvent]
+public struct HeartStateChangedEvent(HeartState oldState, HeartState newState)
+{
+    public readonly HeartState OldState = oldState;
+    public readonly HeartState NewState = newState;
+}
+
+public enum HeartState
+{
+    Stable,
+    Fibrillating,
+    Stopped,
 }

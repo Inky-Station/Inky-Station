@@ -47,7 +47,7 @@
 - type: startingGear
   id: CaptainGear
   equipment:
-    shoes: ClothingShoesBootsLaceup
+   # shoes: ClothingShoesBootsLaceup - Goobstation # inky
     eyes: ClothingEyesGlassesCommand
     #gloves: ClothingHandsGlovesCaptain # Goobstation, moved to loadouts
     #id: CaptainPDA # Trauma - moved to loadouts

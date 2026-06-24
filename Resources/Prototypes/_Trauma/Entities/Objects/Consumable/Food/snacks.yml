@@ -13,9 +13,9 @@
       maxVol: 30
       reagents:
       - ReagentId: Nutriment
-        Quantity: 9
-      - ReagentId: LabGrownNutriment
-        Quantity: 1
+        Quantity: 10 # inky
+      #- ReagentId: LabGrownNutriment # inky
+      #  Quantity: 1 # inky
 
 # Organic snacks, made by the chef so no slop
 # Can't use them in cooking though because microwave is utter shitcode :)

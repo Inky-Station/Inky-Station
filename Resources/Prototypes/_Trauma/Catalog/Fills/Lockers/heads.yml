@@ -6,7 +6,7 @@
     children:
 #    - id: BoxSkillChipsCargo # inky edit - kill chips
     - id: CargoMegaphone
-    - id: ArmoryOverrideKeyComponents
+    #- id: ArmoryOverrideKeyComponents # inky
 
 - type: entityTable
   id: LockerFillHeadOfPersonnelTrauma
@@ -15,7 +15,7 @@
     - id: ClothingHeadsetAltCommand
     - id: CommandMegaphone
     - id: ReinforcementCallerHoP
-    - id: ArmoryOverrideKeyComponents
+    #- id: ArmoryOverrideKeyComponents # inky
 #    - id: BoxSkillChipsService  # inky edit - kill chips
 
 - type: entityTable
@@ -30,7 +30,7 @@
     - id: CartridgeRocketSingularityBuster
     - id: WeaponLauncherSingularityBuster
     - id: MachinePowerTransmissionLaserFlatpack
-    - id: ArmoryOverrideKeyComponents
+    #- id: ArmoryOverrideKeyComponents # inky
 
 - type: entityTable
   id: LockerFillChiefMedicalOfficerTrauma
@@ -45,7 +45,7 @@
     - id: ClothingBeltMilitaryWebbingCMOFilled
     - id: DiseaseDiagnoserFlatPack
     - id: VaccinatorFlatPack
-    - id: ArmoryOverrideKeyComponents
+    #- id: ArmoryOverrideKeyComponents # inky
 
 - type: entityTable
   id: LockerFillResearchDirectorTrauma
@@ -58,7 +58,7 @@
     - id: ClothingBeltGeminiHoloProjector # Who better to do science with than yourself?
     - id: MMI
     - id: FreeformLawboard
-    - id: ArmoryOverrideKeyComponents
+    #- id: ArmoryOverrideKeyComponents # inky
 
 - type: entityTable
   id: LockerFillHeadOfSecurityTrauma
@@ -67,12 +67,12 @@
 #    - id: BoxSkillChipsSec # inky edit - kill chips
     - id: ClothingBeltSheathHeadOfSecurityFilled
     - id: TelescopicShield
-    - id: ArmoryOverrideKeyComponents
+    #- id: ArmoryOverrideKeyComponents # inky
     - id: SecAntagSummoner
     - id: ClothingHandsGlovesGorilla
 
 - type: entityTable
   id: LockerFillCaptainTrauma
   table: !type:AllSelector
-    children:
-    - id: ArmoryOverrideKeyComponents
+    children: [] #inky
+    #- id: ArmoryOverrideKeyComponents # inky

@@ -533,6 +533,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
     /// <param name="ent">Entity to update</param>
     private void AdjustStatus(Entity<StaminaComponent?> ent)
     {
+        /* inky
         if (!Resolve(ent, ref ent.Comp))
             return;
 
@@ -551,6 +552,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         }
 
         _movementMod.TryUpdateMovementStatus(ent.Owner, status.Value, ent.Comp.StunModifierThresholds[closest]);
+        */
     }
 
     [Serializable, NetSerializable]

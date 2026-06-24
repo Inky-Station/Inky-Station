@@ -8,7 +8,7 @@
     damage:
       types:
         Piercing: 18 # inky
-      armorPenetration: -0.25 # inky
+      armorPenetration: -0.2 # inky
 
 - type: entity
   parent: BaseBulletPractice

@@ -114,7 +114,10 @@
   # </Trauma>
   - EmergencyNitrogen
   - EmergencyOxygen
+  - EmergencyPlasma # inky
   - LoadoutSpeciesVoxNitrogen
+  - LoadoutSpeciesPlasma # Goobstation # inky
+  - EmergencySilicon # inky
 
 # nitrogen or oxygen tank, depending on what your species needs
 - type: loadoutGroup
@@ -185,8 +188,9 @@
   name: loadout-group-captain-outerclothing
   loadouts:
   - CaptainOuterClothing
-  # - CaptainWintercoat
+  - CaptainWintercoat # inky
   - CaptainJacket # Goobstation
+  - CaptainWintercoatUnarmored #Goobstation # inky
 
 #- type: loadoutGroup
 #  id: CaptainJobTrinkets
@@ -253,6 +257,8 @@
   - RainbowJumpsuit
   - RainbowJumpskirt
  # goob changes start
+  - JumpsuitRecruit # inky
+  - OverallsJumpsuit # inky
   - GreyMJ
   - BlackMJ
   - BlueMJ
@@ -269,6 +275,9 @@
   - BrownMJ
   - MaroonMJ
   - QuarterzipJumpsuit
+  - ContractorJumpsuit # inky
+  - ContractorJumpsuitTac # inky
+  - BlackMJAlt # inky
  # goob changes end
 
 - type: loadoutGroup
@@ -338,6 +347,7 @@
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
   - ServiceMJ # goob
+  - ClothingUniformJumpsuitWaiter #inky
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -384,7 +394,7 @@
   # <Trauma>
   - ServiceMJ
   - ClothingUniformJumpsuitDisgusting
-  - ClothingUniformJumpsuitWaiter
+ # - ClothingUniformJumpsuitWaiter - Inky
   # </Trauma>
 
 - type: loadoutGroup
@@ -837,6 +847,7 @@
   - CargoTechnicianJumpsuitMail # Goob/DeltaV - Mail
   - CargoTechnicianJumpskirtMail # Goob/DeltaV - Mail
   - CargoTechMJ # goob
+  - MailCarrierMJ #Goob # inky
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
@@ -988,6 +999,7 @@
   - SeniorEngineerJumpsuit
   - SeniorEngineerJumpskirt
   - EngiMJ # goob
+  - StationEngineerJumpsuitCasual # goob # inky
 
 - type: loadoutGroup
   id: StationEngineerBackpack
@@ -1158,6 +1170,8 @@
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
   - ResearchMJ # goob
+  - ScientistFormal # goob # inky
+  - SeniorResearcherMJ #goob # inky
 
 - type: loadoutGroup
   id: ScientistBackpack
@@ -1245,6 +1259,7 @@
   - HeadofSecurityFormalSuit
   - HeadofSecurityFormalSkirt
   - HoSSummerShirt # goob
+  - HoSMJ # goob # inky
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
@@ -1285,6 +1300,7 @@
   loadouts:
   - WardenJumpsuit
   - WardenJumpskirt
+  - WardenMJ # goob # inky
 
 - type: loadoutGroup
   id: WardenOuterClothing
@@ -1327,6 +1343,8 @@
   - SergeantUniform # Trauma
   - SergeantSkirt # Trauma
 #  - VeteranOfficerBlackJumpsuit # Goobstation # inky
+  - SecurityMJ # Goob # inky
+  - SecurityMJSenior # Goob # inky
 
 - type: loadoutGroup
   id: SecurityBackpack
@@ -1343,7 +1361,7 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
-  - SecurityJudoBelt # inky
+  - SecurityJudoBelt # Goobstation - Martial Arts # inky
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1359,9 +1377,6 @@
   id: SecurityShoes
   name: loadout-group-security-shoes
   loadouts:
-  # inky
-  - LoadoutClothingShoesElysiumShoes # ts shoooould only appear in the det loadout now idk
-  # /inky
   - JackBoots
   - CombatBoots # Goobstation
   - SecurityWinterBoots
@@ -1393,36 +1408,36 @@
   name: loadout-group-detective-neck
   minLimit: 0
   loadouts:
+  - DetectiveTie # inky
+  - Bodycam # Goobstation - Body cameras # inky
   # inky
   - LoadoutClothingNeckTieElysium
   # /inky
-  - DetectiveTie
-  - Bodycam # Goobstation - Body cameras
+
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
   name: loadout-group-detective-jumpsuit
   loadouts:
-  # inky
-  - LoadoutClothingUniformJumpsuitElysium
-  - LoadoutClothingShoesElysiumShoes
-  # /inky
   - DetectiveJumpsuit
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+  # inky
+  - LoadoutClothingUniformJumpsuitElysium # inky
+  # /inky
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
   name: loadout-group-detective-outerclothing
   loadouts:
-  # inky
-  - LoadoutClothingOuterCoatDiscoBlazer
-  # /inky
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
   - SecurityOfficerWintercoat
+  # inky
+  - LoadoutClothingOuterCoatDiscoBlazer # inky
+  # /inky
 
 - type: loadoutGroup
   id: DetectiveJobTrinkets
@@ -1437,6 +1452,7 @@
   loadouts:
   - RedJumpsuit
   - RedJumpskirt
+  - RedMJ #Goob # inky
 
 #- type: loadoutGroup
 #  id: SecurityCadetJobTrinkets

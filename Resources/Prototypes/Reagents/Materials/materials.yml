@@ -3,7 +3,7 @@
   stackEntity: MaterialBiomass1
   name: materials-biomass
   unit: materials-unit-piece
-  icon: { sprite: Objects/Misc/monkeycube.rsi, state: cube }
+  icon: { sprite: Objects/Misc/monkeycube.rsi, state: cube } # inky
   color: "#8A9A5B"
   price: 0.1
 

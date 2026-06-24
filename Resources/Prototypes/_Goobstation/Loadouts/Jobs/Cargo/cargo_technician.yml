@@ -71,7 +71,30 @@
     species:
     - Plasmaman
 
+- type: loadout # inky
+  id: CourierEnvirosuit # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformEnvirosuitCourier # inky
+  effects: # inky
+  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
+    species: # inky
+    - Plasmaman # inky
+
+- type: loadout # inky
+  id: CourierEnvirohelm # inky
+  equipment: # inky
+    head: ClothingHeadEnvirohelmCourier # inky
+  effects: # inky
+  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
+    species: # inky
+    - Plasmaman # inky
+
 - type: loadout
   id: CargoTechnicianOveralls
   equipment:
-    jumpsuit: ClothingUniformOverallsCargo
+    jumpsuit: ClothingUniformOverallsCargo # inky
+
+- type: loadout # inky
+  id: MailCarrierMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryMailCarrier # inky

@@ -60,7 +60,7 @@
     modifier: 0.5
 
 - type: entity
-  parent: ClothingShoesMilitaryBase
+  parent: ClothingShoesBaseButcherable #Goobstation # inky
   id: ClothingShoesHighheelBoots
   name: high-heeled boots
   description: Snazy boots for when you want to be stylish, yet prepared.
