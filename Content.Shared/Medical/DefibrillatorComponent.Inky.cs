@@ -6,13 +6,13 @@ public sealed partial class DefibrillatorComponent
     /// amount of BPM being added/reduced on zap
     /// </summary>
     [DataField]
-    public int BpmZapHeal = 45;
+    public float BpmZapHeal = 45f;
 
     /// <summary>
     /// amount of BPM being added/reduced on zap if the heart isnt active
     /// </summary>
     [DataField]
-    public int BpmZapHealFlatline = +210;
+    public float BpmZapHealFlatline = +210f;
 
     /// <summary>
     /// If true, the amount specified will try to go towards the startingheartrate

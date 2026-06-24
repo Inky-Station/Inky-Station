@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Inkymed;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
@@ -56,23 +57,29 @@ public sealed partial class ManualDefibrillatorSystem : EntitySystem
             return;
 
         var flips = ent.Comp.ChargeSetting.Flips.Count(flip => flip);
-        if (flips >= ent.Comp.BpmZapFlip.Length
-            || flips >= ent.Comp.BpmZapFlatlineFlip.Length)
-            return;
-
-        defibrillator.BpmZapHeal = ent.Comp.BpmZapFlip[flips];
-        defibrillator.BpmZapHealFlatline = ent.Comp.BpmZapFlatlineFlip[flips];
+        defibrillator.BpmZapHeal = ent.Comp.BpmZapFlip // this is a piece of shit
+            .Where(threshold => threshold.Key <= flips)
+            .MaxBy(threshold => threshold.Key)
+            .Value;
+        defibrillator.BpmZapHealFlatline = ent.Comp.BpmZapFlatlineFlip
+            .Where(threshold => threshold.Key <= flips)
+            .MaxBy(threshold => threshold.Key)
+            .Value;
         Dirty(ent.Owner, defibrillator);
     }
 
     public void UpdateUi(Entity<ManualDefibrillatorComponent> ent)
     {
+        float? bpm = null;
+        if (ent.Comp.HeartEntity is { } heartUid && TryComp<HeartComponent>(heartUid, out var heart))
+            bpm = heart.CurrentHeartRate;
+
         _ui.SetUiState(
             ent.Owner,
             ManualDefibrillatorUiKey.Key,
             new DefibrillatorBuiState(
                 ent.Comp.ChargeSetting,
                 ent.Comp.PulseState,
-                ent.Comp.TargetEntity == null ? null : ent.Comp.Bpm));
+                bpm));
     }
 }

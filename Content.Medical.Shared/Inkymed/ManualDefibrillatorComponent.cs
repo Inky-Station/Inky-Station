@@ -12,10 +12,24 @@ public sealed partial class ManualDefibrillatorComponent : Component
     public DefibrillatorChargeSetting ChargeSetting = new();
 
     [DataField]
-    public int[] BpmZapFlip = [0, -80, -50, 150, 200];
+    public Dictionary<int, float> BpmZapFlip = new()
+    {
+        { 0, 0f },
+        { 1, -80f },
+        { 2, -50f },
+        { 3, 150f },
+        { 4, 200f },
+    };
 
     [DataField]
-    public int[] BpmZapFlatlineFlip = [0, 0, 0, 200, 300];
+    public Dictionary<int, float> BpmZapFlatlineFlip = new()
+    {
+        { 0, 0f },
+        { 1, 0f },
+        { 2, 0f },
+        { 3, 200f },
+        { 4, 300f },
+    };
 
     [DataField]
     public ProtoId<PulseStatePrototype> PulseState = "Pulse0";
@@ -24,7 +38,7 @@ public sealed partial class ManualDefibrillatorComponent : Component
     public EntityUid? TargetEntity;
 
     [DataField]
-    public float Bpm;
+    public EntityUid? HeartEntity;
 }
 
 [DataDefinition, Serializable, NetSerializable]

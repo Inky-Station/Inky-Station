@@ -60,6 +60,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             return;
 
         ent.Comp.TargetEntity = target;
+        ent.Comp.HeartEntity = heartUid;
         SetMonitorState(ent, heart.CurrentHeartRate);
         _ui.OpenUi(ent.Owner, ManualDefibrillatorUiKey.Key, args.User);
     }
@@ -75,9 +76,9 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
     private void UpdateMonitor(Entity<ManualDefibrillatorComponent> ent)
     {
         if (ent.Comp.TargetEntity is not { } target
+            || ent.Comp.HeartEntity is not { } heartUid
             || Deleted(target)
             || !_interaction.InRangeUnobstructed(ent.Owner, target)
-            || _body.GetOrgan(target, HeartCategory) is not {} heartUid
             || !TryComp<HeartComponent>(heartUid, out var heart))
         {
             ResetMonitor(ent);
@@ -90,6 +91,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
     private void ResetMonitor(Entity<ManualDefibrillatorComponent> ent)
     {
         ent.Comp.TargetEntity = null;
+        ent.Comp.HeartEntity = null;
         Dirty(ent);
         SetMonitorState(ent, 0f);
     }
@@ -97,12 +99,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
     private void SetMonitorState(Entity<ManualDefibrillatorComponent> ent, float bpm)
     {
         var pulse = GetPulseState(bpm);
-        if (ent.Comp.Bpm == bpm && ent.Comp.PulseState == pulse)
-            return;
-
-        ent.Comp.Bpm = bpm;
         ent.Comp.PulseState = pulse;
-        // Dirty(ent);
         _manualDefibrillator.UpdateUi(ent);
     }
 
