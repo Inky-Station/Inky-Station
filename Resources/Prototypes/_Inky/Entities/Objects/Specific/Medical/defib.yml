@@ -43,9 +43,6 @@
   - type: UseDelay
   - type: StaticPrice
     price: 30
-  - type: GuideHelp
-    guides:
-    - MedicalDoctor
   - type: LanguageSpeaker # Einstein Engines - Language
     speaks:
     - TauCetiBasic
@@ -61,3 +58,11 @@
     interfaces:
       enum.ManualDefibrillatorUiKey.Key:
         type: ManualDefibrillatorBui
+  - type: GuideHelp
+    guides:
+    - Defib
+
+- type: guideEntry
+  id: Defib
+  name: guide-entry-medicaldoctor
+  text: "/ServerInfo/_Inky/Guidebook/Medical/Defib.xml"
