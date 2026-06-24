@@ -17,7 +17,8 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
 
     // after not doing anything for .Delay time, sends a message to the server with the flips
     // is here because of fucking misspredicts on flips (picture id computer delay)
-    private const float Delay = 0.65f;
+    // even if its 0, if you remove it completely if fucks up the predictions MASSIVELY
+    private const float Delay = 0.0f;
 
     private DefibrillatorChargeSetting _activeSetting;
     private DefibrillatorChargeSetting _serverSetting;
