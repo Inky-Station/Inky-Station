@@ -1,4 +1,4 @@
-using System.Numerics;
+using System.Linq;
 using Content.Medical.Shared.Inkymed;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
@@ -23,7 +23,7 @@ public sealed partial class ManualDefibrillatorSystem : EntitySystem
 
     private void OnMapInit(Entity<ManualDefibrillatorComponent> ent, ref MapInitEvent args)
     {
-        UpdateFibCharge(ent.Owner, ent.Comp.ChargeSetting);
+        UpdateFibCharge(ent);
     }
 
     private void OnUiOpened(Entity<ManualDefibrillatorComponent> ent, ref BoundUIOpenedEvent args)
@@ -33,12 +33,10 @@ public sealed partial class ManualDefibrillatorSystem : EntitySystem
 
     private void OnSettingChanged(Entity<ManualDefibrillatorComponent> ent, ref DefibrillatorChargeSettingMessage args)
     {
-        if ((args.ChargeSetting & DefibrillatorChargeSetting.AllFlips) != args.ChargeSetting)
+        if (args.ChargeSetting.Flips.Length != DefibrillatorChargeSetting.FlipAmount)
             return;
 
-        var voltage = args.ChargeSetting & DefibrillatorChargeSetting.AllMinusPower;
-        var powered = args.ChargeSetting.HasFlag(DefibrillatorChargeSetting.PowerFlip)
-                      && BitOperations.PopCount((uint) voltage) > 0; // https://discord.com/channels/1491179642655215736/1491180108449448107/1519444544750354563
+        var powered = args.ChargeSetting.Power && args.ChargeSetting.Flips.Any(flip => flip); // KILL YOURSELKF
         if (TryComp<ItemToggleComponent>(ent, out var itemToggle)
             && !_itemToggle.TrySetActive((ent.Owner, itemToggle), powered, args.Actor, predicted: false))
         {
@@ -46,31 +44,25 @@ public sealed partial class ManualDefibrillatorSystem : EntitySystem
             return;
         }
 
-        ent.Comp.ChargeSetting = args.ChargeSetting;
-        UpdateFibCharge(ent.Owner, args.ChargeSetting);
+        ent.Comp.ChargeSetting = args.ChargeSetting.Clone();
+        UpdateFibCharge(ent);
         Dirty(ent);
         UpdateUi(ent);
     }
 
-    private void UpdateFibCharge(EntityUid uid, DefibrillatorChargeSetting setting)
+    private void UpdateFibCharge(Entity<ManualDefibrillatorComponent> ent)
     {
-        if (!TryComp<DefibrillatorComponent>(uid, out var defibrillator))
+        if (!TryComp<DefibrillatorComponent>(ent, out var defibrillator))
             return;
 
-        var voltage = setting & DefibrillatorChargeSetting.AllMinusPower;
-        var flips = BitOperations.PopCount((uint) voltage);
+        var flips = ent.Comp.ChargeSetting.Flips.Count(flip => flip);
+        if (flips >= ent.Comp.BpmZapFlip.Length
+            || flips >= ent.Comp.BpmZapFlatlineFlip.Length)
+            return;
 
-        (defibrillator.BpmZapHeal, defibrillator.BpmZapHealFlatline) = flips switch
-        {
-            0 => (0, 0),     // one flip - 500v - if bpm is 200+, lowers it by 80
-            1 => (-80, 0),    // two flips - 1000v - if bpm is 110-200, lowers it by 50
-            2 => (-50, 0),    // three flips - 1500v - if bpm is 0, raises it by 200
-            3 => (150, 200), // four flips - 2000v - if bpm is lower than 50
-            4 => (200, 300),
-            _ => (0, 0),
-        };
-
-        Dirty(uid, defibrillator);
+        defibrillator.BpmZapHeal = ent.Comp.BpmZapFlip[flips];
+        defibrillator.BpmZapHealFlatline = ent.Comp.BpmZapFlatlineFlip[flips];
+        Dirty(ent.Owner, defibrillator);
     }
 
     public void UpdateUi(Entity<ManualDefibrillatorComponent> ent)

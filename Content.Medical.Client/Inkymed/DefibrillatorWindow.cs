@@ -20,8 +20,8 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
     // even if its 0, if you remove it completely if fucks up the predictions MASSIVELY
     private const float Delay = 0.0f;
 
-    private DefibrillatorChargeSetting _activeSetting;
-    private DefibrillatorChargeSetting _serverSetting;
+    private DefibrillatorChargeSetting _activeSetting = new();
+    private DefibrillatorChargeSetting _serverSetting = new();
     private ProtoId<PulseStatePrototype>? _pulseState;
     private bool _serverSend;
     private float? _sendTimeLeft;
@@ -46,11 +46,11 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
         SwitchInit(MAXTexture);
         SetSwitchesDisabled(true);
 
-        IO.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.PowerFlip);
-        LOW.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.FirstFlip);
-        STN.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.SecondFlip);
-        HGH.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.ThirdFlip);
-        MAX.OnPressed += _ => ToggleFlip(DefibrillatorChargeSetting.FourthFlip); // todo inkymed compress this shit idk
+        IO.OnPressed += _ => TogglePower();
+        LOW.OnPressed += _ => ToggleFlip(0);
+        STN.OnPressed += _ => ToggleFlip(1);
+        HGH.OnPressed += _ => ToggleFlip(2);
+        MAX.OnPressed += _ => ToggleFlip(3); // goida bro
 
         var transparent = new StyleBoxFlat // todo find something better
         {
@@ -65,15 +65,18 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
 
     public void SetActiveSetting(DefibrillatorChargeSetting setting)
     {
+        if (setting.Flips.Length != DefibrillatorChargeSetting.FlipAmount)
+            return;
+
         if (_sendTimeLeft != null)
             return;
 
         var serverSended = _serverSend;
-        if (serverSended && setting != _activeSetting)
+        if (serverSended && !SettingsEqual(setting, _activeSetting)) // KILL YOURSELF
             return;
 
         _serverSend = false; // weve found out stuff that server sended so we are supposed to be clean
-        _serverSetting = setting;
+        _serverSetting = setting.Clone();
 
         if (!serverSended)
             ApplySetting(setting);
@@ -108,14 +111,14 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
 
     private void ApplySetting(DefibrillatorChargeSetting setting)
     {
-        var changed = _activeSetting ^ setting; // ty pheenty
-        _activeSetting = setting;
+        if (_activeSetting.Power != setting.Power)
+            SetIOSprite(IOTexture, setting.Power);
 
-        IOFlip(IOTexture, DefibrillatorChargeSetting.PowerFlip, setting, changed);
-        Flip(LOWTexture, DefibrillatorChargeSetting.FirstFlip, setting, changed);
-        Flip(STNTexture, DefibrillatorChargeSetting.SecondFlip, setting, changed);
-        Flip(HGHTexture, DefibrillatorChargeSetting.ThirdFlip, setting, changed);
-        Flip(MAXTexture, DefibrillatorChargeSetting.FourthFlip, setting, changed);
+        Flip(LOWTexture, _activeSetting.Flips[0], setting.Flips[0]); // GOIDA
+        Flip(STNTexture, _activeSetting.Flips[1], setting.Flips[1]);
+        Flip(HGHTexture, _activeSetting.Flips[2], setting.Flips[2]);
+        Flip(MAXTexture, _activeSetting.Flips[3], setting.Flips[3]);
+        _activeSetting = setting.Clone();
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -162,9 +165,18 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
         return DragMode.Move;
     }
 
-    private void ToggleFlip(DefibrillatorChargeSetting flip)
+    private void TogglePower()
     {
-        var setting = _activeSetting ^ flip;
+        var setting = _activeSetting.Clone();
+        setting.Power = !setting.Power;
+        ApplySetting(setting);
+        _sendTimeLeft = Delay;
+    }
+
+    private void ToggleFlip(int thing)
+    {
+        var setting = _activeSetting.Clone();
+        setting.Flips[thing] = !setting.Flips[thing];
         ApplySetting(setting);
         _sendTimeLeft = Delay;
     }
@@ -173,35 +185,24 @@ public sealed partial class DefibrillatorWindow : DefaultWindow
     {
         _sendTimeLeft = null;
 
-        if (_activeSetting == _serverSetting)
+        if (SettingsEqual(_activeSetting, _serverSetting))
             return;
 
         _serverSend = true;
         OnChargeSettingSelected?.Invoke(_activeSetting);
     }
 
-    private void Flip(
-        AnimatedTextureRect texture,
-        DefibrillatorChargeSetting flip,
-        DefibrillatorChargeSetting setting,
-        DefibrillatorChargeSetting changed)
+    private void Flip(AnimatedTextureRect texture, bool oldValue, bool newValue)
     {
-        if (!changed.HasFlag(flip))
+        if (oldValue == newValue)
             return;
 
-        SetFlipState(texture, setting.HasFlag(flip));
+        SetFlipState(texture, newValue);
     }
 
-    private static void IOFlip(
-        AnimatedTextureRect texture,
-        DefibrillatorChargeSetting flip,
-        DefibrillatorChargeSetting setting,
-        DefibrillatorChargeSetting changed)
+    private static bool SettingsEqual(DefibrillatorChargeSetting first, DefibrillatorChargeSetting second)
     {
-        if (!changed.HasFlag(flip))
-            return;
-
-        SetIOSprite(texture, setting.HasFlag(flip));
+        return first.Power == second.Power && first.Flips.SequenceEqual(second.Flips);
     }
 
     private void SetFlipState(AnimatedTextureRect texture, bool enabled)

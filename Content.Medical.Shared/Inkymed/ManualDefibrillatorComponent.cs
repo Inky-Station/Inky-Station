@@ -9,7 +9,13 @@ namespace Content.Medical.Shared.Inkymed;
 public sealed partial class ManualDefibrillatorComponent : Component
 {
     [DataField]
-    public DefibrillatorChargeSetting ChargeSetting = DefibrillatorChargeSetting.None;
+    public DefibrillatorChargeSetting ChargeSetting = new();
+
+    [DataField]
+    public int[] BpmZapFlip = [0, -80, -50, 150, 200];
+
+    [DataField]
+    public int[] BpmZapFlatlineFlip = [0, 0, 0, 200, 300];
 
     [DataField]
     public ProtoId<PulseStatePrototype> PulseState = "Pulse0";
@@ -21,17 +27,23 @@ public sealed partial class ManualDefibrillatorComponent : Component
     public float Bpm;
 }
 
-[Flags]
-public enum DefibrillatorChargeSetting : byte
-{// todo inkymed guidebook, all of these are like 500v each todo
-    None = 0,
-    FirstFlip = 1 << 0,
-    SecondFlip = 1 << 1,
-    ThirdFlip = 1 << 2,
-    FourthFlip = 1 << 3,
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial class DefibrillatorChargeSetting
+{
+    public const int FlipAmount = 4;
 
-    PowerFlip = 1 << 4,
+    [DataField]
+    public bool Power;
 
-    AllFlips = FirstFlip | SecondFlip | ThirdFlip | FourthFlip | PowerFlip,
-    AllMinusPower = FirstFlip | SecondFlip | ThirdFlip | FourthFlip
+    [DataField]
+    public bool[] Flips = new bool[FlipAmount];
+
+    public DefibrillatorChargeSetting Clone()
+    {
+        return new DefibrillatorChargeSetting
+        {
+            Power = Power,
+            Flips = (bool[])Flips.Clone(),
+        };
+    }
 }
