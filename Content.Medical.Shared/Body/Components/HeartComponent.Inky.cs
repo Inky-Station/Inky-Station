@@ -11,7 +11,7 @@ public sealed partial class HeartComponent
     public float NormalHeartRate = 100f;
 
     [DataField]
-    public float MaxHeartRate = 300f;
+    public float MaxHeartRate = 310f;
 
     [DataField]
     public float MinHeartRate = 0f;

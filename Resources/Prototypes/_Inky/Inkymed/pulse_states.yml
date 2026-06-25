@@ -1,0 +1,53 @@
+- type: pulseState
+  id: Pulse300
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 300
+
+- type: pulseState
+  id: Pulse2800 # todo inkymed when it flips from 300 to 0
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 2800
+
+- type: pulseState
+  id: Pulse280
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 280
+
+- type: pulseState
+  id: Pulse220
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 220
+
+- type: pulseState
+  id: Pulse160
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 160
+
+- type: pulseState
+  id: Pulse100
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 100
+
+- type: pulseState
+  id: Pulse60
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 60
+
+- type: pulseState
+  id: Pulse20
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 20
+
+- type: pulseState
+  id: Pulse0
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 0

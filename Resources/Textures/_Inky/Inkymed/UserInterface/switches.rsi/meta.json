@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "made by @LuciferEOS for inky station",
+  "size": {
+    "x": 16,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "defib_switch_off"
+    },
+      {
+        "name": "defib_switch_on"
+      },
+      {
+          "name": "defib_switch_turning_on", "delays": [[0.05, 0.05, 0.05, 10.0]]
+      },
+      {
+          "name": "defib_switch_turning_off", "delays": [[0.05, 0.05, 0.05, 10.0]]
+      }
+  ]
+}
