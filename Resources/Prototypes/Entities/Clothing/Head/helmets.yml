@@ -37,10 +37,10 @@
       VeinsDamage: 0
     modifiers:
       coefficients:
-        Blunt: 0.5 # Trauma, was 0.7
-        Slash: 0.5 # Trauma, was 0.7
-        Piercing: 0.1 # Trauma, was 0.7
-        Heat: 0.5 # Trauma, was 0.7
+        Blunt: 0.7 # inky
+        Slash: 0.7 # inky
+        Piercing: 0.7 # inky
+        Heat: 0.8 # inky
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -113,10 +113,10 @@
         Slash: 0.35
         Piercing: 0.35
         Heat: 0.35
-        # Radiation: 0.75 # Trauma
-        # Caustic: 0.75 # Trauma
+        Radiation: 0.75 # inky
+        Caustic: 0.75 # inky
   - type: ExplosionResistance
-    damageCoefficient: 0.25 # Trauma, was 0.75
+    damageCoefficient: 0.75 # inky
   #- type: HideLayerClothing    #Goobstation
   #  layers:
   #    Hair: HEAD
@@ -159,8 +159,8 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.1 # Trauma, was 0.35
-        Slash: 0.1 # Trauma, was 0.35
+        Blunt: 0.35
+        Slash: 0.35
         Piercing: 0.8
   #- type: HideLayerClothing  #Goobstation
   #  layers:
