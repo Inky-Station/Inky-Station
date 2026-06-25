@@ -1,3 +1,4 @@
+using Content.Medical.Shared.Body;
 using Robust.Shared.Prototypes;
 
 namespace Content.Medical.Shared.Inkymed;
@@ -34,11 +35,8 @@ public sealed partial class ManualDefibrillatorComponent : Component
     [DataField]
     public ProtoId<PulseStatePrototype> PulseState = "Pulse0";
 
-    [DataField]
-    public EntityUid? TargetEntity;
-
-    [DataField]
-    public EntityUid? HeartEntity;
+    [ViewVariables]
+    public Entity<HeartComponent>? HeartEntity;
 }
 
 [DataDefinition, Serializable, NetSerializable]

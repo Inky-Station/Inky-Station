@@ -59,8 +59,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             || !TryComp<HeartComponent>(heartUid, out var heart))
             return;
 
-        ent.Comp.TargetEntity = target;
-        ent.Comp.HeartEntity = heartUid;
+        ent.Comp.HeartEntity = (heartUid, heart);
         SetMonitorState(ent, heart.CurrentHeartRate);
         _ui.OpenUi(ent.Owner, ManualDefibrillatorUiKey.Key, args.User);
     }
@@ -75,22 +74,19 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
 
     private void UpdateMonitor(Entity<ManualDefibrillatorComponent> ent)
     {
-        if (ent.Comp.TargetEntity is not { } target
-            || ent.Comp.HeartEntity is not { } heartUid
-            || Deleted(target)
-            || !_interaction.InRangeUnobstructed(ent.Owner, target)
-            || !TryComp<HeartComponent>(heartUid, out var heart))
+        if (ent.Comp.HeartEntity is not { } heart
+            || Deleted(heart.Owner)
+            || !_interaction.InRangeUnobstructed(ent.Owner, heart.Owner))
         {
             ResetMonitor(ent);
             return;
         }
 
-        SetMonitorState(ent, heart.CurrentHeartRate);
+        SetMonitorState(ent, heart.Comp.CurrentHeartRate);
     }
 
     private void ResetMonitor(Entity<ManualDefibrillatorComponent> ent)
     {
-        ent.Comp.TargetEntity = null;
         ent.Comp.HeartEntity = null;
         Dirty(ent);
         SetMonitorState(ent, 0f);

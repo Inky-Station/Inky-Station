@@ -49,7 +49,7 @@
 
 - type: entity
   id: Defibrillator
-  parent: [ BaseDefibrillator, PowerCellSlotMediumItem ]
+  parent: [ BaseManualDefibrillator, PowerCellSlotMediumItem ] # inkymed - manual defib
   components:
   - type: MultiHandedItem
   - type: ToggleCellDraw
@@ -58,7 +58,7 @@
   # inkymed
   - type: Defibrillator
     bpmZapHeal: 90 # more massive and med-grade defib
-    autoStabilisation: true
+    autoStabilisation: false
   # /inkymed
 
 - type: entity
@@ -79,8 +79,8 @@
 - type: entity
   id: DefibrillatorCompact # This should be a research item at some point # Goobstation - it is.
   parent: [ BaseDefibrillator, PowerCellSlotMediumItem ]
-  name: compact defibrillator
-  description: Now in fun size!
+  name: auto defibrillator # inkymed
+  description: An automatic defibrillator, capable of auto-stabilisating the patient on use. Now in fun size! # inkymed
   components:
   - type: Sprite
     sprite: Objects/Specific/Medical/defibsmall.rsi
@@ -110,7 +110,7 @@
   id: DefibrillatorSyndicate
   parent: [ DefibrillatorCompact, BaseSyndicateContraband ]
   name: interdyne defibrillator
-  description: Doubles as a self-defense weapon against war-crime inclined tiders. Has lower charge-up rate and auto-stabilises to the BPM of the patient.
+  description: Doubles as a self-defense weapon against war-crime inclined tiders. Has lower charge-up rate and auto-stabilises to the BPM of the patient. # inkymed
   components:
   # inkymed
   - type: Defibrillator

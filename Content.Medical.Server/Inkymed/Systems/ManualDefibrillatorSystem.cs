@@ -70,9 +70,7 @@ public sealed partial class ManualDefibrillatorSystem : EntitySystem
 
     public void UpdateUi(Entity<ManualDefibrillatorComponent> ent)
     {
-        float? bpm = null;
-        if (ent.Comp.HeartEntity is { } heartUid && TryComp<HeartComponent>(heartUid, out var heart))
-            bpm = heart.CurrentHeartRate;
+        var bpm = ent.Comp.HeartEntity?.Comp.CurrentHeartRate;
 
         _ui.SetUiState(
             ent.Owner,
