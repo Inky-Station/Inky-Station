@@ -126,11 +126,6 @@
 
 # Synthetic (Beep, high)
 
-- type: soundCollection
-  id: SyntheticBeep
-  files:
-  - /Audio/_Inky/Voice/Barks/Synthetic/terminal_select.ogg
-
 - type: bark
   id: SyntheticBeepHigh
   name: Synethetic (Beep. High)
