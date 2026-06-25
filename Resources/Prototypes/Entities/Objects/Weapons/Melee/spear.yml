@@ -49,13 +49,13 @@
     # <Trauma>
     canWideSwing: false
     range: 2.2
-    attackRate: 0.6
+    attackRate: 0.8 # inky
     animationRotation: -135
     # </Trauma>
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 10 # Trauma - was 12
+        Piercing: 12 # Trauma - was 12 # inky
     angle: 0
     animation: WeaponArcThrust
     soundHit:
@@ -63,7 +63,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 15
+        Piercing: 24 # inky
   - type: Item
     size: Large # Goob edit
     shape: # Goob
@@ -93,30 +93,30 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Piercing: 8 # Trauma - was 4
+        Piercing: 6 # Trauma - was 4 # inky
   - type: Damageable
   - type: Injurable
     damageContainer: Inorganic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        # <Trauma> - removed 30 damage trigger
-        damage: 10 # was 20
-        # </Trauma>
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: GlassBreak
-          params:
-            volume: -4
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          PartRodMetal1:
-            min: 1
-            max: 1
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
+  #- type: Destructible # inky - no
+  #  thresholds:
+  #  - trigger:
+  #      !type:DamageTrigger
+  #      # <Trauma> - removed 30 damage trigger
+  #      damage: 10 # was 20
+  #      # </Trauma>
+  #    behaviors:
+  #    - !type:PlaySoundBehavior
+  #      sound:
+  #        collection: GlassBreak
+  #        params:
+  #          volume: -4
+  #    - !type:SpawnEntitiesBehavior
+  #      spawn:
+  #        PartRodMetal1:
+  #          min: 1
+  #          max: 1
+  #    - !type:DoActsBehavior
+  #      acts: [ "Destruction" ]
   - type: DamageOnLand
     damage:
       types:
@@ -154,11 +154,11 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 10 # Trauma - was 15
+        Piercing: 15 # Trauma - was 15 # inky
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 15 # Trauma - was 18
+        Piercing: 30 # Trauma - was 18 # inky
   - type: Construction
     graph: SpearReinforced
 
@@ -186,11 +186,11 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 10 # Trauma - was 18
+        Piercing: 18 # Trauma - was 18 # inky
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 15 # Trauma - was 21
+        Piercing: 36 # Trauma - was 21 # inky
   - type: Construction
     graph: SpearPlasma
 
@@ -219,13 +219,13 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 5 # Trauma - was 10
-        Radiation: 5 # Trauma - was 8
+        Piercing: 10 # Trauma - was 10 # inky
+        Radiation: 8 # Trauma - was 8 # inky
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 7 # Trauma - was 12
-        Radiation: 8 # Trauma - was 9
+        Piercing: 24 # Trauma - was 12 # inky
+        Radiation: 12 # Trauma - was 9 # inky
   - type: Construction
     graph: SpearUranium
 
@@ -295,10 +295,10 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 20 #goobedit - buff spear variant, nerf tooth.
+        Piercing: 18 # inky
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 30 #goobedit - buff spear variant, nerf tooth.
+        Piercing: 36 # inky
   - type: Construction
     graph: SpearSharkMinnow
