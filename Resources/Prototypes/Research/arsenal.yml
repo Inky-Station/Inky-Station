@@ -244,7 +244,8 @@
   - ShuttleGunFriendshipCircuitboard
   technologyPrerequisites:
   - Shuttlecraft  # Goobstation R&D Console rework
-  position: 4,-1  # Goobstation R&D Console rework # inky
+  - WeaponLaserCellSMGTech # inky
+  position: 3,0  # Goobstation R&D Console rework # inky
 
 - type: technology
   id: DualWieldingTechnology
@@ -316,4 +317,4 @@
   technologyPrerequisites:
   - BasicShuttleArmament
   # - Shuttlecraft  # Goobstation R&D Console rework # inky
-  position: 4,0  # Goobstation R&D Console rework # inky
+  position: 3,1  # Goobstation R&D Console rework # inky

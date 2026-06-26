@@ -160,7 +160,7 @@
     storedOffset: 0,-2
   - type: Gun
     selectedMode: SemiAuto
-    fireRate: 2 # Trauma, was 3
+    fireRate: 2.5 # inky
     availableModes:
     - SemiAuto
     soundGunshot:

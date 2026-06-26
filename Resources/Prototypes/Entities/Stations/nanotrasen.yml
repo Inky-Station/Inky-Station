@@ -11,7 +11,7 @@
   parent:
     # <Trauma>
     - BaseStationWizardTarget
-    - BaseStationAlertLevelLocking
+    # - BaseStationAlertLevelLocking # inky
     - BaseStationReport
     - BaseStationTraits
     # </Trauma>

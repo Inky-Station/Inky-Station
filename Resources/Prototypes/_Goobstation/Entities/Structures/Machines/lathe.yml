@@ -39,6 +39,7 @@
     - MiscSignallersStatic
     - NailgunStatic
     - NailsStatic
+    - ReactorPartsBasic
     dynamicPacks:
     - ConstructionBagOfHolding
     - AdvancedTools
@@ -46,7 +47,6 @@
     - EngineeringWeapons
     - PowerCells
     - Equipment
-    # - ServiceWeapons
     - SpecOpsGoogles
     - EngineeringBoards
     - SharedBoards
@@ -56,6 +56,7 @@
     - ScienceClothing
     - TraumaScienceClothing
     - UpgradeKits
+    - ReactorCircuitboards
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NailgunEvilStatic
@@ -256,15 +257,12 @@
     - TapeRecorderStatic
     - CondimentStatic
     dynamicPacks:
-    # <Trauma>
     - ServiceBoardsTrauma
     - ServiceBoardsGoob
 #    - Translators # inky edit
-    # </Trauma>
     - Janitor
     - Instruments
     - FauxTiles
-    # - ServiceWeapons
     - MedicalMisc
     - MechBoardsCivilian
     - MechWeaponsCivilian
@@ -272,12 +270,10 @@
     - SharedBoards
     - CameraBoards
     - ServiceTools
-    - ServiceBoardsGoob # goob
-    # Einstein Engines Packs
-#    - Translators # inky edit start - kill translators
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ServiceBoardsEvilStatic # Donk Co microwave circiutboard
+  - type: MasterSiloClient # probably only lathe in service
   - type: MaterialStorage
     whitelist:
       tags:

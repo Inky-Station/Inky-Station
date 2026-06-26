@@ -11,6 +11,7 @@
 - type: bark
   id: Alto
   name: Alto
+  volume: 1.25 #inky
   soundCollection:
     collection: AltoBark
 
@@ -25,7 +26,7 @@
 - type: bark
   id: Baritone
   name: Baritone
-  volume: 1
+  volume: 1.25
   soundCollection:
     collection: BaritoneBark
 
@@ -40,7 +41,7 @@
 - type: bark
   id: Bass
   name: Bass
-  volume: 2
+  volume: 4 #inky
   soundCollection:
     collection: BassBark
 
@@ -55,7 +56,7 @@
 - type: bark
   id: Tenor
   name: Tenor
-  volume: 1
+  volume: 1.25 #inky
   soundCollection:
     collection: TenorBark
 
@@ -222,6 +223,7 @@
 - type: bark
   id: Aviu1
   name: Impudent
+  volume: 0.8 #inky
   frequency: 0.7
   soundCollection:
     collection: Aviu1Bark
@@ -239,6 +241,7 @@
 - type: bark
   id: Aviu2
   name: Strong
+  volume: 0.8 #inky
   frequency: 0.7
   soundCollection:
     collection: Aviu2Bark
@@ -256,6 +259,7 @@
 - type: bark
   id: Aviu3
   name: Alien
+  volume: 0.8 #inky
   frequency: 0.7
   soundCollection:
     collection: Aviu3Bark
@@ -273,6 +277,7 @@
 - type: bark
   id: Aviu4
   name: Ethereal
+  volume: 0.8 #inky
   frequency: 0.7
   soundCollection:
     collection: Aviu4Bark

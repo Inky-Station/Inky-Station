@@ -65,7 +65,7 @@
   description: uplink-energycrossbow-desc
   productEntity: WeaponEnergyCrossbow
   cost:
-    Telecrystal: 25 # inky
+    Telecrystal: 20 # inky
   categories:
   - UplinkWeaponry
   conditions:
@@ -170,7 +170,7 @@
     Telecrystal: 50 # Trauma - was 14, 5x and less expensive
   categories:
   - UplinkWeaponry
-  # conditions: # Trauma, this gun is fine for nukies # inky: tf you mean it wasnt available for nukies??
+  # conditions: # Trauma, this gun is fine for nukies
   # - !type:StoreWhitelistCondition
   #   blacklist:
   #     tags:
@@ -309,7 +309,7 @@
   - UplinkExplosives
   conditions:
   - !type:StoreWhitelistCondition
-    blacklist: # Trauma - inverted, theres a nukie listing separately
+    blacklist: # Trauma - inverted, there's a nukie listing separately
       tags:
       - NukeOpsUplink
 
@@ -413,7 +413,7 @@
   description: uplink-c4-bundle-desc
   productEntity: ClothingBackpackDuffelSyndicateC4tBundle
   cost:
-    Telecrystal: 50 # inky edit - let the people suffer
+    Telecrystal: 48 # Trauma - was 12, 5x you're buying in bulk, so you get a 25% discount
   categories:
   - UplinkExplosives
   conditions: # Goob, two times cheaper for nukies
@@ -561,7 +561,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Shotgun/m12.rsi, state: slug }
   productEntity: MagazineShotgunSlug
   cost:
-    Telecrystal: 4 # inky
+    Telecrystal: 4 # Trauma - was 2, 5x less expensive (slug -1)
   categories:
   - UplinkAmmo
   # inky edit
@@ -988,11 +988,11 @@
     Telecrystal: 20 # Trauma - was 4, 5x
   categories:
   - UplinkDisruption
-  #conditions: # Goob - no
-  #- !type:StoreWhitelistCondition
-  #  blacklist:
-  #    tags:
-  #    - NukeOpsUplink
+  conditions:
+  - !type:StoreWhitelistCondition
+   blacklist:
+     tags:
+     - NukeOpsUplink
 
 - type: listing
   id: UplinkSyndicateMartyrModule
@@ -1194,7 +1194,7 @@
   icon: { sprite: /Textures/Objects/Misc/guardian_info.rsi, state: icon }
   productEntity: BoxHoloparasite
   cost:
-    Telecrystal: 47 # inky edit - its dogwater
+    Telecrystal: 35 # inky edit - its dogwater
   categories:
   - UplinkAllies
   conditions:
@@ -1593,8 +1593,8 @@
   id: UplinkChameleon
   name: uplink-chameleon-name
   description: uplink-chameleon-desc
-  productEntity: ClothingBackpackChameleonFill # goob
-  icon: { sprite: /Textures/_Goobstation/Clothing/Uniforms/Jumpsuit/color/rainbow.rsi, state: icon } # Goob
+  productEntity: ClothingBackpackChameleonFillAgent
+  icon: { sprite: /Textures/Clothing/Uniforms/Jumpsuit/rainbow.rsi, state: icon }
   cost:
     Telecrystal: 25 # Trauma - was 4, 5x and more expensive due to how much fucking value it has
   categories:
@@ -1629,7 +1629,7 @@
   description: uplink-clothing-outer-vest-web-desc
   productEntity: ClothingOuterVestWeb
   cost:
-    Telecrystal: 15 # inky
+    Telecrystal: 15 # Trauma - was 5, 5x and less expensive
   categories:
   - UplinkWearables
 
@@ -1682,7 +1682,7 @@
 - type: listing
   id: UplinkHardsuitSyndie
   name: uplink-hardsuit-syndie-name
-  description: uplink-hardsuit-syndie-desc
+  description: uplink-hardsuit-traumasyndie-desc # Trauma - was uplink-hardsuit-syndie-desc
   icon: { sprite: /Textures/Clothing/OuterClothing/Hardsuits/syndicate.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateHardsuitBundle
   cost:
@@ -1711,7 +1711,7 @@
 - type: listing
   id: UplinkHardsuitSyndieElite
   name: uplink-hardsuit-syndieelite-name
-  description: uplink-hardsuit-syndieelite-desc
+  description: uplink-hardsuit-traumaelite-desc # Trauma - was uplink-hardsuit-syndieelite-desc
   icon: { sprite: /Textures/Clothing/OuterClothing/Hardsuits/syndieelite.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateEliteHardsuitBundle
   cost:
@@ -2036,7 +2036,7 @@
   icon: { sprite: /Textures/Objects/Fun/figurines.rsi, state: holoclown }
   productEntity: BoxHoloclown
   cost:
-    Telecrystal: 47 # inky
+    Telecrystal: 35 # inky
   categories:
   - UplinkJob
   conditions:

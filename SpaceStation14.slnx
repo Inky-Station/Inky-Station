@@ -13,46 +13,6 @@
   <Folder Name="/Build/">
     <File Path="Tools/generate_hashes.ps1" />
   </Folder>
-  <Folder Name="/Content.Game/" />
-  <Folder Name="/Content.Game/Goobstation/">
-    <Project Path="Content.Goobstation.Client/Content.Goobstation.Client.csproj" />
-    <Project Path="Content.Goobstation.Common/Content.Goobstation.Common.csproj" />
-    <Project Path="Content.Goobstation.Server/Content.Goobstation.Server.csproj" />
-    <Project Path="Content.Goobstation.Shared/Content.Goobstation.Shared.csproj" />
-    <Project Path="Content.Goobstation.UIKit/Content.Goobstation.UIKit.csproj" />
-  </Folder>
-  <!-- Inky -->
-  <Folder Name="/Content.Game/Inky/">
-    <Project Path="Content.Inky.Client\Content.Inky.Client.csproj" />
-    <Project Path="Content.Inky.Common\Content.Inky.Common.csproj" />
-    <Project Path="Content.Inky.Server\Content.Inky.Server.csproj" />
-    <Project Path="Content.Inky.Shared\Content.Inky.Shared.csproj" />
-  </Folder>
-  <!-- Inky -->
-  <Folder Name="/Content.Game/Lavaland/">
-    <Project Path="Content.Lavaland.Client/Content.Lavaland.Client.csproj" />
-    <Project Path="Content.Lavaland.Common/Content.Lavaland.Common.csproj" />
-    <Project Path="Content.Lavaland.Server/Content.Lavaland.Server.csproj" />
-    <Project Path="Content.Lavaland.Shared/Content.Lavaland.Shared.csproj" />
-  </Folder>
-  <Folder Name="/Content.Game/Medical/">
-    <Project Path="Content.Medical.Client/Content.Medical.Client.csproj" />
-    <Project Path="Content.Medical.Common/Content.Medical.Common.csproj" />
-    <Project Path="Content.Medical.Server/Content.Medical.Server.csproj" />
-    <Project Path="Content.Medical.Shared/Content.Medical.Shared.csproj" />
-  </Folder>
-  <Folder Name="/Content.Game/Trauma/">
-    <Project Path="Content.Trauma.Client/Content.Trauma.Client.csproj" />
-    <Project Path="Content.Trauma.Common/Content.Trauma.Common.csproj" />
-    <Project Path="Content.Trauma.Server/Content.Trauma.Server.csproj" />
-    <Project Path="Content.Trauma.Shared/Content.Trauma.Shared.csproj" />
-  </Folder>
-  <Folder Name="/Content.Game/Wizden/">
-    <Project Path="Content.Client/Content.Client.csproj" />
-    <Project Path="Content.Common/Content.Common.csproj" />
-    <Project Path="Content.Server/Content.Server.csproj" />
-    <Project Path="Content.Shared/Content.Shared.csproj" />
-  </Folder>
   <Folder Name="/MSBuild/">
     <File Path="MSBuild/Content.props" />
   </Folder>
@@ -64,6 +24,7 @@
     <File Path="README.md" />
   </Folder>
   <Project Path="Content.Benchmarks/Content.Benchmarks.csproj" />
+  <Project Path="Content.Client/Content.Client.csproj" />
   <Project Path="Content.IntegrationTests/Content.IntegrationTests.csproj" />
   <Project Path="Content.MapRenderer/Content.MapRenderer.csproj" />
   <Project Path="Content.Packaging/Content.Packaging.csproj" />
@@ -73,13 +34,39 @@
   </Project>
   <Project Path="Content.Replay/Content.Replay.csproj" />
   <Project Path="Content.Server.Database/Content.Server.Database.csproj" />
+  <Project Path="Content.Server/Content.Server.csproj" />
   <Project Path="Content.Shared.Database/Content.Shared.Database.csproj" />
-  <Project Path="Content.ModuleManager/Content.ModuleManager.csproj" />
+  <Project Path="Content.Shared/Content.Shared.csproj" />
+  <!-- <Trauma> -->
+  <Project Path="Content.Trauma.Server/Content.Trauma.Server.csproj" />
+  <Project Path="Content.Trauma.Shared/Content.Trauma.Shared.csproj" />
+  <Project Path="Content.Trauma.Client/Content.Trauma.Client.csproj" />
+  <Project Path="Content.Trauma.Common/Content.Trauma.Common.csproj" />
+  <Project Path="Content.Goobstation.Server/Content.Goobstation.Server.csproj" />
+  <Project Path="Content.Goobstation.Shared/Content.Goobstation.Shared.csproj" />
+  <Project Path="Content.Goobstation.Client/Content.Goobstation.Client.csproj" />
+  <Project Path="Content.Goobstation.Common/Content.Goobstation.Common.csproj" />
+  <Project Path="Content.Common/Content.Common.csproj" />
+  <Project Path="Content.Goobstation.UIKit/Content.Goobstation.UIKit.csproj" />
+  <Project Path="Content.Lavaland.Server/Content.Lavaland.Server.csproj" />
+  <Project Path="Content.Lavaland.Shared/Content.Lavaland.Shared.csproj" />
+  <Project Path="Content.Lavaland.Client/Content.Lavaland.Client.csproj" />
+  <Project Path="Content.Lavaland.Common/Content.Lavaland.Common.csproj" />
+  <Project Path="Content.Medical.Server/Content.Medical.Server.csproj" />
+  <Project Path="Content.Medical.Shared/Content.Medical.Shared.csproj" />
+  <Project Path="Content.Medical.Client/Content.Medical.Client.csproj" />
+  <Project Path="Content.Medical.Common/Content.Medical.Common.csproj" />
+  <!-- </Trauma> -->
+  <!-- Inky -->
+  <Project Path="Content.Inky.Client\Content.Inky.Client.csproj" />
+  <Project Path="Content.Inky.Common\Content.Inky.Common.csproj" />
+  <Project Path="Content.Inky.Server\Content.Inky.Server.csproj" />
+  <Project Path="Content.Inky.Shared\Content.Inky.Shared.csproj" />
+  <!-- Inky -->
   <Project Path="Content.Tests/Content.Tests.csproj" />
   <Project Path="Content.Tools/Content.Tools.csproj" />
   <Project Path="Content.YAMLLinter/Content.YAMLLinter.csproj" />
   <Project Path="Pow3r/Pow3r.csproj" />
-  <Folder Name="/RobustToolbox/.github/" />
   <Folder Name="/RobustToolbox/.github/workflows/">
     <File Path="RobustToolbox/.github/workflows/benchmarks.yml" />
     <File Path="RobustToolbox/.github/workflows/build-all-configurations.yml" />

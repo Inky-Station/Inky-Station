@@ -380,8 +380,10 @@
       - !type:HealthChange
         conditions:
           # they gotta be in crit first
-        - !type:MobStateCondition
-          mobstate: Critical
+        # <Trauma> - allow softcrit
+        - !type:NestedCondition
+          proto: MobCritical
+        # </Trauma>
         - !type:ReagentCondition
           reagent: Epinephrine
           max: 20
@@ -392,8 +394,10 @@
       - !type:EvenHealthChange
         conditions:
           # they gotta be in crit first
-        - !type:MobStateCondition
-          mobstate: Critical
+        # <Trauma> - allow softcrit
+        - !type:NestedCondition
+          proto: MobCritical
+        # </Trauma>
         - !type:ReagentCondition
           reagent: Epinephrine
           max: 20
@@ -515,8 +519,10 @@
       - !type:HealthChange
         conditions:
           # they gotta be in crit first
-        - !type:MobStateCondition
-          mobstate: Critical
+        # <Trauma> - allow softcrit
+        - !type:NestedCondition
+          proto: MobCritical
+        # </Trauma>
         damage:
           types:
             Asphyxiation: -2

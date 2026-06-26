@@ -1615,6 +1615,7 @@
 - type: entity
   name: monkey
   id: MobBaseSyndicateMonkey
+  abstract: true # Trauma
   parent: [ AppearanceMonkey, MobBaseAncestor ] # Shitmed
   description: New church of neo-darwinists actually believe that EVERY animal evolved from a monkey. Tastes like pork, and killing them is both fun and relaxing.
   suffix: syndicate base
@@ -1781,6 +1782,7 @@
 
 - type: entity
   id: MobBaseSyndicateKobold
+  abstract: true # Trauma
   parent: MobBaseKobold
   suffix: syndicate base
   components:
@@ -1841,11 +1843,9 @@
     hungerUsage: 20
     eggLayAction: MouseMultiply
     hungerRequired: true
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: MouseBites
-        Quantity: 1
+  - type: SolutionManager
+    solutions:
+    - SolutionMouseBites
   - type: MeleeChemicalInjector
     transferAmount: 1
     solution: melee
@@ -2689,17 +2689,17 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      90: Dead
+      120: Dead # Trauma - was 90
   - type: SolutionManager
     solutions:
     - SolutionVenomSpider
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Mechanotoxin
-        Quantity: 1
+#  - type: SolutionRegeneration # Trauma - moved to solution SolutionVenomSpider
+#    generated:
+#      reagents:
+#      - ReagentId: Mechanotoxin
+#        Quantity: 1
   - type: MeleeChemicalInjector
-    transferAmount: 0.75
+    transferAmount: 1.5 # Trauma - was 0.75
     solution: melee
   - type: LanguageSpeaker # Einstein Engines - Language
     speaks:
@@ -2768,6 +2768,19 @@
   parent: [SolutionWeapon, SolutionTiny]
   id: SolutionVenomSpider
   categories: [ HideSpawnMenu ]
+  # <Trauma>
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Mechanotoxin
+        Quantity: 30
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Mechanotoxin
+        Quantity: 0.75
+  # </Trauma>
 
 - type: entity
   parent: MobSpiderBase
@@ -2827,7 +2840,10 @@
       path: /Audio/Effects/bite.ogg
     damage:
       types:
-        Piercing: 6
+        # <Trauma>
+        Slash: 3
+        Piercing: 3 # was 6, split into slash so it can (slowly) break grilles
+        # </Trauma>
 
 - type: entity
   parent:
@@ -2841,6 +2857,14 @@
   id: MobClownSpider
   description: Combines the two most terrifying things in existence, spiders and clowns.
   components:
+    # <Trauma>
+    - type: SolutionManager
+      solutions:
+      - SolutionClownSpider
+    - type: MeleeChemicalInjector
+      transferAmount: 4
+      solution: melee
+    # </Trauma>
     - type: Sprite
       drawdepth: Mobs
       layers:
@@ -2862,7 +2886,7 @@
     - type: MobThresholds
       thresholds:
         0: Alive
-        180: Dead
+        240: Dead
     - type: Spider
       webPrototype: SpiderWebClown
     - type: MeleeWeapon
@@ -2873,7 +2897,10 @@
         path: /Audio/Effects/bite.ogg
       damage:
         types:
-          Piercing: 8
+          # <Trauma>
+          Slash: 4
+          Piercing: 4 # was 8, split into slash so it can break grilles
+          # </Trauma>
     - type: FootstepModifier
       footstepSoundCollection:
         collection: FootstepClownFast

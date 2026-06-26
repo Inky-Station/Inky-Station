@@ -64,7 +64,7 @@
   - WeaponLaserCellSMG
   - PowerCellIRSMG
   - PowerCellIonSMG
-  position: 3,1 # inky
+  position: 4,0 # inky
   technologyPrerequisites:
   - WeaponLaserCellRevolverTech # inky
 
@@ -84,7 +84,7 @@
   - EnergyMagRifleLethal
   technologyPrerequisites:
   - WeaponLaserCellSMGTech # inky
-  position: 3,0 # inky
+  position: 4,-1 # inky
 
 # Tier 3
 
@@ -101,7 +101,7 @@
   - WeaponLaserCellSniper
   - PowerCellIRSniper
   - PowerCellIonSniper
-  position: 2,0 # inky
+  position: 4,-2 # inky
   technologyPrerequisites:
   - EnergyBoltBasedWeaponry # inky
 
@@ -117,6 +117,6 @@
   recipeUnlocks:
   - ClothingBackpackLMGBattery
   - MilitaryPowerCellLMG
-  position: 1,0 # inky
+  position: 4,-3 # inky
   technologyPrerequisites:
   - WeaponLaserCellSniperTech # inky

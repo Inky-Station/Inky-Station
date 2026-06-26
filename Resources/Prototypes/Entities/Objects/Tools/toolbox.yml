@@ -150,7 +150,7 @@
     heavyStaminaCost: 10 # goob edit
     damage:
       types:
-        Blunt: 16
+        Blunt: 20 # inky - trauma edited this without a comment lol
 
 - type: entity
   name: golden toolbox
