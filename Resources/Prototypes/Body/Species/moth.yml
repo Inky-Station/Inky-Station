@@ -350,7 +350,6 @@
     normalHeartRate: 65
     maxHeartRate: 265
     fibrillationCaps: 35,165
-    fibrillationCaps:
   # inkymed
 
 - type: entity
