@@ -70,9 +70,9 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         // being stable drifts TOWARDS the normal heart rate
         var cur = heart.CurrentHeartRate;
         var (min, max) = heart.FibrillationCaps;
-        var delta = heart.StabilisationRateModifier
-            * (cur - heart.NormalHeartRate)
-            * (cur - min) * (cur - max);
+        var delta = heart.StabilisationRateModifier * (float) Math.Cbrt(
+            (cur - heart.NormalHeartRate) * (cur - min) * (cur - max)
+        );
         delta += Math.Sign(delta) * heart.StabilisationRate; // add static part
 
         UpdateRate(uid, heart, delta, false);

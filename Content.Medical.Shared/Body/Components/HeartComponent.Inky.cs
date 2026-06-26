@@ -38,7 +38,7 @@ public sealed partial class HeartComponent
     /// (cur - norm)(cur - minfib)(cur - maxfib)
     /// </summary>
     [DataField]
-    public float StabilisationRateModifier = 0.00003f;
+    public float StabilisationRateModifier = 0.03f;
 
     /// <summary>
     /// if the current heartrate is beyond fibrillation caps,
