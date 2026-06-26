@@ -5,12 +5,6 @@
     state: 3000
 
 - type: pulseState
-  id: Pulse2800 # todo inkymed when it flips from 300 to 0
-  sprite:
-    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
-    state: 2800
-
-- type: pulseState
   id: Pulse450
   sprite:
     sprite: _Inky/Inkymed/UserInterface/pulse.rsi
