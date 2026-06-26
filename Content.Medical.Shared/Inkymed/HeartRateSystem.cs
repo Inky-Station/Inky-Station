@@ -8,6 +8,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Medical.Shared.Inkymed;
@@ -17,6 +18,7 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     [Dependency] private AlertsSystem _alerts = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private IRobustRandom _gambling = default!;
 
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
     private TimeSpan _nextUpdate;
@@ -77,8 +79,12 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         // fibrillating drifts AWAY from the normal heart rate (towards min/max)
         // being stable drifts TOWARDS the normal heart rate
         var sign = (heart.CurrentHeartRate < heart.NormalHeartRate) ^ (GetState(heart) == HeartState.Fibrillating) ? 1 : -1;
-        var delta = sign * heart.StabilisationRate;
+        var delta = heart.StabilisationRate * sign; // fucking kill yourself
         UpdateRate(uid, heart, delta, false);
+
+        if (heart.CurrentHeartRate >= heart.MaxHeartRate
+            && _gambling.Prob(heart.HeartRateCriticalStopChance))
+            SetRate(uid, heart, heart.MinHeartRate, false);
 
         // apparently if your heart is dead you take damage
         if (GetState(heart) == HeartState.Stopped)
@@ -96,9 +102,8 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         if (GetState(heart) == HeartState.Stopped && !canRestart)
             return;
 
-        // being at min/max or beyond just stops the heart
-        if (rate <= heart.MinHeartRate
-            || rate >= heart.MaxHeartRate)
+        // being at min or beyond just stops the heart
+        if (rate <= heart.MinHeartRate)
             heart.CurrentHeartRate = heart.MinHeartRate;
         else
             heart.CurrentHeartRate = rate;
@@ -135,9 +140,19 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     public void UpdateRate(EntityUid uid,
         HeartComponent heart,
         float delta,
-        bool canRestart)
+        bool canRestart,
+        float? lowCap = null,
+        float? highCap = null)
     {
-        SetRate(uid, heart, heart.CurrentHeartRate + delta, canRestart);
+        var newRate = heart.CurrentHeartRate + delta;
+
+        if (lowCap is { } someLowCap && newRate < someLowCap)
+            newRate = someLowCap;
+
+        if (highCap is { } someHighCap && newRate > someHighCap)
+            newRate = someHighCap;
+
+        SetRate(uid, heart, newRate, canRestart);
     }
 
     // fuck invariants lmao
@@ -146,7 +161,8 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         if (heart.CurrentHeartRate <= heart.MinHeartRate)
             return HeartState.Stopped;
 
-        if (Math.Abs(heart.NormalHeartRate - heart.CurrentHeartRate) >= heart.FibrillationCap)
+        if (heart.CurrentHeartRate >= heart.NormalHeartRate + heart.FibrillationCapPositive
+            || heart.CurrentHeartRate <= heart.NormalHeartRate - heart.FibrillationCapNegative)
             return HeartState.Fibrillating;
 
         return HeartState.Stable;

@@ -337,6 +337,14 @@
 - type: entity
   id: OrganDecapoidHeart
   parent: [OrganBaseHeart, BaseDecapoidOrgan]
+  # inkymed
+  components:
+  - type: Heart
+    normalHeartRate: 125 # "The song "Crab Rave" by Noisestorm has a tempo of 125 BPM"
+    maxHeartRate: 310
+    fibrillationCapPositive: 130
+    fibrillationCapNegative: 50
+  # inkymed
 
 - type: entity
   id: OrganDecapoidLiver

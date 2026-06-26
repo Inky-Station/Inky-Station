@@ -60,7 +60,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             return;
 
         ent.Comp.HeartEntity = (heartUid, heart);
-        SetMonitorState(ent, heart.CurrentHeartRate);
+        SetMonitorState(ent, (float)heart.CurrentHeartRate); // goida
         _ui.OpenUi(ent.Owner, ManualDefibrillatorUiKey.Key, args.User);
     }
 
@@ -82,7 +82,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             return;
         }
 
-        SetMonitorState(ent, heart.Comp.CurrentHeartRate);
+        SetMonitorState(ent, (float)heart.Comp.CurrentHeartRate);
     }
 
     private void ResetMonitor(Entity<ManualDefibrillatorComponent> ent)
@@ -101,16 +101,31 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
 
     private static ProtoId<PulseStatePrototype> GetPulseState(float bpm)
     {
-        return bpm switch
+        return bpm switch // KILL MEeeeee TODO KILL ME FASTER PLEASEEEEEEEEEEEEEEEEEEEEEEE
         {
             <= 0f => "Pulse0",
-            <= 40f => "Pulse20",
-            <= 80f => "Pulse60",
-            <= 130f => "Pulse100",
-            <= 190f => "Pulse160",
-            <= 250f => "Pulse220",
-            <= 290f => "Pulse280",
-            _ => "Pulse300", // todo inkymed
+            <= 20f => "Pulse20",
+            <= 30f => "Pulse30",
+            <= 40f => "Pulse40",
+            <= 50f => "Pulse50",
+            <= 60f => "Pulse60",
+            <= 70f => "Pulse70",
+            <= 80f => "Pulse80",
+            <= 100f => "Pulse100",
+            <= 120f => "Pulse120",
+            <= 140f => "Pulse140",
+            <= 160f => "Pulse160",
+            <= 180f => "Pulse180",
+            <= 200f => "Pulse200",
+            <= 220f => "Pulse220",
+            <= 240f => "Pulse240",
+            <= 260f => "Pulse260",
+            <= 280f => "Pulse280",
+            <= 300f => "Pulse300",
+            <= 360f => "Pulse360",
+            <= 400f => "Pulse400",
+            <= 450f => "Pulse450",
+            _ => "Pulse3000", // todo inkymed
         };
     }
 
@@ -124,7 +139,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
 
         if (TryComp<ManualDefibrillatorComponent>(args.Defibrillator, out var manualDefibrillator))
         {
-            manualDefibrillator.PulseState = "Pulse300";
+            manualDefibrillator.PulseState = "Pulse3000";
             _manualDefibrillator.UpdateUi((args.Defibrillator, manualDefibrillator));
         }
 

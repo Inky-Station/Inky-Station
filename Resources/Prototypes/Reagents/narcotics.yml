@@ -80,7 +80,7 @@
           min: 20
       # inkymed
       - !type:ModifyHeartRate
-        amount: 2.5
+        amount: 5.5
       # /inkymed
 
 - type: reagent
@@ -144,7 +144,8 @@
           min: 30
       # inkymed
       - !type:ModifyHeartRate
-        amount: 2 # less than desox
+        amount: 3 # less than desox
+        higherCap: 230
       # /inkymed
 
 - type: reagent
@@ -286,6 +287,7 @@
       # inkymed
       - !type:ModifyHeartRate
         amount: -1.5
+        lowerCap: 45
       # /inkymed
 
 - type: reagent
@@ -347,7 +349,8 @@
         time: 5
       # inkymed
       - !type:ModifyHeartRate
-        amount: -1.8
+        amount: -2
+        lowerCap: 45
     # /inkymed
 
 - type: reagent

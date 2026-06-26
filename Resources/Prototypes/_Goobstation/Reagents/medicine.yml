@@ -780,6 +780,14 @@
         - !type:ReagentCondition
           reagent: SalicylicAcid
           min: 25
+        # inkymed
+      - !type:ModifyHeartRate
+        amount: 8
+        conditions:
+        - !type:ReagentCondition
+          reagent: SalicylicAcid
+          min: 25
+        # /inkymed
 
 - type: reagent
   id: Oxandrolone
@@ -835,6 +843,14 @@
         - !type:ReagentCondition
           reagent: Oxandrolone
           min: 25
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 8
+        conditions:
+        - !type:ReagentCondition
+          reagent: Oxandrolone
+          min: 25
+      # /inkymed
 
 - type: reagent
   id: PentenicAcid
@@ -864,6 +880,11 @@
         effectProto: StatusEffectRadiationProtection
         time: 2
         type: Add
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -1.5
+        lowerCap: 65
+      # /inkymed
 
 - type: reagent
   id: Atropine
@@ -1099,6 +1120,11 @@
         - !type:ReagentCondition
           reagent: Tramadol
           min: 15.5
+        # inkymed
+      - !type:ModifyHeartRate
+        amount: -3
+        lowerCap: 41 # more safe heroin
+        # /inkymed
 
 - type: reagent
   id: Oxycodone
@@ -1202,6 +1228,12 @@
       - !type:TakeStaminaDamage
         amount: -10
         immediate: true
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 5
+        heartRestart: true
+        autoStabilisation: true
+      # /inkymed
 
 # <Viro>
 

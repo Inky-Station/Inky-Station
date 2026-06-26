@@ -209,7 +209,8 @@
         boozePower: 2
       # inkymed
       - !type:ModifyHeartRate
-        amount: -1.2
+        amount: -1.5
+        lowerCap: 45 # no fibrillations after drinking too much
       # /inkymed
 
 - type: reagent

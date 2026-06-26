@@ -400,6 +400,14 @@
   id: OrganVoxHeart
   name: circulatory pump
   description: A strange purple organ that pumps circulatory fluid through the body of a Vox.
+  # inkymed
+  components:
+  - type: Heart
+    normalHeartRate: 106
+    maxHeartRate: 330
+    fibrillationCapPositive: 110 # chud methed up vox...
+    fibrillationCapNegative: 60
+  # inkymed
 
 - type: entity
   parent: [ OrganBaseStomach, OrganVoxInternal, OrganVoxMetabolizer ]

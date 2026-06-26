@@ -23,6 +23,11 @@ public sealed partial class ModifyHeartRateSystem : EntityEffectSystem<BodyCompo
         var sign = (heart.CurrentHeartRate > heart.NormalHeartRate) && args.Effect.AutoStabilisation ? -1 : 1;
         var delta = sign * args.Scale * args.Effect.Amount;
 
-        _heartRate.UpdateRate(heartUid, heart, delta, args.Effect.HeartRestart);
+        _heartRate.UpdateRate(heartUid,
+            heart,
+            delta,
+            args.Effect.HeartRestart,
+            args.Effect.LowerCap,
+            args.Effect.HigherCap);
     }
 }

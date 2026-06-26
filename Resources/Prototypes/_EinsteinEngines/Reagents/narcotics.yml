@@ -29,3 +29,14 @@
         damage:
           types:
             Asphyxiation: 2
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -5
+        lowerCap: 41
+      - !type:ModifyHeartRate
+        amount: -5 # if you OD on morphine well gg bro
+        conditions:
+        - !type:ReagentCondition
+          reagent: Morphine
+          min: 16
+      # /inkymed

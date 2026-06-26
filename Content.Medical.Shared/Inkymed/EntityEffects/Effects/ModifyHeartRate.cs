@@ -1,4 +1,5 @@
 using Content.Shared.EntityEffects;
+using Content.Shared.FixedPoint;
 
 namespace Content.Medical.Shared.Inkymed.EntityEffects.Effects;
 
@@ -26,6 +27,18 @@ public sealed partial class ModifyHeartRate : EntityEffectBase<ModifyHeartRate>
     [DataField]
     public bool AutoStabilisation;
 
+    /// <summary>
+    /// If not null, the reagent will not lower the heart rate below this value
+    /// </summary>
+    [DataField]
+    public float? LowerCap;
+
+    /// <summary>
+    /// If not null, the reagent will not raise the heart rate above this value
+    /// </summary>
+    [DataField]
+    public float? HigherCap;
+
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) // todo this is pure SLOP
     {
         var lines = new List<string>();
@@ -35,11 +48,11 @@ public sealed partial class ModifyHeartRate : EntityEffectBase<ModifyHeartRate>
             if (Amount >= 0)
             {
                 lines.Add(Loc.GetString("entity-effect-guidebook-modify-heart-rate-stabilise-increase",
-                    ("amount", Math.Abs(Amount)),
-                    ("target", 100))); // todo inkymed pass startingheartrate somehow
+                    ("amount", FixedPoint2.Abs(Amount)),
+                    ("highCap", HigherCap ?? 80))); // todo inkymed pass startingheartrate somehow
                 lines.Add(Loc.GetString("entity-effect-guidebook-modify-heart-rate-stabilise-decrease",
-                    ("amount", Math.Abs(Amount)),
-                    ("target", 100)));
+                    ("amount", FixedPoint2.Abs(Amount)),
+                    ("lowCap", LowerCap ?? 80)));
             }
         }
         else
@@ -47,7 +60,7 @@ public sealed partial class ModifyHeartRate : EntityEffectBase<ModifyHeartRate>
             var key = Amount >= 0
                 ? "entity-effect-guidebook-modify-heart-rate-increase"
                 : "entity-effect-guidebook-modify-heart-rate-decrease";
-            lines.Add(Loc.GetString(key, ("amount", Math.Abs(Amount))));
+            lines.Add(Loc.GetString(key, ("amount", FixedPoint2.Abs(Amount))));
         }
 
         if (HeartRestart)

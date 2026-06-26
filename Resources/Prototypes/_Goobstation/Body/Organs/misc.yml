@@ -5,6 +5,14 @@
   parent: [ OrganHumanHeart, BaseSyndicateContraband ]
   id: OrganSyndicateHeart
   components:
+  # inkymed
+  - type: Heart
+    normalHeartRate: 80
+    maxHeartRate: 400 # military grade heart cybernetic son
+    fibrillationCapPositive: 200
+    fibrillationCapNegative: 50
+    stabilisationRate: 3
+  # inkymed
   - type: Sprite
     layers:
     - state: icon
@@ -45,6 +53,14 @@
   name: jumpstarter heart
   description: A next-gen combat circulatory core that injects a large amount of omnizine into the user's bloodstream when they are critically injured, saving them from death. Highly illegal.
   components:
+  # inkymed
+  - type: Heart # cmon let it have SOME use for 66tc
+    normalHeartRate: 80
+    maxHeartRate: 460
+    fibrillationCapPositive: 260
+    fibrillationCapNegative: 50
+    stabilisationRate: 4
+  # inkymed
   - type: Sprite
     sprite: _Goobstation/Objects/Misc/jumpstarter_heart.rsi
   - type: OrganComponents

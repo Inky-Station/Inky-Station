@@ -264,6 +264,14 @@
 - type: entity
   parent: [ OrganBaseHeart, OrganArachnidInternal, OrganArachnidMetabolizer ]
   id: OrganArachnidHeart
+  # inkymed
+  components:
+  - type: Heart
+    normalHeartRate: 71
+    maxHeartRate: 295
+    fibrillationCapPositive: 140
+    fibrillationCapNegative: 35
+  # inkymed
 
 - type: entity
   parent: [ OrganBaseStomach, OrganArachnidInternal, OrganAnimalMetabolizer ]

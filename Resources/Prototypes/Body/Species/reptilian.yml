@@ -378,6 +378,11 @@
 - type: entity
   parent: [ OrganBaseHeart, OrganReptilianInternal, OrganReptilianMetabolizer ]
   id: OrganReptilianHeart
+  # inkymed
+  components:
+  - type: Heart
+    normalHeartRate: 78
+  # inkymed
 
 - type: entity
   parent: [ OrganBaseStomach, OrganReptilianInternal, OrganReptilianMetabolizer ]

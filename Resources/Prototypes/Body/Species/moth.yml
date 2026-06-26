@@ -344,6 +344,14 @@
 - type: entity
   parent: [ OrganBaseHeart, OrganMothInternal, OrganAnimalMetabolizer ]
   id: OrganMothHeart
+  # inkymed
+  components:
+  - type: Heart
+    normalHeartRate: 65
+    maxHeartRate: 285
+    fibrillationCapPositive: 140 # antagroll
+    fibrillationCapNegative: 35
+  # inkymed
 
 - type: entity
   parent: [ OrganBaseStomach, OrganMothInternal, OrganMothMetabolizer ]

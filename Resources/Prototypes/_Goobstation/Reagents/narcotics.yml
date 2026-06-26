@@ -90,6 +90,7 @@
       # inkymed
       - !type:ModifyHeartRate
         amount: -6
+        lowerCap: 19
       # /inkymed
 
 - type: reagent
@@ -385,7 +386,8 @@
           min: 10.5
       # inkymed
       - !type:ModifyHeartRate
-        amount: -5
+        amount: -3
+        lowerCap: 19 # fent lives matter
       # /inkymed
 
 - type: reagent

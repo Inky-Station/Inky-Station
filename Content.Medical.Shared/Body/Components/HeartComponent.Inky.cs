@@ -1,4 +1,5 @@
 using Content.Shared.Alert;
+using Content.Shared.FixedPoint;
 
 namespace Content.Medical.Shared.Body;
 
@@ -8,10 +9,19 @@ public sealed partial class HeartComponent
     /// The starting heartrate AKA what it should be
     /// </summary>
     [DataField]
-    public float NormalHeartRate = 100f;
+    public float NormalHeartRate = 80f;
 
+    /// <summary>
+    /// After what BPM the heartrate becomes critical
+    /// </summary>
     [DataField]
-    public float MaxHeartRate = 310f;
+    public float MaxHeartRate = 290f;
+
+    /// <summary>
+    /// After MaxHeartRate is reached, every second the heart has an X% chance of stopping
+    /// </summary>
+    [DataField]
+    public float HeartRateCriticalStopChance = 0.03f;
 
     [DataField]
     public float MinHeartRate = 0f;
@@ -24,12 +34,20 @@ public sealed partial class HeartComponent
     public float StabilisationRate = 1f;
 
     /// <summary>
-    /// if the current heartrate is +FibrillationCap or -FibrillationCap from the starting heart rate,
+    /// if the current heartrate is +FibrillationCapPositive from the starting heart rate,
     /// the entity will receive a fibrillation alert and will stop stabilising on itself,
-    /// eventually reaching either min or max cap on the heartrate
+    /// eventually reaching max cap on the heartrate
     /// </summary>
     [DataField]
-    public float FibrillationCap = 50f;
+    public float FibrillationCapPositive = 130f; // 210bpm is the max before going bad
+
+    /// <summary>
+    /// if the current heartrate is -FibrillationCapNegative from the stating heart rate,
+    /// the entity will receive a fibrillation alert and will stop stabilising on itself,
+    /// eventually reaching into min cap on the heartrate
+    /// </summary>
+    [DataField]
+    public float FibrillationCapNegative = 40f; // 40bpm is the min before going bad
 
     [ViewVariables, AutoNetworkedField]
     public float CurrentHeartRate;
