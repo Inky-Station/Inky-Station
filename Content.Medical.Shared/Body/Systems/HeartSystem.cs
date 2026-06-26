@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+/* inky - goida
+
 using Content.Medical.Common.Body;
 using Content.Medical.Shared.DelayedDeath;
 using Content.Shared.Body;
@@ -41,3 +43,5 @@ public sealed partial class HeartSystem : EntitySystem
             RemComp<DelayedDeathComponent>(args.Target);
     }
 }
+
+*/

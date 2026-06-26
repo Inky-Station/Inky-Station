@@ -1,10 +1,7 @@
+using Content.Inky.Common.Medical;
 using Content.Medical.Shared.Body;
 using Content.Shared.Alert;
 using Content.Shared.Body;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes;
-using Content.Shared.Damage.Systems;
-using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
@@ -17,19 +14,11 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 {
     [Dependency] private AlertsSystem _alerts = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private BodySystem _body = default!;
     [Dependency] private IRobustRandom _gambling = default!;
 
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
     private TimeSpan _nextUpdate;
-
-    private static readonly DamageSpecifier FlatlineDamage = new()
-    {
-        DamageDict = new Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2>
-        {
-            { "Bloodloss", 8 } // goida hardcode gg
-        }
-    };
 
     public override void Initialize()
     {
@@ -38,6 +27,7 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
         SubscribeLocalEvent<HeartComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<HeartComponent, RejuvenateEvent>(OnRejuvenate);
+        SubscribeLocalEvent<BodyComponent, FindWorkingHeartEvent>(OnFindHeart);
     }
 
     private void OnComponentInit(EntityUid uid, HeartComponent heart, ComponentInit args)
@@ -78,17 +68,31 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
         // fibrillating drifts AWAY from the normal heart rate (towards min/max)
         // being stable drifts TOWARDS the normal heart rate
-        var sign = (heart.CurrentHeartRate < heart.NormalHeartRate) ^ (GetState(heart) == HeartState.Fibrillating) ? 1 : -1;
-        var delta = heart.StabilisationRate * sign; // fucking kill yourself
+        var cur = heart.CurrentHeartRate;
+        var (min, max) = heart.FibrillationCaps;
+        var delta = heart.StabilisationRateModifier
+            * (cur - heart.NormalHeartRate)
+            * (cur - min) * (cur - max);
+        delta += Math.Sign(delta) * heart.StabilisationRate; // add static part
+
         UpdateRate(uid, heart, delta, false);
 
         if (heart.CurrentHeartRate >= heart.MaxHeartRate
             && _gambling.Prob(heart.HeartRateCriticalStopChance))
             SetRate(uid, heart, heart.MinHeartRate, false);
+    }
 
-        // apparently if your heart is dead you take damage
-        if (GetState(heart) == HeartState.Stopped)
-            _damageable.TryChangeDamage(body, FlatlineDamage, ignoreResistances: true);
+
+    // goida idk
+    private void OnFindHeart(Entity<BodyComponent> ent, ref FindWorkingHeartEvent args)
+    {
+        var hearts = _body.GetOrgans<HeartComponent>(ent.AsType());
+        foreach (var heart in hearts)
+            if (GetState(heart.Comp) != HeartState.Stopped)
+            {
+                args.Found = true;
+                return;
+            }
     }
 
     #region api
@@ -99,14 +103,11 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         bool canRestart)
     {
         var oldState = GetState(heart);
-        if (GetState(heart) == HeartState.Stopped && !canRestart)
+        if (oldState == HeartState.Stopped && !canRestart)
             return;
 
         // being at min or beyond just stops the heart
-        if (rate <= heart.MinHeartRate)
-            heart.CurrentHeartRate = heart.MinHeartRate;
-        else
-            heart.CurrentHeartRate = rate;
+        heart.CurrentHeartRate = rate <= heart.MinHeartRate ? heart.MinHeartRate : rate;
 
         var newState = GetState(heart);
         Dirty(uid, heart);
@@ -161,8 +162,8 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         if (heart.CurrentHeartRate <= heart.MinHeartRate)
             return HeartState.Stopped;
 
-        if (heart.CurrentHeartRate >= heart.NormalHeartRate + heart.FibrillationCapPositive
-            || heart.CurrentHeartRate <= heart.NormalHeartRate - heart.FibrillationCapNegative)
+        var (min, max) = heart.FibrillationCaps;
+        if (heart.CurrentHeartRate >= max || heart.CurrentHeartRate <= min)
             return HeartState.Fibrillating;
 
         return HeartState.Stable;

@@ -105,3 +105,10 @@
 - type: entity
   parent: [ OrganDwarfMetabolizer, OrganHumanHeart ]
   id: OrganDwarfHeart
+  # inkymed
+  components:
+  - type: Heart
+    normalHeartRate: 150
+    fibrillationCaps: 40,260
+    maxHeartRate: 370
+  # inkymed

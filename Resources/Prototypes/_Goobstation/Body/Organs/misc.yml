@@ -9,9 +9,8 @@
   - type: Heart
     normalHeartRate: 80
     maxHeartRate: 400 # military grade heart cybernetic son
-    fibrillationCapPositive: 200
-    fibrillationCapNegative: 50
-    stabilisationRate: 3
+    fibrillationCaps: 30,280
+    stabilisationRate: 2
   # inkymed
   - type: Sprite
     layers:
@@ -57,9 +56,8 @@
   - type: Heart # cmon let it have SOME use for 66tc
     normalHeartRate: 80
     maxHeartRate: 460
-    fibrillationCapPositive: 260
-    fibrillationCapNegative: 50
-    stabilisationRate: 4
+    fibrillationCaps: 30,300
+    stabilisationRate: 3
   # inkymed
   - type: Sprite
     sprite: _Goobstation/Objects/Misc/jumpstarter_heart.rsi

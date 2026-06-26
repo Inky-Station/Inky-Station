@@ -111,6 +111,7 @@
       - id: MaterialWoodPlank1 # Trauma - Bones on butchering humanoids. I AM NO TREE IM AN ENT.
         amount: 3
   - type: Bloodstream
+    requiresHeart: false # inky
     bloodReferenceSolution:
       reagents:
       - ReagentId: Sap

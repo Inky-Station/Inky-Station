@@ -31,23 +31,22 @@ public sealed partial class HeartComponent
     /// aims to be at StartingHeartRate
     /// </summary>
     [DataField]
-    public float StabilisationRate = 1f;
+    public float StabilisationRate = 0.5f;
 
     /// <summary>
-    /// if the current heartrate is +FibrillationCapPositive from the starting heart rate,
-    /// the entity will receive a fibrillation alert and will stop stabilising on itself,
-    /// eventually reaching max cap on the heartrate
+    /// extra factor for the parabolic formula
+    /// (cur - norm)(cur - minfib)(cur - maxfib)
     /// </summary>
     [DataField]
-    public float FibrillationCapPositive = 130f; // 210bpm is the max before going bad
+    public float StabilisationRateModifier = 0.00003f;
 
     /// <summary>
-    /// if the current heartrate is -FibrillationCapNegative from the stating heart rate,
+    /// if the current heartrate is beyond fibrillation caps,
     /// the entity will receive a fibrillation alert and will stop stabilising on itself,
-    /// eventually reaching into min cap on the heartrate
+    /// eventually reaching into a cap of the heartrate
     /// </summary>
     [DataField]
-    public float FibrillationCapNegative = 40f; // 40bpm is the min before going bad
+    public Vector2 FibrillationCaps = new(40f, 210f);
 
     [ViewVariables, AutoNetworkedField]
     public float CurrentHeartRate;

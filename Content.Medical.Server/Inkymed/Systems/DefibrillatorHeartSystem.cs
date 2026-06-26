@@ -60,7 +60,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             return;
 
         ent.Comp.HeartEntity = (heartUid, heart);
-        SetMonitorState(ent, (float)heart.CurrentHeartRate); // goida
+        SetMonitorState(ent, heart.CurrentHeartRate); // goida
         _ui.OpenUi(ent.Owner, ManualDefibrillatorUiKey.Key, args.User);
     }
 
@@ -82,7 +82,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             return;
         }
 
-        SetMonitorState(ent, (float)heart.Comp.CurrentHeartRate);
+        SetMonitorState(ent, heart.Comp.CurrentHeartRate);
     }
 
     private void ResetMonitor(Entity<ManualDefibrillatorComponent> ent)

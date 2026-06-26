@@ -232,11 +232,11 @@
     - Alive
     damage:
       types:
-        # <Trauma> - no passive healing
-        #Heat: -0.07
-        #Blunt: -0.05
-        #Piercing: -0.05
-        #Slash: -0.05
+        # <Trauma> - no passive healing # inky goida
+        Heat: -0.07
+        Blunt: -0.05
+        Piercing: -0.05
+        Slash: -0.05
         # </Trauma>
         Poison: -0.2 # needs to be less than the PendingZombieComponent does or they never become zombies by the disease.
   #- type: DamageVisuals # Shitmed
@@ -403,10 +403,9 @@
   # inkymed
   components:
   - type: Heart
-    normalHeartRate: 106
+    normalHeartRate: 110
     maxHeartRate: 330
-    fibrillationCapPositive: 110 # chud methed up vox...
-    fibrillationCapNegative: 60
+    fibrillationCaps: 50,220 # ПРОКЛЯТИЕ 220
   # inkymed
 
 - type: entity

@@ -348,9 +348,9 @@
   components:
   - type: Heart
     normalHeartRate: 65
-    maxHeartRate: 285
-    fibrillationCapPositive: 140 # antagroll
-    fibrillationCapNegative: 35
+    maxHeartRate: 265
+    fibrillationCaps: 35,165
+    fibrillationCaps:
   # inkymed
 
 - type: entity

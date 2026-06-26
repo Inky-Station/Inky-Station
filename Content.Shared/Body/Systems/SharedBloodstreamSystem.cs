@@ -1,5 +1,6 @@
 // <Trauma>
 using Content.Goobstation.Common.Bloodstream;
+using Content.Inky.Common.Medical;
 using Content.Medical.Common.Body;
 using Content.Medical.Common.Damage;
 using Content.Medical.Common.Targeting;
@@ -365,6 +366,16 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
         {
             return 0.0f;
         }
+
+        // inky
+        if (entity.Comp.RequiresHeart)
+        {
+            var ev = new FindWorkingHeartEvent();
+            RaiseLocalEvent(entity, ref ev);
+            if (!ev.Found)
+                return 0.0f;
+        }
+        // /inky
 
         var totalBloodLevel = FixedPoint2.New(entity.Comp.MaxVolumeModifier); // Can't go above max volume factor...
 

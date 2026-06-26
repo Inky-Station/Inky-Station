@@ -267,10 +267,9 @@
   # inkymed
   components:
   - type: Heart
-    normalHeartRate: 71
+    normalHeartRate: 70
     maxHeartRate: 295
-    fibrillationCapPositive: 140
-    fibrillationCapNegative: 35
+    fibrillationCaps: 35,210
   # inkymed
 
 - type: entity

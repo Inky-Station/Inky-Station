@@ -1,5 +1,4 @@
 using Content.Shared.EntityEffects;
-using Content.Shared.FixedPoint;
 
 namespace Content.Medical.Shared.Inkymed.EntityEffects.Effects;
 
@@ -48,10 +47,10 @@ public sealed partial class ModifyHeartRate : EntityEffectBase<ModifyHeartRate>
             if (Amount >= 0)
             {
                 lines.Add(Loc.GetString("entity-effect-guidebook-modify-heart-rate-stabilise-increase",
-                    ("amount", FixedPoint2.Abs(Amount)),
+                    ("amount", Math.Abs(Amount)),
                     ("highCap", HigherCap ?? 80))); // todo inkymed pass startingheartrate somehow
                 lines.Add(Loc.GetString("entity-effect-guidebook-modify-heart-rate-stabilise-decrease",
-                    ("amount", FixedPoint2.Abs(Amount)),
+                    ("amount", Math.Abs(Amount)),
                     ("lowCap", LowerCap ?? 80)));
             }
         }
@@ -60,7 +59,7 @@ public sealed partial class ModifyHeartRate : EntityEffectBase<ModifyHeartRate>
             var key = Amount >= 0
                 ? "entity-effect-guidebook-modify-heart-rate-increase"
                 : "entity-effect-guidebook-modify-heart-rate-decrease";
-            lines.Add(Loc.GetString(key, ("amount", FixedPoint2.Abs(Amount))));
+            lines.Add(Loc.GetString(key, ("amount", Math.Abs(Amount))));
         }
 
         if (HeartRestart)

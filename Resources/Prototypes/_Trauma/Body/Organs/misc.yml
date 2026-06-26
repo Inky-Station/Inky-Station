@@ -10,9 +10,8 @@
   - type: Heart
     normalHeartRate: 80
     maxHeartRate: 400 # military grade heart cybernetic son
-    fibrillationCapPositive: 200
-    fibrillationCapNegative: 50
-    stabilisationRate: 3
+    fibrillationCaps: 30,280
+    stabilisationRate: 2
   # inkymed
   - type: Cybernetics
   - type: Sprite
