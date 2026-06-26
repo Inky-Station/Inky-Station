@@ -1,0 +1,276 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Muted String (Low)
+- type: soundCollection
+  id: MutedStringLow
+  files:
+    - /Audio/_Inky/Voice/Barks/MutedString/C2.ogg
+
+- type: bark
+  id: MutedStringLow
+  name: Muted String (Low)
+  volume: 1.25
+  frequency: 0.7
+  minPitch: 0.8
+  maxPitch: 1.1
+  soundCollection:
+    collection: MutedStringLow
+
+# Muted String (Medium)
+- type: soundCollection
+  id: MutedStringMedium
+  files:
+  - /Audio/_Inky/Voice/Barks/MutedString/C3.ogg
+
+- type: bark
+  id: MutedStringMedium
+  name: Muted String (Medium)
+  volume: 1.5
+  frequency: 0.7
+  minPitch: 0.9
+  maxPitch: 1.1
+  soundCollection:
+    collection: MutedStringMedium
+
+# Muted String (High)
+- type: soundCollection
+  id: MutedStringHigh
+  files:
+  - /Audio/_Inky/Voice/Barks/MutedString/C4.ogg
+
+- type: bark
+  id: MutedStringHigh
+  name: Muted String (High)
+  volume: 1.25
+  frequency: 0.7
+  minPitch: 0.95
+  maxPitch: 1.15
+  soundCollection:
+    collection: MutedStringHigh
+
+# Moth Squeak
+
+- type: soundCollection
+  id: Moff
+  files:
+  - /Audio/Voice/Moth/moth_squeak.ogg
+
+- type: bark
+  id: Moff
+  name: Moff
+  volume: 1
+  frequency: 0.55
+  minPitch: 0.95
+  maxPitch: 1.15
+  soundCollection:
+    collection: Moff
+  speciesWhitelist:
+  - Moth
+
+# Moff Chitter
+
+- type: soundCollection
+  id: MoffChitter
+  files:
+  - /Audio/Voice/Moth/moth_chitter.ogg
+
+- type: bark
+  id: MoffChitter
+  name: Moff (Chitter)
+  volume: 1
+  frequency: 0.5
+  minPitch: 0.9
+  soundCollection:
+    collection: MoffChitter
+  speciesWhitelist:
+  - Moth
+
+# Roach
+
+- type: soundCollection
+  id: Roach
+  files:
+  - /Audio/_Inky/Voice/Barks/Roach/roach.ogg
+  - /Audio/_Inky/Voice/Barks/Roach/roach_ask.ogg
+  - /Audio/_Inky/Voice/Barks/Roach/roach_exclaim.ogg
+
+- type: bark
+  id: Roach
+  name: Roach
+  volume: 1
+  minPitch: 0.95
+  soundCollection:
+    collection: Roach
+  speciesWhitelist:
+  - Decapoid
+  # - Chitinid # if we get them
+
+# Synthetic (Beep, low)
+
+- type: soundCollection
+  id: SyntheticBeep
+  files:
+  - /Audio/_Inky/Voice/Barks/Synthetic/terminal_select.ogg
+
+- type: bark
+  id: SyntheticBeep
+  name: Synethetic (Beep)
+  volume: 1
+  frequency: 0.8
+  minPitch: 0.3
+  maxPitch: 0.6
+  soundCollection:
+    collection: SyntheticBeep
+  speciesWhitelist:
+  - IPC
+
+# Synthetic (Beep, high)
+
+- type: bark
+  id: SyntheticBeepHigh
+  name: Synethetic (Beep. High)
+  volume: 1
+  frequency: 0.8
+  minPitch: 0.6
+  maxPitch: 0.9
+  soundCollection:
+    collection: SyntheticBeep
+  speciesWhitelist:
+  - IPC
+
+# Synthetic (Grunt)
+
+- type: soundCollection
+  id: SyntheticGrunt
+  files:
+  - /Audio/_Inky/Voice/Barks/Synthetic/bloop.ogg
+
+- type: bark
+  id: SyntheticGrunt
+  name: Synthetic (Grunt)
+  volume: 2
+  frequency: 0.6
+  minPitch: 0.5
+  maxPitch: 1
+  soundCollection:
+    collection: SyntheticGrunt
+  speciesWhitelist:
+  - IPC
+
+# Synthetic (Normal)
+
+- type: soundCollection
+  id: SyntheticNormal
+  files:
+  - /Audio/_Inky/Voice/Barks/Synthetic/uplinkerror.ogg
+
+- type: bark
+  id: SyntheticNormal
+  name: Synthetic (Normal)
+  volume: 0.75
+  frequency: 0.7
+  minPitch: 0.95
+  soundCollection:
+    collection: SyntheticNormal
+  speciesWhitelist:
+  - IPC
+
+# Diona Chirp
+
+- type: soundCollection
+  id: DionaChirp
+  files:
+  - /Audio/Animals/nymph_chirp.ogg
+
+- type: bark
+  id: DionaChirp
+  name: Chirp (Diona)
+  volume: 1
+  frequency: 0.55
+  minPitch: 0.95
+  maxPitch: 1.05
+  soundCollection:
+    collection: DionaChirp
+  speciesWhitelist:
+  - Diona
+
+# Bird Chirp
+
+- type: soundCollection
+  id: BirdChirp
+  files:
+  - /Audio/_Inky/Voice/Barks/Avian/chirp.ogg
+
+- type: bark
+  id: BirdChirp
+  name: Chirp (Avian)
+  volume: 1
+  frequency: 0.7
+  minPitch: 0.75
+  maxPitch: 0.9
+  soundCollection:
+    collection: BirdChirp
+  speciesWhitelist:
+  - Vox
+  #- Avali
+  #- Resomi - he's rotting you know
+
+# Caw
+
+- type: soundCollection
+  id: Caw
+  files:
+  - /Audio/_Inky/Voice/Barks/Avian/caw.ogg
+
+- type: bark
+  id: Caw
+  name: Caw
+  volume: 0.75
+  frequency: 0.5
+  minPitch: 0.85
+  maxPitch: 1
+  soundCollection:
+    collection: Caw
+  speciesWhitelist:
+  - Vox
+  #- Avali
+  #- Resomi - he's rotting you know
+
+# Joke/Admeme
+
+
+# Bwoink
+
+- type: soundCollection
+  id: Bwoink
+  files:
+  - /Audio/Effects/adminhelp.ogg
+
+- type: bark
+  id: Bwoink
+  name: Bwoink
+  volume: 1
+  frequency: 0.35
+  minPitch: 0.65
+  maxPitch: 1.65
+  soundCollection:
+    collection: Bwoink
+  roundStart: false
+
+# Honk
+
+- type: soundCollection
+  id: Honk
+  files:
+  - /Audio/Items/bikehorn.ogg
+
+- type: bark
+  id: Honk
+  name: Honk
+  volume: 0.75
+  frequency: 0.45
+  minPitch: 0.9
+  maxPitch: 1.25
+  soundCollection:
+    collection: Honk
+  roundStart: false

@@ -40,8 +40,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 7 # Trauma, was 10
-        Structural: 15
+        Piercing: 7 # inky
+        Structural: 15 # inky
 
 - type: entity
   parent: PelletShotgun
@@ -50,8 +50,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgun
-    count: 6
-    spread: 15
+    count: 6 # inky
+    spread: 15 # inky
 
 - type: entity
   parent: [BaseBulletIncendiary, BaseBulletKinetic] # Trauma
@@ -62,7 +62,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 5 # Trauma, was 7
+        Piercing: 5 # inky
         # Heat: 3 # Trauma
   - type: IgnitionSource
     ignited: true
@@ -74,8 +74,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunIncendiary
-    count: 6 # Trauma, was 4
-    spread: 15
+    count: 6 # inky
+    spread: 15 # inky
 
 - type: entity
   parent: BaseBulletPractice
@@ -95,8 +95,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunPractice
-    count: 6
-    spread: 15
+    count: 6 # inky
+    spread: 15 # inky
 
 - type: entity
   parent: BaseBulletKinetic # Trauma
@@ -122,8 +122,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunImprovised
-    count: 10
-    spread: 45
+    count: 6 # inky
+    spread: 30 # inky
 
 - type: entity
   parent: [SolutionAmmo, SolutionToolVeryTiny, BaseBulletPractice]
@@ -195,9 +195,11 @@
   - type: Projectile
     damage:
       types:
-        # Radiation: 5 # Trauma
-        Piercing: 5
-      armorPenetration: 0.5 # Trauma
+      # <Trauma>
+      #  Radiation: 5
+        Piercing: 5 # inky
+      armorPenetration: 0.5
+      # </Trauma>
 
 - type: entity
   parent: PelletShotgunUranium
@@ -206,7 +208,7 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunUranium
-    count: 6 # Trauma, was 5
+    count: 6 # inky
     spread: 15 # inky
 
 - type: entity

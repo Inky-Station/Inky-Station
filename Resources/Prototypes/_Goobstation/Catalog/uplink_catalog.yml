@@ -18,7 +18,7 @@
   description: uplink-carpcaller-desc
   productEntity: CarpCaller
   cost:
-    Telecrystal: 35 # inky
+    Telecrystal: 30 # inky
   categories:
     -  UplinkDisruption
 
@@ -160,7 +160,7 @@
   description: uplink-c4-bundle-desc
   productEntity: ClothingBackpackDuffelSyndicateC4tBundle
   cost:
-    Telecrystal: 25 # inky
+    Telecrystal: 24
   categories:
   - UplinkExplosives
   conditions:
@@ -309,7 +309,7 @@
   icon: { sprite: /Textures/_Goobstation/Objects/Weapons/Guns/Pistols/Dualetta.rsi, state: icon }
   productEntity: BriefcaseSyndieDualettaBundleFilled
   cost:
-    Telecrystal: 50
+    Telecrystal: 45
   categories:
   - UplinkWeaponry
 
@@ -392,7 +392,7 @@
   icon: { sprite: /Textures/Clothing/OuterClothing/Hardsuits/syndiecommander.rsi, state: icon }
   productEntity: ClothingOuterHardsuitSyndieCommander
   cost:
-    Telecrystal: 75 # novelty item for the larp, doesnt come with bundle though because bulky fuck
+    Telecrystal: 100 # novelty item for the larp, doesnt come with bundle though because bulky fuck
   categories:
   - UplinkWearables
   conditions:
@@ -475,7 +475,6 @@
   #  blacklist:
   #    components:
   #    - SurplusBundle
-
 
 
 - type: listing
@@ -623,6 +622,11 @@
     - Passenger
   - !type:ListingLimitedStockCondition
     stock: 1
+  # inky
+  #- !type:BuyerWhitelistCondition
+  #  blacklist:
+  #    components:
+  #    - SurplusBundle
 
 - type: listing
   id: UplinkAdvMimery
@@ -825,7 +829,7 @@
   icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
   productEntity: AutosurgeonSandevistan
   cost:
-    Telecrystal: 65 # The urge to make it 65... # inky dont worry twin i got u
+    Telecrystal: 30 # inky this is quite dogshit actually
   categories:
   - UplinkImplants
   conditions:
@@ -834,21 +838,22 @@
       tags:
       - NukeOpsUplink
 
-- type: listing
-  id: NukieUplinkAutosurgeonSandevistan
-  name: uplink-autosurgeon-sandevistan-name
-  description: uplink-autosurgeon-sandevistan-desc
-  icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
-  productEntity: AutosurgeonSandevistan
-  cost:
-    Telecrystal: 124
-  categories:
-  - UplinkImplants
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - LoneOpsUplink
+# inky - you're a nukie not a tot
+#- type: listing
+#  id: NukieUplinkAutosurgeonSandevistan
+#  name: uplink-autosurgeon-sandevistan-name
+#  description: uplink-autosurgeon-sandevistan-desc
+#  icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
+#  productEntity: AutosurgeonSandevistan
+#  cost:
+#    Telecrystal: 124
+#  categories:
+#  - UplinkImplants
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - LoneOpsUplink
 
 
 - type: listing
@@ -1144,7 +1149,8 @@
   description: uplink-sleeping-carp-desc
   productEntity: SleepingCarpScroll
   cost:
-    Telecrystal: 70
+    Telecrystal: 65 # inky
+  #discountCategory: null # inky
   categories:
   - UplinkWeaponry
   conditions:
@@ -1325,6 +1331,7 @@
     whitelist:
     - RadioHost
 
+# inky
 - type: listing
   id: UplinkUndeterminedBundle
   name: uplink-undetermined-bundle-name
