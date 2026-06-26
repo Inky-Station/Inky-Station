@@ -251,7 +251,7 @@
         Blunt: 0.50
         Heat: 0.1
   - type: PassiveDamage # Trauma - no # inky - yes
-    SplitBehavior: SplitEnsureAllDamagedAndOrganic # inky
+    splitBehavior: SplitEnsureAllDamagedAndOrganic # inky
     allowedStates:
     - Alive
     damage:
