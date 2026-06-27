@@ -64,16 +64,6 @@ public sealed class DrawingHandleMultiShader(
         handle.DrawRect(rect, color, filled);
     }
 
-    public override void DrawRects(ReadOnlySpan<WorldRect> rects)
-    {
-        handle.DrawRects(rects);
-    }
-
-    public override void DrawRectsUnmodulated(ReadOnlySpan<WorldRect> rects)
-    {
-        handle.DrawRectsUnmodulated(rects);
-    }
-
     public override void DrawRect(in Box2Rotated rect, Color color, bool filled = true)
     {
         handle.DrawRect(in rect, color, filled);
@@ -93,15 +83,5 @@ public sealed class DrawingHandleMultiShader(
         UIBox2? subRegion = null)
     {
         handle.DrawTextureRectRegion(texture, in quad, modulate, subRegion);
-    }
-
-    public override void DrawTextureRects(Texture texture, ReadOnlySpan<WorldTextureRect> rects)
-    {
-        handle.DrawTextureRects(texture, rects);
-    }
-
-    public override void DrawTextureRectsUnmodulated(Texture texture, ReadOnlySpan<WorldTextureRect> rects)
-    {
-        handle.DrawTextureRectsUnmodulated(texture, rects);
     }
 }
