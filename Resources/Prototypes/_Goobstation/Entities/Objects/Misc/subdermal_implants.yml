@@ -62,9 +62,16 @@
   description: This implant allows the user to perform various Krav Maga moves.
   categories: [ HideSpawnMenu ]
   components:
-  - type: ComponentsImplant
-    added:
+  # inky - omfg kys
+  #- type: ComponentsImplant
+    #added:
     # - type: KravMaga
+  - type: KnowledgeGrantOnWear
+    skills:
+      MartialArtKravMaga: 50
+    experience:
+      MartialArtKravMaga: 2
+  # /inky
 
 - type: entity
   parent: BaseSubdermalImplant
