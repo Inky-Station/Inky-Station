@@ -381,7 +381,7 @@
   # inkymed
   components:
   - type: Heart
-    normalHeartRate: 78
+    normalRate: 78
   # inkymed
 
 - type: entity
