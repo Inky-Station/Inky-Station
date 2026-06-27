@@ -57,7 +57,7 @@
     - VoiceMaskImplant
     deimplantFailureDamage:
       types:
-        Cellural: 50 # inky goida
+        Cellular: 50 # inky goida
         Heat: 5
   - type: Sprite
     sprite: Objects/Specific/Medical/implanter.rsi
