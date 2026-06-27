@@ -60,7 +60,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             return;
 
         ent.Comp.HeartEntity = (heartUid, heart);
-        SetMonitorState(ent, heart.CurrentHeartRate); // goida
+        SetMonitorState(ent, heart.CurrentRate); // goida
         _ui.OpenUi(ent.Owner, ManualDefibrillatorUiKey.Key, args.User);
     }
 
@@ -82,7 +82,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             return;
         }
 
-        SetMonitorState(ent, heart.Comp.CurrentHeartRate);
+        SetMonitorState(ent, heart.Comp.CurrentRate);
     }
 
     private void ResetMonitor(Entity<ManualDefibrillatorComponent> ent)
@@ -151,7 +151,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
         }
 
         // if we're above normal and we have autostabilisation multiply by -1
-        var sign = (heart.CurrentHeartRate > heart.NormalHeartRate) && defib.AutoStabilisation ? -1 : 1;
+        var sign = (heart.CurrentRate > heart.NormalRate) && defib.AutoStabilisation ? -1 : 1;
         var delta = sign * defib.BpmZapHeal;
         _heartRate.UpdateRate(heartUid, heart, delta, false);
     }

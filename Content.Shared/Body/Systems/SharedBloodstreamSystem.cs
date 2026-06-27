@@ -95,6 +95,17 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
 
                 // deal bloodloss damage if their blood level is below a threshold.
                 var bloodPercentage = GetBloodLevel(uid);
+
+                // inky
+                if (bloodstream.RequiresHeart)
+                {
+                    var fwhev = new FindWorkingHeartEvent();
+                    RaiseLocalEvent(uid, ref fwhev);
+                    if (!fwhev.Found)
+                        bloodPercentage = 0f;
+                }
+                // /inky
+
                 if (bloodPercentage < bloodstream.BloodlossThreshold)
                 {
                     // bloodloss damage is based on the base value, and modified by how low your blood level is.
@@ -366,16 +377,6 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
         {
             return 0.0f;
         }
-
-        // inky
-        if (entity.Comp.RequiresHeart)
-        {
-            var ev = new FindWorkingHeartEvent();
-            RaiseLocalEvent(entity, ref ev);
-            if (!ev.Found)
-                return 0.0f;
-        }
-        // /inky
 
         var totalBloodLevel = FixedPoint2.New(entity.Comp.MaxVolumeModifier); // Can't go above max volume factor...
 

@@ -9,36 +9,26 @@ public sealed partial class HeartComponent
     /// The starting heartrate AKA what it should be
     /// </summary>
     [DataField]
-    public float NormalHeartRate = 80f;
+    public float NormalRate = 80f;
 
     /// <summary>
     /// After what BPM the heartrate becomes critical
     /// </summary>
     [DataField]
-    public float MaxHeartRate = 290f;
+    public float CriticalRate = 290f;
 
     /// <summary>
     /// After MaxHeartRate is reached, every second the heart has an X% chance of stopping
     /// </summary>
     [DataField]
-    public float HeartRateCriticalStopChance = 0.03f;
-
-    [DataField]
-    public float MinHeartRate = 0f;
-
-    /// <summary>
-    /// amount of heartrate being added or reduced per second
-    /// aims to be at StartingHeartRate
-    /// </summary>
-    [DataField]
-    public float StabilisationRate = 0.5f;
+    public float CriticalStopChance = 0.03f;
 
     /// <summary>
     /// extra factor for the parabolic formula
-    /// (cur - norm)(cur - minfib)(cur - maxfib)
+    /// cbrt((cur - norm)(cur - minfib)(cur - maxfib))
     /// </summary>
     [DataField]
-    public float StabilisationRateModifier = 0.03f;
+    public float RateUpdateModifier = 0.02f;
 
     /// <summary>
     /// if the current heartrate is beyond fibrillation caps,
@@ -49,7 +39,7 @@ public sealed partial class HeartComponent
     public Vector2 FibrillationCaps = new(40f, 210f);
 
     [ViewVariables, AutoNetworkedField]
-    public float CurrentHeartRate;
+    public float CurrentRate;
 
     [DataField]
     public ProtoId<AlertPrototype>? FibrillationAlert = "Fibrillations";

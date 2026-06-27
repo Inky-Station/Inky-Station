@@ -15,12 +15,12 @@ public sealed partial class ModifyHeartRateSystem : EntityEffectSystem<BodyCompo
 
     protected override void Effect(Entity<BodyComponent> ent, ref EntityEffectEvent<ModifyHeartRate> args)
     {
-        if (_body.GetOrgan(ent, HeartCategory) is not {} heartUid
+        if (_body.GetOrgan(ent, HeartCategory) is not { } heartUid
             || !TryComp<HeartComponent>(heartUid, out var heart))
             return;
 
         // if we're above normal and we have autostabilisation multiply by -1
-        var sign = (heart.CurrentHeartRate > heart.NormalHeartRate) && args.Effect.AutoStabilisation ? -1 : 1;
+        var sign = (heart.CurrentRate > heart.NormalRate) && args.Effect.AutoStabilisation ? -1 : 1;
         var delta = sign * args.Scale * args.Effect.Amount;
 
         _heartRate.UpdateRate(heartUid,

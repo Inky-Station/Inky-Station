@@ -24,7 +24,7 @@ public sealed partial class HealthAnalyzerControl
 
         var state = _heartRateSystem.GetState(heart);
         BpmLabel.Text = state != HeartState.Stopped
-            ? Loc.GetString("health-analyzer-window-entity-bpm-value-text", ("bpm", MathF.Round(heart.CurrentHeartRate)))
+            ? Loc.GetString("health-analyzer-window-entity-bpm-value-text", ("bpm", MathF.Round(heart.CurrentRate)))
             : Loc.GetString("health-analyzer-window-entity-bpm-stopped-text");
 
         switch (state)

@@ -70,7 +70,7 @@ public sealed partial class ManualDefibrillatorSystem : EntitySystem
 
     public void UpdateUi(Entity<ManualDefibrillatorComponent> ent)
     {
-        var bpm = ent.Comp.HeartEntity?.Comp.CurrentHeartRate;
+        var bpm = ent.Comp.HeartEntity?.Comp.CurrentRate;
 
         _ui.SetUiState(
             ent.Owner,

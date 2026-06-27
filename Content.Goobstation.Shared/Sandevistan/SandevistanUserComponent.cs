@@ -64,7 +64,7 @@ public sealed partial class SandevistanUserComponent : Component
     };
 
     [DataField, AutoNetworkedField]
-    public float MovementSpeedModifier = 2f;
+    public float MovementSpeedModifier = 1.5f; // inky
 
     [DataField, AutoNetworkedField]
     public float AttackSpeedModifier = 2f;
@@ -118,7 +118,7 @@ public sealed partial class SandevistanUserComponent : Component
     /// The slowfield, as the name suggests, slows thing that are nearby similarly to how it works in the show / game.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool SlowfieldEnabled = false;
+    public bool SlowfieldEnabled = true; // inky
 
     /// <summary>
     /// how many tiles to affect.
@@ -130,19 +130,19 @@ public sealed partial class SandevistanUserComponent : Component
     /// Speed multiplier for mobs in the slowfield.
     /// </summary>
     [DataField]
-    public float MobSpeedMultiplier = 0.5f;
+    public float MobSpeedMultiplier = 0.67f; // inky
 
     /// <summary>
     /// Speed multiplier for thrown items in the slowfield.
     /// </summary>
     [DataField]
-    public float ThrownItemSpeedMultiplier = 0.1f;
+    public float ThrownItemSpeedMultiplier = 0.4f; // inky
 
     /// <summary>
     /// Speed multiplier for projectiles in the slowfield.
     /// </summary>
     [DataField]
-    public float ProjectileSpeedMultiplier = 0.1f;
+    public float ProjectileSpeedMultiplier = 0.4f; // inky
 
     #endregion
 }

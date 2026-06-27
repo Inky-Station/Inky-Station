@@ -166,7 +166,7 @@
   - ClothingOuterDavidsJacketValid
   - AutosurgeonRightMantisBlade
   - AutosurgeonLeftMantisBlade
-  - AutosurgeonStatvekaSandevistan
+  - AutosurgeonSandevistan # inky
 
 - type: selectableSet
   id: SyndicateHackerSet

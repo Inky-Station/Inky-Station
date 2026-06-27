@@ -110,5 +110,5 @@
   - type: Heart
     normalHeartRate: 150
     fibrillationCaps: 40,260
-    maxHeartRate: 370
+    criticalRate: 370
   # inkymed

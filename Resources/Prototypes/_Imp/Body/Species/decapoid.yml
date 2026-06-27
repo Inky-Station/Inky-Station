@@ -339,8 +339,8 @@
   # inkymed
   components:
   - type: Heart
-    normalHeartRate: 125 # "The song "Crab Rave" by Noisestorm has a tempo of 125 BPM"
-    maxHeartRate: 310
+    normalRate: 125 # "The song "Crab Rave" by Noisestorm has a tempo of 125 BPM"
+    criticalRate: 310
     fibrillationCaps: 70,250
   # inkymed
 

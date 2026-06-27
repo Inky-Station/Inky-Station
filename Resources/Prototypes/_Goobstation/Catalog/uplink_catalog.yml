@@ -829,16 +829,16 @@
   icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
   productEntity: AutosurgeonSandevistan
   cost:
-    Telecrystal: 30 # inky this is quite dogshit actually
+    Telecrystal: 40 # inky this is quite dogshit actually
   categories:
   - UplinkImplants
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+  #conditions: # inky
+  #- !type:StoreWhitelistCondition
+  #  blacklist:
+  #    tags:
+  #    - NukeOpsUplink
 
-# inky - you're a nukie not a tot
+# inky
 #- type: listing
 #  id: NukieUplinkAutosurgeonSandevistan
 #  name: uplink-autosurgeon-sandevistan-name
@@ -908,7 +908,7 @@
   icon: { sprite: _Goobstation/Objects/Misc/berserker_heart.rsi, state: icon }
   productEntity: AutosurgeonBerserker
   cost:
-    Telecrystal: 66
+    Telecrystal: 40 # inky
   categories:
   - UplinkImplants
 
@@ -919,7 +919,7 @@
   icon: { sprite: _Goobstation/Objects/Misc/jumpstarter_heart.rsi, state: icon }
   productEntity: AutosurgeonJumpstarter
   cost:
-    Telecrystal: 60
+    Telecrystal: 40 # inky
   categories:
   - UplinkImplants
   conditions:

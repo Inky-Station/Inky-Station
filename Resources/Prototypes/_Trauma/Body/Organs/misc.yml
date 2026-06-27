@@ -1,36 +1,35 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: entity
-  parent: [ OrganHumanHeart, BaseSyndicateContraband ]
-  id: OrganHeartStatvekaSandevistan
-  name: mi13 statveka sandevistan
-  description: A cybernetic heart implant that drastically improves the user's speed and reflexes for a short duration, at the cost of endurance. Once used by a certain mercenary.
-  components:
-  # inkymed
-  - type: Heart
-    normalHeartRate: 80
-    maxHeartRate: 400 # military grade heart cybernetic son
-    fibrillationCaps: 30,280
-    stabilisationRate: 2
-  # inkymed
-  - type: Cybernetics
-  - type: Sprite
-    sprite: _Goobstation/Objects/Misc/sandevistan.rsi
-    layers:
-    - state: icon
-    scale: 0.5, 0.5
-  - type: OrganActions
-    actions:
-    - ActionToggleSandevistan
-  - type: OrganComponents
-    onAdd:
-    - type: SandevistanUser
-      movementSpeedModifier: 1
-      attackSpeedModifier: 1
-      doAfterSpeedEnabled: false
-      slowfieldEnabled: true
-      thresholds:
-        Warning: 6
-        Shaking: 10
-        Damage: 20
-        Disable: 24
+#- type: entity
+#  parent: [ OrganHumanHeart, BaseSyndicateContraband ]
+#  id: OrganHeartStatvekaSandevistan
+#  name: mi13 statveka sandevistan
+#  description: A cybernetic heart implant that drastically improves the user's speed and reflexes for a short duration, at the cost of endurance. Once used by a certain mercenary.
+#  components:
+#  # inkymed
+#  - type: Heart
+#    normalRate: 80
+#    criticalRate: 400 # military grade heart cybernetic son
+#    fibrillationCaps: 30,280
+#  # inkymed
+#  - type: Cybernetics
+#  - type: Sprite
+#    sprite: _Goobstation/Objects/Misc/sandevistan.rsi
+#    layers:
+#    - state: icon
+#    scale: 0.5, 0.5
+#  - type: OrganActions
+#    actions:
+#    - ActionToggleSandevistan
+#  - type: OrganComponents
+#    onAdd:
+#    - type: SandevistanUser
+#      movementSpeedModifier: 1
+#      attackSpeedModifier: 1
+#      doAfterSpeedEnabled: false
+#      slowfieldEnabled: true
+#      thresholds:
+#        Warning: 6
+#        Shaking: 10
+#        Damage: 20
+#        Disable: 24
