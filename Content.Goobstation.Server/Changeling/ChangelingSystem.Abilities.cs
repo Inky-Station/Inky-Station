@@ -438,7 +438,7 @@ public sealed partial class ChangelingSystem
         if (reviveEv.Cancelled)
             return;
 
-        args.Handled = true;
+        // args.Handled = true; // inky
 
         if (!comp.IsInStasis)
         {
@@ -464,6 +464,8 @@ public sealed partial class ChangelingSystem
         RaiseLocalEvent(uid, stasisEv);
 
         Popup.PopupEntity(Loc.GetString("changeling-stasis-exit"), uid, uid);
+
+        args.Handled = true; // inky
 
         // stuns or knocks down anybody grabbing you
         if (_pull.IsPulled(uid))
