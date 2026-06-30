@@ -339,7 +339,7 @@
     currencyWhitelist:
     - EvolutionPoint
     balance:
-      EvolutionPoint: 6
+      EvolutionPoint: 10 # inky - keep in sync with Content.Goobstation.Server/Changeling/GameTicking/Rules/ChangelingRuleSystem.cs
   # </Trauma>
   - type: MindRole
     antagPrototype: Changeling
