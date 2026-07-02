@@ -8,6 +8,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.FixedPoint; // inky
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Power;
 using JetBrains.Annotations;
@@ -155,13 +156,18 @@ namespace Content.Goobstation.Server.Chemistry.EntitySystems
         {
             var outputContainer = _itemSlotsSystem.GetItemOrNull(reagentDispenser, SharedEnergyReagentDispenser.OutputSlotName);
             if (outputContainer is not { Valid: true }
-                || !_solutionContainerSystem.TryGetFitsInDispenser(outputContainer.Value, out var solution, out _))
+                || !_solutionContainerSystem.TryGetFitsInDispenser(outputContainer.Value, out var solution, out var targetSolution)) // inky eidt
                 return;
 
             if (!TryComp<BatteryComponent>(reagentDispenser, out var batteryComp))
                 return;
 
-            var amount = (int) reagentDispenser.Comp.DispenseAmount;
+            // Inky
+            var amount = FixedPoint2.Min(reagentDispenser.Comp.DispenseAmount, targetSolution.AvailableVolume);
+            if (amount <= 0)
+                return;
+            // /inky
+
             var powerRequired = GetPowerCostForReagent(message.ReagentId, amount, reagentDispenser.Comp);
             var currentCharge = _battery.GetCharge((reagentDispenser, batteryComp));
 
@@ -201,9 +207,9 @@ namespace Content.Goobstation.Server.Chemistry.EntitySystems
         private void ClickSound(Entity<EnergyReagentDispenserComponent> reagentDispenser) =>
             _audioSystem.PlayPvs(reagentDispenser.Comp.ClickSound, reagentDispenser, AudioParams.Default.WithVolume(-2f));
 
-        private static float GetPowerCostForReagent(string reagentId, int amount, EnergyReagentDispenserComponent comp)
+        private static float GetPowerCostForReagent(string reagentId, FixedPoint2 amount, EnergyReagentDispenserComponent comp)
             => comp.Reagents.TryGetValue(reagentId, out var cost)
-                ? cost * amount
+                ? cost * amount.Float()
                 : 0f;
 
         private void OnMapInit(Entity<EnergyReagentDispenserComponent> entity, ref MapInitEvent args) =>
