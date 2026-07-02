@@ -17,6 +17,11 @@
       visible: true
     - state: closed
       map: ["enum.OpenableVisuals.Layer"]
+  # inkymed
+  - type: Charger
+    chargeRate: 1
+    slotId: ItemCabinet
+  # /inkymed
   - type: ItemSlots
     slots:
       ItemCabinet:
