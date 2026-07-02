@@ -9,21 +9,12 @@ public sealed partial class BrainSystem
 {
     private void InitializeInky()
     {
-        SubscribeLocalEvent<AutismComponent, MapInitEvent>(OnAutism);
-        SubscribeLocalEvent<AutismComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<AutismComponent, MapInitEvent>((ent, ref args) => UpdateBrainAlert(ent.Owner, brain => brain.AutismAlert, true));
+        SubscribeLocalEvent<AutismComponent, ComponentShutdown>((ent, ref args) => UpdateBrainAlert(ent.Owner, brain => brain.AutismAlert, false));
 
-        SubscribeLocalEvent<LobotomisedComponent, MapInitEvent>(OnLobotomised);
-        SubscribeLocalEvent<LobotomisedComponent, ComponentShutdown>(OnSs14Deletion);
+        SubscribeLocalEvent<LobotomisedComponent, MapInitEvent>((ent, ref args) => UpdateBrainAlert(ent.Owner, brain => brain.LobotomyAlert, true));
+        SubscribeLocalEvent<LobotomisedComponent, ComponentShutdown>((ent, ref args) => UpdateBrainAlert(ent.Owner, brain => brain.LobotomyAlert, false));
     }
-
-    private void OnAutism(Entity<AutismComponent> ent, ref MapInitEvent args) => UpdateBrainAlert(ent.Owner, brain => brain.AutismAlert, true);
-
-    private void OnShutdown(Entity<AutismComponent> ent, ref ComponentShutdown args) => UpdateBrainAlert(ent.Owner, brain => brain.AutismAlert, false);
-
-    private void OnLobotomised(Entity<LobotomisedComponent> ent, ref MapInitEvent args) => UpdateBrainAlert(ent.Owner, brain => brain.LobotomyAlert, true);
-
-    private void OnSs14Deletion(Entity<LobotomisedComponent> ent, ref ComponentShutdown args) => UpdateBrainAlert(ent.Owner, brain => brain.LobotomyAlert, false);
-
     private void UpdateBrainAlert(
         EntityUid uid,
         Func<BrainComponent, ProtoId<AlertPrototype>?> getAlert, // i am so fucking scared of words
