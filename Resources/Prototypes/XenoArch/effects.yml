@@ -127,6 +127,8 @@
       weight: 4.0
     - id: XenoArtifactEffectCreationGasCarbonDioxide
       weight: 4.0
+    - id: XenoArtifactGenerateEnergy #inky - was unused
+      weight: 2.0
 
 - type: entityTable
   id: XenoArtifactEffectsHandheldOnlyTable
@@ -528,7 +530,7 @@
       min: 1
       max: 1
     chemicalSolution:
-      maxVol: 100
+      maxVol: 75 #inky 100 -> 75
       canReact: false
     possibleChemicals:
     - Potassium
@@ -560,7 +562,7 @@
       max: 3
     replaceDescription: true
     chemicalSolution:
-      maxVol: 500
+      maxVol: 300 #inky 500 -> 300
       canReact: false
     possibleChemicals:
     - Aluminium
@@ -584,6 +586,13 @@
     - Sodium
     - Water
     - Sulfur
+    #inky start
+    - Uranium
+    - Zinc
+    - Silver
+    - Brass
+    - Ash
+    #inky end
 
 - type: entity
   id: XenoArtifactThrowThingsAround
@@ -627,6 +636,18 @@
     - VentCrud
     - WeldingFuel
     - JuiceThatMakesYouWeh
+    #inky start
+    - Sulfur
+    - Fersilicite
+    - Fiber
+    - Lye
+    - SodiumHydroxide
+    - Iodine
+    - Iron
+    - Lithium
+    - Uranium
+    - Water
+    #inky end
 
 - type: entity
   id: XenoArtifactRandomInstrumentSpawn
@@ -779,7 +800,7 @@
 - type: entity
   id: XenoArtifactRareMaterialSpawnSilver
   parent: BaseXenoArtifactEffect
-  description: Create rare materials
+  description: Create silver #inky
   components:
   - type: XenoArtifactNode
     maxDurability: 4
@@ -892,9 +913,17 @@
       table: !type:GroupSelector
         children:
         - id: MobCarpMagic
-          weight: 1.0
+          weight: 0.15 #inky
         - id: MobCarpHolo
           weight: 1.0
+        - id: MobCarp #inky start
+          weight: 1.0
+        - id: MobCarpRainbow
+          weight: 0.05
+        - id: MobShark
+          weight: 0.2
+        - id: MobDragonDungeon
+          weight: 0.01 #inky end
 
 - type: entity
   id: XenoArtifactFaunaSpawn
@@ -971,6 +1000,25 @@
         - id: MobSpiderSpace
         - id: MobPurpleSnake
         - id: MobKangarooSpace
+        #inky start
+        - id: CMMobXenoDrone
+        - id: MobBasilisk
+        - id: MobAdultSlimesBlueAngry
+        - id: MobArgocyteCrawler
+        - id: MobArgocytePouncer
+        - id: MobArgocyteFounder
+        - id: MobFermidWarrior
+        - id: MobFermidSmall
+        - id: MobFermidLarge
+        - id: MobFleshLover
+        - id: MobFleshClamp
+        - id: MobFleshJared
+        - id: MobFleshGolem
+        - id: MobClownSpider
+        - id: MobAdultSlimesGreenAngry
+        - id: MobHivelord
+        - id: MobLaserRaptor
+        #inky end
 
 - type: entity
   id: XenoArtifactCashSpawn
@@ -1001,6 +1049,8 @@
           weight: 0.25
         - id: SpaceCash1000
           weight: 0.1
+        - id: SpaceCash10000 #inky
+          weight: 0.05 #inky
 
 - type: entity
   id: XenoArtifactShatterWindows
@@ -1041,6 +1091,22 @@
     - Kelotane
     - Dexalin
     - Omnizine
+    #inky start
+    - Ethylredoxrazine
+    - Immurin
+    - Mitotrophin
+    - Monover
+    - Ibuprofen
+    - Tricordrazine
+    - Hyronalin
+    - TranexamicAcid
+    - Oculine
+    - Bozaide
+    - Diphenhydramine
+    - Heparin
+    - PulpedBananaPeel
+    - Ultravasculine
+    #inky end
 
 - type: entity
   id: XenoArtifactFoamDangerous
@@ -1063,11 +1129,22 @@
     - ChloralHydrate
     - Mold
     - Amatoxin
+    #inky start
+    - Desoxyephedrine
+    - FluorosulfuricAcid
+    - Cyanide
+    - Bungotoxin
+    - Phenol
+    - HeartbreakerToxin
+    - Genecide
+    - Mechanotoxin
+    - Pendetide
+    #inky end
 
 - type: entity
   id: XenoArtifactPuddleRare
   parent: BaseXenoArtifactEffect
-  description: Creates puddle of helpful chemicals
+  description: Creates puddle of chemicals #Inky - not helpful
   components:
   - type: XAECreatePuddle
     chemAmount:
@@ -1075,7 +1152,7 @@
       max: 3
     replaceDescription: true
     chemicalSolution:
-      maxVol: 500
+      maxVol: 300 # inky 500 -> 300
       canReact: false
     possibleChemicals:
     - Dermaline
@@ -1093,6 +1170,17 @@
     - Desoxyephedrine
     - Pax
     - Siderlac
+    #inky start
+    - FerrochromicAcid
+    - Mold
+    - Cryptobiolin
+    - Leporazine
+    - THC
+    - Tirimol
+    - UnstableMutagen
+    - Cryoxadone
+    - Genecide
+    #inky end
 
 - type: entity
   id: XenoArtifactAnomalySpawn
