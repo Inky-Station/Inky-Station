@@ -338,6 +338,9 @@
       - type: OhioAccent
       - type: RatvarianLanguage
       - type: Clumsy
+      # inkymed
+      - type: Lobotomised
+      # /inkymed
     inverse: true
   - type: SurgeryPartCondition
     parts: [ Head ]
@@ -361,5 +364,8 @@
       - type: OhioAccent
       - type: RatvarianLanguage
       - type: Clumsy
+      # inkymed
+      - type: Lobotomised
+      # /inkymed
   - type: SurgeryPartCondition
     parts: [ Head ]

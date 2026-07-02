@@ -1,6 +1,7 @@
 // <Trauma>
 using Content.Goobstation.Common.Body;
 using Content.Medical.Common.Body;
+using Content.Shared.Alert;
 using Content.Shared.Body;
 using Robust.Shared.Timing;
 // </Trauma>
@@ -21,6 +22,13 @@ public sealed partial class BrainSystem : EntitySystem
     // </Trauma>
     [Dependency] private SharedMindSystem _mindSystem = default!;
 
+    // inkymed
+    [Dependency] private AlertsSystem _alerts = default!;
+
+    [Dependency] private EntityQuery<BrainComponent> _brainQ = default!;
+    [Dependency] private EntityQuery<OrganComponent> _organQ = default!;
+    // /inkymed
+
     public override void Initialize()
     {
         base.Initialize();
@@ -28,6 +36,10 @@ public sealed partial class BrainSystem : EntitySystem
         SubscribeLocalEvent<BrainComponent, OrganGotInsertedEvent>(OnAdded); // Shitmed - actual event handler
         SubscribeLocalEvent<BrainComponent, OrganGotRemovedEvent>(OnRemoved); // Shitmed - actual event handler
         SubscribeLocalEvent<BrainComponent, PointAttemptEvent>(OnPointAttempt);
+
+        // inkymed
+        InitializeInky();
+        // /inkymed
     }
 
     private void HandleMind(EntityUid newEntity, EntityUid oldEntity)

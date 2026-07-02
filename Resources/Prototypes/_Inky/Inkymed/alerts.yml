@@ -13,3 +13,21 @@
     state: heartstop
   name: alerts-heartstop-name
   description: alerts-heartstop-desc
+
+- type: alert
+  id: Autism
+  icons:
+  - sprite: /Textures/_Inky/Interface/Inkymed/alerts.rsi
+    state: autism
+  name: alerts-joyfull-name
+  description: alerts-joyfull-desc
+
+- type: alert
+  id: Lobotomy
+  icons:
+  - sprite: /Textures/_Inky/Interface/Inkymed/alerts.rsi
+    state: lobotomy
+  name: alerts-lobotomy-name
+  description: alerts-lobotomy-desc
+
+
