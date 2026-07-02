@@ -1,3 +1,7 @@
+using Content.Shared.Polymorph;
+using Content.Shared.Store;
+using Robust.Shared.Prototypes;
+
 namespace Content.Inky.Shared.Werewolf.Components;
 
 // fucking KILL YOURSELF!!!!
@@ -32,6 +36,11 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
     [DataField]
     public int Currency; // needed becasue polymorph & store shitcode
 
+    [DataField]
+    public ProtoId<PolymorphPrototype>? CurrentMutation;
+
+    [DataField]
+    public HashSet<ProtoId<StoreCategoryPrototype>> StoreCategories = new();
     #region transform
 
     /// <summary>

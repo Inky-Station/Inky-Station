@@ -11,11 +11,14 @@
     duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg # goida
     componentsToTransfer:
-    - component: WerewolfAbilities
+    - component: WerewolfAbilities # todo werewolf KILL
     - component: Store
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
+    - component: Actions
+    - component: ActionsContainer # ???
+    - component: Hunger
 
 - type: polymorph
   id: WerewolfTransformWerehuman
@@ -35,6 +38,9 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
+    - component: Actions
+    - component: ActionsContainer
+    - component: Hunger
 
 - type: polymorph
   id: WerewolfTransformDirewolf
@@ -54,6 +60,9 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
+    - component: Action
+    - component: ActionsContainer
+    - component: Hunger
 
 - type: polymorph
   id: WerewolfTransformWhite
@@ -73,6 +82,9 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
+    - component: Actions
+    - component: ActionsContainer
+    - component: Hunger
 
 - type: polymorph
   id: WerewolfTransformWhiteClaws # goida
@@ -92,6 +104,9 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
+    - component: Actions
+    - component: ActionsContainer
+    - component: Hunger
 
 - type: polymorph
   id: WerewolfTransformBlack
@@ -111,3 +126,6 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
+    - component: Actions
+    - component: ActionsContainer
+    - component: Hunger

@@ -9,9 +9,12 @@ using Content.Server.Pinpointer;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Popups;
 using Content.Server.Store.Systems;
+using Content.Shared.Actions;
+using Content.Shared.Actions.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
@@ -19,6 +22,7 @@ using Content.Shared.Fluids;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Polymorph;
+using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
@@ -33,8 +37,8 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
     [Dependency] private StoreSystem _store = default!;
     [Dependency] private PopupSystem _popup = default!;
     [Dependency] private MindSystem _mind = default!;
-    [Dependency] private SharedWerewolfAbilitiesSystem _werewolf = default!; // hell.
     [Dependency] private HungerSystem _hunger = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
 
     // holy fuck
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
@@ -47,6 +51,9 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private NavMapSystem _navMap = default!;
     [Dependency] private ChatSystem _chat = default!;
+
+    [Dependency] private EntityQuery<CombatModeComponent> _kombatBot = default!;
+    [Dependency] private EntityQuery<ActionComponent> _actionQuery = default!;
 
     public override void Initialize()
     {
@@ -70,6 +77,8 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
             || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
             return;
 
+        SyncMind(uid, component, mindComp);
+
         if (mindComp.BlockTransfurm)
         {
             _popup.PopupEntity(Loc.GetString("werewolf-transfurm-block"), uid, uid);
@@ -89,7 +98,6 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
             component.Transfurmed = false;
             mindComp.TransfurmReady = false;
             _polymorph.Revert(uid);
-            // _sharedWerewolf.SyncActions(uid, component);
             args.Handled = true;
             mindComp.Accumulator = 0f;
             return;
@@ -113,16 +121,26 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
                 _hunger.SetHunger(args.NewEntity, _hunger.GetHunger(oldHunger));
             return;
         }
-        _polymorph.CopyPolymorphComponent<WerewolfAbilitiesComponent>(uid, args.NewEntity);
-        _polymorph.CopyPolymorphComponent<HungerComponent>(uid, args.NewEntity);
+
+        if (_kombatBot.TryComp(args.OldEntity, out var combat))
+        {
+            if (combat.CombatToggleActionEntity is { } oldAction
+                && _actionQuery.TryComp(oldAction, out var oldActionComp)
+                && oldActionComp.Container != null) // holy fucking kill yoursefel
+            {
+                _actions.AddAction(args.NewEntity, (oldAction, oldActionComp), oldActionComp.Container.Value);
+                _actions.RemoveAction(args.NewEntity, (oldAction, oldActionComp));
+                _actions.AddAction(args.OldEntity, (oldAction, oldActionComp), oldActionComp.Container.Value);
+            }
+
+            combat.CombatToggleActionEntity = null;
+            _actions.AddAction(args.NewEntity, ref combat.CombatToggleActionEntity, combat.CombatToggleAction);
+            _actions.SetToggled(combat.CombatToggleActionEntity, combat.IsInCombatMode);
+            Dirty(args.NewEntity, combat);
+        }
 
         if (TryComp<HungerComponent>(uid, out var oldHungerTakeTwo)) // Transfer hunger value
             _hunger.SetHunger(args.NewEntity, _hunger.GetHunger(oldHungerTakeTwo));
-
-        // _sharedWerewolf.SyncActions(args.NewEntity, Comp<WerewolfAbilitiesComponent>(args.NewEntity)); // todo
-        var werewolf = Comp<WerewolfAbilitiesComponent>(args.NewEntity);
-        // werewolf.ActionEntities.Clear();
-        _werewolf.SyncActions(args.NewEntity, werewolf);
 
         var ev = new SelectFirstMartialArtEvent(args.NewEntity); // when you polymorph, it resets your current selected martial art
         RaiseLocalEvent(ev); // this is a very lazy solution but hey it works
@@ -130,14 +148,20 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
 
     private void OnOpenStore(Entity<WerewolfAbilitiesComponent> ent, ref EventWerewolfOpenStore args)
     {
-        if (!TryComp<StoreComponent>(ent, out var store)
-            || ent.Comp.Transfurmed == true)
+        if (ent.Comp.Transfurmed)
+            return;
+
+        WerewolfMindComponent? mindComp = null;
+        if (_mind.TryGetMind(ent, out var mindId, out _) && TryComp<WerewolfMindComponent>(mindId, out mindComp))
+            SyncMind(ent, ent.Comp, mindComp);
+
+        if (!TryComp<StoreComponent>(ent, out var store))
             return;
 
         // ok hear me out
         // when you do shit in the WW form that gives you points, it saves in mind and then the next time you open store it adds up
         // you HAVE to do ts because why? POLYMORPH IS FUCKING SHIT OF COURSE! ig you can store the old uid for store and shit but whatever
-        if (_mind.TryGetMind(ent, out var mindId, out _) && TryComp<WerewolfMindComponent>(mindId, out var mindComp))
+        if (mindComp != null)
         {
             if (mindComp.Currency > 0)
             {
@@ -153,9 +177,28 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
     private void OnChangeType(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfChangeType args)
     {
         comp.CurrentMutation = args.WerewolfType;
+        Dirty(uid, comp);
+
+        if (_mind.TryGetMind(uid, out var mindId, out _) && TryComp<WerewolfMindComponent>(mindId, out var mindComp))
+            mindComp.CurrentMutation = args.WerewolfType;
+
         _popup.PopupEntity(Loc.GetString("werewolf-mutation-changed", ("mutation", args.WerewolfType)), uid, uid); // todo locale
 
         args.Handled = true;
+    }
+
+    private void SyncMind(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfMindComponent mindComp) // oh my god brother todo werewolf rename to be better
+    {
+        if (mindComp.CurrentMutation is { } currentMutation
+            && comp.CurrentMutation != currentMutation)
+        {
+            comp.CurrentMutation = currentMutation;
+            Dirty(uid, comp);
+        }
+
+        var store = EnsureComp<StoreComponent>(uid);
+        foreach (var category in mindComp.StoreCategories)
+            store.Categories.Add(category);
     }
 
     #endregion

@@ -1,10 +1,9 @@
-using System.Linq;
 using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
-using Content.Inky.Shared.Werewolf.Systems;
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
+using Content.Shared.Actions;
 using Content.Shared.EntityEffects;
 using Content.Shared.EntityEffects.Effects;
 using Content.Shared.Roles;
@@ -21,7 +20,7 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly SharedRoleSystem _role = default!;
-    [Dependency] private readonly SharedWerewolfAbilitiesSystem _werewolf = default!; // hell.
+    [Dependency] private readonly ActionContainerSystem _actions = default!;
     [Dependency] private readonly SharedEntityEffectsSystem _effects = default!;
 
     public readonly SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/_Inky/Antag/Werewolf/werewolf_start.ogg");
@@ -78,8 +77,13 @@ public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
         EnsureComp<WerewolfAbilitiesComponent>(target, out var werewolfComp);
         EnsureComp<WerewolfMindComponent>(mindId, out var werewolfMind);
 
-        werewolfMind.UnlockedActions = werewolfComp.WerewolfActions.Select(id => (string)id).ToList(); // add the actions to the werewolf mind (polymorph shitcode)
-        _werewolf.SyncActions(target, werewolfComp);
+        foreach (var action in werewolfComp.WerewolfActions)
+        {
+            if (!werewolfMind.UnlockedActions.Contains(action))
+                werewolfMind.UnlockedActions.Add(action);
+
+            _actions.AddAction(mindId, action);
+        }
 
         // add store
 

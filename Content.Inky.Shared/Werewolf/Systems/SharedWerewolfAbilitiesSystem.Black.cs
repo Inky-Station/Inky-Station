@@ -5,13 +5,18 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
+using Content.Shared.Store;
 using Content.Shared.Store.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
 
 public sealed partial class SharedWerewolfAbilitiesSystem
 {
+    private const string WerewolfTransformBlack = "WerewolfTransformBlack";
+    private static readonly ProtoId<ListingPrototype> WerewolfBlackListing = "WerewolfBlack";
+
     public void InitializeBlack()
     {
         SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfBlackBite>(TryBite);
@@ -129,7 +134,14 @@ public sealed partial class SharedWerewolfAbilitiesSystem
             if (!TryComp<WerewolfAbilitiesComponent>(quEnt, out var wComp))
                 continue;
 
-            wComp.CurrentMutation = "WerewolfTransformBlack";
+            wComp.CurrentMutation = WerewolfTransformBlack;
+            Dirty(quEnt, wComp);
+
+            if (TryComp<WerewolfMindComponent>(mindEnt, out var werewolfMind))
+            {
+                werewolfMind.CurrentMutation = WerewolfTransformBlack;
+                werewolfMind.StoreCategories.Add(quComp.Store);
+            }
 
             var store = EnsureComp<StoreComponent>(quEnt);
             store.Categories.Add(quComp.Store);

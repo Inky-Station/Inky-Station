@@ -1,20 +1,13 @@
 using System.Numerics;
 using Content.Inky.Shared.Werewolf.Components;
-using Content.Medical.Shared.Wounds;
 using Content.Shared.Actions;
-using Content.Shared.Body;
-using Content.Shared.Body.Systems;
 using Content.Shared.Camera;
-using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Mind;
-using Content.Shared.Nutrition.EntitySystems;
-using Content.Shared.Pinpointer;
 using Content.Shared.Popups;
 using Content.Shared.Station;
 using Content.Shared.Stunnable;
@@ -24,7 +17,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
@@ -33,9 +25,10 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
 {
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private ActionContainerSystem _actionCon = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
     [Dependency] private SharedCameraRecoilSystem _recoil = default!;
-    [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private EntityLookupSystem _entityLookup = default!;
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
@@ -71,7 +64,6 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
         SubscribeLocalEvent<WerewolfAbilitiesComponent, ThrowDoHitEvent>(OnHit);
 
         SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfRegen>(TryRegen);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfActionRemoveEvent>(WerewolfActionRemoveEvent);
 
         InitializeDire();
         InitializeWhite();
@@ -130,6 +122,14 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
     private const string DogTag = "VulpEmotes";
     public void OnStartup(EntityUid uid, WerewolfAbilitiesComponent comp, ref ComponentStartup args)
     {
+        if (_mind.TryGetMind(uid, out var mindId, out _)
+            && TryComp<WerewolfMindComponent>(mindId, out var mindComp)
+            && mindComp.CurrentMutation is { } currentMutation)
+        {
+            comp.CurrentMutation = currentMutation;
+            return;
+        }
+
         if (_tag.HasTag(uid, DogTag))
         {
             comp.CurrentMutation = "WerewolfTransformWerehuman"; // TODO WEREWOLF unshit CurrentMutation to not use fucking string??? are you fucking retarded?????
@@ -238,70 +238,26 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
             return;
 
         // update the mind to have those new actions
-        if (args.OldActionId != null)
+        if (args.OldActionId != null) // holy fucking kill myself
+        {
             mindComp.UnlockedActions.Remove(args.OldActionId);
+            if (_actions.TryGetActionById(mindId, args.OldActionId, out var oldAction))
+                _actionCon.RemoveAction(oldAction.Value.AsNullable());
+            else if (_actions.TryGetActionById(uid, args.OldActionId, out var oldAttachedAction))
+                _actions.RemoveAction(uid, oldAttachedAction.Value.AsNullable());
+        }
+
         if (!mindComp.UnlockedActions.Contains(args.NewActionId))
             mindComp.UnlockedActions.Add(args.NewActionId);
 
-        SyncActions(uid, comp);
+        var action = _actionCon.AddAction(mindId, args.NewActionId);
+        if (action != null)
+            _actions.GrantContainedAction(uid, mindId, action.Value);
 
         _popup.PopupEntity(Loc.GetString("werewolf-ability-upgraded"), uid, uid);
         args.Handled = true;
     }
-
-    // used for polymorph ent recieving actions from the mind
-    public void SyncActions(EntityUid uid, WerewolfAbilitiesComponent comp) // todo the SERVER gives out an error when you polymorph, tries to remove shit that isnt there, fix before merg Attempted to remove an action Howl (9413/n9413, ActionWerewolfHowl) from an entity that it was never attached to: wolf
-    {
-        // foreach (var actionEnt in comp.ActionEntities.Values)
-        //     if (TryComp<ActionComponent>(actionEnt, out var actComp) && actComp.AttachedEntity == uid) // dont remove stuff from the wolf if it doesnt exist
-        //         _actions.RemoveAction(uid, actionEnt);
-        foreach (var actionEnt in comp.ActionEntities.Values)
-            _actions.RemoveAction(uid, actionEnt);
-        comp.ActionEntities.Clear();
-
-        // if the mind has unlocked actions, use those
-        if (_mind.TryGetMind(uid, out var mindId, out _) && TryComp<WerewolfMindComponent>(mindId, out var mindComp))
-        {
-            foreach (var actionId in mindComp.UnlockedActions)
-            {
-                var actionEnt = _actions.AddAction(uid, actionId);
-                if (actionEnt != null)
-                    comp.ActionEntities[actionId] = actionEnt.Value;
-            }
-        }
-        else
-        {// if for some reason not, use starting actions
-            foreach (var actionId in comp.WerewolfActions)
-            {
-                var actionEnt = _actions.AddAction(uid, actionId);
-                if (actionEnt != null)
-                    comp.ActionEntities[actionId] = actionEnt.Value;
-            }
-        }
-    }
-
-    private void WerewolfActionRemoveEvent(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfActionRemoveEvent args)
-    {
-        string? protoId = null;
-        foreach (var (id, ent) in comp.ActionEntities)
-        {
-            if (ent != args.ActionEnt)
-                continue;
-            protoId = id;
-            break;
-        }
-
-        if (protoId == null)
-            return;
-
-        if (_mind.TryGetMind(uid, out var mindId, out _)
-            && TryComp<WerewolfMindComponent>(mindId, out var mindComp))
-            mindComp.UnlockedActions.Remove(protoId);
-
-        SyncActions(uid, comp);
-    }
     #endregion
-
 
     public bool TryInjectReagents(EntityUid uid, Dictionary<string, FixedPoint2> reagents)
     {

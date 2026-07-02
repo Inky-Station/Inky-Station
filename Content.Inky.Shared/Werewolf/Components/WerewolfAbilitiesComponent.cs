@@ -21,9 +21,6 @@ public sealed partial class WerewolfAbilitiesComponent : Component
     };
 
     [DataField, AutoNetworkedField]
-    public Dictionary<string, EntityUid> ActionEntities = new();
-
-    [DataField, AutoNetworkedField]
     public bool Transfurmed;
 
     [DataField]
@@ -31,8 +28,8 @@ public sealed partial class WerewolfAbilitiesComponent : Component
     // fuck you piece of shit previous me, why the fuck are half of the shit broken
     // fuck you both why the fuck did the ww use changeling rule?? why did you let that pass you fucking chud previous me - dr. autism APR 28 2026
 
-    [ViewVariables]
-    public ProtoId<PolymorphPrototype> CurrentMutation;
+    [DataField, AutoNetworkedField]
+    public ProtoId<PolymorphPrototype> CurrentMutation = string.Empty;
 
     /// <summary>
     /// Amount of points given per devour action performed of a person
