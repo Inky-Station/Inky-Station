@@ -919,11 +919,11 @@
         - id: MobCarp #inky start
           weight: 1.0
         - id: MobCarpRainbow
-          weight: 0.05
+          weight: 0.1
         - id: MobShark
           weight: 0.2
         - id: MobDragonDungeon
-          weight: 0.01 #inky end
+          weight: 0.05 #inky end
 
 - type: entity
   id: XenoArtifactFaunaSpawn
