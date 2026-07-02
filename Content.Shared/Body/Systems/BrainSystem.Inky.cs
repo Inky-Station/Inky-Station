@@ -1,4 +1,7 @@
 using Content.Inky.Common.Medical;
+using Content.Shared.Alert;
+using Content.Shared.Body.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Body.Systems;
 
@@ -6,46 +9,35 @@ public sealed partial class BrainSystem
 {
     private void InitializeInky()
     {
-        SubscribeLocalEvent<AutismComponent, MapInitEvent>(OnJoy);
+        SubscribeLocalEvent<AutismComponent, MapInitEvent>(OnAutism);
         SubscribeLocalEvent<AutismComponent, ComponentShutdown>(OnShutdown);
 
         SubscribeLocalEvent<LobotomisedComponent, MapInitEvent>(OnLobotomised);
         SubscribeLocalEvent<LobotomisedComponent, ComponentShutdown>(OnSs14Deletion);
     }
 
-    private void OnJoy(Entity<AutismComponent> ent, ref MapInitEvent args)
-    {
-        if (_organQ.TryComp(ent.Owner, out var organ) // holy monoblock
-            && organ.Body is { } body
-            && _brainQ.TryComp(ent.Owner, out var brain)
-            && brain.AutismAlert is { } autismAlert)
-            _alerts.ShowAlert(body, autismAlert);
-    }
+    private void OnAutism(Entity<AutismComponent> ent, ref MapInitEvent args) => UpdateBrainAlert(ent.Owner, brain => brain.AutismAlert, true);
 
-    private void OnShutdown(Entity<AutismComponent> ent, ref ComponentShutdown args)
-    {
-        if (_organQ.TryComp(ent.Owner, out var organ)
-            && organ.Body is { } body
-            && _brainQ.TryComp(ent.Owner, out var brain)
-            && brain.AutismAlert is { } autismAlert)
-            _alerts.ClearAlert(body, autismAlert);
-    }
+    private void OnShutdown(Entity<AutismComponent> ent, ref ComponentShutdown args) => UpdateBrainAlert(ent.Owner, brain => brain.AutismAlert, false);
 
-    private void OnLobotomised(Entity<LobotomisedComponent> ent, ref MapInitEvent args)
-    {
-        if (_organQ.TryComp(ent.Owner, out var organ)
-            && organ.Body is { } body
-            && _brainQ.TryComp(ent.Owner, out var brain)
-            && brain.LobotomyAlert is { } autismAlert)
-            _alerts.ShowAlert(body, autismAlert);
-    }
+    private void OnLobotomised(Entity<LobotomisedComponent> ent, ref MapInitEvent args) => UpdateBrainAlert(ent.Owner, brain => brain.LobotomyAlert, true);
 
-    private void OnSs14Deletion(Entity<LobotomisedComponent> ent, ref ComponentShutdown args)
+    private void OnSs14Deletion(Entity<LobotomisedComponent> ent, ref ComponentShutdown args) => UpdateBrainAlert(ent.Owner, brain => brain.LobotomyAlert, false);
+
+    private void UpdateBrainAlert(
+        EntityUid uid,
+        Func<BrainComponent, ProtoId<AlertPrototype>?> getAlert, // i am so fucking scared of words
+        bool enabled)
     {
-        if (_organQ.TryComp(ent.Owner, out var organ)
-            && organ.Body is { } body
-            && _brainQ.TryComp(ent.Owner, out var brain)
-            && brain.LobotomyAlert is { } autismAlert)
-            _alerts.ClearAlert(body, autismAlert);
+        if (!_organQ.TryComp(uid, out var organ)
+            || organ.Body is not { } body
+            || !_brainQ.TryComp(uid, out var brain)
+            || getAlert(brain) is not { } alert)
+            return;
+
+        if (enabled)
+            _alerts.ShowAlert(body, alert);
+        else
+            _alerts.ClearAlert(body, alert);
     }
 }

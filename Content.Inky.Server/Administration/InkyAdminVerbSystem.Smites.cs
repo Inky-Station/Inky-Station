@@ -1,3 +1,4 @@
+using Content.Goobstation.Server.Administration.Systems;
 using Content.Inky.Common.Medical;
 using Content.Medical.Common.Body;
 using Content.Shared.Administration;
@@ -17,6 +18,7 @@ namespace Content.Inky.Server.Administration;
 public sealed partial class InkyAdminVerbSystem
 {
     private static readonly ProtoId<OrganCategoryPrototype> Brain = "Brain";
+    [Dependency] private GoobAdminVerbSystem _goida = default!;
 
     /// <inheritdoc/>
     public void InitializeSmites()
@@ -26,7 +28,7 @@ public sealed partial class InkyAdminVerbSystem
 
     private void AddSmiteVerbs(GetVerbsEvent<Verb> args)
     {
-        if (!SmitesAllowed(args))
+        if (!_goida.SmitesAllowed(args))
             return;
 
         Verb autismspectrumdisorder = new()
@@ -43,22 +45,5 @@ public sealed partial class InkyAdminVerbSystem
             Message = Loc.GetString("admin-verbs-smite-autism-desc"),
         };
         args.Verbs.Add(autismspectrumdisorder);
-    }
-
-    // i luv copypasting
-    private bool SmitesAllowed(GetVerbsEvent<Verb> args)
-    {
-        if (!_actors.TryComp(args.User, out var actor))
-            return false;
-
-        var player = actor.PlayerSession;
-
-        if (!_admin.HasAdminFlag(player, AdminFlags.Fun))
-            return false;
-
-        if (HasComp<MapComponent>(args.Target) || HasComp<MapGridComponent>(args.Target))
-            return false;
-
-        return true;
     }
 }
