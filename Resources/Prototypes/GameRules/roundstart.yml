@@ -3,6 +3,8 @@
   abstract: true
   components:
   - type: GameRule
+  - type: DynamicRuleCost # inky - we dont use this anyway but it fixes tests
+    cost: 100
 
 - type: entity
   parent: BaseGameRule
