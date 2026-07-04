@@ -17,7 +17,7 @@ public abstract partial class SharedBloodstreamSystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
 
-    private float _bloodlossMultiplier = 4f;
+    private float _bloodlossMultiplier = 2.5f; // inky edit
 
     private void InitializeTrauma()
     {

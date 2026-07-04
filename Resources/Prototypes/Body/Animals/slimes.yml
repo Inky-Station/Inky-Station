@@ -9,3 +9,5 @@
       Torso: OrganSlimesTorso # Shitmed
       Stomach: OrganSlimePersonCore
       Lungs: OrganSlimePersonLungs
+  - type: Bloodstream # inky
+    requiresHeart: false # inky
