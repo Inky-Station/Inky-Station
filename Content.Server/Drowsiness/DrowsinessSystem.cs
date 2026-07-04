@@ -24,7 +24,7 @@ public sealed partial class DrowsinessSystem : SharedDrowsinessSystem
         if (ent.Comp.TimeBetweenIncidents is not { } timeBetweenIncidents) // inkymed
             return;
 
-        ent.Comp.NextIncidentTime = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(timeBetweenIncidents.X, timeBetweenIncidents.Y));
+        ent.Comp.NextIncidentTime = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(timeBetweenIncidents.X, timeBetweenIncidents.Y)); // inkymed
     }
 
     public override void Update(float frameTime)
