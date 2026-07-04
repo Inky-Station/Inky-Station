@@ -1129,6 +1129,10 @@
       - !type:ModifyHeartRate
         amount: -3
         lowerCap: 41 # more safe heroin
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 4
         # /inkymed
 
 - type: reagent

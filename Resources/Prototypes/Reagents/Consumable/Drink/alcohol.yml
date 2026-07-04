@@ -211,6 +211,10 @@
       - !type:ModifyHeartRate
         amount: -1.5
         lowerCap: 45 # no fibrillations after drinking too much
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 2
       # /inkymed
 
 - type: reagent

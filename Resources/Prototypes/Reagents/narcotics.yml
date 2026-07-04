@@ -292,6 +292,10 @@
       - !type:ModifyHeartRate
         amount: -1.5
         lowerCap: 45
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 16
       # /inkymed
 
 - type: reagent
@@ -355,6 +359,10 @@
       - !type:ModifyHeartRate
         amount: -2
         lowerCap: 45
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 6
     # /inkymed
 
 - type: reagent

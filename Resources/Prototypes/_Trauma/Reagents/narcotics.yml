@@ -80,6 +80,10 @@
       # inkymed
       - !type:ModifyHeartRate
         amount: 3 # a hard drug
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 10
       # /inkymed
 
 - type: reagent
@@ -184,6 +188,10 @@
       # inkymed
       - !type:ModifyHeartRate
         amount: 4
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 4
       # /inkymed
 
 - type: reagent
@@ -224,4 +232,8 @@
       # inkymed
       - !type:ModifyHeartRate
         amount: -1.5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 3
       # /inkymed

@@ -91,6 +91,14 @@
       - !type:ModifyHeartRate
         amount: -6
         lowerCap: 19
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Fentanyl
+          min: 3
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 10 # infinite druggo theorem
       # /inkymed
 
 - type: reagent
@@ -388,6 +396,14 @@
       - !type:ModifyHeartRate
         amount: -3
         lowerCap: 19 # fent lives matter
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Heroin
+          min: 3
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 20
       # /inkymed
 
 - type: reagent
