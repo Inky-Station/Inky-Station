@@ -26,9 +26,10 @@ public sealed partial class TraumaStrippingSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ActiveStrippingComponent, DoAfterAttemptEvent<StrippableDoAfterEvent>>(OnStripAttempt);
-        SubscribeLocalEvent<ActiveStrippingComponent, StrippableDoAfterEvent>(OnStripDoAfterFinished);
-        SubscribeLocalEvent<HandsComponent, BeforeStripEvent>(OnBeforeStripEnsureComp);
+        // Inky - what the fuck is this
+        // SubscribeLocalEvent<ActiveStrippingComponent, DoAfterAttemptEvent<StrippableDoAfterEvent>>(OnStripAttempt);
+        // SubscribeLocalEvent<ActiveStrippingComponent, StrippableDoAfterEvent>(OnStripDoAfterFinished);
+        // SubscribeLocalEvent<HandsComponent, BeforeStripEvent>(OnBeforeStripEnsureComp);
 
         InitializeBagAccess();
     }
