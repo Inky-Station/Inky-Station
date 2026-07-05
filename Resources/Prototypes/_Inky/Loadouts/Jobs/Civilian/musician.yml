@@ -1,0 +1,4 @@
+﻿- type: loadout
+  id: MusicianMJ
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryMusician

@@ -346,8 +346,9 @@
   - BartenderJumpsuit
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
-  - ServiceMJ # goob
+  # - ServiceMJ # goob # inky
   - ClothingUniformJumpsuitWaiter #inky
+  - BartenderMJ # inky
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -392,10 +393,11 @@
   - ChefJumpsuit
   - ChefJumpskirt
   # <Trauma>
-  - ServiceMJ
+  # - ServiceMJ - Inky
   - ClothingUniformJumpsuitDisgusting
  # - ClothingUniformJumpsuitWaiter - Inky
   # </Trauma>
+  - ChefMJ #inky
 
 - type: loadoutGroup
   id: ChefOuterClothing
@@ -420,7 +422,8 @@
   - LibrarianJumpskirt
   - CuratorJumpsuit
   - CuratorJumpskirt
-  - ServiceMJ # goob
+ # - ServiceMJ # goob
+  - LibrarianMJ #goob
 
 #- type: loadoutGroup
 #  id: LibrarianJobTrinkets
@@ -483,7 +486,8 @@
   - ChaplainJumpskirt
   - ChaplainRobesLight
   - ChaplainRobesDark
-  - ServiceMJ # goob
+ # - ServiceMJ # goob # inky
+  - ChaplainMJ
 
 - type: loadoutGroup
   id: ChaplainOuterClothing
@@ -522,7 +526,8 @@
   loadouts:
   - JanitorJumpsuit
   - JanitorJumpskirt
-  - ServiceMJ # goob
+ # - ServiceMJ # goob # inky
+  - JanitorMJ #inky
 
 - type: loadoutGroup
   id: JanitorGloves
@@ -606,6 +611,7 @@
   - ClownSkirt
   - JesterSuit
   - JesterAltSuit
+  - ClownMJ #inky
 
 - type: loadoutGroup
   id: ClownBackpack
@@ -677,6 +683,7 @@
   loadouts:
   - MimeJumpsuit
   - MimeJumpskirt
+  - MimeMJ #inky
 
 - type: loadoutGroup
   id: MimeBackpack
@@ -730,7 +737,8 @@
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
-  - ServiceMJ # goob
+  # - ServiceMJ # goob # inky
+  - MusicianMJ
 
 - type: loadoutGroup
   id: MusicianOuterClothing
@@ -1481,6 +1489,7 @@
   - ReporterJumpsuit
   - JournalistJumpsuit
   - ReporterDress
+  - ReporterMJ # inky
 
 - type: loadoutGroup
   id: ReporterHead
