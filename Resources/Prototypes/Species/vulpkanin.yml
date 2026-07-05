@@ -1,7 +1,7 @@
 - type: species
   id: Vulpkanin
   name: species-name-vulpkanin
-  roundStart: false # Trauma
+  roundStart: true # inky
   prototype: MobVulpkanin
   defaultSkinTone: "#5a3f2d"
   dollPrototype: AppearanceVulpkanin
