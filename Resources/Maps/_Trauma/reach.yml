@@ -7426,7 +7426,7 @@ entities:
     - type: Transform
       pos: -8.5,5.5
       parent: 2
-- proto: EnergyChemDispenser
+- proto: ChemDispenser
   entities:
   - uid: 1090
     components:
