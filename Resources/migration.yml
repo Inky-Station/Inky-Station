@@ -154,7 +154,7 @@ MaterialSilo: MachineMasterMaterialSilo
 # Goobstation - Submarine from DeltaV
 
 # 2026-01-10 Goobstation Change Mapped Chem to Energy Chem by default
-ChemDispenser: EnergyChemDispenser
+# ChemDispenser: EnergyChemDispenser - inky
 
 AirlockBoxerGlassLocked: AirlockServiceGlassLocked
 AirlockClownGlassLocked: AirlockServiceGlassLocked

@@ -88,7 +88,7 @@
   - ChemMasterMachineCircuitboard
   - CondenserMachineCircuitBoard
   - HotplateMachineCircuitboard
-  - EnergyChemDispenserMachineCircuitboard #Goob edit - all things that get base med boards get E-Chem
+ #- EnergyChemDispenserMachineCircuitboard # Inky
 
 ## Dynamic
 
@@ -114,3 +114,5 @@
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
+  - StasisOperatingTableCircuitboard # Corvax-Goob-StasisOperatingTable
+  - EnergyChemDispenserMachineCircuitboard #Inky

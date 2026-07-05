@@ -310,6 +310,7 @@
   - SyringeBluespace
   - MedkitCombat # Goobstation - remove medkitcombat from static to research
   - VialBluespace # goob edit - bluespace vials
+  - EnergyChemDispenserMachineCircuitboard #Inky
   # Goobstation R&D Console rework start
   position: -3,3 # inky
   technologyPrerequisites:
