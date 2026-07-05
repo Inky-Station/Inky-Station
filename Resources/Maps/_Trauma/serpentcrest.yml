@@ -81123,7 +81123,7 @@ entities:
     - type: Transform
       pos: -54.37781,18.609428
       parent: 2
-- proto: ChemDispenser
+- proto: EnergyChemDispenser
   entities:
   - uid: 12844
     components:

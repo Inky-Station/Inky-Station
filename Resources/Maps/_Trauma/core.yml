@@ -70484,7 +70484,7 @@ entities:
     - type: Transform
       pos: 26.64973,-41.492275
       parent: 2
-- proto: ChemDispenser
+- proto: EnergyChemDispenser
   entities:
   - uid: 6021
     components:
