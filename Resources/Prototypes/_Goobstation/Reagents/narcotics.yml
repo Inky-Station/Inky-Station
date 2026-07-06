@@ -62,15 +62,15 @@
         visualType: Medium
         messages: ["fentanyl-effect-skinworms","fentanyl-effect-breathingrazors","fentanyl-effect-lungstight","fentanyl-effect-observed"]
         probability: 0.05
-      - !type:ModifyStatusEffect # you didn't think this would improve your abilities right?
-        effectProto: FentanylSlowdownStatusEffect
+#      - !type:ModifyStatusEffect # you didn't think this would improve your abilities right? # inky NUH UH DRUG POWER WWWWWWWWW
+#        effectProto: FentanylSlowdownStatusEffect
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
       - !type:Jitter
-      - !type:ModifyParalysis # loss of muscle control
-        probability: 0.05
-        time: 2
+#      - !type:ModifyParalysis # loss of muscle control # inky
+#        probability: 0.05
+#        time: 2
       - !type:ModifyParalysis # more severe effects when you are overdosing
         conditions:
         - !type:ReagentCondition
@@ -82,8 +82,12 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 20
-      - !type:Drunk
-        boozePower: 10
+        conditions: # inky
+        - !type:ReagentCondition
+          reagent: Fentanyl
+          min: 5
+#      - !type:Drunk # inky
+#        boozePower: 10
       - !type:Emote # Now a bunch of emotes
         emote: Scream
         probability: 0.05
@@ -92,13 +96,9 @@
         amount: -6
         lowerCap: 19
       - !type:ModifyStatusEffect
-        conditions:
-        - !type:ReagentCondition
-          reagent: Fentanyl
-          min: 3
         effectProto: StatusEffectOpiated
         type: Add
-        time: 10 # infinite druggo theorem
+        time: 3 # 60s per 1u
       # /inkymed
 
 - type: reagent

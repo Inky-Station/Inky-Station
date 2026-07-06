@@ -83,7 +83,7 @@
       - !type:ModifyStatusEffect
         effectProto: StatusEffectOpiated
         type: Add
-        time: 10
+        time: 10 # 20 seconds per 1u
       # /inkymed
 
 - type: reagent
@@ -102,28 +102,30 @@
       metabolismRate: 0.05
       # Main effects
       effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 1
-      - !type:HealthChange
-        conditions:
-        - !type:ReagentCondition
-          reagent: CrackCocaine
-          min: 4
-        damage:
-          types:
-            Poison: 0.75
-            Asphyxiation: 1.25
-      - !type:HealthChange
-        conditions:
-        - !type:ReagentCondition
-          reagent: Cocaine
-          max: 0.01
-        damage:
-          types:
-            Poison: 0.75
-            Asphyxiation: 1.25
+        # inky edit
+#      - !type:HealthChange
+#        damage:
+#          types:
+#            Poison: 1
+#      - !type:HealthChange
+#        conditions:
+#        - !type:ReagentCondition
+#          reagent: CrackCocaine
+#          min: 4
+#        damage:
+#          types:
+#            Poison: 0.75
+#            Asphyxiation: 1.25
+#      - !type:HealthChange
+#        conditions:
+#        - !type:ReagentCondition
+#          reagent: Cocaine
+#          max: 0.01
+#        damage:
+#          types:
+#            Poison: 0.75
+#            Asphyxiation: 1.25
+        # /inky
       # Main effects
       - !type:MovementSpeedModifier
         walkSpeedModifier: 1.25
@@ -171,8 +173,8 @@
         - !type:ReagentCondition
           reagent: CrackCocaine
           min: 1
-      - !type:Drunk
-        boozePower: 10
+#      - !type:Drunk # inky edit
+#        boozePower: 10
       - !type:Emote
         emote: Scream
         probability: 0.05
@@ -187,11 +189,11 @@
         probability: 0.05
       # inkymed
       - !type:ModifyHeartRate
-        amount: 4
+        amount: 3.5
       - !type:ModifyStatusEffect
         effectProto: StatusEffectOpiated
         type: Add
-        time: 4
+        time: 1 # 20 seconds per 1u
       # /inkymed
 
 - type: reagent
@@ -235,5 +237,5 @@
       - !type:ModifyStatusEffect
         effectProto: StatusEffectOpiated
         type: Add
-        time: 3
+        time: 3 # 6s per 1u
       # /inkymed

@@ -1,0 +1,9 @@
+- type: reaction
+  id: Heroin
+  reactants:
+    Ephedrine:
+      amount: 2
+    FourteenLoko:
+      amount: 1
+  products:
+    Heroin: 3
