@@ -2,7 +2,7 @@
 
 - type: reaction
   id: Fentanyl
-  minTemp: 410
+#  minTemp: 410 # inky edit - geg
 #  maxTemp: 420 # no lavabeaker for the lazy chemist # inky edit
   reactants:
     Desoxyephedrine:
