@@ -14,9 +14,9 @@ using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.Damage;
+using Content.Shared.Damage; // inkymed
 using Content.Shared.Damage.Components;
-using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Prototypes; // inkymed
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
@@ -149,12 +149,14 @@ public sealed partial class HealthAnalyzerControl
         var part = _entityManager.GetEntity(state.Part);
         if (part != null)
             target = part.Value;
+        // inkymed
         else
         {
             var temp = _part.GetBodyParts(target, BodyPartType.Torso).FirstOrNull();
             if (temp.HasValue)
                 target = temp.Value;
         }
+        // /inkymed
         var isPart = part != null;
 
         if (!_entityManager.TryGetComponent<DamageableComponent>(target, out var damageable))
@@ -164,6 +166,7 @@ public sealed partial class HealthAnalyzerControl
         PartNameLabel.Visible = isPart;
         DamageLabelHeading.Visible = true;
         DamageLabel.Visible = true;
+        // inkymed
         //var damage = _damageable.GetAllDamage((target, damageable));
 
         var wounds = _wound.GetAllWounds(target);
@@ -182,6 +185,7 @@ public sealed partial class HealthAnalyzerControl
             var damageGroup = wound.Comp.DamageGroup.Value;
             damagePerGroup[damageGroup] = damagePerGroup.GetValueOrDefault(damageGroup) + woundDamage;
         }
+        // /inkymed
 
         DamageLabel.Text = damage.GetTotal().ToString();
 
@@ -193,12 +197,14 @@ public sealed partial class HealthAnalyzerControl
                 : Loc.GetString("health-analyzer-window-entity-unknown-value-text");
         }
 
+        // inkymed
         /*var damageSortedGroups = _damageable.GetDamagePerGroup((target, damageable))
             .OrderByDescending(damage => damage.Value)
             .ToDictionary(x => x.Key, x => x.Value);*/
         var damageSortedGroups = damagePerGroup
             .OrderByDescending(damage => damage.Value)
             .ToDictionary(x => x.Key, x => x.Value);
+        // /inkymed
 
         var damagePerType = damage.DamageDict;
 
