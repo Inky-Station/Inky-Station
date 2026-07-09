@@ -91,10 +91,38 @@ namespace Content.Medical.Shared.Wounds;
  *
  * API
  *  GetAllWoundableChildren returns children recursively and then the target itself
+ *  - example: `foreach (var child in GetAllWoundableChildren(part, woundable)) {}`
+ *
  *  GetAllWounds walks that hierarchy and returns wounds on every child woundable
+ *  - example: `foreach (var wound in GetAllWounds(part, woundable)) {}`
+ *
  *  GetWoundableWounds returns only wounds directly on the requested woundable
+ *  - example: `var directWounds = GetWoundableWounds(part, woundable);`
+ *
+ *  GetWoundableWoundsWithComp returns direct wounds, use this for bleed/trauma/etc wound component shittery
+ *  - example: `var wound = GetWoundableWoundsWithComp<BleedInflicterComponent>(part, woundable);`
+ *
+ *  GetAllWoundableChildrenWithComp its magic.
+ *  - example: https://discord.com/channels/1447652269758746656/1494665336862146691/1524833338622480434
+ *
+ *  AddWoundableToParent wires a child woundable into a parent woundable hierarchy and raises wound-added events for its wounds
+ *  - example: `if (AddWoundableToParent(parentPart, childPart, parentWoundable, childWoundable)) {}`
+ *
+ *  RemoveWoundableFromParent detaches a child woundable from its parent hierarchy and raises events events for its wounds to remove em
+ *  - example: `if (RemoveWoundableFromParent(parentPart, childPart, parentWoundable, childWoundable)) {}`
+ *
+ *  HasWoundsExceedingMangleSeverity checks direct wounds for MangleSeverity and is used before applying mangled trauma behavior
+ *  - example: `if (HasWoundsExceedingMangleSeverity(part, woundable))`
+ *
+ *  GetWoundableSeverityPoint sums WoundSeverityPoint on direct wounds, optionally filtered by damage group and healabillity <--------------------- very useful btw
+ *  - example: `var bruteSeverity = GetWoundableSeverityPoint(part, woundable, "Brute", true);`
+ *
+ *  GetWoundableIntegrityDamage returns the same direct wound severity sum for integrity damage shit, with the same filters
+ *  - example: `var damage = GetWoundableIntegrityDamage(part, woundable, "Brute", true);`
  *
  *  AddWound is serveronly, requires AllowWounds, adds wounds (shocking), massive mispredict issues due to it being serveronly
+ *  - example: i got lazy of putting more examples figure it out by yourself bru use ur IDEs search, everything neat has been example'd above
+ *
  *  SetWoundSeverity sets the wound to a specific severity
  *  ApplyWoundSeverity does fucking SOMETHING IDFK applies x to y ?????
  *
