@@ -95,9 +95,7 @@ public sealed partial class SurgeryBui : BoundUserInterface
         var oldSurgery = _surgery;
         var oldPart = _part;
         // inkymed
-        var oldNetPart = _entMan.TryGetNetEntity(oldPart, out var netOldPart/* w naming */)
-            ? netOldPart
-            : null;
+        _entMan.TryGetNetEntity(oldPart, out var oldNetPart);
         var oldSelection = false;
         // /inkymed
         _part = null;
