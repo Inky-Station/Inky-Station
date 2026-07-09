@@ -25,7 +25,6 @@ using Robust.Shared.Timing;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using static Content.Shared.Mobs.Systems.MobThresholdSystem;
 
 namespace Content.Medical.Shared.Wounds;
 

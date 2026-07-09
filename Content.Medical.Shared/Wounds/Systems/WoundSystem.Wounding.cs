@@ -881,6 +881,13 @@ public sealed partial class WoundSystem
 
         component.WoundableIntegrity = newIntegrity;
         Dirty(uid, component);
+
+        // inkymed
+        // wound-only damage raised damagechangedevent so tests bricked lmao
+        // also this __may__ fuck up clients kinda so if anything happens just slap a _net.IsServer here lmao
+        if (_body.GetBody(uid) is {} body)
+            _mobThreshold.VerifyThresholds(body);
+        // /inkymed
     }
 
     public bool AddWound( // Trauma - made public
