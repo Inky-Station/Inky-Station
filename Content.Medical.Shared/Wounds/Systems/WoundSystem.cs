@@ -29,7 +29,8 @@ using System.Threading.Tasks;
 namespace Content.Medical.Shared.Wounds;
 
 /*
- * inkymed documentation on wounds
+ * inkymed documentation volume 1:
+ * Wounds, Woundables and YOU.
  * i am making this one because there isnt a proper documentation on this and the entirety of
  * wounds and woundmed as a whole, so this comment about to be few hundered lines long and i do not care about it.
  *
