@@ -1228,7 +1228,10 @@ public sealed partial class WoundSystem
                 continue;
 
             var nearestSeverity = WoundableSeverity.Severed;
-            var damage = _damageable.GetTotalDamage(part.Owner);
+            // inkymed
+            // var damage = _damageable.GetTotalDamage(part.Owner);
+            var damage = GetWoundableSeverityPoint(part.Owner, part.Comp); // use wound severity instead of damageable thing
+            // /inkymed
             foreach (var (severity, threshold) in part.Comp.Thresholds.OrderByDescending(kv => kv.Value))
             {
                 if (damage <= 0)
