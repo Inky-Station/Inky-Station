@@ -6,10 +6,10 @@ public sealed partial class WoundSystem
 {
     private void InitInky()
     {
-        SubscribeLocalEvent<WoundableComponent, MobThresholdVitalPartDamageEvent>(OnMobThresholdVitalPartDamage);
+        SubscribeLocalEvent<WoundableComponent, MobThresholdGetWoundableIntegrityEvent>(OnMobThresholdGetWoundableIntegrityEvent);
     }
 
-    private void OnMobThresholdVitalPartDamage(Entity<WoundableComponent> ent, ref MobThresholdVitalPartDamageEvent args)
+    private void OnMobThresholdGetWoundableIntegrityEvent(Entity<WoundableComponent> ent, ref MobThresholdGetWoundableIntegrityEvent args)
     {
         args.Damage = ent.Comp.IntegrityCap - ent.Comp.WoundableIntegrity;
         args.Handled = true;

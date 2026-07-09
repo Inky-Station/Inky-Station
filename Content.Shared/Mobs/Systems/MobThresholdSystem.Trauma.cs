@@ -89,6 +89,7 @@ public sealed partial class MobThresholdSystem
         if (!_bodyQuery.HasComp(ent))
             return _damageable.GetTotalDamage(ent);
 
+        // inkymed
         var result = FixedPoint2.Zero;
         foreach (var part in _body.GetVitalParts(ent))
         {
@@ -97,14 +98,8 @@ public sealed partial class MobThresholdSystem
             if (ev.Handled)
                 result += ev.Damage;
         }
+        // /inkymed
 
         return result;
-    }
-
-    [ByRefEvent]
-    public record struct MobThresholdGetWoundableIntegrityEvent
-    {
-        public bool Handled;
-        public FixedPoint2 Damage;
     }
 }

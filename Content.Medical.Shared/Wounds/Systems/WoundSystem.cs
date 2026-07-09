@@ -294,7 +294,6 @@ public sealed partial class WoundSystem : EntitySystem
         SubscribeLocalEvent<WoundComponent, ComponentHandleState>(OnWoundComponentHandleState);
         SubscribeLocalEvent<WoundableComponent, ComponentGetState>(OnWoundableComponentGet);
         SubscribeLocalEvent<WoundableComponent, ComponentHandleState>(OnWoundableComponentHandleState);
-        SubscribeLocalEvent<WoundableComponent, MobThresholdGetWoundableIntegrityEvent>(OnMobThresholdGetWoundableIntegrityEvent);
         InitWounding();
         InitializeHealing();
         // inkymed
@@ -305,11 +304,6 @@ public sealed partial class WoundSystem : EntitySystem
         Subs.CVar(_cfg, SurgeryCVars.MinimumTimeBeforeHeal, val => _minimumTimeBeforeHeal = TimeSpan.FromSeconds(val), true);
     }
 
-    private void OnMobThresholdGetWoundableIntegrityEvent(Entity<WoundableComponent> ent, ref MobThresholdGetWoundableIntegrityEvent args)
-    {
-        args.Damage = ent.Comp.IntegrityCap - ent.Comp.WoundableIntegrity;
-        args.Handled = true;
-    }
 
     public override void Update(float frameTime)
     {
