@@ -9,7 +9,7 @@
     damageType: Slash
     woundType: External
     woundVisibility: Always
-    scarWound: SlashScar
+#    scarWound: SlashScar inkymed KILLED SCARZZZZ
     selfHealMultiplier: 0
     mangleSeverity: Severe
     canBeHealed: false # Only heals via tend wounds surgery
