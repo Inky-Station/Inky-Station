@@ -9,22 +9,23 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
-using Content.Shared.Mobs.Components;
-using Content.Shared.Mobs.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.CPUJob.JobQueues;
-using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
+using Robust.Shared.CPUJob.JobQueues;
+using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using static Content.Shared.Mobs.Systems.MobThresholdSystem;
 
 namespace Content.Medical.Shared.Wounds;
 
@@ -293,6 +294,7 @@ public sealed partial class WoundSystem : EntitySystem
         SubscribeLocalEvent<WoundComponent, ComponentHandleState>(OnWoundComponentHandleState);
         SubscribeLocalEvent<WoundableComponent, ComponentGetState>(OnWoundableComponentGet);
         SubscribeLocalEvent<WoundableComponent, ComponentHandleState>(OnWoundableComponentHandleState);
+        SubscribeLocalEvent<WoundableComponent, MobThresholdGetWoundableIntegrityEvent>(OnMobThresholdGetWoundableIntegrityEvent);
         InitWounding();
         InitializeHealing();
         // inkymed
@@ -301,6 +303,12 @@ public sealed partial class WoundSystem : EntitySystem
 
         Subs.CVar(_cfg, SurgeryCVars.MedicalHealingTickrate, val => _medicalHealingTickrate = val, true);
         Subs.CVar(_cfg, SurgeryCVars.MinimumTimeBeforeHeal, val => _minimumTimeBeforeHeal = TimeSpan.FromSeconds(val), true);
+    }
+
+    private void OnMobThresholdGetWoundableIntegrityEvent(Entity<WoundableComponent> ent, ref MobThresholdGetWoundableIntegrityEvent args)
+    {
+        args.Damage = ent.Comp.IntegrityCap - ent.Comp.WoundableIntegrity;
+        args.Handled = true;
     }
 
     public override void Update(float frameTime)

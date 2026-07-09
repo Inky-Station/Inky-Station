@@ -92,19 +92,19 @@ public sealed partial class MobThresholdSystem
         var result = FixedPoint2.Zero;
         foreach (var part in _body.GetVitalParts(ent))
         {
-            // inkymed
-            var ev = new MobThresholdVitalPartDamageEvent();
+            var ev = new MobThresholdGetWoundableIntegrityEvent();
             RaiseLocalEvent(part, ref ev);
             if (ev.Handled)
-            {
                 result += ev.Damage;
-                continue;
-            }
-            // /inkymed
-
-            result += _damageable.GetTotalDamage(part);
         }
 
         return result;
+    }
+
+    [ByRefEvent]
+    public record struct MobThresholdGetWoundableIntegrityEvent
+    {
+        public bool Handled;
+        public FixedPoint2 Damage;
     }
 }
