@@ -304,7 +304,6 @@ public sealed partial class WoundSystem : EntitySystem
         Subs.CVar(_cfg, SurgeryCVars.MinimumTimeBeforeHeal, val => _minimumTimeBeforeHeal = TimeSpan.FromSeconds(val), true);
     }
 
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

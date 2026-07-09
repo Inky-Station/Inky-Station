@@ -1230,7 +1230,7 @@ public sealed partial class WoundSystem
             var nearestSeverity = WoundableSeverity.Severed;
             // inkymed
             // var damage = _damageable.GetTotalDamage(part.Owner);
-            var damage = GetWoundableSeverityPoint(part.Owner, part.Comp); // use wound severity instead of damageable thing
+            var damage = GetWoundableSeverityPoint(part.Owner, part.Comp); // who have thought that random ass woundmed apis would be so useful
             // /inkymed
             foreach (var (severity, threshold) in part.Comp.Thresholds.OrderByDescending(kv => kv.Value))
             {
