@@ -93,13 +93,13 @@ namespace Content.Medical.Shared.Wounds;
  *  GetAllWounds walks that hierarchy and returns wounds on every child woundable
  *  GetWoundableWounds returns only wounds directly on the requested woundable
  *
- *  AddWound is serveronly, requires AllowWounds, does something something todo inkymed
+ *  AddWound is serveronly, requires AllowWounds, adds wounds (shocking), massive mispredict issues due to it being serveronly
  *  SetWoundSeverity sets the wound to a specific severity
  *  ApplyWoundSeverity does fucking SOMETHING IDFK applies x to y ?????
  *
- *  ApplySeverityModifiers fuck up withg multiplier change values and multiplies incoming positive severity by that value
+ *  ApplySeverityModifiers fuck up with multiplier change values and multiplies incoming positive severity by that value
  *  - look at WoundableComponent.SeverityMultipliers
- *  doing anything to a severity multiplier rechecks wound severity
+ *  - doing anything to a severity multiplier rechecks wound severity
  *
  *  UpdateWoundableIntegrity sums all wounds in the Wounds container and sets WoundableIntegrity to IntegrityCap minus that value ????
  *
@@ -107,7 +107,7 @@ namespace Content.Medical.Shared.Wounds;
  *  - it splits the requested ammount across matching healable wounds
  *  ForceHealWoundsOnWoundable removes matching wounds directly and ignores normal per wound healing shit
  *  TryHealWoundsOnOwner gathers all woundables and wounds on a body and splits a DamageSpecifier across wounds of matching damage types
- *  Rejuvinate does guess what.
+ *  Rejuvenate does guess what.
  *
  *  CanHealWound - check line ~147 of this system
  *
@@ -131,8 +131,8 @@ namespace Content.Medical.Shared.Wounds;
  *
  *
  * healing
- * - WoundSystem.Update runs at _medicalHealingTickrate which is 5 seconds
- * - it skips ents with no organ container and recently damaged bodies
+ * - WoundSystem.Update runs at _medicalHealingTickrate which is 5 seconds (unless changed)
+ *  it skips ents with no organ container and recently damaged bodies
  *  where LastModifiedTime is newer than _minimumTimeBeforeHeal, and incapacitated ents
  *  that also means that if you cuff someone they wont heal on their own lmao
  * - each woundable with CanHealDamage or CanHealBleeds gets queued as a WoundJob (no erp)
@@ -295,6 +295,9 @@ public sealed partial class WoundSystem : EntitySystem
         SubscribeLocalEvent<WoundableComponent, ComponentHandleState>(OnWoundableComponentHandleState);
         InitWounding();
         InitializeHealing();
+        // inkymed
+        InitInky();
+        // /inky
 
         Subs.CVar(_cfg, SurgeryCVars.MedicalHealingTickrate, val => _medicalHealingTickrate = val, true);
         Subs.CVar(_cfg, SurgeryCVars.MinimumTimeBeforeHeal, val => _minimumTimeBeforeHeal = TimeSpan.FromSeconds(val), true);
