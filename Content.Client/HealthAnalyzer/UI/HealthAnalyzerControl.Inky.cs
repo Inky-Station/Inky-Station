@@ -1,3 +1,4 @@
+using Content.Medical.Common.Body;
 using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Inkymed;
 using Content.Shared.Body;
@@ -10,6 +11,7 @@ public sealed partial class HealthAnalyzerControl
 {
     private BodySystem _bodySystem = default!;
     private HeartRateSystem _heartRateSystem = default!;
+    private CommonBodyPartSystem _part = default!;
     private static readonly ProtoId<OrganCategoryPrototype> HeartCategory = "Heart";
 
     private void PopulateHeartConditions(EntityUid target, string identity)

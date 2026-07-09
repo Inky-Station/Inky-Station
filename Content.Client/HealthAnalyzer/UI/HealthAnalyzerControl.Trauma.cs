@@ -14,7 +14,9 @@ using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
@@ -46,6 +48,7 @@ public sealed partial class HealthAnalyzerControl
         // inkymed
         _bodySystem = _entityManager.System<BodySystem>();
         _heartRateSystem = _entityManager.System<HeartRateSystem>();
+        _part = _entityManager.System<CommonBodyPartSystem>();
         // /inkymed
 
         _bodyPartControls = new Dictionary<ProtoId<OrganCategoryPrototype>, TextureButton>
@@ -146,6 +149,12 @@ public sealed partial class HealthAnalyzerControl
         var part = _entityManager.GetEntity(state.Part);
         if (part != null)
             target = part.Value;
+        else
+        {
+            var temp = _part.GetBodyParts(target, BodyPartType.Torso).FirstOrNull();
+            if (temp.HasValue)
+                target = temp.Value;
+        }
         var isPart = part != null;
 
         if (!_entityManager.TryGetComponent<DamageableComponent>(target, out var damageable))
@@ -155,7 +164,25 @@ public sealed partial class HealthAnalyzerControl
         PartNameLabel.Visible = isPart;
         DamageLabelHeading.Visible = true;
         DamageLabel.Visible = true;
-        var damage = _damageable.GetAllDamage((target, damageable));
+        //var damage = _damageable.GetAllDamage((target, damageable));
+
+        var wounds = _wound.GetAllWounds(target);
+        var damage = new DamageSpecifier();
+        var damagePerGroup = new Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2>();
+        foreach (var wound in wounds)
+        {
+            var woundDamage = wound.Comp.WoundSeverityPoint;
+            var damageType = wound.Comp.DamageType;
+            if (damage.DamageDict.TryGetValue(damageType, out var existingAmount))
+                damage.DamageDict[damageType] = existingAmount + woundDamage;
+            else
+                damage.DamageDict.TryAdd(damageType, woundDamage);
+            if (!wound.Comp.DamageGroup.HasValue)
+                continue;
+            var damageGroup = wound.Comp.DamageGroup.Value;
+            damagePerGroup[damageGroup] = damagePerGroup.GetValueOrDefault(damageGroup) + woundDamage;
+        }
+
         DamageLabel.Text = damage.GetTotal().ToString();
 
         var identity = Identity.Name(target, _entityManager);
@@ -166,7 +193,10 @@ public sealed partial class HealthAnalyzerControl
                 : Loc.GetString("health-analyzer-window-entity-unknown-value-text");
         }
 
-        var damageSortedGroups = _damageable.GetDamagePerGroup((target, damageable))
+        /*var damageSortedGroups = _damageable.GetDamagePerGroup((target, damageable))
+            .OrderByDescending(damage => damage.Value)
+            .ToDictionary(x => x.Key, x => x.Value);*/
+        var damageSortedGroups = damagePerGroup
             .OrderByDescending(damage => damage.Value)
             .ToDictionary(x => x.Key, x => x.Value);
 
