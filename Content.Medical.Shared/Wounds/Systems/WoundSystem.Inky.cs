@@ -11,7 +11,7 @@ public sealed partial class WoundSystem
 
     private void OnMobThresholdVitalPartDamage(Entity<WoundableComponent> ent, ref MobThresholdVitalPartDamageEvent args)
     {
-        args.Damage = GetWoundableIntegrityDamage(ent, ent.Comp);
+        args.Damage = ent.Comp.IntegrityCap - ent.Comp.WoundableIntegrity;
         args.Handled = true;
     }
 }
