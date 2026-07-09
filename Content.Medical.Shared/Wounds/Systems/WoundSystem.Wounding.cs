@@ -189,8 +189,6 @@ public sealed partial class WoundSystem
     {
         if (args.NewSeverity != WoundSeverity.Healed)
             return;
-
-        //TryMakeScar(wound, out _, woundComponent); // disabled as there is no way to heal scars currently?
         RemoveWound(wound, woundComponent);
     }
 
@@ -387,7 +385,7 @@ public sealed partial class WoundSystem
             if (Prototype(wound)?.ID is not { } woundId)
                 continue;
 
-            if (id != woundId || wound.Comp.IsScar)
+            if (id != woundId)
                 continue;
 
             ApplyWoundSeverity(wound, severity, wound);
@@ -397,37 +395,6 @@ public sealed partial class WoundSystem
         }
 
         return false;
-    }
-
-    /// <summary>
-    /// Tries to create a scar on a woundable entity. Takes a scar prototype from WoundComponent.
-    /// </summary>
-    /// <param name="wound">The wound entity, from which the scar will be made.</param>
-    /// <param name="scarWound">The result scar wound, if created.</param>
-    /// <param name="woundComponent">The WoundComponent representing a specific wound.</param>
-    public bool TryMakeScar(EntityUid wound,
-        [NotNullWhen(true)] out Entity<WoundComponent>? scarWound,
-        WoundComponent? woundComponent = null)
-    {
-        scarWound = null;
-        if (!Resolve(wound, ref woundComponent))
-            return false;
-
-        if (!_random.Prob(_cfg.GetCVar(SurgeryCVars.WoundScarChance)))
-            return false;
-
-        if (woundComponent.ScarWound == null || woundComponent.IsScar)
-            return false;
-
-        if (!TryCreateWound(woundComponent.HoldingWoundable,
-                woundComponent.ScarWound,
-                0.1f,
-                out var createdWound,
-                woundComponent.DamageGroup))
-            return false;
-
-        scarWound = createdWound;
-        return true;
     }
 
     /// <summary>
@@ -901,8 +868,6 @@ public sealed partial class WoundSystem
         foreach (var wound in container.ContainedEntities)
         {
             var woundComp = _query.Comp(wound);
-            if (woundComp.IsScar) // scars don't affect limb integrity
-                continue;
 
             damage += woundComp.WoundSeverityPoint;
         }
@@ -1216,19 +1181,6 @@ public sealed partial class WoundSystem
                 result[category] = part.Comp.WoundableSeverity;
         }
 
-        return result;
-    }
-
-    public Dictionary<ProtoId<OrganCategoryPrototype>, WoundableSeverity> GetDamageableStatesOnBody(EntityUid body)
-    {
-        var result = SeveredStates();
-        foreach (var part in _body.GetOrgans<WoundableComponent>(body))
-        {
-            if (_body.GetCategory(part.Owner) is not {} category)
-                continue;
-
-            result[category] = part.Comp.WoundableSeverity;
-        }
         return result;
     }
 
