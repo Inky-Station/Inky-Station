@@ -1227,35 +1227,8 @@ public sealed partial class WoundSystem
             if (_body.GetCategory(part.Owner) is not {} category)
                 continue;
 
-            var nearestSeverity = WoundableSeverity.Severed;
-            // inkymed
-            // var damage = _damageable.GetTotalDamage(part.Owner);
-            var damage = GetWoundableSeverityPoint(part.Owner, part.Comp); // use wound severity instead of damageable thing
-            // /inkymed
-            foreach (var (severity, threshold) in part.Comp.Thresholds.OrderByDescending(kv => kv.Value))
-            {
-                if (damage <= 0)
-                {
-                    nearestSeverity = WoundableSeverity.Healthy;
-                    break;
-                }
-
-                if (damage >= part.Comp.IntegrityCap)
-                {
-                    nearestSeverity = WoundableSeverity.Mangled;
-                    break;
-                }
-
-                if (damage > part.Comp.IntegrityCap - threshold)
-                    continue;
-
-                nearestSeverity = severity;
-                break;
-            }
-
-            result[category] = nearestSeverity;
+            result[category] = part.Comp.WoundableSeverity;
         }
-
         return result;
     }
 
