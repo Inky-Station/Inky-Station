@@ -423,6 +423,13 @@ public sealed partial class WoundSystem : EntitySystem
             DamageGroup = comp.DamageGroup,
             DamageType = comp.DamageType,
 
+            // inkymed
+            /*
+            ScarWound = comp.ScarWound,
+            IsScar = comp.IsScar,
+            */
+            // /inkymed
+
             WoundSeverity = comp.WoundSeverity,
 
             WoundVisibility = comp.WoundVisibility,
@@ -496,6 +503,13 @@ public sealed partial class WoundSystem : EntitySystem
         component.DamageGroup = state.DamageGroup;
         if (state.DamageType != null)
             component.DamageType = state.DamageType;
+
+        // inkymed
+        /*
+        component.ScarWound = state.ScarWound;
+        component.IsScar = state.IsScar;
+        */
+        // /inkymed
 
         if (component.WoundSeverity != state.WoundSeverity)
         {

@@ -385,7 +385,7 @@ public sealed partial class WoundSystem
             if (Prototype(wound)?.ID is not { } woundId)
                 continue;
 
-            if (id != woundId)
+            if (id != woundId) // inkymed - removed scars
                 continue;
 
             ApplyWoundSeverity(wound, severity, wound);
@@ -868,6 +868,12 @@ public sealed partial class WoundSystem
         foreach (var wound in container.ContainedEntities)
         {
             var woundComp = _query.Comp(wound);
+            // inkymed
+            /*
+            if (woundComp.IsScar) // scars don't affect limb integrity
+                continue;
+            */
+            // /inkymed
 
             damage += woundComp.WoundSeverityPoint;
         }
