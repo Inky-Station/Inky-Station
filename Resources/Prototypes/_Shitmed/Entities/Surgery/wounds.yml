@@ -313,6 +313,24 @@
       VeinsDamage: 0.12
 
 - type: entity
+  id: Bloodloss
+  parent: WoundBase
+  components:
+  - type: Wound
+    damageType: Bloodloss
+    woundType: Internal
+    woundVisibility: HandScanner
+
+- type: entity
+  id: Asphyxiation
+  parent: WoundBase
+  components:
+  - type: Wound
+    damageType: Asphyxiation
+    woundType: Internal
+    woundVisibility: HandScanner
+
+- type: entity
   id: BoneDamage
   components:
   - type: Trauma
