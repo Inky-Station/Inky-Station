@@ -215,6 +215,7 @@ public sealed partial class WoundSystem
                 if (!IsWoundPrototypeValid(damageType))
                     continue;
 
+                // inkymed - no more severity multiplier
                 TryInduceWound(uid,
                     damageType,
                     damageValue *
@@ -240,6 +241,7 @@ public sealed partial class WoundSystem
         var damage = _damageable.GetAllDamage(ent.Owner);
         foreach (var type in damage.DamageDict.Keys)
         {
+            // inkymed - no more severity multiplier
             var mul = /*damage.WoundSeverityMultipliers.GetValueOrDefault(type, 1)*/ 1;
             TryInduceWound(ent, type, value * mul, out _, ent.Comp);
         }
@@ -276,6 +278,7 @@ public sealed partial class WoundSystem
 
         foreach (var woundToInduce in damage.DamageDict)
         {
+            // inkymed - no more severity multiplier
             if (!TryInduceWound(uid, woundToInduce.Key, woundToInduce.Value *
                 /*damage.WoundSeverityMultipliers.GetValueOrDefault(woundToInduce.Key, 1)*/ 1, out var woundInduced, woundable))
                 return false;
