@@ -19,7 +19,12 @@ public sealed partial class DamageSpecifier
     public float PartDamageVariation;
 
     [DataField]
-    public Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2> WoundSeverityMultipliers = new();
+    public Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2> WoundSeverityMultipliers // inkymed - FUCK IT WE BALL
+    {
+        get => new();
+        set { }
+    }
+    // /inkymed
 
     [DataField]
     public DamageFlags Flags = DamageFlags.None;
