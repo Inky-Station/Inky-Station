@@ -151,7 +151,7 @@ public partial class TraumaSystem
 
         if (organ.IntegrityModifiers.Count > 0)
             organ.OrganIntegrity = FixedPoint2.Clamp(organ.IntegrityModifiers
-                .Aggregate(FixedPoint2.Zero, (current, modifier) => current + modifier.Value),
+                .Aggregate(FixedPoint2.Zero, (current, modifier) => current - modifier.Value),
                 0,
                 organ.IntegrityCap);
 
@@ -167,12 +167,11 @@ public partial class TraumaSystem
             }
         }
 
-        var nearestSeverity = organ.OrganSeverity;
-        foreach (var (severity, value) in organ.IntegrityThresholds.OrderByDescending(kv => kv.Value))
+        var nearestSeverity = OrganSeverity.Destroyed;
+        foreach (var (severity, value) in organ.IntegrityThresholds.OrderBy(kv => kv.Value))
         {
-            if (organ.OrganIntegrity > value)
+            if (organ.OrganIntegrity < value)
                 continue;
-
             nearestSeverity = severity;
             break;
         }
@@ -181,11 +180,19 @@ public partial class TraumaSystem
         {
             var ev = new OrganDamageSeverityChanged(organ.OrganSeverity, nearestSeverity);
             RaiseLocalEvent(uid, ref ev);
-            if (_container.TryGetContainingContainer((uid, Transform(uid), MetaData(uid)), out var container))
+            // inky med fixes
+            /*if (_container.TryGetContainingContainer((uid, Transform(uid), MetaData(uid)), out var container))
             {
                 var ev1 = new OrganDamageSeverityChangedOnWoundable((uid, organ), organ.OrganSeverity, nearestSeverity);
                 RaiseLocalEvent(container.Owner, ref ev1);
+            }*/
+            var parentPart = _part.GetParentPart(uid);
+            if (parentPart.HasValue)
+            {
+                var ev1 = new OrganDamageSeverityChangedOnWoundable((uid, organ), organ.OrganSeverity, nearestSeverity);
+                RaiseLocalEvent(parentPart.Value, ref ev1);
             }
+            // inky med fixes end
         }
 
         organ.OrganSeverity = nearestSeverity;

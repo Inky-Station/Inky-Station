@@ -10,11 +10,11 @@
 - type: organCategory
   id: ArmRight
 
-- type: organCategory
-  id: HandRight
+#- type: organCategory
+#  id: HandRight
 
-- type: organCategory
-  id: HandLeft
+#- type: organCategory
+#  id: HandLeft
 
 - type: organCategory
   id: LegLeft
@@ -22,11 +22,11 @@
 - type: organCategory
   id: LegRight
 
-- type: organCategory
-  id: FootLeft
+#- type: organCategory
+#  id: FootLeft
 
-- type: organCategory
-  id: FootRight
+#- type: organCategory
+#  id: FootRight
 
 - type: organCategory
   id: Brain
