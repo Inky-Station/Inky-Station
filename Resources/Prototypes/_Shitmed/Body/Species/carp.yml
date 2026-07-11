@@ -99,3 +99,9 @@
   - type: OrganComponents
     onAdd:
     - type: PressureImmunity
+  # inkymed
+  - type: Heart
+    normalRate: 130
+    fibrillationCaps: 60,210 # want pressure immunity? leave the chems out the door then thank you.
+    criticalRate: 270
+  # inkymed
