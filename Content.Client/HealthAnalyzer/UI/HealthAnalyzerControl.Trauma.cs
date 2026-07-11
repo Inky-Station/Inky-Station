@@ -147,6 +147,7 @@ public sealed partial class HealthAnalyzerControl
     public void PopulateBody(EntityUid target, HealthAnalyzerUiState state, HealthAnalyzerBodyState body, bool bloodLevelLow = false)
     {
         var part = _entityManager.GetEntity(state.Part);
+        var originalTarget = target; // inkymed
         if (part != null)
             target = part.Value;
         // inkymed
@@ -189,10 +190,10 @@ public sealed partial class HealthAnalyzerControl
 
         DamageLabel.Text = damage.GetTotal().ToString();
 
-        var identity = Identity.Name(target, _entityManager);
+        var identity = Identity.Name(originalTarget, _entityManager); // inkymed
         if (isPart)
         {
-            PartNameLabel.Text = _entityManager.HasComponent<MetaDataComponent>(target)
+            PartNameLabel.Text = _entityManager.HasComponent<MetaDataComponent>(originalTarget) // inkymed
                 ? identity
                 : Loc.GetString("health-analyzer-window-entity-unknown-value-text");
         }
@@ -273,7 +274,7 @@ public sealed partial class HealthAnalyzerControl
             }
         }
         // inkymed
-        PopulateHeartConditions(target, identity);
+        PopulateHeartConditions(originalTarget, identity);
         // /inkymed
     }
 
