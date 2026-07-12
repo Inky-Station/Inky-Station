@@ -35,6 +35,9 @@ public sealed partial class HeartComponent
     /// </summary>
     public float BaseRateUpdateModifier;
 
+    //asame sht ias above but normal rate idfk these two abveo neefdds to gone prob
+    public float NromalRate;
+
     /// <summary>
     /// if the current heartrate is beyond fibrillation caps,
     /// the entity will receive a fibrillation alert and will stop stabilising on itself,
