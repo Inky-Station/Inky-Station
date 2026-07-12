@@ -1,7 +1,11 @@
 using Content.Inky.Common.Medical;
+using Content.Medical.Common.Body;
+using Content.Medical.Common.Traumas;
 using Content.Medical.Shared.Body;
+using Content.Medical.Shared.Traumas;
 using Content.Shared.Alert;
 using Content.Shared.Body;
+using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
@@ -16,6 +20,7 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private BodySystem _body = default!;
     [Dependency] private IRobustRandom _gambling = default!;
+    [Dependency] private TraumaSystem _trauma = default!;
 
     private static readonly float HeartStop = 0f;
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
@@ -28,6 +33,7 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
         SubscribeLocalEvent<HeartComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<HeartComponent, RejuvenateEvent>(OnRejuvenate);
+        // SubscribeLocalEvent<HeartComponent, OrganDamageSeverityChanged>(OnOrganDamageSeverityChanged);
         SubscribeLocalEvent<BodyComponent, FindWorkingHeartEvent>(OnFindHeart);
     }
 
@@ -40,6 +46,10 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     {
         SetRate(uid, heart, heart.NormalRate, true);
     }
+
+    // private void OnOrganDamageSeverityChanged(Entity<HeartComponent> ent, ref OrganDamageSeverityChanged args)
+    // {
+    // }
 
     public override void Update(float frameTime)
     {
@@ -73,6 +83,13 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         var delta = heart.RateUpdateModifier * (float) Math.Cbrt(
             (cur - heart.NormalRate) * (cur - min) * (cur - max)
         );
+
+        if (GetState(heart) == HeartState.Fibrillating)
+        {
+            var damage = FixedPoint2.New(Math.Abs(delta));
+            if (!_trauma.TryChangeOrganDamageModifier(uid, damage, uid, "Fibrillation")) // i guess?
+                _trauma.TryCreateOrganDamageModifier(uid, damage, uid, "Fibrillation");
+        }
 
         UpdateRate(uid, heart, delta, false);
     }
