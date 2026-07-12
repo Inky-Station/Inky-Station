@@ -31,6 +31,11 @@ public sealed partial class HeartComponent
     public float RateUpdateModifier = 0.02f;
 
     /// <summary>
+    /// RateUpdateModifier but before any changes
+    /// </summary>
+    public float BaseRateUpdateModifier;
+
+    /// <summary>
     /// if the current heartrate is beyond fibrillation caps,
     /// the entity will receive a fibrillation alert and will stop stabilising on itself,
     /// eventually reaching into a cap of the heartrate

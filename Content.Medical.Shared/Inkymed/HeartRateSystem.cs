@@ -22,7 +22,11 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     [Dependency] private IRobustRandom _gambling = default!;
     [Dependency] private TraumaSystem _trauma = default!;
 
+    [Dependency] private EntityQuery<InternalOrganComponent> _internal = default!;
+
     private static readonly float HeartStop = 0f;
+    private const float HeartDamageModifier = 0.1f;
+    private const float RateUpdateModifierModifier = 0.001f;
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
     private TimeSpan _nextUpdate;
 
@@ -39,6 +43,7 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
     private void OnComponentInit(EntityUid uid, HeartComponent heart, ComponentInit args)
     {
+        heart.BaseRateUpdateModifier = heart.RateUpdateModifier;
         SetRate(uid, heart, heart.NormalRate, true);
     }
 
@@ -76,6 +81,8 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         && _gambling.Prob(heart.CriticalStopChance)) // and also you're unlucky enough
             SetRate(uid, heart, HeartStop, false);
 
+        UpdateRateUpdateModifier(uid, heart);
+
         // fibrillating drifts AWAY from the normal heart rate (towards min/max)
         // being stable drifts TOWARDS the normal heart rate
         var cur = heart.CurrentRate;
@@ -86,12 +93,25 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
         if (GetState(heart) == HeartState.Fibrillating)
         {
-            var damage = FixedPoint2.New(Math.Abs(delta));
-            if (!_trauma.TryChangeOrganDamageModifier(uid, damage, uid, "Fibrillation")) // i guess?
-                _trauma.TryCreateOrganDamageModifier(uid, damage, uid, "Fibrillation");
+            var damage = FixedPoint2.New(Math.Abs(delta / 40)); // magik numer
+            if (_internal.TryComp(uid, out var internalOrgan))
+                _trauma.TrySetOrganDamageModifier(uid, internalOrgan.OrganIntegrity - damage, uid, "Fibrillation", internalOrgan); // i guess
         }
 
         UpdateRate(uid, heart, delta, false);
+    }
+
+    private void UpdateRateUpdateModifier(EntityUid uid, HeartComponent heart)
+    {
+        var modifier = heart.BaseRateUpdateModifier;
+        if (_internal.TryComp(uid, out var internalOrgan)
+            && internalOrgan.OrganSeverity == OrganSeverity.Damaged) // if shit is damaged then we tweak RateUpdateModifier for each shitlet of organ damage
+        { // have fucking fun dear
+            var damage = Math.Max(0f, (internalOrgan.IntegrityCap - internalOrgan.OrganIntegrity).Float()); // todo NOW for the low of god test it
+            modifier += damage / HeartDamageModifier * RateUpdateModifierModifier;
+        }
+
+        heart.RateUpdateModifier = modifier;
     }
 
     // goida idk
