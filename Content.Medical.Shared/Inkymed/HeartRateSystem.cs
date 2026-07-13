@@ -44,7 +44,6 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     private void OnComponentInit(EntityUid uid, HeartComponent heart, ComponentInit args)
     {
         heart.BaseRateUpdateModifier = heart.RateUpdateModifier;
-        heart.NromalRate = heart.NormalRate;
         SetRate(uid, heart, heart.NormalRate, true);
     }
 
@@ -82,7 +81,7 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         && _gambling.Prob(heart.CriticalStopChance)) // and also you're unlucky enough
             SetRate(uid, heart, HeartStop, false);
 
-        UpdateShitfuckingdamage(uid, heart);
+        UpdateRateUpdateModifier(uid, heart);
 
         // fibrillating drifts AWAY from the normal heart rate (towards min/max)
         // being stable drifts TOWARDS the normal heart rate
@@ -102,7 +101,7 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         UpdateRate(uid, heart, delta, false);
     }
 
-    private void UpdateShitfuckingdamage(EntityUid uid, HeartComponent heart)
+    private void UpdateRateUpdateModifier(EntityUid uid, HeartComponent heart)
     {
         var modifier = heart.BaseRateUpdateModifier;
         if (_internal.TryComp(uid, out var internalOrgan)
@@ -111,18 +110,6 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
             var damage = Math.Max(0f, (internalOrgan.IntegrityCap - internalOrgan.OrganIntegrity).Float()); // todo NOW for the low of god test it
             modifier += damage / HeartDamageModifier * RateUpdateModifierModifier;
         }
-
-        var goida = heart.NromalRate;
-        if (_internal.TryComp(uid, out var shit)
-
-            && shit.OrganSeverity == OrganSeverity.Damaged)
-        {
-            var shitT = _gambling.Next(-20, 20);
-            goida = heart.NormalRate + shitT;
-
-        }
-
-        heart.NormalRate = goida;
 
         heart.RateUpdateModifier = modifier;
     }
