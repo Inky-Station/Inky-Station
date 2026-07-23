@@ -290,12 +290,12 @@
         type: Add
       # inkymed
       - !type:ModifyHeartRate
-        amount: -1.5
+        amount: -3
         lowerCap: 45
       - !type:ModifyStatusEffect
         effectProto: StatusEffectOpiated
         type: Add
-        time: 16
+        time: 15 # 30 seconds per 1u
       # /inkymed
 
 - type: reagent
@@ -357,12 +357,12 @@
         time: 5
       # inkymed
       - !type:ModifyHeartRate
-        amount: -2
+        amount: -2.5
         lowerCap: 45
       - !type:ModifyStatusEffect
         effectProto: StatusEffectOpiated
         type: Add
-        time: 6
+        time: 6 # 12 seconds per 1u
     # /inkymed
 
 - type: reagent

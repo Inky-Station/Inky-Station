@@ -1127,12 +1127,12 @@
           min: 15.5
         # inkymed
       - !type:ModifyHeartRate
-        amount: -3
+        amount: -4
         lowerCap: 41 # more safe heroin
       - !type:ModifyStatusEffect
         effectProto: StatusEffectOpiated
         type: Add
-        time: 4
+        time: 2 # 20 seconds per 1u
         # /inkymed
 
 - type: reagent

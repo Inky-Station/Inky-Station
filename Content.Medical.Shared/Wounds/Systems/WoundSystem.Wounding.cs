@@ -189,8 +189,6 @@ public sealed partial class WoundSystem
     {
         if (args.NewSeverity != WoundSeverity.Healed)
             return;
-
-        //TryMakeScar(wound, out _, woundComponent); // disabled as there is no way to heal scars currently?
         RemoveWound(wound, woundComponent);
     }
 
@@ -217,10 +215,11 @@ public sealed partial class WoundSystem
                 if (!IsWoundPrototypeValid(damageType))
                     continue;
 
+                // inkymed - no more severity multiplier
                 TryInduceWound(uid,
                     damageType,
                     damageValue *
-                    args.Damage.WoundSeverityMultipliers.GetValueOrDefault(damageType, 1),
+                    /*args.Damage.WoundSeverityMultipliers.GetValueOrDefault(damageType, 1)*/ 1,
                     out _,
                     component);
             }
@@ -242,7 +241,8 @@ public sealed partial class WoundSystem
         var damage = _damageable.GetAllDamage(ent.Owner);
         foreach (var type in damage.DamageDict.Keys)
         {
-            var mul = damage.WoundSeverityMultipliers.GetValueOrDefault(type, 1);
+            // inkymed - no more severity multiplier
+            var mul = /*damage.WoundSeverityMultipliers.GetValueOrDefault(type, 1)*/ 1;
             TryInduceWound(ent, type, value * mul, out _, ent.Comp);
         }
     }
@@ -278,8 +278,9 @@ public sealed partial class WoundSystem
 
         foreach (var woundToInduce in damage.DamageDict)
         {
+            // inkymed - no more severity multiplier
             if (!TryInduceWound(uid, woundToInduce.Key, woundToInduce.Value *
-                damage.WoundSeverityMultipliers.GetValueOrDefault(woundToInduce.Key, 1), out var woundInduced, woundable))
+                /*damage.WoundSeverityMultipliers.GetValueOrDefault(woundToInduce.Key, 1)*/ 1, out var woundInduced, woundable))
                 return false;
 
             woundsInduced.Add(woundInduced.Value);
@@ -387,7 +388,7 @@ public sealed partial class WoundSystem
             if (Prototype(wound)?.ID is not { } woundId)
                 continue;
 
-            if (id != woundId || wound.Comp.IsScar)
+            if (id != woundId) // inkymed - removed scars
                 continue;
 
             ApplyWoundSeverity(wound, severity, wound);
@@ -397,37 +398,6 @@ public sealed partial class WoundSystem
         }
 
         return false;
-    }
-
-    /// <summary>
-    /// Tries to create a scar on a woundable entity. Takes a scar prototype from WoundComponent.
-    /// </summary>
-    /// <param name="wound">The wound entity, from which the scar will be made.</param>
-    /// <param name="scarWound">The result scar wound, if created.</param>
-    /// <param name="woundComponent">The WoundComponent representing a specific wound.</param>
-    public bool TryMakeScar(EntityUid wound,
-        [NotNullWhen(true)] out Entity<WoundComponent>? scarWound,
-        WoundComponent? woundComponent = null)
-    {
-        scarWound = null;
-        if (!Resolve(wound, ref woundComponent))
-            return false;
-
-        if (!_random.Prob(_cfg.GetCVar(SurgeryCVars.WoundScarChance)))
-            return false;
-
-        if (woundComponent.ScarWound == null || woundComponent.IsScar)
-            return false;
-
-        if (!TryCreateWound(woundComponent.HoldingWoundable,
-                woundComponent.ScarWound,
-                0.1f,
-                out var createdWound,
-                woundComponent.DamageGroup))
-            return false;
-
-        scarWound = createdWound;
-        return true;
     }
 
     /// <summary>
@@ -901,8 +871,12 @@ public sealed partial class WoundSystem
         foreach (var wound in container.ContainedEntities)
         {
             var woundComp = _query.Comp(wound);
+            // inkymed
+            /*
             if (woundComp.IsScar) // scars don't affect limb integrity
                 continue;
+            */
+            // /inkymed
 
             damage += woundComp.WoundSeverityPoint;
         }
@@ -916,6 +890,13 @@ public sealed partial class WoundSystem
 
         component.WoundableIntegrity = newIntegrity;
         Dirty(uid, component);
+
+        // inkymed
+        // wound-only damage raised damagechangedevent so tests bricked lmao
+        // also this __may__ fuck up clients kinda so if anything happens just slap a _net.IsServer here lmao
+        if (_body.GetBody(uid) is {} body)
+            _mobThreshold.VerifyThresholds(body);
+        // /inkymed
     }
 
     public bool AddWound( // Trauma - made public
@@ -1214,43 +1195,6 @@ public sealed partial class WoundSystem
         {
             if (_body.GetCategory(part.Owner) is {} category)
                 result[category] = part.Comp.WoundableSeverity;
-        }
-
-        return result;
-    }
-
-    public Dictionary<ProtoId<OrganCategoryPrototype>, WoundableSeverity> GetDamageableStatesOnBody(EntityUid body)
-    {
-        var result = SeveredStates();
-        foreach (var part in _body.GetOrgans<WoundableComponent>(body))
-        {
-            if (_body.GetCategory(part.Owner) is not {} category)
-                continue;
-
-            var nearestSeverity = WoundableSeverity.Severed;
-            var damage = _damageable.GetTotalDamage(part.Owner);
-            foreach (var (severity, threshold) in part.Comp.Thresholds.OrderByDescending(kv => kv.Value))
-            {
-                if (damage <= 0)
-                {
-                    nearestSeverity = WoundableSeverity.Healthy;
-                    break;
-                }
-
-                if (damage >= part.Comp.IntegrityCap)
-                {
-                    nearestSeverity = WoundableSeverity.Mangled;
-                    break;
-                }
-
-                if (damage > part.Comp.IntegrityCap - threshold)
-                    continue;
-
-                nearestSeverity = severity;
-                break;
-            }
-
-            result[category] = nearestSeverity;
         }
 
         return result;

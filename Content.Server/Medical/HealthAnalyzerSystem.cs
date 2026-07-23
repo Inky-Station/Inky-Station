@@ -268,7 +268,7 @@ public sealed partial class HealthAnalyzerSystem : EntitySystem
             //bleeding = bloodstream.BleedAmount > 0;
         }
 
-        var bodyStatus = _wound.GetDamageableStatesOnBody(entity);
+        var bodyStatus = _wound.GetWoundableStatesOnBody(entity); // inkymed - was GetDamageableStatesOnBody
 
         // <Goob>
         var vitalDamage = FixedPoint2.Zero;

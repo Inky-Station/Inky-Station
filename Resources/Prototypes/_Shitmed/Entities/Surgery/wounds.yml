@@ -19,7 +19,6 @@
     damageType: Blunt
     woundType: External
     woundVisibility: Always
-    scarWound: BluntScar
     mangleSeverity: Severe
   - type: TraumaInflicter
     severityThreshold: 12
@@ -49,7 +48,6 @@
     damageType: Piercing
     woundType: External
     woundVisibility: Always
-    scarWound: PiercingScar
     mangleSeverity: Severe
   - type: TraumaInflicter
     severityThreshold: 12
@@ -81,7 +79,6 @@
   - type: Wound
     woundType: External
     woundVisibility: Always
-    scarWound: PiercingScar
     selfHealMultiplier: 0
   - type: TraumaInflicter
     severityThreshold: 6
@@ -110,7 +107,6 @@
     damageType: Slash
     woundType: External
     woundVisibility: Always
-    scarWound: SlashScar
     mangleSeverity: Severe
   - type: TraumaInflicter
     severityThreshold: 9
@@ -138,7 +134,6 @@
     damageType: Heat
     woundType: External
     woundVisibility: Always
-    scarWound: BurnScar
   - type: TraumaInflicter
     severityThreshold: 17
     allowedTraumas:
@@ -166,7 +161,6 @@
     damageType: Ion
     woundType: External
     woundVisibility: Always
-    scarWound: BurnScar
   - type: TraumaInflicter
     severityThreshold: 17
     allowedTraumas:
@@ -192,7 +186,6 @@
     damageType: Cold
     woundType: External
     woundVisibility: Always
-    scarWound: BurnScar
   - type: TraumaInflicter
     severityThreshold: 12
     allowedTraumas:
@@ -228,7 +221,6 @@
     damageType: Shock
     woundType: Internal
     woundVisibility: HandScanner
-    scarWound: BurnScar
   - type: TraumaInflicter
     severityThreshold: 9
     allowedTraumas:
@@ -248,7 +240,6 @@
     damageType: Cellular
     woundType: Internal
     woundVisibility: AdvancedScanner
-    scarWound: BurnScar
     selfHealMultiplier: 0
   - type: TraumaInflicter
     severityThreshold: 0
@@ -270,7 +261,6 @@
     damageType: Caustic
     woundType: Internal
     woundVisibility: AdvancedScanner
-    scarWound: BurnScar
   - type: TraumaInflicter
     severityThreshold: 12
     allowedTraumas:
@@ -289,7 +279,6 @@
     damageType: Radiation
     woundType: Internal
     woundVisibility: HandScanner
-    scarWound: RadiationScar
     selfHealMultiplier: 0
   - type: TraumaInflicter
     severityThreshold: 11
@@ -322,6 +311,24 @@
       OrganDamage: -0.34
       BoneDamage: 0
       VeinsDamage: 0.12
+
+- type: entity
+  id: Bloodloss
+  parent: WoundBase
+  components:
+  - type: Wound
+    damageType: Bloodloss
+    woundType: Internal
+    woundVisibility: HandScanner
+
+- type: entity
+  id: Asphyxiation
+  parent: WoundBase
+  components:
+  - type: Wound
+    damageType: Asphyxiation
+    woundType: Internal
+    woundVisibility: HandScanner
 
 - type: entity
   id: BoneDamage

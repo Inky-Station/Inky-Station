@@ -89,7 +89,8 @@ public sealed class DefibrillatorTest : InteractionTest
         });
 
         // Set the damage halfway between the crit and death thresholds so that the target can be revived.
-        await Server.WaitPost(() => damageableSystem.ChangeDamage((STarget.Value, targetDamageable), critDamage, targetPart: TargetBodyPart.Chest)); // Trauma - changeDamage
+        // inky change - need to ignore blockers, otherwise woundmed blocks the heal most of the time due to bone damage trauma
+        await Server.WaitPost(() => damageableSystem.ChangeDamage((STarget.Value, targetDamageable), critDamage, targetPart: TargetBodyPart.Chest, ignoreBlockers: true)); // Trauma - changeDamage
         await RunTicks(3);
 
         // Check that the target is still dead.
