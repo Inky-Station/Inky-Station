@@ -1,0 +1,24 @@
+- type: entity
+  id: ChemistryBottleDesoxy
+  suffix: Desoxy
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Desoxyephedrine
+        Quantity: 30
+
+- type: entity
+  id: ChemistryBottleMeth
+  suffix: true Meth, 60u
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: Desoxyephedrine
+        Quantity: 30
+      - ReagentId: Dylovene
+        Quantity: 30

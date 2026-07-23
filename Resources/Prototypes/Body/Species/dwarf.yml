@@ -108,7 +108,7 @@
   # inkymed
   components:
   - type: Heart
-    normalRate: 150
-    fibrillationCaps: 40,260
-    criticalRate: 370
+    normalRate: 120
+    fibrillationCaps: 40,250
+    criticalRate: 340
   # inkymed

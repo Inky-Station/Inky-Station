@@ -1,7 +1,11 @@
 using Content.Inky.Common.Medical;
+using Content.Medical.Common.Body;
+using Content.Medical.Common.Traumas;
 using Content.Medical.Shared.Body;
+using Content.Medical.Shared.Traumas;
 using Content.Shared.Alert;
 using Content.Shared.Body;
+using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
@@ -16,8 +20,13 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private BodySystem _body = default!;
     [Dependency] private IRobustRandom _gambling = default!;
+    [Dependency] private TraumaSystem _trauma = default!;
+
+    [Dependency] private EntityQuery<InternalOrganComponent> _internal = default!;
 
     private static readonly float HeartStop = 0f;
+    private const float HeartDamageModifier = 0.1f;
+    private const float RateUpdateModifierModifier = 0.001f;
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
     private TimeSpan _nextUpdate;
 
@@ -28,11 +37,13 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
         SubscribeLocalEvent<HeartComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<HeartComponent, RejuvenateEvent>(OnRejuvenate);
+        // SubscribeLocalEvent<HeartComponent, OrganDamageSeverityChanged>(OnOrganDamageSeverityChanged);
         SubscribeLocalEvent<BodyComponent, FindWorkingHeartEvent>(OnFindHeart);
     }
 
     private void OnComponentInit(EntityUid uid, HeartComponent heart, ComponentInit args)
     {
+        heart.BaseRateUpdateModifier = heart.RateUpdateModifier;
         SetRate(uid, heart, heart.NormalRate, true);
     }
 
@@ -40,6 +51,10 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     {
         SetRate(uid, heart, heart.NormalRate, true);
     }
+
+    // private void OnOrganDamageSeverityChanged(Entity<HeartComponent> ent, ref OrganDamageSeverityChanged args)
+    // {
+    // }
 
     public override void Update(float frameTime)
     {
@@ -66,6 +81,8 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         && _gambling.Prob(heart.CriticalStopChance)) // and also you're unlucky enough
             SetRate(uid, heart, HeartStop, false);
 
+        UpdateRateUpdateModifier(uid, heart);
+
         // fibrillating drifts AWAY from the normal heart rate (towards min/max)
         // being stable drifts TOWARDS the normal heart rate
         var cur = heart.CurrentRate;
@@ -74,7 +91,27 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
             (cur - heart.NormalRate) * (cur - min) * (cur - max)
         );
 
+        if (GetState(heart) == HeartState.Fibrillating)
+        {
+            var damage = FixedPoint2.New(Math.Abs(delta / 40)); // magik numer
+            if (_internal.TryComp(uid, out var internalOrgan))
+                _trauma.TrySetOrganDamageModifier(uid, internalOrgan.OrganIntegrity - damage, uid, "Fibrillation", internalOrgan); // i guess
+        }
+
         UpdateRate(uid, heart, delta, false);
+    }
+
+    private void UpdateRateUpdateModifier(EntityUid uid, HeartComponent heart)
+    {
+        var modifier = heart.BaseRateUpdateModifier;
+        if (_internal.TryComp(uid, out var internalOrgan)
+            && internalOrgan.OrganSeverity == OrganSeverity.Damaged) // if shit is damaged then we tweak RateUpdateModifier for each shitlet of organ damage
+        { // have fucking fun dear
+            var damage = Math.Max(0f, (internalOrgan.IntegrityCap - internalOrgan.OrganIntegrity).Float()); // todo NOW for the low of god test it
+            modifier += damage / HeartDamageModifier * RateUpdateModifierModifier;
+        }
+
+        heart.RateUpdateModifier = modifier;
     }
 
     // goida idk

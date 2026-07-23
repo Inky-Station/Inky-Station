@@ -37,6 +37,10 @@ public sealed partial class TraumaSystem : EntitySystem
         InitProcess();
         InitBones();
         InitOrgans();
+
+        //inkymed
+        InitInky();
+        // /inkymed
     }
     /// <summary>
     /// Heals bone damage on a woundable, if it has a bone. Does nothing if it has no bone.
