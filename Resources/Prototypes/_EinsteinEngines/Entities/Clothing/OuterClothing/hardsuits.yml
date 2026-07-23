@@ -29,6 +29,7 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
+        Ballistic: 0.5
         Heat: 0.5
         Radiation: 0.1
       #flatReductions: # This is done so shotguns are worse against armor # inky - no
@@ -87,6 +88,7 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
+        Ballistic: 0.5
         Heat: 0.5
         Radiation: 0.1
       #flatReductions: # This is done so shotguns are worse against armor # inky - no
@@ -130,7 +132,7 @@
       coefficients:
         Blunt: 0.3
         Slash: 0.3
-        Piercing: 0.3
+        Ballistic: 0.3
         Heat: 0.5
         Radiation: 0.1
       #flatReductions: # This is done so shotguns are worse against armor # inky - no

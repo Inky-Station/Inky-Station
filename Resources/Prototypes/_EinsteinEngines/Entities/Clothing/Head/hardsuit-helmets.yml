@@ -24,6 +24,7 @@
         Blunt: 0.70
         Slash: 0.70
         Piercing: 0.70
+        Ballistic: 0.70
         Heat: 0.70
       #flatReductions: # This is done so shotguns are worse against armor # inky
       #  Piercing: 3
@@ -61,6 +62,7 @@
         Blunt: 0.85
         Slash: 0.85
         Piercing: 0.85
+        Ballistic: 0.85
         Heat: 0.85
       #flatReductions: # This is done so shotguns are worse against armor # inky
       #  Piercing: 3
@@ -86,6 +88,7 @@
         Blunt: 0.65
         Slash: 0.65
         Piercing: 0.65
+        Ballistic: 0.65
         Heat: 0.65
       #flatreductions: # this is done so shotguns are worse against armor # inky
       #  piercing: 3

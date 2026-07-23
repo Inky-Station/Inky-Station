@@ -266,7 +266,7 @@
       - !type:EvenHealthChange
         damage:
           # powerful due to abundance of food, but very inconvienient to use
-          Brute: -4
+          Brute: -2
           Burn: -2
       - !type:ModifyBleed
         amount: -0.5
@@ -374,6 +374,7 @@
             Slash: -4
             Blunt: -4
             Piercing: -4
+            Ballistic: -4
       - !type:AdjustReagent
         reagent: Bozaide
         amount: 3
@@ -693,6 +694,7 @@
           types:
             Blunt: -0.5
             Piercing: -0.25
+            Ballistic: -0.25
             Slash: -0.5
             Heat: -0.38
             Cold: -0.38
@@ -974,7 +976,7 @@
       - !type:HealthChange
         damage:
           types:
-            Cellular: -6
+            Cellular: -10
       - !type:HealthChange # this + explosion rounds out to ~90dmg/15u
         damage:
           types:

@@ -14,6 +14,7 @@
         Blunt: 0.35
         Slash: 0.35
         Piercing: 0.35
+        Ballistic: 0.35
         Heat: 0.35
         Radiation: 0.5
         Caustic: 0.5

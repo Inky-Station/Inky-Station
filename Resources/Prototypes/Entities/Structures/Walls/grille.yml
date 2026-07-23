@@ -4,6 +4,12 @@
   name: grille
   description: A flimsy framework of iron rods.
   components:
+  # <Trauma>
+  - type: Penetratable # Goobstation - Better snipers
+    penetrateDamage: 10
+  # </Trauma>
+  - type: Transform # required
+    noRot: true
     - type: MeleeSound
       soundGroups:
         Brute:
@@ -176,6 +182,8 @@
   parent: Grille
   name: diagonal grille
   components:
+  - type: Transform
+    noRot: false
   - type: Sprite
     drawdepth: Walls
     sprite:  Structures/Walls/grille.rsi # inky edit - de-barratry textures
@@ -214,6 +222,8 @@
   parent: ClockworkGrille
   name: diagonal clockwork grille
   components:
+  - type: Transform
+    noRot: false
   - type: Sprite
     drawdepth: Walls
     sprite: Structures/Walls/clockwork_grille.rsi

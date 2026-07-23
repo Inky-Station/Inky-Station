@@ -265,6 +265,7 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
+        Ballistic: 0.7 # Trauma
         Heat: 0.8
       # <Trauma> - This is done so shotguns are worse against armor
       #flatReductions: # inky - no
@@ -309,6 +310,7 @@
         Blunt: 0.85
         Slash: 0.85
         Piercing: 0.85
+        Ballistic: 0.85 # Trauma
         Heat: 0.85
         Radiation: 0.05
         Caustic: 0.4
@@ -356,6 +358,7 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
+        Ballistic: 0.6 # Trauma
         Heat: 0.7
       # <Trauma> - This is done so shotguns are worse against armor
       #flatReductions: # inky - no
@@ -401,6 +404,7 @@
         Blunt: 0.6 #Goob - Modsuit Rebalance start
         Slash: 0.6
         Piercing: 0.6
+        Ballistic: 0.6 # Trauma
         Heat: 0.7 #Goob - Modsuit Rebalance end
         Radiation: 0.05
   - type: ClothingSpeedModifier
@@ -575,6 +579,7 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
+        Ballistic: 0.6 # Trauma
         Heat: 0.7
         Radiation: 0.5
       # <Trauma> - This is done so shotguns are worse against armor
@@ -664,6 +669,7 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
+        Ballistic: 0.5
         Heat: 0.5
         Radiation: 0.5
       # <Trauma> - This is done so shotguns are worse against armor
@@ -797,6 +803,7 @@
         Blunt: 0.35 # Trauma - was 0.5
         Slash: 0.35 # Trauma - was 0.5
         Piercing: 0.35 # Trauma - was 0.5
+        Ballistic: 0.35 # Trauma - was 0.5
         Heat: 0.35 # Trauma - was 0.5
         Radiation: 0.35 # Trauma - was 0.5
       # <Trauma> - This is done so shotguns are worse against armor
@@ -848,6 +855,7 @@
         Blunt: 0.2
         Slash: 0.2
         Piercing: 0.2
+        Ballistic: 0.2 # Trauma
         Heat: 0.2
         Radiation: 0.2
       # <Trauma> - This is done so shotguns are worse against armor
@@ -896,6 +904,7 @@
         Blunt: 0.3
         Slash: 0.3
         Piercing: 0.3
+        Ballistic: 0.3 # Trauma
         Heat: 0.3
         Radiation: 0
       # <Trauma> - This is done so shotguns are worse against armor
@@ -981,6 +990,7 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
+        Ballistic: 0.7 # Trauma
         Heat: 0.5
   - type: ClothingSpeedModifier
     walkModifier: 0.6
@@ -1021,6 +1031,7 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
+        Ballistic: 0.6 # Trauma
         Heat: 0.4
         Caustic: 0.75
   - type: ClothingSpeedModifier
@@ -1175,6 +1186,7 @@
         Blunt: 0.1 # Best armor in the game - Yeah no shit.
         Slash: 0.1
         Piercing: 0.1
+        Ballistic: 0.1 # Trauma
         Heat: 0.1
         Cold: 0.1
         Cellular: 0.1

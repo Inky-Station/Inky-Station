@@ -70,6 +70,7 @@
       types:
         Blunt: -5
         Piercing: -5
+        Ballistic: -5 # Trauma
         Slash: -5
         Heat: -5
         Cold: -5
@@ -84,6 +85,7 @@
       types:
         Heat: 10
   - type: MeleeWeapon
+    angle: 0 # Trauma
     soundHit:
       collection: Punch
     damage:

@@ -191,6 +191,7 @@
   - type: OrganComponents
     onAdd:
     - type: FlashImmunity
+      showInExamine: false
     - type: EyeProtection
     # jack of all trades master of none
 
@@ -233,6 +234,7 @@
       - BiologicalMetaphysical
     - type: ShowDiseaseIcons
     - type: FlashImmunity
+      showInExamine: false
     # no welding protection
 
 - type: entity

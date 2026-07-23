@@ -1231,7 +1231,7 @@
     sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Security/senior_officer.rsi # goob
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, BaseSlicingRefinable]
   id: ClothingUniformJumpsuitWeb
   name: web jumpsuit
   description: Makes it clear that you are one with the webs.
@@ -1240,9 +1240,8 @@
     sprite: Clothing/Uniforms/Jumpsuit/web.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/web.rsi
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: MaterialWebSilk1
       amount: 8
   - type: FlavorProfile
