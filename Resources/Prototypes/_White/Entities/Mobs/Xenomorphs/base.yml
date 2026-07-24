@@ -93,6 +93,9 @@
         layer:
         - MobLayer
   - type: Bloodstream
+    # inkymed
+    requiresHeart: false
+    # /inkymed
     bloodReferenceSolution:
       reagents:
       - ReagentId: FluorosulfuricAcid
