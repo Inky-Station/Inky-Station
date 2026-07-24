@@ -1128,7 +1128,7 @@
         # inkymed
       - !type:ModifyHeartRate
         amount: -4
-        lowerCap: 41 # more safe heroin
+        lowerCap: 51 # more safe heroin
       - !type:ModifyStatusEffect
         effectProto: StatusEffectOpiated
         type: Add
