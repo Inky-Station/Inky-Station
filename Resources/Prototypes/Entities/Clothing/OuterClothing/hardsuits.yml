@@ -25,9 +25,9 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.9
-        Piercing: 0.9
+        Blunt: 0.85 # inky
+        Slash: 0.9 # inky 
+        Piercing: 0.9 # inky
         Heat: 0.2
         Radiation: 0.15
   - type: ClothingSpeedModifier
@@ -62,9 +62,9 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.95
-        Piercing: 0.95
+        Blunt: 0.9 # inky
+        Slash: 0.95 # inky 
+        Piercing: 0.95 # inky
         Shock: 0.5
         Heat: 0.7
         Radiation: 0.05
