@@ -11,6 +11,7 @@ public sealed partial class WerewolfAbilitiesSystem
     public void InitializeBlack()
     {
         SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBeckonEvent>(OnBeckon);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBlackCallEvent>(OnCall);
     }
 
     private void OnBeckon(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBeckonEvent args)
@@ -23,5 +24,10 @@ public sealed partial class WerewolfAbilitiesSystem
 
         _chat.TrySendInGameICMessage(uid, $"+l {message}", InGameICChatType.CollectiveMind, ChatTransmitRange.Normal); // holy goida IF ANYONE CHANGES LUNARMIND KEY LETTER CHANGE IT HERE TOO
         args.Handled = true;
+    }
+
+    private void OnCall(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBlackCallEvent args)
+    {
+
     }
 }

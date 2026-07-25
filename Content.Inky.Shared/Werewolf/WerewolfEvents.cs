@@ -101,6 +101,7 @@ public sealed partial class WerewolfAddCollectivemind : InstantActionEvent
 }
 
 public sealed partial class WerewolfRevelationEvent : InstantActionEvent;
+public sealed partial class WerewolfBlackCallEvent : InstantActionEvent;
 [ByRefEvent]
 public readonly record struct WerewolfInfectionFinishedEvent(EntityUid Entity);
 public sealed partial class WerewolfBeckonEvent : InstantActionEvent;

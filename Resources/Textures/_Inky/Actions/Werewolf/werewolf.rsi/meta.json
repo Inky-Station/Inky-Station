@@ -66,6 +66,9 @@
         },
         {
             "name": "bequeath"
+        },
+        {
+            "name": "call"
         }
     ]
 }

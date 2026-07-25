@@ -164,3 +164,25 @@
     - WerewolfDirewolf
     - WerewolfWhite
     - WerewolfBlack
+
+- type: listing
+  id: WerewolfBlackCall
+  name: werewolf-store-black-call-name
+  description: werewolf-store-black-call-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: call
+  productEvent: !type:EventWerewolfUpgradeAbility
+    newActionId: ActionWerewolfBlackCall
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 20
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite

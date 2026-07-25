@@ -304,3 +304,18 @@
   - type: WerewolfAction
     hungerCost: 0
     requireTransfurmed: true
+
+- type: entity
+  parent: BaseAction
+  id: ActionWerewolfBlackCall
+  name: Black Call
+  description: Force transform yourself, and everyone in your pack, permamently. Doubles you and your packs health. Requires a minimum of 4 pack members to use.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Inky/Actions/Werewolf/werewolf.rsi
+      state: call
+  - type: InstantAction
+    event: !type:WerewolfBlackCallEvent {}
