@@ -14,8 +14,8 @@
   strategy: !type:HueNodeClampedHsvColoration
     nodes:
     - hue: 0
-      saturation: [ 0.2, 0.5 ]
-      value: [ 0.36, 0.55 ]
+      saturation: [ 0.0, 0.5 ]  # Inky Edit - Burnt Vox
+      value: [ 0.17, 0.55 ]     # Inky Edit - Burnt Vox
     - hue: 0.045
       saturation: [ 0.2, 0.8 ]
       value: [ 0.36, 0.55 ]

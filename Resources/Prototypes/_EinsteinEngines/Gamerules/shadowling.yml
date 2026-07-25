@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   abstract: true
   parent: BaseGameRule
@@ -16,9 +18,7 @@
   parent: [ BaseShadowlingRule, BaseRoundstartAntagRule ]
   id: ShadowlingRoundstart
   components:
-  # inky
-  - type: DynamicRuleCost
-    cost: 300
-  # /inky
   - type: GameRule
     minPlayers: 30
+  - type: DynamicRuleCost
+    cost: 100

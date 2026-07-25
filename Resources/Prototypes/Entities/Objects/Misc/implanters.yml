@@ -48,7 +48,7 @@
     - RadioImplant
     # Goob implants
     - MindcontrolImplant
-#    - KravMagaImplant # Trauma - Kill Krav implant.
+    - KravMagaImplant # inky
     - NutrimentPumpImplant
     - SmokeImplant
     # - StypticStimulatorImplant # Uncomment if given to traitors, currently it's DS only implant
@@ -57,7 +57,7 @@
     - VoiceMaskImplant
     deimplantFailureDamage:
       types:
-        Caustic: 5 # Goobstation - unnerf implanters (why was it 50 genetic??)
+        Cellular: 50 # inky goida
         Heat: 5
   - type: Sprite
     sprite: Objects/Specific/Medical/implanter.rsi

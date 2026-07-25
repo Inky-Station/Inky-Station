@@ -1,6 +1,8 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
-  parent: [ BaseMob, FlyingMobBase ]
   abstract: true
+  parent: [ BaseMob, FlyingMobBase, MobNightVision ]
   id: MobCosmicColossusBase
   name: entropic colossus
   description: A colossal monstrosity of malign plating and dendritic infestation.
@@ -180,7 +182,7 @@
     altDisarm: false
     animation: WeaponArcCosmic
     attackRate: 0.5
-    canParryLight: false # Parry this you filthy casual
+    canBeParried: false # Parry this you filthy casual
     range: 2
     damage:
       types:
@@ -213,10 +215,6 @@
   - type: GuideHelp
     guides:
     - CosmicColossus
-  - type: NightVision
-    color: "#42a4ae"
-    activateSound: null
-    deactivateSound: null
   - type: Polymorphable
   - type: Pullable
   - type: AlwaysTakeHoly
@@ -229,6 +227,9 @@
   - type: InnateWaypointer
     waypointerProtoIds:
     - NTStationWaypointer
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
 
 - type: entity
   parent: [ MobCosmicColossusBase ]

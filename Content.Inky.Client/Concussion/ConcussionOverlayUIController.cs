@@ -15,10 +15,10 @@ using Robust.Shared.Timing;
 namespace Content.Inky.Client.Concussion;
 
 [UsedImplicitly]
-public sealed class ConcussionOverlayUiController : UIController
+public sealed partial class ConcussionOverlayUiController : UIController
 {
-    [Dependency] private readonly IOverlayManager _overlayManager = default!;
-    [Dependency] private readonly IPlayerManager _gamerMan = default!;
+    [Dependency] private IOverlayManager _overlayManager = default!;
+    [Dependency] private IPlayerManager _gamerMan = default!;
 
     private ConcussionOverlay _overlay = default!;
 

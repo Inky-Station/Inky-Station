@@ -32,7 +32,7 @@ public partial class CloneProjectorSystem
         {
             part.Comp.CanRemove = false;
             part.Comp.CanBleed = false;
-            part.Comp.AllowWounds = false;
+            part.Comp.AllowWounds = true; // inkymed
             Dirty(part);
         }
     }
@@ -56,7 +56,7 @@ public partial class CloneProjectorSystem
             return;
 
         _stun.TryUpdateParalyzeDuration(host, projector.Comp.StunDuration);
-        _damageable.TryChangeDamage(host, projector.Comp.DamageOnDestroyed, true, targetPart: TargetBodyPart.Groin);
+        _damageable.TryChangeDamage(host, projector.Comp.DamageOnDestroyed, true, targetPart: TargetBodyPart.Chest); // inkymed - was groin
     }
     private void OnExamined(Entity<HolographicCloneComponent> clone, ref ExaminedEvent args)
     {

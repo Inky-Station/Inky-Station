@@ -1,0 +1,25 @@
+﻿name: Check audio
+
+on:
+  pull_request:
+    paths:
+      - '**.ogg'
+
+jobs:
+  check_audio:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Master
+        uses: actions/checkout@v7
+
+      - name: Setup nush
+        uses: hustcer/setup-nu@v3
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Ensure that all sounds are mono
+        run: Tools/check_audio.nu

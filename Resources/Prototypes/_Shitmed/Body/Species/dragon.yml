@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ## Mob
 
 - type: entity
@@ -38,6 +40,8 @@
     sprite: _Shitmed/Mobs/Aliens/Carps/carp_parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _Shitmed/Mobs/Aliens/Carps/carp_parts.rsi
+    secondData: # inkymed
       sprite: _Shitmed/Mobs/Aliens/Carps/carp_parts.rsi
   - type: VisualOrganMarkings
     markingData:

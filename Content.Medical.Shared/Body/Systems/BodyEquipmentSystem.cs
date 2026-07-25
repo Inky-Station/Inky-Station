@@ -22,9 +22,11 @@ public sealed partial class BodyEquipmentSystem : EntitySystem
     public static readonly Dictionary<BodyPartType, string[]> PartInventorySlots = new()
     {
         { BodyPartType.Head, [ "eyes", "ears", "head", "mask" ] },
-        { BodyPartType.Torso, [ "innerclothing", "outerclothing" ] },
+        { BodyPartType.Torso, [ "innerclothing", "outerclothing" ] }
+        /*
         { BodyPartType.Hand, [ "gloves" ] },
         { BodyPartType.Foot, [ "shoes" ] }
+        */ // inkymed
     };
 
     public override void Initialize()
@@ -46,7 +48,7 @@ public sealed partial class BodyEquipmentSystem : EntitySystem
 
         var ident = Identity.Entity(ent, EntityManager);
         var partName = part.ToString().ToLower();
-        _popup.PopupClient(Loc.GetString("equip-part-missing-error",
+        _popup.PopupEntity(Loc.GetString("equip-part-missing-error",
             ("target", ident), ("part", partName)), args.EquipTarget, args.User);
         args.Cancel();
     }
@@ -79,8 +81,8 @@ public sealed partial class BodyEquipmentSystem : EntitySystem
             // TODO SHITMED: HOLY SHITCODE
             "innerclothing" or "outerclothing" => BodyPartType.Torso,
             "eyes" or "ears" or "head" or "mask" => BodyPartType.Head,
-            "gloves" => BodyPartType.Hand,
-            "shoes" => BodyPartType.Foot,
+            "gloves" => BodyPartType.Arm, // inkymed - was hand
+            "shoes" => BodyPartType.Leg, // inkymed - was foot
             _ => null
         };
 

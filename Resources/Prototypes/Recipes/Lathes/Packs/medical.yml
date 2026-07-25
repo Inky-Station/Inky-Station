@@ -50,7 +50,7 @@
   - WhiteCane
   - OffsetCane
   - OffsetCaneWood
-  #- JetInjector # Trauma - le quirky syringe
+  - JetInjector # Trauma - le quirky syringe # inky - godo
 
 - type: latheRecipePack
   id: RollerBedsStatic
@@ -88,7 +88,7 @@
   - ChemMasterMachineCircuitboard
   - CondenserMachineCircuitBoard
   - HotplateMachineCircuitboard
-  - EnergyChemDispenserMachineCircuitboard #Goob edit - all things that get base med boards get E-Chem
+ #- EnergyChemDispenserMachineCircuitboard # Inky
 
 ## Dynamic
 
@@ -104,7 +104,7 @@
   - SyringeBluespace
   #- LauncherSyringe # Trauma - goob syringe gun instead
   #- MiniSyringe # Trauma
-  #- AdvancedJetInjector # Trauma - le quirky syringe
+  - AdvancedJetInjector # Trauma - le quirky syringe # inky - godo
 
 - type: latheRecipePack
   parent:
@@ -114,3 +114,4 @@
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
+  - EnergyChemDispenserMachineCircuitboard #Inky

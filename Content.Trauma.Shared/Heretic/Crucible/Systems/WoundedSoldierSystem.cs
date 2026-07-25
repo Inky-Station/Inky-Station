@@ -152,6 +152,7 @@ public sealed partial class WoundedSoldierSystem : EntitySystem
                 { "Blunt", coef },
                 { "Slash", coef },
                 { "Piercing", coef },
+                // { "Ballistic", coef }, what the fck
                 { "Heat", coef },
                 { "Clod", coef },
                 { "Bloodloss", coef },

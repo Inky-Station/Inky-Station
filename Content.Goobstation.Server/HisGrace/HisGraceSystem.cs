@@ -174,7 +174,7 @@ public sealed partial class HisGraceSystem : SharedHisGraceSystem
             return;
 
         // 5 blunt per entity consumed
-        hisGrace.Comp.CurrentDamageIncrease.DamageDict["Blunt"] = hisGrace.Comp.EntitiesAbsorbed * 2;
+        hisGrace.Comp.CurrentDamageIncrease.DamageDict["Blunt"] = hisGrace.Comp.EntitiesAbsorbed * 5; // inky edit - also why is this hardcoded slopstice kys
         melee.Damage = hisGrace.Comp.BaseDamage + hisGrace.Comp.CurrentDamageIncrease;
 
         Dirty(hisGrace, melee);
@@ -364,7 +364,7 @@ public sealed partial class HisGraceSystem : SharedHisGraceSystem
 
             // get co-ordinates for animation
             var coordinates = _transform.GetMapCoordinates(hisGrace);
-            var angle = _transform.GetRelativePosition(xform, entity, GetEntityQuery<TransformComponent>()).ToAngle();
+            var angle = _transform.GetRelativePosition(xform, entity).ToAngle();
 
             // do damage and animation
             _damageable.TryChangeDamage(entity.Owner, melee.Damage, targetPart: TargetBodyPart.Chest, origin: hisGrace);

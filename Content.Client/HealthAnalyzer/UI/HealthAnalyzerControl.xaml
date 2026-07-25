@@ -75,6 +75,10 @@
 		            <Label Name="DamageLabelHeadingVital" Text="{Loc 'health-analyzer-window-entity-damage-vital-text'}"/>
 		            <Label Name="DamageLabelVital"/>
 		            <!-- </Goob> -->
+                    <!-- inkymed -->
+                    <Label Text="{Loc 'health-analyzer-window-entity-bpm-text'}" />
+                    <Label Name="BpmLabel"/>
+                    <!-- /inkymed -->
 		        </GridContainer>
 		    </BoxContainer>
 

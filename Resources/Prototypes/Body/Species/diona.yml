@@ -52,12 +52,12 @@
       Head: OrganDionaHead
       ArmLeft: OrganDionaArmLeft
       ArmRight: OrganDionaArmRight
-      HandRight: OrganDionaHandRight
-      HandLeft: OrganDionaHandLeft
+#      HandRight: OrganDionaHandRight #inkymed
+#      HandLeft: OrganDionaHandLeft #inkymed
       LegLeft: OrganDionaLegLeft
       LegRight: OrganDionaLegRight
-      FootLeft: OrganDionaFootLeft
-      FootRight: OrganDionaFootRight
+#      FootLeft: OrganDionaFootLeft #inkymed
+#      FootRight: OrganDionaFootRight #inkymed
       Brain: OrganDionaBrainNymphing
       Eyes: OrganDionaEyes
       Tongue: OrganDionaTongue # Trauma
@@ -104,13 +104,13 @@
   #    Burn:
   #      sprite: Mobs/Effects/burn_damage.rsi
   - type: Butcherable
-    butcheringType: Spike
     spawned:
       - id: FoodMeatPlant
         amount: 5
       - id: MaterialWoodPlank1 # Trauma - Bones on butchering humanoids. I AM NO TREE IM AN ENT.
         amount: 3
   - type: Bloodstream
+    requiresHeart: false # inky
     bloodReferenceSolution:
       reagents:
       - ReagentId: Sap
@@ -167,10 +167,7 @@
     speechVerb: Plant
     allowedEmotes: ['Chirp']
   - type: Vocal
-    sounds:
-      Male: UnisexDiona
-      Female: UnisexDiona
-      Unsexed: UnisexDiona
+    emoteSounds: UnisexDiona
   - type: TypingIndicator
     proto: diona
   - type: BodyEmotes
@@ -188,7 +185,7 @@
     baseConeAngle: 360
 
 - type: entity
-  parent: OrganBaseFleshy # Shitmed - Fleshy
+  parent: OrganBaseOrganic
   id: OrganDiona
   abstract: true
   suffix: Diona
@@ -214,6 +211,8 @@
   components:
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Diona/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Diona/parts.rsi
   - type: VisualOrganMarkings
     markingData:

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ## Base
 
 - type: entity
@@ -20,6 +22,8 @@
     sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
   - type: VisualOrgan
     data:
+      sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
+    secondData: #inkymed
       sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
   - type: Woundable
     canBleed: false
@@ -187,6 +191,7 @@
   - type: OrganComponents
     onAdd:
     - type: FlashImmunity
+      showInExamine: false
     - type: EyeProtection
     # jack of all trades master of none
 
@@ -229,6 +234,7 @@
       - BiologicalMetaphysical
     - type: ShowDiseaseIcons
     - type: FlashImmunity
+      showInExamine: false
     # no welding protection
 
 - type: entity

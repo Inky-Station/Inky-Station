@@ -1,6 +1,3 @@
-# SPDX-FileCopyrightText: 2025 BloodfiendishOperator <141253729+Diggy0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # markings intended for multiple species go here
@@ -653,7 +650,7 @@
 
 - type: marking
   id: FootDollJointsTattooLeft
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [Human, Slime, Arachnid]
   coloring:
     default:
@@ -666,7 +663,7 @@
 
 - type: marking
   id: FootHeavyTattoosLeft
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [Human, Slime, Arachnid]
   coloring:
     default:
@@ -683,7 +680,7 @@
 
 - type: marking
   id: FootDollJointsTattooRight
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [Human, Slime, Arachnid]
   coloring:
     default:
@@ -696,7 +693,7 @@
 
 - type: marking
   id: FootHeavyTattoosRight
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [Human, Slime, Arachnid]
   coloring:
     default:
@@ -713,7 +710,7 @@
 
 - type: marking
   id: HandBraceletLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -726,7 +723,7 @@
 
 - type: marking
   id: HandDollJointsTattooLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -739,7 +736,7 @@
 
 - type: marking
   id: HandHeavyTattoosLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -754,7 +751,7 @@
 
 - type: marking
   id: HandProstheticLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -767,7 +764,7 @@
 
 - type: marking
   id: HandRingsLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -782,7 +779,7 @@
 
 - type: marking
   id: HandTwistingLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Humanoid/lhand.rsi
@@ -790,7 +787,7 @@
 
 - type: marking
   id: VitiligoHandL
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ Human ]
   forcedColoring: true
   coloring:
@@ -806,7 +803,7 @@
 
 - type: marking
   id: HandBraceletRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -819,7 +816,7 @@
 
 - type: marking
   id: HandDollJointsTattooRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -832,7 +829,7 @@
 
 - type: marking
   id: HandHeavyTattoosRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -847,7 +844,7 @@
 
 - type: marking
   id: HandProstheticRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -860,7 +857,7 @@
 
 - type: marking
   id: HandRingsRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   coloring:
     default:
@@ -875,7 +872,7 @@
 
 - type: marking
   id: HandTwistingRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Reptilian, Slime, Arachnid]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Humanoid/rhand.rsi
@@ -883,7 +880,7 @@
 
 - type: marking
   id: VitiligoHandR
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [ Human ]
   forcedColoring: true
   coloring:

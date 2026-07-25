@@ -398,7 +398,7 @@ public sealed partial class WoundableVisualsSystem : VisualizerSystem<WoundableV
     {
         var symmetry = bodyPart.Symmetry == BodyPartSymmetry.Left ? "L" : "R";
         // TODO SHITMED: Foot ? Leg : Arm - WHAT THE FUCK!?!?
-        var partType = bodyPart.PartType == BodyPartType.Foot ? "Leg" : "Arm";
+        var partType = bodyPart.PartType == BodyPartType.Leg ? "Leg" : "Arm"; // inkymed - i have no fucking idea what is going on here and im too tired to think about it
         return $"{symmetry}{partType}";
     }
 

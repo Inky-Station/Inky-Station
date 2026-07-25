@@ -1,6 +1,6 @@
 # Last match in file takes precedence.
 
-.github/ @pheenty @Shegare
+.github/ @pheenty
 
 # Game logic
 *.Server/ @pheenty

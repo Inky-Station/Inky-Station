@@ -80,6 +80,11 @@
         damage:
           types:
             Poison: 1.5
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -2
+        lowerCap: 55
+      # /inkymed
 
 - type: reagent
   id: GastroToxin
@@ -354,6 +359,16 @@
           types:
             Asphyxiation: 5
             Bloodloss: 5
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -10
+        conditions:
+        - !type:ReagentCondition
+          reagent: Lexorin
+          min: 5
+      - !type:ModifyHeartRate
+        amount: -6
+      # /inkymed
 
 - type: reagent
   id: MindbreakerToxin
@@ -529,6 +544,18 @@
         - !type:MetabolizerTypeCondition
           type: [ Animal, Vox, Plant ]
           inverted: true
+      - !type:InfectDisease
+        probability: 0.05
+        scaleProbability: true
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Rat, Vox ]
+          inverted: true
+        - !type:ReagentCondition
+          reagent: UncookedAnimalProteins
+          min: 0.01
+        disease: DiseaseGutWorms
+        mutate: false
     Bloodstream:
     # </Trauma>
       effects:
@@ -618,7 +645,7 @@
         conditions:
         - !type:ReagentCondition
           reagent: Honk
-          min: 30
+          min: 50
       - !type:Emote
         emote: Honk
         showInChat: true
@@ -653,6 +680,15 @@
         damage:
           types:
             Poison: 0.6 # Makes it 20 damage per unit.
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -1.4
+        lowerCap: 55
+        conditions:
+        - !type:ReagentCondition
+          reagent: Lead
+          min: 2.5
+      # /inkymed
 
 - type: reagent
   id: Bungotoxin

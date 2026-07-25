@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: technology
   id: ED209
   name: research-technology-military-bots
@@ -16,9 +18,9 @@
   - EDAiCoreElectronics
   - EDIFFElectronics
   - EDWeaponControlsElectronics
-  position: -9,1
+  position: -1,0 # inky
   technologyPrerequisites:
-  - Gygax
+  - ExplosiveMechAmmunition # inky
 
 - type: technology
   id: BasicMechEquipment
@@ -32,7 +34,7 @@
   recipeUnlocks:
   - MechEquipmentDrillDiamond
   - MechEquipmentDrill
-  position: -6,3
+  position: -3,2 # inky
   technologyPrerequisites:
   - RipleyAPLU
 
@@ -49,8 +51,8 @@
   - RipleyMKIIHarness
   - RipleyUpgradeKit
   technologyPrerequisites:
-  - RipleyAPLU
-  position: -7,2
+  - BasicMechEquipment # inky
+  position: -2,2 # inky
 
 - type: technology
   id: Clarke
@@ -70,8 +72,8 @@
   - ClarkeCentralElectronics
   - ClarkePeripheralsElectronics
   technologyPrerequisites:
-  - Ripley2
-  position: -7,1
+  - BasicMechEquipment # inky
+  position: -3,1 # inky
 
 - type: technology
   id: HONKWeapons
@@ -85,9 +87,9 @@
   recipeUnlocks:
   - MechEquipmentHonkerBananaMortar
   - MechEquipmentHonkerMousetrapMortar
-  position: -7,3
+  position: -6,1 # inky
   technologyPrerequisites:
-  - BasicMechEquipment
+  - HONKMech # inky
 
 - type: technology
   id: Gygax
@@ -111,9 +113,9 @@
   - GygaxTargetingElectronics
   - WeaponMechCombatUltraRifle
   technologyPrerequisites:
-  - RipleyAPLU
+  - Ripley2 # inky
   - PortableMicrofusionWeaponry
-  position: -8,2
+  position: -2,1 # inky
 
 - type: technology
   id: ExplosiveMechAmmunition
@@ -128,8 +130,8 @@
   - WeaponMechCombatMissileRack8
   technologyPrerequisites:
   - Gygax
-  - BasicMechEquipment
-  position: -8,3
+  # - BasicMechEquipment # inky
+  position: -2,0 # inky
 
 - type: technology
   id: Durand
@@ -154,8 +156,8 @@
   - WeaponMechCombatShotgun
   - WeaponMechCombatShotgunIncendiary
   technologyPrerequisites:
-  - Gygax
-  position: -9,2
+  - ExplosiveMechAmmunition # inky
+  position: -3,0 # inky
 
 - type: technology
   id: AdvancedCybernetics
@@ -177,7 +179,7 @@
   - DiagnosticCyberneticEyes
   - SecurityCyberneticEyes
   - MedicalCyberneticEyes
-  position: -7,4
+  position: -6,2 # inky
   technologyPrerequisites:
   - BasicCybernetics
 
@@ -201,8 +203,8 @@
   - RightFootCybernetic
   - BasicCyberneticEyes
   - BasicCyberneticLungs
-  - HypoportSecure
-  position: -6,4
+  # - HypoportSecure # inky - fuck hypoports
+  position: -6,3 # inky
   technologyPrerequisites:
   - BasicAugmentation
 
@@ -215,7 +217,7 @@
   discipline: Robotics
   tier: 2
   cost: 5000
-  position: -5,3
+  position: -5,3 # inky
   technologyPrerequisites:
   - BasicRobotics
   recipeUnlocks:
@@ -231,7 +233,7 @@
   discipline: Robotics
   tier: 2
   cost: 10000
-  position: -5,5
+  position: -5,4 # inky
   technologyPrerequisites:
   - BasicAugmentation
   recipeUnlocks:
@@ -249,7 +251,7 @@
   discipline: Robotics
   tier: 2
   cost: 10000
-  position: -6,5
+  position: -6,4 # inky
   technologyPrerequisites:
   - ImplantedTools
   recipeUnlocks:

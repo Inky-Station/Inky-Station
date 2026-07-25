@@ -1,0 +1,529 @@
+﻿- type: entity
+  parent: ClothingUniformJumpsuitJanitor
+  id: ClothingUniformJumpsuitMilitaryJanitor
+  description: Battle-worn. From battling potassium.
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#3e3e48"
+    - state: icon-base-top-jumpsuit
+      color: "#3e3e48"
+    - state: icon-decor-department
+      color: "#fff4e2"
+    - state: icon-decor-shoulder-patch
+      color: "#A846C1"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#3e3e48"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-left-decor-department
+        color: "#fff4e2"
+      - state: inhand-left-decor-shoulder-patch
+        color: "#A846C1"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#3e3e48"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-right-decor-department
+        color: "#fff4e2"
+      - state: inhand-right-decor-shoulder-patch
+        color: "#A846C1"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#3e3e48"
+      - state: equipped-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: equipped-decor-department
+        color: "#fff4e2"
+      - state: equipped-decor-shoulder-patch
+        color: "#A846C1"
+
+- type: entity
+  parent: ClothingUniformJumpsuitBartender
+  id: ClothingUniformJumpsuitMilitaryBartender
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#3e3e48"
+    - state: icon-base-top-jumpsuit
+      color: "#3e3e48"
+    - state: icon-decor-department
+      color: "#fff4e2"
+    - state: icon-decor-shoulder-patch
+      color: "#313131"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#3e3e48"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-left-decor-department
+        color: "#fff4e2"
+      - state: inhand-left-decor-shoulder-patch
+        color: "#313131"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#3e3e48"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-right-decor-department
+        color: "#fff4e2"
+      - state: inhand-right-decor-shoulder-patch
+        color: "#313131"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#3e3e48"
+      - state: equipped-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: equipped-decor-department
+        color: "#fff4e2"
+      - state: equipped-decor-shoulder-patch
+        color: "#313131"
+
+- type: entity
+  parent: ClothingUniformJumpsuitChef
+  id: ClothingUniformJumpsuitMilitaryChef
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#3e3e48"
+    - state: icon-base-top-jumpsuit
+      color: "#3e3e48"
+    - state: icon-decor-department
+      color: "#fff4e2"
+    - state: icon-decor-shoulder-patch
+      color: "#EEEEEE"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#3e3e48"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-left-decor-department
+        color: "#fff4e2"
+      - state: inhand-left-decor-shoulder-patch
+        color: "#EEEEEE"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#3e3e48"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-right-decor-department
+        color: "#fff4e2"
+      - state: inhand-right-decor-shoulder-patch
+        color: "#EEEEEE"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#3e3e48"
+      - state: equipped-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: equipped-decor-department
+        color: "#fff4e2"
+      - state: equipped-decor-shoulder-patch
+        color: "#EEEEEE"
+
+- type: entity
+  parent: ClothingUniformJumpsuitClown
+  id: ClothingUniformJumpsuitMilitaryClown
+  description: Even a soldier needs entertainment.
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#C40000"
+    - state: icon-base-top-jumpsuit
+      color: "#C40000"
+    - state: icon-decor-department
+      color: "#E7A8E7"
+    - state: icon-decor-shoulder-patch
+      color: "#FFFFFF"
+    - state: icon-decor-department-head
+      color: "#FFFF00"
+    - state: icon-belt
+      color: "#ACAC04"
+    - state: icon-belt-buckle
+      color: "#FFFF00"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#C40000"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#C40000"
+      - state: inhand-left-decor-department
+        color: "#FFC0FF"
+      - state: inhand-left-decor-shoulder-patch
+        color: "#FFFFFF"
+      - state: inhand-left-decor-department-head
+        color: "#FFFF00"
+      - state: inhand-left-belt
+        color: "#ACAC04"
+      - state: inhand-left-belt-buckle
+        color: "#FFFF00"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#C40000"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#C40000"
+      - state: inhand-right-decor-department
+        color: "#FFC0FF"
+      - state: inhand-right-decor-shoulder-patch
+        color: "#FFFFFF"
+      - state: inhand-right-decor-department-head
+        color: "#FFFF00"
+      - state: inhand-right-belt
+        color: "#ACAC04"
+      - state: inhand-right-belt-buckle
+        color: "#FFFF00"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#C40000"
+      - state: equipped-base-top-jumpsuit
+        color: "#C40000"
+      - state: equipped-decor-department
+        color: "#FFC0FF"
+      - state: equipped-decor-shoulder-patch
+        color: "#FFFFFF"
+      - state: equipped-decor-department-head
+        color: "#FFFF00"
+      - state: equipped-belt
+        color: "#ACAC04"
+      - state: equipped-belt-buckle
+        color: "#FFFF00"
+
+- type: entity
+  parent: ClothingUniformJumpsuitMime
+  id: ClothingUniformJumpsuitMilitaryMime
+  description: ...!
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#343434"
+    - state: icon-base-top-jumpsuit
+      color: "#FFFFFF"
+    - state: icon-decor-contractor
+      color: "#343434"
+    - state: icon-decor-department-head
+      color: "#FFFFFF"
+    - state: icon-decor-epaulets
+      color: "#FFFFFF"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#343434"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#FFFFFF"
+      - state: inhand-left-decor-contractor
+        color: "#343434"
+      - state: inhand-left-decor-department-head
+        color: "#FFFFFF"
+      - state: inhand-left-decor-epaulets
+        color: "#FFFFFF"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#343434"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#FFFFFF"
+      - state: inhand-right-decor-contractor
+        color: "#343434"
+      - state: inhand-right-decor-department-head
+        color: "#FFFFFF"
+      - state: inhand-right-decor-epaulets
+        color: "#FFFFFF"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#343434"
+      - state: equipped-base-top-jumpsuit
+        color: "#FFFFFF"
+      - state: equipped-decor-contractor
+        color: "#343434"
+      - state: equipped-decor-department-head
+        color: "#FFFFFF"
+      - state: equipped-decor-epaulets
+        color: "#FFFFFF"
+
+- type: entity
+  parent: ClothingUniformJumpsuitChaplain
+  id: ClothingUniformJumpsuitMilitaryChaplain
+  description: Have you ever tried shooting a demon?
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#3e3e48"
+    - state: icon-base-top-jumpsuit
+      color: "#3e3e48"
+    - state: icon-decor-epaulets
+      color: "#FFFFFF"
+    - state: icon-belt
+      color: "#FFFFFF"
+    - state: icon-belt-buckle
+      color: "#FFFFFF"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#3e3e48"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-left-decor-epaulets
+        color: "#FFFFFF"
+      - state: inhand-left-belt
+        color: "#FFFFFF"
+      - state: inhand-left-belt-buckle
+        color: "#FFFFFF"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#3e3e48"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-right-decor-epaulets
+        color: "#FFFFFF"
+      - state: inhand-right-belt
+        color: "#FFFFFF"
+      - state: inhand-right-belt-buckle
+        color: "#FFFFFF"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#3e3e48"
+      - state: equipped-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: equipped-decor-epaulets
+        color: "#FFFFFF"
+      - state: equipped-belt
+        color: "#FFFFFF"
+      - state: equipped-belt-buckle
+        color: "#FFFFFF"
+
+- type: entity
+  parent: ClothingUniformJumpsuitLibrarian
+  id: ClothingUniformJumpsuitMilitaryLibrarian
+  description: For the curator of crayons.
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#3e3e48"
+    - state: icon-base-top-jumpsuit
+      color: "#3e3e48"
+    - state: icon-decor-department
+      color: "#fff4e2"
+    - state: icon-decor-shoulder-patch
+      color: "#EF5350"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#3e3e48"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-left-decor-department
+        color: "#fff4e2"
+      - state: inhand-left-decor-shoulder-patch
+        color: "#EF5350"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#3e3e48"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-right-decor-department
+        color: "#fff4e2"
+      - state: inhand-right-decor-shoulder-patch
+        color: "#EF5350"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#3e3e48"
+      - state: equipped-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: equipped-decor-department
+        color: "#fff4e2"
+      - state: equipped-decor-shoulder-patch
+        color: "#EF5350"
+
+- type: entity
+  parent: ClothingUniformJumpsuitMusician
+  id: ClothingUniformJumpsuitMilitaryMusician
+  name: musician jumpsuit
+  description: Music helps morale. Every party needs a bard.
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#3e3e48"
+    - state: icon-base-top-jumpsuit
+      color: "#3e3e48"
+    - state: icon-decor-department
+      color: "#fff4e2"
+    - state: icon-decor-shoulder-patch
+      color: "#EF5350"
+    - state: icon-decor-shoulder-patch
+      color: "#9F649E"
+    - state: icon-decor-department-head
+      color: "#836895"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#3e3e48"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-left-decor-department
+        color: "#fff4e2"
+      - state: inhand-left-decor-shoulder-patch
+        color: "#EF5350"
+      - state: inhand-left-decor-shoulder-patch
+        color: "#9F649E"
+      - state: inhand-left-decor-department-head
+        color: "#836895"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#3e3e48"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: inhand-right-decor-department
+        color: "#fff4e2"
+      - state: inhand-right-decor-shoulder-patch
+        color: "#EF5350"
+      - state: inhand-right-decor-shoulder-patch
+        color: "#9F649E"
+      - state: inhand-right-decor-department-head
+        color: "#836895"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#3e3e48"
+      - state: equipped-base-top-jumpsuit
+        color: "#3e3e48"
+      - state: equipped-decor-department
+        color: "#fff4e2"
+      - state: equipped-decor-shoulder-patch
+        color: "#9F649E"
+      - state: equipped-decor-department-head
+        color: "#836895"
+
+- type: entity
+  parent: ClothingUniformJumpsuitReporter
+  id: ClothingUniformJumpsuitMilitaryReporter
+  description: For getting some quality footage. A Nanotrasen logo is embroidered on the side.
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#B7B3A7"
+    - state: icon-base-top-jumpsuit
+      color: "#ABB4C7"
+    - state: icon-decor-shoulder-patch
+      color: "#4A45A4"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#B7B3A7"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#ABB4C7"
+      - state: inhand-right-decor-shoulder-patch
+        color: "#4A45A4"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#B7B3A7"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#ABB4C7"
+      - state: inhand-right-decor-shoulder-patch
+        color: "#4A45A4"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#B7B3A7"
+      - state: equipped-base-top-jumpsuit
+        color: "#ABB4C7"
+      - state: equipped-decor-shoulder-patch
+        color: "#4A45A4"
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitMilitaryRadioHost
+  name: radio operator jumpsuit
+  description: Communication is key.
+  suffix: Military
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    layers:
+    - state: icon-base-bottom
+      color: "#D1CEC8"
+    - state: icon-base-top-jumpsuit
+      color: "#81776D"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-base-bottom
+        color: "#D1CEC8"
+      - state: inhand-left-base-top-jumpsuit
+        color: "#81776D"
+      right:
+      - state: inhand-right-base-bottom
+        color: "#D1CEC8"
+      - state: inhand-right-base-top-jumpsuit
+        color: "#81776D"
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-base-bottom
+        color: "#D1CEC8"
+      - state: equipped-base-top-jumpsuit
+        color: "#81776D"

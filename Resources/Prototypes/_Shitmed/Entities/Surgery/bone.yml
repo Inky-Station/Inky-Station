@@ -8,11 +8,11 @@
   components:
   - type: Bone
   - type: Sprite
-    sprite: _Trauma/Objects/Materials/materials.rsi
+    sprite: Objects/Materials/materials.rsi # inky
     state: bones
   - type: Appearance
   - type: Item
-    sprite: _Trauma/Objects/Materials/materials.rsi
+    sprite: Objects/Materials/materials.rsi # inky
     size: Normal
   - type: Tag
     tags:

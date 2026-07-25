@@ -1,0 +1,137 @@
+- type: pulseState
+  id: Pulse3000
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 3000
+
+- type: pulseState
+  id: Pulse450
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 450
+
+- type: pulseState
+  id: Pulse400
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 400
+
+- type: pulseState
+  id: Pulse360
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 360
+
+- type: pulseState
+  id: Pulse300
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 300
+
+- type: pulseState
+  id: Pulse280
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 280
+
+- type: pulseState
+  id: Pulse260
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 260
+
+- type: pulseState
+  id: Pulse240
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 240
+
+- type: pulseState
+  id: Pulse220
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 220
+
+- type: pulseState
+  id: Pulse200
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 200
+
+- type: pulseState
+  id: Pulse180
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 180
+
+- type: pulseState
+  id: Pulse160
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 160
+
+- type: pulseState
+  id: Pulse140
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 140
+
+- type: pulseState
+  id: Pulse120
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 120
+
+- type: pulseState
+  id: Pulse100
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 100
+
+- type: pulseState
+  id: Pulse80
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 80
+
+- type: pulseState
+  id: Pulse70
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 70
+
+- type: pulseState
+  id: Pulse60
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 60
+
+- type: pulseState
+  id: Pulse50
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 50
+
+- type: pulseState
+  id: Pulse40
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 40
+
+- type: pulseState
+  id: Pulse30
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 30
+
+- type: pulseState
+  id: Pulse20
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 20
+
+- type: pulseState
+  id: Pulse0
+  sprite:
+    sprite: _Inky/Inkymed/UserInterface/pulse.rsi
+    state: 0

@@ -9,7 +9,7 @@ namespace Content.Server.Chat.Commands
     [AnyCommand]
     internal sealed partial class SuicideCommand : IConsoleCommand
     {
-        //[Dependency] private IEntityManager _e = default!; // Trauma - unused
+        [Dependency] private IEntityManager _e = default!; // Trauma - unused // Inky - used
 
         public string Command => "suicide";
 
@@ -25,10 +25,10 @@ namespace Content.Server.Chat.Commands
                 return;
             }
 
-            // <Trauma> - no
+            /* // <Trauma> - no // Inky - yes
             shell.WriteError("Never give up on life, life is gem!");
             return;
-            /*
+            */ //* // inky
 
             if (player.Status != SessionStatus.InGame || player.AttachedEntity == null)
                 return;
@@ -58,7 +58,7 @@ namespace Content.Server.Chat.Commands
                 return;
 
             shell.WriteLine(Loc.GetString("ghost-command-denied"));
-            */ // </Trauma>
+            // */ // </Trauma> // Inky
         }
     }
 }

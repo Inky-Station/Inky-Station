@@ -1,12 +1,3 @@
-# SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Weide <64257676+Lyacs@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 grub <unalterableness@gmail.com>
-# SPDX-FileCopyrightText: 2025 shityaml <unalterableness@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: loadoutEffectGroup
@@ -73,3 +64,23 @@
   storage:
     back:
     - CrewCassette
+
+#Recruit jumpsuit # inky
+- type: loadoutEffectGroup # inky
+  id: Noob # inky
+  effects: # inky
+  - !type:JobRequirementLoadoutEffect # inky
+    requirement: # inky
+      !type:OverallPlaytimeRequirement # inky
+      time: 18000 #5 hours # inky
+      inverted: true # inky
+
+#NTR Fancy suit # inky
+- type: loadoutEffectGroup # inky
+  id: RespectedRep # inky
+  effects: # inky
+  - !type:JobRequirementLoadoutEffect # inky
+    requirement: # inky
+      !type:RoleTimeRequirement # inky
+      role: JobNanotrasenRepresentative # inky
+      time: 72000 #20 hours # inky

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Hunters
   # SpacePol
 - type: startingGear
@@ -14,7 +16,7 @@
     belt: ClothingBeltSecurityFilled
     id: HunterPDA
     pocket1: WeaponPistolMk58
-    pocket2: WeaponLaserSidearm
+    pocket2: WeaponDisabler # inky
     ears: ClothingHeadsetAltHunter
     gloves: ClothingHandsGlovesCombat
   storage:

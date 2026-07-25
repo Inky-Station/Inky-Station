@@ -216,6 +216,7 @@
     implantAction: ActionActivateScramImplant
   - type: TriggerOnActivateImplant
   - type: ScramOnTrigger
+    teleportRadius: 50,100 # inky
     targetUser: true
 
 - type: entity

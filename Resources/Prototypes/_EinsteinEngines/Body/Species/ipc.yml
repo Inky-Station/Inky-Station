@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ## Markings
 
 - type: markingsGroup
@@ -68,12 +70,12 @@
       Head: OrganIPCHead
       ArmLeft: OrganIPCArmLeft
       ArmRight: OrganIPCArmRight
-      HandRight: OrganIPCHandRight
-      HandLeft: OrganIPCHandLeft
+#      HandRight: OrganIPCHandRight inkymed
+#      HandLeft: OrganIPCHandLeft inkymed
       LegLeft: OrganIPCLegLeft
       LegRight: OrganIPCLegRight
-      FootLeft: OrganIPCFootLeft
-      FootRight: OrganIPCFootRight
+#      FootLeft: OrganIPCFootLeft inkymed
+#      FootRight: OrganIPCFootRight inkymed
       # Organs
       Eyes: OrganIPCEyes
       Tongue: OrganIPCTongue
@@ -83,6 +85,11 @@
   - type: HumanoidProfile
     species: IPC
   - type: KnowledgeHolder
+  - type: AnimatedEmotesBlacklist
+    blacklist:
+    - Cry
+    - Blush
+    - Tongue
 
 - type: entity
   parent:
@@ -168,7 +175,7 @@
     guides:
     - IPC
   - type: Silicon
-    entityType: enum.SiliconType.Player
+    entityType: Player
     batteryPowered: true
     drainPerSecond: 1.5
     chargeThresholdMid: 0.80
@@ -256,7 +263,6 @@
 
 - type: entity
   abstract: true
-  parent: OrganBase
   id: OrganIPC
   suffix: IPC
   components:
@@ -290,6 +296,8 @@
     sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
+    secondData: # inkymed
       sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
   - type: VisualOrganMarkings
     markingData:
@@ -329,7 +337,6 @@
     - Eyes
     - Tongue
     - Ears
-#    - BrainChip # USB 6.0 # inky edit - kill chips
 
 - type: entity
   parent: [ OrganIPCExternal, OrganBaseArmLeft ]

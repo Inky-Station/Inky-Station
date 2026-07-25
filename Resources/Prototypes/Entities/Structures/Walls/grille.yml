@@ -4,6 +4,12 @@
   name: grille
   description: A flimsy framework of iron rods.
   components:
+    # <Trauma>
+    - type: Penetratable # Goobstation - Better snipers
+      penetrateDamage: 10
+    # </Trauma>
+    - type: Transform # required
+      noRot: true
     - type: MeleeSound
       soundGroups:
         Brute:
@@ -74,7 +80,7 @@
               acts: ["Destruction"]
         - trigger:
             !type:DamageTrigger
-            damage: 100
+            damage: 30 # Trauma - was 100, way too tanky (window has 50 hp lol)
           behaviors:
             - !type:ChangeConstructionNodeBehavior
               node: grilleBroken
@@ -88,8 +94,6 @@
             True: { visible: True }
             False: { visible: False }
     - type: AnimationPlayer
-    - type: Penetratable # Goobstation - Better snipers
-      penetrateDamage: 10
 
 - type: entity
   id: ClockworkGrille
@@ -176,6 +180,8 @@
   parent: Grille
   name: diagonal grille
   components:
+  - type: Transform
+    noRot: false
   - type: Sprite
     drawdepth: Walls
     sprite:  Structures/Walls/grille.rsi # inky edit - de-barratry textures
@@ -214,6 +220,8 @@
   parent: ClockworkGrille
   name: diagonal clockwork grille
   components:
+  - type: Transform
+    noRot: false
   - type: Sprite
     drawdepth: Walls
     sprite: Structures/Walls/clockwork_grille.rsi

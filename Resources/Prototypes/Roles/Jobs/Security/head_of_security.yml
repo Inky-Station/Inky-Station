@@ -37,12 +37,21 @@
   - GenpopEnter
   - GenpopLeave
   special:
+  # <Trauma>
+  - !type:OrganChipsSpecial
+    chips:
+    - SkillChipHeadOfSecurity
+  # </Trauma>
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
+      # <Trauma>
+      - type: Condemned # Nanotrasen owns your soul pal.
+        soulOwnedNotDevil: true
+      - type: SecurityStaff
+      # </Trauma>
       - type: CommandStaff
-      - type: SecurityStaff # Trauma
 
 - type: startingGear
   id: HoSGear
@@ -51,11 +60,11 @@
     id: HoSPDA
     #gloves: ClothingHandsGlovesCombat - Goobstation, moved to loadouts
     ears: ClothingHeadsetAltSecurity
-#    pocket1: WeaponPistolMk58 - Trauma
+    pocket1: WeaponPistolMk58 # inky fuck - Trauma
   storage:
     back:
     - Flash
-#    - MagazinePistol - Trauma
+    - MagazinePistol # inky fuck - Trauma
 
 - type: chameleonOutfit
   id: HeadOfSecurityChameleonOutfit

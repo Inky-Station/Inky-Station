@@ -21,7 +21,7 @@ public sealed partial class GasTankSystem : SharedGasTankSystem
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private ThrowingSystem _throwing = default!;
 
-    private const float MinimumSoundValvePressure = 21.3f; // Arbitrary number
+    private const float MinimumSoundValvePressure = 21000000.3f; // Arbitrary number // inky edit
 
     private const float ReleaseArea = 0.0005f; // About 5cm^2
 
@@ -50,7 +50,7 @@ public sealed partial class GasTankSystem : SharedGasTankSystem
             entity.Comp.CheckUser = false;
             if (Transform(entity).ParentUid != entity.Comp.User)
             {
-                DisconnectFromInternals(entity);
+                DisconnectFromInternals(entity, forced: true);
             }
         }
 

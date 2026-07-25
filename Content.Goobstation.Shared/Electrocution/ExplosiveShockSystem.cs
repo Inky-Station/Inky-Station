@@ -52,7 +52,7 @@ public sealed partial class ExplosiveShockSystem : EntitySystem
             return;
 
         _popup.PopupEntity(Loc.GetString("explosive-shock-sizzle", ("item", uid)), uid);
-        _adminLogger.Add(LogType.Electrocution, $"{ToPrettyString(args.Args.TargetUid):entity} triggered explosive shock item {ToPrettyString(uid):entity}");
+        _adminLogger.Add(LogType.Electrocution, $"{args.Args.TargetUid:target} triggered explosive shock item {uid:entity}");
         EnsureComp<ExplosiveShockIgnitedComponent>(uid, out var ignited);
         ignited.ExplodeAt = _timing.CurTime + explosiveShock.ExplosionDelay;
     }
@@ -69,8 +69,10 @@ public sealed partial class ExplosiveShockSystem : EntitySystem
         var target = Transform(uid).ParentUid;
 
         // gloves go under armor so ignore resistances
+        /* // inkymed
         foreach (var part in _part.GetBodyParts(target, BodyPartType.Hand))
             _damageable.ChangeDamage(part, explosiveShock.HandsDamage, true);
+            */
 
         foreach (var part in _part.GetBodyParts(target, BodyPartType.Arm))
             _damageable.ChangeDamage(part, explosiveShock.ArmsDamage, true);

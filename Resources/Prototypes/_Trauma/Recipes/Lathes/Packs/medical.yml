@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ## Static
 
 - type: latheRecipePack
@@ -5,20 +7,20 @@
   - TraumaCyberneticsStatic
   id: TraumaMedicalStatic
   recipes:
-  - MedicalHyposprayEmpty
+  #- MedicalHyposprayEmpty # inky
   - MedicalCigCarton
 
 - type: latheRecipePack
   id: TraumaCyberneticsStatic
-  recipes:
-  - Hypoport
+  recipes: [] # inky - fuck hypoports
+  # - Hypoport
 
 ## Dynamic
 
 - type: latheRecipePack
   id: TraumaCybernetics
-  recipes:
-  - HypoportSecure
+  recipes: [] # inky - fuck hypoports
+  # - HypoportSecure
 
 - type: latheRecipePack
   id: TraumaChemistry

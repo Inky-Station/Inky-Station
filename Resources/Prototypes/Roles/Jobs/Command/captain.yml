@@ -6,16 +6,16 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Engineering
-      time: 1h # Trauma was 4
+      time: 4h
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 1h # Trauma was 4
+      time: 4h
     - !type:DepartmentTimeRequirement
       department: Science
-      time: 1h # Trauma was 4
+      time: 4h
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 1h # Trauma was 4
+      time: 4h
     - !type:DepartmentTimeRequirement
       department: Command
       time: 4h
@@ -29,18 +29,25 @@
   accessGroups:
   - AllAccess
   special:
+  # <Trauma>
+  - !type:OrganChipsSpecial
+    chips:
+    - SkillChipCaptain
+  # </Trauma>
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
-      - type: CommandStaff
-      - type: Condemned # Goobstation - Nanotrasen owns your soul pal.
+      # <Trauma>
+      - type: Condemned # Nanotrasen owns your soul pal.
         soulOwnedNotDevil: true
+      # </Trauma>
+      - type: CommandStaff
 
 - type: startingGear
   id: CaptainGear
   equipment:
-    shoes: ClothingShoesBootsLaceup
+   # shoes: ClothingShoesBootsLaceup - Goobstation # inky
     eyes: ClothingEyesGlassesCommand
     #gloves: ClothingHandsGlovesCaptain # Goobstation, moved to loadouts
     #id: CaptainPDA # Trauma - moved to loadouts

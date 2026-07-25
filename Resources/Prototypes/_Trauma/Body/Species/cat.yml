@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ## Base
 
 - type: entity
@@ -16,6 +18,8 @@
     sprite: _Trauma/Mobs/Species/Cat/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _Trauma/Mobs/Species/Cat/parts.rsi
+    secondData: #inkymed
       sprite: _Trauma/Mobs/Species/Cat/parts.rsi
 
 ## Parts

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: constructionGraph
   id: Crucifix
   graph:
@@ -38,7 +40,7 @@
             damage:
               types:
                 Piercing: 15
-            targetPart: LeftHand
+            targetPart: LeftArm # inkymed - was LeftHand
       steps:
       - tag: Nail
         name: construction-graph-tag-nail
@@ -72,7 +74,7 @@
             damage:
               types:
                 Piercing: 15
-            targetPart: RightHand
+            targetPart: RightArm # inkymed
       steps:
       - tag: Nail
         name: construction-graph-tag-nail
@@ -106,7 +108,7 @@
             damage:
               types:
                 Piercing: 15
-            targetPart: Feet
+            targetPart: Legs # inkymed
           - !type:ModifyBleed
             amount: 10 # perish
           - !type:PopupMessage

@@ -118,9 +118,9 @@
       id: DiamondOre1Unprocessed
 
 - type: entity
-  name: glutton
-  parent: [ SimpleSpaceMobBase, MobCombat ]
+  parent: [ SimpleSpaceMobBase, BaseSlicingRefinable ]
   id: BaseMobGlutton
+  name: glutton
   description: Something that was once a clown.
   components:
     - type: HTN
@@ -204,11 +204,10 @@
           Quantity: 300
     - type: Fauna
 
-
 - type: entity
-  name: abyss crawler
-  parent: [ SimpleSpaceMobBase, MobCombat ]
+  parent: [ SimpleSpaceMobBase, BaseSlicingRefinable ]
   id: MobAbyssCrawler
+  name: abyss crawler
   description: A pale mass of heaving flesh that gropes around in the gloom. It doesn't appear to have any eyes.
   components:
     - type: HTN

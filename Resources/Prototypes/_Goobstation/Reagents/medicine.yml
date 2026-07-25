@@ -103,6 +103,12 @@
         - type: PainNumbness
         - type: LegsParalyzed
         guidebookText: entity-effect-guidebook-removes-disabilities
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 5
+        heartRestart: true
+        autoStabilisation: true
+    # /inkymed
 
 - type: reagent
   id: LingAdrenaline
@@ -260,7 +266,7 @@
       - !type:EvenHealthChange
         damage:
           # powerful due to abundance of food, but very inconvienient to use
-          Brute: -4
+          Brute: -2
           Burn: -2
       - !type:ModifyBleed
         amount: -0.5
@@ -302,6 +308,10 @@
         time: 4
       - !type:ModifyBleed
         amount: -0.25
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 3
+      # /inkymed
 
 # Patch/microdose meds, hilariously strong due to difficulties in making and using them
 
@@ -515,8 +525,8 @@
           types:
             Poison: -3
         conditions:
-        - !type:MobStateCondition
-          mobstate: Critical
+        - !type:NestedCondition
+          proto: MobCritical
       - !type:HealthChange
         damage:
           types:
@@ -763,13 +773,24 @@
         - !type:ReagentCondition
           reagent: SalicylicAcid
           max: 25
-      - !type:EvenHealthChange
+      - !type:HealthChange
         damage:
-          Brute: 3
+         types:
+          Blunt: 1
+          Slash: 1
+          Piercing : 1
         conditions:
         - !type:ReagentCondition
           reagent: SalicylicAcid
           min: 25
+        # inkymed
+      - !type:ModifyHeartRate
+        amount: 8
+        conditions:
+        - !type:ReagentCondition
+          reagent: SalicylicAcid
+          min: 25
+        # /inkymed
 
 - type: reagent
   id: Oxandrolone
@@ -818,13 +839,23 @@
         - !type:ReagentCondition
           reagent: Oxandrolone
           max: 25
-      - !type:EvenHealthChange
+      - !type:HealthChange
         damage:
-          Burn: 4
+         types:
+          Heat: 2
+          Cold: 2
         conditions:
         - !type:ReagentCondition
           reagent: Oxandrolone
           min: 25
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 8
+        conditions:
+        - !type:ReagentCondition
+          reagent: Oxandrolone
+          min: 25
+      # /inkymed
 
 - type: reagent
   id: PentenicAcid
@@ -854,6 +885,11 @@
         effectProto: StatusEffectRadiationProtection
         time: 2
         type: Add
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -1.5
+        lowerCap: 65
+      # /inkymed
 
 - type: reagent
   id: Atropine
@@ -879,8 +915,8 @@
           Burn: -2
           Toxin: -2
         conditions:
-        - !type:MobStateCondition
-          mobstate: Critical
+        - !type:NestedCondition
+          proto: MobCritical
         - !type:ReagentCondition
           reagent: Atropine
           min: 0
@@ -938,7 +974,7 @@
       - !type:HealthChange
         damage:
           types:
-            Cellular: -6
+            Cellular: -10
       - !type:HealthChange # this + explosion rounds out to ~90dmg/15u
         damage:
           types:
@@ -1089,6 +1125,15 @@
         - !type:ReagentCondition
           reagent: Tramadol
           min: 15.5
+        # inkymed
+      - !type:ModifyHeartRate
+        amount: -4
+        lowerCap: 51 # more safe heroin
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 2 # 20 seconds per 1u
+        # /inkymed
 
 - type: reagent
   id: Oxycodone
@@ -1192,6 +1237,12 @@
       - !type:TakeStaminaDamage
         amount: -10
         immediate: true
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 5
+        heartRestart: true
+        autoStabilisation: true
+      # /inkymed
 
 # <Viro>
 

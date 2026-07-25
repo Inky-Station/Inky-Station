@@ -21,7 +21,10 @@ public sealed partial class DrowsinessSystem : SharedDrowsinessSystem
 
     private void OnEffectApplied(Entity<DrowsinessStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
     {
-        ent.Comp.NextIncidentTime = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(ent.Comp.TimeBetweenIncidents.X, ent.Comp.TimeBetweenIncidents.Y));
+        if (ent.Comp.TimeBetweenIncidents is not { } timeBetweenIncidents) // inkymed
+            return;
+
+        ent.Comp.NextIncidentTime = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(timeBetweenIncidents.X, timeBetweenIncidents.Y)); // inkymed
     }
 
     public override void Update(float frameTime)
@@ -31,6 +34,9 @@ public sealed partial class DrowsinessSystem : SharedDrowsinessSystem
         var query = EntityQueryEnumerator<DrowsinessStatusEffectComponent, StatusEffectComponent>();
         while (query.MoveNext(out var drowsiness, out var statusEffect))
         {
+            if (drowsiness.TimeBetweenIncidents is not { } timeBetweenIncidents) // inkymed
+                continue;
+
             if (_timing.CurTime < drowsiness.NextIncidentTime)
                 continue;
 
@@ -38,7 +44,7 @@ public sealed partial class DrowsinessSystem : SharedDrowsinessSystem
                 continue;
 
             // Set the new time.
-            drowsiness.NextIncidentTime = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(drowsiness.TimeBetweenIncidents.X, drowsiness.TimeBetweenIncidents.Y));
+            drowsiness.NextIncidentTime = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(timeBetweenIncidents.X, timeBetweenIncidents.Y)); // inkymed edit
 
             // sleep duration
             var duration = TimeSpan.FromSeconds(_random.NextFloat(drowsiness.DurationOfIncident.X, drowsiness.DurationOfIncident.Y));

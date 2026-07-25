@@ -1,6 +1,3 @@
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: marking
@@ -45,7 +42,7 @@
 
 - type: marking
   id: CyberLimbsMarkingShellguardLHand
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/shellguard/shellguard_main.rsi
@@ -66,7 +63,7 @@
 
 - type: marking
   id: CyberLimbsMarkingShellguardLFoot
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/shellguard/shellguard_main.rsi
@@ -89,7 +86,7 @@
 
 - type: marking
   id: CyberLimbsMarkingShellguardRHand
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/shellguard/shellguard_main.rsi
@@ -110,7 +107,7 @@
 
 - type: marking
   id: CyberLimbsMarkingShellguardRFoot
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/shellguard/shellguard_main.rsi

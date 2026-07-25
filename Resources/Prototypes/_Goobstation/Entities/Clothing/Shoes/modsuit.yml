@@ -36,10 +36,10 @@
     tags:
     - PlasmamanSafe
     - WhitelistChameleon
-  - type: IgniteFromGasImmunity
-    parts:
-    - FootLeft
-    - FootRight
+#  - type: IgniteFromGasImmunity inkymed
+#    parts:
+#    - FootLeft
+#    - FootRight
 
 - type: entity
   parent: ClothingShoesModsuitBase

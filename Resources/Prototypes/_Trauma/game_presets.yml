@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: gamePreset
   id: Insurgency
   alias:
@@ -37,7 +39,6 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRuleNoHeretic
   - HereticRoundstart
-  - CalmTraitor
   # inky
   - FunGameruleChooser
   # /inky
@@ -59,7 +60,6 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
   - ShadowlingGamemode
-  - CalmTraitor
   # inky
   - FunGameruleChooser
   # /inky

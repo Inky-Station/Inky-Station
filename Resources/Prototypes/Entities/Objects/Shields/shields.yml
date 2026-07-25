@@ -9,10 +9,9 @@
     - type: DisarmMalus
       malus: 1
     - type: CosmicTransmutable
-      transmuteTo: ShieldCosmicCult
+      transmuteTo: CosmicCultShield
     - type: Parry
-      maxParries: 3
-      maxReflects: 0
+      parryExhaustionCost: 0.25
       parryMinSkill: 30
       reflectMinSkill: 30
       soundOnParry:
@@ -78,29 +77,23 @@
       messages: ShieldMessages
     - type: Destructible
       thresholds:
-        - trigger:
-            !type:DamageTrigger
-            damage: 140
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-        - trigger:
-            !type:DamageTrigger
-            damage: 120 # Trauma, was 100 // inky - fuck you let it be 120, what could go wrong
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-            - !type:PlaySoundBehavior
-              sound:
-                collection: MetalBreak
-            - !type:SpawnEntitiesBehavior
-              spawn:
-                SheetSteel:
-                  min: 2
-                  max: 2
-                SheetGlass:
-                  min: 2
-                  max: 2
+      - trigger:
+          !type:DamageTrigger
+          damage: 122 # Trauma - was 100 # inky
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            SheetSteel:
+              min: 2
+              max: 2
+            SheetGlass:
+              min: 2
+              max: 2
     - type: StaticPrice
       price: 100
 
@@ -131,9 +124,6 @@
   description: A large tower shield. Good for controlling crowds.
   components:
     # <Trauma>
-    - type: Parry
-      maxParries: 5
-      maxReflects: 0
     - type: MeleeWeapon
       damage:
         types:
@@ -168,8 +158,8 @@
   components:
     # <Trauma>
     - type: Parry
-      maxParries: 0
-      maxReflects: 5
+      parryExhaustionCost: 1.1
+      reflectExhaustionCost: 0.25
       soundOnReflect:
         path: /Audio/Weapons/Guns/Hits/laser_sear_wall.ogg
       reflectSpread: 300
@@ -199,12 +189,6 @@
   description: A shield built for protecting against ballistics, but not much else.
   components:
     # <Trauma>
-    - type: Parry
-      maxParries: 0
-      maxReflects: 5
-      reflectSpread: 300
-      reflects:
-      - NonEnergy
     - type: HeldSpeedModifier
       walkModifier: 0.9
       sprintModifier: 0.9
@@ -242,7 +226,7 @@
   components:
     # <Trauma>
     - type: Parry
-      maxParries: 2
+      parryExhaustionCost: 0.5
     - type: HeldSpeedModifier
       walkModifier: 0.9
       sprintModifier: 0.9
@@ -281,26 +265,20 @@
       node: woodenBuckler
     - type: Destructible
       thresholds:
-        - trigger:
-            !type:DamageTrigger
-            damage: 60
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-        - trigger:
-            !type:DamageTrigger
-            damage: 30 #Weaker shield
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-            - !type:PlaySoundBehavior
-              sound:
-                collection: WoodDestroy
-            - !type:SpawnEntitiesBehavior
-              spawn:
-                MaterialWoodPlank:
-                  min: 5
-                  max: 5
+      - trigger:
+          !type:DamageTrigger
+          damage: 30 #Weaker shield
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: WoodDestroy
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            MaterialWoodPlank:
+              min: 5
+              max: 5
     - type: StaticPrice
       price: 150
 
@@ -312,8 +290,7 @@
   components:
     # <Trauma>
     - type: Parry
-      maxParries: 1
-      maxReflects: 0
+      parryExhaustionCost: 1
       parryMinSkill: 0
       reflectMinSkill: 0
       soundOnParry:
@@ -365,12 +342,6 @@
       thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 25
-        behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-      - trigger:
-          !type:DamageTrigger
           damage: 10 #Very very weak shield
         behaviors:
         - !type:DoActsBehavior
@@ -393,8 +364,7 @@
   components:
     # <Trauma>
     - type: Parry
-      maxParries: 1
-      maxReflects: 1
+      parryExhaustionCost: 0.5
     - type: PhysicalComposition
       materialComposition:
         Steel: 250
@@ -435,26 +405,20 @@
       node: makeshiftShield
     - type: Destructible
       thresholds:
-        - trigger:
-            !type:DamageTrigger
-            damage: 50 # Trauma - was 40
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-        - trigger:
-            !type:DamageTrigger
-            damage: 25 # Trauma - was 20
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-            - !type:PlaySoundBehavior
-              sound:
-                collection: MetalBreak
-            - !type:SpawnEntitiesBehavior
-              spawn:
-                SheetSteel:
-                  min: 1
-                  max: 2
+      - trigger:
+          !type:DamageTrigger
+          damage: 25 # Trauma - was 20. I'm Fragile, but not that fragile.
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            SheetSteel:
+              min: 1
+              max: 2
 
 - type: entity
   name: web shield
@@ -464,8 +428,7 @@
   components:
     # <Trauma>
     - type: Parry
-      maxParries: 1
-      maxReflects: 0
+      parryExhaustionCost: 1
       soundOnParry:
         path: /Audio/Weapons/slash.ogg
     - type: MeleeWeapon
@@ -503,26 +466,20 @@
       node: shield
     - type: Destructible
       thresholds:
-        - trigger:
-            !type:DamageTrigger
-            damage: 40
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-        - trigger:
-            !type:DamageTrigger
-            damage: 20
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-            - !type:SpawnEntitiesBehavior
-              spawn:
-                MaterialWebSilk:
-                  min: 1
-                  max: 1
-            - !type:PlaySoundBehavior
-              sound:
-                collection: WoodDestroy
+      - trigger:
+          !type:DamageTrigger
+          damage: 20
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            MaterialWebSilk:
+              min: 1
+              max: 1
+        - !type:PlaySoundBehavior
+          sound:
+            collection: WoodDestroy
 
 #Magic/Cult Shields (give these to wizard for now)
 
@@ -533,9 +490,6 @@
   description: Ratvar oyrffrf lbh jvgu uvf cebgrpgvba.
   components:
     # <Trauma>
-    - type: Parry
-      maxParries: 5
-      maxReflects: 0
     - type: HeldSpeedModifier
       walkModifier: 0.9
       sprintModifier: 0.9
@@ -577,8 +531,8 @@
   components:
     # <Trauma>
     - type: Parry
-      maxParries: 0
-      maxReflects: 20
+      parryExhaustionCost: 1.1
+      reflectExhaustionCost: 0.05
       reflectMinSkill: 0
       soundOnReflect:
         path: /Audio/Weapons/Guns/Hits/laser_sear_wall.ogg
@@ -618,20 +572,20 @@
         path: /Audio/Effects/glass_step.ogg
     - type: Destructible
       thresholds:
-        - trigger:
-            !type:DamageTrigger
-            damage: 10 # Trauma, was 40
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-            - !type:PlaySoundBehavior
-              sound:
-                collection: GlassBreak
-            - !type:SpawnEntitiesBehavior
-              spawn:
-                SheetGlass:
-                  min: 5
-                  max: 5
+      - trigger:
+          !type:DamageTrigger
+          damage: 10 # Trauma - was 40
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: GlassBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            SheetGlass:
+              min: 5
+              max: 5
 
 - type: entity
   name: energy shield
@@ -641,14 +595,7 @@
   components:
     # <Trauma>
     - type: Parry
-      reflects:
-      - energy
-      maxParries: 0
-      maxReflects: 10
-      reflectMinSkill: 50
-      reflectSpread: 300
-      soundOnReflect:
-        path: /Audio/Weapons/Guns/Hits/laser_sear_wall.ogg
+      parryExhaustionCost: 1.1
     - type: HeldSpeedModifier
       walkModifier: 0.9
       sprintModifier: 0.9
@@ -663,10 +610,10 @@
       maxCharge: 35
       startingCharge: 35
     - type: BatterySelfRecharger
-      autoRechargeRate: 1 # inky edit - was 3
+      autoRechargeRate: 2
     - type: RechargeableBlocking
       dischargedRechargeRate: 2
-      chargedRechargeRate: 1 # inky edit - was 2
+      chargedRechargeRate: 3
     # </Trauma>
     - type: ItemToggle
       predictable: false # WD EDIT
@@ -720,13 +667,11 @@
       energy: 0.7 # WD EDIT
       color: "#678AD9" # WD EDIT
     - type: ItemTogglePointLight
-    # inky
     - type: Reflect
-      reflectProb: 1
+      reflectProb: 1 # WD EDIT
       damageOnReflectModifier: 1 # Goob edit
       reflects:
-      - Energy
-    # /inky
+        - Energy
     - type: Blocking
       passiveBlockModifier:
         coefficients:
@@ -749,7 +694,8 @@
       damageContainer: Shield
     - type: ExaminableDamage
       messages: EnergyShieldMessages
-    # Trauma - removed Destructible
+    - type: Destructible
+      thresholds: [] # Trauma - removed Destructible thresholds
     - type: StaticPrice
       price: 350
 
@@ -774,8 +720,6 @@
   description: An advanced riot shield made of lightweight materials that collapses for easy storage.
   components:
     # <Trauma>
-    - type: Parry
-      maxParries: 5
     - type: MeleeWeapon
       attackRate: 1
       damage:
@@ -820,28 +764,22 @@
     - type: Appearance
     - type: Destructible
       thresholds:
-        - trigger:
-            !type:DamageTrigger
-            damage: 100
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-        - trigger:
-            !type:DamageTrigger
-            damage: 50 # Trauma - was 70
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-            - !type:PlaySoundBehavior
-              sound:
-                collection: MetalGlassBreak
-            - !type:SpawnEntitiesBehavior
-              spawn:
-                SheetSteel:
-                  min: 1
-                  max: 1
-                SheetGlass:
-                  min: 2
-                  max: 2
+      - trigger:
+          !type:DamageTrigger
+          damage: 50 # Trauma - was 70
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalGlassBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            SheetSteel:
+              min: 1
+              max: 1
+            SheetGlass:
+              min: 2
+              max: 2
     - type: StaticPrice
       price: 150

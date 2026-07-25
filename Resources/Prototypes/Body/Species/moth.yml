@@ -120,12 +120,12 @@
       Wings: OrganMothWings # Trauma
       ArmLeft: OrganMothArmLeft
       ArmRight: OrganMothArmRight
-      HandRight: OrganMothHandRight
-      HandLeft: OrganMothHandLeft
+#      HandRight: OrganMothHandRight inkymed
+#      HandLeft: OrganMothHandLeft inkymed
       LegLeft: OrganMothLegLeft
       LegRight: OrganMothLegRight
-      FootLeft: OrganMothFootLeft
-      FootRight: OrganMothFootRight
+#      FootLeft: OrganMothFootLeft inkymed
+#      FootRight: OrganMothFootRight inkymed
       Brain: OrganMothBrain
       Eyes: OrganMothEyes
       Tongue: OrganMothTongue
@@ -182,10 +182,7 @@
   #      sprite: _Shitmed/Mobs/Effects/burn_damage.rsi
   - type: MothAccent
   - type: Vocal
-    sounds:
-      Male: UnisexMoth
-      Female: UnisexMoth
-      Unsexed: UnisexMoth
+    emoteSounds: UnisexMoth
   - type: BodyEmotes
     soundsId: MothBodyEmotes
   #- type: MovementSpeedModifier # Trauma - moved to wings
@@ -195,7 +192,7 @@
   - type: Flammable
     damage:
       types:
-        Heat: 2.5 # moths burn more easily
+        Heat: 0.5 # Trauma, was 2.5 - 0.2x multiplier to compensate for limb damage
   - type: Temperature
     currentTemperature: 310.15
     specificHeat: 46
@@ -213,9 +210,26 @@
       289: 0.9
       275: 0.8
       250: 0.7
+  # inky
+  - type: Fixtures
+    fixtures: # TODO: This needs a second fixture just for mob collisions.
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 173 # 6.5% lighter
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+#  - type: DashAction # dark souls // tackling added to moths gg
+#    actionProto: ActionDashMoth
+  # /inky
+
 
 - type: entity
-  parent: OrganBaseFleshy # Shitmed - Fleshy
+  parent: OrganBaseOrganic
   id: OrganMoth
   abstract: true
   suffix: Moth
@@ -241,6 +255,8 @@
   components:
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Moth/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Moth/parts.rsi
   - type: VisualOrganMarkings
     markingData:
@@ -325,6 +341,13 @@
 - type: entity
   parent: [ OrganBaseHeart, OrganMothInternal, OrganAnimalMetabolizer ]
   id: OrganMothHeart
+  # inkymed
+  components:
+  - type: Heart
+    normalRate: 65
+    criticalRate: 265
+    fibrillationCaps: 35,165
+  # inkymed
 
 - type: entity
   parent: [ OrganBaseStomach, OrganMothInternal, OrganMothMetabolizer ]

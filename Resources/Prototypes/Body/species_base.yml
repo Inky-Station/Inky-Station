@@ -22,6 +22,7 @@
       Hard: 0.7
   # /inky
   # <Trauma>
+  - type: BagAccess
   - type: Targeting
   - type: BodyStatus
   - type: Carriable
@@ -59,8 +60,10 @@
   - type: Tackler
   - type: CounterAttacker
   - type: KnowledgeHolder
-  - type: VampireDrainable
   - type: PressureTracker # avoid initial mispredict with PKAs and stuff, might be used by other stuff in the future too
+  - type: WeaponClass
+    class: Unarmed
+    examinable: false
   # </Trauma>
   # Shitmed - woundable visuals used instead
   #- type: DamageVisuals
@@ -198,10 +201,7 @@
     speechSounds: Alto
   - type: DamageForceSay
   - type: Vocal
-    sounds:
-      Male: MaleHuman
-      Female: FemaleHuman
-      Unsexed: MaleHuman
+    emoteSounds: MaleHuman
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
@@ -242,6 +242,7 @@
     - Viral
     - Bacterial
     - Parasite
+  - type: VampireDrainable
   # </Trauma>
   - type: Hunger
   - type: Thirst
@@ -250,15 +251,16 @@
       types:
         Blunt: 0.50
         Heat: 0.1
-  #- type: PassiveDamage # Trauma - no
-  #  allowedStates:
-  #  - Alive
-  #  damage:
-  #    types:
-  #      Heat: -0.07
-  #      Blunt: -0.05
-  #      Piercing: -0.05
-  #      Slash: -0.05
+  - type: PassiveDamage # Trauma - no # inky - yes
+    splitBehavior: SplitEnsureAllDamagedAndOrganic # inky
+    allowedStates:
+    - Alive
+    damage:
+      types:
+        Heat: -0.07
+        Blunt: -0.05
+        Piercing: -0.05
+        Slash: -0.05
   - type: Fingerprint
   - type: Blindable
   - type: Temperature
@@ -288,7 +290,6 @@
     thermalRegulationTemperatureThreshold: 2
   #- type: Perishable # Trauma - moved to BaseSpeciesMobOrganic
   - type: Butcherable
-    butcheringType: Spike
     spawned:
     - id: FoodMeat
       amount: 5

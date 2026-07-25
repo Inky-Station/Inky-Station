@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ## Mob
 
 - type: markingsGroup
@@ -16,7 +18,13 @@
   id: AppearanceKobold
   name: kobold appearance
   components:
-  # TODO SHITMED: displacements??
+  - type: Inventory
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Trauma/Mobs/Animals/displacements.rsi
+            state: jumpsuit-kobold
   - type: InitialBody
     organs:
       Torso: OrganKoboldTorso
@@ -24,12 +32,12 @@
       Tail: OrganKoboldTail
       ArmLeft: OrganKoboldArmLeft
       ArmRight: OrganKoboldArmRight
-      HandRight: OrganKoboldHandRight
-      HandLeft: OrganKoboldHandLeft
+#      HandRight: OrganKoboldHandRight inkymed
+#      HandLeft: OrganKoboldHandLeft inkymed
       LegLeft: OrganKoboldLegLeft
       LegRight: OrganKoboldLegRight
-      FootLeft: OrganKoboldFootLeft
-      FootRight: OrganKoboldFootRight
+#      FootLeft: OrganKoboldFootLeft inkymed
+#      FootRight: OrganKoboldFootRight inkymed
       Brain: OrganReptilianBrain
       Eyes: OrganReptilianEyes
       Tongue: OrganReptilianTongue
@@ -59,6 +67,8 @@
     sprite: Mobs/Animals/kobold.rsi
   - type: VisualOrgan
     data:
+      sprite: Mobs/Animals/kobold.rsi
+    secondData: # inkymed
       sprite: Mobs/Animals/kobold.rsi
   - type: VisualOrganMarkings
     markingData:

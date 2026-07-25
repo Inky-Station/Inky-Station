@@ -1,0 +1,31 @@
+- type: entity
+  id: BaseManualDefibrillator
+  parent: BaseDefibrillator
+  name: manual defibrillator
+  description: flip, sssscratch sssscratch, click, CLEAR! ZZZZZZAP!
+  abstract: true
+  components:
+  - type: Defibrillator
+    autoStabilisation: false # whole point of this
+    allowDoAfterMovement: false # inkymed
+    zapHeal:
+      types:
+        Asphyxiation: -40
+  - type: ManualDefibrillator
+    pulseState: Pulse0
+  - type: ActivatableUI
+    key: enum.ManualDefibrillatorUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: false
+  - type: UserInterface
+    interfaces:
+      enum.ManualDefibrillatorUiKey.Key:
+        type: ManualDefibrillatorBui
+  - type: GuideHelp
+    guides:
+    - Defib
+
+- type: guideEntry
+  id: Defib
+  name: guide-entry-medicaldoctor
+  text: "/ServerInfo/_Inky/Guidebook/Medical/Defib.xml"

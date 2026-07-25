@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ## Base
 
 # pizza lungs!?
@@ -18,6 +20,8 @@
     sprite: _Shitmed/Mobs/Species/Misc/Pizza/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _Shitmed/Mobs/Species/Misc/Pizza/parts.rsi
+    secondData: #inkymed
       sprite: _Shitmed/Mobs/Species/Misc/Pizza/parts.rsi
   - type: VisualOrganMarkings
     markingData:

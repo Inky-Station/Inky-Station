@@ -8,11 +8,11 @@ using Robust.Shared.Map;
 
 namespace Content.Inky.Server.Fun.Systems.Rules;
 
-public sealed class WilhelmFtlFunRuleSystem : GameRuleSystem<WilhelmFtlFunRuleComponent>
+public sealed partial class WilhelmFtlFunRuleSystem : GameRuleSystem<WilhelmFtlFunRuleComponent>
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly FunnyThingsSystem _fun = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private SharedMapSystem _mapMan = default!;
+    [Dependency] private FunnyThingsSystem _fun = default!;
 
     private static readonly SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Voice/Human/wilhelm_scream.ogg");
 
@@ -29,7 +29,7 @@ public sealed class WilhelmFtlFunRuleSystem : GameRuleSystem<WilhelmFtlFunRuleCo
             return;
 
         var mapId = args.Transform.MapID;
-        var mapEntity = _mapMan.GetMapEntityId(mapId);
+        var mapEntity = _mapMan.GetMapOrInvalid(mapId); // todo NOW inky check if works
 
         if (!HasComp<FTLMapComponent>(mapEntity))
             return;

@@ -1,0 +1,59 @@
+<controls:DefibrillatorWindow Title=""
+                              xmlns="https://spacestation14.io"
+                              xmlns:controls="clr-namespace:Content.Medical.Client.Inkymed"
+                              MinWidth="588"
+                              MinHeight="288"
+                              SetSize="588 288"
+                              Resizable="False"
+                              StyleClasses="DefibWindow">
+    <LayoutContainer SetSize="588 288">
+        <TextureRect TexturePath="/Textures/_Inky/Inkymed/UserInterface/defib_window.png"
+                     Stretch="Scale"
+                     SetSize="588 288"
+                     MouseFilter="Ignore"/>
+        <Button Name="IO"
+                SetSize="48 96"
+                Margin="48 130 0 0">
+            <AnimatedTextureRect Name="IOTexture"
+                                 SetSize="48 96"
+                                 MouseFilter="Ignore"/>
+        </Button>
+        <AnimatedTextureRect Name="PulseTexture"
+                             SetSize="48 48"
+                             Margin="477 120 0 0"
+                             MouseFilter="Ignore"/>
+        <Label Name="BpmLabel"
+               Text="---"
+               SetSize="72 24"
+               Margin="474 185 0 0"
+               HorizontalAlignment="Center"/>
+        <BoxContainer Orientation="Horizontal"
+                      SeparationOverride="24"
+                      Margin="162 123 162 21">
+            <Button Name="LOW"
+                    SetSize="48 144">
+                <AnimatedTextureRect Name="LOWTexture"
+                                     SetSize="48 144"
+                                     MouseFilter="Ignore"/>
+            </Button>
+            <Button Name="STN"
+                    SetSize="48 144">
+                <AnimatedTextureRect Name="STNTexture"
+                                     SetSize="48 144"
+                                     MouseFilter="Ignore"/>
+            </Button>
+            <Button Name="HGH"
+                    SetSize="48 144">
+                <AnimatedTextureRect Name="HGHTexture"
+                                     SetSize="48 144"
+                                     MouseFilter="Ignore"/>
+            </Button>
+            <Button Name="MAX"
+                    SetSize="48 144">
+                <AnimatedTextureRect Name="MAXTexture"
+                                     SetSize="48 144"
+                                     MouseFilter="Ignore"/>
+            </Button>
+        </BoxContainer>
+    </LayoutContainer>
+</controls:DefibrillatorWindow>

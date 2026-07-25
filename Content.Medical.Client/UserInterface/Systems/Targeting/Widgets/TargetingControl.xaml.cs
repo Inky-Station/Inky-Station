@@ -21,15 +21,15 @@ public sealed partial class TargetingControl : UIWidget
             // TODO: ADD EYE AND MOUTH TARGETING
             { TargetBodyPart.Head, HeadButton },
             { TargetBodyPart.Chest, ChestButton },
-            { TargetBodyPart.Groin, GroinButton },
+            // { TargetBodyPart.Groin, GroinButton }, inkymed
             { TargetBodyPart.LeftArm, LeftArmButton },
-            { TargetBodyPart.LeftHand, LeftHandButton },
+            // { TargetBodyPart.LeftHand, LeftHandButton }, inkymed
             { TargetBodyPart.RightArm, RightArmButton },
-            { TargetBodyPart.RightHand, RightHandButton },
+            // { TargetBodyPart.RightHand, RightHandButton }, inkymed
             { TargetBodyPart.LeftLeg, LeftLegButton },
-            { TargetBodyPart.LeftFoot, LeftFootButton },
+            // { TargetBodyPart.LeftFoot, LeftFootButton }, inkymed
             { TargetBodyPart.RightLeg, RightLegButton },
-            { TargetBodyPart.RightFoot, RightFootButton },
+            // { TargetBodyPart.RightFoot, RightFootButton }, inkymed
         };
 
         foreach (var bodyPartButton in _bodyPartControls)

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Installs a hypoport to the target mob's head
 - type: entityEffect
   id: InstallHypoport
@@ -39,8 +41,9 @@
       - BorgChassis
     guidebookText: entity-condition-guidebook-hypoport-target
   effects:
-  - !type:NestedEffect
-    proto: InstallHypoport
+  # inky - fuck hypoports
+  #- !type:NestedEffect
+  #  proto: InstallHypoport
   - !type:RemoveComponents
     components:
     - type: NoHypoport # leave no trace

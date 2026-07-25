@@ -207,6 +207,15 @@
           inverted: true
       - !type:Drunk
         boozePower: 2
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -1.5
+        lowerCap: 45 # no fibrillations after drinking too much
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 0.5 # 10s per 1u
+      # /inkymed
 
 - type: reagent
   id: Gin

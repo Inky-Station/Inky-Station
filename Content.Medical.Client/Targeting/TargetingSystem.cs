@@ -37,30 +37,39 @@ public sealed partial class TargetingSystem : SharedTargetingSystem
 
         SubscribeAllEvent<TargetIntegrityChangedMessage>(OnTargetIntegrityChanged);
 
-        // TODO SHITMED: change this to scrolling "height" and symmetry
         CommandBinds.Builder
         .Bind(TraumaKeyFunctions.TargetHead,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.Head)))
         .Bind(TraumaKeyFunctions.TargetChest,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.Chest)))
+        /* inkymed
         .Bind(TraumaKeyFunctions.TargetGroin,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.Groin)))
+            */
         .Bind(TraumaKeyFunctions.TargetLeftArm,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.LeftArm)))
+        /* inkymed
         .Bind(TraumaKeyFunctions.TargetLeftHand,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.LeftHand)))
+            */
         .Bind(TraumaKeyFunctions.TargetRightArm,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.RightArm)))
+        /* inkymed
         .Bind(TraumaKeyFunctions.TargetRightHand,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.RightHand)))
+            */
         .Bind(TraumaKeyFunctions.TargetLeftLeg,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.LeftLeg)))
+        /* inkymed
         .Bind(TraumaKeyFunctions.TargetLeftFoot,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.LeftFoot)))
+            */
         .Bind(TraumaKeyFunctions.TargetRightLeg,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.RightLeg)))
+        /*
         .Bind(TraumaKeyFunctions.TargetRightFoot,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.RightFoot)))
+            */
         .Register<SharedTargetingSystem>();
     }
 
@@ -125,5 +134,26 @@ public sealed partial class TargetingSystem : SharedTargetingSystem
             return;
 
         TargetChange?.Invoke(target);
+    }
+
+    public void CycleTargeting(int delta)
+    {
+        if (_player.LocalEntity is not { } player || !TryComp(player, out TargetingComponent? targeting))
+            return;
+
+        var max = (int) TargetBodyPartNonFlag.Max;
+
+        // delta = 1
+        // 0 -> 1 (1 % 13)
+        // 12 -> 0 (13 % 13)
+        // delta = -1
+        // 0 -> 12
+        // 12 -> 11
+        var next = (int) targeting.TargetNonFlag + delta;
+        if (next < 0)
+            next = max;
+        next %= max + 1;
+
+        TargetChange?.Invoke((TargetBodyPart) (1 << next));
     }
 }

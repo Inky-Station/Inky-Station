@@ -10,6 +10,8 @@ If you want to host or create content for SS14, go to the [Space Station 14 repo
 
 ## Documentation/Wiki
 
+Trauma itself has a non-technical wiki on its content [here](https://wiki.traumastation.com/wiki/Main_Page)
+
 SS14 Docs [docs site](https://docs.spacestation14.com/) has documentation on SS14's content, engine, game design, and more. It also has lots of resources for new contributors to the project.
 
 ## Contributing

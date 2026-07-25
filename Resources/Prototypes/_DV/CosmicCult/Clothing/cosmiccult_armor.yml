@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ############ [ HARDSUIT ] ############
 
 # COSMIC CULT HARDSUIT BODY
@@ -129,8 +131,5 @@
   - type: TypingIndicatorClothing
     proto: CosmicTyping
   - type: SpeechOverride
-    emoteIDs:
-      Unsexed: CosmicEmotes
-      Female: CosmicEmotes
-      Male: CosmicEmotes
-    speechIDs: CosmicSpeech
+    emoteSounds: CosmicEmotes
+    speechSounds: CosmicSpeech

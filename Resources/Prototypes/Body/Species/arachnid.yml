@@ -54,12 +54,11 @@
       Wings: OrganArachnidAppendages # Trauma
       ArmLeft: OrganArachnidArmLeft
       ArmRight: OrganArachnidArmRight
-      HandRight: OrganArachnidHandRight
-      HandLeft: OrganArachnidHandLeft
+#      HandRight: OrganArachnidHandRight # inkymed they didnt have a handleft????
       LegLeft: OrganArachnidLegLeft
       LegRight: OrganArachnidLegRight
-      FootLeft: OrganArachnidFootLeft
-      FootRight: OrganArachnidFootRight
+#      FootLeft: OrganArachnidFootLeft # inky edit
+#      FootRight: OrganArachnidFootRight # inky edit
       Brain: OrganArachnidBrain
       Eyes: OrganArachnidEyes
       Tongue: OrganArachnidTongue
@@ -140,10 +139,7 @@
     speechSounds: Arachnid
     allowedEmotes: ['Click', 'Chitter']
   - type: Vocal
-    sounds:
-      Male: UnisexArachnid
-      Female: UnisexArachnid
-      Unsexed: UnisexArachnid
+    emoteSounds: UnisexArachnid
   - type: TypingIndicator
     proto: spider
   - type: CreamPied
@@ -152,7 +148,7 @@
       state: creampie_arachnid
 
 - type: entity
-  parent: OrganBaseFleshy # Shitmed - Fleshy
+  parent: OrganBaseOrganic
   id: OrganArachnid
   abstract: true
   suffix: Arachnid
@@ -178,6 +174,8 @@
   components:
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Arachnid/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Arachnid/parts.rsi
   - type: VisualOrganMarkings
     markingData:
@@ -263,6 +261,13 @@
 - type: entity
   parent: [ OrganBaseHeart, OrganArachnidInternal, OrganArachnidMetabolizer ]
   id: OrganArachnidHeart
+  # inkymed
+  components:
+  - type: Heart
+    normalRate: 70
+    criticalRate: 295
+    fibrillationCaps: 35,210
+  # inkymed
 
 - type: entity
   parent: [ OrganBaseStomach, OrganArachnidInternal, OrganAnimalMetabolizer ]

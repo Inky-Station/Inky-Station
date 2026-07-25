@@ -1,14 +1,14 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "made by @LuciferEOS for inky station",
-  "size": {
+    "copyright": "made by dlooodyspy(1439558070773747785) on discord for Inky station",
+    "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
-      "name": "conc", "delays": [[0.5, 0.5]]
+      "name": "conc"
     }
   ]
 }

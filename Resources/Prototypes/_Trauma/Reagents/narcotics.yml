@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: reagent
   id: Cocaine
   name: reagent-name-cocaine
@@ -75,6 +77,14 @@
         - !type:ReagentCondition
           reagent: Cocaine
           min: 20
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 3 # a hard drug
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 10 # 20 seconds per 1u
+      # /inkymed
 
 - type: reagent
   id: CrackCocaine
@@ -92,28 +102,30 @@
       metabolismRate: 0.05
       # Main effects
       effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 1
-      - !type:HealthChange
-        conditions:
-        - !type:ReagentCondition
-          reagent: CrackCocaine
-          min: 4
-        damage:
-          types:
-            Poison: 0.75
-            Asphyxiation: 1.25
-      - !type:HealthChange
-        conditions:
-        - !type:ReagentCondition
-          reagent: Cocaine
-          max: 0.01
-        damage:
-          types:
-            Poison: 0.75
-            Asphyxiation: 1.25
+        # inky edit
+#      - !type:HealthChange
+#        damage:
+#          types:
+#            Poison: 1
+#      - !type:HealthChange
+#        conditions:
+#        - !type:ReagentCondition
+#          reagent: CrackCocaine
+#          min: 4
+#        damage:
+#          types:
+#            Poison: 0.75
+#            Asphyxiation: 1.25
+#      - !type:HealthChange
+#        conditions:
+#        - !type:ReagentCondition
+#          reagent: Cocaine
+#          max: 0.01
+#        damage:
+#          types:
+#            Poison: 0.75
+#            Asphyxiation: 1.25
+        # /inky
       # Main effects
       - !type:MovementSpeedModifier
         walkSpeedModifier: 1.25
@@ -161,8 +173,8 @@
         - !type:ReagentCondition
           reagent: CrackCocaine
           min: 1
-      - !type:Drunk
-        boozePower: 10
+#      - !type:Drunk # inky edit
+#        boozePower: 10
       - !type:Emote
         emote: Scream
         probability: 0.05
@@ -175,6 +187,14 @@
       - !type:Emote
         emote: Flip
         probability: 0.05
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 3.5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 1 # 20 seconds per 1u
+      # /inkymed
 
 - type: reagent
   id: CocaSlurry
@@ -211,3 +231,11 @@
       - !type:MovementSpeedModifier
         walkSpeedModifier: 1.05
         sprintSpeedModifier: 1.05
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -1.5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 3 # 6s per 1u
+      # /inkymed

@@ -1,3 +1,13 @@
+# inky start
+
+health-analyzer-window-entity-bpm-text = BPM
+health-analyzer-window-entity-bpm-value-text = {$bpm} BPM
+health-analyzer-window-entity-bpm-stopped-text = Flatlined
+
+condition-heart-fibrillating = • [color=orange]{$entity}'s heart is fibrillating![/color]
+condition-heart-stopped = • [color=red]{$entity}'s heart has stopped.[/color]
+
+# inky end
 condition-body-trauma-BoneDamage-Normal = • The {$woundable} has some very minor bone damage.
 condition-body-trauma-BoneDamage-Damaged = • The {$woundable}'s has some bone damage.
 condition-body-trauma-BoneDamage-Cracked = • The {$woundable}'s bone looks almost broken...

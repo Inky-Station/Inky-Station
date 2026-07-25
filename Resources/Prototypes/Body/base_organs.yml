@@ -40,12 +40,32 @@
   - type: Organ
 
 - type: entity
-  parent: OrganBaseExternal # Shitmed
+  id: OrganBaseOrganic
+  name: organ
+  abstract: true
+  parent: [ OrganBaseFleshy, SolutionFood, SolutionTiny ] # Trauma - use OrganBaseFleshy
+  components:
+  - type: FlavorProfile
+    flavors:
+    - chicken # INTRODUCING OUR NEW EVERY-MEAT BURRITO, IT'S GOT EVERY MEAT!
+  - type: Edible
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 20
+  - type: Tag # I am nearing my limit of tolerance for TagComponent.
+    tags:
+    - Raw
+    - Meat
+
+- type: entity
+  parent: OrganBaseExternal # Trauma
   id: OrganBaseTorso
   name: torso
   abstract: true
   components:
-  # <Shitmed>
+  # <Trauma>
   - type: BodyPart
     partType: Torso
     slots:
@@ -70,8 +90,8 @@
   - type: UnremoveableOrgan # root part lol
   - type: Woundable
     canRemove: false # root part
-    integrity: 400 # Trauma - was 200
-    integrityCap: 400 # Trauma - was 200
+    integrity: 200
+    integrityCap: 200
     thresholds:
       Minor: 180
       Moderate: 120
@@ -80,7 +100,7 @@
       Mangled: 0
   - type: WoundableVisuals
     bleedingOverlay: _Shitmed/Mobs/Effects/bleeding_damage.rsi
-  # </Shitmed>
+  # </Trauma>
   - type: Organ
     category: Torso
   - type: Sprite
@@ -106,7 +126,7 @@
   name: head
   abstract: true
   components:
-  # <Shitmed>
+  # <Trauma>
   - type: BodyPart
     partType: Head
     slots:
@@ -114,7 +134,6 @@
     - Eyes
     - Tongue
     - Ears
-#    - BrainChip # everyone starts with a brain chip so # inky edit - kill chips
   - type: ChildOrgan
     parents: [ Torso ]
   - type: Woundable
@@ -136,8 +155,6 @@
       Dismemberment: 0.5
   - type: WoundableVisuals
     bleedingOverlay: _Shitmed/Mobs/Effects/bleeding_damage.rsi
-  # </Shitmed>
-  # <Trauma>
   - type: BrainSplatterer
   # </Trauma>
   - type: Organ
@@ -171,9 +188,13 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
-    slots:
-    - HandLeft
+#    slots: #inkymed
+#    - HandLeft
   # </Shitmed>
+  - type: HandOrgan # inkymed
+    handID: left
+    data:
+      location: Left
   - type: Organ
     category: ArmLeft
   - type: Sprite
@@ -182,6 +203,9 @@
     layer: enum.HumanoidVisualLayers.LArm
     data:
       state: l_arm
+    secondLayer: enum.HumanoidVisualLayers.LHand # inkymed
+    secondData:
+      state: l_hand
   - type: VisualOrganMarkings
     markingData:
       layers:
@@ -196,9 +220,13 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
-    slots:
-    - HandRight
+#    slots: #inkymed
+#    - HandRight
   # </Shitmed>
+  - type: HandOrgan # inkymed
+    handID: right
+    data:
+      location: Right
   - type: Organ
     category: ArmRight
   - type: Sprite
@@ -207,6 +235,9 @@
     layer: enum.HumanoidVisualLayers.RArm
     data:
       state: r_arm
+    secondLayer: enum.HumanoidVisualLayers.RHand # inkymed
+    secondData:
+      state: r_hand
   - type: VisualOrganMarkings
     markingData:
       layers:
@@ -221,8 +252,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
-  - type: ChildOrgan
-    parents: [ ArmLeft ]
+  #  - type: ChildOrgan # inkymed
+  #    parents: [ ArmLeft ] # inkymed
   # </Shitmed>
   - type: Organ
     category: HandLeft
@@ -250,8 +281,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
-  - type: ChildOrgan
-    parents: [ ArmRight ]
+  #  - type: ChildOrgan # inkymed
+  #    parents: [ ArmRight ] # inkymed
   # </Shitmed>
   - type: Organ
     category: HandRight
@@ -279,8 +310,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
-    slots:
-    - FootLeft
+#    slots: #inkymedc
+#    - FootLeft
   # </Shitmed>
   - type: Organ
     category: LegLeft
@@ -290,6 +321,9 @@
     layer: enum.HumanoidVisualLayers.LLeg
     data:
       state: l_leg
+    secondLayer: enum.HumanoidVisualLayers.LFoot # inkymed
+    secondData:
+      state: l_foot
   - type: VisualOrganMarkings
     markingData:
       layers:
@@ -304,8 +338,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
-    slots:
-    - FootRight
+#    slots:
+#    - FootRight
   # </Shitmed>
   - type: Organ
     category: LegRight
@@ -315,6 +349,9 @@
     layer: enum.HumanoidVisualLayers.RLeg
     data:
       state: r_leg
+    secondLayer: enum.HumanoidVisualLayers.RFoot # inkymed
+    secondData:
+      state: r_foot
   - type: VisualOrganMarkings
     markingData:
       layers:
@@ -329,8 +366,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
-  - type: ChildOrgan
-    parents: [ LegLeft ]
+#  - type: ChildOrgan #inkymeed
+#    parents: [ LegLeft ]
   # </Shitmed>
   - type: Organ
     category: FootLeft
@@ -354,8 +391,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
-  - type: ChildOrgan
-    parents: [ LegRight ]
+#  - type: ChildOrgan
+#    parents: [ LegRight ] #onkymekdff
   # </Shitmed>
   - type: Organ
     category: FootRight
@@ -376,7 +413,7 @@
   name: brain
   abstract: true
   components:
-  # <Shitmed>
+  # <Trauma>
   - type: InternalOrgan
     intCap: 28
     integrity: 28
@@ -386,7 +423,13 @@
       Destroyed: 0
   - type: ChildOrgan
     parents: [ Head ]
-  # </Shitmed>
+  - type: OrganChipContainer
+    limit: 2 # TODO: change to 3 once skillchips are split up more
+  - type: ContainerContainer
+    containers:
+      knowledge: !type:Container
+      organ_chips: !type:Container
+  # </Trauma>
   - type: GibbableOrgan
   - type: Organ
     category: Brain
@@ -402,6 +445,13 @@
   - type: Examiner
   - type: BlockMovement
   - type: BadFood
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 15
+      - ReagentId: GreyMatter
+        Quantity: 10
   - type: FoodSequenceElement
     entries:
       Burger: Brain

@@ -17,11 +17,7 @@ uniform highp float ViewAngle;
 const highp float grainMult = 0.35;
 const highp float grainBase = 0.6;
 
-const highp float grayscaleFactor = 1.6; // inky (it makes shit more funny)
-
-// inky
-const highp float darkModif = 0.5;
-// /inky
+const highp float grayscaleFactor = 0.82;
 
 void fragment(){
     highp vec2 pixelSize = vec2(1.0/SCREEN_PIXEL_SIZE.x, 1.0/SCREEN_PIXEL_SIZE.y);
@@ -55,9 +51,5 @@ void fragment(){
     // Lil bit of grayscale for good measure, too
     highp float grayscale = zGrayscale(color.rgb) * (grain * grainMult + grainBase);
 
-    // inky start
-    vec3 darkNoise = vec3(grayscale) * darkModif;
-
-    COLOR = vec4(mix(color.rgb, darkNoise, mask * grayscaleFactor), color.a);
-    // /inky end
+    COLOR = vec4(mix(color.rgb, vec3(grayscale), mask * grayscaleFactor), color.a);
 }

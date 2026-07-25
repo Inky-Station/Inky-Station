@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   abstract: true
   parent: BaseMobBody
@@ -10,8 +12,8 @@
       Torso: OrganSlaughterDemonTorso
       ArmLeft: OrganSlaughterDemonArmLeft
       ArmRight: OrganSlaughterDemonArmRight
-      HandLeft: OrganSlaughterDemonHandLeft
-      HandRight: OrganSlaughterDemonHandRight
+#      HandLeft: OrganSlaughterDemonHandLeft inkymed
+#      HandRight: OrganSlaughterDemonHandRight inkymed
       # Organs
       Heart: OrganShadowDemonHeart
       Lungs: OrganCarpLungs

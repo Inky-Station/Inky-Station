@@ -163,7 +163,7 @@
   description: bounty-description-diamond
   group: SalvageJobTier3
   sprite:
-    sprite: _Trauma/Objects/Materials/materials.rsi # Trauma
+    sprite: Objects/Materials/materials.rsi # inky
     state: diamond
   entries:
   - name: bounty-item-diamond

@@ -227,7 +227,7 @@
     Plastic: 500
 
 - type: latheRecipe
-  abstract: true # Trauma, no longer has a niche
+  # abstract: true # Trauma, no longer has a niche # inky
   parent: BaseWeaponRecipeLong
   id: WeaponAdvancedLaser
   result: WeaponAdvancedLaser

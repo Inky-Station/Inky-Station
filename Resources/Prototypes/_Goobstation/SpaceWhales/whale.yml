@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   abstract: true
   id: MobSpaceLeviathanSegmentBase
@@ -22,7 +24,7 @@
     damage:
       types:
         Structural: 5000
-#        Blunt: 0.1 # inky edit - its damage per tick :tear:
+    #        Blunt: 0.1 # inky edit - its damage per tick :tear:
     ignoreWhitelist:
       components:
       - ContainmentField
@@ -98,9 +100,7 @@
     interactFailureSound:
       path: /Audio/Effects/bite.ogg
   - type: NightVision
-    color: "#808080"
-    activateSound: null
-    deactivateSound: null
+    lightingColor: "#808080"
   - type: AmbientSound
     enabled: true
     volume: 1
@@ -158,6 +158,12 @@
         Slash: 33 # inky edit
         Structural: 800 #lol
   - type: NoRotateOnMove
+  - type: PortalTransitEffects # its like an apple getting cored
+    effects:
+    - !type:HealthChange
+      damage:
+        types:
+          Slash: 2000
   # inky
   - type: LimitedInstances
     key: SpaceLeviathan
@@ -205,7 +211,7 @@
     horizontalRotation: 0
   - type: DoAfter
   - type: Examiner
-#  - type: Eye
+  #  - type: Eye
   - type: RequireProjectileTarget
     active: False
   - type: MobState
@@ -290,7 +296,7 @@
       visible: true
 
 - type: entity
-  parent: MaterialBase
+  parent: BaseItem
   id: MaterialLeviathanScale
   name: leviathan scale plates
   description: Shards shed from a space leviathan, exceptionally rare. Favored by salvagers, and by megacorpos for luxury goods stitched from endangered starlife.
@@ -302,9 +308,10 @@
     - state: scale
       map: [ "base" ]
   - type: StackPrice
-    price: 15000
+    price: 4000
   - type: Appearance
   - type: Stack
+    count: 5
     stackType: Leviathan
     baseLayer: base
     layerStates:

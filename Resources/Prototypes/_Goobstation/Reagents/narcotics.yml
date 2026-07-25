@@ -62,15 +62,15 @@
         visualType: Medium
         messages: ["fentanyl-effect-skinworms","fentanyl-effect-breathingrazors","fentanyl-effect-lungstight","fentanyl-effect-observed"]
         probability: 0.05
-      - !type:ModifyStatusEffect # you didn't think this would improve your abilities right?
-        effectProto: FentanylSlowdownStatusEffect
+#      - !type:ModifyStatusEffect # you didn't think this would improve your abilities right? # inky NUH UH DRUG POWER WWWWWWWWW
+#        effectProto: FentanylSlowdownStatusEffect
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
       - !type:Jitter
-      - !type:ModifyParalysis # loss of muscle control
-        probability: 0.05
-        time: 2
+#      - !type:ModifyParalysis # loss of muscle control # inky
+#        probability: 0.05
+#        time: 2
       - !type:ModifyParalysis # more severe effects when you are overdosing
         conditions:
         - !type:ReagentCondition
@@ -82,11 +82,24 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 20
-      - !type:Drunk
-        boozePower: 10
+        conditions: # inky
+        - !type:ReagentCondition
+          reagent: Fentanyl
+          min: 5
+#      - !type:Drunk # inky
+#        boozePower: 10
       - !type:Emote # Now a bunch of emotes
         emote: Scream
         probability: 0.05
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -6
+        lowerCap: 19
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 3 # 60s per 1u
+      # /inkymed
 
 - type: reagent
   id: BlindToxin
@@ -254,6 +267,10 @@
       - !type:Emote
         emote: Gasp
         probability: 0.1
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -3 # todo inkymed
+      # /inkymed
 
 - type: reagent
   id: MouseBites
@@ -334,6 +351,10 @@
       - !type:Jitter
       - !type:ModifyStatusEffect
         effectProto: OleoresinSlowdownStatusEffect
+      - !type:ModifyStatusEffect
+        effectProto: VisualTearsStatusEffect
+        type: Update
+        time: 5.2
 
 - type: reagent
   id: Heroin # hunter biden's favourite snack
@@ -375,6 +396,19 @@
         - !type:ReagentCondition
           reagent: Heroin
           min: 10.5
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -3
+        lowerCap: 19 # fent lives matter
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Heroin
+          min: 3
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 20
+      # /inkymed
 
 - type: reagent
   id: NitrosylPlasmide
@@ -388,8 +422,7 @@
     Bloodstream:
       effects:
       - !type:Jitter
-      - !type:GenericStatusEffect
-        key: Stun
+      - !type:ModifyParalysis
         time: 3
         type: Remove
       - !type:ModifyKnockdown

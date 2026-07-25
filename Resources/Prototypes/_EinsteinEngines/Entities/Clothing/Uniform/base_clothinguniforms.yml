@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity # For clothes that need suit sensors.
   parent: [UnsensoredClothingUniformBase, BaseFoldable]
   id: ClothingUniformBaseUnsensoredFlippable
@@ -89,8 +91,8 @@
     - ArmRight
     - LegLeft
     - LegRight
-    - FootLeft
-    - FootRight
+#    - FootLeft #inkymed
+#    - FootRight #inkymed
   - type: Clothing
     equipDelay: 0.4
     unequipDelay: 0.6 # Slightly higher delay to protect against accidental unequips

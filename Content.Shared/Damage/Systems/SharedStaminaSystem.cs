@@ -488,7 +488,8 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         component.Critical = true;
         component.StaminaDamage = component.CritThreshold;
 
-        StunSystem.TryUpdateParalyzeDuration(uid, component.StunTime);
+        StunSystem.TryUpdateParalyzeDuration(uid, component.StunTime, true);
+
 
         // Goobstation - Modularization
         var modifierEv = new GetClothingStunModifierEvent(uid);
@@ -533,6 +534,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
     /// <param name="ent">Entity to update</param>
     private void AdjustStatus(Entity<StaminaComponent?> ent)
     {
+        /* inky
         if (!Resolve(ent, ref ent.Comp))
             return;
 
@@ -551,6 +553,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         }
 
         _movementMod.TryUpdateMovementStatus(ent.Owner, status.Value, ent.Comp.StunModifierThresholds[closest]);
+        */
     }
 
     [Serializable, NetSerializable]

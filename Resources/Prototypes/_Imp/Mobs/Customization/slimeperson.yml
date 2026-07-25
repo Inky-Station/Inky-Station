@@ -1,6 +1,3 @@
-# SPDX-FileCopyrightText: 2025 BloodfiendishOperator <141253729+Diggy0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Chest
@@ -202,7 +199,7 @@
 
 - type: marking
   id: SlimeBonefootleft
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [ Slime ]
   coloring:
     default:
@@ -217,7 +214,7 @@
 
 - type: marking
   id: SlimeBonefootright
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [ Slime ]
   coloring:
     default:
@@ -232,7 +229,7 @@
 
 - type: marking
   id: SlimeBonehandleft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ Slime ]
   coloring:
     default:
@@ -247,7 +244,7 @@
 
 - type: marking
   id: SlimeBonehandright
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [ Slime ]
   coloring:
     default:

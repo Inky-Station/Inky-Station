@@ -20,9 +20,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand #iimnkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     modifiers:
       coefficients:
@@ -31,6 +31,8 @@
         Piercing: 0.5
         Heat: 0.5
         Radiation: 0.1
+      #flatReductions: # This is done so shotguns are worse against armor # inky - no
+      #  Piercing: 3
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
@@ -77,9 +79,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand #inkymed
     - Leg
-    - Foot
+#    - Foot #inkymed
     modifiers:
       coefficients:
         Blunt: 0.5
@@ -87,6 +89,8 @@
         Piercing: 0.5
         Heat: 0.5
         Radiation: 0.1
+      #flatReductions: # This is done so shotguns are worse against armor # inky - no
+      #  Piercing: 3
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8
@@ -119,9 +123,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand #inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     modifiers:
       coefficients:
         Blunt: 0.3
@@ -129,6 +133,8 @@
         Piercing: 0.3
         Heat: 0.5
         Radiation: 0.1
+      #flatReductions: # This is done so shotguns are worse against armor # inky - no
+      #  Piercing: 3
   - type: ClothingSpeedModifier
     walkModifier: 0.60
     sprintModifier: 0.60

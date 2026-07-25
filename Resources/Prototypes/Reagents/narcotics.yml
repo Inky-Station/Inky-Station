@@ -78,6 +78,10 @@
         - !type:ReagentCondition
           reagent: Desoxyephedrine
           min: 20
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 5.5
+      # /inkymed
 
 - type: reagent
   id: Ephedrine
@@ -138,6 +142,11 @@
         - !type:ReagentCondition
           reagent: Ephedrine
           min: 30
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 3 # less than desox
+        higherCap: 230
+      # /inkymed
 
 - type: reagent
   id: Stimulants
@@ -229,15 +238,19 @@
         amount: -1.5
       - !type:EvenHealthChange
         conditions:
-        - !type:MobStateCondition
-          mobstate: Critical
+        # <Trauma> - allow softcrit
+        - !type:NestedCondition
+          proto: MobCritical
+        # </Trauma>
         damage: # Doesn't heal poison because if you OD'd I'm not giving you a safety net
           Burn: -0.5
           Brute: -0.5
       - !type:HealthChange
         conditions:
-        - !type:MobStateCondition
-          mobstate: Critical
+        # <Trauma> - allow softcrit
+        - !type:NestedCondition
+          proto: MobCritical
+        # </Trauma>
         damage:
           types:
             Asphyxiation: -2
@@ -247,6 +260,11 @@
         factor: 1
       - !type:SatiateThirst
         factor: 1
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 2
+        autoStabilisation: true
+      # /inkymed
 
 - type: reagent
   id: THC
@@ -270,6 +288,15 @@
         effectProto: StatusEffectSeeingRainbow
         time: 16
         type: Add
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -3
+        lowerCap: 45
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 15 # 30 seconds per 1u
+      # /inkymed
 
 - type: reagent
   id: Nicotine
@@ -328,6 +355,15 @@
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 5
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -2.5
+        lowerCap: 45
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectOpiated
+        type: Add
+        time: 6 # 12 seconds per 1u
+    # /inkymed
 
 - type: reagent
   id: Bananadine
@@ -453,6 +489,12 @@
   metabolisms:
     Bloodstream:
       effects:
+      # <Trauma>
+      - !type:ModifyStatusEffect
+        effectProto: VisualTearsStatusEffect
+        type: Update
+        time: 5.2
+      # </Trauma>
       - !type:PopupMessage
         type: Local
         probability: 0.08

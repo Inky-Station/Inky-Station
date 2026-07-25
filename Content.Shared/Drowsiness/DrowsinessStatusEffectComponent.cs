@@ -16,7 +16,7 @@ public sealed partial class DrowsinessStatusEffectComponent : Component
     /// The random time between sleeping incidents, (min, max).
     /// </summary>
     [DataField]
-    public Vector2 TimeBetweenIncidents = new(5f, 60f);
+    public Vector2? TimeBetweenIncidents = new(5f, 60f); // inkymed - made nullable
 
     /// <summary>
     /// The duration of sleeping incidents, (min, max).

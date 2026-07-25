@@ -5,6 +5,10 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  # <Trauma>
+  - type: WeaponClass
+    class: Rifle
+  # </Trauma>
   - type: Sprite
   - type: Item
     size: Large
@@ -219,10 +223,12 @@
       selectedMode: Burst
       availableModes:
       - Burst
-      - FullAuto
-      - SemiAuto
-      shotsPerBurst: 3
-      burstCooldown: 0.75 # Trauma, was 0.375
+      # inky
+      #- FullAuto
+      #- SemiAuto
+      shotsPerBurst: 5
+      burstCooldown: 0.55 # Trauma, was 0.375 # inky - equals out to 6 firerate
+      # /inky
     - type: ItemSlots
       slots:
         gun_magazine:
