@@ -9,3 +9,5 @@ werewolf-role-greeting = I am the Werewolf. Unbeknownst to my employers, I have 
 
 werewolf-action-fail-hunger = You are too hungry to do that right now.
 werewolf-action-fail-transfurmed = You cant use it while being in inferior form.
+
+store-currency-display-fury = Fury
