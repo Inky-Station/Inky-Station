@@ -172,7 +172,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
                     var isOnStation = targetStation != null && targetStation == ownStation;
 
                     var ang = Angle.Zero;
-                    if (_mapMan.TryFindGridAt(_transform.GetMapCoordinates(Transform(uid)), out var grid, out var _))
+                    if (_map.TryFindGridAt(_transform.GetMapCoordinates(Transform(uid)), out var grid, out var _))
                         ang = Transform(grid).LocalRotation;
 
                     var vector = targetMapCoords.Position - ourMapCoords.Position;

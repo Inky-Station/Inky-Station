@@ -24,10 +24,10 @@ public sealed partial class ThrowDirection : EntityEffectBase<ThrowDirection>
         => null;
 }
 
-public sealed class ThrowDirectionEffectSystem : EntityEffectSystem<MetaDataComponent, ThrowDirection>
+public sealed partial class ThrowDirectionEffectSystem : EntityEffectSystem<MetaDataComponent, ThrowDirection>
 {
-    [Dependency] private readonly ThrowingSystem _JOHNCENA = default!;
-    [Dependency] private readonly PullingSystem _pulling = default!;
+    [Dependency] private ThrowingSystem _JOHNCENA = default!;
+    [Dependency] private PullingSystem _pulling = default!;
 
     protected override void Effect(Entity<MetaDataComponent> ent, ref EntityEffectEvent<ThrowDirection> args)
     {

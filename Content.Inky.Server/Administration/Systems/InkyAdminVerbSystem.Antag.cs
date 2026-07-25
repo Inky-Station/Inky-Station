@@ -15,7 +15,7 @@ namespace Content.Inky.Server.Administration.Systems;
 
 public sealed partial class InkyAdminVerbSystem
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
 
     private void OnGetAntagVerbs(ref GetAntagVerbsEvent args)
     {

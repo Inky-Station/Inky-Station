@@ -42,7 +42,6 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
     [Dependency] private SharedPuddleSystem _puddle = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedStationSystem _station = default!;
-    [Dependency] private IMapManager _mapMan = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private IRobustRandom _gambling = default!;
 

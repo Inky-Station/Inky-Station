@@ -6,10 +6,10 @@ using Content.Shared.Popups;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
 
-public sealed class SharedWerewolfActionSystem : EntitySystem
+public sealed partial class SharedWerewolfActionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly HungerSystem _hunger = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private HungerSystem _hunger = default!;
 
     public override void Initialize()
     {

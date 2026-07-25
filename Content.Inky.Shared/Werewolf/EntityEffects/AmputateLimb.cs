@@ -19,11 +19,11 @@ public sealed partial class AmputateLimb : EntityEffectBase<AmputateLimb>
         => null;
 }
 
-public sealed class AmputateLimbEffectSystem : EntityEffectSystem<MetaDataComponent, AmputateLimb>
+public sealed partial class AmputateLimbEffectSystem : EntityEffectSystem<MetaDataComponent, AmputateLimb>
 {
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly WoundSystem _wound = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private WoundSystem _wound = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     protected override void Effect(Entity<MetaDataComponent> ent, ref EntityEffectEvent<AmputateLimb> args) // yes this is a copypaste from sharedwerewolfbasicabilitiessystem kill me todo werewolf
     {

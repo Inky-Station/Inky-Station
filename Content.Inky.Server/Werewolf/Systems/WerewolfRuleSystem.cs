@@ -15,13 +15,13 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Inky.Server.Werewolf.Systems;
 
-public sealed class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
+public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComponent>
 {
-    [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly SharedRoleSystem _role = default!;
-    [Dependency] private readonly ActionContainerSystem _actions = default!;
-    [Dependency] private readonly SharedEntityEffectsSystem _effects = default!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private SharedRoleSystem _role = default!;
+    [Dependency] private ActionContainerSystem _actions = default!;
+    [Dependency] private SharedEntityEffectsSystem _effects = default!;
 
     public readonly SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/_Inky/Antag/Werewolf/werewolf_start.ogg");
 
