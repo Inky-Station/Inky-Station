@@ -8,7 +8,6 @@
     transferDamage: true
     revertOnCrit: true
     revertOnDeath: false
-    duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg # goida
     componentsToTransfer:
     - component: WerewolfAbilities # todo werewolf KILL
@@ -16,8 +15,6 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
-    - component: Actions
-    - component: ActionsContainer # ???
     - component: Hunger
 
 - type: polymorph
@@ -30,7 +27,6 @@
     revertOnDeath: false
     transferName: false
     transferDamage: true
-    duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg # goida
     componentsToTransfer:
     - component: WerewolfAbilities
@@ -38,8 +34,6 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
-    - component: Actions
-    - component: ActionsContainer
     - component: Hunger
 
 - type: polymorph
@@ -52,7 +46,6 @@
     inventory: None
     transferName: false
     transferDamage: true
-    duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
     componentsToTransfer:
     - component: WerewolfAbilities
@@ -60,8 +53,6 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
-    - component: Action
-    - component: ActionsContainer
     - component: Hunger
 
 - type: polymorph
@@ -74,7 +65,6 @@
     inventory: None
     transferName: false
     transferDamage: true
-    duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
     componentsToTransfer:
     - component: WerewolfAbilities
@@ -82,8 +72,6 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
-    - component: Actions
-    - component: ActionsContainer
     - component: Hunger
 
 - type: polymorph
@@ -96,7 +84,6 @@
     inventory: None
     transferName: false
     transferDamage: true
-    duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
     componentsToTransfer:
     - component: WerewolfAbilities
@@ -104,8 +91,6 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
-    - component: Actions
-    - component: ActionsContainer
     - component: Hunger
 
 - type: polymorph
@@ -118,7 +103,6 @@
     inventory: None
     transferName: false
     transferDamage: true
-    duration: 480
     polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
     componentsToTransfer:
     - component: WerewolfAbilities
@@ -126,6 +110,4 @@
     - component: CollectiveMind
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
-    - component: Actions
-    - component: ActionsContainer
     - component: Hunger

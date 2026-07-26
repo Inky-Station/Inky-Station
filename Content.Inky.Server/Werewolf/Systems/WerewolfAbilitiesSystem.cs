@@ -3,22 +3,23 @@ using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
 using Content.Inky.Shared.Werewolf.Systems;
 using Content.Medical.Shared.Wounds;
+using Content.Server.AlertLevel;
 using Content.Server.Chat.Systems;
 using Content.Server.Mind;
 using Content.Server.Pinpointer;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Popups;
+using Content.Server.Station.Systems;
 using Content.Server.Store.Systems;
 using Content.Shared.Actions;
-using Content.Shared.Actions.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Polymorph;
@@ -38,7 +39,6 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
     [Dependency] private PopupSystem _popup = default!;
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private HungerSystem _hunger = default!;
-    [Dependency] private SharedActionsSystem _actions = default!;
 
     // holy fuck
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
@@ -51,9 +51,10 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private NavMapSystem _navMap = default!;
     [Dependency] private ChatSystem _chat = default!;
-
-    [Dependency] private EntityQuery<CombatModeComponent> _kombatBot = default!;
-    [Dependency] private EntityQuery<ActionComponent> _actionQuery = default!;
+    [Dependency] private AlertLevelSystem _stationAlerts = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private MobThresholdSystem _mobThresholds = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
 
     public override void Initialize()
     {
@@ -63,6 +64,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfChangeType>(OnChangeType);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfOpenStore>(OnOpenStore);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, PolymorphedEvent>(OnPolymorphed);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfActionRemoveEvent>(OnActionRemove);
 
         InitializeWerewolfSide();
         InitializeBlack();
@@ -122,23 +124,6 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
             return;
         }
 
-        if (_kombatBot.TryComp(args.OldEntity, out var combat))
-        {
-            if (combat.CombatToggleActionEntity is { } oldAction
-                && _actionQuery.TryComp(oldAction, out var oldActionComp)
-                && oldActionComp.Container != null) // holy fucking kill yoursefel
-            {
-                _actions.AddAction(args.NewEntity, (oldAction, oldActionComp), oldActionComp.Container.Value);
-                _actions.RemoveAction(args.NewEntity, (oldAction, oldActionComp));
-                _actions.AddAction(args.OldEntity, (oldAction, oldActionComp), oldActionComp.Container.Value);
-            }
-
-            combat.CombatToggleActionEntity = null;
-            _actions.AddAction(args.NewEntity, ref combat.CombatToggleActionEntity, combat.CombatToggleAction);
-            _actions.SetToggled(combat.CombatToggleActionEntity, combat.IsInCombatMode);
-            Dirty(args.NewEntity, combat);
-        }
-
         if (TryComp<HungerComponent>(uid, out var oldHungerTakeTwo)) // Transfer hunger value
             _hunger.SetHunger(args.NewEntity, _hunger.GetHunger(oldHungerTakeTwo));
 
@@ -185,6 +170,11 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         _popup.PopupEntity(Loc.GetString("werewolf-mutation-changed", ("mutation", args.WerewolfType)), uid, uid); // todo locale
 
         args.Handled = true;
+    }
+
+    private void OnActionRemove(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfActionRemoveEvent args)
+    {
+        _actionContainer.RemoveAction(args.ActionEnt);
     }
 
     private void SyncMind(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfMindComponent mindComp) // oh my god brother todo werewolf rename to be better
