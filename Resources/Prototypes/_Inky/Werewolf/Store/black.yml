@@ -183,6 +183,8 @@
   - !type:ListingLimitedStockCondition
     stock: 1
   - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlack
     blacklist:
     - WerewolfDirewolf
     - WerewolfWhite
