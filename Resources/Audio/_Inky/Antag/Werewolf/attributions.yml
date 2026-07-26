@@ -3,5 +3,7 @@
   copyright: "Made by @LuciferEOS"
   source: "https://github.com/LuciferEOS"
 
-
-
+- files: ["howl.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from https://pixabay.com/sound-effects/nature-wolf-howl-140235/"
+  source: "https://pixabay.com/sound-effects/nature-wolf-howl-140235/"

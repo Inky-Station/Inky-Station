@@ -1,8 +1,11 @@
+using System.Text;
 using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Mind;
+using Content.Shared.Mind;
+using Content.Server.Objectives;
 using Content.Shared.Actions;
 using Content.Shared.EntityEffects;
 using Content.Shared.EntityEffects.Effects;
@@ -22,6 +25,7 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
     [Dependency] private SharedRoleSystem _role = default!;
     [Dependency] private ActionContainerSystem _actions = default!;
     [Dependency] private SharedEntityEffectsSystem _effects = default!;
+    [Dependency] private ObjectivesSystem _objectives = default!;
 
     public readonly SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/_Inky/Antag/Werewolf/werewolf_start.ogg");
 
@@ -40,7 +44,7 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
         base.Initialize();
 
         SubscribeLocalEvent<WerewolfRuleComponent, AfterAntagEntitySelectedEvent>(OnSelectAntag);
-        // SubscribeLocalEvent<WerewolfRuleComponent, ObjectivesTextPrependEvent>(OnTextPrepend);
+        SubscribeLocalEvent<WerewolfRuleComponent, ObjectivesTextPrependEvent>(OnTextPrepend);
 
         SubscribeLocalEvent<WerewolfInfectionFinishedEvent>(OnInfectionFinished); // goida
     }
@@ -72,7 +76,7 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
         var briefingShort = Loc.GetString("werewolf-role-greeting-short");
 
         if (_role.MindHasRole<WerewolfRuleComponent>(mindId, out var mr))
-                AddComp(mr.Value, new RoleBriefingComponent { Briefing = briefingShort }, overwrite: true);
+            AddComp(mr.Value, new RoleBriefingComponent { Briefing = briefingShort }, overwrite: true);
 
         EnsureComp<WerewolfAbilitiesComponent>(target, out var werewolfComp);
         EnsureComp<WerewolfMindComponent>(mindId, out var werewolfMind);
@@ -121,5 +125,34 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
         }
     }
 
-    // todo OnTextPrepend
+    private void OnTextPrepend(Entity<WerewolfRuleComponent> ent, ref ObjectivesTextPrependEvent args)
+    {
+        var sb = new StringBuilder();
+
+        foreach (var mindId in ent.Comp.WerewolfMinds)
+        {
+            if (!TryComp<WerewolfMindComponent>(mindId, out var werewolf)
+                || !TryComp<MindComponent>(mindId, out var mind))
+                continue;
+
+            var name = _objectives.GetTitle((mindId, mind), Name(mind.OwnedEntity ?? mindId));
+            sb.AppendLine($"{name} bit [color=red]{werewolf.BittenPeople.Count}[/color] people."); // idfc
+
+            if (werewolf.PackMembers.Count == 0)
+                continue;
+
+            var pack = new List<string>();
+            foreach (var packMind in werewolf.PackMembers)
+            {
+                if (!TryComp<MindComponent>(packMind, out var packMind1))
+                    continue;
+
+                pack.Add(_objectives.GetTitle((packMind, packMind1), Name(packMind1.OwnedEntity ?? packMind)));
+            }
+
+            sb.AppendLine($"{name}'s pack: {string.Join(", ", pack)}.");
+        }
+
+        args.Text = sb.ToString();
+    }
 }

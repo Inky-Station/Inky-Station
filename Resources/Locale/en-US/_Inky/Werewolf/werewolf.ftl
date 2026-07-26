@@ -18,7 +18,6 @@ werewolf-devour-start = ${user} bites into the ${target} arm!
 werewolf-gut-start = ${user} guts into ${target} torso!
 werewolf-gut-no-organs-left = There is nothing to eat.
 werewolf-gut-success = ${user} eats an organ of ${target}!
-werewolf-action-fail-transfurmed = We are too weak to use this right now.
 werewolf-transfurm-warn = Your body hurts, you are about to transform.
 werewolf-transfurm-ready = You feel ready to transform.
 werewolf-bite-fail-state = This isnt something we can devour.
@@ -30,6 +29,7 @@ werewolf-bequeath-success = Bequeath successful.
 werewolf-bequeath-triggered = You feel that the leader has died. You take over his place.
 werewolf-ability-upgraded = You feel stronger.
 werewolf-action-regen-success = You feel your body recovering.
+werewolf-gut-fail-mind = You are above to eat this.
 
 werewolf-black-call-success = Reliquish your Humanity, and give in to your instincts, it is time to show the station your true identity.
 werewolf-black-call-fail-amount = You need more people in your pack to do that!

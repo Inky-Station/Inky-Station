@@ -110,8 +110,8 @@ public sealed partial class WerewolfAbilitiesSystem
 
         if (mind == null)
         {
-            // _popup.PopupEntity(Loc.GetString("werewolf-gut-fail-mind"), uid, uid); // todo werewolf locale
-            // return; // todo werewolf uncomment before release
+            _popup.PopupEntity(Loc.GetString("werewolf-gut-fail-mind"), uid, uid);
+            return;
         }
 
         var popupOthers = Loc.GetString("werewolf-gut-start", ("user", uid), ("target", target)); // todo locale

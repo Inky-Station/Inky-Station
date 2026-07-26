@@ -13,6 +13,7 @@ using Content.Shared.Station;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
@@ -196,7 +197,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
                     RaiseLocalEvent(wolf, new EventWerewolfRegen());
             }
         }
-        // _audio.PlayGlobal(comp.DistantSound, uid); // when you howl, everyone on the station hears a quiet distant howl, which breaks the metashield for the chaplain, "allegedly" todo uncomment when better sound is found
+        _audio.PlayGlobal(comp.DistantSound, uid, AudioParams.Default.WithVolume(-30f)); // when you howl, everyone on the station hears a quiet distant howl, which breaks the metashield for the chaplain, "allegedly" todo uncomment when better sound is found
         args.Handled = true;
     }
     private void OnAmbush(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfAmbushActionEvent args) // partially taken from xenos jump
