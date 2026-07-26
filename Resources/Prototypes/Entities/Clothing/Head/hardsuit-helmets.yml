@@ -99,6 +99,9 @@
   - type: Armor
     modifiers:
       coefficients:
+        Blunt: 0.85 # inky
+        Slash: 0.9 # inky
+        Piercing: 0.9 # inky
         Shock: 0.5
         Caustic: 0.7
         Radiation: 0.05
