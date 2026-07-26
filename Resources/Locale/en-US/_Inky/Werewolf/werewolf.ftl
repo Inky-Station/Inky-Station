@@ -10,7 +10,26 @@ werewolf-role-greeting = I am the Werewolf. Unbeknownst to my employers, I have 
 werewolf-action-fail-hunger = You are too hungry to do that right now.
 werewolf-action-fail-transfurmed = You cant use it while being in inferior form.
 
-
+werewolf-transfurm-block = Something is blocking you transforming...
+werewolf-transfurm-cooldown = We are not yet ready to transform.
+werewolf-mutation-changed = You feel yourself shift.
+werewolf-devour-fail-werewolf = It smells a wolf... You cant devour it.
+werewolf-devour-start = ${user} bites into the ${target} arm!
+werewolf-gut-start = ${user} guts into ${target} torso!
+werewolf-gut-no-organs-left = There is nothing to eat.
+werewolf-gut-success = ${user} eats an organ of ${target}!
+werewolf-action-fail-transfurmed = We are too weak to use this right now.
+werewolf-transfurm-warn = Your body hurts, you are about to transform.
+werewolf-transfurm-ready = You feel ready to transform.
+werewolf-bite-fail-state = This isnt something we can devour.
+werewolf-bite-fail-bit = It smells of wolf... It has been bit before.
+werewolf-bite-fail-immune = Something is blocking you from doing that.
+werewolf-bite-start = ${user} starts to bite into ${target}!
+werewolf-bequeath-fail-not-pack = This is not someone of our pack.
+werewolf-bequeath-success = Bequeath successful.
+werewolf-bequeath-triggered = You feel that the leader has died. You take over his place.
+werewolf-ability-upgraded = You feel stronger.
+werewolf-action-regen-success = You feel your body recovering.
 
 werewolf-black-call-success = Reliquish your Humanity, and give in to your instincts, it is time to show the station your true identity.
 werewolf-black-call-fail-amount = You need more people in your pack to do that!

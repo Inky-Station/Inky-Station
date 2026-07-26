@@ -90,7 +90,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
 
         if (!args.Forced && mindComp.Accumulator < mindComp.TransfurmOnCommandDelay)
         {
-            _popup.PopupEntity(Loc.GetString("werewolf-transfurm-cooldown"), uid, uid); // todo werewolf locale & timeLeft
+            _popup.PopupEntity(Loc.GetString("werewolf-transfurm-cooldown"), uid, uid);
             args.Handled = true;
             return;
         }
@@ -167,7 +167,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         if (_mind.TryGetMind(uid, out var mindId, out _) && TryComp<WerewolfMindComponent>(mindId, out var mindComp))
             mindComp.CurrentMutation = args.WerewolfType;
 
-        _popup.PopupEntity(Loc.GetString("werewolf-mutation-changed", ("mutation", args.WerewolfType)), uid, uid); // todo locale
+        _popup.PopupEntity(Loc.GetString("werewolf-mutation-changed"), uid, uid);
 
         args.Handled = true;
     }

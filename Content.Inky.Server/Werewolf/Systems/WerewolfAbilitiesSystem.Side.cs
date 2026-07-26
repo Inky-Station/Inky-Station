@@ -179,7 +179,7 @@ public sealed partial class WerewolfAbilitiesSystem
             _body.RemoveOrgan((target, body), new Entity<OrganComponent?>(picked.Owner, organComp)); // this is horrible
         QueueDel(picked.Owner);
 
-        _popup.PopupEntity(Loc.GetString("werewolf-gut-success"), user, user);
+        _popup.PopupEntity(Loc.GetString("werewolf-gut-success", ("user", user), ("target", target)), user, user);
 
         return true;
     }
