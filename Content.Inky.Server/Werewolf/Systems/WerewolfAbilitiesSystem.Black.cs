@@ -50,7 +50,7 @@ public sealed partial class WerewolfAbilitiesSystem
         }
 
         // The original alpha needs to have 4 more alphas that hit the gym EVERY DAY to be on that grindset to do the call
-        if (alphas.Count < 5) // todo werewolf 1 -> 5
+        if (alphas.Count < 5)
         {
             _popup.PopupClient(Loc.GetString("werewolf-black-call-fail-amount"), uid);
             return;
