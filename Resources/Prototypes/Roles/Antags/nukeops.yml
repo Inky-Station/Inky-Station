@@ -31,7 +31,7 @@
     time: 10h
   - !type:RoleTimeRequirement
     role: JobChemist
-    time: 5h # Goob - was 3h
+    time: 10h # inky - was 5h
   - !type:SpeciesRequirement # Goob
     inverted: true
     species:
@@ -47,13 +47,13 @@
   objective: roles-antag-nuclear-operative-commander-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 25h # Goob - was 5h
+    time: 35h # inky - was 25h
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 10h # Goob - was 5h
+    time: 15h # inky - was 10h
   - !type:DepartmentTimeRequirement # Goob
     department: Command
-    time: 5h
+    time: 10h # inky - was 5h
 # should be changed to nukie playtime when thats tracked (wyci)
   - !type:SpeciesRequirement # Goob
     inverted: true

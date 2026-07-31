@@ -140,6 +140,14 @@
     song:
       path: /Audio/_Goobstation/RadioStation/ads/security_psa.ogg
 
+- type: entity #inky
+  parent: BaseCdDisk
+  name: cd disk (groups psa)
+  id: CdDiskGroupPsa
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_Goobstation/RadioStation/ads/GroupsPSA.ogg
 # the weird stuff
 
 - type: entity
@@ -258,3 +266,12 @@
       path: /Audio/_Goobstation/RadioStation/ads/Number.ogg
   - type: VinylSummonRule
     gameRule: NumberStationThreats
+
+- type: entity #inky
+  parent: CdDiskWeird
+  name: cd disk (felinids aren't real)
+  id: CdDiskFelinids
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_Goobstation/RadioStation/misc/Felinids.ogg

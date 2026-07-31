@@ -1095,6 +1095,11 @@
   metamorphicMaxFillLevels: 6
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
+  metabolisms: #inky
+    Digestion:
+      metabolites:
+        Ethanol: 0.12
+        THC: 0.2
 
 - type: reagent
   id: Hooch
