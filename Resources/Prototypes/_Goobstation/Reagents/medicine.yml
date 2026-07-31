@@ -266,7 +266,7 @@
       - !type:EvenHealthChange
         damage:
           # powerful due to abundance of food, but very inconvienient to use
-          Brute: -4
+          Brute: -2
           Burn: -2
       - !type:ModifyBleed
         amount: -0.5
@@ -974,7 +974,7 @@
       - !type:HealthChange
         damage:
           types:
-            Cellular: -6
+            Cellular: -10
       - !type:HealthChange # this + explosion rounds out to ~90dmg/15u
         damage:
           types:
@@ -1127,12 +1127,12 @@
           min: 15.5
         # inkymed
       - !type:ModifyHeartRate
-        amount: -3
-        lowerCap: 41 # more safe heroin
+        amount: -4
+        lowerCap: 51 # more safe heroin
       - !type:ModifyStatusEffect
         effectProto: StatusEffectOpiated
         type: Add
-        time: 4
+        time: 2 # 20 seconds per 1u
         # /inkymed
 
 - type: reagent

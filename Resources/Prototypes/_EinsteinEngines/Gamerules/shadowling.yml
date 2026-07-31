@@ -18,9 +18,7 @@
   parent: [ BaseShadowlingRule, BaseRoundstartAntagRule ]
   id: ShadowlingRoundstart
   components:
-  # inky
-  - type: DynamicRuleCost
-    cost: 300
-  # /inky
   - type: GameRule
     minPlayers: 30
+  - type: DynamicRuleCost
+    cost: 100

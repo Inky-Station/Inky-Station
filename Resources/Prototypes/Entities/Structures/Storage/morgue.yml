@@ -34,7 +34,7 @@
         mask:
         - MachineMask
         layer:
-        - HalfWallLayer
+        - MachineLayer
   - type: EntityStorage
     isCollidableWhenOpen: true
     showContents: false
@@ -73,6 +73,7 @@
   - type: AntiRottingContainer
   - type: StaticPrice
     price: 200
+  - type: RequireProjectileTarget
 
 - type: entity
   id: Crematorium
@@ -146,6 +147,6 @@
   # inky start
   - type: Speech
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSilicon
+    emoteSounds: UnisexSilicon
   # /inky
+  - type: RequireProjectileTarget

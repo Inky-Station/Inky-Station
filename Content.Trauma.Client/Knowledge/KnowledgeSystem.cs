@@ -55,54 +55,56 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
         args.AttackTypes = combo.LastAttacks;
     }
 
-    // private void EnsureKnowledgeTab(CharacterWindow window)
-    // {
-    //     _activeWindow = new WeakReference<CharacterWindow>(window);
-    //
-    //     KnowledgeTab? knowledgeTab = null;
-    //     foreach (var child in window.Tabs.Children)
-    //     {
-    //         if (child is KnowledgeTab)
-    //         {
-    //             knowledgeTab = (KnowledgeTab) child;
-    //             break;
-    //         }
-    //     }
-    //
-    //     TabContainer.SetTabTitle(window.CharacterTab, Loc.GetString("trauma-character-title"));
-    //
-    //     if (knowledgeTab == null)
-    //     {
-    //         knowledgeTab = new KnowledgeTab();
-    //         window.Tabs.AddChild(knowledgeTab);
-    //     }
-    //
-    //     if (_player.LocalEntity is {} player)
-    //         knowledgeTab.UpdateKnowledgeTab(player);
-    // }
-    //
-    // private void AddProfileEditorTab(HumanoidProfileEditor editor)
-    // {
-    //     // place it before markings tab
-    //     var above = editor.MarkingsTab;
-    //     var index = above.GetPositionInParent();
-    //
-    //     var tab = new KnowledgeProfileEditor(_proto, this);
-    //     tab.OnSave += knowledge =>
-    //     {
-    //         editor.Profile = editor.Profile?.WithKnowledge(knowledge);
-    //         editor.IsDirty = true;
-    //     };
-    //
-    //     editor.OnSetProfile += profile =>
-    //     {
-    //         if (profile is not null)
-    //             tab.SetProfile(profile.Species, profile.Knowledge);
-    //     };
-    //     editor.TabContainer.AddChild(tab);
-    //     tab.SetPositionInParent(index);
-    //     TabContainer.SetTabTitle(tab, Loc.GetString("knowledge-editor-tab"));
-    // }
+    /*
+    private void EnsureKnowledgeTab(CharacterWindow window)
+    {
+        _activeWindow = new WeakReference<CharacterWindow>(window);
+
+        KnowledgeTab? knowledgeTab = null;
+        foreach (var child in window.Tabs.Children)
+        {
+            if (child is KnowledgeTab)
+            {
+                knowledgeTab = (KnowledgeTab) child;
+                break;
+            }
+        }
+
+        TabContainer.SetTabTitle(window.CharacterTab, Loc.GetString("trauma-character-title"));
+
+        if (knowledgeTab == null)
+        {
+            knowledgeTab = new KnowledgeTab();
+            window.Tabs.AddChild(knowledgeTab);
+        }
+
+        if (_player.LocalEntity is {} player)
+            knowledgeTab.UpdateKnowledgeTab(player);
+    }
+
+    private void AddProfileEditorTab(HumanoidProfileEditor editor)
+    {
+        // place it before markings tab
+        var above = editor.MarkingsTab;
+        var index = above.GetPositionInParent();
+
+        var tab = new KnowledgeProfileEditor(ProtoMan, this);
+        tab.OnSave += knowledge =>
+        {
+            editor.Profile = editor.Profile?.WithKnowledge(knowledge);
+            editor.IsDirty = true;
+        };
+
+        editor.OnSetProfile += profile =>
+        {
+            if (profile is not null)
+                tab.SetProfile(profile.Species, profile.Knowledge);
+        };
+        editor.TabContainer.AddChild(tab);
+        tab.SetPositionInParent(index);
+        TabContainer.SetTabTitle(tab, Loc.GetString("knowledge-editor-tab"));
+    }
+    */
 
     /// <summary>
     /// Returns the martial arts that a knowledge entity has, along with some helper data for the client.
@@ -135,17 +137,19 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
             .ToList();
     }
 
-    // public void OnUpdateExperienceEvent(Entity<KnowledgeHolderComponent> ent, ref UpdateExperienceEvent args)
-    // {
-    //     var localPlayer = _player.LocalEntity;
-    //     if (localPlayer != ent.Owner)
-    //         return;
-    //
-    //     if (_activeWindow is not { } || !_activeWindow.TryGetTarget(out var window))
-    //         return;
-    //
-    //     EnsureKnowledgeTab(window);
-    // }
+    /*
+    public void OnUpdateExperienceEvent(Entity<KnowledgeHolderComponent> ent, ref UpdateExperienceEvent args)
+    {
+        var localPlayer = _player.LocalEntity;
+        if (localPlayer != ent.Owner)
+            return;
+
+        if (_activeWindow is not { } || !_activeWindow.TryGetTarget(out var window))
+            return;
+
+        EnsureKnowledgeTab(window);
+    }
+    */
 
     private void OnSkillPopup(SkillPopupEvent args)
     {

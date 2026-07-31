@@ -87,6 +87,8 @@
     cost: 1250
   - id: LuxuryMedipen
     cost: 1500
+  - id: SkillChipMining
+    cost: 1500
   - id: WeaponPlasmaCutter
     cost: 1700
   - id: BorgModuleAdvancedMining
@@ -101,7 +103,7 @@
     cost: 2000
   - id: ClothingOuterHardsuitSalvage
     cost: 2000
-    #TODO:  super resonator for 2500
+  # TODO: super resonator for 2500
   - id: JetpackBlue #inky
     cost: 2250
   - id: ClothingShoesBootsJump

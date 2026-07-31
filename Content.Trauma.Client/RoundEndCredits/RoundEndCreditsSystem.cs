@@ -16,11 +16,14 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
 {
     [Dependency] private IUserInterfaceManager _ui = default!;
     [Dependency] private IClyde _clyde = default!;
-    [Dependency] private ILinkAccountManager _linkAccount = default!;
+    // [Dependency] private ILinkAccountManager _linkAccount = default!; inky
     [Dependency] private IResourceCache _cache = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
+
+    // inky
+    [Dependency] private IPrototypeManager _proto = default!;
+    // /inky
 
     private float _timer;
     private EndRoundCreditsControl? _creditsContainer;
@@ -58,7 +61,7 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
 
         var shoutout = "John Nanotrasen";
         // <inky>
-        if (_proto.TryIndex(datasetId, out var dataset))
+        if (_proto.TryIndex(datasetId, out _))
             shoutout = _random.Pick(_proto.Index(datasetId));
         // var patrons = _linkAccount.GetPatrons();
         // if (patrons.Count != 0)
@@ -67,7 +70,7 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
 
         var credits = new EndRoundCreditsControl();
         credits.SetSize = _clyde.MainWindow.Size / _uiScale;
-        credits.Populate(message, _cache, _proto, shoutout, Debug);
+        credits.Populate(message, _cache, ProtoMan, shoutout, Debug);
 
         var rand = new RobustRandom();
         rand.SetSeed(message.RoundId);

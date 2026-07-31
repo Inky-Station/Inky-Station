@@ -5,12 +5,12 @@ using System.Linq;
 using Content.Client.DisplacementMap;
 using Content.Shared.Body;
 using Content.Shared.CCVar;
+using Content.Shared.DisplacementMap;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Body;
@@ -18,10 +18,13 @@ namespace Content.Client.Body;
 public sealed partial class VisualBodySystem : SharedVisualBodySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private DisplacementMapSystem _displacement = default!;
     [Dependency] private MarkingManager _marking = default!;
     [Dependency] private SpriteSystem _sprite = default!;
+
+    // inky
+    [Dependency] private EntityQuery<SpriteComponent> _spriteComp = default!;
+    // /inky
 
     public override void Initialize()
     {
@@ -74,6 +77,11 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
 
     private void ApplyVisual(Entity<VisualOrganComponent> ent, EntityUid target)
     {
+        // inky
+        if (!_spriteComp.TryComp(target, out var sprite))
+            return;
+        // /inky
+
         if (_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
             _sprite.LayerSetData(target, index, ent.Comp.Data); // inkymed change - shortened
 
@@ -81,10 +89,25 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
         if (ent.Comp.SecondLayer != null && ent.Comp.SecondData != null && _sprite.LayerMapTryGet(target, ent.Comp.SecondLayer, out var addIndex, false))
             _sprite.LayerSetData(target, addIndex, ent.Comp.SecondData);
         // /inkymed
+
+        var displacement = ent.Comp.Displacement;
+        if (displacement != null && ProtoMan.Resolve(displacement, out var displacementProto))
+        {
+            _displacement.TryAddDisplacement(displacementProto.Displacement,
+                (target, /* Comp<SpriteComponent>(target) */ sprite), // inky edit
+                index,
+                ent.Comp.Layer,
+                out _);
+        }
     }
 
     private void RemoveVisual(Entity<VisualOrganComponent> ent, EntityUid target)
     {
+        // inky
+        if (!_spriteComp.TryComp(target, out var sprite))
+            return;
+        // /inky
+
         // <Trauma> - removed parts have their body's skin colour. not enabled for eyes yet until it supports an iris layer
         if (ent.Comp.Data.Color is {} color && !HasComp<InternalOrganComponent>(ent))
             _sprite.SetColor(ent.Owner, color);
@@ -96,6 +119,9 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
         if (ent.Comp.SecondLayer != null && _sprite.LayerMapTryGet(target, ent.Comp.SecondLayer, out var addIndex, false))
             _sprite.LayerSetRsiState(target, addIndex, RSI.StateId.Invalid);
         // /inkymed
+
+        _displacement.EnsureDisplacementIsNotOnSprite((target, /* Comp<SpriteComponent>(target) */ sprite), ent.Comp.Layer); // inky edit
+
     }
 
     private void OnMarkingsGotInserted(Entity<VisualOrganMarkingsComponent> ent, ref OrganGotInsertedEvent args)
@@ -162,7 +188,7 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
         if (!censorNudity)
             yield break;
 
-        var group = _prototype.Index(ent.Comp.MarkingData.Group);
+        var group = ProtoMan.Index(ent.Comp.MarkingData.Group);
         foreach (var layer in ent.Comp.MarkingData.Layers)
         {
             if (!group.Limits.TryGetValue(layer, out var layerLimits))

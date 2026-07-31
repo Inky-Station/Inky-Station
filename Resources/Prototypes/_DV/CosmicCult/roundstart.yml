@@ -4,10 +4,6 @@
   parent: BaseGameRule
   id: CosmicCult
   components:
-  # inky
-  - type: DynamicRuleCost
-    cost: 225
-  # /inky
   - type: CosmicCultRule
   - type: LoadMapRule
     mapPath: /Maps/_DV/Nonstations/cosmicvoid.yml
@@ -30,4 +26,8 @@
     effects:
     - !type:GrantSkills
       skills:
-        MeleeKnowledge: 60 # They like, only have melee weapons
+        AthleticsKnowledge: 30
+        KnowledgeWeaponsSword: 60
+        KnowledgeWeaponsTool: 60
+  - type: DynamicRuleCost
+    cost: 150

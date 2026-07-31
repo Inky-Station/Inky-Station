@@ -44,19 +44,6 @@ public sealed partial class WoundComponent : Component
     public ProtoId<DamageTypePrototype> DamageType;
 
     /// <summary>
-    /// Scar wound prototype, what will be spawned upon healing this wound.
-    /// If null - no scar wound will be spawned.
-    /// </summary>
-    [DataField]
-    public EntProtoId? ScarWound;
-
-    /// <summary>
-    /// Well, name speaks for this.
-    /// </summary>
-    [DataField]
-    public bool IsScar;
-
-    /// <summary>
     /// Wound severity. Has six severities: Healed/Minor/Moderate/Severe/Critical and Loss.
     /// Directly depends on <see cref="WoundSeverityPoint"/>
     /// </summary>
@@ -113,10 +100,6 @@ public sealed class WoundComponentState : ComponentState
 
     public ProtoId<DamageGroupPrototype>? DamageGroup;
     public string? DamageType;
-
-    public EntProtoId? ScarWound;
-
-    public bool IsScar;
 
     public WoundSeverity WoundSeverity;
 

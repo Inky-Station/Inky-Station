@@ -214,7 +214,7 @@
       - !type:ModifyStatusEffect
         effectProto: StatusEffectOpiated
         type: Add
-        time: 2
+        time: 0.5 # 10s per 1u
       # /inkymed
 
 - type: reagent

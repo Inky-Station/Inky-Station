@@ -32,7 +32,7 @@ public partial class CloneProjectorSystem
         {
             part.Comp.CanRemove = false;
             part.Comp.CanBleed = false;
-            part.Comp.AllowWounds = false;
+            part.Comp.AllowWounds = true; // inkymed
             Dirty(part);
         }
     }

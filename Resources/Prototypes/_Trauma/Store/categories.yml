@@ -20,9 +20,6 @@
 # Traitor
 
 - type: storeCategory
-  id: DiscountedItems
-  name: store-discounted-items
-  priority: 200
-  # inky
-  evil: true
-  # /inky
+  id: UplinkSkills
+  name: store-category-skills
+  priority: 12

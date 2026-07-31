@@ -24,7 +24,7 @@
     damage:
       types:
         Structural: 5000
-#        Blunt: 0.1 # inky edit - its damage per tick :tear:
+    #        Blunt: 0.1 # inky edit - its damage per tick :tear:
     ignoreWhitelist:
       components:
       - ContainmentField
@@ -100,9 +100,7 @@
     interactFailureSound:
       path: /Audio/Effects/bite.ogg
   - type: NightVision
-    color: "#808080"
-    activateSound: null
-    deactivateSound: null
+    lightingColor: "#808080"
   - type: AmbientSound
     enabled: true
     volume: 1
@@ -160,6 +158,12 @@
         Slash: 33 # inky edit
         Structural: 800 #lol
   - type: NoRotateOnMove
+  - type: PortalTransitEffects # its like an apple getting cored
+    effects:
+    - !type:HealthChange
+      damage:
+        types:
+          Slash: 2000
   # inky
   - type: LimitedInstances
     key: SpaceLeviathan
@@ -207,7 +211,7 @@
     horizontalRotation: 0
   - type: DoAfter
   - type: Examiner
-#  - type: Eye
+  #  - type: Eye
   - type: RequireProjectileTarget
     active: False
   - type: MobState
