@@ -147,7 +147,7 @@
   components:
   - type: Vinyl
     song:
-      path: /Audio/_Goobstation/RadioStation/ads/GroupsPSA.ogg
+      path: /Audio/_Inky/RadioStation/ads/GroupsPSA.ogg
 # the weird stuff
 
 - type: entity
@@ -263,7 +263,7 @@
   components:
   - type: Vinyl
     song:
-      path: /Audio/_Inky/RadioStation/ads/Number.ogg
+      path: /Audio/_Goobstation/RadioStation/ads/Number.ogg
   - type: VinylSummonRule
     gameRule: NumberStationThreats
 

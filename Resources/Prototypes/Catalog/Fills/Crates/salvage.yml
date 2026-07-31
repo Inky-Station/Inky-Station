@@ -91,7 +91,7 @@
           prob: 0.1
           children:
           - id: ToolboxElectricalFilled
-          - id: ToolboxMechancicalFilled
+          - id: ToolboxMechanicalFilled
           - id: ToolboxArtisticFilled
           - id: ToolboxEmergencyFilled
         - !type:GroupSelector
@@ -121,7 +121,7 @@
           prob: 0.01
         - id: ClothingMaskGasSwat #inky
           prob: 0.01
-        - id: CowTooboxFilled #inky
+        - id: CowToolboxFilled #inky
           prob: 0.01
           # Just no (0.1%)
           #  - Working guns
