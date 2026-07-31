@@ -104,6 +104,8 @@
   - id: ClothingOuterHardsuitSalvage
     cost: 2000
   # TODO: super resonator for 2500
+  - id: JetpackBlue #inky
+    cost: 2250
   - id: ClothingShoesBootsJump
     cost: 2500
   - id: ClothingOuterHardsuitLuxury
