@@ -94,6 +94,10 @@ public sealed partial class SurgeryBui : BoundUserInterface
 
         var oldSurgery = _surgery;
         var oldPart = _part;
+        // inkymed
+        _entMan.TryGetNetEntity(oldPart, out var oldNetPart);
+        var oldSelection = false;
+        // /inkymed
         _part = null;
         _surgery = null;
 
@@ -148,11 +152,18 @@ public sealed partial class SurgeryBui : BoundUserInterface
                     !_entMan.TryGetComponent(surgery, out SurgeryComponent? surgeryComp))
                     continue;
 
-                if (oldPart == entity && oldSurgery?.Proto == surgeryId)
+                if ((oldPart == entity || oldNetPart == netEntity) // inkymed
+                    && oldSurgery?.Proto == surgeryId) // inkymed
+                {
+                    oldSelection = true; // inkymed
                     OnSurgeryPressed((surgery, surgeryComp), netEntity, surgeryId);
+                }
             }
 
-            if (oldPart == entity && oldSurgery == null)
+            // inkymed
+            // if (oldPart == entity && oldSurgery == null)
+            if ((oldPart == entity || oldNetPart == netEntity) // inkymed
+                && !oldSelection) // /inkymed what the FUCK was i smoking
                 OnPartPressed(netEntity, surgeries);
         }
 

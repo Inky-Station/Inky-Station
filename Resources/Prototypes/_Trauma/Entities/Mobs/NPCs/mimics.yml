@@ -2,7 +2,7 @@
 
 - type: entity
   abstract: true
-  parent: [ MobSpaceBasic, MobCombat ]
+  parent: [ MobSpaceBasic, MobCombat, BaseSlicingRefinable ]
   id: BaseMobMimic
   description: The last thing you'll ever see.
   components:
@@ -88,6 +88,7 @@
   - type: Stamina
     baseCritThreshold: 999
   - type: FlashImmunity
+    showInExamine: false
   - type: PointLight
     radius: 0
     energy: 0
@@ -126,8 +127,8 @@
   - type: AutoEmote # TODO: find out why this doesnt work
     emotes:
     - TweakBox
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: SpawnLootToolboxMimic
     - id: ToolboxMimic
 
@@ -192,10 +193,10 @@
     overtime: 5
   - type: Stamina
     baseCritThreshold: 999
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: SpawnLootLockerMimic
-    - id: ShieldMimic
+    - id: FleshShield
 
 - type: entity
   parent: ClosetSteelBase
@@ -267,8 +268,8 @@
   - type: Battery
     maxCharge: 100
     startingCharge: 100
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: SpawnLootVendorMimic
     - id: GunMimic
 

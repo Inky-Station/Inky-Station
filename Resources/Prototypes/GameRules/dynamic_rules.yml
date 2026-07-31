@@ -47,7 +47,7 @@
           - !type:PlayerCountCondition
             min: 10
         # <Trauma>
-        - id: Changeling
+        - id: Changeling # inky - enabled
           weight: 25
           conditions:
           - !type:HasBudgetCondition

@@ -93,6 +93,9 @@
         layer:
         - MobLayer
   - type: Bloodstream
+    # inkymed
+    requiresHeart: false
+    # /inkymed
     bloodReferenceSolution:
       reagents:
       - ReagentId: FluorosulfuricAcid
@@ -142,20 +145,15 @@
     speechSounds: Xenomorph
     speechVerb: SmallMob
   - type: Vocal
-    sounds:
-      Male: Xenomorph
-      Female: Xenomorph
-      Unsexed: Xenomorph
+    emoteSounds: Xenomorph
   - type: LanguageSpeaker
     speaks:
     - Xeno
-#    - XenoHivemind # Goobstation - collective mind
     understands:
     - Xeno
-#    - XenoHivemind # Goobstation - collective mind
     - Hissing
     - Draconic
-  - type: CollectiveMind # Goobstation
+  - type: CollectiveMind
     defaultChannel: Xenomorphivemind
     channels:
     - Xenomorphivemind
@@ -163,22 +161,25 @@
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
-  - type: Access # Goobstation - xeno doors
+  - type: Access
     enabled: true
     groups:
     - XenomorphAccess
-  - type: BloodSplatterer # Trauma
+  - type: BloodSplatterer
   - type: KnowledgeGrant
     skills:
       ThrowingKnowledge: 50
       StrengthKnowledge: 50
-
 
 - type: entity
   parent: [BaseMobXenomorph, StripableInventoryBase]
   id: BaseMobXenomorphAdult
   abstract: true
   components:
+  - type: MovementSpeedModifier
+    baseWeightlessAcceleration: 1.7
+    baseWeightlessFriction: 1
+    baseWeightlessModifier: 1
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepXenomorph
@@ -213,7 +214,7 @@
     tags:
     - DoorBumpOpener
     - FootstepSound
-  - type: MovementAlwaysTouching # Trauma
+  - type: MovementAlwaysTouching
 
 - type: entity
   id: BaseMobXenomorphDungeon

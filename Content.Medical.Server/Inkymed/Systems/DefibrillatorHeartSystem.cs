@@ -125,7 +125,7 @@ public sealed partial class DefibrillatorHeartSystem : EntitySystem // slop
             <= 360f => "Pulse360",
             <= 400f => "Pulse400",
             <= 450f => "Pulse450",
-            <= 999f => "pulse450",
+            <= 999f => "Pulse450",
             _ => "Pulse3000", // todo inkymed
         };
     }

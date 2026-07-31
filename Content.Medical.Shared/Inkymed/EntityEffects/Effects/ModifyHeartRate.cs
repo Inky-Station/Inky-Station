@@ -47,11 +47,11 @@ public sealed partial class ModifyHeartRate : EntityEffectBase<ModifyHeartRate>
             if (Amount >= 0)
             {
                 lines.Add(Loc.GetString("entity-effect-guidebook-modify-heart-rate-stabilise-increase",
-                    ("amount", Math.Abs(Amount)),
-                    ("highCap", HigherCap ?? 80))); // todo inkymed pass startingheartrate somehow
+                    ("amount", Math.Round(Math.Abs(Amount))),
+                    ("highCap", Math.Round(HigherCap ?? 80)))); // todo inkymed pass startingheartrate somehow
                 lines.Add(Loc.GetString("entity-effect-guidebook-modify-heart-rate-stabilise-decrease",
-                    ("amount", Math.Abs(Amount)),
-                    ("lowCap", LowerCap ?? 80)));
+                    ("amount", Math.Round(Math.Abs(Amount))),
+                    ("lowCap", Math.Round(LowerCap ?? 80))));
             }
         }
         else
@@ -59,7 +59,7 @@ public sealed partial class ModifyHeartRate : EntityEffectBase<ModifyHeartRate>
             var key = Amount >= 0
                 ? "entity-effect-guidebook-modify-heart-rate-increase"
                 : "entity-effect-guidebook-modify-heart-rate-decrease";
-            lines.Add(Loc.GetString(key, ("amount", Math.Abs(Amount))));
+            lines.Add(Loc.GetString(key, ("amount", Math.Round(Math.Abs(Amount)))));
         }
 
         if (HeartRestart)

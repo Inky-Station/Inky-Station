@@ -39,7 +39,6 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRuleNoHeretic
   - HereticRoundstart
-  - CalmTraitor
   # inky
   - FunGameruleChooser
   # /inky
@@ -61,7 +60,6 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
   - ShadowlingGamemode
-  - CalmTraitor
   # inky
   - FunGameruleChooser
   # /inky

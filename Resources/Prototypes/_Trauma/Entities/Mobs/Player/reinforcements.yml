@@ -459,7 +459,6 @@
     id: ChaplainPDA
     ears: ClothingHeadsetService
   inhand:
-  - Nullrod
   - ArmamentsBeacon
 
 - type: startingGear
