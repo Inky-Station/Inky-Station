@@ -16,7 +16,7 @@
       - !type:HealthChange
         damage:
           types:
-            Poison: 3.25 #inky
+            Poison: 0.75 # Trauma - was 0.55
             # Blunt: 1.1 # Trauma - no
       # OD
       - !type:HealthChange
@@ -80,7 +80,7 @@
           min: 20
       # inkymed
       - !type:ModifyHeartRate
-        amount: 5.5
+        amount: 10
       # /inkymed
 
 - type: reagent
