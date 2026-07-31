@@ -319,11 +319,11 @@
       children:
       - id: BruteAutoInjector
         weight: 0.5
-      - id: BurnAutoinjector
+      - id: BurnAutoInjector
         weight: 0.5
       - id: AirlossAutoInjector
       - id: AntiPoisonMedipen
-      - id: RadAutoinjector
+      - id: RadAutoInjector
     - !type:GroupSelector #inky
       children:
       - id: WeaponProtoKineticAccelerator

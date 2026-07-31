@@ -263,7 +263,7 @@
   components:
   - type: Vinyl
     song:
-      path: /Audio/_Goobstation/RadioStation/ads/Number.ogg
+      path: /Audio/_Inky/RadioStation/ads/Number.ogg
   - type: VinylSummonRule
     gameRule: NumberStationThreats
 
@@ -274,4 +274,4 @@
   components:
   - type: Vinyl
     song:
-      path: /Audio/_Goobstation/RadioStation/misc/Felinids.ogg
+      path: /Audio/_Inky/RadioStation/misc/Felinids.ogg
