@@ -80,7 +80,7 @@
           min: 20
       # inkymed
       - !type:ModifyHeartRate
-        amount: 10
+        amount: 5.5
       # /inkymed
 
 - type: reagent
