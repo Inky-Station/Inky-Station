@@ -47,6 +47,8 @@
       - TrayScanner
       - GasAnalyzer
       - HandLabeler
+      - EyeProtection #Inky
+      - RadarConsole #inky
   - type: ItemMapper
     sprite: &BeltOverlay Clothing/Belt/belt_overlay.rsi
     mapLayers:
@@ -82,6 +84,20 @@
         whitelist:
           tags:
           - Multitool
+      weldmask: #inky start
+        whitelist:
+          tags:
+          - WeldingMask
+      mass_scanner:
+        whitelist:
+          tags:
+          - GPS
+          components:
+          - RadarConsole
+      meson:
+        whitelist:
+          tags:
+          - MesonGoggles #inky end
   - type: Appearance
 
 - type: entity

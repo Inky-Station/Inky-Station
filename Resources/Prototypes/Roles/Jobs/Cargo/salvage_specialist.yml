@@ -32,7 +32,7 @@
   id: SalvageSpecialistGear
   equipment:
     id: SalvagePDA
-    ears: ClothingHeadsetCargo
+    ears: ClothingHeadsetMining #inky
   storage: # DeltaV: Add mining voucher
     back:
     - MiningVoucher

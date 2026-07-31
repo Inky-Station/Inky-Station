@@ -96,7 +96,7 @@
     - id: SheetPlasma1
       amount: !type:RangeNumberSelector
         range: 3, 5
-    - id: ResearchDisk
+    - id: ResearchDisk5000 #inky
     - id: DrinkGoldenCup
     - id: TreasureSampleTube
     - !type:NestedSelector
@@ -105,6 +105,19 @@
         range: 1, 2
     - !type:NestedSelector
       tableId: SalvageInstrumentTable
+    - !type:AllSelector #inky
+      children:
+      - id: BriefcaseBrown
+      - !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 2, 4
+        children:
+        - id: SpaceCash100
+          weight: 50
+        - id: SpaceCash1000
+          weight: 10
+        - id: SpaceCash2500
+          weight: 5
 
 - type: entityTable
   id: SalvageTreasureUncommon
@@ -126,11 +139,24 @@
       tableId: TreasureCoinPile
       rolls: !type:RangeNumberSelector
         range: 4, 7
-    - id: SpaceCash1000
+   # - id: SpaceCash1000 - inky
     - id: WristwatchGold
     - id: ExperimentalCircuitBoard
     - !type:NestedSelector
       tableId: RingTableCommon
+    - !type:AllSelector #inky
+      children:
+      - id: BriefcaseBrown
+      - !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 3, 6
+        children:
+        - id: SpaceCash1000
+          weight: 50
+        - id: SpaceCash2500
+          weight: 25
+        - id: SpaceCash5000
+          weight: 7
 
 - type: entityTable
   id: SalvageTreasureRare
@@ -141,7 +167,7 @@
     - id: TechnologyDiskRare
       weight: 0.5
     - id: ResearchDisk10000
-      weight: 0.5
+     # weight: 0.5 - inky
     - id: ArabianLamp
     - !type:NestedSelector
       tableId: TreasureCoinPileRare
@@ -152,14 +178,14 @@
       - id: BriefcaseBrown
       - !type:GroupSelector
         rolls: !type:RangeNumberSelector
-          range: 3, 5
+          range: 4, 6
         children:
         - id: SpaceCash1000
-          weight: 60
+          weight: 90 #inky
         - id: SpaceCash2500
-          weight: 25
+          weight: 50 #inky
         - id: SpaceCash5000
-          weight: 14
+          weight: 28 #inky
         - id: SpaceCash10000
           weight: 1
     - !type:NestedSelector
@@ -203,6 +229,15 @@
     - id: FlashlightLantern
     - id: FireExtinguisher
     - id: SurvivalKnife
+      weight: 0.5
+    - id: Brutepack #inky
+    - id: Ointment #inky
+    - id: Gauze #inky
+    - !type:GroupSelector # Inky
+      children:
+      - id: EmergencyOxygenTankFilled
+      - id: EmergencyNitrogenTankFilled
+      - id: EmergencyPlasmaTankFilled
 
 - type: entityTable
   id: SalvageEquipmentUncommon
@@ -213,12 +248,26 @@
     - id: PowerCellHighPrinted
     - id: RadioHandheld
     - id: ClothingBeltUtility
-    - id: WeaponProtoKineticAccelerator
+    - !type:GroupSelector #inky
       weight: 0.5
-    - id: OxygenTankFilled
+      children:
+      - id: WeaponProtoKineticAccelerator
+      - id: WeaponProtoKineticPistol
+        amount: !type:RangeNumberSelector
+          range: 1, 2
+      - id: WeaponProtoKineticRepeater
+      - id: WeaponProtoKineticAcceleratorSpace
+      - id: WeaponProtoKineticPistolSpace
+        amount: !type:RangeNumberSelector
+          range: 1, 2
+      - id: WeaponProtoKineticRepeaterSpace
+    # - id: OxygenTankFilled - Inky
     - id: WelderIndustrial
+    - id: MedkitFilled #inky
     - id: FoodSnackLollypopWrappedMystery # Goobstation
     - id: WeaponGrapplingGun
+    - id: PKAUpgradeSpace #inky
+    - id: MedkitFilled #inky
     - !type:GroupSelector
       children:
       - id: ClothingHeadHatWelding
@@ -228,6 +277,11 @@
         weight: 0.25
       - id: ClothingHeadHatWeldingMaskPainted
         weight: 0.1
+    - !type:GroupSelector # Inky
+      children:
+      - id: ExtendedEmergencyOxygenTankFilled
+      - id: ExtendedEmergencyNitrogenTankFilled
+      - id: ExtendedEmergencyPlasmaTankFilled
 
 - type: entityTable
   id: SalvageEquipmentRare
@@ -245,15 +299,57 @@
     - id: ClothingBeltSalvageWebbing
     - id: SeismicCharge
     - id: MineralScanner
+    - id: ClothingOuterHardsuitSalvage #Inky
+    - id: WelderIndustrialAdvanced #Inky
     - id: FoodSnackLollypopWrappedMysteryEvil # Goobstation
     - id: FoodSnackLollypopWrappedOmnizine # Goobstation
+    - id: PKAUpgradeRange #inky
       weight: 0.5
-    - id: WeaponCrusher
-      weight: 0.5
+    #- id: WeaponCrusher
+     # weight: 0.5 - inky
+    - !type:GroupSelector #Inky
+      children:
+      - id: WeaponCrusherGlaive
+      - id: WeaponCrusherHalberd
+        weight: 0.5
+      - id: WeaponCrusherHammer
+      - id: WeaponCrusher
+    - id: CrusherUpgradeFrame #inky
+    - !type:GroupSelector #inky
+      children:
+      - id: BruteAutoInjector
+        weight: 0.5
+      - id: BurnAutoinjector
+        weight: 0.5
+      - id: AirlossAutoInjector
+      - id: AntiPoisonMedipen
+      - id: RadAutoinjector
+    - !type:GroupSelector #inky
+      children:
+      - id: WeaponProtoKineticAccelerator
+      - id: WeaponProtoKineticPistol
+        amount: !type:RangeNumberSelector
+          range: 1, 2
+      - id: WeaponProtoKineticRepeater
+      - id: WeaponProtoKineticAcceleratorSpace
+      - id: WeaponProtoKineticPistolSpace
+        amount: !type:RangeNumberSelector
+          range: 1, 2
+      - id: WeaponProtoKineticRepeaterSpace
     - !type:GroupSelector
       children:
       - id: JetpackBlue
       - id: JetpackBlack
+    - !type:GroupSelector # Inky
+      children:
+      - id: DoubleEmergencyOxygenTankFilled
+      - id: DoubleEmergencyNitrogenTankFilled
+      - id: PlasmaTankFilledInternals
+    - !type:GroupSelector # Inky
+      children:
+      - id: CrusherUpgradeHandleWeights
+      - id: CrusherUpgradeHandleRange
+      - id: CrusherUpgradeHandleLight
 
 - type: entityTable
   id: SalvageEquipmentLegendary
@@ -262,14 +358,45 @@
     - id: AdvancedMineralScanner
     # - id: BlueprintFulton # Goobstation - roundstart
     # - id: BlueprintSeismicCharge # Goobstation - emag locked
-    - id: WeaponCrusherGlaive
+    # - id: WeaponCrusherGlaive - inky
     - id: ClothingOuterHardsuitSalvage
     - id: ChemistryBottleOmnizine
     - id: FoodSnackLollypopWrappedCarpEvil # Goobstation
+    - id: MedkitAdvancedFilled #inky
+    - !type:GroupSelector #Inky
+      weight: 0.25
+      children:
+      - id: WeaponCrusherGlaiveFilledRandom
+      - id: WeaponCrusherHalberdFilledRandom
+        weight: 0.5
+      - id: WeaponCrusherHammerFilledRandom
+      - id: WeaponCrusherFilledRandom
+    - !type:GroupSelector #Inky
+      children:
+      - id: WeaponProtoKineticShotgun
+      - id: WeaponProtoKineticShotgunSpace
+    - !type:GroupSelector #Inky
+      children:
+      - id: PKAUpgradeFireRate
+      - id: PKAUpgradeDamage
+    - !type:GroupSelector #Inky
+      children:
+      - id: ClothingOuterHardsuitLuxury
+      - id: ClothingOuterHardsuitMaxim
+        weight: 0.25
+      - id: LavalandEquipmentAncientArmor
+        weight: 0.1
     - !type:GroupSelector
       children:
       - id: JetpackBlueFilled
       - id: JetpackBlackFilled
+      - id: JetpackVoidFilled #inky
+        weight: 0.25
+    - !type:GroupSelector # Inky
+      children:
+      - id: CrusherUpgradeHandleWeights
+      - id: CrusherUpgradeHandleRange
+      - id: CrusherUpgradeHandleLight
 
 - type: entityTable
   id: RandomGeneratorTable
@@ -278,8 +405,8 @@
     - id: ScrapGeneratorPlasmaLeaking
     - id: ScrapGeneratorUraniumLeaking
     - id: ScrapGeneratorPlasma
-      weight: 0.5
+      weight: 0.65 #inky
     - id: ScrapGeneratorUranium
-      weight: 0.5
+      weight: 0.35 #inky
     - id: ScrapGeneratorFrame
       weight: 0.25

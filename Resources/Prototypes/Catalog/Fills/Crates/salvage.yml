@@ -48,7 +48,7 @@
           prob: 0.1
         - id: WelderIndustrialAdvanced
           prob: 0.1
-        - id: ResearchDisk
+        - id: ResearchDisk5000 #inky
           prob: 0.1
         - id: SheetUranium
           prob: 0.1
@@ -62,6 +62,50 @@
           prob: 0.1
         - id: BoxBeaker
           prob: 0.1
+        - id: MedkitAdvancedFilled #inky start
+          prob: 0.05
+        - id: Flare
+          prob: 0.1
+        - id: Crowbar
+          prob: 0.1
+        - id: Pickaxe
+          prob: 0.1
+        - id: ClothingMaskGas
+          prob: 0.1
+        - id: SheetSteel
+          prob: 0.1
+        - id: SheetGlass
+          prob: 0.1
+        - id: SheetPlastic
+          prob: 0.1
+        - !type:GroupSelector
+          prob: 0.1
+          children:
+          - id: Wirecutter
+          - id: Screwdriver
+          - id: Wrench
+          - id: Welder
+        - id: HandheldGPSBasic
+          prob: 0.1
+        - !type:GroupSelector
+          prob: 0.1
+          children:
+          - id: ToolboxElectricalFilled
+          - id: ToolboxMechancicalFilled
+          - id: ToolboxArtisticFilled
+          - id: ToolboxEmergencyFilled
+        - !type:GroupSelector
+          prob: 0.1
+          rolls: !type:RangeNumberSelector
+            range: 1, 2
+          children:
+          - id: SpaceCash500
+          - id: SpaceCash1000
+            weight: 50
+          - id: SpaceCash2500
+            weight: 10
+          - id: SpaceCash5000
+            weight: 7 #inky end
           #  - Heh
         - id: SalvageHumanCorpse
           prob: 0.1
@@ -71,6 +115,14 @@
           prob: 0.01
         - id: ResearchDisk10000
           prob: 0.01
+        - id: MaterialBSCrystal #inky
+          prob: 0.01
+        - id: BoxLethalshot #inky
+          prob: 0.01
+        - id: ClothingMaskGasSwat #inky
+          prob: 0.01
+        - id: CowTooboxFilled #inky
+          prob: 0.01
           # Just no (0.1%)
           #  - Working guns
         - id: WeaponRevolverDeckard
@@ -79,6 +131,14 @@
           prob: 0.001
         - id: ClothingShoesBootsMagBlinding
           prob: 0.001
+        - id: WeaponShotgunDevastator #inky
+          prob: 0.001
+        - id: WeaponPistolFlintlock #inky
+          prob: 0.001
+        - id: WeaponRevolverPirate #inky
+          prob: 0.001
+        - id: WeaponFlareGunSecurity #inky
+          prob: 0.005 #we can be a little lax
           #  - Skub
         - id: Skub
           prob: 0.001
@@ -86,12 +146,22 @@
           prob: 0.01
         - id: ClothingHeadHatDogEars
           prob: 0.01
+        - id: FoodMango #Inky
+          prob: 0.01
           # TRAITOR EQUIPMENT (0.01%)
         - id: Telecrystal50 # Goob - TC inflation
           prob: 0.0001
         - id: WeaponRevolverPython
           prob: 0.0001
         - id: WeaponRevolverMateba
+          prob: 0.0001
+        - id: GatfruitSeeds #Inky
+          prob: 0.0001
+        - id: DehydratedSpaceCarp #Inky
+          prob: 0.0001
+        - id: ExGrenade #Inky
+          prob: 0.0001
+        - id: SlipocalypseClusterSoap #inky
           prob: 0.0001
 
 - type: entity

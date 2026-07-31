@@ -7,3 +7,6 @@
   description: Do the impossible, see the invisible!
   components:
   - type: EyeProtection
+  - type: Tag #inky
+    tags:
+    - MesonGoggles
