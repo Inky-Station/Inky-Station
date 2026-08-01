@@ -216,11 +216,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
         //     return;
 
         _throwingItem.StopThrow(uid, args.Component);
-
-        if (Transform(args.Target).Anchored)
-            _stun.TryUpdateParalyzeDuration(uid, TimeSpan.FromSeconds(1));
-        else
-            _stun.TryKnockdown(args.Target, TimeSpan.FromSeconds(1), true);
+        _stun.TryKnockdown(args.Target, TimeSpan.FromSeconds(1), true);
 
         // args.Handled = true;
     }
