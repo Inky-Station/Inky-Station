@@ -9,6 +9,7 @@ using Content.Server.Objectives;
 using Content.Shared.Actions;
 using Content.Shared.EntityEffects;
 using Content.Shared.EntityEffects.Effects;
+using Content.Shared.Overlays;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Content.Shared.Store;
@@ -102,6 +103,10 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
         store.Categories.Add(rule.StoreSide); // maybe its better to make its own bool for it too? but if both evo & side is off, then its no point in adding a store at all
         store.CurrencyWhitelist.Add(Currency);
         store.Balance.Add(Currency, StartingCurrency);
+
+        // GOIDA
+        var nv = EnsureComp<NightVisionComponent>(target);
+        nv.LightingColor = Color.FromHex("#303030");
 
         rule.WerewolfMinds.Add(mindId);
         _antag.SendBriefing(target, briefing, Color.Brown, BriefingSound);
