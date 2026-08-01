@@ -11,7 +11,7 @@ werewolf-action-fail-hunger = You are too hungry to do that right now.
 werewolf-action-fail-transfurmed = You cant use it while being in inferior form.
 
 werewolf-transfurm-block = Something is blocking you transforming...
-werewolf-transfurm-cooldown = We are not yet ready to transform.
+werewolf-transfurm-cooldown = We are not yet ready. { $remainingTime } seconds left to transform.
 werewolf-mutation-changed = You feel yourself shift.
 werewolf-devour-fail-werewolf = It smells a wolf... You cant devour it.
 werewolf-devour-start = {$user} bites into the {$target} arm!

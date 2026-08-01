@@ -29,8 +29,6 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
 
     public readonly SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/_Inky/Antag/Werewolf/werewolf_start.ogg");
 
-    public readonly ProtoId<AntagPrototype> WerewolfPrototypeId = "Werewolf";
-
     public readonly ProtoId<CurrencyPrototype> Currency = "Fury";
 
     public readonly int StartingCurrency = 2; // to buy either regen or ambush, choose your game

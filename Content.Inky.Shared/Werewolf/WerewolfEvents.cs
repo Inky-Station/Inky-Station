@@ -43,17 +43,18 @@ public sealed partial class TransfurmWhiteEvent : InstantActionEvent
     /// </summary>
     [DataField] public float Radius = 50f;
 }
-public sealed partial class EventWerewolfOpenStore : InstantActionEvent {}
-public sealed partial class EventWerewolfDevour : EntityTargetActionEvent {}
-public sealed partial class EventWerewolfGut : EntityTargetActionEvent {}
-public sealed partial class EventWerewolfBleedingBite : EntityTargetActionEvent {}
-public sealed partial class EventWerewolfBlackBite : EntityTargetActionEvent {}
+
+public sealed partial class EventWerewolfOpenStore : InstantActionEvent;
+public sealed partial class EventWerewolfDevour : EntityTargetActionEvent;
+public sealed partial class EventWerewolfGut : EntityTargetActionEvent;
+public sealed partial class EventWerewolfBleedingBite : EntityTargetActionEvent;
+public sealed partial class EventWerewolfBlackBite : EntityTargetActionEvent;
 public sealed partial class EventWerewolfChangeType : InstantActionEvent
 {
     [DataField] public string WerewolfType;
 }
 
-public sealed partial class EventWerewolfRegen : InstantActionEvent {}
+public sealed partial class EventWerewolfRegen : InstantActionEvent;
 
 public sealed partial class WerewolfAmbushActionEvent : WorldTargetActionEvent
 {
@@ -62,14 +63,13 @@ public sealed partial class WerewolfAmbushActionEvent : WorldTargetActionEvent
 }
 
 [Serializable, NetSerializable]
-public sealed partial class WerewolfDevourDoAfterEvent : SimpleDoAfterEvent { }
-
+public sealed partial class WerewolfDevourDoAfterEvent : SimpleDoAfterEvent;
 [Serializable, NetSerializable]
-public sealed partial class WerewolfGutDoAfterEvent : SimpleDoAfterEvent { }
+public sealed partial class WerewolfGutDoAfterEvent : SimpleDoAfterEvent;
 [Serializable, NetSerializable]
-public sealed partial class WerewolfBleedingBiteDoAfterEvent : SimpleDoAfterEvent { }
+public sealed partial class WerewolfBleedingBiteDoAfterEvent : SimpleDoAfterEvent;
 [Serializable, NetSerializable]
-public sealed partial class WerewolfBlackBiteDoAfterEvent : SimpleDoAfterEvent { }
+public sealed partial class WerewolfBlackBiteDoAfterEvent : SimpleDoAfterEvent;
 
 // upgrade events idk
 // event raised when any werewolf ability is upgraded
@@ -105,7 +105,7 @@ public sealed partial class WerewolfBlackCallEvent : InstantActionEvent;
 [ByRefEvent]
 public readonly record struct WerewolfInfectionFinishedEvent(EntityUid Entity);
 public sealed partial class WerewolfBeckonEvent : InstantActionEvent;
-public sealed partial class EventWerewolfBequeath : EntityTargetActionEvent {}
+public sealed partial class EventWerewolfBequeath : EntityTargetActionEvent;
 public sealed class WerewolfActionRemoveEvent : EntityEventArgs
 {
     public readonly EntityUid ActionEnt;

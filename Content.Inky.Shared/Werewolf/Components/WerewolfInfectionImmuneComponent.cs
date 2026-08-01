@@ -4,7 +4,4 @@ namespace Content.Inky.Shared.Werewolf.Components;
 /// This is used for...
 /// </summary>
 [RegisterComponent]
-public sealed partial class WerewolfInfectionImmuneComponent : Component
-{
-    
-}
+public sealed partial class WerewolfInfectionImmuneComponent : Component;

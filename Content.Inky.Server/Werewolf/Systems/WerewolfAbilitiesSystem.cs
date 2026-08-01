@@ -1,7 +1,6 @@
 using Content.Inky.Common.Events.Werewolf;
 using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
-using Content.Inky.Shared.Werewolf.Systems;
 using Content.Medical.Shared.Wounds;
 using Content.Server.AlertLevel;
 using Content.Server.Chat.Systems;
@@ -14,18 +13,14 @@ using Content.Server.Store.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Body;
 using Content.Shared.Body.Systems;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
-using Content.Shared.Fluids;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Polymorph;
-using Content.Shared.Store;
 using Content.Shared.Store.Components;
-using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -90,7 +85,8 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
 
         if (!args.Forced && mindComp.Accumulator < mindComp.TransfurmOnCommandDelay)
         {
-            _popup.PopupEntity(Loc.GetString("werewolf-transfurm-cooldown"), uid, uid);
+            var remainingTime = (int) MathF.Round(mindComp.TransfurmOnCommandDelay - mindComp.Accumulator);
+            _popup.PopupEntity(Loc.GetString("werewolf-transfurm-cooldown", ("remainingTime", remainingTime)), uid, uid);
             args.Handled = true;
             return;
         }
@@ -190,6 +186,5 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         foreach (var category in mindComp.StoreCategories)
             store.Categories.Add(category);
     }
-
     #endregion
 }

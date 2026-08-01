@@ -175,6 +175,5 @@ public sealed partial class SharedWerewolfAbilitiesSystem
             RaiseLocalEvent(ref ev);
         }
     }
-
     #endregion
 }

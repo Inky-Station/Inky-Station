@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Numerics;
 using Content.Inky.Shared.Werewolf.Components;
 using Content.Shared.Localizations;
@@ -223,6 +222,4 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         }
         return null;
     }
-
-
 }

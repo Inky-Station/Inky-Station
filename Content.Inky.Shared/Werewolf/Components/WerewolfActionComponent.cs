@@ -5,7 +5,6 @@ namespace Content.Inky.Shared.Werewolf.Components;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class WerewolfActionComponent : Component
 {
-
     [DataField]
     public float HungerCost = 30f;
 

@@ -126,10 +126,11 @@
 #    requireTransfurmed: true
 
 - type: entity
-  id: ActionWerewolfJump
   parent: BaseAction
+  id: ActionWerewolfJump
   name: Jump
   description: Stun your enemies with a quick jump. Costs 30 hunger.
+  categories: [ HideSpawnMenu ]
   components:
   - type: Action
     checkCanInteract: false
@@ -138,14 +139,10 @@
     icon:
       sprite: _Inky/Actions/Werewolf/werewolf.rsi
       state: ambush
+    itemIconStyle: NoItem
   - type: TargetAction
     checkCanAccess: false
     range: 10
-  - type: WorldTargetAction
-    event: !type:WerewolfAmbushActionEvent
-  - type: WerewolfAction
-    hungerCost: 30
-    requireTransfurmed: true
 
 # direwolf specific
 

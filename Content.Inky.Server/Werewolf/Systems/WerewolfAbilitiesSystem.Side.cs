@@ -5,11 +5,9 @@ using Content.Inky.Shared.Werewolf.Components;
 using Content.Medical.Shared.Wounds;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
-using Content.Shared.FixedPoint;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 
