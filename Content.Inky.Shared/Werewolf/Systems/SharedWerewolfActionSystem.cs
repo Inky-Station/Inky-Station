@@ -20,9 +20,6 @@ public sealed partial class SharedWerewolfActionSystem : EntitySystem
 
     private void OnActionAttempt(Entity<WerewolfActionComponent> ent, ref ActionAttemptEvent args)
     {
-        if (args.Cancelled)
-            return;
-
         var user = args.User;
         var comp = ent.Comp;
 
