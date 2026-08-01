@@ -15,12 +15,12 @@
   - type: Solution
     solution:
       maxVol: 360 # 3 litres
-  - type: Clothing #inky start
+  - type: Clothing
     sprite: Objects/Tools/bucket.rsi
     slots:
     - HEAD
     quickEquip: false
-  - type: Armor
+  - type: Armor #inky start
     coverage:
     - Head
     traumaDeductions:
@@ -29,6 +29,7 @@
       BoneDamage: 0.05
       VeinsDamage: 0
       NerveDamage: 0
+    priceMultiplier: 0
     modifiers:
       coefficients:
         Blunt: 0.95 #inky end
