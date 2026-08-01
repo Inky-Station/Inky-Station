@@ -127,12 +127,9 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
     {
         var sb = new StringBuilder();
 
-        foreach (var mindId in ent.Comp.WerewolfMinds)
+        var eqe = EntityQueryEnumerator<WerewolfMindComponent, MindComponent>();
+        while (eqe.MoveNext(out var mindId, out var werewolf, out var mind))
         {
-            if (!TryComp<WerewolfMindComponent>(mindId, out var werewolf)
-                || !TryComp<MindComponent>(mindId, out var mind))
-                continue;
-
             var name = _objectives.GetTitle((mindId, mind), Name(mind.OwnedEntity ?? mindId));
             sb.AppendLine($"{name} bit [color=red]{werewolf.BittenPeople.Count}[/color] people."); // idfc
 

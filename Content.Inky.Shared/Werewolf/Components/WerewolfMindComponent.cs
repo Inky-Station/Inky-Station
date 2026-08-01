@@ -47,19 +47,19 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
     /// Transforms the werewolf automatically after the timer passes
     /// </summary>
     [DataField]
-    public float TransfurmCycle = 90; // todo werewolf 600
+    public float TransfurmCycle = 600;
 
     /// <summary>
     /// After what time should the warning popup appear
     /// </summary>
     [DataField]
-    public float TransfurmWarnDelay = 60f;
+    public float TransfurmWarnDelay = 540f;
 
     /// <summary>
     /// After what amount of time can the entity transfurm on command again
     /// </summary>
     [DataField]
-    public float TransfurmOnCommandDelay = 30f;
+    public float TransfurmOnCommandDelay = 120f;
 
     /// <summary>
     /// Can you transfurm right now
