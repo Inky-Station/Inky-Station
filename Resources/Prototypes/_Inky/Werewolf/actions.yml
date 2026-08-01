@@ -142,7 +142,12 @@
     itemIconStyle: NoItem
   - type: TargetAction
     checkCanAccess: false
-    range: 10
+    range: 15
+  - type: WorldTargetAction
+    event: !type:WerewolfAmbushActionEvent
+  - type: WerewolfAction
+    hungerCost: 30
+    requireTransfurmed: true
 
 # direwolf specific
 
