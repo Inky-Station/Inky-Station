@@ -146,10 +146,6 @@
       - !type:ModifyHeartRate
         amount: 3 # less than desox
         higherCap: 230
-      - !type:ModifyStatusEffect
-        effectProto: StatusEffectDrunk
-        time: 3
-        type: Add
       # /inkymed
 
 - type: reagent
