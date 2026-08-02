@@ -12,11 +12,11 @@ public partial class SharedWerewolfAbilitiesSystem
 {
     public void InitializeDire()
     {
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfBleedingBite>(TryBite);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBleedingBiteEvent>(TryBite);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBleedingBiteDoAfterEvent>(DoBite);
     }
 
-    private void TryBite(EntityUid uid, WerewolfAbilitiesComponent component, EventWerewolfBleedingBite args)
+    private void TryBite(EntityUid uid, WerewolfAbilitiesComponent component, WerewolfBleedingBiteEvent args)
     {
         if (TryComp<MobStateComponent>(args.Target, out var mobState) && mobState.CurrentState == MobState.Dead) // to prevent wolves from biting corpses for heals and whatnot
         {
@@ -45,7 +45,7 @@ public partial class SharedWerewolfAbilitiesSystem
             return;
 
         SpillBloodPercentage(args.Target.Value, .3f); // todo werewolf unhardcode
-        TryRegen(uid, comp, new EventWerewolfRegen()); // goida
+        TryRegen(uid, comp, new WerewolfRegenEvent()); // goida
 
         args.Handled = true;
     }

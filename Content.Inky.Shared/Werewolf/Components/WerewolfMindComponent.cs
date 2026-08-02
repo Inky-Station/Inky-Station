@@ -31,9 +31,6 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
     public bool MarkImmune; // also holy shit this is starting to look like a bloated comp
 
     [DataField]
-    public List<EntProtoId> UnlockedActions = [];
-
-    [DataField]
     public int Currency; // needed becasue polymorph & store shitcode
 
     [DataField]

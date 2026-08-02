@@ -21,13 +21,13 @@ public sealed partial class WerewolfAbilitiesSystem
 {
     public void InitializeWerewolfSide()
     {
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfDevour>(TryDevour);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfDevourEvent>(TryDevour);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfDevourDoAfterEvent>(DoDevour);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfGut>(TryGut);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfGutEvent>(TryGut);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfGutDoAfterEvent>(DoGut);
     }
     # region devour
-    private void TryDevour(EntityUid uid, WerewolfAbilitiesComponent component, EventWerewolfDevour args)
+    private void TryDevour(EntityUid uid, WerewolfAbilitiesComponent component, WerewolfDevourEvent args)
     {
         var target = args.Target;
 
@@ -95,7 +95,7 @@ public sealed partial class WerewolfAbilitiesSystem
         _audio.PlayPvs(comp.RipSound, uid);
     }
 
-    private void TryGut(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfGut args)
+    private void TryGut(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfGutEvent args)
     {
         var target = args.Target;
 

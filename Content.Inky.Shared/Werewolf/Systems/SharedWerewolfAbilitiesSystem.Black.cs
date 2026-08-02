@@ -18,14 +18,14 @@ public sealed partial class SharedWerewolfAbilitiesSystem
 
     public void InitializeBlack()
     {
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfBlackBite>(TryBite);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBlackBiteEvent>(TryBite);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBlackBiteDoAfterEvent>(DoBite);
 
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfBequeath>(OnBequeath);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBequeathEvent>(OnBequeath);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, MobStateChangedEvent>(OnLeaderDied);
     }
 
-    private void TryBite(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfBlackBite args)
+    private void TryBite(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBlackBiteEvent args)
     {
         if (TryComp<MobStateComponent>(args.Target, out var mobState) && mobState.CurrentState == MobState.Dead)
         {
@@ -88,7 +88,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         _audio.PlayPvs(comp.RipSound, uid);
     }
 
-    private void OnBequeath(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfBequeath args)
+    private void OnBequeath(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBequeathEvent args)
     {
         if (!_mind.TryGetMind(uid, out var leadMind, out _)
             || !TryComp<WerewolfMindComponent>(leadMind, out var leadMindComp)

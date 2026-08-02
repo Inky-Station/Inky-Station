@@ -29,13 +29,12 @@ namespace Content.Inky.Server.Werewolf.Systems;
 
 public sealed partial class WerewolfAbilitiesSystem : EntitySystem
 {
+    // holy fuck
     [Dependency] private PolymorphSystem _polymorph = default!;
     [Dependency] private StoreSystem _store = default!;
     [Dependency] private PopupSystem _popup = default!;
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private HungerSystem _hunger = default!;
-
-    // holy fuck
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private DamageableSystem _damage = default!;
@@ -56,8 +55,8 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<WerewolfAbilitiesComponent, TransfurmEvent>(TryTransfurm);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfChangeType>(OnChangeType);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, EventWerewolfOpenStore>(OnOpenStore);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfChangeTypeEvent>(OnChangeType);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfOpenStoreEvent>(OnOpenStore);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, PolymorphedEvent>(OnPolymorphed);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfActionRemoveEvent>(OnActionRemove);
 
@@ -85,7 +84,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
 
         if (!args.Forced && mindComp.Accumulator < mindComp.TransfurmOnCommandDelay)
         {
-            var remainingTime = (mindComp.TransfurmOnCommandDelay - mindComp.Accumulator).TotalSeconds;
+            var remainingTime = Math.Round((mindComp.TransfurmOnCommandDelay - mindComp.Accumulator).TotalSeconds);
             _popup.PopupEntity(Loc.GetString("werewolf-transfurm-cooldown", ("remainingTime", remainingTime)), uid, uid);
             return;
         }
@@ -93,15 +92,16 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         mindComp.TransfurmReady = false;
         mindComp.Accumulator = TimeSpan.Zero;
 
+        // GOIDA
         if (component.Transfurmed)
         {
-            _polymorph.Revert(uid);
-            component.Transfurmed = false;
+            if (_polymorph.Revert(uid) is { } human)
+                EnsureComp<WerewolfAbilitiesComponent>(human).Transfurmed = false;
             return;
         }
 
-        _polymorph.PolymorphEntity(uid, component.CurrentMutation);
-        component.Transfurmed = false; // trust this is really important, the fucking polymorph is shit!!!!
+        if (_polymorph.PolymorphEntity(uid, component.CurrentMutation) is { } furry)
+            EnsureComp<WerewolfAbilitiesComponent>(furry).Transfurmed = true;
     }
 
     private void OnPolymorphed(EntityUid uid, WerewolfAbilitiesComponent comp, PolymorphedEvent args)
@@ -122,7 +122,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         RaiseLocalEvent(ev); // this is a very lazy solution but hey it works
     }
 
-    private void OnOpenStore(Entity<WerewolfAbilitiesComponent> ent, ref EventWerewolfOpenStore args)
+    private void OnOpenStore(Entity<WerewolfAbilitiesComponent> ent, ref WerewolfOpenStoreEvent args)
     {
         if (ent.Comp.Transfurmed)
             return;
@@ -147,7 +147,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         ent.Comp.StoreOpened = true;
     }
 
-    private void OnChangeType(EntityUid uid, WerewolfAbilitiesComponent comp, EventWerewolfChangeType args)
+    private void OnChangeType(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfChangeTypeEvent args)
     {
         comp.CurrentMutation = args.WerewolfType;
         Dirty(uid, comp);

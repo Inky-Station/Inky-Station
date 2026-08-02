@@ -25,7 +25,7 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
     [Dependency] private SharedRoleSystem _role = default!;
-    [Dependency] private ActionContainerSystem _actions = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private SharedEntityEffectsSystem _effects = default!;
     [Dependency] private ObjectivesSystem _objectives = default!;
 
@@ -79,14 +79,11 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
             AddComp(mindRole.Value, new RoleBriefingComponent { Briefing = briefingShort }, overwrite: true);
 
         EnsureComp<WerewolfAbilitiesComponent>(target, out var werewolfComp);
-        EnsureComp<WerewolfMindComponent>(mindId, out var werewolfMind);
+        EnsureComp<WerewolfMindComponent>(mindId);
 
         foreach (var action in werewolfComp.WerewolfActions)
         {
-            if (!werewolfMind.UnlockedActions.Contains(action))
-                werewolfMind.UnlockedActions.Add(action);
-
-            _actions.AddAction(mindId, action);
+            _actions.AddAction(target, action, container: mindId);
         }
 
         // add store

@@ -5,7 +5,7 @@
   icon:
     sprite: _Inky/Mobs/Werewolf/Mutations/white.rsi
     state: icon
-  productEvent: !type:EventWerewolfChangeType
+  productEvent: !type:WerewolfChangeTypeEvent
     werewolfType: WerewolfTransformWhite
   raiseProductEventOnUser: true
   cost:
@@ -27,7 +27,7 @@
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: claws
-  productEvent: !type:EventWerewolfChangeType
+  productEvent: !type:WerewolfChangeTypeEvent
     werewolfType: WerewolfTransformWhiteClaws # holy goida
   raiseProductEventOnUser: true
   cost:
@@ -52,7 +52,7 @@
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: bloodhound
-  productEvent: !type:EventWerewolfUpgradeAbility
+  productEvent: !type:WerewolfUpgradeAbilityEvent
     oldActionId: ActionWerewolfTransfurm
     newActionId: ActionWerewolfTransfurmWhite
   raiseProductEventOnUser: true
@@ -77,7 +77,7 @@
 #  icon:
 #    sprite: _Inky/Actions/Werewolf/werewolf.rsi
 #    state: bloodhound
-#  productEvent: !type:EventWerewolfUpgradeAbility
+#  productEvent: !type:WerewolfUpgradeAbilityEvent
 #    newActionId: ActionWerewolfBloodhound
 #  raiseProductEventOnUser: true
 #  cost:
@@ -100,7 +100,7 @@
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: lunar-white
-  productEvent: !type:WerewolfAddCollectivemind
+  productEvent: !type:WerewolfAddCollectivemindEvent
     popup: werewolf-white-lunar-popup
   raiseProductEventOnUser: true
   cost:

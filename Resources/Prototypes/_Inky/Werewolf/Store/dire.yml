@@ -5,7 +5,7 @@
   icon:
     sprite: _Inky/Mobs/Werewolf/Mutations/direwolf.rsi
     state: icon
-  productEvent: !type:EventWerewolfChangeType
+  productEvent: !type:WerewolfChangeTypeEvent
     werewolfType: WerewolfTransformDirewolf
   raiseProductEventOnUser: true
   cost:
@@ -27,7 +27,7 @@
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: howl-red
-  productEvent: !type:EventWerewolfUpgradeAbility
+  productEvent: !type:WerewolfUpgradeAbilityEvent
     oldActionId: ActionWerewolfHowl
     newActionId: ActionWerewolfHowlDire
   raiseProductEventOnUser: true
@@ -52,7 +52,7 @@
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: bleeding-bite
-  productEvent: !type:EventWerewolfUpgradeAbility
+  productEvent: !type:WerewolfUpgradeAbilityEvent
     newActionId: ActionWerewolfBiteDire
   raiseProductEventOnUser: true
   cost:

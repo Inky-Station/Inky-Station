@@ -16,7 +16,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
     {
         SubscribeLocalEvent<WerewolfAbilitiesComponent, TransfurmWhiteEvent>(TryTransfurmWhite);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfPositionQueryEvent>(OnPosQuery);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfAddCollectivemind>(OnCollectiveMindBuy);
+        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfAddCollectivemindEvent>(OnCollectiveMindBuy);
         SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfRevelationEvent>(OnRevelation);
     }
 
@@ -188,7 +188,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
 
     private void OnCollectiveMindBuy(EntityUid uid,
         WerewolfAbilitiesComponent comp,
-        WerewolfAddCollectivemind args)
+        WerewolfAddCollectivemindEvent args)
     {
         EnsureComp<CollectiveMindComponent>(uid, out var m);
         m.Channels.Add(comp.CollectiveMindChannel);

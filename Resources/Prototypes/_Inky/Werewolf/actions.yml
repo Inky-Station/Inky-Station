@@ -45,7 +45,7 @@
       sprite: _Inky/Actions/Werewolf/werewolf.rsi
       state: store
   - type: InstantAction
-    event: !type:EventWerewolfOpenStore {}
+    event: !type:WerewolfOpenStoreEvent {}
 
 - type: entity
   id: PulseThermalVisionWerewolf
@@ -80,7 +80,7 @@
       components:
       - Body
     canTargetSelf: false
-    event: !type:EventWerewolfDevour {}
+    event: !type:WerewolfDevourEvent {}
 
 - type: entity
   parent: BaseAction
@@ -101,7 +101,7 @@
       components:
       - Body
     canTargetSelf: false
-    event: !type:EventWerewolfGut {}
+    event: !type:WerewolfGutEvent {}
   - type: WerewolfAction
     hungerCost: 0
     requireTransfurmed: true
@@ -120,7 +120,7 @@
       sprite: _Inky/Actions/Werewolf/werewolf.rsi
       state: regen
   - type: InstantAction
-    event: !type:EventWerewolfRegen
+    event: !type:WerewolfRegenEvent
   - type: WerewolfAction
     hungerCost: 65
 #    requireTransfurmed: true
@@ -192,7 +192,7 @@
       components:
       - Body
     canTargetSelf: false
-    event: !type:EventWerewolfBleedingBite { }
+    event: !type:WerewolfBleedingBiteEvent { }
   - type: WerewolfAction
     hungerCost: 20
     requireTransfurmed: true
@@ -237,7 +237,7 @@
       components:
       - Body
     canTargetSelf: false
-    event: !type:EventWerewolfBlackBite { }
+    event: !type:WerewolfBlackBiteEvent { }
   - type: WerewolfAction
     hungerCost: -30
     requireTransfurmed: true
@@ -302,7 +302,7 @@
       components:
       - WerewolfAbilities
     canTargetSelf: false
-    event: !type:EventWerewolfBequeath {}
+    event: !type:WerewolfBequeathEvent {}
   - type: WerewolfAction
     hungerCost: 0
     requireTransfurmed: true

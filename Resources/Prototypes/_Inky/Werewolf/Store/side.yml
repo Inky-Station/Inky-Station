@@ -5,7 +5,7 @@
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: regen
-  productEvent: !type:EventWerewolfUpgradeAbility # holy goida
+  productEvent: !type:WerewolfUpgradeAbilityEvent # holy goida
     newActionId: ActionWerewolfRegen
   raiseProductEventOnUser: true
   cost:
@@ -23,7 +23,7 @@
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: ambush
-  productEvent: !type:EventWerewolfUpgradeAbility
+  productEvent: !type:WerewolfUpgradeAbilityEvent
     newActionId: ActionWerewolfJump
   raiseProductEventOnUser: true
   cost:
@@ -41,7 +41,7 @@
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: gut
-  productEvent: !type:EventWerewolfUpgradeAbility
+  productEvent: !type:WerewolfUpgradeAbilityEvent
     newActionId: ActionWerewolfGut
   raiseProductEventOnUser: true
   cost:
