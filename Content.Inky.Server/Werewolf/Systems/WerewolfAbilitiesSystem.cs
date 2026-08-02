@@ -91,16 +91,15 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         }
 
         mindComp.TransfurmReady = false;
-        component.Transfurmed = false;
         mindComp.Accumulator = TimeSpan.Zero;
 
         if (component.Transfurmed)
         {
             _polymorph.Revert(uid);
+            component.Transfurmed = false;
             return;
         }
 
-        component.Transfurmed = true;
         _polymorph.PolymorphEntity(uid, component.CurrentMutation);
         component.Transfurmed = false; // trust this is really important, the fucking polymorph is shit!!!!
     }
