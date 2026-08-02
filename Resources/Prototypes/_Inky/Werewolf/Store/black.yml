@@ -53,7 +53,7 @@
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: lunar-black
   productEvent: !type:WerewolfAddCollectivemindEvent
-    popup: werewolf-black-lunar-popup # TODO WW FIX
+    popup: werewolf-black-lunar-popup
   raiseProductEventOnUser: true
   cost:
     Fury: 6
@@ -150,7 +150,7 @@
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: lunar-black
   productEvent: !type:WerewolfAddCollectivemindEvent
-    popup: werewolf-black-lunar-popup # TODO WW FIX
+    popup: werewolf-black-lunar-popup
   raiseProductEventOnUser: true
   cost:
     Fury: 2

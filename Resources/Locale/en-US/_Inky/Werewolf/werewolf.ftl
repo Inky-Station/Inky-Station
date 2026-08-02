@@ -31,6 +31,7 @@ werewolf-ability-upgraded = You feel stronger.
 werewolf-action-regen-success = You feel your body recovering.
 werewolf-gut-fail-mind = You are above to eat this.
 werewolf-black-lunar-popup = You start hearing the moon's glow.
+werewolf-white-lunar-popup = You start hearing the evil furries.
 werewolf-black-call-success = Reliquish your Humanity, and give in to your instincts, it is time to show the station your true identity.
 werewolf-black-call-fail-amount = You need more people in your pack to do that!
 
