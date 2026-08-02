@@ -10,6 +10,7 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Inky.Server.Werewolf.Systems;
 
@@ -104,7 +105,7 @@ public sealed partial class WerewolfAbilitiesSystem
             return;
         }
 
-        _mind.TryGetMind(target, out var mindId, out var mind);
+        _mind.TryGetMind(target, out _, out var mind);
 
         if (mind == null)
         {
@@ -138,17 +139,17 @@ public sealed partial class WerewolfAbilitiesSystem
         var target = args.Args.Target.Value;
 
         if (args.Cancelled
-            || !TryComp<BodyComponent>(target, out var body))
+            || !HasComp<BodyComponent>(target))
             return;
 
-        if (!TryRemoveOrgan(uid, target, out var removedOrgan))
+        if (!TryRemoveOrgan(uid, target, out _))
             return;
 
         _blood.SpillAllSolutions(target);
         if (_mind.TryGetMind(uid, out var mindId, out _) && TryComp<WerewolfMindComponent>(mindId, out var mindComp))
             mindComp.Currency += comp.AmountGut;
 
-        _hunger.ModifyHunger(uid, +20); // todo werewolf maybe put this inside comp
+        _hunger.ModifyHunger(uid, 20); // todo werewolf maybe put this inside comp
         _audio.PlayPvs(comp.RipSound, uid);
     }
 
@@ -169,13 +170,12 @@ public sealed partial class WerewolfAbilitiesSystem
             return false;
         }
 
-        var nextOrgan = _gambling.Next(organs.Count); // idk
-        var picked = organs[nextOrgan];
+        var picked = _gambling.Pick(organs);
         removedOrgan = picked.Owner;
 
-        if (TryComp<OrganComponent>(picked.Owner, out var organComp))
-            _body.RemoveOrgan((target, body), new Entity<OrganComponent?>(picked.Owner, organComp)); // this is horrible
-        QueueDel(picked.Owner);
+        if (TryComp<OrganComponent>(removedOrgan.Value, out var organComp))
+            _body.RemoveOrgan((target, body), (removedOrgan.Value, organComp)); // this is horrible
+        QueueDel(removedOrgan);
 
         _popup.PopupEntity(Loc.GetString("werewolf-gut-success", ("user", user), ("target", target)), user, user);
 
@@ -193,12 +193,10 @@ public sealed partial class WerewolfAbilitiesSystem
             })// i have PTSD from shitmed and inkymed looking at this shit above
             .ToList();
 
-        if (limbs.Count <= 0)
+        if (limbs.Count == 0)
             return;
 
-        var nextOrgan = _gambling.Next(limbs.Count); // boo copypaste from TryRemoveOrgan
-        var picked = limbs[nextOrgan];
-
+        var picked = _gambling.Pick(limbs);
         if (!TryComp<WoundableComponent>(picked.Owner, out var woundable)
             || !woundable.ParentWoundable.HasValue)
             return;

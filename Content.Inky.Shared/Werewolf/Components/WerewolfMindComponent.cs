@@ -9,14 +9,14 @@ namespace Content.Inky.Shared.Werewolf.Components;
 public sealed partial class WerewolfMindComponent : Component // todo werewolf debloat?
 {
     [DataField]
-    public List<EntityUid> BittenPeople = new(); // would be used in the manifest TODO WEREWOLF
+    public List<EntityUid> BittenPeople = []; // would be used in the manifest TODO WEREWOLF
 
     /// <summary>
     /// Used by the black wolf to show which entities were turned into werewolves by him.
     /// Stores MIND ent uids, not body uids, bodies change on polymorph, minds dont.
     /// </summary>
     [DataField]
-    public List<EntityUid> PackMembers = new();
+    public List<EntityUid> PackMembers = [];
 
     /// <summary>
     /// The ent currently being hunted by this werewolf
@@ -31,7 +31,7 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
     public bool MarkImmune; // also holy shit this is starting to look like a bloated comp
 
     [DataField]
-    public List<string> UnlockedActions = new();
+    public List<EntProtoId> UnlockedActions = [];
 
     [DataField]
     public int Currency; // needed becasue polymorph & store shitcode
@@ -40,26 +40,26 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
     public ProtoId<PolymorphPrototype>? CurrentMutation;
 
     [DataField]
-    public HashSet<ProtoId<StoreCategoryPrototype>> StoreCategories = new();
+    public HashSet<ProtoId<StoreCategoryPrototype>> StoreCategories = [];
     #region transform
 
     /// <summary>
     /// Transforms the werewolf automatically after the timer passes
     /// </summary>
     [DataField]
-    public float TransfurmCycle = 600;
+    public TimeSpan TransfurmCycle = TimeSpan.FromSeconds(600);
 
     /// <summary>
     /// After what time should the warning popup appear
     /// </summary>
     [DataField]
-    public float TransfurmWarnDelay = 540f;
+    public TimeSpan TransfurmWarnDelay = TimeSpan.FromSeconds(540);
 
     /// <summary>
     /// After what amount of time can the entity transfurm on command again
     /// </summary>
     [DataField]
-    public float TransfurmOnCommandDelay = 120f;
+    public TimeSpan TransfurmOnCommandDelay = TimeSpan.FromSeconds(120);
 
     /// <summary>
     /// Can you transfurm right now
@@ -80,9 +80,9 @@ public sealed partial class WerewolfMindComponent : Component // todo werewolf d
     public LocId TransfurmReadyPopup = "werewolf-transfurm-ready";
 
     [ViewVariables]
-    public float Accumulator = 0f;
+    public TimeSpan Accumulator = TimeSpan.Zero;
 
     [ViewVariables] // supriisngly used for marked guys
-    public float AccumulatorPopup = 0f;
+    public TimeSpan AccumulatorPopup = TimeSpan.Zero;
     #endregion
 }

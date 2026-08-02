@@ -6,15 +6,15 @@ namespace Content.Inky.Shared.Werewolf.Components;
 [RegisterComponent]
 public sealed partial class WerewolfRuleComponent : Component
 {
-    public readonly List<EntityUid> WerewolfMinds = new();
+    public readonly List<EntityUid> WerewolfMinds = [];
 
-    public readonly List<ProtoId<StoreCategoryPrototype>> StoreCategories = new()
-    {
+    public readonly List<ProtoId<StoreCategoryPrototype>> StoreCategories =
+    [
         "WerewolfChoose",
         "WerewolfDire",
         "WerewolfWhite",
         "WerewolfBlack"
-    };
+    ];
 
     public readonly ProtoId<StoreCategoryPrototype> StoreSide = new("WerewolfSide");
     public readonly ProtoId<StoreCategoryPrototype> StoreApprentice = new("WerewolfBlackApprentice"); // goida

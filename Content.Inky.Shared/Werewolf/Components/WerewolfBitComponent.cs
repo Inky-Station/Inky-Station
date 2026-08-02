@@ -15,13 +15,12 @@ public sealed partial class WerewolfBitComponent : Component // todo loc strings
     [DataField]
     public bool Infected;
 
-    [ViewVariables]
-    public float Accumulator = 0f;
-
     /// <summary>
     /// After what time should the entity become a werewolf if bitten
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
-    public float LycTimer = 30f; // todo 600
+    public TimeSpan LycTimer = TimeSpan.FromSeconds(30); // todo 600
+
+    [ViewVariables]
+    public TimeSpan Accumulator = TimeSpan.Zero;
 }

@@ -25,44 +25,43 @@ public sealed partial class WerewolfAbilitiesSystem
             ("name", MetaData(uid).EntityName),
             ("location", locationName));
 
-        _chat.TrySendInGameICMessage(uid, $"+l {message}", InGameICChatType.CollectiveMind, ChatTransmitRange.Normal); // holy goida IF ANYONE CHANGES LUNARMIND KEY LETTER CHANGE IT HERE TOO
+        if (_proto.Resolve(comp.CollectiveMindChannel, out var collectiveMind))
+            _chat.TrySendInGameICMessage(uid, $"{SharedChatSystem.CollectiveMindPrefix}{collectiveMind.KeyCode} {message}", InGameICChatType.CollectiveMind, ChatTransmitRange.Normal); // holy goida
+
         args.Handled = true;
     }
 
     private void OnCall(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBlackCallEvent args)
     {
         if (!_mind.TryGetMind(uid, out var leaderMind, out _)
-            || !TryComp<WerewolfMindComponent>(leaderMind, out var leaderMindTakeTwo))
+            || !TryComp<WerewolfMindComponent>(leaderMind, out var leaderWerewolfMind))
             return;
 
-        var alphas = new List<(EntityUid Mind, EntityUid Body)> { (leaderMind, uid) };
-        var alphasMind = new HashSet<EntityUid> { leaderMind }; // has to be hashset bcuz bullshit
-
-        foreach (var alphaMind in leaderMindTakeTwo.PackMembers)
+        var members = new List<(EntityUid Mind, EntityUid Body)> { (leaderMind, uid) };
+        // var memberMinds = new List<EntityUid> { leaderMind };
+        foreach (var memberMind in leaderWerewolfMind.PackMembers)
         {
-            if (!alphasMind.Add(alphaMind)
-                || !TryComp<MindComponent>(alphaMind, out var alphaMindIdk)
-                || alphaMindIdk.OwnedEntity is not { } alphaBody
-                || !HasComp<WerewolfAbilitiesComponent>(alphaBody))
+            if (  // memberMinds.Contains(memberMind) ||
+                !TryComp<MindComponent>(memberMind, out var memberWerewolfMind)
+                || memberWerewolfMind.OwnedEntity is not { } memberBody
+                || !HasComp<WerewolfAbilitiesComponent>(memberBody))
                 continue;
 
-            alphas.Add((alphaMind, alphaBody));
+            ////memberMinds.Add(memberMind);
+            members.Add((memberMind, memberBody));
         }
 
-        // The original alpha needs to have 4 more alphas that hit the gym EVERY DAY to be on that grindset to do the call
-        if (alphas.Count < 5)
+        if (members.Count < args.MinimumWolvesToTransform)
         {
             _popup.PopupClient(Loc.GetString("werewolf-black-call-fail-amount"), uid);
             return;
         }
 
-        foreach (var (wolfMindId, wolfBody) in alphas)
+        foreach (var (wolfMindId, wolfBody) in members)
         {
             if (TryComp<WerewolfAbilitiesComponent>(wolfBody, out var wolfAbilities)
                 && !wolfAbilities.Transfurmed)
-            {
                 RaiseLocalEvent(wolfBody, new TransfurmEvent(true));
-            }
 
             if (!TryComp<WerewolfMindComponent>(wolfMindId, out var wolfMind)
                 || !TryComp<MindComponent>(wolfMindId, out var mind)
@@ -71,13 +70,13 @@ public sealed partial class WerewolfAbilitiesSystem
 
             wolfMind.BlockTransfurm = true;
 
-            if (!TryComp<MobStateComponent>(transformedBody, out _)
+            if (!HasComp<MobStateComponent>(transformedBody)
                 || !TryComp<MobThresholdsComponent>(transformedBody, out var thresholds))
                 continue;
 
             foreach (var (health, state) in thresholds.Thresholds.ToArray())
             {
-                _mobThresholds.SetMobStateThreshold(transformedBody, health * 2, state, thresholds);
+                _mobThresholds.SetMobStateThreshold(transformedBody, health * args.HealthModifier, state, thresholds);
             }
         }
 
@@ -85,7 +84,9 @@ public sealed partial class WerewolfAbilitiesSystem
             _stationAlerts.SetLevel(station, "violet", true, true, true); // on a side note why the fuck is this shit not capitalised
 
         var message = Loc.GetString("werewolf-black-call-success");
-        _chat.TrySendInGameICMessage(uid, $"+l {message}", InGameICChatType.CollectiveMind, ChatTransmitRange.Normal);
+        if (_proto.Resolve(comp.CollectiveMindChannel, out var collectiveMind))
+            _chat.TrySendInGameICMessage(uid, $"{SharedChatSystem.CollectiveMindPrefix}{collectiveMind.KeyCode} {message}", InGameICChatType.CollectiveMind, ChatTransmitRange.Normal);
+
         args.Handled = true;
         RaiseLocalEvent(uid, new WerewolfActionRemoveEvent(args.Action)); // kill yourself
     }

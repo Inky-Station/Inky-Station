@@ -11,7 +11,7 @@ namespace Content.Inky.Shared.Werewolf.Systems;
 
 public sealed partial class SharedWerewolfAbilitiesSystem
 {
-    private const float MarkNotificationInterval = 15f; // in seconds todo werewolf unhardcode?
+    private readonly TimeSpan _markNotificationInterval = TimeSpan.FromSeconds(15); // in seconds todo werewolf unhardcode?
     public void InitializeWhite()
     {
         SubscribeLocalEvent<WerewolfAbilitiesComponent, TransfurmWhiteEvent>(TryTransfurmWhite);
@@ -32,13 +32,13 @@ public sealed partial class SharedWerewolfAbilitiesSystem
             return;
         }
 
-        var victimMindUid = Calc(uid, comp, args);
+        var victimMindUid = FindFurryErpPartner(uid, comp, args);
 
         RaiseLocalEvent(uid, new TransfurmEvent());
 
         if (mindComp.CurrentMarkedVictim != null)
         {
-            var oldVictimEntity = GetMindShit(mindComp.CurrentMarkedVictim.Value);
+            var oldVictimEntity = GetMindContainer(mindComp.CurrentMarkedVictim.Value);
             if (oldVictimEntity != null)
                 RemComp<WerewolfMarkedComponent>(oldVictimEntity.Value);
             mindComp.CurrentMarkedVictim = null;
@@ -59,7 +59,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
     /// <summary>
     /// Calculates the closest werewolf to the hunter wolf (the mind)
     /// </summary>
-    private EntityUid? Calc(EntityUid uid, WerewolfAbilitiesComponent comp, TransfurmWhiteEvent args)
+    private EntityUid? FindFurryErpPartner(EntityUid uid, WerewolfAbilitiesComponent comp, TransfurmWhiteEvent args) // FUCKING KILL YOURSELF
     {
         var entMapCoords = _transform.GetMapCoordinates(uid);
         EntityUid? closestUid = null;
@@ -73,10 +73,9 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         while (eqe.MoveNext(out var otherUid, out var mindContainer))
         {
             if (mindContainer.Mind is not { } mind
-                || !TryComp<WerewolfMindComponent>(mind, out var otherMind))
-                continue;
-
-            if (otherUid == uid || otherMind.MarkImmune)
+                || !TryComp<WerewolfMindComponent>(mind, out var otherMind)
+                || otherUid == uid
+                || otherMind.MarkImmune)
                 continue;
 
             var otherMapCoords = _transform.GetMapCoordinates(otherUid);
@@ -110,8 +109,9 @@ public sealed partial class SharedWerewolfAbilitiesSystem
     public void UpdateMark(float frameTime) // its not frameTime but who cares lmao
     {
         var eqe = EntityQueryEnumerator<WerewolfAbilitiesComponent>();
-        while (eqe.MoveNext(out var uid, out var comp))
+        while (eqe.MoveNext(out var ent))
         {
+            var uid = ent.Owner;
             if (!_mind.TryGetMind(uid, out var mindId, out _)
                 || !TryComp<WerewolfMindComponent>(mindId, out var mindComp))
                 continue;
@@ -119,7 +119,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
             if (mindComp.CurrentMarkedVictim == null)
                 continue;
 
-            var victimEnt = GetMindShit(mindComp.CurrentMarkedVictim.Value);
+            var victimEnt = GetMindContainer(mindComp.CurrentMarkedVictim.Value);
             if (victimEnt == null)
             {
                 mindComp.CurrentMarkedVictim = null;
@@ -142,50 +142,47 @@ public sealed partial class SharedWerewolfAbilitiesSystem
                 continue;
             }
 
-            mindComp.AccumulatorPopup -= frameTime;
-            if (mindComp.AccumulatorPopup > 0)
+            mindComp.AccumulatorPopup -= TimeSpan.FromSeconds(frameTime);
+            if (mindComp.AccumulatorPopup.Ticks > 0)
                 continue;
 
             if (victimState == null)
                 return;
-            if (mindComp.AccumulatorPopup <= 0)
+
+            mindComp.AccumulatorPopup = _markNotificationInterval;
+
+            var ourMapCoords = _transform.GetMapCoordinates(uid);
+            var targetMapCoords = _transform.GetMapCoordinates(victim);
+
+            string loc;
+            var state = victimState.CurrentState;
+            var locstate = state.ToString().ToLower();
+            if (_map.IsPaused(targetMapCoords.MapId))
+                loc = Loc.GetString("heretic-livingheart-unknown"); // todo werewolf
+            else if (targetMapCoords.MapId != ourMapCoords.MapId)
+                loc = Loc.GetString("heretic-livingheart-faraway", ("state", locstate));
+            else
             {
-                mindComp.AccumulatorPopup = MarkNotificationInterval;
-                string loc;
+                var targetStation = _station.GetOwningStation(victim);
+                var ownStation = _station.GetOwningStation(uid);
 
-                var state = victimState.CurrentState;
-                var locstate = state.ToString().ToLower();
+                var isOnStation = targetStation != null && targetStation == ownStation;
 
-                var ourMapCoords = _transform.GetMapCoordinates(uid);
-                var targetMapCoords = _transform.GetMapCoordinates(victim);
+                var ang = Angle.Zero;
+                if (_map.TryFindGridAt(_transform.GetMapCoordinates(Transform(uid)), out var grid, out var _))
+                    ang = Transform(grid).LocalRotation;
 
-                if (_map.IsPaused(targetMapCoords.MapId))
-                    loc = Loc.GetString("heretic-livingheart-unknown"); // todo werewolf
-                else if (targetMapCoords.MapId != ourMapCoords.MapId)
-                    loc = Loc.GetString("heretic-livingheart-faraway", ("state", locstate));
-                else
-                {
-                    var targetStation = _station.GetOwningStation(victim);
-                    var ownStation = _station.GetOwningStation(uid);
+                var vector = targetMapCoords.Position - ourMapCoords.Position;
+                var direction = (vector.ToWorldAngle() - ang).GetDir();
 
-                    var isOnStation = targetStation != null && targetStation == ownStation;
+                var locdir = ContentLocalizationManager.FormatDirection(direction).ToLower();
 
-                    var ang = Angle.Zero;
-                    if (_map.TryFindGridAt(_transform.GetMapCoordinates(Transform(uid)), out var grid, out var _))
-                        ang = Transform(grid).LocalRotation;
-
-                    var vector = targetMapCoords.Position - ourMapCoords.Position;
-                    var direction = (vector.ToWorldAngle() - ang).GetDir();
-
-                    var locdir = ContentLocalizationManager.FormatDirection(direction).ToLower();
-
-                    loc = Loc.GetString(isOnStation ? "heretic-livingheart-onstation" : "heretic-livingheart-offstation",
-                        ("state", locstate),
-                        ("direction", locdir));
-                }
-
-                _popup.PopupEntity(loc, uid, uid, PopupType.Medium);
+                loc = Loc.GetString(isOnStation ? "heretic-livingheart-onstation" : "heretic-livingheart-offstation", // GOIDA!!!
+                    ("state", locstate),
+                    ("direction", locdir));
             }
+
+            _popup.PopupEntity(loc, uid, uid, PopupType.Medium);
         }
     }
 
@@ -194,7 +191,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         WerewolfAddCollectivemind args)
     {
         EnsureComp<CollectiveMindComponent>(uid, out var m);
-        m.Channels.Add(args.NewChannel);
+        m.Channels.Add(comp.CollectiveMindChannel);
         if (args.Popup != null)
             _popup.PopupEntity(Loc.GetString(args.Popup), uid, uid, PopupType.Medium);
     }
@@ -212,7 +209,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
     }
 
 
-    private EntityUid? GetMindShit(EntityUid targetMind)
+    private EntityUid? GetMindContainer(EntityUid targetMind)
     {
         var eqe = EntityQueryEnumerator<MindContainerComponent>();
         while (eqe.MoveNext(out var entityUid, out var mindContainer))

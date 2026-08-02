@@ -34,7 +34,7 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
 
     public readonly int StartingCurrency = 2; // to buy either regen or ambush, choose your game
 
-    [ValidatePrototypeId<EntityPrototype>] EntProtoId mindRole = "MindRoleWerewolf";
+    public readonly EntProtoId MindRole = "MindRoleWerewolf";
 
     public readonly ProtoId<EntityEffectPrototype> WerewolfSkills = "WerewolfSkills";
 
@@ -69,13 +69,13 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
         if (!_mind.TryGetMind(target, out var mindId, out var mind))
             return false;
 
-        _role.MindAddRole(mindId, mindRole.Id, mind, true);
+        _role.MindAddRole(mindId, MindRole.Id, mind, true);
 
         var briefing = Loc.GetString("werewolf-role-greeting");
         var briefingShort = Loc.GetString("werewolf-role-greeting-short");
 
-        if (_role.MindHasRole<WerewolfRuleComponent>(mindId, out var mr))
-            AddComp(mr.Value, new RoleBriefingComponent { Briefing = briefingShort }, overwrite: true);
+        if (_role.MindHasRole<WerewolfRuleComponent>(mindId, out var mindRole))
+            AddComp(mindRole.Value, new RoleBriefingComponent { Briefing = briefingShort }, overwrite: true);
 
         EnsureComp<WerewolfAbilitiesComponent>(target, out var werewolfComp);
         EnsureComp<WerewolfMindComponent>(mindId, out var werewolfMind);
@@ -105,8 +105,7 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
         store.Balance.Add(Currency, StartingCurrency);
 
         // GOIDA
-        var nv = EnsureComp<NightVisionComponent>(target);
-        nv.LightingColor = Color.FromHex("#303030");
+        EnsureComp<NightVisionComponent>(target).LightingColor = Color.FromHex("#303030");
 
         rule.WerewolfMinds.Add(mindId);
         _antag.SendBriefing(target, briefing, Color.Brown, BriefingSound);

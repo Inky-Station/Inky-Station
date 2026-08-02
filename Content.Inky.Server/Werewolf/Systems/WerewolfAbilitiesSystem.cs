@@ -75,38 +75,34 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
             return;
 
         SyncMind(uid, component, mindComp);
+        args.Handled = true; // if you add a return which shouldn't count as "handled" ADD IT BEFORE THIS
 
         if (mindComp.BlockTransfurm)
         {
             _popup.PopupEntity(Loc.GetString("werewolf-transfurm-block"), uid, uid);
-            args.Handled = true;
             return;
         }
 
         if (!args.Forced && mindComp.Accumulator < mindComp.TransfurmOnCommandDelay)
         {
-            var remainingTime = (int) MathF.Round(mindComp.TransfurmOnCommandDelay - mindComp.Accumulator);
+            var remainingTime = (mindComp.TransfurmOnCommandDelay - mindComp.Accumulator).TotalSeconds;
             _popup.PopupEntity(Loc.GetString("werewolf-transfurm-cooldown", ("remainingTime", remainingTime)), uid, uid);
-            args.Handled = true;
             return;
         }
 
+        mindComp.TransfurmReady = false;
+        component.Transfurmed = false;
+        mindComp.Accumulator = TimeSpan.Zero;
+
         if (component.Transfurmed)
         {
-            component.Transfurmed = false;
-            mindComp.TransfurmReady = false;
             _polymorph.Revert(uid);
-            args.Handled = true;
-            mindComp.Accumulator = 0f;
             return;
         }
 
         component.Transfurmed = true;
-        mindComp.TransfurmReady = false;
         _polymorph.PolymorphEntity(uid, component.CurrentMutation);
         component.Transfurmed = false; // trust this is really important, the fucking polymorph is shit!!!!
-        mindComp.Accumulator = 0f;
-        args.Handled = true;
     }
 
     private void OnPolymorphed(EntityUid uid, WerewolfAbilitiesComponent comp, PolymorphedEvent args)
@@ -133,7 +129,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
             return;
 
         WerewolfMindComponent? mindComp = null;
-        if (_mind.TryGetMind(ent, out var mindId, out _) && TryComp<WerewolfMindComponent>(mindId, out mindComp))
+        if (_mind.TryGetMind(ent, out var mindId, out _) && TryComp(mindId, out mindComp))
             SyncMind(ent, ent.Comp, mindComp);
 
         if (!TryComp<StoreComponent>(ent, out var store))
@@ -142,13 +138,10 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         // ok hear me out
         // when you do shit in the WW form that gives you points, it saves in mind and then the next time you open store it adds up
         // you HAVE to do ts because why? POLYMORPH IS FUCKING SHIT OF COURSE! ig you can store the old uid for store and shit but whatever
-        if (mindComp != null)
+        if (mindComp != null && mindComp.Currency > 0)
         {
-            if (mindComp.Currency > 0)
-            {
-                _store.TryAddCurrency(new Dictionary<string, FixedPoint2> {{ "Fury", mindComp.Currency }}, ent);
-                mindComp.Currency = 0;
-            }
+            _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "Fury", mindComp.Currency } }, ent);
+            mindComp.Currency = 0;
         }
 
         _store.ToggleUi(ent, ent, store);

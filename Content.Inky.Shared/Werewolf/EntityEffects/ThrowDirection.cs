@@ -26,7 +26,7 @@ public sealed partial class ThrowDirection : EntityEffectBase<ThrowDirection>
 
 public sealed partial class ThrowDirectionEffectSystem : EntityEffectSystem<MetaDataComponent, ThrowDirection>
 {
-    [Dependency] private ThrowingSystem _JOHNCENA = default!;
+    [Dependency] private ThrowingSystem _andHisNameIsJohnCena = default!;
     [Dependency] private PullingSystem _pulling = default!;
 
     protected override void Effect(Entity<MetaDataComponent> ent, ref EntityEffectEvent<ThrowDirection> args)
@@ -40,7 +40,7 @@ public sealed partial class ThrowDirectionEffectSystem : EntityEffectSystem<Meta
         var target = (victimPos - userPos).Normalized();
 
         var effect = args.Effect;
-        _JOHNCENA.TryThrow(ent,
+        _andHisNameIsJohnCena.TryThrow(ent,
             target,
             baseThrowSpeed: effect.Speed,
             user: args.User,

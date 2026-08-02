@@ -23,14 +23,13 @@ public sealed partial class SharedWerewolfActionSystem : EntitySystem
         var user = args.User;
         var comp = ent.Comp;
 
-        if (comp.RequireTransfurmed)
+        if (comp.RequireTransfurmed
+            && (!TryComp<WerewolfAbilitiesComponent>(user, out var wolf)
+                || !wolf.Transfurmed))
         {
-            if (!TryComp<WerewolfAbilitiesComponent>(user, out var wolf) || !wolf.Transfurmed)
-            {
-                _popup.PopupClient(Loc.GetString(comp.NotTransfurmedPopup), user, user);
-                args.Cancelled = true;
-                return;
-            }
+            _popup.PopupClient(Loc.GetString(comp.NotTransfurmedPopup), user, user);
+            args.Cancelled = true;
+            return;
         }
 
         if (comp.HungerCost > 0)
