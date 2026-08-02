@@ -214,7 +214,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
         if (args.OldActionId is { } oldActionId && _actions.TryGetActionById(mindId, oldActionId, out var oldAction))
         {
             _actions.RemoveProvidedAction(uid, mindId, oldAction.Value);
-            _actions.RemoveAction(mindId, oldAction.Value.AsNullable());
+            _actions.RemoveAction(oldAction.Value.AsType());
         }
 
         _actions.AddAction(uid, args.NewActionId, container: mindId);
