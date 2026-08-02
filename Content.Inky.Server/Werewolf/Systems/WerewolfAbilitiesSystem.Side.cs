@@ -164,7 +164,7 @@ public sealed partial class WerewolfAbilitiesSystem
             .Where(organ => !HasComp<BrainComponent>(organ.Owner))
             .ToList();
 
-        if (organs.Count < 1)
+        if (!organs.Any())
         {
             _popup.PopupEntity(Loc.GetString("werewolf-gut-no-organs-left"), user, user);
             return false;
@@ -193,7 +193,7 @@ public sealed partial class WerewolfAbilitiesSystem
             })// i have PTSD from shitmed and inkymed looking at this shit above
             .ToList();
 
-        if (limbs.Count == 0)
+        if (!limbs.Any())
             return;
 
         var picked = _gambling.Pick(limbs);

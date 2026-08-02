@@ -42,7 +42,7 @@ public sealed partial class AmputateLimbEffectSystem : EntityEffectSystem<MetaDa
             })
             .ToList();
 
-        if (limbs.Count <= 0)
+        if (!limbs.Any())
             return;
 
         var picked = _random.Pick(limbs); // in case if someone has two or more of this bodypart, remove a random one

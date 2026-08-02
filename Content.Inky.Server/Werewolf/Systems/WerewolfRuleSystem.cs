@@ -16,6 +16,7 @@ using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Inky.Server.Werewolf.Systems;
 
@@ -137,7 +138,7 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
             var name = _objectives.GetTitle((mindId, mind), Name(mind.OwnedEntity ?? mindId));
             sb.AppendLine($"{name} bit [color=red]{werewolf.BittenPeople.Count}[/color] people."); // idfc
 
-            if (werewolf.PackMembers.Count == 0)
+            if (!werewolf.PackMembers.Any())
                 continue;
 
             var pack = new List<string>();
