@@ -236,6 +236,10 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
 
     private void OnDamageChanged(Entity<BloodstreamComponent> ent, ref DamageChangedEvent args)
     {
+        // inkymed
+        RaiseLocalEvent(ent.Owner, new UpdateBloodstreamOverlayEvent());
+        // /inkymed
+
         // The incoming state from the server raises a DamageChangedEvent as well.
         // But the changes to the bloodstream have also been dirtied,
         // so we prevent applying them twice.
@@ -364,6 +368,10 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             // TODO: Use Solutions API for this when it exists
             TryRegulateBloodLevel(ent.AsNullable(), ent.Comp.BloodReferenceSolution.Volume);
         }
+
+        // inkymed
+        RaiseLocalEvent(ent.Owner, new UpdateBloodstreamOverlayEvent());
+        // /inkymed
     }
 
     private void OnMetabolismExclusion(Entity<BloodstreamComponent> ent, ref MetabolismExclusionEvent args)

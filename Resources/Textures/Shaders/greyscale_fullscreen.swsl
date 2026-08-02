@@ -1,7 +1,8 @@
 uniform sampler2D SCREEN_TEXTURE;
+uniform highp float intensity; // inky
 
 void fragment() {
     highp vec4 color = zTextureSpec(SCREEN_TEXTURE, UV);
 
-    COLOR = vec4(vec3(zGrayscale(color.rgb)), color.a);
+    COLOR = vec4(mix(color.rgb, vec3(zGrayscale(color.rgb)), intensity), color.a); // inky - added intensity
 }
