@@ -13,13 +13,13 @@ public sealed partial class WerewolfAbilitiesComponent : Component
     [DataField] public SoundSpecifier DistantSound = new SoundPathSpecifier("/Audio/_Inky/Antag/Werewolf/howl.ogg"); // todo werewolf
     [DataField] public SoundSpecifier RipSound = new SoundPathSpecifier("/Audio/Effects/gib1.ogg");
 
-    public readonly List<EntProtoId> WerewolfActions =
-    [
+    public readonly List<EntProtoId> WerewolfActions = new()
+    {
         "ActionWerewolfTransfurm",
         "ActionWerewolfOpenMutationStore",
         "ActionWerewolfAbsorb",
         "ActionWerewolfHowl"
-    ];
+    };
 
     [DataField, AutoNetworkedField]
     public bool Transfurmed;
