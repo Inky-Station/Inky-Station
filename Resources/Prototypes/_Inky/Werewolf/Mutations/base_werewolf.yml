@@ -102,7 +102,7 @@
     - Cold
     - Caustic
   - type: Shoving
-    defaultStaminaDamage: 25
+    staminaDamage: 25
   - type: MeleeWeapon
     attackRate: 2 # ma shitcod
     hidden: true
