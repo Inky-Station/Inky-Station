@@ -20,6 +20,9 @@ public sealed partial class BrainSystem
         Func<BrainComponent, ProtoId<AlertPrototype>?> getAlert, // i am so fucking scared of words
         bool enabled)
     {
+        if (TryComp<BodyComponent>(uid, out var bodycomp))
+            DoBody(uid, bodycomp);
+
         if (!_organQ.TryComp(uid, out var organ)
             || organ.Body is not { } body
             || !_brainQ.TryComp(uid, out var brain)
@@ -30,5 +33,13 @@ public sealed partial class BrainSystem
             _alerts.ShowAlert(body, alert);
         else
             _alerts.ClearAlert(body, alert);
+    }
+
+    private void DoBody(EntityUid uid, BodyComponent body)
+    {
+        foreach (var brain in _body.GetOrgans<BrainComponent>((uid, body)))
+        {
+            EnsureComp<AutismComponent>(brain.Owner); // idfk about lobotomy since its broken, todo inky fixme
+        }
     }
 }
