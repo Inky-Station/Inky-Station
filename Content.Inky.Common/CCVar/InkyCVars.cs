@@ -17,6 +17,9 @@ public sealed partial class InkyCVars
     public static readonly CVarDef<int> MaxSpaceWhales =
         CVarDef.Create("inky.max_space_whales", 1, CVar.SERVER);
 
+    public static readonly CVarDef<bool> ViewConesEnabled =
+        CVarDef.Create("trauma.viewcones_enabled", false, CVar.SERVER | CVar.REPLICATED);
+
     #region currency
 
     public static readonly CVarDef<int> CurrencyServerMultiplier =
