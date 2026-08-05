@@ -63,10 +63,15 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
     private void UpdateHeart(EntityUid uid, HeartComponent heart, OrganComponent organ)
     {
+<<<<<<< HEAD
         var maybeBody = organ.Body;
         var beyondCritical = Math.Max(0, heart.CurrentRate / heart.CriticalRate - 1);
         if (maybeBody is null // the heart is outside a body
             || !TryComp<MobStateComponent>(maybeBody, out var mobState) // or the body is not a mob
+=======
+        if ((organ.Body is not { } body // the heart is outside a body
+            || !TryComp<MobStateComponent>(body, out var mobState) // or the body is not a mob
+>>>>>>> ade4f6b55113a5ce521e517621f02ae09db70f4e
             || mobState.CurrentState == MobState.Dead // or the body is dead
             || beyondCritical > 0)
         {
