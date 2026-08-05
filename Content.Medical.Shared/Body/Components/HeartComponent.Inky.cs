@@ -41,6 +41,9 @@ public sealed partial class HeartComponent
     [ViewVariables, AutoNetworkedField]
     public float CurrentRate;
 
+    [ViewVariables]
+    public float CriticalBpm; //idfk
+
     [DataField]
     public ProtoId<AlertPrototype>? FibrillationAlert = "Fibrillations";
 
