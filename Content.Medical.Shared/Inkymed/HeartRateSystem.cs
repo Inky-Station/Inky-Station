@@ -63,17 +63,6 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
     private void UpdateHeart(EntityUid uid, HeartComponent heart, OrganComponent organ)
     {
-        var crit = Math.Max(0, (int)MathF.Floor(heart.CurrentRate - heart.CriticalRate));
-        if (crit > heart.CriticalBpm)
-        { // if the heart is fucked up, the flatline chance grows by a %, so if the CriticalRate is 290, then it would stop 100% of the time at 389 (?)
-            heart.CriticalStopChance = Math.Min(1f, heart.CriticalStopChance + (crit - heart.CriticalBpm) * 0.01f);
-            heart.CriticalBpm = crit;
-            Dirty(uid, heart);
-        }
-        var newstate = GetState(heart);
-        if (newstate == HeartState.Stopped)
-            heart.CriticalStopChance = 0.1f; // whatever man
-
         if ((organ.Body is not { } body // the heart is outside a body
             || !TryComp<MobStateComponent>(body, out var mobState) // or the body is not a mob
             || mobState.CurrentState == MobState.Dead // or the body is dead
