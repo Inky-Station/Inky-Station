@@ -2,6 +2,8 @@ using Content.Inky.Common.Medical;
 using Content.Medical.Shared.Body;
 using Content.Shared.Alert;
 using Content.Shared.Body;
+using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
@@ -16,6 +18,8 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private BodySystem _body = default!;
     [Dependency] private IRobustRandom _gambling = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private EntityQuery<BloodstreamComponent> _blood = default!;
 
     private static readonly float HeartStop = 0f;
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
@@ -66,6 +70,9 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         && _gambling.Prob(heart.CriticalStopChance)) // and also you're unlucky enough
             SetRate(uid, heart, HeartStop, false);
 
+        if (organ.Body is { } body2)
+            DoBloodVolume(uid, heart, body2);
+
         // fibrillating drifts AWAY from the normal heart rate (towards min/max)
         // being stable drifts TOWARDS the normal heart rate
         var cur = heart.CurrentRate;
@@ -87,6 +94,24 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
                 args.Found = true;
                 return;
             }
+    }
+
+    private void DoBloodVolume(EntityUid uid, HeartComponent heart, EntityUid body)
+    {
+        if (!_blood.TryComp(body, out var blood)
+            || !_solutionContainer.ResolveSolution(body, blood.BloodSolutionName, ref blood.BloodSolution, out var solution)
+            || blood.BloodReferenceSolution.Volume <= 0
+            || heart.CurrentRate <= HeartStop)
+            return;
+
+        // if the bs (bloodstream) has more blood that its max it shouldnt slow down the heart todo inkymed hypervolemia?
+        var bsVolume = Math.Min(1f, (float)(solution.Volume / blood.BloodReferenceSolution.Volume));
+        if (bsVolume <= 0f)
+            return;
+
+        var newRate = heart.NormalRate / bsVolume; // i.e. 50% of bs volume = +50% to the bpm
+        if (newRate > heart.CurrentRate)
+            SetRate(uid, heart, newRate, false);
     }
 
     #region api
