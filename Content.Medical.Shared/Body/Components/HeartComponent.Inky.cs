@@ -21,7 +21,7 @@ public sealed partial class HeartComponent
     /// After MaxHeartRate is reached, every second the heart has an X% chance of stopping
     /// </summary>
     [DataField]
-    public float CriticalStopChance = 0.03f;
+    public float CriticalStopChance = 0.1f;
 
     /// <summary>
     /// extra factor for the parabolic formula
