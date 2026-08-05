@@ -2,6 +2,9 @@ using Content.Inky.Common.Medical;
 using Content.Medical.Shared.Body;
 using Content.Shared.Alert;
 using Content.Shared.Body;
+using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
@@ -16,8 +19,10 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private BodySystem _body = default!;
     [Dependency] private IRobustRandom _gambling = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
 
     private static readonly float HeartStop = 0f;
+    private static readonly FixedPoint2 LethalBloodVolume = FixedPoint2.New(360);
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
     private TimeSpan _nextUpdate;
 
@@ -59,15 +64,16 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
 
     private void UpdateHeart(EntityUid uid, HeartComponent heart, OrganComponent organ)
     {
-        if ((organ.Body is not { } body // the heart is outside a body
-            || !TryComp<MobStateComponent>(body, out var mobState) // or the body is not a mob
-            || mobState.CurrentState == MobState.Dead // or the body is dead
-            || heart.CurrentRate > heart.CriticalRate) // or the heart is beyond critical
-        && _gambling.Prob(heart.CriticalStopChance)) // and also you're unlucky enough
+        if ((organ.Body is not { } body
+            || !TryComp<MobStateComponent>(body, out var mobState)
+            || mobState.CurrentState == MobState.Dead
+            || heart.CurrentRate > heart.CriticalRate)
+        && _gambling.Prob(heart.CriticalStopChance))
             SetRate(uid, heart, HeartStop, false);
 
-        // fibrillating drifts AWAY from the normal heart rate (towards min/max)
-        // being stable drifts TOWARDS the normal heart rate
+        if (organ.Body is { } bodyEnt)
+            ApplyBloodVolumeEffects(uid, heart, bodyEnt);
+
         var cur = heart.CurrentRate;
         var (min, max) = heart.FibrillationCaps;
         var delta = heart.RateUpdateModifier * (float) Math.Cbrt(
@@ -75,6 +81,31 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         );
 
         UpdateRate(uid, heart, delta, false);
+    }
+
+    private void ApplyBloodVolumeEffects(EntityUid uid, HeartComponent heart, EntityUid body)
+    {
+        if (!TryComp<BloodstreamComponent>(body, out var bloodstream))
+            return;
+
+        var current = GetBloodVolume(body);
+
+        if (current <= LethalBloodVolume)
+        {
+            SetRate(uid, heart, HeartStop, false);
+            return;
+        }
+
+        var max = bloodstream.BloodReferenceSolution.Volume;
+        if (max <= FixedPoint2.Zero)
+            return;
+
+        var missingRatio = 1f - current.Float() / max.Float();
+        if (missingRatio <= 0f)
+            return;
+
+        heart.CurrentRate += heart.NormalRate * missingRatio * heart.RateUpdateModifier;
+        Dirty(uid, heart);
     }
 
     // goida idk
@@ -100,21 +131,19 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
         if (oldState == HeartState.Stopped && !canRestart)
             return;
 
-        // being at min or beyond just stops the heart
         heart.CurrentRate = Math.Max(rate, HeartStop);
 
         var newState = GetState(heart);
         Dirty(uid, heart);
 
-        if (oldState == newState // nothing changed
-            || !TryComp<OrganComponent>(uid, out var organ) // or the heart is not an organ
-            || organ.Body is not { } body) // or it is outside of body
+        if (oldState == newState
+            || !TryComp<OrganComponent>(uid, out var organ)
+            || organ.Body is not { } body)
             return;
 
         var ev = new HeartStateChangedEvent(oldState, newState);
         RaiseLocalEvent(body, ref ev);
 
-        // update alerts
         if (heart.FibrillationAlert is { } fibAlert)
         {
             if (newState == HeartState.Fibrillating)
@@ -161,6 +190,20 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
             return HeartState.Fibrillating;
 
         return HeartState.Stable;
+    }
+
+    public FixedPoint2 GetBloodVolume(EntityUid uid)
+    {
+        if (!TryComp<BloodstreamComponent>(uid, out var bloodstream))
+            return FixedPoint2.Zero;
+
+        if (bloodstream.BloodSolution is not { } bloodSolutionEntity)
+            return FixedPoint2.Zero;
+
+        if (!_solutionContainer.ResolveSolution((uid, null), bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var solution))
+            return FixedPoint2.Zero;
+
+        return solution.Volume;
     }
 
     #endregion
