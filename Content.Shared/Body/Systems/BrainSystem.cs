@@ -2,7 +2,9 @@
 using Content.Goobstation.Common.Body;
 using Content.Medical.Common.Body;
 using Content.Shared.Alert;
+using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.Body;
+using Content.Shared.EntityConditions;
 using Robust.Shared.Timing;
 // </Trauma>
 using Content.Shared.Body.Components;
@@ -24,6 +26,8 @@ public sealed partial class BrainSystem : EntitySystem
 
     // inkymed
     [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private SharedAtmosphereSystem _ilya = default!;
+    [Dependency] private SharedEntityConditionsSystem _entcond = default!;
 
     [Dependency] private EntityQuery<BrainComponent> _brainQ = default!;
     [Dependency] private EntityQuery<OrganComponent> _organQ = default!;

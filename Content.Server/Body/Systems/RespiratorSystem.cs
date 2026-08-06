@@ -11,6 +11,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Components;
 using Content.Server.Chat.Systems;
+using Content.Shared._Shitcod;
 using Content.Shared.Body.Systems;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
@@ -408,6 +409,11 @@ public sealed partial class RespiratorSystem : EntitySystem
 
         _atmosSys.Merge(ent.Comp.Air, args.Args.Gas);
         _lungSystem.GasToReagent(ent, ent);
+
+        // inkymed
+        var ev = new SaturateBrainEvent(args.Args.Gas, ent.Owner);
+        RaiseLocalEvent(args.Body, ref ev);
+        // /inkymed
 
         args.Args = args.Args with
         {
