@@ -1,3 +1,4 @@
+using Content.Inky.Common.CCVar;
 using Content.Inky.Common.Medical;
 using Content.Shared._Shitcod;
 using Content.Shared.Alert;
@@ -9,6 +10,7 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityConditions;
 using Content.Shared.EntityEffects.Effects.Body;
 using Content.Shared.Metabolism;
+using Content.Shared.Rejuvenate;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Body.Systems;
@@ -18,10 +20,12 @@ public sealed partial class BrainSystem
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(4); // full cycle of inhaling/exhaling is 4 seconds so...
     private static readonly ProtoId<MetabolismStagePrototype> RespirationStage = new("Respiration"); // no fucking idea what this is
     private TimeSpan _nextUpdate;
+    private bool _spo2Enabled;
 
     private void InitializeInky()
     {
         _nextUpdate = _timing.CurTime + UpdateInterval;
+        _cfg.OnValueChanged(InkyCVars.ComplexRespiratorEnabled, enabled => _spo2Enabled = enabled, true);
         SubscribeLocalEvent<AutismComponent, MapInitEvent>((ent, ref args) => UpdateBrainAlert(ent.Owner, brain => brain.AutismAlert, true));
         SubscribeLocalEvent<AutismComponent, ComponentShutdown>((ent, ref args) => UpdateBrainAlert(ent.Owner, brain => brain.AutismAlert, false));
 
@@ -30,11 +34,20 @@ public sealed partial class BrainSystem
 
         SubscribeLocalEvent<BodyComponent, SaturateBrainEvent>(_body.RelayEvent);
         SubscribeLocalEvent<BrainComponent, BodyRelayedEvent<SaturateBrainEvent>>(OnSaturateBrain);
+        SubscribeLocalEvent<BrainComponent, RejuvenateEvent>(OnRejuv);
+    }
+
+    private void OnRejuv(Entity<BrainComponent> ent, ref RejuvenateEvent ev)
+    {
+        ent.Comp.AirSaturation = 1f;
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        if (!_spo2Enabled)
+            return;
 
         if (_timing.CurTime < _nextUpdate)
             return;
@@ -46,15 +59,27 @@ public sealed partial class BrainSystem
         {
             brain.AirSaturation = Math.Clamp(brain.AirSaturation - brain.AirConsumption, 0f, 1f);
             Dirty(uid, brain);
+
+            var newLvl = GetOxygenLevel(brain.AirSaturation);
+            if (newLvl == brain.OxygenLevel)
+                continue;
+
+            var oldLvl = brain.OxygenLevel;
+            brain.OxygenLevel = newLvl;
+            Dirty(uid, brain);
+
+            var ev = new BrainOxygenLevelChangedEvent(uid, brain, oldLvl, newLvl);
+            RaiseLocalEvent(uid, ref ev);
         }
     }
 
     private void OnSaturateBrain(Entity<BrainComponent> ent, ref BodyRelayedEvent<SaturateBrainEvent> args)
     {
-        if (!TryComp<MetabolizerComponent>(args.Args.Lung, out var metabolizer))
+        if (!TryComp<MetabolizerComponent>(args.Args.Lung, out var metabolizer)
+            || !TryComp<LungComponent>(args.Args.Lung, out var lung)) // ok what the hell bro
             return;
 
-        var saturation = GetSaturation(args.Args.Gas, (args.Args.Lung, metabolizer)) * ent.Comp.AirSaturationGain;
+        var saturation = GetSaturation(args.Args.Gas, (args.Args.Lung, metabolizer)) * lung.AirSaturationGain;
         if (saturation == 0f)
             return;
 
@@ -67,8 +92,8 @@ public sealed partial class BrainSystem
         var saturation = 0f;
         foreach (var gasId in Enum.GetValues<Gas>()) // atmos is so scary
         {
-            var moles = gas[(int) gasId];
-            if (moles <= 0f)
+            var moths = gas[(int) gasId];
+            if (moths <= 0f)
                 continue;
 
             var atmosreagent = _ilya.GasReagents[(int) gasId];
@@ -84,7 +109,7 @@ public sealed partial class BrainSystem
             if (reagent.Metabolisms.Metabolisms.TryGetValue(RespirationStage, out var entry) != true)
                 continue;
 
-            var ammount = MathF.Min(moles * Atmospherics.BreathMolesToReagentMultiplier, 15f);
+            var ammount = MathF.Min(moths * Atmospherics.BreathMolesToReagentMultiplier, 15f);
 
             // ok so, metabolizer bullshit
             // due to gasses being reagent-bs^2, the reagents have oxygenate property (aka nitrogen)
@@ -100,6 +125,18 @@ public sealed partial class BrainSystem
         }
 
         return saturation;
+    }
+
+    private static BrainOxygen GetOxygenLevel(float saturation) // maybe its better to put it inside braincomp but whatever man
+    {
+        return saturation switch
+        {
+            > 0.9f => BrainOxygen.Stable,
+            > 0.65f => BrainOxygen.Unstable,
+            > 0.45f => BrainOxygen.Dangerous,
+            > 0f => BrainOxygen.Critical,
+            _ => BrainOxygen.Fatal,
+        };
     }
 
     # region statuses

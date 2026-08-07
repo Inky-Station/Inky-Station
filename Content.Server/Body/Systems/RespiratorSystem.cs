@@ -2,6 +2,7 @@
 using Content.Medical.Common.Body;
 using Content.Medical.Common.Damage;
 using Content.Medical.Common.Targeting;
+using Content.Inky.Common.CCVar;
 using Content.Goobstation.Common.Body.Components;
 using Content.Trauma.Common.MartialArts;
 using Content.Trauma.Common.Body;
@@ -34,6 +35,7 @@ using Content.Shared.Mobs.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Robust.Shared.Configuration;
 
 namespace Content.Server.Body.Systems;
 
@@ -51,12 +53,20 @@ public sealed partial class RespiratorSystem : EntitySystem
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedEntityConditionsSystem _entityConditions = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    // inkymed
+    [Dependency] private IConfigurationManager _cfg = default!;
+    private bool _complexRespiratorEnabled;
+    // /inkymed
 
     private static readonly ProtoId<MetabolismStagePrototype> RespirationStage = new("Respiration");
 
     public override void Initialize()
     {
         base.Initialize();
+
+        // inkymed
+        _cfg.OnValueChanged(InkyCVars.ComplexRespiratorEnabled, enabled => _complexRespiratorEnabled = enabled, true);
+        // /inkymed
 
         // We want to process lung reagents before we inhale new reagents.
         UpdatesAfter.Add(typeof(MetabolizerSystem));
@@ -127,6 +137,11 @@ public sealed partial class RespiratorSystem : EntitySystem
                 }
             }
 
+            // inkymed
+            if (_complexRespiratorEnabled && _mobState.IsHardCrit(uid))
+                TryGasp((uid, respirator));
+            // /inkymed
+
             if (!CanBreathe(uid, respirator)) // Goobstation edit
             {
                 var ev = new SuffocationBeforeEvent();
@@ -134,16 +149,12 @@ public sealed partial class RespiratorSystem : EntitySystem
                 if (ev.Cancelled)
                     continue;
 
-                if (_gameTiming.CurTime >= respirator.LastGaspEmoteTime + respirator.GaspEmoteCooldown)
-                {
-                    respirator.LastGaspEmoteTime = _gameTiming.CurTime;
-                    _chat.TryEmoteWithChat(uid,
-                        respirator.GaspEmote,
-                        ChatTransmitRange.HideChat,
-                        ignoreActionBlocker: true);
-                }
+                // inkymed
+                if (!_complexRespiratorEnabled)
+                    TryGasp((uid, respirator)); // UPSTREAM NOTICE if anyone changes shit here in upstream, change TryGasp!!!!
+                // /inkymed
 
-                TakeSuffocationDamage((uid, respirator));
+                TakeSuffocationDamage((uid, respirator) /* inkymed */, (uid, body) /* /inkymed */);
                 respirator.SuffocationCycles += 1;
                 continue;
             }
@@ -180,7 +191,14 @@ public sealed partial class RespiratorSystem : EntitySystem
         RaiseLocalEvent(entity, ref inhaleEv);
 
         if (inhaleEv.Handled && inhaleEv.Succeeded)
+        {
+            // inkymed
+            if (_complexRespiratorEnabled && gas.TotalMoles >= Atmospherics.OneAtmosphere * volumeEv.Volume / (Atmospherics.R * gas.Temperature)) // kill yourself, i tried to do something here but it just doesnt work and i dont know how to make it work todo inkymed fixme ffffriends!
+                TryGasp((entity.Owner, entity.Comp)); // aka it should gasp only if theres not enough gas VOLUME you inhaled, couldnt get it done
+            // /inkymed
+
             return;
+        }
 
         // If nothing could inhale the gas give it back.
         _atmosSys.Merge(ev.Gas, gas);
@@ -350,13 +368,18 @@ public sealed partial class RespiratorSystem : EntitySystem
         return saturation;
     }
 
-    private void TakeSuffocationDamage(Entity<RespiratorComponent> ent)
+    private void TakeSuffocationDamage(Entity<RespiratorComponent> ent, Entity<BodyComponent> body) // inkymed
     {
         if (ent.Comp.SuffocationCycles == 2)
             _adminLogger.Add(LogType.Asphyxiation, $"{ToPrettyString(ent):entity} started suffocating");
 
-        _damageableSys.ChangeDamage(ent.Owner, HasComp<DebrainedComponent>(ent) ? ent.Comp.Damage * 4.5f : ent.Comp.Damage,
-            targetPart: TargetBodyPart.Vital, interruptsDoAfters: false, ignoreResistances: true); // Trauma
+        // inkymed
+        if (!_complexRespiratorEnabled || _body.GetOrgans<BrainComponent>((ent.Owner, body)).Count == 0) // brain does suffocating on its own so erm
+        {
+            _damageableSys.ChangeDamage(ent.Owner, HasComp<DebrainedComponent>(ent) ? ent.Comp.Damage * 4.5f : ent.Comp.Damage,
+                targetPart: TargetBodyPart.Vital, interruptsDoAfters: false, ignoreResistances: true); // Trauma
+        }
+        // /inkymed
 
         if (ent.Comp.SuffocationCycles < ent.Comp.SuffocationCycleThreshold)
             return;
@@ -364,6 +387,21 @@ public sealed partial class RespiratorSystem : EntitySystem
         var ev = new SuffocationEvent();
         RaiseLocalEvent(ent, ref ev);
     }
+
+    // inkymed
+    private void TryGasp(Entity<RespiratorComponent> ent)
+    {
+        if (_gameTiming.CurTime < ent.Comp.LastGaspEmoteTime + ent.Comp.GaspEmoteCooldown)
+            return;
+
+        ent.Comp.LastGaspEmoteTime = _gameTiming.CurTime;
+        _chat.TryEmoteWithChat(
+            ent.Owner,
+            ent.Comp.GaspEmote,
+            ChatTransmitRange.HideChat,
+            ignoreActionBlocker: true);
+    }
+    // /inkymed
 
     private void StopSuffocation(Entity<RespiratorComponent> ent)
     {
@@ -379,6 +417,14 @@ public sealed partial class RespiratorSystem : EntitySystem
 
     private void OnSuffocation(Entity<LungComponent> ent, ref BodyRelayedEvent<SuffocationEvent> args)
     {
+        // inkymed
+        if (_body.GetOrgans<BrainComponent>((args.Body.Owner, args.Body.Comp)).Count > 0)
+        {
+            _alertsSystem.ClearAlert(args.Body.Owner, ent.Comp.Alert);
+            return;
+        }
+        // /inkymed
+
         _alertsSystem.ShowAlert(args.Body.Owner, ent.Comp.Alert);
     }
 

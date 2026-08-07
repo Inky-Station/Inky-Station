@@ -43,13 +43,17 @@ public sealed partial class BloodlossOverlaySystem : EntitySystem
             return;
         }
 
-        var damage = _damageableSystem.GetAllDamage(player);
-        if (!damage.DamageDict.TryGetValue("Bloodloss", out var bloodlossDamage))
+        var alldmg = _damageableSystem.GetAllDamage(player);
+        alldmg.DamageDict.TryGetValue("Bloodloss", out var bloodlossDamage);
+        alldmg.DamageDict.TryGetValue("Asphyxiation", out var asphyxDamage);
+
+        var damage = bloodlossDamage + asphyxDamage;
+        if (damage <= 0)
         {
             _overlay.Intensity = 0f;
             return;
         }
 
-        _overlay.Intensity = Math.Clamp(bloodlossDamage.Float() / 100f, 0f, 1f);
+        _overlay.Intensity = Math.Clamp(damage.Float() / 100f, 0f, 1f);
     }
 }

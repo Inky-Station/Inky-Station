@@ -11,9 +11,6 @@ public sealed partial class InkyCVars
     public static readonly CVarDef<float> FunProb =
         CVarDef.Create("inky.fun_value", 0.1f, CVar.SERVER); // 10%
 
-    public static readonly CVarDef<bool> ConcussionSound =
-        CVarDef.Create("inky.concussion_sound", true, CVar.CLIENTONLY | CVar.ARCHIVE);
-
     public static readonly CVarDef<int> MaxSpaceWhales =
         CVarDef.Create("inky.max_space_whales", 1, CVar.SERVER);
 
@@ -30,6 +27,16 @@ public sealed partial class InkyCVars
     /// </summary>
     public static readonly CVarDef<int> CurrencyMinPlayers =
         CVarDef.Create("inky.currency_min_players", 0, CVar.SERVERONLY);
+
+    #endregion
+
+    # region inkymed
+
+    public static readonly CVarDef<bool> ConcussionSound =
+        CVarDef.Create("inky.concussion_sound", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<bool> ComplexRespiratorEnabled =
+        CVarDef.Create("inky.med_complex_respirator_enabled", true, CVar.SERVER);
 
     #endregion
 }

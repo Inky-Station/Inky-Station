@@ -1,11 +1,13 @@
 // <Trauma>
 using Content.Goobstation.Common.Body;
+using Content.Inky.Common.CCVar;
 using Content.Medical.Common.Body;
 using Content.Shared.Alert;
 using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.Body;
 using Content.Shared.EntityConditions;
 using Robust.Shared.Timing;
+using Robust.Shared.Configuration;
 // </Trauma>
 using Content.Shared.Body.Components;
 using Content.Shared.Ghost;
@@ -28,6 +30,7 @@ public sealed partial class BrainSystem : EntitySystem
     [Dependency] private AlertsSystem _alerts = default!;
     [Dependency] private SharedAtmosphereSystem _ilya = default!;
     [Dependency] private SharedEntityConditionsSystem _entcond = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     [Dependency] private EntityQuery<BrainComponent> _brainQ = default!;
     [Dependency] private EntityQuery<OrganComponent> _organQ = default!;

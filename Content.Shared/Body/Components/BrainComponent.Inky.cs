@@ -1,5 +1,6 @@
 using Content.Shared.Alert;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Body.Components;
 
@@ -9,10 +10,10 @@ public sealed partial class BrainComponent
     public float AirSaturation = 1f;
 
     [DataField, AutoNetworkedField]
-    public float AirConsumption = 0.8f;
+    public float AirConsumption = 0.04f;
 
-    [DataField, AutoNetworkedField]
-    public float AirSaturationGain = 0.05f;
+    [ViewVariables, AutoNetworkedField]
+    public BrainOxygen OxygenLevel = BrainOxygen.Stable;
 
     [DataField]
     public ProtoId<AlertPrototype>? AutismAlert = "Autism";
@@ -21,3 +22,20 @@ public sealed partial class BrainComponent
     public ProtoId<AlertPrototype>? LobotomyAlert = "Lobotomy";
 
 }
+
+[Serializable, NetSerializable]
+public enum BrainOxygen : byte
+{
+    Stable,
+    Unstable,
+    Dangerous,
+    Critical,
+    Fatal,
+}
+
+[ByRefEvent]
+public readonly record struct BrainOxygenLevelChangedEvent(
+    EntityUid Target,
+    BrainComponent Component,
+    BrainOxygen OldLevel,
+    BrainOxygen NewLevel);
