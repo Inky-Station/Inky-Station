@@ -12,7 +12,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Medical.Shared.Inkymed.Respirator;
 
-public sealed partial class BrainRespiratorThingsThatWillTheBrainRespiratorThingDoSystem : EntitySystem
+public sealed partial class BrainRespiratorSystem : EntitySystem
 {
     private static readonly EntProtoId Effect = "StatusEffectOxygenDeprived";
     private static readonly ProtoId<DamageTypePrototype> Asphyxiation = "Asphyxiation";

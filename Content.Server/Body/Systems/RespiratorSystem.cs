@@ -138,7 +138,7 @@ public sealed partial class RespiratorSystem : EntitySystem
             }
 
             // inkymed
-            if (_complexRespiratorEnabled && _mobState.IsHardCrit(uid))
+            if (!_complexRespiratorEnabled && _mobState.IsHardCrit(uid))
                 TryGasp((uid, respirator));
             // /inkymed
 
