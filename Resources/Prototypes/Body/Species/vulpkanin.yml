@@ -176,6 +176,10 @@
         Slash: 3
   - type: Temperature
     specificHeat: 44
+  - type: TimedDespawn
+    lifetime: 2.20
+  - type: SpawnOnDespawn
+    prototype: 220Bandaid
   - type: TemperatureDamage
     heatDamageThreshold: 320
     coldDamageThreshold: 230
