@@ -126,6 +126,7 @@
   - type: BypassInteractionChecks
   - type: ExplosionResistance
     damageCoefficient: 0
+  - type: Targeting # inky
 
 - type: entity
   abstract: true
