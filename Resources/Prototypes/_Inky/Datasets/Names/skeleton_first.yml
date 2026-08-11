@@ -1,0 +1,11 @@
+- type: localizedDataset
+  id: InkyNamesSkeletonFirst
+  values:
+    prefix: names-skeleton-first-dataset-inky-
+    count: 2
+
+- type: localizedDataset
+  id: InkyNamesSkeletonLast
+  values:
+    prefix: names-skeleton-last-dataset-inky-
+    count: 1

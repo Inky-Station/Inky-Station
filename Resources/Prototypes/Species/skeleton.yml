@@ -4,8 +4,11 @@
   roundStart: false
   prototype: MobSkeletonPerson
   defaultSkinTone: "#fff9e2"
-  maleFirstNames: NamesSkeletonFirst
-  femaleFirstNames: NamesSkeletonFirst
+  # inky
+  maleFirstNames: InkyNamesSkeletonFirst
+  femaleFirstNames: InkyNamesSkeletonFirst
+  lastNames: InkyNamesSkeletonLast
+  # /inky
   dollPrototype: AppearanceSkeletonPerson
   skinColoration: TintedHues
   knowledge: Plasmaman # Trauma
