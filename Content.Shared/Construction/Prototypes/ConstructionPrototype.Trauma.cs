@@ -18,7 +18,7 @@ public sealed partial class ConstructionPrototype
     /// Knowledge masteries that are required to be able to make this craft.
     /// Mastery is from 0-5.
     /// </summary>
-    [DataField(required: true)]
+    [DataField(required: false)] // inky edit - kill skills
     public Dictionary<EntProtoId, int> Theory = new();
 
     /// <summary>
