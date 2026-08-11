@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Medical.Common.Inkymed.Events; // inkymed
 using Content.Shared.Body;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -89,16 +88,11 @@ public sealed partial class MobThresholdSystem
         if (!_bodyQuery.HasComp(ent))
             return _damageable.GetTotalDamage(ent);
 
-        // inkymed
         var result = FixedPoint2.Zero;
         foreach (var part in _body.GetVitalParts(ent))
         {
-            var ev = new MobThresholdGetWoundableIntegrityEvent();
-            RaiseLocalEvent(part, ref ev);
-            if (ev.Handled)
-                result += ev.Damage;
+            result += _damageable.GetTotalDamage(part);
         }
-        // /inkymed
 
         return result;
     }

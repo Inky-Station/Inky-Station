@@ -200,7 +200,7 @@ public sealed partial class WoundSystem
             return;
 
         // Create or update wounds based on damage changes
-        foreach (var (damageType, damageValue) in args.ModifiedDamage.DamageDict) // inkymed - replaced args.Damage.DamageDict
+        foreach (var (damageType, damageValue) in args.Damage.DamageDict)
         {
             if (damageValue == 0)
                 continue; // Only create wounds for damage or healing
@@ -217,7 +217,7 @@ public sealed partial class WoundSystem
 
                 // inkymed - no more severity multiplier
                 TryInduceWound(uid,
-                    args.ModifiedDamage.GetWoundId(damageType), // inkymed - replaced args.Damage
+                    args.Damage.GetWoundId(damageType),
                     damageValue *
                     /*args.Damage.WoundSeverityMultipliers.GetValueOrDefault(damageType, 1)*/ 1,
                     out _,
