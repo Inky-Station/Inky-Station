@@ -104,7 +104,6 @@
   - type: Shoving
     staminaDamage: 25
   - type: MeleeWeapon
-    attackRate: 2 # ma shitcod
     hidden: true
     soundHit:
       path: /Audio/Weapons/pierce.ogg
@@ -165,9 +164,9 @@
 - type: damageModifierSet # todo werewolf its own file
   id: WerewolfBase
   coefficients:
-    Blunt: 0.15 # GO KILL HIM WITH HOLY DAMAGE YOU BUMS
-    Slash: 0.15
-    Piercing: 0.15
+    Blunt: 0.4 # GO KILL HIM WITH HOLY DAMAGE YOU BUMS
+    Slash: 0.4
+    Piercing: 0.4
     Heat: 0.35 # mfw lasersec
     Cold: 0.85 # fur
     Holy: 1.0
