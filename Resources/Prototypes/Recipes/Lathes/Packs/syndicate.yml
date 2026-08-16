@@ -9,4 +9,6 @@
   - MagazineShotgunSlug
   - MagazinePistolCaselessRifle
   - MagazineBoxAntiMateriel
-  - MagazineBoxLightRifle
+  # inky
+  - MagazineBoxLightRifle 
+  # /inky
