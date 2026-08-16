@@ -416,6 +416,7 @@
   - type: EmagLatheRecipes # Goobstation
     emagStaticPacks:
     - MechWeaponsSecurityStatic
+    - SyndicateBorgModules # Inky
     emagDynamicPacks:
     - MechWeaponsSalvage
     - MechWeaponsSecurityLight

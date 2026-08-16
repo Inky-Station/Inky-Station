@@ -8,6 +8,12 @@
   - SciFlash
   - CyborgEndoskeleton
 
+# Inky
+- type: latheRecipePack
+  id: SyndicateBorgModules
+  recipes:
+  - BorgModuleSyndicateWeaponAdvanced
+
 - type: latheRecipePack
   id: BorgModulesStatic
   recipes:
