@@ -213,6 +213,9 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-armory
+  - type: Goidarmory # Inky goidarmory. TODO remove ts and map CrateArmoryWeaponsRandom properly instead
+    role: SecurityOfficer
+    item: CrateArmoryWeaponsRandom
 
 - type: entity
   parent: DefaultStationBeaconSecurity

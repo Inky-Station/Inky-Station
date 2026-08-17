@@ -199,7 +199,7 @@
 
 - type: marking
   id: SlimeBonefootleft
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [ Slime ]
   coloring:
     default:
@@ -214,7 +214,7 @@
 
 - type: marking
   id: SlimeBonefootright
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [ Slime ]
   coloring:
     default:
@@ -229,7 +229,7 @@
 
 - type: marking
   id: SlimeBonehandleft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ Slime ]
   coloring:
     default:
@@ -244,7 +244,7 @@
 
 - type: marking
   id: SlimeBonehandright
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [ Slime ]
   coloring:
     default:

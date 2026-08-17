@@ -29,7 +29,18 @@ public sealed partial class JukeboxMenu : FancyWindow
     public event Action<ProtoId<JukeboxPrototype>>? OnSongSelected;
     public event Action<float>? SetTime;
 
+    /// <summary>
+    /// inky station - jukebox volume sliders
+    /// pops when the volume slider is released, value is 0.0–1.0, 0.5 is the default
+    /// </summary>
+    public event Action<float>? OnVolumeChanged;
+
     private EntityUid? _audio;
+
+    /// <summary>
+    /// inky station - jukebox volume sliders
+    /// </summary>
+    private float _currentVolume = 0.5f;
 
     private float _lockTimer;
 
@@ -59,6 +70,14 @@ public sealed partial class JukeboxMenu : FancyWindow
             OnStopPressed?.Invoke();
         };
         PlaybackSlider.OnReleased += PlaybackSliderKeyUp;
+
+        // inky start - jukebox volume slider
+        VolumeSlider.OnValueChanged += args => // it WILL spam 60 times a second but eh, swap to OnReleased if its such a problem lwk
+        {
+            _currentVolume = VolumeSlider.Value / 100f;
+            OnVolumeChanged?.Invoke(_currentVolume);
+        };
+        // /inky - jukebox volume slider
 
         SetPlayPauseButton(_audioSystem.IsPlaying(_audio), force: true);
     }
@@ -146,6 +165,10 @@ public sealed partial class JukeboxMenu : FancyWindow
         {
             PlaybackSlider.SetValueWithoutEvent(0f);
         }
+        // inky start - jukebox volume sliders
+        if (audio != null)
+            audio.Gain = _currentVolume;
+        // /inky
 
         SetPlayPauseButton(_audioSystem.IsPlaying(_audio, audio));
     }

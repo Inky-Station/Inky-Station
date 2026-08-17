@@ -45,7 +45,7 @@ namespace Content.IntegrationTests.Tests.GameRules
             {
                 Assert.That(sGameTicker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
                 maxTime.RoundMaxTime = TimeSpan.FromSeconds(3);
-                sGameTicker.StartRound();
+                sGameTicker.StartRound(force: true); // inky edit - force the roundstart
             });
 
             // <Trauma> - greater than, not equal since some systems start extra gamerules

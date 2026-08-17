@@ -20,9 +20,9 @@
   - SilverReactorHeatExchanger
   - PlasteelReactorHeatExchanger
   - PlasmaGlassReactorHeatExchanger
-  position: 3,1
+  position: 1,0 # inky
   technologyPrerequisites:
-  - PowerGeneration
+  - AdvancedPowerGeneration # inky
 
 - type: technology
   id: NuclearPowerRecycling
@@ -44,6 +44,6 @@
   - DiamondReactorGasChannel
   - GoldReactorHeatExchanger
   - DiamondReactorHeatExchanger
-  position: 4,1
+  position: 2,0 # inky
   technologyPrerequisites:
   - NuclearPowerGeneration

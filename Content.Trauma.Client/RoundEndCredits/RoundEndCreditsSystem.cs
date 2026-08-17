@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Dataset; // inky
 using Content.Shared.GameTicking;
 using Content.Shared.Random.Helpers;
 using Content.Trauma.Common.CCVar;
@@ -15,10 +16,14 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
 {
     [Dependency] private IUserInterfaceManager _ui = default!;
     [Dependency] private IClyde _clyde = default!;
-    [Dependency] private ILinkAccountManager _linkAccount = default!;
+    // [Dependency] private ILinkAccountManager _linkAccount = default!; inky
     [Dependency] private IResourceCache _cache = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
+
+    // inky
+    [Dependency] private IPrototypeManager _proto = default!;
+    // /inky
 
     private float _timer;
     private EndRoundCreditsControl? _creditsContainer;
@@ -26,6 +31,10 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
     private bool _showCredits = true;
     private float _uiScale;
     private bool Debug = false; // Set this to true if you want a bunch of dummy characters to spawn
+
+    // <inky>
+    private ProtoId<LocalizedDatasetPrototype> datasetId = "ShoutoutDataset";
+    // </inky>
 
     public override void Initialize()
     {
@@ -51,9 +60,13 @@ public sealed partial class RoundEndCreditsSystem : EntitySystem
             return;
 
         var shoutout = "John Nanotrasen";
-        var patrons = _linkAccount.GetPatrons();
-        if (patrons.Count != 0)
-            shoutout = _random.Pick(patrons).Name;
+        // <inky>
+        if (_proto.TryIndex(datasetId, out _))
+            shoutout = _random.Pick(_proto.Index(datasetId));
+        // var patrons = _linkAccount.GetPatrons();
+        // if (patrons.Count != 0)
+        //     shoutout = _random.Pick(patrons).Name;
+        // </inky>
 
         var credits = new EndRoundCreditsControl();
         credits.SetSize = _clyde.MainWindow.Size / _uiScale;

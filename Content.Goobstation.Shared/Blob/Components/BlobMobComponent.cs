@@ -15,7 +15,7 @@ public sealed partial class BlobMobComponent : Component
             { "Blunt", -4 },
             { "Slash", -4 },
             { "Piercing", -4 },
-            { "Ballistic", -4 },
+            // { "Ballistic", -4 }, inky
             { "Heat", -4 },
             { "Cold", -4 },
             { "Shock", -4 },

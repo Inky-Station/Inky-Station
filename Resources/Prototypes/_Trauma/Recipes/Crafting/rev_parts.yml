@@ -12,18 +12,30 @@
     FabricationKnowledge: 1
     MetalworkingKnowledge: 1
   useQuality: false
+  entityWhitelist: # inky edit - kill skills
+    components:
+    - Revolutionary
 
 - type: construction
   parent: BaseRevParts
   id: RevGear
   targetNode: gear
+  entityWhitelist: # inky edit - kill skills
+    components:
+    - Revolutionary
 
 - type: construction
   parent: BaseRevParts
   id: RevBolt
   targetNode: bolt
+  entityWhitelist: # inky edit - kill skills
+    components:
+    - Revolutionary
 
 - type: construction
   parent: BaseRevParts
   id: RevNut
   targetNode: nut
+  entityWhitelist: # inky edit - kill skills
+    components:
+    - Revolutionary

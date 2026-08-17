@@ -1,0 +1,30 @@
+- type: antag
+  id: Werewolf
+  name: roles-antag-werewolf-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-werewolf-desc
+  requirements:
+  - !type:SpeciesRequirement
+    inverted: true
+    species:
+    - IPC
+    - Plasmaman
+  guides: [  ]
+  creditImage: /Textures/_Trauma/EndCredits/Antags/zombies.png # todo werewolf
+
+- type: antagSpecifier
+  id: Werewolf
+  blacklist:
+    components:
+    - AntagImmune
+    - Changeling
+  prefRoles:
+  - Werewolf
+  briefing:
+    text: werewolf-role-greeting
+    color: Brown
+    sound: "/Audio/_Inky/Antag/Werewolf/werewolf_start.ogg"
+#  components:
+  mindRoles:
+  - MindRoleWerewolf

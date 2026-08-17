@@ -23,6 +23,9 @@
   theory:
     RevolutionaryKnowledge: 2
   useQuality: false
+  entityWhitelist: # inky edit - kill skills, this one is required cuz tiders can do rev shit
+    components:
+    - Revolutionary
 
 - type: construction
   parent: BaseRevMachine

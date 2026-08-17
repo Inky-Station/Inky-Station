@@ -21,6 +21,10 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
     [Dependency] private MarkingManager _marking = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
+    // inky
+    [Dependency] private EntityQuery<SpriteComponent> _spriteComp = default!;
+    // /inky
+
     public override void Initialize()
     {
         base.Initialize();
@@ -72,16 +76,24 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
 
     private void ApplyVisual(Entity<VisualOrganComponent> ent, EntityUid target)
     {
-        if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
+        // inky
+        if (!_spriteComp.TryComp(target, out var sprite))
             return;
+        // /inky
 
-        _sprite.LayerSetData(target, index, ent.Comp.Data);
+        if (_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
+            _sprite.LayerSetData(target, index, ent.Comp.Data); // inkymed change - shortened
+
+        // inkymed
+        if (ent.Comp.SecondLayer != null && ent.Comp.SecondData != null && _sprite.LayerMapTryGet(target, ent.Comp.SecondLayer, out var addIndex, false))
+            _sprite.LayerSetData(target, addIndex, ent.Comp.SecondData);
+        // /inkymed
 
         var displacement = ent.Comp.Displacement;
         if (displacement != null && ProtoMan.Resolve(displacement, out var displacementProto))
         {
             _displacement.TryAddDisplacement(displacementProto.Displacement,
-                (target, Comp<SpriteComponent>(target)),
+                (target, /* Comp<SpriteComponent>(target) */ sprite), // inky edit
                 index,
                 ent.Comp.Layer,
                 out _);
@@ -90,16 +102,25 @@ public sealed partial class VisualBodySystem : SharedVisualBodySystem
 
     private void RemoveVisual(Entity<VisualOrganComponent> ent, EntityUid target)
     {
+        // inky
+        if (!_spriteComp.TryComp(target, out var sprite))
+            return;
+        // /inky
+
         // <Trauma> - removed parts have their body's skin colour. not enabled for eyes yet until it supports an iris layer
         if (ent.Comp.Data.Color is {} color && !HasComp<InternalChildOrganComponent>(ent))
             _sprite.SetColor(ent.Owner, color);
         // </Trauma>
-        if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
-            return;
+        if (_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, false)) // Trauma - don't log for missing layers
+            _sprite.LayerSetRsiState(target, index, RSI.StateId.Invalid); // inkymed change - shortened
 
-        _sprite.LayerSetRsiState(target, index, RSI.StateId.Invalid);
+        // inkymed
+        if (ent.Comp.SecondLayer != null && _sprite.LayerMapTryGet(target, ent.Comp.SecondLayer, out var addIndex, false))
+            _sprite.LayerSetRsiState(target, addIndex, RSI.StateId.Invalid);
+        // /inkymed
 
-        _displacement.EnsureDisplacementIsNotOnSprite((target, Comp<SpriteComponent>(target)), ent.Comp.Layer);
+        _displacement.EnsureDisplacementIsNotOnSprite((target, /* Comp<SpriteComponent>(target) */ sprite), ent.Comp.Layer); // inky edit
+
     }
 
     private void OnMarkingsGotInserted(Entity<VisualOrganMarkingsComponent> ent, ref OrganGotInsertedEvent args)

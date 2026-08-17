@@ -15,6 +15,9 @@
     sprite: _Goobstation/Objects/Weapons/Melee/mantis_blade.rsi
     state: icon
   - type: MeleeWeapon
+    # inky
+    heavyStaminaCost: 0 # what the fuck do you mean 20 stamina per hit
+    # /inky
     animationRotation: 120
     swingLeft: true
     wideAnimationRotation: 135

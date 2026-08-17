@@ -42,24 +42,34 @@ public sealed partial class TargetingSystem : SharedTargetingSystem
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.Head)))
         .Bind(TraumaKeyFunctions.TargetChest,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.Chest)))
+        /* inkymed
         .Bind(TraumaKeyFunctions.TargetGroin,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.Groin)))
+            */
         .Bind(TraumaKeyFunctions.TargetLeftArm,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.LeftArm)))
+        /* inkymed
         .Bind(TraumaKeyFunctions.TargetLeftHand,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.LeftHand)))
+            */
         .Bind(TraumaKeyFunctions.TargetRightArm,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.RightArm)))
+        /* inkymed
         .Bind(TraumaKeyFunctions.TargetRightHand,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.RightHand)))
+            */
         .Bind(TraumaKeyFunctions.TargetLeftLeg,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.LeftLeg)))
+        /* inkymed
         .Bind(TraumaKeyFunctions.TargetLeftFoot,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.LeftFoot)))
+            */
         .Bind(TraumaKeyFunctions.TargetRightLeg,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.RightLeg)))
+        /*
         .Bind(TraumaKeyFunctions.TargetRightFoot,
             InputCmdHandler.FromDelegate((session) => HandleTargetChange(session, TargetBodyPart.RightFoot)))
+            */
         .Register<SharedTargetingSystem>();
     }
 

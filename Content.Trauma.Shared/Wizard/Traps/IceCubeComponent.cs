@@ -67,7 +67,7 @@ public sealed partial class IceCubeComponent : BaseSpriteOverlayComponent
             { "Blunt", 0.35f },
             { "Slash", 0.35f },
             { "Piercing", 0.35f },
-            { "Ballistic", 0.35f },
+            // { "Ballistic", 0.35f }, inky
         },
     };
 

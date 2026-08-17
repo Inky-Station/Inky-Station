@@ -27,4 +27,7 @@ public sealed partial class DamageOnHitComponent : Component
     /// </summary>
     [DataField]
     public TargetBodyPart? TargetParts;
+
+    // inky
+    [DataField] public bool Active; // true by default to disable this shit, but if someone decides to make something cool with it they can yaml it
 }

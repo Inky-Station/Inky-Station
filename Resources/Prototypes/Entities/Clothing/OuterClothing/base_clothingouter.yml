@@ -183,8 +183,8 @@
     - ArmRight
     - LegLeft
     - LegRight
-    - FootLeft
-    - FootRight
+#    - FootLeft # inkymed
+#    - FootRight # inkymed
   - type: CosmicTransmutable
     transmuteTo: ClothingOuterHardsuitCosmicCult
   # </Trauma>
@@ -227,9 +227,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Wings
     traumaDeductions: # having a suit on saves your limbs

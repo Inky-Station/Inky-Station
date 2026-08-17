@@ -3,24 +3,26 @@
 # If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
 # Not sure if it's required, but I added the warning anyway.
 
-- type: trait
-  id: ForeignerLight
-  name: trait-language-foreigner-light-name
-  description: trait-language-foreigner-light-desc
-  category: LanguageTraits
-  cost: -1
-  blacklist:
-    components:
-      - BorgChassis
-  components:
-  - type: ForeignerTrait
-    cantUnderstand: false
-    baseTranslator: TranslatorForeigner
+# inky edit start
+#- type: trait
+#  id: ForeignerLight
+#  name: trait-language-foreigner-light-name
+#  description: trait-language-foreigner-light-desc
+#  category: LanguageTraits
+#  cost: -1
+#  blacklist:
+#    components:
+#      - BorgChassis
+#  components:
+#  - type: ForeignerTrait
+#    cantUnderstand: false
+#    baseTranslator: TranslatorForeigner
+# /inky
 
 - type: trait
   id: Foreigner
-  name: trait-language-foreigner-name
-  description: trait-language-foreigner-desc
+  name: trait-language-foreigner-inky-name # inky edit
+  description: trait-language-foreigner-inky-desc # inky edit
   category: LanguageTraits
   cost: -2
   blacklist:
@@ -28,7 +30,7 @@
       - BorgChassis
   components:
   - type: ForeignerTrait
-    baseTranslator: TranslatorForeigner
+    baseTranslator: MangoTranslator # inky edit (this is important)
 
 # Not commented since this is another general-ish language.
 - type: trait

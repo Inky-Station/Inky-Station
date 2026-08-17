@@ -46,7 +46,7 @@
   - type: ProtectedFromStepTriggers
   - type: Armor # provide minimal covering to your feet
     coverage:
-    - Foot
+    - Leg #inkymed
     modifiers:
       coefficients:
         Blunt: 0.95

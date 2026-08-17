@@ -23,6 +23,8 @@
   - type: VisualOrgan
     data:
       sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
+    secondData: #inkymed
+      sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
   - type: Woundable
     canBleed: false
   - type: WoundableVisuals

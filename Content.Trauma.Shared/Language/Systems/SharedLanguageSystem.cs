@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Content.Shared.GameTicking;
 using Content.Trauma.Common.Knowledge.Components;
+using Content.Inky.Common.Concussion; // inky
 using Content.Trauma.Common.Language;
 using Content.Trauma.Common.Language.Components;
 using Content.Trauma.Common.Language.Systems;
@@ -29,7 +30,15 @@ public abstract partial class SharedLanguageSystem : CommonLanguageSystem
 
         SubscribeLocalEvent<UniversalLanguageSpeakerComponent, MapInitEvent>((uid, _, _) => UpdateEntityLanguages(uid));
         SubscribeLocalEvent<UniversalLanguageSpeakerComponent, ComponentRemove>((uid, _, _) => UpdateEntityLanguages(uid));
+
+        // inky - concussion
+        SubscribeLocalEvent<ConcussedComponent, DetermineEntityLanguagesEvent>(OnConcussed);
+        // /inky
     }
+    // inky - concussion
+    private static void OnConcussed(EntityUid uid, ConcussedComponent comp, ref DetermineEntityLanguagesEvent args)
+        => args.UnderstoodLanguages.Clear();
+    // /inky
 
     public LanguagePrototype? GetLanguagePrototype(ProtoId<LanguagePrototype> id)
     {

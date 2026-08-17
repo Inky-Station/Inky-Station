@@ -13,8 +13,7 @@ selectable-set-syndicate-no-russian-name = Syndicate Terrorist Bundle
 selectable-set-no-russian-description =
     Remember, No Russian.
     Contains: black lawyer suit, chest rig, syndicate sun glasses,
-    syndicate encryption key, L6 SAW and
-    an L6 SAW magazine box.
+    syndicate encryption key, L6 SAW and 4 L6 SAW magazine box.
 
 selectable-set-syndicate-pirate-captain-name = Syndicate Pirate Captain Bundle
 selectable-set-syndicate-pirate-captain-description =

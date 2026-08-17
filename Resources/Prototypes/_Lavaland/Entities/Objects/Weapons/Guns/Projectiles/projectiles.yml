@@ -20,8 +20,8 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 8
-        Structural: 11
+        Blunt: 10 # inky
+        Structural: 10 # inky
   # Short lifespan
   - type: TimedDespawn
     lifetime: 0.18 # roughly 4 tiles
@@ -63,7 +63,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 4
+        Blunt: 5 # inky
   - type: TimedDespawn
     lifetime: 0.22 # roughly 5.5 tiles
 
@@ -75,7 +75,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 4
+        Blunt: 2.5 # inky
 
 - type: entity
   id: PelletKinetic
@@ -92,8 +92,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletKinetic
-    count: 4
-    spread: 20
+    count: 6 # inky
+    spread: 15 # inky
 
 - type: entity
   id: BulletCharge

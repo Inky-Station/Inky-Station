@@ -228,7 +228,7 @@
 
 - type: marking
   id: DecapoidBigClaw
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ Decapoid ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/decapoid.rsi
@@ -236,7 +236,7 @@
 
 - type: marking
   id: DecapoidBabyClaw
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [ Decapoid ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/decapoid.rsi

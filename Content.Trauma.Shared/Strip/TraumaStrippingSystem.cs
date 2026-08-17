@@ -35,13 +35,13 @@ public sealed partial class TraumaStrippingSystem : EntitySystem
         UpdateBagAccess();
     }
 
-    [SubscribeLocalEvent]
+    // [SubscribeLocalEvent] # inky edit
     private void OnBeforeStripEnsureComp(Entity<HandsComponent> user, ref BeforeStripEvent args)
     {
         EnsureComp<ActiveStrippingComponent>(user.Owner);
     }
 
-    [SubscribeLocalEvent]
+    // [SubscribeLocalEvent] # inky edit
     private void OnStripAttempt(Entity<ActiveStrippingComponent> user, ref DoAfterAttemptEvent<StrippableDoAfterEvent> args)
     {
         // Only limit removals, inserting items back doesn't require a free hand slot.
@@ -87,7 +87,7 @@ public sealed partial class TraumaStrippingSystem : EntitySystem
         Dirty(user.Owner, user.Comp);
     }
 
-    [SubscribeLocalEvent]
+    // [SubscribeLocalEvent] # inky edit
     private void OnStripDoAfterFinished(Entity<ActiveStrippingComponent> user, ref StrippableDoAfterEvent args)
     {
         if (args.InsertOrRemove)
@@ -97,7 +97,7 @@ public sealed partial class TraumaStrippingSystem : EntitySystem
         DecrementActiveCount(user);
     }
 
-    [SubscribeLocalEvent]
+    // [SubscribeLocalEvent] # inky edit
     private void OnCuffedGettingStripped(Entity<CuffableComponent> ent, ref BeforeGettingStrippedEvent args) // kinky!
     {
         if (ent.Comp.CuffedHandCount == 0)

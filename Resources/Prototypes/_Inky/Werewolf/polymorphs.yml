@@ -1,0 +1,113 @@
+- type: polymorph
+  id: WerewolfTransformBasic
+  configuration:
+    entity: WerewolfWerewolf
+    forced: true
+    inventory: None
+    transferName: false
+    transferDamage: true
+    revertOnCrit: true
+    revertOnDeath: false
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg # goida
+    componentsToTransfer:
+    - component: WerewolfAbilities # todo werewolf KILL
+    - component: Store
+    - component: CollectiveMind
+    - component: WerewolfBit
+    - component: WerewolfInfectionImmune
+    - component: Hunger
+
+- type: polymorph
+  id: WerewolfTransformWerehuman
+  configuration:
+    entity: WerewolfWerehuman
+    forced: true
+    inventory: None
+    revertOnCrit: true
+    revertOnDeath: false
+    transferName: false
+    transferDamage: true
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg # goida
+    componentsToTransfer:
+    - component: WerewolfAbilities
+    - component: Store
+    - component: CollectiveMind
+    - component: WerewolfBit
+    - component: WerewolfInfectionImmune
+    - component: Hunger
+
+- type: polymorph
+  id: WerewolfTransformDirewolf
+  configuration:
+    entity: WerewolfDirewolf
+    forced: true
+    revertOnCrit: true
+    revertOnDeath: false
+    inventory: None
+    transferName: false
+    transferDamage: true
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
+    componentsToTransfer:
+    - component: WerewolfAbilities
+    - component: Store
+    - component: CollectiveMind
+    - component: WerewolfBit
+    - component: WerewolfInfectionImmune
+    - component: Hunger
+
+- type: polymorph
+  id: WerewolfTransformWhite
+  configuration:
+    entity: WerewolfWhite
+    forced: true
+    revertOnCrit: true
+    revertOnDeath: false
+    inventory: None
+    transferName: false
+    transferDamage: true
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
+    componentsToTransfer:
+    - component: WerewolfAbilities
+    - component: Store
+    - component: CollectiveMind
+    - component: WerewolfBit
+    - component: WerewolfInfectionImmune
+    - component: Hunger
+
+- type: polymorph
+  id: WerewolfTransformWhiteClaws # goida
+  configuration:
+    entity: WerewolfWhiteClaws
+    forced: true
+    revertOnCrit: true
+    revertOnDeath: false
+    inventory: None
+    transferName: false
+    transferDamage: true
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
+    componentsToTransfer:
+    - component: WerewolfAbilities
+    - component: Store
+    - component: CollectiveMind
+    - component: WerewolfBit
+    - component: WerewolfInfectionImmune
+    - component: Hunger
+
+- type: polymorph
+  id: WerewolfTransformBlack
+  configuration:
+    entity: WerewolfBlackwolf
+    forced: true
+    revertOnCrit: true
+    revertOnDeath: false
+    inventory: None
+    transferName: false
+    transferDamage: true
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
+    componentsToTransfer:
+    - component: WerewolfAbilities
+    - component: Store
+    - component: CollectiveMind
+    - component: WerewolfBit
+    - component: WerewolfInfectionImmune
+    - component: Hunger

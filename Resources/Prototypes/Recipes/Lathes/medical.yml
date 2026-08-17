@@ -255,7 +255,7 @@
     Plastic: 100
 
 - type: latheRecipe
-  abstract: true # Trauma - le quirky syringe
+  #abstract: true # Trauma - le quirky syringe # inky - godo
   id: JetInjector
   result: JetInjector
   categories:
@@ -268,7 +268,7 @@
     Silver: 250
 
 - type: latheRecipe
-  abstract: true # Trauma - le quirky syringe
+  #abstract: true # Trauma - le quirky syringe # inky - godo
   id: AdvancedJetInjector
   result: AdvancedJetInjector
   categories:

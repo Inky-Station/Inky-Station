@@ -1,0 +1,19 @@
+- type: entity
+  parent: BaseGameRule
+  id: Werewolf
+  components:
+  - type: WerewolfRule
+  - type: GameRule
+    minPlayers: 20 # Trauma, was 20
+  - type: AntagPlayerEffects
+    effects:
+    - !type:NestedEffect
+      proto: WerewolfSkills
+  - type: AntagSelection
+    antags:
+    - !type:LinearAntagCount
+      proto: Werewolf
+      range:
+        min: 2
+        max: 5
+      playerRatio: 12

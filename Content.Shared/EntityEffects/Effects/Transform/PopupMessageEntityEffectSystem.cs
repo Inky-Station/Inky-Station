@@ -20,7 +20,7 @@ public sealed partial class PopupMessageEntityEffectSystem : EntityEffectSystem<
     [Dependency] private IGameTiming _timing = default!;
     // </Trauma>
     [Dependency] private INetManager _net = default!;
-    [Dependency] private IRobustRandom _random = default!;
+    // [Dependency] private IRobustRandom _random = default!; // inky edit TRAUMA FUCKUP
     [Dependency] private SharedPopupSystem _popup = default!;
 
     protected override void Effect(Entity<TransformComponent> entity, ref EntityEffectEvent<PopupMessage> args)

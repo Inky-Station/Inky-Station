@@ -28,9 +28,8 @@
         Slash: 0.3
         Piercing: 0.3
         Heat: 0.3
-        Ballistic: 0.3
       flatReductions:
-        Ballistic: 3.5
+        Piercing: 3.5
   - type: ExplosionResistance
     damageCoefficient: 0.75
 
@@ -56,7 +55,7 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
-        Heat: 0.1
+        Heat: 0.5
   - type: ExplosionResistance
     damageCoefficient: 0.4
   - type: FireProtection

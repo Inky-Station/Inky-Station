@@ -29,6 +29,9 @@
     components:
     - type: EngineeringStaff
   # </Trauma>
+  # inky
+    - type: InkyEngineeringStaff
+  # /inky
 
 - type: startingGear
   id: StationEngineerGear

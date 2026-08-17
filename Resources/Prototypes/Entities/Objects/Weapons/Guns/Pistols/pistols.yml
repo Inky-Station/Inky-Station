@@ -102,7 +102,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Pistols/viper.rsi
   - type: Gun
-    fireRate: 4 # Trauma
+    fireRate: 6 # inky
     selectedMode: FullAuto # Override of BaseWeaponPistol to default to full-auto
   - type: ItemSlots
     slots:
@@ -137,7 +137,7 @@
   description: A cyborg-mounted weapon system based on the Viper pistol. Creates ammunition on the fly from an internal fabricator, which slowly self-charges.
   components:
   - type: Gun
-    fireRate: 4 # Trauma - was 6
+    fireRate: 6 # inky omfg
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -234,7 +234,7 @@
   - type: Item
     storedOffset: 0,-2
   - type: Gun
-    fireRate: 3 # Trauma
+    fireRate: 5 # inky omfg
     availableModes:
     - SemiAuto
     soundGunshot:

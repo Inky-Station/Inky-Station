@@ -31,7 +31,7 @@
   id: FloorSteel
   parent: BaseStationTile
   name: tiles-steel-floor
-  sprite: /Textures/_Trauma/Tiles/steel.png # Trauma
+  sprite: /Textures/Tiles/steel.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteel
 
@@ -39,7 +39,7 @@
   id: FloorSteelCheckerLight
   parent: BaseStationTile
   name: tiles-steel-floor-checker-light
-  sprite: /Textures/_Trauma/Tiles/cafeteria.png # Trauma
+  sprite: /Textures/Tiles/cafeteria.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteelCheckerLight
 
@@ -47,7 +47,7 @@
   id: FloorSteelCheckerDark
   parent: BaseStationTile
   name: tiles-steel-floor-checker-dark
-  sprite: /Textures/_Trauma/Tiles/checker_dark.png # Trauma
+  sprite: /Textures/Tiles/checker_dark.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteelCheckerDark
 
@@ -55,7 +55,7 @@
   id: FloorSteelMini
   parent: BaseStationTile
   name: tiles-steel-floor-mini
-  sprite: /Textures/_Trauma/Tiles/steel_mini.png # Trauma
+  sprite: /Textures/Tiles/steel_mini.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteelMini
 
@@ -63,7 +63,7 @@
   id: FloorSteelPavement
   parent: BaseStationTile
   name: tiles-steel-floor-pavement
-  sprite: /Textures/_Trauma/Tiles/steel_pavement.png # Trauma
+  sprite: /Textures/Tiles/steel_pavement.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteelPavement
 
@@ -71,7 +71,7 @@
   id: FloorSteelDiagonal
   parent: BaseStationTile
   name: tiles-steel-floor-diagonal
-  sprite: /Textures/_Trauma/Tiles/steel_diagonal.png # Trauma
+  sprite: /Textures/Tiles/steel_diagonal.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteelDiagonal
 
@@ -79,14 +79,14 @@
   id: FloorSteelOffset
   parent: BaseStationTile
   name: tiles-steel-floor-offset
-  sprite: /Textures/_Trauma/Tiles/steel_offset.png # Trauma
+  sprite: /Textures/Tiles/steel_offset.png # inky edit - de-barratry textures
   itemDrop: FloorTileItemSteelOffset
 
 - type: tile
   id: FloorSteelMono
   parent: BaseStationTile
   name: tiles-steel-floor-mono
-  sprite: /Textures/_Trauma/Tiles/steel_mono.png # Trauma
+  sprite: /Textures/Tiles/steel_mono.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteelMono
 
@@ -94,7 +94,7 @@
   id: FloorSteelPavementVertical
   parent: BaseStationTile
   name: tiles-steel-floor-pavement-vertical
-  sprite: /Textures/_Trauma/Tiles/steel_pavement_vertical.png # Trauma
+  sprite: /Textures/Tiles/steel_pavement_vertical.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteelPavementVertical
 
@@ -102,7 +102,7 @@
   id: FloorSteelHerringbone
   parent: BaseStationTile
   name: tiles-steel-floor-herringbone
-  sprite: /Textures/_Trauma/Tiles/steel_herringbone.png # Trauma
+  sprite: /Textures/Tiles/steel_herringbone.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteelHerringbone
 
@@ -110,7 +110,7 @@
   id: FloorSteelDiagonalMini
   parent: BaseStationTile
   name: tiles-steel-floor-diagonal-mini
-  sprite: /Textures/_Trauma/Tiles/steel_diagonal_mini.png # Trauma
+  sprite: /Textures/Tiles/steel_diagonal_mini.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemSteelDiagonalMini
 
@@ -161,7 +161,7 @@
   id: FloorPlastic
   parent: BaseStationTile
   name: tiles-plastic-floor
-  sprite: /Textures/_Trauma/Tiles/plastic.png # Trauma
+  sprite: /Textures/Tiles/plastic.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemPlastic # Trauma - plastic tile items
   tileRipResistance: 80 # Trauma
@@ -170,7 +170,7 @@
   id: FloorWood
   parent: BaseStationTile
   name: tiles-wood
-  sprite: /Textures/_Trauma/Tiles/wood.png # Trauma
+  sprite: /Textures/Tiles/wood.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepWood
@@ -183,7 +183,7 @@
   id: FloorWhite
   parent: BaseStationTile
   name: tiles-white-floor
-  sprite: /Textures/_Trauma/Tiles/white.png # Trauma
+  sprite: /Textures/Tiles/white.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -194,7 +194,7 @@
   id: FloorWhiteMini
   parent: BaseStationTile
   name: tiles-white-floor-mini
-  sprite: /Textures/_Trauma/Tiles/white_mini.png # Trauma
+  sprite: /Textures/Tiles/white_mini.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -230,7 +230,7 @@
   id: FloorWhitePavement
   parent: BaseStationTile
   name: tiles-white-floor-pavement
-  sprite: /Textures/_Trauma/Tiles/white_pavement.png # Trauma
+  sprite: /Textures/Tiles/white_pavement.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -241,7 +241,7 @@
   id: FloorWhiteDiagonal
   parent: BaseStationTile
   name: tiles-white-floor-diagonal
-  sprite: /Textures/_Trauma/Tiles/white_diagonal.png # Trauma
+  sprite: /Textures/Tiles/white_diagonal.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -252,7 +252,7 @@
   id: FloorWhiteOffset
   parent: BaseStationTile
   name: tiles-white-floor-offset
-  sprite: /Textures/_Trauma/Tiles/white_offset.png # Trauma
+  sprite: /Textures/Tiles/white_offset.png # inky edit - de-barratry textures
   footstepSounds:
     collection: FootstepTile
   itemDrop: FloorTileItemWhiteOffset
@@ -262,7 +262,7 @@
   id: FloorWhiteMono
   parent: BaseStationTile
   name: tiles-white-floor-mono
-  sprite: /Textures/_Trauma/Tiles/white_mono.png # Trauma
+  sprite: /Textures/Tiles/white_mono.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -273,7 +273,7 @@
   id: FloorWhitePavementVertical
   parent: BaseStationTile
   name: tiles-white-floor-pavement-vertical
-  sprite: /Textures/_Trauma/Tiles/white_pavement_vertical.png # Trauma
+  sprite: /Textures/Tiles/white_pavement_vertical.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -284,7 +284,7 @@
   id: FloorWhiteHerringbone
   parent: BaseStationTile
   name: tiles-white-floor-herringbone
-  sprite: /Textures/_Trauma/Tiles/white_herringbone.png # Trauma
+  sprite: /Textures/Tiles/white_herringbone.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -295,7 +295,7 @@
   id: FloorWhiteDiagonalMini
   parent: BaseStationTile
   name: tiles-white-floor-diagonal-mini
-  sprite: /Textures/_Trauma/Tiles/white_diagonal_mini.png # Trauma
+  sprite: /Textures/Tiles/white_diagonal_mini.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -306,7 +306,7 @@
   id: FloorWhitePlastic
   parent: BaseStationTile
   name: tiles-plastic-white-floor
-  sprite: /Textures/_Trauma/Tiles/white_plastic.png # Trauma
+  sprite: /Textures/Tiles/white_plastic.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -317,7 +317,7 @@
   id: FloorDark
   parent: BaseStationTile
   name: tiles-dark-floor
-  sprite: /Textures/_Trauma/Tiles/dark.png # Trauma
+  sprite: /Textures/Tiles/dark.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -327,7 +327,7 @@
   id: FloorDarkMini
   parent: BaseStationTile
   name: tiles-dark-floor-mini
-  sprite: /Textures/_Trauma/Tiles/dark_mini.png # Trauma
+  sprite: /Textures/Tiles/dark_mini.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -363,7 +363,7 @@
   id: FloorDarkPavement
   parent: BaseStationTile
   name: tiles-dark-floor-pavement
-  sprite: /Textures/_Trauma/Tiles/dark_pavement.png # Trauma
+  sprite: /Textures/Tiles/dark_pavement.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -374,7 +374,7 @@
   id: FloorDarkDiagonal
   parent: BaseStationTile
   name: tiles-dark-floor-diagonal
-  sprite: /Textures/_Trauma/Tiles/dark_diagonal.png # Trauma
+  sprite: /Textures/Tiles/dark_diagonal.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -395,7 +395,7 @@
   id: FloorDarkMono
   parent: BaseStationTile
   name: tiles-dark-floor-mono
-  sprite: /Textures/_Trauma/Tiles/dark_mono.png # Trauma
+  sprite: /Textures/Tiles/dark_mono.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -406,7 +406,7 @@
   id: FloorDarkPavementVertical
   parent: BaseStationTile
   name: tiles-dark-floor-pavement-vertical
-  sprite: /Textures/_Trauma/Tiles/dark_pavement_vertical.png # Trauma
+  sprite: /Textures/Tiles/dark_pavement_vertical.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -417,7 +417,7 @@
   id: FloorDarkHerringbone
   parent: BaseStationTile
   name: tiles-dark-floor-herringbone
-  sprite: /Textures/_Trauma/Tiles/dark_herringbone.png # Trauma
+  sprite: /Textures/Tiles/dark_herringbone.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -428,7 +428,7 @@
   id: FloorDarkDiagonalMini
   parent: BaseStationTile
   name: tiles-dark-floor-diagonal-mini
-  sprite: /Textures/_Trauma/Tiles/dark_diagonal_mini.png # Trauma
+  sprite: /Textures/Tiles/dark_diagonal_mini.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -439,7 +439,7 @@
   id: FloorDarkPlastic
   parent: BaseStationTile
   name: tiles-plastic-dark-floor
-  sprite: /Textures/_Trauma/Tiles/dark_plastic.png # Trauma
+  sprite: /Textures/Tiles/dark_plastic.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepTile
@@ -450,7 +450,7 @@
   id: FloorTechMaint
   parent: BaseStationTile
   name: tiles-techmaint-floor
-  sprite: /Textures/_Trauma/Tiles/tech_maint.png # Trauma
+  sprite: /Textures/Tiles/tech_maint.png # inky edit - de-barratry textures
   footstepSounds:
     collection: FootstepHull
   itemDrop: FloorTileItemTechmaint
@@ -460,7 +460,7 @@
   id: FloorTechMaintDark
   parent: BaseStationTile
   name: tiles-techmaint-floor-dark
-  sprite: /Textures/_Trauma/Tiles/tech_maint_dark.png # Trauma
+  sprite: /Textures/Tiles/tech_maint_dark.png # inky edit - de-barratry textures
   footstepSounds:
     collection: FootstepHull
   itemDrop: FloorTileItemTechmaintDark
@@ -470,7 +470,7 @@
   id: FloorReinforced
   parent: BaseStationTile
   name: tiles-reinforced-floor
-  sprite: /Textures/_Trauma/Tiles/reinforced.png # Trauma
+  sprite: /Textures/Tiles/reinforced.png # inky edit - de-barratry textures
   footstepSounds:
     collection: FootstepHull
   itemDrop: PartRodMetal1
@@ -613,7 +613,7 @@
   id: FloorBar
   parent: BaseStationTile
   name: tiles-bar-floor
-  sprite: /Textures/_Trauma/Tiles/bar.png # Trauma
+  sprite: /Textures/Tiles/bar.png # inky edit - de-barratry textures
   variants: 4
   itemDrop: FloorTileItemBar
   tileRipResistance: 100 # Goob
@@ -630,7 +630,7 @@
   id: FloorMime
   parent: BaseStationTile
   name: tiles-mime-floor
-  sprite: /Textures/_Trauma/Tiles/mime.png # Trauma
+  sprite: /Textures/Tiles/mime.png # inky edit - de-barratry textures
   itemDrop: FloorTileItemMime
   tileRipResistance: 50 # Goob
 
@@ -658,7 +658,7 @@
   id: FloorSteelDamaged
   parent: BaseStationTile
   name: tiles-steel-floor
-  sprite: /Textures/_Trauma/Tiles/steel_damaged.png # Trauma
+  sprite: /Textures/Tiles/steel_damaged.png # inky edit - de-barratry textures
   variants: 5
   itemDrop: FloorTileItemSteel #This should probably be made null when it becomes possible to make it such, in SS13 prying destroyed tiles wouldn't give you anything.
   tileRipResistance: 175 # Goob
@@ -1315,7 +1315,7 @@
   id: FloorTechMaint2
   parent: BaseStationTile
   name: tiles-techmaint2-floor
-  sprite: /Textures/_Trauma/Tiles/steel_maint.png # Trauma
+  sprite: /Textures/Tiles/steel_maint.png # inky edit - de-barratry textures
   footstepSounds:
     collection: FootstepHull
   itemDrop: FloorTileItemSteelMaint
@@ -1336,7 +1336,7 @@
   id: FloorWoodTile
   parent: BaseStationTile
   name: tiles-wood2
-  sprite: /Textures/_Trauma/Tiles/wood_tile.png # Trauma
+  sprite: /Textures/Tiles/wood_tile.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepWood
@@ -1349,7 +1349,7 @@
   id: FloorBrokenWood
   parent: BaseStationTile
   name: tiles-wood3
-  sprite: /Textures/_Trauma/Tiles/wood_broken.png # Trauma
+  sprite: /Textures/Tiles/wood_broken.png # inky edit - de-barratry textures
   variants: 7
   footstepSounds:
     collection: FootstepWood
@@ -1510,7 +1510,7 @@
   id: FloorWoodLarge
   parent: BaseStationTile
   name: tiles-wood-large
-  sprite: /Textures/_Trauma/Tiles/wood_large.png # Trauma
+  sprite: /Textures/Tiles/wood_large.png # inky edit - de-barratry textures
   variants: 4
   footstepSounds:
     collection: FootstepWood

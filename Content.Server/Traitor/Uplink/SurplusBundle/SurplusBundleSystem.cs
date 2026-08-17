@@ -45,7 +45,7 @@ public sealed partial class SurplusBundleSystem : EntitySystem
     {
         var ret = new List<ListingData>();
 
-        var listings = _store.GetAvailableListings(ent, null, ent.Comp2.Categories)
+        var listings = _store.GetAvailableListings(ent, null, ent.Comp2.Categories, ent) // inky edit - surpluses rolling surplus
             .OrderBy(p => p.Cost.Values.Sum())
             .ToList();
 

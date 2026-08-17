@@ -22,6 +22,11 @@
     <ProjectReference Include="../Content.Lavaland.Shared/Content.Lavaland.Shared.csproj" />
     <ProjectReference Include="../Content.Medical.Shared/Content.Medical.Shared.csproj" />
     <!-- /Trauma -->
+    <!-- Inky -->
+    <ProjectReference Include="..\Content.Inky.Client\Content.Inky.Client.csproj" />
+    <ProjectReference Include="..\Content.Inky.Server\Content.Inky.Server.csproj" />
+    <ProjectReference Include="..\Content.Inky.Shared\Content.Inky.Shared.csproj" />
+    <!-- Inky -->
     <ProjectReference Include="..\Content.Server\Content.Server.csproj" />
     <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
     <ProjectReference Include="..\Content.Tests\Content.Tests.csproj" />

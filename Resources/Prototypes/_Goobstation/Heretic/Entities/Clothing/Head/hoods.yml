@@ -63,7 +63,6 @@
           Blunt: 0.4
           Slash: 0.4
           Piercing: 0.4
-          Ballistic: 0.4
           Heat: 0.4
           Caustic: 0.4
         flatReductions:
@@ -86,7 +85,6 @@
           Blunt: 0.7
           Slash: 0.7
           Piercing: 0.7
-          Ballistic: 0.7
           Heat: 0.7
           Caustic: 0.7
         flatReductions:

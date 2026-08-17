@@ -69,7 +69,6 @@
           Blunt: 30
           Slash: 30
           Piercing: 30
-          Ballistic: 30
     - type: Appearance
     - type: Damageable
     - type: Injurable

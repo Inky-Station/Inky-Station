@@ -50,7 +50,7 @@
 
 - type: marking
   id: CyberLimbsMarkingBishopLHand
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [IPC, Moth, Human, Arachnid, Vulpkanin, Reptilian]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
@@ -69,7 +69,7 @@
 
 - type: marking
   id: CyberLimbsMarkingBishopLFoot
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [IPC, Moth, Human, Arachnid, Vulpkanin, Reptilian]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
@@ -92,7 +92,7 @@
 
 - type: marking
   id: CyberLimbsMarkingBishopRHand
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [IPC, Moth, Human, Arachnid, Vulpkanin, Reptilian]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
@@ -111,7 +111,7 @@
 
 - type: marking
   id: CyberLimbsMarkingBishopRFoot
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [IPC, Moth, Human, Arachnid, Vulpkanin, Reptilian]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi

@@ -28,7 +28,7 @@
 
 - type: marking
   id: MakeupNailPolishRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Reptilian, Arachnid, Slime, Arachnid]
   coloring:
     default:
@@ -41,7 +41,7 @@
 
 - type: marking
   id: MakeupNailPolishLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Reptilian, Arachnid, Slime, Arachnid]
   coloring:
     default:

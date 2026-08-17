@@ -3,6 +3,8 @@
   abstract: true
   components:
   - type: GameRule
+  - type: DynamicRuleCost # inky - we dont use this anyway but it fixes tests
+    cost: 100
 
 - type: entity
   parent: BaseGameRule
@@ -195,12 +197,13 @@
   - type: AntagObjectives # Goobstation
     objectives:
     - NukeopsDetonateObjective
-  - type: AntagPlayerEffects # Trauma - nukies get nukie-locked hypoports and skillchip
-    effects:
-    - !type:NestedEffect
-      proto: InstallHypoportNukie
-    - !type:InstallOrganChip
-      chip: SkillChipNukie
+#  - type: AntagPlayerEffects # Trauma - nukies get nukie-locked hypoports and skillchip
+#    effects:
+    # inky - fuck hypoports
+    #- !type:NestedEffect
+    #  proto: InstallHypoportNukie
+#    - !type:NestedEffect
+#      proto: InstallSkillChipNukie
 
 - type: entity
   parent: [ BaseNukeopsRule, BaseRoundstartAntagRule ]
@@ -253,6 +256,10 @@
     sets:
     - groups: TraitorObjectiveGroups
     maxDifficulty: 5
+  # inky
+  - type: DynamicRuleCost
+    cost: 65
+  # /inky
 
 - type: entity
   parent: [ BaseTraitorRule, BaseRoundstartAntagRule ]

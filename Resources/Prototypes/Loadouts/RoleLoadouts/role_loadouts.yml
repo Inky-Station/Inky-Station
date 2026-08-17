@@ -8,6 +8,7 @@
   - CaptainMask # Goobstation - Lollypops!
   - CaptainBackpack
   - CaptainOuterClothing
+  - CaptainShoes # Goobstation # inky
   - CaptainPDA # Trauma
   - AssistiveItems
   - Survival
@@ -272,6 +273,8 @@
   - MimeJumpsuit
   - MimeBackpack
   - MimeOuterClothing
+  - MimeGloves # Goobstation # inky
+  - MimeShoes # Goobstation # inky
   - MimeBelt
   - Glasses
   - AssistiveItems
@@ -282,7 +285,6 @@
   - MimeEnvirohelm
   - MimeEnvirosuit
   - MimeEnvirogloves
-  - MimeGloves
   - ExclusiveItems # Trauma
 
 - type: roleLoadout
@@ -357,6 +359,7 @@
   - GroupTankHarness
   - SalvageSpecialistNeck # Goobstation
   - SalvageSpecialistBackpack
+  - SalvageSpecialistJumpsuit # Goobstation
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
   - Glasses
@@ -530,6 +533,7 @@
   - HeadofSecurityOuterClothing
   - HeadofSecurityShoes # Goobstation edit
   - AssistiveItems
+  - SecurityGloves #goob # inky
   - SurvivalSecurity
   - Trinkets
   - HeadofSecurityJobTrinkets
@@ -552,6 +556,7 @@
   - WardenOuterClothing
   - SecurityShoes
   - AssistiveItems
+  - SecurityGloves #goob # inky
   - SurvivalSecurity
   - Trinkets
   - WardenJobTrinkets
@@ -571,6 +576,7 @@
   - SecurityMelee # Goobstation
   - SecurityOuterClothing
   - SecurityShoes
+  - SecurityGloves #goob # inky
   - SecurityNeck
   - SecurityPDA
   - SecurityBelt
@@ -580,9 +586,9 @@
   - SecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
   # Goobstation - EE Plasmeme Change.
-  - SecurityOfficerEnvirohelm
-  - SecurityOfficerEnvirosuit
-  - SecurityOfficerEnvirogloves
+#  - SecurityOfficerEnvirohelm # inky
+#  - SecurityOfficerEnvirosuit # inky
+#  - SecurityOfficerEnvirogloves # inky
   - ExclusiveItems # Trauma
 
 - type: roleLoadout
@@ -593,16 +599,17 @@
   - DetectiveJumpsuit
   - SecurityBackpack
   - DetectiveOuterClothing
-  - SecurityShoes
   - AssistiveItems
+ # - SecurityShoes #inky
+  - DetectiveShoes #inky
   - SurvivalSecurity
   - Trinkets
   - DetectiveJobTrinkets
   - GroupSpeciesBreathToolSecurity
   # Goobstation - EE Plasmeme Change.
-  - DetectiveEnvirohelm
-  - DetectiveEnvirosuit
-  - DetectiveEnvirogloves
+#  - DetectiveEnvirohelm # inky
+#  - DetectiveEnvirosuit # inky
+#  - DetectiveEnvirogloves # inky
   - DetectiveGloves
   - ExclusiveItems # Trauma
 
@@ -620,9 +627,9 @@
   #- SecurityCadetJobTrinkets
   - GroupSpeciesBreathToolSecurity
   # Goobstation - EE Plasmeme Change.
-  - SecurityCadetEnvirohelm
-  - SecurityCadetEnvirosuit
-  - SecurityCadetEnvirogloves
+#  - SecurityCadetEnvirohelm # inky
+#  - SecurityCadetEnvirosuit # inky
+#  - SecurityCadetEnvirogloves # inky
   - ExclusiveItems # Trauma
 
 # Wildcards
@@ -641,9 +648,9 @@
   #- ReporterJobTrinkets
   - GroupSpeciesBreathTool
   # Goobstation - EE Plasmeme Change.
-  - ReporterEnvirohelm
-  - ReporterEnvirosuit
-  - ReporterEnvirogloves
+#  - ReporterEnvirohelm # inky
+#  - ReporterEnvirosuit # inky
+#  - ReporterEnvirogloves # inky
   - ExclusiveItems # Trauma
 
 - type: roleLoadout
@@ -659,9 +666,9 @@
   #- PsychologistJobTrinkets
   - GroupSpeciesBreathTool
   # Goobstation - EE Plasmeme Change.
-  - PsychologistEnvirohelm
-  - PsychologistEnvirosuit
-  - PsychologistEnvirogloves
+#  - PsychologistEnvirohelm # inky
+#  - PsychologistEnvirosuit # inky
+#  - PsychologistEnvirogloves # inky
   - ExclusiveItems # Trauma
 
 - type: roleLoadout

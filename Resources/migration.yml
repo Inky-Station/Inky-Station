@@ -50,9 +50,11 @@ BoxMagazineMagnumSubMachineGun: BoxMagazineRifle
 # 2025-01-01 Trauma Remove scurret poster
 PosterLegitHelio: null
 
-# 2026-01-07
-GunSafeDisabler: GunSafePhaser
-WeaponDisabler: WeaponLaserSidearm
+# 2026-01-07 # inky - kys
+# GunSafeDisabler: GunSafePhaser
+# WeaponDisabler: WeaponLaserSidearm
+GunSafePhaser: GunSafeDisabler
+WeaponLaserSidearm: WeaponDisabler
 
 # 2026-01-08 back to wizden mail
 MailTeleporter: CargoMailTeleporter
@@ -161,7 +163,7 @@ BibleCommunistManifesto: Bible
 # Goobstation - Submarine from DeltaV
 
 # 2026-01-10 Goobstation Change Mapped Chem to Energy Chem by default
-ChemDispenser: EnergyChemDispenser
+# ChemDispenser: EnergyChemDispenser - inky
 
 AirlockBoxerGlassLocked: AirlockServiceGlassLocked
 AirlockClownGlassLocked: AirlockServiceGlassLocked
@@ -1194,6 +1196,10 @@ FoodMeatSnail: MobSnail
 CratePartsT3: null
 CratePartsT3T4: null
 CratePartsT4: null
+
+# 6/21/2026
+# Armory tweak
+# GunSafeLaserSpec: GunSafeSurplusBallistics # inky omg why is this not above in trauma holy shit
 
 # 2026-07-17
 WeaponRifleM90GrenadeLauncher: null

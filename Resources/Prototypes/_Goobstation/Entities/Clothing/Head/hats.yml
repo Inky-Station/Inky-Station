@@ -80,7 +80,6 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
-        Ballistic: 0.7
         Heat: 0.8
 
 - type: entity
@@ -141,3 +140,29 @@
   - type: ClothingGrantComponent
     component:
       - type: PossessionImmune
+
+# inky WHY IS IT HERE
+
+- type: entity
+  parent: ClothingHeadHatCentcomcap
+  id: ClothingHeadHatGoldCentcom
+  name: golden Centcom cap
+  description: A gold-and-white gilded cap worn by the highest-ranking members of Central Command.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Head/Hats/golden_centcom.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Head/Hats/golden_centcom.rsi
+  - type: Item
+    sprite: _Goobstation/Clothing/Head/Hats/golden_centcom.rsi
+
+- type: entity
+  parent: [ ClothingHeadBase, BaseCentcommContraband ]
+  id: ClothingHeadHatCowboyCentcom
+  name: centcom cowboy hat
+  description: A black and green cowboy hat with a gold band, worn by 'southerner' Central Command officers.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Head/Hats/cowboyhat_centcom.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Head/Hats/cowboyhat_centcom.rsi

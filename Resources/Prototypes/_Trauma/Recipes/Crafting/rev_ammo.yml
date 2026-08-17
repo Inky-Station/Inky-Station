@@ -8,9 +8,9 @@
   theory:
     RevolutionaryKnowledge: 2
     WeaponsKnowledge: 2
-  practical:
-    MechanicsKnowledge: 1
-    WeaponsKnowledge: 2
+  entityWhitelist: # inky edit - kill skills
+    components:
+    - Revolutionary
 
 - type: construction
   parent: RevRPG2HE

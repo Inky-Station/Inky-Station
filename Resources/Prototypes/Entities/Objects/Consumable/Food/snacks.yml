@@ -141,9 +141,9 @@
     solution:
       reagents:
       - ReagentId: Nutriment
-        Quantity: 4.5 # Trauma - was 5
-      - ReagentId: LabGrownNutriment # Trauma - mrbeast
-        Quantity: 0.5
+        Quantity: 5 # Trauma - was 5 # inky
+      #- ReagentId: LabGrownNutriment # Trauma - mrbeast # inky
+      #  Quantity: 0.5 # inky
       - ReagentId: Theobromine
         Quantity: 3
       - ReagentId: CocoaPowder
@@ -316,9 +316,9 @@
     solution:
       reagents:
       - ReagentId: DryRamen
-        Quantity: 18 # Trauma - was 20
-      - ReagentId: LabGrownNutriment # Trauma
-        Quantity: 2
+        Quantity: 20 # Trauma - was 20 # inky
+      #- ReagentId: LabGrownNutriment # Trauma # inky
+      #  Quantity: 2 # inky
       - ReagentId: Soysauce
         Quantity: 5
   - type: Sprite
@@ -340,9 +340,9 @@
     solution:
       reagents:
       - ReagentId: DryRamen
-        Quantity: 18 # Trauma - was 20
-      - ReagentId: LabGrownNutriment # Trauma
-        Quantity: 2
+        Quantity: 20 # Trauma - was 20 # inky
+      #- ReagentId: LabGrownNutriment # Trauma # inky
+      #  Quantity: 2 # inky
       - ReagentId: CapsaicinOil
         Quantity: 5
 
@@ -366,9 +366,9 @@
     solution:
       reagents:
       - ReagentId: Nutriment
-        Quantity: 9 # Trauma - was 10
-      - ReagentId: LabGrownNutriment # Trauma
-        Quantity: 1
+        Quantity: 10 # Trauma - was 10 # inky
+      #- ReagentId: LabGrownNutriment # Trauma # inky
+      #  Quantity: 1 # inky
       - ReagentId: Soysauce
         Quantity: 2
   - type: Edible
@@ -395,9 +395,9 @@
     solution:
       reagents:
       - ReagentId: Nutriment
-        Quantity: 9 # Trauma - was 10
-      - ReagentId: LabGrownNutriment # Trauma
-        Quantity: 1
+        Quantity: 10 # Trauma - was 10 # inky
+      #- ReagentId: LabGrownNutriment # Trauma # inky
+      #  Quantity: 1 # inky
       - ReagentId: CapsaicinOil
         Quantity: 2
       - ReagentId: Soysauce
@@ -421,7 +421,7 @@
     solution:
       maxVol: 2.5
       reagents:
-      - ReagentId: LabGrownNutriment # Trauma - was Nutriment
+      - ReagentId: Nutriment # Trauma - was Nutriment # inky
         Quantity: 1
   - type: Item
     sprite: Objects/Consumable/Food/snacks.rsi
@@ -516,9 +516,9 @@
     solution:
       reagents:
       - ReagentId: Nutriment
-        Quantity: 4.5 # Trauma - was 5
-      - ReagentId: LabGrownNutriment # Trauma
-        Quantity: 0.5
+        Quantity: 5 # Trauma - was 5 # inky
+      #- ReagentId: LabGrownNutriment # Trauma # inky
+      #  Quantity: 0.5 # inky
       - ReagentId: Theobromine
         Quantity: 1
 

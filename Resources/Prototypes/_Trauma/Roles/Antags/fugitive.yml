@@ -16,7 +16,7 @@
     belt: ClothingBeltSecurityFilled
     id: HunterPDA
     pocket1: WeaponPistolMk58
-    pocket2: WeaponLaserSidearm
+    pocket2: WeaponDisabler # inky
     ears: ClothingHeadsetAltHunter
     gloves: ClothingHandsGlovesCombat
   storage:

@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Inky.Common.Whale; // inky edit
 using Content.Shared.CombatMode;
 using Content.Shared.Gravity;
 using Content.Shared.Hands;
@@ -102,6 +103,10 @@ public abstract partial class SharedGrapplingGunSystem : VirtualController
         RefreshJointRelay((args.Embedded, embedComp));
 
         _joints.RefreshRelay(args.Weapon.Value, jointCompGrapple);
+
+        // inky
+        RaiseLocalEvent(uid, new GrappleEmbedCompletedEvent(args.Embedded, args.Weapon.Value, args.Shooter));
+        // /inky
     }
 
     [SubscribeLocalEvent]
@@ -216,7 +221,7 @@ public abstract partial class SharedGrapplingGunSystem : VirtualController
             // If the joint breaks, it gets disabled
             if (distance.Enabled == false)
             {
-                Ungrapple((uid, grappling), true);
+                // Ungrapple((uid, grappling), true); // inky edit
                 continue;
             }
 
@@ -240,7 +245,7 @@ public abstract partial class SharedGrapplingGunSystem : VirtualController
             // Rope should just break, instantly, if the user is teleported past its max length
             if (ropeLength >= distance.MaxLength + grappling.RopeMargin)
             {
-                Ungrapple((uid, grappling), true);
+                // Ungrapple((uid, grappling), true); // inky edit
                 continue;
             }
 

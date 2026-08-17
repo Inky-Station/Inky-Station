@@ -61,6 +61,8 @@
   - type: VisualOrgan
     data:
       sprite: _Shitmed/Mobs/Species/Xenomorph/parts.rsi
+    secondData: #inkymed
+      sprite: _Shitmed/Mobs/Species/Xenomorph/parts.rsi
   - type: VisualOrganMarkings
     markingData:
       group: None

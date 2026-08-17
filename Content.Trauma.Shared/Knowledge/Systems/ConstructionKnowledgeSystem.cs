@@ -14,6 +14,8 @@ namespace Content.Trauma.Shared.Knowledge.Systems;
 /// <summary>
 /// Controls construction knowledge requirements.
 /// </summary>
+// inky edit - kill skills
+// fuck you
 public sealed partial class ConstructionKnowledgeSystem : EntitySystem
 {
     [Dependency] private QualitySystem _quality = default!;

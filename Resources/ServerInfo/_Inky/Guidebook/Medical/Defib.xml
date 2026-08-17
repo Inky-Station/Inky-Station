@@ -1,0 +1,59 @@
+<Document>
+  # Hearts
+
+  Every living creature has a heart inside them, unless youre a heartless bastard of course.
+  Hearts are simple, if they beat its fine, if they dont, well that sucks.
+
+  <Box>
+    <GuideEntityEmbed Entity="OrganHumanHeart" />
+  </Box>
+
+  Every heart has a BPM, meaning BeatsPerMinute, on a standard human its 100 beats per minute
+  anything more or less that that is bad, meaning something is wrong with the heart.
+
+  For a normal human, anything more than 150 or less than 50 means that the heart is in fibrillations.
+
+  Fibrillations can be countered in many ways some are:
+
+  - if the heart is lacking BPM, then some hard drugs or using a defibrillator might work.
+  - if the heart is beating more than it needs to, some relaxing drugs or a defibrillator might work.
+
+  hard drugs are, for example, ephedrine or desoxyephedrine, cocaine, etc.
+  relaxing drugs are fentanyl and others.
+
+  ## Defibrillator usage
+
+  <Box>
+    <GuideEntityEmbed Entity="Defibrillator" />
+  </Box>
+
+  The defibrillators found shiftstart in medical are [bold]MANUAL DEFIBRILLATORS[/bold] and they require proper use.
+
+  The ones that science can print and those found in paramedics lockers are called compact defibrillators (sometimes, an auto defibrillators or AEDs)
+
+  <Box>
+    <GuideEntityEmbed Entity="DefibrillatorCompact" Caption="compact defibrillator" />
+  </Box>
+
+  AEDs or compact defibrillators are easy in use, as they will try to change the BPM of the target by 45 closest to the standard BPM of the patient.
+
+  Manual defibrillators need to be properly used to not cause death to the patient.
+
+  # Manual Defibrillator Guide
+
+  M.E.D.s have 4 switches and one power flip, with a screen that tells the current heartrate of the patient.
+  By interacting with the defib onto yourself or any other living creature, it will switch the monitor to the patient, showing his BPM.
+
+  The flips and switches do the following:
+
+  - IO switch (power switch) - O is Off, I is ON.
+  - Voltage flips - 4 identical switches, that raise the voltage of the defibrillator by 500V each.
+
+  - 1 flip/500V - Lowers the BPM by 80, useful if the BPM of the patient is in 200+
+  - 2 flips/1000V - Lowers the BPM by 50, useful if the BPM of the patient is around 200
+  - 3 flips/1500V - Raises the BPM by 150-200, useful if the patient is flatlined (has 0 BPM)
+  - 4 flips/2000V - Raises the BPM by 200-300, useful always never
+
+
+
+</Document>

@@ -11,8 +11,8 @@
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
-  - Glasses
   - AssistiveItems
+ # - Glasses # inky
   - SurvivalMedical
   - Trinkets
 #  - ChiefMedicalOfficerJobTrinkets
@@ -34,7 +34,8 @@
   - MedicalDoctorOuterClothing
   - MedicalShoes
   - MedicalDoctorPDA
-  - Glasses
+ # - Glasses #Inky
+  - MedicalEyewear #Inky
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
@@ -52,8 +53,9 @@
   - GroupTankHarness
   - MedicalInternJumpsuit
   - MedicalBackpack
-  - Glasses
   - AssistiveItems
+  # - Glasses #Inkyt
+  - MedicalEyewear #Inky
   - SurvivalMedical
   - Trinkets
 #  - MedicalInternJobTrinkets
@@ -95,8 +97,9 @@
   - MedicalBackpack
   - ParamedicOuterClothing
   - ParamedicShoes
-  - Glasses
   - AssistiveItems
+  # - Glasses #Inky
+  - MedicalEyewear #Inky
   - SurvivalMedical
   - Trinkets
 #  - ParamedicJobTrinkets

@@ -36,10 +36,10 @@
   - type: Tag
     tags:
     - PlasmamanSafe
-  - type: IgniteFromGasImmunity
-    parts:
-    - HandLeft
-    - HandRight
+#  - type: IgniteFromGasImmunity inkymed
+#    parts:
+#    - HandLeft
+#    - HandRight
 
 - type: entity
   parent: ClothingHandModsuitBase
@@ -91,7 +91,6 @@
         Blunt: 0.9
         Slash: 0.9
         Piercing: 0.9
-        Ballistic: 0.9
 
 - type: entity
   parent: [ ClothingHandModsuitBase, BaseModsuitPieceHOS ]
@@ -109,7 +108,6 @@
         Blunt: 0.9
         Slash: 0.9
         Piercing: 0.9
-        Ballistic: 0.9
         Shock: 0.75
 
 - type: entity
@@ -183,5 +181,4 @@
         Blunt: 0.95
         Slash: 0.95
         Piercing: 0.95
-        Ballistic: 0.95
         Shock: 0.75

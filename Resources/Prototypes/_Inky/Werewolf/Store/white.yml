@@ -1,0 +1,141 @@
+- type: listing
+  id: WerewolfWhite
+  name: werewolf-store-choose-white-name
+  description: werewolf-store-choose-white-desc
+  icon:
+    sprite: _Inky/Mobs/Werewolf/Mutations/white.rsi
+    state: icon
+  productEvent: !type:WerewolfChangeTypeEvent
+    werewolfType: WerewolfTransformWhite
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfChoose
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfBlack
+
+- type: listing
+  id: WerewolfWhiteClaws
+  name: werewolf-store-white-dmg-name
+  description: werewolf-store-white-dmg-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: claws
+  productEvent: !type:WerewolfChangeTypeEvent
+    werewolfType: WerewolfTransformWhiteClaws # holy goida
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 10
+  categories:
+  - WerewolfWhite
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfWhite
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfBlack
+
+
+- type: listing
+  id: WerewolfWhiteBloodhound1 # todo werewolf
+  name: werewolf-store-white-track-name
+  description: werewolf-store-white-track-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: bloodhound
+  productEvent: !type:WerewolfUpgradeAbilityEvent
+    oldActionId: ActionWerewolfTransfurm
+    newActionId: ActionWerewolfTransfurmWhite
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 6
+  categories:
+  - WerewolfWhite
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfWhite
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfBlack
+
+#- type: listing
+#  id: WerewolfWhiteBloodhound
+#  name: werewolf-store-white-track-name
+#  description: werewolf-store-white-track-desc
+#  icon:
+#    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+#    state: bloodhound
+#  productEvent: !type:WerewolfUpgradeAbilityEvent
+#    newActionId: ActionWerewolfBloodhound
+#  raiseProductEventOnUser: true
+#  cost:
+#    Fury: 6
+#  categories:
+#  - WerewolfWhite
+#  conditions:
+#  - !type:ListingLimitedStockCondition
+#    stock: 1
+#  - !type:BuyBeforeCondition
+#    whitelist:
+#    - WerewolfWhite
+#    blacklist:
+#    - WerewolfDirewolf
+
+- type: listing
+  id: WerewolfWhiteLunar
+  name: werewolf-store-white-lunar-name
+  description: werewolf-store-lunar-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: lunar-white
+  productEvent: !type:WerewolfAddCollectivemindEvent
+    popup: werewolf-white-lunar-popup
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfWhite
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfWhite
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfBlack
+
+- type: listing
+  id: WerewolfWhiteRevelation
+  name: werewolf-store-white-revelation-name
+  description: werewolf-store-revelation-desc # todo werewolf dont forget to say that it blocks you from buying new shit
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: revelation
+  productEvent: !type:WerewolfRevelationEvent
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 20
+  categories:
+  - WerewolfWhite
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfWhite
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfBlack

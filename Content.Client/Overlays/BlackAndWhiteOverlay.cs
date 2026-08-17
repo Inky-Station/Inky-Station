@@ -14,6 +14,10 @@ public sealed partial class BlackAndWhiteOverlay : Overlay
     public override bool RequestScreenTexture => true;
     private readonly ShaderInstance _greyscaleShader;
 
+    //inkymed
+    public float Intensity { get; set; } = 1f;
+    // /inky
+
     public BlackAndWhiteOverlay()
     {
         IoCManager.InjectDependencies(this);
@@ -27,6 +31,10 @@ public sealed partial class BlackAndWhiteOverlay : Overlay
             return;
 
         var handle = args.WorldHandle;
+
+        // inky
+        _greyscaleShader.SetParameter("intensity", Intensity);
+        // /inky
         _greyscaleShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
         handle.UseShader(_greyscaleShader);
         handle.DrawRect(args.WorldBounds, Color.White);

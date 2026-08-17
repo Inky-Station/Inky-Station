@@ -2,15 +2,17 @@
 
 - type: reaction
   id: Fentanyl
-  minTemp: 410
-  maxTemp: 420 # no lavabeaker for the lazy chemist
+#  minTemp: 410 # inky edit - geg
+#  maxTemp: 420 # no lavabeaker for the lazy chemist # inky edit
   reactants:
     Desoxyephedrine:
       amount: 2
     Impedrezene:
       amount: 3
-    FourteenLoko:
-      amount: 1
+    # inky edit
+#    FourteenLoko:
+#      amount: 1
+    # /inky edit
     Bleach:
       amount: 1
   products:

@@ -19,6 +19,8 @@
   - type: VisualOrgan
     data:
       sprite: _Trauma/Mobs/Species/Cat/parts.rsi
+    secondData: #inkymed
+      sprite: _Trauma/Mobs/Species/Cat/parts.rsi
 
 ## Parts
 

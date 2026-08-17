@@ -13,7 +13,7 @@
   - ProximitySensor
   - Drone
   # Goobstation R&D Console rework start
-  position: -4,2
+  position: -4,3 # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -32,7 +32,9 @@
   - APECircuitboard
   - AnomalyVesselCircuitboard
   # Goobstation R&D Console rework start
-  position: -4,-2
+  position: -5,-1 # inky
+  technologyPrerequisites:
+  - BasicXenoArcheology # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -49,9 +51,7 @@
   - AnalysisComputerCircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: -5,-5
-  technologyPrerequisites:
-  - BasicAnomalousResearch
+  position: -4,-1 # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -67,8 +67,8 @@
   - TechDiskComputerCircuitboard
   # Goobstation R&D Console rework start
   technologyPrerequisites:
-  - BasicAnomalousResearch
-  position: -5,-6
+  - BasicXenoArcheology # inky
+  position: -3,-1 # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -84,7 +84,7 @@
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
   # Goobstation R&D Console rework start
-  position: -5,-7
+  position: -2,-1 # inky
   technologyPrerequisites:
   - AlternativeResearch
   # Goobstation R&D Console rework end
@@ -101,7 +101,7 @@
   recipeUnlocks:
   - WeaponGauntletGorilla
   # Goobstation R&D Console rework start
-  position: -6,-4
+  position: -5,-2 # inky
   technologyPrerequisites:
   - BasicAnomalousResearch
   # Goobstation R&D Console rework end
@@ -120,9 +120,9 @@
   recipeUnlocks:
   - ArtifactCrusherMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: -6,-3
+  position: -3,-2 # inky
   technologyPrerequisites:
-  - BasicXenoArcheology
+  - AlternativeResearch # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -139,8 +139,8 @@
   - AnomalySynchronizerCircuitboard
   - AnomalyVesselExperimentalCircuitboard
   technologyPrerequisites:
-  - BasicXenoArcheology
-  position: -6,-5
+  - AnomalyCoreHarnessing # inky
+  position: -4,-2 # inky
 
 - type: technology
   id: DeterrenceTechnologies
@@ -155,9 +155,9 @@
   - WeaponParticleDecelerator
   - HoloprojectorField
   # Goobstation R&D Console rework start
-  position: -6,-6
+  position: -3,-4 # inky
   technologyPrerequisites:
-  - AlternativeResearch
+  - Pinpointers # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -173,9 +173,9 @@
     - WeaponForceGun
     - WeaponTetherGun
   # Goobstation R&D Console rework start
-  position: -7,-4
+  position: -5,-3 # inky
   technologyPrerequisites:
-  - AbnormalArtifactManipulation
+  #- AbnormalArtifactManipulation # inky
   - AnomalyCoreHarnessing
   # Goobstation R&D Console rework end
 
@@ -193,7 +193,7 @@
   recipeUnlocks:
   - DeviceQuantumSpinInverter
   # Goobstation R&D Console rework start
-  position: -9,-4
+  position: -4,-4 # inky
   technologyPrerequisites:
   - GravityManipulation
   # Goobstation R&D Console rework end
@@ -209,8 +209,8 @@
   cost: 15000 # Trauma - was 10000
   recipeUnlocks:
   - DeviceDesynchronizer
-  # <Trauma>
-  position: -8,-4
+  # Goobstation R&D Console rework start
+  position: -4,-3 # inky
   technologyPrerequisites:
   - GravityManipulation
   # </Trauma>

@@ -1,48 +1,51 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Tier 2
-- type: technology
-  id: BasicTranslation
-  name: research-technology-basic-translation
-  icon:
-    sprite: _EinsteinEngines/Objects/Devices/translator.rsi
-    state: icon
-  discipline: CivilianServices
-  tier: 2
-  cost: 7500
-  recipeUnlocks:
-  - BasicGalaticCommonTranslatorImplanter
-  - BubblishTranslator
-  - DraconicTranslator
-  - SolCommonTranslator
-  - RootSpeakTranslator
-  - MofficTranslator
-  - ChevalTranslatorImplanter
-  - NewKinPidginTranslator
-  position: -3, 4
-  technologyPrerequisites:
-  - AdvancedEntertainment
+# inky edit start
+#- type: technology
+#  id: BasicTranslation
+#  name: research-technology-basic-translation
+#  icon:
+#    sprite: _EinsteinEngines/Objects/Devices/translator.rsi
+#    state: icon
+#  discipline: CivilianServices
+#  tier: 2
+#  cost: 7500
+#  recipeUnlocks:
+#  - BasicGalaticCommonTranslatorImplanter
+#  - BubblishTranslator
+#  - DraconicTranslator
+#  - SolCommonTranslator
+#  - RootSpeakTranslator
+#  - MofficTranslator
+#  - ChevalTranslatorImplanter
+#  - NewKinPidginTranslator
+#  position: -3, 4
+#  technologyPrerequisites:
+#  - AdvancedEntertainment
 
 # Tier 3
-- type: technology
-  id: AdvancedTranslation
-  name: research-technology-advanced-translation
-  icon:
-    sprite: Objects/Specific/Medical/implanter.rsi
-    state: implanter0
-  discipline: CivilianServices
-  tier: 3
-  cost: 10000
-  recipeUnlocks:
-  - AdvancedGalaticCommonTranslatorImplanter
-  - BubblishTranslatorImplanter
-  - DraconicTranslatorImplanter
-  - SolCommonTranslatorImplanter
-  - RootSpeakTranslatorImplanter
-  - MofficTranslatorImplanter
-  - NewKinPidginTranslatorImplanter
-  - AnimalTranslator
-  - XenoTranslator
-  position: -3, 5
-  technologyPrerequisites:
-  - BasicTranslation
+#- type: technology
+#  id: AdvancedTranslation
+#  name: research-technology-advanced-translation
+#  icon:
+#    sprite: Objects/Specific/Medical/implanter.rsi
+#    state: implanter0
+#  discipline: CivilianServices
+#  tier: 3
+#  cost: 10000
+#  recipeUnlocks:
+#  - AdvancedGalaticCommonTranslatorImplanter
+#  - BubblishTranslatorImplanter
+#  - DraconicTranslatorImplanter
+#  - SolCommonTranslatorImplanter
+#  - RootSpeakTranslatorImplanter
+#  - MofficTranslatorImplanter
+#  - NewKinPidginTranslatorImplanter
+#  - AnimalTranslator
+#  - XenoTranslator
+#  position: -3, 4 # inky edit
+#  technologyPrerequisites:
+#  - AdvancedEntertainment # inky edit
+
+# inky edit end

@@ -21,6 +21,10 @@ public sealed partial class DamageOnHitSystem : EntitySystem
     // Looks for a hit, then damages the held item an appropriate amount.
     private void DamageItem(EntityUid uid, DamageOnHitComponent component, MeleeHitEvent args)
     {
+        // inky start
+        if (component.Active != true)
+            return;
+        // inky end
         if (args.HitEntities.Any())
             _damage.TryChangeDamage(uid, component.Damage, component.IgnoreResistances, targetPart: component.TargetParts); // Goob - added targetPart
     }

@@ -1,0 +1,14 @@
+- type: entity
+  id: ActionSelfRename
+  name: Rename
+  description: Rename yourself!
+  parent: BaseAction
+  components:
+  - type: InstantAction
+    event: !type:SelfRenamerActionEvent {}
+  - type: Action
+    useDelay: 5
+    itemIconStyle: BigAction
+    icon:
+      sprite: _RMC14/Objects/Kitchen/Plants/mango.rsi
+      state: produce

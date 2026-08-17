@@ -8,4 +8,4 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 11
+        Piercing: 11

@@ -14,6 +14,7 @@ using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
+using Content.Shared.Whitelist;
 using Robust.Server;
 using Robust.Server.GameStates;
 using Robust.Shared.Audio.Systems;
@@ -61,6 +62,10 @@ namespace Content.Server.GameTicking
         [Dependency] private MetaDataSystem _metaData = default!;
         [Dependency] private SharedRoleSystem _roles = default!;
         [Dependency] private ServerDbEntryManager _dbEntryManager = default!;
+
+        // inky
+        [Dependency] private EntityWhitelistSystem _whitelist = default!;
+        // /imky
 
         [ViewVariables] private bool _initialized;
         [ViewVariables] private bool _postInitialized;

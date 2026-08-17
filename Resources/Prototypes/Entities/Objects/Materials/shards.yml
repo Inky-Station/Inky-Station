@@ -86,7 +86,7 @@
       launchForwardsMultiplier: 0
   - type: TriggerOnStepTrigger
   - type: DamageOnTrigger
-    targetPart: Feet # Trauma
+    targetPart: Legs # Trauma # inky
     targetUser: true
     damage:
       types:

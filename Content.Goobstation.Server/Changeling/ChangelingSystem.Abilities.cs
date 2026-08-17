@@ -253,6 +253,7 @@ public sealed partial class ChangelingSystem
             Dirty(uid, biomass);
         }
 
+        /* inky - no
         comp.SelectedForm = TryGetDNA(uid, target, comp);
 
         if (comp.SelectedForm is not { })
@@ -267,6 +268,7 @@ public sealed partial class ChangelingSystem
         }
 
         TryTransform(uid, comp);
+        */
     }
 
     private bool HasImplant(EntityUid uid, [ForbidLiteral] string id)
@@ -435,7 +437,7 @@ public sealed partial class ChangelingSystem
         if (reviveEv.Cancelled)
             return;
 
-        args.Handled = true;
+        // args.Handled = true; // inky
 
         if (!comp.IsInStasis)
         {
@@ -457,10 +459,12 @@ public sealed partial class ChangelingSystem
             return;
 
         // heal of everything
-        var stasisEv = new RejuvenateEvent(false, true);
+        var stasisEv = new RejuvenateEvent(true, true); // inky edit - uncuff lings
         RaiseLocalEvent(uid, stasisEv);
 
         Popup.PopupEntity(Loc.GetString("changeling-stasis-exit"), uid, uid);
+
+        args.Handled = true; // inky
 
         // stuns or knocks down anybody grabbing you
         if (_pull.IsPulled(uid))

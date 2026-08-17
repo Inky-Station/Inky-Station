@@ -33,6 +33,7 @@
       interval: 10
     - type: SpeechFontOverride # Trauma - ss13 parity
       font: LDFComicSans
+
   - !type:AddImplantSpecial
     implants: [ SadTromboneImplant ]
 

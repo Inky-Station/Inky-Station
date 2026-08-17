@@ -78,12 +78,12 @@
       Head: OrganDwarfHead
       ArmLeft: OrganDwarfArmLeft
       ArmRight: OrganDwarfArmRight
-      HandRight: OrganDwarfHandRight
-      HandLeft: OrganDwarfHandLeft
+#      HandRight: OrganDwarfHandRight inkymed
+#      HandLeft: OrganDwarfHandLeft inkymed
       LegLeft: OrganDwarfLegLeft
       LegRight: OrganDwarfLegRight
-      FootLeft: OrganDwarfFootLeft
-      FootRight: OrganDwarfFootRight
+#      FootLeft: OrganDwarfFootLeft inkymed
+#      FootRight: OrganDwarfFootRight inkymed
       Brain: OrganHumanBrain
       Eyes: OrganDwarfEyes
       Tongue: OrganHumanTongue
@@ -432,3 +432,10 @@
 - type: entity
   parent: [ OrganDwarfMetabolizer, OrganHumanHeart ]
   id: OrganDwarfHeart
+  # inkymed
+  components:
+  - type: Heart
+    normalRate: 150
+    fibrillationCaps: 40,260
+    criticalRate: 370
+  # inkymed

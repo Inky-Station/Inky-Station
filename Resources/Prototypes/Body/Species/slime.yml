@@ -68,12 +68,12 @@
       Head: OrganSlimePersonHead
       ArmLeft: OrganSlimePersonArmLeft
       ArmRight: OrganSlimePersonArmRight
-      HandRight: OrganSlimePersonHandRight
-      HandLeft: OrganSlimePersonHandLeft
+#      HandRight: OrganSlimePersonHandRight #inkymed
+#      HandLeft: OrganSlimePersonHandLeft # inkymed
       LegLeft: OrganSlimePersonLegLeft
       LegRight: OrganSlimePersonLegRight
-      FootLeft: OrganSlimePersonFootLeft
-      FootRight: OrganSlimePersonFootRight
+#      FootLeft: OrganSlimePersonFootLeft #inkymed
+#      FootRight: OrganSlimePersonFootRight #inkymed
       # <Trauma>
       Tongue: OrganSlimePersonTongue
       # </Trauma>
@@ -147,6 +147,7 @@
   #    Burn:
   #      sprite: Mobs/Effects/burn_damage.rsi
   - type: Bloodstream
+    requiresHeart: false # inky
     bloodReferenceSolution: # TODO Color slime blood based on their slime color or smth
       reagents:
       - ReagentId: Slime
@@ -231,6 +232,8 @@
     sprite: Mobs/Species/Slime/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Slime/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Slime/parts.rsi
   - type: VisualOrganMarkings
     markingData:

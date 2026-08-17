@@ -1,0 +1,7 @@
+- type: polymorph
+  id: FunSkeleton
+  configuration:
+    entity: MobSkeletonPerson
+    transferName: true
+    transferDamage: false
+    inventory: Drop

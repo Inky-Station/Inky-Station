@@ -1,0 +1,190 @@
+- type: listing
+  id: WerewolfBlack
+  name: werewolf-store-choose-black-name
+  description: werewolf-store-choose-black-desc
+  icon:
+    sprite: _Inky/Mobs/Werewolf/Mutations/black.rsi
+    state: icon
+  productEvent: !type:WerewolfChangeTypeEvent
+    werewolfType: WerewolfTransformBlack
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfChoose
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    blacklist:
+    - WerewolfWhite
+    - WerewolfDirewolf
+
+- type: listing
+  id: WerewolfBiteBlack
+  name: werewolf-store-bite-black-name
+  description: werewolf-store-bite-black-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: black-bite
+  productEvent: !type:WerewolfUpgradeAbilityEvent
+    newActionId: ActionWerewolfBiteBlack
+    oldActionId: ActionWerewolfAbsorb
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 10
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlack
+    blacklist:
+    - WerewolfWhite
+    - WerewolfDirewolf
+
+- type: listing
+  id: WerewolfBlackLunar
+  name: werewolf-store-black-lunar-name
+  description: werewolf-store-lunar-black-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: lunar-black
+  productEvent: !type:WerewolfAddCollectivemindEvent
+    popup: werewolf-black-lunar-popup
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 6
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlack
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+
+- type: listing
+  id: WerewolfBlackOrder
+  name: werewolf-store-black-order-name
+  description: werewolf-store-lunar-order-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: howl-green
+  productEvent: !type:WerewolfUpgradeAbilityEvent
+    oldActionId: ActionWerewolfHowl
+    newActionId: ActionWerewolfHowlBlack
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 6
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlack
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+
+- type: listing
+  id: WerewolfBlackBequeath
+  name: werewolf-store-black-bequeath-name
+  description: werewolf-store-bequeath-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: bequeath
+  productEvent: !type:WerewolfUpgradeAbilityEvent
+    newActionId: ActionWerewolfBequeath
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBiteBlack
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+
+- type: listing
+  id: WerewolfBlackBeckon
+  name: werewolf-store-black-beckon-name
+  description: werewolf-store-beckon-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: beckon
+  productEvent: !type:WerewolfUpgradeAbilityEvent
+    newActionId: ActionWerewolfBeckon
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 10
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlackLunar
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+
+- type: listing
+  id: WerewolfBlackLunarApprentice
+  name: werewolf-store-black-lunar-name
+  description: werewolf-store-lunar-black-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: lunar-black
+  productEvent: !type:WerewolfAddCollectivemindEvent
+    popup: werewolf-black-lunar-popup
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 2
+  categories:
+  - WerewolfBlackApprentice
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite
+    - WerewolfBlack
+
+- type: listing
+  id: WerewolfBlackCall
+  name: werewolf-store-black-call-name
+  description: werewolf-store-black-call-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: call
+  productEvent: !type:WerewolfUpgradeAbilityEvent
+    newActionId: ActionWerewolfBlackCall
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 20
+  categories:
+  - WerewolfBlack
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfBlack
+    blacklist:
+    - WerewolfDirewolf
+    - WerewolfWhite

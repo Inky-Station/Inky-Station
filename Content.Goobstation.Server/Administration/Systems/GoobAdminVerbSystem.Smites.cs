@@ -38,7 +38,7 @@ public sealed partial class GoobAdminVerbSystem
         args.Verbs.Add(thunder);
     }
 
-    private bool SmitesAllowed(GetVerbsEvent<Verb> args)
+    public bool SmitesAllowed(GetVerbsEvent<Verb> args) // inky - made public
     {
         if (!TryComp(args.User, out ActorComponent? actor))
             return false;

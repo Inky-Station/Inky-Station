@@ -1,0 +1,35 @@
+- type: entity
+  id: WerewolfWerewolf
+  parent:
+  - BaseWerewolf
+  - BaseWerewolfUnholy
+  components:
+  - type: Sprite
+    sprite: _Inky/Mobs/Werewolf/Mutations/base.rsi
+    state: werewolf
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.35
+        Heat: 0.1
+#  - type: LanguageKnowledge # Einstein Engines - Languages
+#    speaks:
+#    - Draconic # the furry vulp language (swapped to draconic cuz trauma were based enough to get rid of it)
+#    understands:
+#    - TauCetiBasic
+#    - Draconic
+
+- type: entity
+  id: WerewolfWerehuman
+  parent: WerewolfWerewolf # should be identical to the average werewolf because memes
+  name: human
+  description: Lord have mercy.
+  components:
+  - type: Sprite
+    sprite: _Inky/Mobs/Werewolf/Mutations/werehuman.rsi
+    state: werehuman
+#  - type: LanguageSpeaker
+#    speaks:
+#    - TauCetiBasic
+#    understands:
+#    - TauCetiBasic

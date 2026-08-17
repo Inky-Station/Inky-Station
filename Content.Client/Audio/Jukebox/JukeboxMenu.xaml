@@ -9,11 +9,17 @@ SPDX-License-Identifier: MIT
                 SetSize="400 500" Title="{Loc 'jukebox-menu-title'}">
     <BoxContainer Margin="4 0" Orientation="Vertical">
         <ItemList Name="MusicList" SelectMode="Button" Margin="3 3 3 3"
-        HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="8"/>
+                  HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="8"/>
         <BoxContainer Orientation="Vertical">
             <Label Name="SongSelected" Text="{Loc 'jukebox-menu-selectedsong'}" />
             <Label Name="SongName" Text="---" />
             <Slider Name="PlaybackSlider" HorizontalExpand="True" />
+            <!-- inky -->
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                <Label Text="{Loc 'jukebox-menu-volume'}" MinSize="50 0" />
+                <Slider Name="VolumeSlider" HorizontalExpand="True" MinValue="0" MaxValue="100" Value="50" />
+            </BoxContainer>
+            <!-- /inky -->
         </BoxContainer>
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True"
         VerticalExpand="False" SizeFlagsStretchRatio="1">

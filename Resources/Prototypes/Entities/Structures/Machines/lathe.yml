@@ -181,7 +181,8 @@
     emagStaticPacks:
     - SecurityWeaponsStatic
     - SecurityAmmoStatic
-    # - SyndicateAmmoStatic # Trauma
+    - SyndicateAmmoStatic # Trauma # inky
+    - InkySecurityStatic # inky
     # Goobstation
     - ScienceExplosives
   - type: BlueprintReceiver
@@ -262,7 +263,7 @@
     - UpgradeKits
     - ConstructionBagOfHolding
     # Einstein Engines Packs
-    - Translators
+#    - Translators # inky edit start - kill translators
     # <Trauma>
     - BotanyTrauma
     - TraumaScienceClothing
@@ -502,6 +503,7 @@
     - PowerCellsStatic
     - ScienceExplosives
     - GrenadeTriggersStatic
+    - InkySecurityStatic # inky
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -510,7 +512,7 @@
     - SecurityExplosives
     - SecurityAmmo
     - SecurityWeapons
-    # - SecurityDisablers # Trauma - disablers replaced with phasers
+    - SecurityDisablers # Trauma - disablers replaced with phasers # inky - nah
     # <Goob>
     - SecurityWeaponsGoob
     - RestraintTechnology
@@ -523,9 +525,9 @@
     - SpecOpsGoogles
     - PowerCells
     # </Goob>
-  # - type: EmagLatheRecipes
-  #   emagStaticPacks:
-  #   # - SyndicateAmmoStatic # Trauma
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - SyndicateAmmoStatic # Trauma # inky
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
@@ -628,8 +630,8 @@
     - MedicalBoards
     - Janitor
     - Genetics
-    - Translators
-    - TranslatorImplanters
+    #    - Translators # Language # inky edit start - kill translators
+    #    - TranslatorImplanters # Language # inky edit start - kill translators
     - TraumaCybernetics
     # </Trauma>
     - Chemistry

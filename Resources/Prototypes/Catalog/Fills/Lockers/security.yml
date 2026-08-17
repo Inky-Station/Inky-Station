@@ -83,7 +83,13 @@
       prob: 0.3
     - id: ClothingHeadHelmetBasic
     - id: ClothingOuterArmorBasic
-    - id: ClothingBeltSecurityFilled
+    # inky
+    #- id: ClothingBeltSecurityFilled
+    - !type:GroupSelector
+      children:
+      - id: ClothingBeltSecurityFilled
+      - id: ClothingBeltCorporateJudoFilled
+    # /inky
     - id: Flash
       prob: 0.5
     - id: ClothingEyesGlassesSecurity
@@ -224,7 +230,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband, AlertLevelLock] # WWDP
   id: GunSafeRifleLecter
   name: lecter safe
-  suffix: Alert Level Lock # WWDP
+  suffix: Lecter, Alert Level Lock # WWDP
   components:
   - type: EntityTableContainerFill
     containers:
@@ -244,7 +250,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband, AlertLevelLock] # WWDP
   id: GunSafeSubMachineGunDrozd
   name: drozd safe
-  suffix: Alert Level Lock # WWDP
+  suffix: Drozd, Alert Level Lock # WWDP
   components:
   - type: EntityTableContainerFill
     containers:
@@ -264,7 +270,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband, AlertLevelLock] # WWDP
   id: GunSafeShotgunEnforcer
   name: enforcer safe
-  suffix: Alert Level Lock # WWDP
+  suffix: Enforcer, Alert Level Lock # WWDP
   components:
   - type: EntityTableContainerFill
     containers:
@@ -284,7 +290,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband, AlertLevelLock] # WWDP
   id: GunSafeShotgunKammerer
   name: kammerer safe
-  suffix: Alert Level Lock # WWDP
+  suffix: Kammerer, Alert Level Lock # WWDP
   components:
   - type: EntityTableContainerFill
     containers:
@@ -304,7 +310,7 @@
   id: GunSafeSubMachineGunWt550
   parent: [GunSafeBaseSecure, BaseSecurityContraband, AlertLevelLock] # WWDP
   name: wt550 safe
-  suffix: Alert Level Lock # WWDP
+  suffix: wt550, Alert Level Lock # WWDP
   components:
   - type: EntityTableContainerFill
     containers:
@@ -324,7 +330,7 @@
   parent: [GunSafeBaseSecure, BaseSecurityContraband, AlertLevelLock] # WWDP
   id: GunSafeLaserCarbineOutdated # Trauma
   name: laser safe
-  suffix: Alert Level Lock # WWDP
+  suffix: Carbide, Alert Level Lock # WWDP
   components:
   - type: EntityTableContainerFill
     containers:

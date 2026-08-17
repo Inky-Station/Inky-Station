@@ -18,6 +18,9 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
   - Insurgency
+  # inky
+  - FunGameruleChooser # chudshift 90% of the time
+  # /inky
 
 - type: gamePreset
   id: Heretics
@@ -36,6 +39,9 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRuleNoHeretic
   - HereticRoundstart
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Shadowlings
@@ -54,12 +60,19 @@
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
   - ShadowlingGamemode
+  # inky
+  - FunGameruleChooser
+  # /inky
 
 - type: gamePreset
   id: Spies
   alias:
   - spy
   - spies
+  # inky
+  - tf2
+  - france
+  # /inky
   name: spies-title
   description: spies-description
   showInVote: false

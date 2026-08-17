@@ -173,7 +173,7 @@ public sealed partial class WoundSystem
                 if (!IsWoundPrototypeValid(id))
                     continue;
 
-                var multiplier = args.Damage.WoundSeverityMultipliers.GetValueOrDefault(damageType, 1);
+                var multiplier = /*args.Damage.WoundSeverityMultipliers.GetValueOrDefault(damageType, 1); */ 1; // inkymed
                 TryInduceWound(part,
                     args.Damage.GetWoundId(damageType),
                     damageValue * multiplier,
@@ -470,8 +470,12 @@ public sealed partial class WoundSystem
         foreach (var wound in part.Comp.Wounds.ContainedEntities)
         {
             var woundComp = _query.Comp(wound);
+            // inkymed
+            /*
             if (woundComp.IsScar) // scars don't affect limb integrity
                 continue;
+            */
+            // /inkymed
 
             damage += woundComp.WoundSeverityPoint;
         }
@@ -640,43 +644,6 @@ public sealed partial class WoundSystem
         {
             if (_body.GetCategory(part.Owner) is {} category)
                 result[category] = part.Comp.WoundableSeverity;
-        }
-
-        return result;
-    }
-
-    public Dictionary<ProtoId<OrganCategoryPrototype>, WoundableSeverity> GetDamageableStatesOnBody(EntityUid body)
-    {
-        var result = SeveredStates();
-        foreach (var part in _body.GetOrgans<WoundableComponent>(body))
-        {
-            if (_body.GetCategory(part.Owner) is not {} category)
-                continue;
-
-            var nearestSeverity = WoundableSeverity.Severed;
-            var damage = _damageable.GetTotalDamage(part.Owner);
-            foreach (var (severity, threshold) in part.Comp.Thresholds.OrderByDescending(kv => kv.Value))
-            {
-                if (damage <= 0)
-                {
-                    nearestSeverity = WoundableSeverity.Healthy;
-                    break;
-                }
-
-                if (damage >= part.Comp.IntegrityCap)
-                {
-                    nearestSeverity = WoundableSeverity.Mangled;
-                    break;
-                }
-
-                if (damage > part.Comp.IntegrityCap - threshold)
-                    continue;
-
-                nearestSeverity = severity;
-                break;
-            }
-
-            result[category] = nearestSeverity;
         }
 
         return result;

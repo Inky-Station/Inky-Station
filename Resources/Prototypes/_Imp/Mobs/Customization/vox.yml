@@ -339,7 +339,7 @@
 
 - type: marking
   id: VoxFootGradientLFoot
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [ Vox ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Vox/lfoot.rsi
@@ -349,7 +349,7 @@
 
 - type: marking
   id: VoxFootGradientRFoot
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [ Vox ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Vox/rfoot.rsi
@@ -359,7 +359,7 @@
 
 - type: marking
   id: VoxHandGradientLHand
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ Vox ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Vox/lhand.rsi
@@ -371,7 +371,7 @@
 
 - type: marking
   id: VoxLArmProsthetic
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ Vox ]
   coloring:
     default:
@@ -386,7 +386,7 @@
 
 - type: marking
   id: VoxHandGradientRHand
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [ Vox ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Vox/rhand.rsi
@@ -398,7 +398,7 @@
 
 - type: marking
   id: VoxRArmProsthetic
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [ Vox ]
   coloring:
     default:

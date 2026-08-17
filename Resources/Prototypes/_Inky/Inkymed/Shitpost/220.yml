@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseItem
+  id: 220Bandaid
+  name: CURSE OF 220
+  description: 220
+  suffix: 220
+  components:
+  - type: Sprite
+    sprite: _Inky/Shitpost/220.rsi
+    state: icon
+  - type: TimedDespawn
+    lifetime: 0.65
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/Voice/Human/malescream_2.ogg

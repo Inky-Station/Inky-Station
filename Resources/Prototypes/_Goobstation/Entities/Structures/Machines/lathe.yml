@@ -192,6 +192,7 @@
     - Chemistry
     - Janitor
     - Equipment
+    - MedicalBoards #Inky
     # - ServiceWeapons
     - Surgery
     - SpecOpsGoogles
@@ -208,8 +209,8 @@
     - XenobioPack
     - XenobagHoldingPack
     # Einstein Engines Packs
-    - Translators
-    - TranslatorImplanters
+#    - Translators # inky edit start - kill translators
+#    - TranslatorImplanters # inky edit start - kill translators
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - MechBoardsSecurity
@@ -257,7 +258,7 @@
     - TapeRecorderStatic
     - CondimentStatic
     dynamicPacks:
-    - Translators
+#    - Translators # inky edit
     - Janitor
     - Instruments
     - FauxTiles

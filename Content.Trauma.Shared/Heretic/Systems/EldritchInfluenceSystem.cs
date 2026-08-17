@@ -27,7 +27,7 @@ public sealed partial class EldritchInfluenceSystem : EntitySystem
     [Dependency] private SharedDoAfterSystem _doafter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedHereticSystem _heretic = default!;
-    [Dependency] private SharedMindSystem _mind = default!;
+    // [Dependency] private SharedMindSystem _mind = default!; // inky
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedEntityEffectsSystem _effects = default!;
     [Dependency] private StatusEffectsSystem _status = default!;

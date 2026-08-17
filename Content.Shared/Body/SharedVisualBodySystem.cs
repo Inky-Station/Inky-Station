@@ -97,10 +97,14 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!TryComp<VisualOrganComponent>(args.Args.Organ, out var other))
             return;
 
-        if (!other.Layer.Equals(ent.Comp.Layer))
-            return;
+        if (other.Layer.Equals(ent.Comp.Layer)) // inkymed - removed !
+            SetOrganAppearance(ent, other.Data); // inkymed - replaced return;
 
-        SetOrganAppearance(ent, other.Data);
+        // inkymed
+        // SetOrganAppearance(ent, other.Data);
+        if (other.SecondData != null && other.SecondLayer != null && other.SecondLayer.Equals(ent.Comp.SecondLayer))
+            SetOrganSecondAppearance(ent, other.SecondData);
+        // /inkymed
     }
 
     private void OnMarkingsOrganCopyAppearance(Entity<VisualOrganMarkingsComponent> ent, ref BodyRelayedEvent<OrganCopyAppearanceEvent> args)
@@ -133,10 +137,23 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         else
             SetOrganColor(ent, ent.Comp.Profile.SkinColor);
 
+        // inkymed
+        if (ent.Comp.SecondLayer != null)
+            SetOrganSecondColor(ent, ent.Comp.Profile.SkinColor);
+        // /inkymed
+
         if (ent.Comp.SexStateOverrides is { } overrides && overrides.TryGetValue(data.Sex, out var state))
         {
             ent.Comp.Data.State = state;
             SetOrganAppearance(ent, ent.Comp.Data);
+
+            // inkymed
+            if (ent.Comp.SecondLayer != null && ent.Comp.SecondData != null)
+            {
+                ent.Comp.SecondData.State = state;
+                SetOrganSecondAppearance(ent, ent.Comp.SecondData);
+            }
+            // /inkymed
         }
     }
 

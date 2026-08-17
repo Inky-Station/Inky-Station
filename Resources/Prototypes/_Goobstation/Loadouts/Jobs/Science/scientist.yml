@@ -19,6 +19,9 @@
     - Plasmaman
 
 - type: loadout
-  id: ResearchMJ
+  id: SeniorResearcherMJ # inky
+  effects: # inky
+  - !type:GroupLoadoutEffect # inky
+    proto: SeniorResearcher # inky
   equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryScientist
+    jumpsuit: ClothingUniformJumpsuitMilitarySeniorResearcher # inky

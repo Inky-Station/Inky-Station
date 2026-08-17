@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Inky Server+Client" type="CompoundRunConfigurationType">
+    <toRun name="Content.Inky.Client" type="DotNetProject" />
+    <toRun name="Content.Inky.Server" type="DotNetProject" />
+    <method v="2" />
+  </configuration>
+</component>

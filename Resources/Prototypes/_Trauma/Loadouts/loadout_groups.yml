@@ -39,6 +39,7 @@
   - ScientistJumpsuit
   - ScientistJumpskirt
   - ResearchMJ
+  - GeneticsMJ #inky
 
 - type: loadoutGroup
   id: GeneticistBackpack

@@ -140,7 +140,7 @@ public sealed partial class OrganChipSystem : EntitySystem
         }
     }
 
-    [SubscribeLocalEvent]
+    // [SubscribeLocalEvent] // inky edit
     private void OnGetVerbs(Entity<OrganChipContainerComponent> ent, ref GetVerbsEvent<InteractionVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract)
@@ -185,7 +185,7 @@ public sealed partial class OrganChipSystem : EntitySystem
         }
     }
 
-    [SubscribeLocalEvent]
+    // [SubscribeLocalEvent] // inky edit
     private void OnGetVerbs(Entity<OrganChipContainerComponent> ent, ref BodyRelayedEvent<GetVerbsEvent<InteractionVerb>> args)
     {
         var ev = args.Args;

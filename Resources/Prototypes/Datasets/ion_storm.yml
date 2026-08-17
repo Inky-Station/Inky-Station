@@ -320,6 +320,7 @@
   - ART
   - BADNESS
   - BALDNESS
+  - BRAINROT # Goobstation
   - BRAVERY
   - CAPITALISM
   - CHAOS
@@ -372,6 +373,7 @@
   - TIME
   - WEALTHINESS
   - WONDER
+  - MANGO # inky edit
 
 # Crew is any specific job. Using jobs instead of specific crewmembers since "THE CLOWN" is easier than
 # seeing "JOHN SMITH" and having to figure out who john smith is.
@@ -418,6 +420,11 @@
   - STATION ENGINEERS
   - VIROLOGISTS
   - WARDENS
+  # inky start
+  - RAIDERS
+  - MARAUDERS
+  - VALIDS
+  # inky end
 
 # only including complex dangerous or funny drinks no water allowed
 - type: dataset
@@ -952,9 +959,27 @@
   - TRASH
   - VEGETABLES
   # Goobstation - THE ROT CONSUMES
-  - EMPLOYMENT
-  - FIVE HUNDRED CIGARETTES
+  - BALDMINS
+  - SHITMINS
+  - CHUDMINS
+  - SHITCODERS
+  - CHUDTAINERS
+  - MAINTAINERS WHO DONT PLAY THE GAME
+  - SHITCODE
+  - SUPERCODE
+  - GOIDACODE
   - JOB
+  - EMPLOYMENT
+  - CHUDS
+  - DURK'S STEAK AND WINE
+  - THE SWAP
+  - FIVE HUNDRED CIGARETTES
+  - RUSSIAN RAIDERS
+  - FEDERAL AGENTS
+  # inky
+  - CHUD VOXES
+  - ROUGE ONIS
+  - MANGO FLAVOURED PEOPLE
 
 # Specific actions that either harm humans or must be done to not
 # harm humans. Make sure they're plural and "not" can be tacked

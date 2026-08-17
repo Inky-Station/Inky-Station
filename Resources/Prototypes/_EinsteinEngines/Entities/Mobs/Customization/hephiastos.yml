@@ -44,7 +44,7 @@
 
 - type: marking
   id: CyberLimbsMarkingHesphiastosLHand
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [IPC, Moth, Human, Arachnid, Reptilian]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/hesphiastos/hesphiastos_main.rsi
@@ -65,7 +65,7 @@
 
 - type: marking
   id: CyberLimbsMarkingHesphiastosLFoot
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [IPC, Moth, Human, Arachnid, Reptilian]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/hesphiastos/hesphiastos_main.rsi
@@ -88,7 +88,7 @@
 
 - type: marking
   id: CyberLimbsMarkingHesphiastosRHand
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [IPC, Moth, Human, Arachnid, Reptilian]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/hesphiastos/hesphiastos_main.rsi
@@ -110,7 +110,7 @@
 
 - type: marking
   id: CyberLimbsMarkingHesphiastosRFoot
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [IPC, Moth, Human, Arachnid, Reptilian]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/hesphiastos/hesphiastos_main.rsi

@@ -35,7 +35,6 @@
         types:
           Blunt: -0.05
           Slash: -0.05
-          Ballistic: -0.05
           Piercing: -0.05
           Heat: -0.04
           Cold: -0.04
@@ -312,4 +311,3 @@
           Blunt: -10
           Piercing: -10
           Slash: -10
-          Ballistic: -10

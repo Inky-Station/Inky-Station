@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <inky>
+using Content.Shared.Dataset;
+using Robust.Shared.Random;
+// </inky>
 using System.Linq;
 using Content.Client.GameTicking.Managers;
 using Content.Shared.GameTicking;
@@ -13,6 +16,9 @@ public sealed partial class EndRoundCreditsControl : ScrollContainer
 {
     [Dependency] private IEntitySystemManager _entitySystem = default!;
     private readonly ClientGameTicker _gameTicker;
+    // <inky>
+    [Dependency] private IRobustRandom _gamba = default!;
+    // </inky>
 
     private static readonly ResPath Logo = new("/Textures/Logo/logo.png");
     private static readonly ResPath Pixellari = new("/Fonts/_Trauma/Pixellari.ttf");
@@ -22,6 +28,10 @@ public sealed partial class EndRoundCreditsControl : ScrollContainer
     private const int NormalFontSize = 16;
     private const int BigFontSize = 24;
     private const int HeaderFontSize = 42;
+
+    // <inky>
+    private ProtoId<LocalizedDatasetPrototype> datasetId = "EndRoundCredits";
+    // </inky>
 
     public EndRoundCreditsControl()
     {
@@ -64,8 +74,11 @@ public sealed partial class EndRoundCreditsControl : ScrollContainer
         // Image mgsv episode number and jargon
         ServerImageBox.AddChild(serverImage);
         EpisodeNumber.Text = Loc.GetString("round-end-credits-trauma-episode", ("roundid", message.RoundId), ("title", message.GamemodeTitle));
-        IntroJargonLabel.Text = Loc.GetString("round-end-credits-trauma-jargon", ("station", stationName));
-
+        // <Inky>
+        // IntroJargonLabel.Text = Loc.GetString("round-end-credits-trauma-jargon", ("station", stationName));
+        if (proto.TryIndex(datasetId, out var datasetPrototype))
+            IntroJargonLabel.Text = Loc.GetString(_gamba.Pick(datasetPrototype.Values)); // it needs loc.getstring because... it just needs it ok? idk
+        // </Inky>
         // The fonts
         EpisodeNumber.FontOverride = bigFont;
         IntroJargonLabel.FontOverride = bigFont;

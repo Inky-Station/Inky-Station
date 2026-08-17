@@ -1,0 +1,11 @@
+- type: alert
+  id: Concussion
+  category: Concussion
+  icons:
+  - sprite: /Textures/_Inky/Interface/alerts.rsi
+    state: conc
+  name: alerts-conc-name
+  description: alerts-conc-desc
+
+- type: alertCategory
+  id: Concussion

@@ -3,5 +3,5 @@
 - type: damageModifierSet
   id: Hierophant
   coefficients:
-    Ballistic: 0.1 # No bullets
+    Piercing: 0.1 # No bullets
     Heat: 0.5 # No lasers

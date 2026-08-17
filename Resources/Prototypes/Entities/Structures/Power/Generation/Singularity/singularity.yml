@@ -10,7 +10,7 @@
     sound:
       path: /Audio/Effects/singularity.ogg
   - type: Physics
-    bodyType: Dynamic
+    bodyType: KinematicController # inky edit
     bodyStatus: InAir
   - type: CanMoveInAir
   - type: TileFrictionModifier
@@ -106,3 +106,25 @@
             scale: .9,.9
   - type: SupermatterImmune # Goobstation
   - type: ContainmentFieldIgnore # goob
+  # inky start
+  - type: GhostTakeoverAvailable
+  - type: InputMover
+  - type: GhostRole
+    prob: 1
+    name: ghost-role-information-singu-inky-name
+    description: ghost-role-information-singu-inky-description
+    rules: ghost-role-information-freeagent-rules
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+  - type: SelfRenamer
+  - type: UserInterface
+    interfaces:
+      enum.SelfRenamerUIKey.Key:
+        type: SelfRenamerBoundUserInterface
+  - type: RadarBlip
+    scale: 5
+    shape: Ring
+    visibleFromOtherGrids: true
+  # inky end

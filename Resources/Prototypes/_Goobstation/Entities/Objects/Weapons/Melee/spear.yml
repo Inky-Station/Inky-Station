@@ -49,7 +49,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 10
+        Piercing: 18
     angle: 0
     animation: WeaponArcThrust
     soundHit:
@@ -87,7 +87,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Piercing: 14
+        Piercing: 6
   - type: UseDelay
   - type: Appearance
   - type: SolutionContainerVisuals

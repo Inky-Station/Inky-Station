@@ -266,7 +266,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 20
+        Piercing: 20
   - type: StaminaDamageOnCollide
     damage: 80
 

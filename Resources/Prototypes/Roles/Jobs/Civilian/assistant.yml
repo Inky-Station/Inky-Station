@@ -23,6 +23,13 @@
       - NanoTrasen
       - Assistant
   # </Trauma>
+  # inky
+    - type: LanguageSpeaker
+      speaks:
+      - RaiderSpeak
+      understands:
+      - RaiderSpeak
+  # /inky
 
 - type: startingGear
   id: PassengerGear

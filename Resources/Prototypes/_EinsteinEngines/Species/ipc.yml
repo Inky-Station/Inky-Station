@@ -71,7 +71,7 @@
 
 - type: marking
   id: MobIPCLHandDefault
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ IPC ]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
@@ -81,7 +81,7 @@
 
 - type: marking
   id: MobIPCLFootDefault
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [ IPC ]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
@@ -111,7 +111,7 @@
 
 - type: marking
   id: MobIPCRHandDefault
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [ IPC ]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi
@@ -121,7 +121,7 @@
 
 - type: marking
   id: MobIPCRFootDefault
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [ IPC ]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/IPC/parts.rsi

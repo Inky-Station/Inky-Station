@@ -25,11 +25,11 @@ public sealed partial class MagnetPickupSystem : EntitySystem
     // </Trauma>
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
-    [Dependency] private InventorySystem _inventory = default!;
+    // [Dependency] private InventorySystem _inventory = default!; // inky edit TRAUMA FUCKUP
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedStorageSystem _storage = default!;
     [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private SharedHandsSystem _hands = default!;
+    // [Dependency] private SharedHandsSystem _hands = default!;// inky edit TRAUMA FUCKUP
 
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
 

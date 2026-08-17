@@ -41,7 +41,7 @@ public abstract partial class SharedInteractorSystem : EntitySystem
     [Dependency] private SharedMeleeWeaponSystem _melee = default!;
 
     [Dependency] private EntityQuery<ActiveDoAfterComponent> _doAfterQuery = default!;
-    [Dependency] private EntityQuery<HandsComponent> _handsQuery = default!;
+    // [Dependency] private EntityQuery<HandsComponent> _handsQuery = default!; // inky edit TRAUMA FUCKUP
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
     [Dependency] private EntityQuery<ThrownItemComponent> _thrownQuery = default!;
 

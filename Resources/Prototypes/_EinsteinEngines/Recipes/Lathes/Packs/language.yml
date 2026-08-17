@@ -1,26 +1,26 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-
-- type: latheRecipePack
-  id: Translators
-  recipes:
-  - BubblishTranslator
-  - DraconicTranslator
-  - SolCommonTranslator
-  - RootSpeakTranslator
-  - MofficTranslator
-  - XenoTranslator
-  - AnimalTranslator
-  - NewKinPidginTranslator
-
-- type: latheRecipePack
-  id: TranslatorImplanters
-  recipes:
-  - BasicGalaticCommonTranslatorImplanter
-  - AdvancedGalaticCommonTranslatorImplanter
-  - BubblishTranslatorImplanter
-  - DraconicTranslatorImplanter
-  - SolCommonTranslatorImplanter
-  - RootSpeakTranslatorImplanter
-  - MofficTranslatorImplanter
-  - ChevalTranslatorImplanter
-  - NewKinPidginTranslatorImplanter
+#
+#- type: latheRecipePack
+#  id: Translators
+#  recipes:
+#  - BubblishTranslator
+#  - DraconicTranslator
+#  - SolCommonTranslator
+#  - RootSpeakTranslator
+#  - MofficTranslator
+#  - XenoTranslator
+#  - AnimalTranslator
+#  - NewKinPidginTranslator
+#
+#- type: latheRecipePack
+#  id: TranslatorImplanters
+#  recipes:
+#  - BasicGalaticCommonTranslatorImplanter
+#  - AdvancedGalaticCommonTranslatorImplanter
+#  - BubblishTranslatorImplanter
+#  - DraconicTranslatorImplanter
+#  - SolCommonTranslatorImplanter
+#  - RootSpeakTranslatorImplanter
+#  - MofficTranslatorImplanter
+#  - ChevalTranslatorImplanter
+#  - NewKinPidginTranslatorImplanter

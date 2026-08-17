@@ -1643,6 +1643,10 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      # inky
+      enum.SelfRenamerUIKey.Key:
+        type: SelfRenamerBoundUserInterface
+      # /inky
   # stupid monkey needs clever mutation to be literate
   - type: BlockReading
   - type: BlockWriting
@@ -2945,7 +2949,6 @@
         Blunt: -0.03
         Slash: -0.03
         Piercing: -0.03
-        Ballistic: -0.03
         Heat: -0.03
         Cold: -0.03
         Shock: -0.03

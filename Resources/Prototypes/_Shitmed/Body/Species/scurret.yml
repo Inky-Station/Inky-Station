@@ -13,12 +13,12 @@
       Head: OrganScurretHead
       ArmLeft: OrganScurretArmLeft
       ArmRight: OrganScurretArmRight
-      HandRight: OrganScurretHandRight
-      HandLeft: OrganScurretHandLeft
+#      HandRight: OrganScurretHandRight inkymed
+#      HandLeft: OrganScurretHandLeft inkymed
       LegLeft: OrganScurretLegLeft
       LegRight: OrganScurretLegRight
-      FootLeft: OrganScurretFootLeft
-      FootRight: OrganScurretFootRight
+#      FootLeft: OrganScurretFootLeft inkymed
+#      FootRight: OrganScurretFootRight inkymed
       Brain: OrganAnimalBrain
       Eyes: OrganAnimalEyes
       Tongue: OrganAnimalTongue
@@ -47,6 +47,8 @@
     sprite: _Shitmed/Mobs/Species/Scurret/parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _Shitmed/Mobs/Species/Scurret/parts.rsi
+    secondData: #inkymed
       sprite: _Shitmed/Mobs/Species/Scurret/parts.rsi
   - type: VisualOrganMarkings
     markingData:

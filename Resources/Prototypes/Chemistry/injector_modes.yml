@@ -115,7 +115,7 @@
 - type: injectorMode
   parent: HyposprayDynamicMode
   id: HypopenDynamicMode
-  containerDrawTime: 0.75
+  containerDrawTime: 0 # inky edit
 
 - type: injectorMode
   abstract: true

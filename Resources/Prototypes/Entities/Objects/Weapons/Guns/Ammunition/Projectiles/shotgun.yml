@@ -10,7 +10,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 40 # Trauma
+        Piercing: 40
         Structural: 15
 
 
@@ -40,8 +40,8 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 3 # Trauma, was 10
-        Structural: 5 # Trauma, was 15
+        Piercing: 7 # inky
+        Structural: 15 # inky
 
 - type: entity
   parent: PelletShotgun
@@ -50,8 +50,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgun
-    count: 15 # Trauma, was 6
-    spread: 10 # Trauma, was 15
+    count: 6 # inky
+    spread: 15 # inky
 
 - type: entity
   parent: [BaseBulletIncendiary, BaseBulletKinetic] # Trauma
@@ -62,7 +62,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 2 # Trauma, was 7
+        Piercing: 5 # inky
         # Heat: 3 # Trauma
   - type: IgnitionSource
     ignited: true
@@ -74,8 +74,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunIncendiary
-    count: 15 # Trauma, was 4
-    spread: 10 # Trauma, was 15
+    count: 6 # inky
+    spread: 15 # inky
 
 - type: entity
   parent: BaseBulletPractice
@@ -95,8 +95,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunPractice
-    count: 15 # Trauma, was 6
-    spread: 10 # Trauma, was 15
+    count: 6 # inky
+    spread: 15 # inky
 
 - type: entity
   parent: BaseBulletKinetic # Trauma
@@ -112,8 +112,8 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 1.5
-        Slash: 1.5
+        Piercing: 3 # inky
+        Slash: 3 # inky
 
 - type: entity
   parent: PelletShotgunImprovised
@@ -122,8 +122,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunImprovised
-    count: 10
-    spread: 45
+    count: 6 # inky
+    spread: 30 # inky
 
 - type: entity
   parent: [SolutionAmmo, SolutionToolVeryTiny, BaseBulletPractice]
@@ -197,7 +197,7 @@
       types:
       # <Trauma>
       #  Radiation: 5
-        Ballistic: 4 # was 5
+        Piercing: 5 # inky
       armorPenetration: 0.5
       # </Trauma>
 
@@ -208,8 +208,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunUranium
-    count: 10 # Trauma, was 5
-    spread: 10 # Trauma, was 6
+    count: 6 # inky
+    spread: 15 # inky
 
 - type: entity
   parent: BaseBullet
@@ -226,7 +226,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 25
+        Piercing: 25
         Structural: 5
 
 - type: entity

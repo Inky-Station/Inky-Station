@@ -278,6 +278,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
 
         var ev = new GetMeleeDamageEvent(uid, new(component.Damage * Damageable.UniversalMeleeDamageModifier), new(), user, component.ResistanceBypass);
         RaiseLocalEvent(uid, ref ev);
+        /* inky
         // <Trauma> - raise an event on the user too for strength augments, knowledge, etc
         // only consider if the user is punching or holding a weapon
         // non-held weapons are stuff like mechs which don't take physical effort to use, so don't apply strength etc
@@ -290,6 +291,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             ev.Modifiers = userEv.Modifiers;
         }
         // </Trauma>
+        */
 
         return DamageSpecifier.ApplyModifierSets(ev.Damage, ev.Modifiers);
     }
@@ -897,7 +899,9 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         {
             // <Trauma>
             var staminaDamage = component.HeavyStaminaCost * entities.Count;
-            AdjustStaminaDamage(user, ref staminaDamage);
+            // inky edit - kill skills
+            // AdjustStaminaDamage(user, ref staminaDamage);
+            // /inky
             // </Trauma>
             // make it not immediate to prevent annoying stamcrits
             _stamina.TakeStaminaDamage(user, staminaDamage, stamina, visual: false, immediate: false);

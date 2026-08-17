@@ -45,7 +45,7 @@
     children:
     - id: ClothingEyesHudMedical
     - id: ClothingBeltMedicalFilled
-    #- id: JetInjector # Trauma - le quirky syringe
+    - id: JetInjector # Trauma - le quirky syringe # inky - godo
     - id: HandheldHealthAnalyzer
     - id: ChemistryBottleLaughter # Widely recognized as the best medicine :o)
       prob: 0.01
@@ -120,7 +120,7 @@
     - id: ClothingEyesHudMedical
     - id: ClothingOuterHardsuitVoidParamed
     - id: ClothingBeltMedicalEMTFilled
-    #- id: JetInjector # Trauma - le quirky syringe
+    - id: JetInjector # Trauma - le quirky syringe # inky - godo
     - id: HandheldHealthAnalyzer
     - id: BoxBodyBag
     - !type:GroupSelector

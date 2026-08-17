@@ -16,6 +16,8 @@ using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Movement.Components; // inky
+using Content.Shared.Movement.Systems; // inky
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Toggleable;
@@ -50,10 +52,18 @@ public sealed partial class BlockingSystem : EntitySystem
     [Dependency] private EntityQuery<HandsComponent> _handQuery;
     [Dependency] private EntityQuery<MobStateComponent> _mobQuery;
 
+    // inky
+    [Dependency] private MovementSpeedModifierSystem _movement = default!;
+    // /inky
+
     public override void Initialize()
     {
         base.Initialize();
         InitializeUser();
+
+        // inky
+        InitializeInky();
+        // /inky
 
         SubscribeLocalEvent<BlockingComponent, ItemToggledEvent>(OnItemToggled);
         SubscribeLocalEvent<BlockingComponent, GotEquippedHandEvent>(OnEquip);
@@ -203,12 +213,15 @@ public sealed partial class BlockingSystem : EntitySystem
         }
 
         //Don't allow someone to block if they're somehow not anchored.
+        /* inky start - new shields
         _transformSystem.AnchorEntity(user, xform);
         if (!xform.Anchored)
         {
             CantBlockError(user);
             return false;
         }
+        inky end */
+
         _actionsSystem.SetToggled(entity.Comp.BlockingToggleActionEntity, true);
         _popupSystem.PopupEntity(msgUser, msgOther, user, user);
 
@@ -224,6 +237,14 @@ public sealed partial class BlockingSystem : EntitySystem
 
         entity.Comp.IsRaised = true;
         DirtyField(entity, entity.Comp, nameof(BlockingComponent.IsRaised));
+
+        // inky start
+        if (TryComp(user, out MovementSpeedModifierComponent? moveMod))
+        {
+            _movement.RefreshMovementSpeedModifiers(user, moveMod); // cursed? i might be retarded here but it works idk
+            RaiseLocalEvent(user, new RefreshMovementSpeedModifiersEvent());
+        }
+        // inky end
 
         return true;
     }
@@ -275,6 +296,12 @@ public sealed partial class BlockingSystem : EntitySystem
 
         entity.Comp.IsRaised = false;
         DirtyField(entity, entity.Comp, nameof(BlockingComponent.IsRaised));
+
+        // inky start
+        if (TryComp(user, out MovementSpeedModifierComponent? moveMod))
+            _movement.RefreshMovementSpeedModifiers(user, moveMod);
+        // inky end
+
         return true;
     }
 
@@ -341,6 +368,11 @@ public sealed partial class BlockingSystem : EntitySystem
             if (HasComp<BlockingComponent>(shield) && _userQuery.TryGetComponent(user, out var blockingUserComponent))
             {
                 blockingUserComponent.BlockingItem = shield;
+
+                // inky start
+                RaiseLocalEvent(user, new RefreshMovementSpeedModifiersEvent());
+                // inky end
+
                 return;
             }
         }

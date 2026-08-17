@@ -1,0 +1,4 @@
+﻿- type: loadout
+  id: ChaplainMJ
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryChaplain

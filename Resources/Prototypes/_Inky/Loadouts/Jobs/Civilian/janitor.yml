@@ -1,0 +1,4 @@
+﻿- type: loadout
+  id: JanitorMJ
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryJanitor

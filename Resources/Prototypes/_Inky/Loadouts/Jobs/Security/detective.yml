@@ -1,0 +1,43 @@
+﻿- type: loadout
+  id: LoadoutClothingOuterCoatDiscoBlazer
+  equipment:
+    outerClothing: ClothingOuterCoatDiscoBlazer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobDetective
+      time: 25h
+
+- type: loadout
+  id: LoadoutClothingUniformJumpsuitElysium
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitElysium
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobDetective
+      time: 25h
+
+- type: loadout
+  id: LoadoutClothingNeckTieElysium
+  equipment:
+    neck: ClothingNeckTieElysium
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobDetective
+      time: 25h
+
+- type: loadout
+  id: LoadoutClothingShoesElysiumShoes
+  equipment:
+    shoes: ClothingShoesElysiumShoes
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobDetective
+      time: 25h

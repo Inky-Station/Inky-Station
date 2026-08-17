@@ -40,7 +40,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineer
     shoes: ClothingShoesColorWhite
     head: ClothingHeadHatBeretEngineering
-    neck: ClothingNeckCloakCe
+    neck: ClothingNeckCloakWhiteCe
     id: VisitorPDA
     belt: ClothingBeltChiefEngineerFilled
     back: ClothingBackpackDuffelEngineering
@@ -54,7 +54,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineerTurtle
     shoes: ClothingShoesColorWhite
     head: ClothingHeadHatBeretEngineering
-    neck: ClothingNeckMantleCE
+    neck: ClothingNeckMantleWhiteCE
     id: VisitorPDA
     belt: ClothingBeltChiefEngineerFilled
     back: ClothingBackpackSatchelEngineering
@@ -230,8 +230,8 @@
     mask: ClothingMaskGasSecurity # Goobstation
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterArmorBasic
-    pocket1: WeaponLaserSidearm # Trauma
-#    pocket2: MagazinePistol - Truama
+    pocket1: WeaponPistolMk58 # Trauma # inky
+    pocket2: MagazinePistol # inky - fuck Truama
   inhand:
   - FlashlightSeclite
 
@@ -249,8 +249,8 @@
     mask: ClothingMaskGasSecurity # Goobstation
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterArmorBasicSlim
-    pocket1: WeaponLaserSidearm # Trauma
-#    pocket2: MagazinePistol - Trauma
+    pocket1: WeaponPistolMk58 # Trauma # inky
+    pocket2: MagazinePistol # inky - fuck Truama
   inhand:
   - FlashlightSeclite
 
@@ -267,8 +267,9 @@
     mask: ClothingMaskGasSecurity # Goobstation
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterArmorBasic
-    pocket1: WeaponLaserSidearm # Trauma
-#    pocket2: MagazinePistol - Trauma
+    pocket1: WeaponPistolMk58 # Trauma # inky
+    pocket2: MagazinePistol # inky - fuck Truama
+
   inhand:
   - FlashlightSeclite
 
@@ -286,8 +287,8 @@
     mask: ClothingMaskGasSecurity # Goobstation
     eyes: ClothingEyesGlassesSecurity
     outerClothing: ClothingOuterArmorBasicSlim
-    pocket1: WeaponLaserSidearm # Trauma
-#    pocket2: MagazinePistol - Trauma
+    pocket1: WeaponPistolMk58 # Trauma # inky
+    pocket2: MagazinePistol # inky - fuck Truama
   inhand:
   - FlashlightSeclite
 
@@ -1690,7 +1691,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineer
     shoes: ClothingShoesColorWhite
     head: ClothingHeadHatBeretEngineering
-    neck: ClothingNeckCloakCe
+    neck: ClothingNeckCloakWhiteCe
     id: VisitorPDA
     #belt: ClothingBeltChiefEngineerFilled # probably too strong?
     back: ClothingBackpackDuffelEngineering
@@ -1704,7 +1705,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineerTurtle
     shoes: ClothingShoesColorWhite
     head: ClothingHeadHatBeretEngineering
-    neck: ClothingNeckMantleCE
+    neck: ClothingNeckMantleWhiteCE
     id: VisitorPDA
     belt: ClothingBeltChiefEngineerFilled
     back: ClothingBackpackSatchelEngineering

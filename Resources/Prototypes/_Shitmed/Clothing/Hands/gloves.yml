@@ -17,3 +17,7 @@
   - type: ClothingGrantComponent
     component:
     - type: SurgeryIgnoreClothing
+    # inky start
+    - type: HeartRipAbility
+      activeOnlyWhenFunned: true
+    # /inky

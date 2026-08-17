@@ -1,0 +1,11 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitElysium
+  name: satin shirt and bell-bottom pants
+  description: The white satin shirt used to be fancy and theres the golden-brown trousers are flare-cut.
+  components:
+  - type: Sprite
+    sprite: _Inky/Clothing/Uniforms/Jumpsuit/Elysium.rsi
+    state: icon                               
+  - type: Clothing
+    sprite: _Inky/Clothing/Uniforms/Jumpsuit/Elysium.rsi 

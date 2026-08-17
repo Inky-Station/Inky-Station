@@ -42,7 +42,7 @@
 
 - type: marking
   id: CyberLimbsMarkingWardtakahashiLHand
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/wardtakahashi/wardtakahashi_main.rsi
@@ -59,7 +59,7 @@
 
 - type: marking
   id: CyberLimbsMarkingWardtakahashiLFoot
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/wardtakahashi/wardtakahashi_main.rsi
@@ -78,7 +78,7 @@
 
 - type: marking
   id: CyberLimbsMarkingWardtakahashiRHand
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/wardtakahashi/wardtakahashi_main.rsi
@@ -95,7 +95,7 @@
 
 - type: marking
   id: CyberLimbsMarkingWardtakahashiRFoot
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/wardtakahashi/wardtakahashi_main.rsi

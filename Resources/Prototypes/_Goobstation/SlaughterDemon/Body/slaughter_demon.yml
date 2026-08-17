@@ -14,8 +14,8 @@
       Torso: OrganSlaughterDemonTorso
       ArmLeft: OrganSlaughterDemonArmLeft
       ArmRight: OrganSlaughterDemonArmRight
-      HandLeft: OrganSlaughterDemonHandLeft
-      HandRight: OrganSlaughterDemonHandRight
+#      HandLeft: OrganSlaughterDemonHandLeft inkymed
+#      HandRight: OrganSlaughterDemonHandRight inkymed
       # Organs
       Heart: OrganSlaughterDemonHeart
       Lungs: OrganCarpLungs
@@ -45,6 +45,8 @@
     sprite: _Goobstation/SlaughterDemon/body_parts.rsi
   - type: VisualOrgan
     data:
+      sprite: _Goobstation/SlaughterDemon/body_parts.rsi
+    secondData: #inkymed
       sprite: _Goobstation/SlaughterDemon/body_parts.rsi
   - type: VisualOrganMarkings
     markingData:

@@ -13,7 +13,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 65
+        Piercing: 65
         Ion: 100 # fuck borgs
         Structural: 3000 # Anti structure weapon, overkills substations/gens so they dont explode
       armorPenetration: 0.5 # Designed to pierce tanks

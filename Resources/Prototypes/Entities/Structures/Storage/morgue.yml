@@ -144,4 +144,9 @@
           False: { visible: false }
   - type: Transform
     anchored: true
+  # inky start
+  - type: Speech
+  - type: Vocal
+    emoteSounds: UnisexSilicon
+  # /inky
   - type: RequireProjectileTarget

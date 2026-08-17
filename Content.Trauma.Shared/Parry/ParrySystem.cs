@@ -232,18 +232,18 @@ public sealed partial class ParrySystem : EntitySystem
     private bool CheckKnowledge(EntityUid user, EntityUid weapon, int minLevel)
         => GetSkillLevel(user, weapon) >= minLevel;
 
+    // TODO: make it also account for weapon class's skill
     private int GetSkillLevel(EntityUid user, EntityUid weapon)
-        => _classQuery.TryComp(weapon, out var classComp)
-           && ProtoMan.Resolve(classComp.Class, out var classProto)
-           && ProtoMan.Resolve(classProto.Knowledge, out var skillProto)
-            ? GetSkillLevel(user, skillProto)
-            : 88; // No knowledge defined, assume we can just freely parry with this
-
-    private int GetSkillLevel(EntityUid user, EntProtoId skillProto)
-        => _knowledge.GetContainer(user) is { } brain
-           && _knowledge.GetKnowledge(brain, skillProto) is { } skill
+    {
+        // inky
+        return 100; /*
+        return _proto.Resolve(MeleeKnowledge, out var skillProto)
+                && _knowledge.GetContainer(user) is { } brain
+                && _knowledge.GetKnowledge(brain, skillProto) is { } skill
             ? skill.Comp.NetLevel
             : 0;
+        */ // /inky
+    }
 
     /// <summary>
     /// Check if the entity is too exhausted to parry/reflect and add an appropriate amount of exhaustion

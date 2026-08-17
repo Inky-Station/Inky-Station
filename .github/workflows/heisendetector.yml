@@ -3,8 +3,8 @@ name: Hunt for Heisentests
 on:
   workflow_dispatch:
   # every 60 minutes
-  schedule:
-    - cron: "*/60 * * * *"
+#  schedule:
+#    - cron: "*/60 * * * *"
 
 jobs:
   hunt:

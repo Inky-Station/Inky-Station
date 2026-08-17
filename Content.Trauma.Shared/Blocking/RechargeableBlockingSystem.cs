@@ -59,6 +59,9 @@ public sealed partial class RechargeableBlockingSystem : EntitySystem
 
         var batteryUse = MathF.Min(delta.GetTotal().Float(), _battery.GetCharge(battery.AsNullable()));
         _battery.TryUseCharge(battery.AsNullable(), batteryUse);
+        // inky
+        CheckCharge(ent);
+        // /inky
     }
 
     private void AttemptToggle(Entity<RechargeableBlockingComponent> ent, ref ItemToggleActivateAttemptEvent args)
@@ -90,7 +93,7 @@ public sealed partial class RechargeableBlockingSystem : EntitySystem
         }
 
         var charge = _battery.GetCharge(battery.AsNullable());
-        if (charge < 1)
+        if (charge < 3) // inky edit - was 1
         {
             SetDischarged(ent, user);
             return;

@@ -46,18 +46,37 @@ namespace Content.Shared.Chemistry
                 case "20":
                     ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U20;
                     break;
+                // inky
+                case "25":
+                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U25;
+                    break;
                 case "30":
                     ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U30;
                     break;
                 case "40":
                     ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U40;
                     break;
+                // inky
+                case "50":
+                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U50;
+                    break;
+                // /inky
                 case "60":
                     ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U60;
                     break;
+                // inky
+                case "100":
+                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U100;
+                    break;
+                // /inky
                 case "120":
                     ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U120;
                     break;
+                // inky
+                case "MAX":
+                    ReagentDispenserDispenseAmount = ReagentDispenserDispenseAmount.U1000;
+                    break;
+                // /inky
                 default:
                     throw new Exception($"Cannot convert the string `{s}` into a valid ReagentDispenser DispenseAmount");
             }
@@ -102,10 +121,14 @@ namespace Content.Shared.Chemistry
         U10 = 10,
         U15 = 15,
         U20 = 20,
+        U25 = 25, // inky
         U30 = 30,
         U40 = 40,
+        U50 = 50, // inky
         U60 = 60,
+        U100 = 100, // Inky
         U120 = 120,
+        U1000 = 1000, // inky
     }
 
     [Serializable, NetSerializable]

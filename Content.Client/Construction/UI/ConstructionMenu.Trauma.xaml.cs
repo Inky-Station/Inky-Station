@@ -6,8 +6,11 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Construction.UI;
 
+// inky edit - kill skills
+// NO FUCK OFF
 public sealed partial class ConstructionMenu
 {
+    /*
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IEntitySystemManager _system = default!;
 
@@ -59,4 +62,5 @@ public sealed partial class ConstructionMenu
             });
         }
     }
+    */
 }

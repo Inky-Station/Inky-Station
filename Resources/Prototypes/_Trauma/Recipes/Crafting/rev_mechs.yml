@@ -9,6 +9,9 @@
   theory:
     RevolutionaryKnowledge: 3
   useQuality: false
+  entityWhitelist: # inky edit - kill skills
+    components:
+    - Revolutionary
 
 - type: construction
   parent: BaseRev
@@ -19,3 +22,6 @@
   theory:
     RevolutionaryKnowledge: 2
   useQuality: false
+  entityWhitelist: # inky edit - kill skills
+    components:
+    - Revolutionary

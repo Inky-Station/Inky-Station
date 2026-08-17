@@ -16,7 +16,7 @@ public sealed partial class DamageTrapComponent : Component
     public EntProtoId? SpawnedEntity;
 
     [DataField]
-    public TargetBodyPart TargetPart = TargetBodyPart.Feet | TargetBodyPart.Legs;
+    public TargetBodyPart TargetPart = TargetBodyPart.Legs; // inkyedit - nuked feet
 
     [DataField]
     public SplitDamageBehavior SplitDamageBehavior = SplitDamageBehavior.Split;

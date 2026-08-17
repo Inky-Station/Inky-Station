@@ -19,4 +19,10 @@ public sealed partial class StationAlertLevelLockComponent : Component
 
     [DataField, AutoNetworkedField]
     public EntityUid? StationId;
+
+    // inky
+    /// <summary>
+    /// if false, doesnt work at all.
+    /// </summary>
+    [DataField, AutoNetworkedField] public bool Chudded;
 }

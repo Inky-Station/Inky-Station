@@ -24,14 +24,12 @@
         Slash: -2
         Piercing: -2
         Heat: -2
-        Ballistic: -2
     uberHealing:
       types:
         Blunt: -4
         Slash: -4
         Piercing: -4
         Heat: -4
-        Ballistic: -4
     soundOnTarget:
       path: /Audio/_Goobstation/Weapons/Effects/energy_reload.ogg
       params:
@@ -95,14 +93,12 @@
         Slash: -2.5
         Piercing: -2.5
         Heat: -2.5
-        Ballistic: -2.5
     uberHealing:
       types:
         Blunt: -6
         Slash: -6
         Piercing: -6
         Heat: -6
-        Ballistic: -6
 
 - type: entity
   parent: MedicalBeamGunSyndicate

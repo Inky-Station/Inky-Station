@@ -749,7 +749,7 @@
     refineResult:
     - id: FoodMeat
       amount: 3
-    - id: Telecrystal25 # Trauma - was 5, 5x
+    - id: Telecrystal25 # inky - no
       amount: 1
   - type: Grammar
     attributes:

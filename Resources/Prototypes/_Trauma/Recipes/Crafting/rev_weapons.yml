@@ -12,6 +12,9 @@
   practical:
     WeaponsKnowledge: 2
     GunsmithingKnowledge: 2
+  entityWhitelist: # inky edit - kill skills
+    components:
+    - Revolutionary
 
 - type: construction
   parent: BaseRevGun

@@ -12,6 +12,7 @@
   - Multitool
   - NetworkConfigurator
   - Signaller
+  - GeigerCounter #inky
   - SprayPainter
   - SprayPainterAmmo
   - FlashlightLantern

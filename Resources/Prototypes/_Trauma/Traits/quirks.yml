@@ -1,13 +1,12 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-- type: trait
-  id: NoHypoport
-  name: trait-no-hypoport-name
-  description: trait-no-hypoport-desc
-  category: Quirks
-  blacklist:
-    components:
-    - BorgChassis
-    - Silicon
-  components:
-  - type: NoHypoport
+# inky - fuck hypoports
+# - type: trait
+#   id: NoHypoport
+#   name: trait-no-hypoport-name
+#   description: trait-no-hypoport-desc
+#   category: Quirks
+#   blacklist:
+#     components:
+#     - BorgChassis
+#     - Silicon
+#   components:
+#   - type: NoHypoport

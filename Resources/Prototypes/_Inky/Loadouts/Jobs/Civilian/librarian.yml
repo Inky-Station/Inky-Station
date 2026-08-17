@@ -1,0 +1,4 @@
+﻿- type: loadout
+  id: LibrarianMJ
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryLibrarian

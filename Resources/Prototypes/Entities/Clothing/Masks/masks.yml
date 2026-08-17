@@ -1026,7 +1026,7 @@
   - type: IdentityBlocker
 
 - type: entity
-  parent: [ClothingMaskBase, BaseClothingViewconeSmall]
+  parent: [ClothingMaskBase, BaseClothingViewconeSmall] # Traima
   id: ClothingMaskWeldingGas
   name: welding gas mask
   description: A gas mask with built in welding goggles and face shield. Looks like a skull, clearly designed by a nerd.

@@ -23,7 +23,7 @@ public sealed partial class ChangelingRuleSystem : GameRuleSystem<ChangelingRule
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private AntagSelectionSystem _antag = default!;
     [Dependency] private SharedRoleSystem _role = default!;
-    [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    // [Dependency] private SharedUserInterfaceSystem _ui = default!; // inky edit TRAUMA FUCKUP
     [Dependency] private NpcFactionSystem _npcFaction = default!;
     [Dependency] private ObjectivesSystem _objective = default!;
 
@@ -35,7 +35,7 @@ public sealed partial class ChangelingRuleSystem : GameRuleSystem<ChangelingRule
 
     public readonly ProtoId<CurrencyPrototype> Currency = "EvolutionPoint";
 
-    public readonly int StartingCurrency = 6; // have to keep this in sync with MindRoleChangeling manually :(
+    public readonly int StartingCurrency = 10; // have to keep this in sync with MindRoleChangeling manually :( // inky edit
 
     public override void Initialize()
     {

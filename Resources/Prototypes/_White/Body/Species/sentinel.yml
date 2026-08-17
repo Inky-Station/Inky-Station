@@ -12,12 +12,12 @@
       Head: OrganXenomorphHeadSentinel
       ArmLeft: OrganXenomorphArmLeft
       ArmRight: OrganXenomorphArmRight
-      HandRight: OrganXenomorphHandRight
-      HandLeft: OrganXenomorphHandLeft
+#      HandRight: OrganXenomorphHandRight inkymed
+#      HandLeft: OrganXenomorphHandLeft inkymed
       LegLeft: OrganXenomorphLegLeft
       LegRight: OrganXenomorphLegRight
-      FootLeft: OrganXenomorphFootLeft
-      FootRight: OrganXenomorphFootRight
+#      FootLeft: OrganXenomorphFootLeft inkymed
+#      FootRight: OrganXenomorphFootRight inkyed
       # Organs
       Brain: OrganXenomorphBrain
       Eyes: OrganXenomorphEyes

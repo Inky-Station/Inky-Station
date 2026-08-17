@@ -20,6 +20,19 @@
     slots:
     - HEAD
     quickEquip: false
+  - type: Armor #inky start
+    coverage:
+    - Head
+    traumaDeductions:
+      Dismemberment: 0
+      OrganDamage: 0
+      BoneDamage: 0.05
+      VeinsDamage: 0
+      NerveDamage: 0
+    priceMultiplier: 0
+    modifiers:
+      coefficients:
+        Blunt: 0.95 #inky end
   - type: SolutionTransfer
     transferAmount: 120
     maxTransferAmount: 360

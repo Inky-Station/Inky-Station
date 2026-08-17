@@ -22,8 +22,8 @@ public sealed partial class EnchanterSystem : EntitySystem
 {
     [Dependency] private EnchantingSystem _enchanting = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private INetManager _net = default!;
-    [Dependency] private IRobustRandom _random = default!;
+    // [Dependency] private INetManager _net = default!; // inky edit TRAUMA FUCKUP
+    // [Dependency] private IRobustRandom _random = default!; // inky edit TRAUMA FUCKUP
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPopupSystem _popup = default!;

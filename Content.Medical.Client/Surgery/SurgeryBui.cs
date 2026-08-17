@@ -94,6 +94,10 @@ public sealed partial class SurgeryBui : BoundUserInterface
 
         var oldSurgery = _surgery;
         var oldPart = _part;
+        // inkymed
+        _entMan.TryGetNetEntity(oldPart, out var oldNetPart);
+        var oldSelection = false;
+        // /inkymed
         _part = null;
         _surgery = null;
 
@@ -117,13 +121,14 @@ public sealed partial class SurgeryBui : BoundUserInterface
                 {
                     BodyPartType.Head => 1,
                     BodyPartType.Torso => 2,
-                    BodyPartType.Arm => 2,
-                    BodyPartType.Hand => 3,
+                    BodyPartType.Arm => 3,   // inkymed - was 2????
+                    // BodyPartType.Hand => 3, // inkymed
                     BodyPartType.Leg => 4,
                     BodyPartType.Foot => 5,
+                    // BodyPartType.Foot => 5, // inkymed
                     // BodyPartType.Tail => 6, No tails yet!
-                    BodyPartType.Other => 7,
-                    _ => 8
+                    BodyPartType.Other => 5,  // inkymed - was 7, tails when?
+                    _ => 6  // inkymed - was 8
                 };
             }
 
@@ -147,11 +152,18 @@ public sealed partial class SurgeryBui : BoundUserInterface
                     !_entMan.TryGetComponent(surgery, out SurgeryComponent? surgeryComp))
                     continue;
 
-                if (oldPart == entity && oldSurgery?.Proto == surgeryId)
+                if ((oldPart == entity || oldNetPart == netEntity) // inkymed
+                    && oldSurgery?.Proto == surgeryId) // inkymed
+                {
+                    oldSelection = true; // inkymed
                     OnSurgeryPressed((surgery, surgeryComp), netEntity, surgeryId);
+                }
             }
 
-            if (oldPart == entity && oldSurgery == null)
+            // inkymed
+            // if (oldPart == entity && oldSurgery == null)
+            if ((oldPart == entity || oldNetPart == netEntity) // inkymed
+                && !oldSelection) // /inkymed what the FUCK was i smoking
                 OnPartPressed(netEntity, surgeries);
         }
 

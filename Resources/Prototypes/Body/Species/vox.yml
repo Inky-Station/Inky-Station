@@ -143,12 +143,12 @@
       Tail: OrganVoxTail # Trauma
       ArmLeft: OrganVoxArmLeft
       ArmRight: OrganVoxArmRight
-      HandRight: OrganVoxHandRight
-      HandLeft: OrganVoxHandLeft
+#      HandRight: OrganVoxHandRight #inkymed
+#      HandLeft: OrganVoxHandLeft #inkymned
       LegLeft: OrganVoxLegLeft
       LegRight: OrganVoxLegRight
-      FootLeft: OrganVoxFootLeft
-      FootRight: OrganVoxFootRight
+#      FootLeft: OrganVoxFootLeft #inkymed
+#      FootRight: OrganVoxFootRight #inkymed
       Brain: OrganVoxBrain
       Eyes: OrganVoxEyes
       Tongue: OrganVoxTongue
@@ -219,11 +219,11 @@
     - Alive
     damage:
       types:
-        # <Trauma> - no passive healing
-        #Heat: -0.07
-        #Blunt: -0.05
-        #Piercing: -0.05
-        #Slash: -0.05
+        # <Trauma> - no passive healing # inky goida
+        Heat: -0.07
+        Blunt: -0.05
+        Piercing: -0.05
+        Slash: -0.05
         # </Trauma>
         Poison: -0.2 # needs to be less than the PendingZombieComponent does or they never become zombies by the disease.
   #- type: DamageVisuals # Shitmed
@@ -246,7 +246,7 @@
     damage:
       types:
         Slash: 5 # Reduce?
-  - type: Wagging
+#  - type: Wagging - trauma changes wag to be on the tail organ
 
 - type: entity
   parent: OrganBaseOrganic
@@ -275,6 +275,8 @@
   components:
   - type: VisualOrgan
     data:
+      sprite: Mobs/Species/Vox/parts.rsi
+    secondData: # inkymed
       sprite: Mobs/Species/Vox/parts.rsi
   - type: VisualOrganMarkings
     markingData:
@@ -344,8 +346,14 @@
   id: OrganVoxFootRight
 
 - type: entity
-  parent: [ OrganBaseBrain, OrganSpriteHumanInternal, OrganVoxInternal ]
+  parent: [ OrganBaseBrain, OrganVoxInternal ]
   id: OrganVoxBrain
+  name: cortical stack
+  description: A stack containing all the memories and experiences of a vox with some mushy brains still sticking to it.
+  components:
+  - type: Edible
+    destroyOnEmpty: false
+  - type: BorgBrain
 
 - type: entity
   parent: [ OrganVoxVisual, OrganBaseEyes, OrganVoxInternal ]
@@ -361,24 +369,37 @@
   id: OrganVoxTongue
 
 - type: entity
-  parent: [ OrganBaseAppendix, OrganSpriteHumanInternal, OrganVoxInternal ]
+  parent: [ OrganBaseAppendix, OrganVoxInternal ]
   id: OrganVoxAppendix
 
 - type: entity
-  parent: [ OrganBaseEars, OrganSpriteHumanInternal, OrganVoxInternal ]
+  parent: [ OrganBaseEars, OrganVoxInternal ]
   id: OrganVoxEars
 
 - type: entity
   parent: [ OrganBaseLungs, OrganVoxInternal, OrganVoxMetabolizer ]
   id: OrganVoxLungs
+  name: gas exchange sacks
+  description: The organ responsible for gas exchange within a Vox.
 
 - type: entity
   parent: [ OrganBaseHeart, OrganVoxInternal, OrganVoxMetabolizer ]
   id: OrganVoxHeart
+  name: circulatory pump
+  description: A strange purple organ that pumps circulatory fluid through the body of a Vox.
+  # inkymed
+  components:
+  - type: Heart
+    normalRate: 110
+    criticalRate: 330
+    fibrillationCaps: 50,220 # ПРОКЛЯТИЕ 220
+  # inkymed
 
 - type: entity
   parent: [ OrganBaseStomach, OrganVoxInternal, OrganVoxMetabolizer ]
   id: OrganVoxStomach
+  name: material processor
+  description: The organ responsible for processing materials intaken by a Vox.
   components:
   - type: Stomach
     specialDigestible:
@@ -387,9 +408,13 @@
     isSpecialDigestibleExclusive: false
 
 - type: entity
-  parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganVoxInternal, OrganVoxMetabolizer ]
+  parent: [ OrganBaseLiver, OrganVoxInternal, OrganVoxMetabolizer ]
   id: OrganVoxLiver
+  name: primary toxin filter
+  description: One of two organs responsible for filtering toxins from the bloodstream of a Vox.
 
 - type: entity
-  parent: [ OrganBaseKidneys, OrganSpriteHumanInternal, OrganVoxInternal, OrganVoxMetabolizer ]
+  parent: [ OrganBaseKidneys, OrganVoxInternal, OrganVoxMetabolizer ]
   id: OrganVoxKidneys
+  name: auxiliary toxin filter
+  description: One of two organs responsible for filtering toxins from the bloodstream of a Vox.

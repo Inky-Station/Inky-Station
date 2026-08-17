@@ -67,16 +67,10 @@
       - Critical
     damage:
       types:
-        Heat: -5
-        Blunt: -5
-        Slash: -5
-        Piercing: -5
-        Ballistic: -5
-        Radiation: -1
-        Poison: -1
-        Cold: -1
-        Cellular: -1
-        Caustic: -1
+        Heat: -20
+        Blunt: -6.66
+        Slash: -6.66
+        Piercing: -6.66
   - type: SlowOnDamage
     speedModifierThresholds:
       600: 0.5

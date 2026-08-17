@@ -316,7 +316,7 @@
 
 - type: marking
   id: FootChimeraLeftMoth
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [ Moth ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/lfoot.rsi
@@ -324,7 +324,7 @@
 
 - type: marking
   id: FootProstheticLeftMoth
-  bodyPart: LFoot
+  bodyPart: LLeg #inkymed
   groupWhitelist: [ Moth ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/lfoot.rsi
@@ -334,7 +334,7 @@
 
 - type: marking
   id: FootProstheticRightMoth
-  bodyPart: RFoot
+  bodyPart: RLeg #inkymed
   groupWhitelist: [ Moth ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/rfoot.rsi
@@ -344,7 +344,7 @@
 
 - type: marking
   id: HandChimeraLeftMoth
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ Moth ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/lhand.rsi
@@ -352,7 +352,7 @@
 
 - type: marking
   id: HandProstheticLeftMoth
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ Moth ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/lhand.rsi
@@ -360,7 +360,7 @@
 
 - type: marking
   id: HandTwistingLeftMoth
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [ Moth ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/lhand.rsi
@@ -370,7 +370,7 @@
 
 - type: marking
   id: HandProstheticRightMoth
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [ Moth ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/rhand.rsi
@@ -378,7 +378,7 @@
 
 - type: marking
   id: HandTwistingRightMoth
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [ Moth ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Moth/rhand.rsi

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>../bin/Content.Server/</OutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <OutputType Condition="'$(FullRelease)' != 'True'">Exe</OutputType>
+    <NoWarn>0618</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+    <RootNamespace>Content.Inky.Server</RootNamespace>
+  </PropertyGroup>
+  <Import Project="../MSBuild/Content.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Content.Inky.Shared/Content.Inky.Shared.csproj" />
+    <ProjectReference Include="../Content.Trauma.Server/Content.Trauma.Server.csproj" />
+    <ProjectReference Include="../Content.Server/Content.Server.csproj" />
+  </ItemGroup>
+
+  <Import Project="../RobustToolbox/Imports/Server.props" />
+  <Import Project="../RobustToolbox/Imports/Shared.props" />
+  <Import Project="../RobustToolbox/MSBuild/Robust.Properties.targets" />
+</Project>

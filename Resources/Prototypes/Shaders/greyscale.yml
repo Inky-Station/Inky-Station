@@ -7,3 +7,7 @@
   id: GreyscaleFullscreen
   kind: source
   path: "/Textures/Shaders/greyscale_fullscreen.swsl"
+  # inky
+  params:
+    intensity: 1.0
+  # /inky

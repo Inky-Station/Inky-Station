@@ -17,6 +17,11 @@ public sealed partial class ServerCurrencySystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
+        // <inky>
+        InitializeInky();
+        // </inky>
+
         _currencyMan.BalanceChange += OnBalanceChange;
         SubscribeNetworkEvent<PlayerBalanceRequestEvent>(OnBalanceRequest);
     }

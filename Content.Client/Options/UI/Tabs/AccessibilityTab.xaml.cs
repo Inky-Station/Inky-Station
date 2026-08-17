@@ -1,4 +1,6 @@
 // <Trauma>
+
+using Content.Inky.Common.CCVar;
 using Content.Trauma.Common.CCVar;
 // </Trauma>
 using Content.Shared.CCVar;
@@ -37,10 +39,13 @@ public sealed partial class AccessibilityTab : Control
         Control.AddOptionColorSlider(CCVars.ChatHighlightsColor, HighlightsColorSlider);
         // <Trauma>
         Control.AddOptionCheckBox(TraumaCVars.ChatHighlightSound, HighlightSoundCheckBox);
-        Control.AddOptionCheckBox(TraumaCVars.SkillPopups, SkillPopupsCheckBox);
+        // Control.AddOptionCheckBox(TraumaCVars.SkillPopups, SkillPopupsCheckBox); // inky - kill skills
         Control.AddOptionCheckBox(TraumaCVars.PlayMovieEndCredits, MovieCreditsCheckBox);
         Control.AddOptionPercentSlider(TraumaCVars.VisionGrainScale, VisionGrainScaleSlider);
         // </Trauma>
+        // inky - concussion
+        Control.AddOptionCheckBox(InkyCVars.ConcussionSound, ConcussionNoise);
+        // /inky
 
         Control.AddOptionCheckBox(CCVars.AccessibilityClientCensorNudity, CensorNudityCheckBox);
 

@@ -1,0 +1,9 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="using:Content.Client.UserInterface.Controls"
+                      Title="{Loc 'self-renamer-window-title'}"
+                      MinSize="300 100">
+    <BoxContainer Orientation="Vertical" Margin="8">
+        <LineEdit Name="NameEdit" PlaceHolder="{Loc 'self-renamer-placeholder'}" HorizontalExpand="False" Margin="0 4" />
+        <Button Name="ConfirmButton" Text="{Loc 'self-renamer-confirm'}" HorizontalAlignment="Right" />
+    </BoxContainer>
+</controls:FancyWindow>

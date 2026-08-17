@@ -21,6 +21,9 @@
     <ProjectReference Include="../Content.Medical.Common/Content.Medical.Common.csproj" />
     <ProjectReference Include="../Content.Common/Content.Common.csproj" />
     <!-- </Trauma> -->
+    <!-- Inky -->
+    <ProjectReference Include="..\Content.Inky.Common\Content.Inky.Common.csproj" />
+    <!-- Inky -->
     <ProjectReference Include="..\Content.Shared.Database\Content.Shared.Database.csproj" />
   </ItemGroup>
 

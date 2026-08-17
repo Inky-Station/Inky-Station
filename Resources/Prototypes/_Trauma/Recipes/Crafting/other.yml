@@ -16,6 +16,9 @@
   objectType: Item
   theory:
     RevolutionaryKnowledge: 3
+  entityWhitelist: # inky edit - kill skills
+    components:
+    - Revolutionary
 
 - type: construction
   id: BarbWireStructure

@@ -1,0 +1,11 @@
+- type: entity
+  parent: ClothingOuterCoatDetectiveLoadout
+  id: ClothingOuterCoatDiscoBlazer
+  name: Disco Blazer
+  description: Looks like someone skinned this blazer off some long extinct disco-animal. 
+  components:
+  - type: Sprite
+    sprite: _Inky/Clothing/OuterClothing/Coats/ElysiumCoat.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Inky/Clothing/OuterClothing/Coats/ElysiumCoat.rsi 

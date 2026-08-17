@@ -22,7 +22,7 @@ public sealed partial class ShieldedComponent : BaseSpriteOverlayComponent
             ["Blunt"] = 0.5f,
             ["Slash"] = 0.5f,
             ["Piercing"] = 0.5f,
-            ["Ballistic"] = 0.5f,
+            // ["Ballistic"] = 0.5f,// inky edit kill second amendment
             ["Heat"] = 0.5f
         }
     };

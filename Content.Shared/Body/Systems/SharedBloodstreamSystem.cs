@@ -1,5 +1,6 @@
 // <Trauma>
 using Content.Goobstation.Common.Bloodstream;
+using Content.Inky.Common.Medical;
 using Content.Medical.Common.Body;
 using Content.Medical.Common.Damage;
 using Content.Medical.Common.Targeting;
@@ -106,6 +107,17 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
 
                 // deal bloodloss damage if their blood level is below a threshold.
                 var bloodPercentage = GetBloodLevel(uid);
+
+                // inky
+                if (bloodstream.RequiresHeart)
+                {
+                    var fwhev = new FindWorkingHeartEvent();
+                    RaiseLocalEvent(uid, ref fwhev);
+                    if (!fwhev.Found)
+                        bloodPercentage = 0f;
+                }
+                // /inky
+
                 if (bloodPercentage < bloodstream.BloodlossThreshold)
                 {
                     // bloodloss damage is based on the base value, and modified by how low your blood level is.
@@ -224,6 +236,10 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
 
     private void OnDamageChanged(Entity<BloodstreamComponent> ent, ref DamageChangedEvent args)
     {
+        // inkymed
+        RaiseLocalEvent(ent.Owner, new UpdateBloodstreamOverlayEvent());
+        // /inkymed
+
         // The incoming state from the server raises a DamageChangedEvent as well.
         // But the changes to the bloodstream have also been dirtied,
         // so we prevent applying them twice.
@@ -348,6 +364,10 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             // TODO: Use Solutions API for this when it exists
             TryRegulateBloodLevel(ent.AsNullable(), ent.Comp.BloodReferenceSolution.Volume);
         }
+
+        // inkymed
+        RaiseLocalEvent(ent.Owner, new UpdateBloodstreamOverlayEvent());
+        // /inkymed
     }
 
     private void OnMetabolismExclusion(Entity<BloodstreamComponent> ent, ref MetabolismExclusionEvent args)

@@ -23,8 +23,8 @@
       reagents: # really bad stuff
       - ReagentId: Microplastics
         Quantity: 5
-      - ReagentId: LabGrownNutriment
-        Quantity: 10
+      #- ReagentId: LabGrownNutriment # inky
+      #  Quantity: 10
 
 - type: entity
   abstract: true

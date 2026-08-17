@@ -13,7 +13,7 @@ namespace Content.Shared.CombatMode
     ///     using *everything* as a weapon.
     /// </summary>
     [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
-    [Access(typeof(SharedCombatModeSystem))]
+    // [Access(typeof(SharedCombatModeSystem))] // inky edit - go fucking kill your self oh my fucking GOD
     public sealed partial class CombatModeComponent : Component
     {
         #region Disarm

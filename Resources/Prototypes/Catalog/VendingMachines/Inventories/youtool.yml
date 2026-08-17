@@ -18,7 +18,7 @@
   contrabandInventory:
     Multitool: 2
     ClothingBeltUtility: 3
-    # ClothingHandsGlovesColorYellow: 1 # Trauma
+    ClothingHandsGlovesColorYellow: 1 # Trauma # inky
   emaggedInventory: # Goob
     ClothingHandsGlovesExplosiveShock: 1
     ClothingHandsGlovesConducting: 1 # Trauma

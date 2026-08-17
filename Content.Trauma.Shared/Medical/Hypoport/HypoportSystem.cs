@@ -28,7 +28,7 @@ public sealed partial class HypoportSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BodyComponent, TargetBeforeInjectEvent>(OnBeforeInject);
+        // SubscribeLocalEvent<BodyComponent, TargetBeforeInjectEvent>(OnBeforeInject); // Inky - no
 
         SubscribeLocalEvent<HypoportAccessComponent, HypoportInjectAttemptEvent>(OnAccessInjectAttempt);
     }

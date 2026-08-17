@@ -9,7 +9,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 11
+        Piercing: 10
 
 - type: entity
   parent: BaseBullet
@@ -27,7 +27,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 5
+        Piercing: 5
         Holy: 5
   - type: HolyIgniteOnCollide
     fireStacks: 3.5
@@ -46,7 +46,6 @@
     damage:
       types:
         Piercing: -5.0
-        Ballistic: -5.0
         Slash: -5.0
         Blunt: -5.0
         Heat: -5.0

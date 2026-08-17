@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: CrematoriumFun
+  values:
+    prefix: crematorium-fun-fail-
+    count: 13

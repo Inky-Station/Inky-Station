@@ -110,12 +110,12 @@
       Head: OrganDecapoidHead
       ArmRight: OrganDecapoidArmRight
       ArmLeft: OrganDecapoidArmLeft
-      HandRight: OrganDecapoidHandRight
-      HandLeft: OrganDecapoidHandLeft
+      #HandRight: OrganDecapoidHandRight # inkymed
+      #HandLeft: OrganDecapoidHandLeft # inkymed
       LegRight: OrganDecapoidLegRight
       LegLeft: OrganDecapoidLegLeft
-      FootRight: OrganDecapoidFootRight
-      FootLeft: OrganDecapoidFootLeft
+      #FootRight: OrganDecapoidFootRight # inkymed
+      #FootLeft: OrganDecapoidFootLeft # inkymed
       Lungs: OrganDecapoidLungs
       Stomach: OrganDecapoidStomach
       Brain: OrganDecapoidBrain
@@ -238,6 +238,8 @@
   - type: VisualOrgan
     data:
       sprite: _Impstation/Mobs/Species/Decapoid/parts.rsi
+    secondData: #innkymed
+      sprite: _Impstation/Mobs/Species/Decapoid/parts.rsi
   - type: VisualOrganMarkings
     markingData:
       group: Decapoid
@@ -256,6 +258,11 @@
   id: OrganDecapoidArmLeft
   name: "left decapoid arm"
   parent: [OrganBaseArmLeft, OrganDecapoidExternal]
+  # inky
+  components:
+  - type: HandOrgan
+    startingItem: DecapoidClawItem
+  # /inky
 
 - type: entity
   id: OrganDecapoidArmRight
@@ -341,6 +348,13 @@
 - type: entity
   id: OrganDecapoidHeart
   parent: [OrganBaseHeart, OrganDecapoid]
+  # inkymed
+  components:
+  - type: Heart
+    normalRate: 125 # "The song "Crab Rave" by Noisestorm has a tempo of 125 BPM"
+    criticalRate: 310
+    fibrillationCaps: 70,250
+  # inkymed
 
 - type: entity
   id: OrganDecapoidLiver

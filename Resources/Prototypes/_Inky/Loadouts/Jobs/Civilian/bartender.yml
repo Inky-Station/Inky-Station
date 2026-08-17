@@ -1,0 +1,4 @@
+﻿- type: loadout
+  id: BartenderMJ
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMilitaryBartender

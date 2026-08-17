@@ -1,0 +1,181 @@
+- type: entity
+  parent:
+#  - SimpleMobBase
+  - MobBloodstream
+  - MobRespirator
+  - MobAtmosStandard
+  - MobFlammable
+  - BaseSimpleMob
+  - MobAtmosExposed
+  - MobCombat
+  - BaseMobAnimal
+  id: BaseWerewolf
+  name: wolf
+  description: Let's hope he doesnt bite.
+  abstract: true
+  components:
+      # inky
+  - type: ConcussionThreshold
+    thresholds:
+      0: Sane
+      5: Minor
+      50: Hard
+      100: Overwhelmed
+    healRate: 1 # lower than humans because this guy is already so fucking fast, people may ask sec fo flashbangs if the chaplain is a bitch
+    speedModifierThresholds:
+      Hard: 0.7
+      # /inky
+  - type: Perishable
+  - type: Climbing
+  - type: NameIdentifier
+    group: GenericNumber
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.7
+      80: 0.5
+  - type: Hunger
+    thresholds: # only animals and rats are derived from this prototype so let's override it here and in rats' proto
+      Overfed: 100
+      Okay: 50
+      Peckish: 25
+      Starving: 10
+      Dead: 0
+    baseDecayRate: 0.00925925925926 # it is okay for animals to eat and drink less than humans, but more frequently
+  - type: Thirst
+    thresholds:
+      OverHydrated: 200
+      Okay: 150
+      Thirsty: 100
+      Parched: 50
+      Dead: 0
+    baseDecayRate: 0.04
+  - type: StatusEffects
+    allowed:
+    - Electrocution
+    - TemporaryBlindness
+    - Pacified
+    - Flashed
+    - Adrenaline
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 150
+  - type: MobPrice
+    price: 150
+  - type: FloatingVisuals
+  - type: Sprite
+    sprite: _Inky/Mobs/Werewolf/Mutations/base.rsi
+    state: werewolf
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 250 # 5 times more than a hueman
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Body
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Critical
+      200: Dead
+  - type: MobStateActions
+    actions:
+      Critical:
+      - ActionCritSuccumb
+      - ActionCritFakeDeath
+      - ActionCritLastWords
+  - type: Deathgasp
+  - type: HealthExaminable
+    examinableTypes:
+    - Blunt
+    - Slash
+    - Piercing
+    - Heat
+    - Shock
+    - Cold
+    - Caustic
+  - type: Shoving
+    staminaDamage: 25
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Blunt: 5
+        Slash: 10
+  - type: Pullable
+  - type: Puller
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 6.5
+    baseWalkSpeed: 4.5
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+  - type: Insulated
+  - type: ThermalVision
+    flashDurationMultiplier: 3 # counter to werewolves and their insane speed - flashes.
+    pulseTime: 10
+    isEquipment: false
+    toggleAction: PulseThermalVisionWerewolf
+  - type: Prying
+    speedModifier: 4 # cmon a fucking 11 foot wolf
+    pryPowered: true
+  - type: Hands # also dont worry you cant pick up anything
+    hands:
+      hand_right:
+        location: Right
+    sortedHands:
+    - hand_left # martial art requires at least 1 hand to work properly for some fuckass unknown reason
+  - type: NightVision
+    lightingColor: "#808080"
+  - type: Alerts # idk to show the guys hunger since it doesnt for some reason???
+  - type: NpcFactionMember
+    factions:
+    - Wizard # too lazy to make a separate faction just for werewolf, its fine trust
+  - type: Injurable
+    damageContainer: Biological
+  - type: Damageable
+    damageModifierSet: WerewolfBase
+  - type: NoSlip
+  - type: Targeting
+  - type: Internals
+
+- type: entity
+  id: BaseWerewolfUnholy
+  abstract: true
+  components:
+  - type: ShouldTakeHoly
+  - type: Injurable
+    damageContainer: BiologicalMetaphysical
+  - type: Damageable
+    damageModifierSet: WerewolfBase
+
+- type: damageModifierSet # todo werewolf its own file
+  id: WerewolfBase
+  coefficients:
+    Blunt: 0.4 # GO KILL HIM WITH HOLY DAMAGE YOU BUMS
+    Slash: 0.4
+    Piercing: 0.4
+    Heat: 0.35 # mfw lasersec
+    Cold: 0.85 # fur
+    Holy: 1.0
+
+- type: entityEffect
+  id: WerewolfSkills
+  effects:
+  - !type:GrantSkills
+    skills:
+      MartialArtLyCqc: 65
+      StrengthKnowledge: 65
+      AthleticsKnowledge: 65

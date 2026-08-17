@@ -128,6 +128,7 @@
     damageCoefficient: 0
   - type: GluedImmune
   - type: LubedImmune
+  - type: Targeting # inky
 
 - type: entity
   abstract: true

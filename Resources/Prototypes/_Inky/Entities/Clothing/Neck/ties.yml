@@ -1,0 +1,11 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckTieElysium
+  name: horrowing necktie
+  description: Adorned with a garish pattern. Its disturbingly vivid. Somehow you feel as if it would be wrong to ever take it off. Its your friend now. You will betray it if you change it for some boring scarf.
+  components:
+  - type: Sprite
+    sprite: _Inky/Clothing/Neck/Ties/elysiumtie.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Inky/Clothing/Neck/Ties/elysiumtie.rsi 

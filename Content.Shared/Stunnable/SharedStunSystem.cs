@@ -132,7 +132,7 @@ public abstract partial class SharedStunSystem : EntitySystem
         if (_entityWhitelist.IsWhitelistPass(ent.Comp.Blacklist, args.OtherEntity))
             return;
 
-        //TryUpdateStunDuration(args.OtherEntity, ent.Comp.Duration); // Trauma - only knockdown chud
+        TryUpdateStunDuration(args.OtherEntity, ent.Comp.Duration);
         TryKnockdown(args.OtherEntity, ent.Comp.Duration, force: true);
     }
 

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Inky.Common.CCVar;
 using Content.Shared.Body;
 using Content.Shared.Examine;
 using Content.Shared.Hands;
@@ -9,6 +10,7 @@ using Content.Shared.StatusEffectNew;
 using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Wieldable.Components;
 using Content.Trauma.Shared.Viewcone.Components;
+using Robust.Shared.Configuration;
 
 namespace Content.Trauma.Shared.Viewcone;
 
@@ -21,6 +23,11 @@ public sealed partial class ViewconeAngleSystem : EntitySystem
     [Dependency] private StatusEffectsSystem _status = default!;
     [Dependency] private EntityQuery<ViewconeComponent> _query = default!;
     [Dependency] private EntityQuery<WieldableComponent> _wieldableQuery = default!;
+
+    // inky
+    [Dependency] private IConfigurationManager _cfg = default!;
+    public static bool Enabled;
+    // /inky
 
     public override void Initialize()
     {
@@ -35,10 +42,14 @@ public sealed partial class ViewconeAngleSystem : EntitySystem
         SubscribeLocalEvent<ViewconeModifierComponent, BodyRelayedEvent<ModifyViewconeAngleEvent>>(OnOrganModifyAngle);
 
         SubscribeLocalEvent<CursorOffsetRequiresWieldComponent, HeldRelayedEvent<ModifyViewconeAngleEvent>>(OnScopeModify);
+
+        _cfg.OnValueChanged(InkyCVars.ViewConesEnabled, b => { Enabled = b; }, true); // inky
     }
 
     private void OnExamined(Entity<ViewconeModifierComponent> ent, ref ExaminedEvent args)
     {
+        if (!Enabled) return; // inky
+
         var dir = ent.Comp.AngleModifier < 1f ? "decrease" : "increase";
         var loc = "viewcone-modifier-examine-" + dir;
 
@@ -76,6 +87,8 @@ public sealed partial class ViewconeAngleSystem : EntitySystem
     /// </summary>
     public float GetAngle(Entity<ViewconeComponent?> ent)
     {
+        if (!Enabled) return 360f; // inky
+
         if (!_query.Resolve(ent, ref ent.Comp))
             return 0f;
 

@@ -907,8 +907,8 @@
     hands:
     - item: HandheldHealthAnalyzer
     # <Trauma>
-    - item: MedicalHyposprayFilled # hypo replaces chud injector
-    - item: Syringe # for patients with no hypoport
+    - item: JetInjector # hypo replaces chud injector # Inky - no kill yourself
+    # - item: Syringe # for patients with no hypoport # Inky - for killing yourself
     - item: ChemistryEmptyVial
       hand:
         emptyLabel: borg-slot-small-containers-empty

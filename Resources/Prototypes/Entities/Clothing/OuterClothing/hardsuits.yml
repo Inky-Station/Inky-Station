@@ -22,6 +22,9 @@
   - type: Armor
     modifiers:
       coefficients:
+        Blunt: 0.85 # inky
+        Slash: 0.9 # inky 
+        Piercing: 0.9 # inky
         Heat: 0.2
         Radiation: 0.15
   - type: ClothingSpeedModifier
@@ -56,6 +59,9 @@
   - type: Armor
     modifiers:
       coefficients:
+        Blunt: 0.9 # inky
+        Slash: 0.95 # inky 
+        Piercing: 0.95 # inky
         Shock: 0.5
         Heat: 0.7
         Radiation: 0.05
@@ -129,8 +135,8 @@
         Heat: 0.8
         Radiation: 0.1
   - type: ClothingSpeedModifier
-    walkModifier: 0.75
-    sprintModifier: 0.75
+    walkModifier: 0.9 # inky edit
+    sprintModifier: 0.9 # inky edit
   - type: HeldSpeedModifier
   - type: ToggleableClothing # Goobstation - Modsuits change
     clothingPrototypes:
@@ -261,11 +267,10 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
-        Ballistic: 0.7 # Trauma
         Heat: 0.8
       # <Trauma> - This is done so shotguns are worse against armor
-      flatReductions:
-        Ballistic: 3
+      #flatReductions: # inky - no
+      #  Piercing: 2
       # </Trauma>
   - type: ClothingSpeedModifier
     walkModifier: 0.75
@@ -306,13 +311,12 @@
         Blunt: 0.85
         Slash: 0.85
         Piercing: 0.85
-        Ballistic: 0.85 # Trauma
         Heat: 0.85
         Radiation: 0.05
         Caustic: 0.4
       # <Trauma> - This is done so shotguns are worse against armor
-      flatReductions:
-        Ballistic: 2
+      #flatReductions: # inky - no
+      #  Piercing: 2
       # </Trauma>
   - type: ClothingSpeedModifier
     walkModifier: 0.9
@@ -354,11 +358,10 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
-        Ballistic: 0.6 # Trauma
         Heat: 0.7
       # <Trauma> - This is done so shotguns are worse against armor
-      flatReductions:
-        Ballistic: 3
+      #flatReductions: # inky - no
+      #  Piercing: 3
       # </Trauma>
   - type: ClothingSpeedModifier
     walkModifier: 0.8
@@ -400,7 +403,6 @@
         Blunt: 0.6 #Goob - Modsuit Rebalance start
         Slash: 0.6
         Piercing: 0.6
-        Ballistic: 0.6 # Trauma
         Heat: 0.7 #Goob - Modsuit Rebalance end
         Radiation: 0.05
   - type: ClothingSpeedModifier
@@ -576,12 +578,11 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
-        Ballistic: 0.6 # Trauma
         Heat: 0.7
         Radiation: 0.5
       # <Trauma> - This is done so shotguns are worse against armor
-      flatReductions:
-        Ballistic: 3
+      #flatReductions: # inky - no
+      #  Piercing: 3
       # </Trauma>
   - type: ClothingSpeedModifier
     walkModifier: 0.9
@@ -668,12 +669,11 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
-        Ballistic: 0.5
         Heat: 0.5
         Radiation: 0.5
       # <Trauma> - This is done so shotguns are worse against armor
-      flatReductions:
-        Ballistic: 3
+      #flatReductions: # inky - no
+      #  Piercing: 3
       # </Trauma>
   - type: ClothingSpeedModifier
     walkModifier: 0.9
@@ -747,15 +747,14 @@
       VeinsDamage: 0
     modifiers:
       coefficients:
-        Blunt: 0.8 # Trauma - was .55
-        Slash: 0.8 # Trauma - was .55
-        Piercing: 0.8 # Trauma - was .55
-        Ballistic: 0.8 # Trauma - was .55
+        Blunt: 0.6 # Trauma - was .55 # inky
+        Slash: 0.6 # Trauma - was .55 # inky
+        Piercing: 0.6 # Trauma - was .55 # inky
         Heat: 0.2
         Radiation: 0.01
       # <Trauma> - This is done so shotguns are worse against armor
-      flatReductions:
-        Ballistic: 2
+      #flatReductions: # inky - no
+      #  Piercing: 3
       # </Trauma>
   - type: Item
     size: Huge
@@ -790,7 +789,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.4 # Trauma - was 0.5
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
-    damageCoefficient: 0.5 # Goob edit
+    damageCoefficient: 0.3 # Goob edit # inky
   - type: Armor
     traumaDeductions:
       Dismemberment: 0.6
@@ -802,16 +801,15 @@
         Blunt: 0.35 # Trauma - was 0.5
         Slash: 0.35 # Trauma - was 0.5
         Piercing: 0.35 # Trauma - was 0.5
-        Ballistic: 0.35 # Trauma - was 0.5
         Heat: 0.35 # Trauma - was 0.5
         Radiation: 0.35 # Trauma - was 0.5
       # <Trauma> - This is done so shotguns are worse against armor
-      flatReductions:
-        Ballistic: 3
+      #flatReductions: # inky - no
+      #  Piercing: 3
       # </Trauma>
   - type: ClothingSpeedModifier
-    walkModifier: 1.1 # Trauma, was 0.9
-    sprintModifier: 1.1 # Trauma, was 0.9
+    walkModifier: 1 # Trauma, was 0.9 # inky
+    sprintModifier: 1 # Trauma, was 0.9 # inky
   - type: HeldSpeedModifier
   - type: ToggleableClothing # Goobstation - Modsuits change
     clothingPrototypes:
@@ -842,7 +840,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.2
   - type: StaminaResistance # Goobstation uncommented
-    damageCoefficient: 0.5
+    damageCoefficient: 0.8 # inky
   - type: Armor
     traumaDeductions: # prevents traumas at all (kinda)
       Dismemberment: 1
@@ -854,12 +852,11 @@
         Blunt: 0.2
         Slash: 0.2
         Piercing: 0.2
-        Ballistic: 0.2 # Trauma
         Heat: 0.2
         Radiation: 0.2
       # <Trauma> - This is done so shotguns are worse against armor
-      flatReductions:
-        Ballistic: 3
+      #flatReductions: # inky - no
+      #  Piercing: 3
       # </Trauma>
   - type: ClothingSpeedModifier
     walkModifier: 0.65
@@ -903,12 +900,11 @@
         Blunt: 0.3
         Slash: 0.3
         Piercing: 0.3
-        Ballistic: 0.3 # Trauma
         Heat: 0.3
         Radiation: 0
       # <Trauma> - This is done so shotguns are worse against armor
-      flatReductions:
-        Ballistic: 3
+      #flatReductions: # inky - no
+      #  Piercing: 3
       # </Trauma>
   - type: ClothingSpeedModifier
     walkModifier: 0.9 # Goob edit
@@ -991,7 +987,6 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
-        Ballistic: 0.7 # Trauma
         Heat: 0.5
   - type: ClothingSpeedModifier
     walkModifier: 0.6
@@ -1034,7 +1029,6 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
-        Ballistic: 0.6 # Trauma
         Heat: 0.4
         Caustic: 0.75
   - type: ClothingSpeedModifier
@@ -1215,7 +1209,6 @@
         Blunt: 0.1 # Best armor in the game - Yeah no shit.
         Slash: 0.1
         Piercing: 0.1
-        Ballistic: 0.1 # Trauma
         Heat: 0.1
         Cold: 0.1
         Cellular: 0.1

@@ -58,10 +58,15 @@ public sealed partial class FlashbangSystem : EntitySystem
             return;
 
         var protectionRange = args.Range;
+
+        // inky edit - concussion
+        var ev = new GetFlashbangedEvent(MathF.Max(args.Range, ent.Comp.MinProtectionRange + 1f));
+        // inky edit - concussion
+
         if (!_tag.HasTag(ent, SharedFlashSystem.IgnoreResistancesTag)
             && !HasComp<FlashVulnerableComponent>(args.Target))
         {
-            var ev = new GetFlashbangedEvent(MathF.Max(args.Range, ent.Comp.MinProtectionRange + 1f));
+            // var ev = new GetFlashbangedEvent(MathF.Max(args.Range, ent.Comp.MinProtectionRange + 1f)); inky edit - concussion
             RaiseLocalEvent(args.Target, ev);
 
             protectionRange = ev.ProtectionRange;
@@ -84,5 +89,10 @@ public sealed partial class FlashbangSystem : EntitySystem
         var stunTime = float.Lerp(comp.StunTime, 0f, ratio);
         if (stunTime > 0f)
             _stun.TryUpdateParalyzeDuration(args.Target, TimeSpan.FromSeconds(stunTime));
+
+        // inky edit - concussion
+        ev.ConcussionDamage = float.Lerp(comp.ConcussionDamage, 0f, ratio);
+        RaiseLocalEvent(args.Target, ev);
+        // inky edit - concussion
     }
 }

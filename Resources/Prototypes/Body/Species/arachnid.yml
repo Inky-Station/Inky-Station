@@ -49,12 +49,11 @@
       Wings: OrganArachnidAppendages # Trauma
       ArmLeft: OrganArachnidArmLeft
       ArmRight: OrganArachnidArmRight
-      HandRight: OrganArachnidHandRight
-      HandLeft: OrganArachnidHandLeft
+#      HandRight: OrganArachnidHandRight # inkymed they didnt have a handleft????
       LegLeft: OrganArachnidLegLeft
       LegRight: OrganArachnidLegRight
-      FootLeft: OrganArachnidFootLeft
-      FootRight: OrganArachnidFootRight
+#      FootLeft: OrganArachnidFootLeft # inky edit
+#      FootRight: OrganArachnidFootRight # inky edit
       Brain: OrganArachnidBrain
       Eyes: OrganArachnidEyes
       Tongue: OrganArachnidTongue
@@ -171,6 +170,8 @@
   - type: VisualOrgan
     data:
       sprite: Mobs/Species/Arachnid/parts.rsi
+    secondData: # inkymed
+      sprite: Mobs/Species/Arachnid/parts.rsi
   - type: VisualOrganMarkings
     markingData:
       group: Arachnid
@@ -255,6 +256,13 @@
 - type: entity
   parent: [ OrganBaseHeart, OrganArachnidInternal, OrganArachnidMetabolizer ]
   id: OrganArachnidHeart
+  # inkymed
+  components:
+  - type: Heart
+    normalRate: 70
+    criticalRate: 295
+    fibrillationCaps: 35,210
+  # inkymed
 
 - type: entity
   parent: [ OrganBaseStomach, OrganArachnidInternal, OrganAnimalMetabolizer ]

@@ -2,7 +2,7 @@
 
 - type: marking
   id: WristBraceletRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Arachnid]
   coloring:
     default:
@@ -16,7 +16,7 @@
 # Dionae don't have left wrist markings because the markings are currently blocked by their body.
 - type: marking
   id: WristBraceletLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Arachnid]
   coloring:
     default:
@@ -55,7 +55,7 @@
 
 - type: marking
   id: WristWatchRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Arachnid]
   coloring:
     default:
@@ -68,7 +68,7 @@
 
 - type: marking
   id: WristWatchLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Arachnid]
   coloring:
     default:
@@ -81,7 +81,7 @@
 
 - type: marking
   id: WristWatchSilverRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Arachnid]
   coloring:
     default:
@@ -94,7 +94,7 @@
 
 - type: marking
   id: WristWatchSilverLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Arachnid]
   coloring:
     default:
@@ -107,7 +107,7 @@
 
 - type: marking
   id: WristWatchGoldRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Arachnid]
   coloring:
     default:
@@ -120,7 +120,7 @@
 
 - type: marking
   id: WristWatchGoldLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Arachnid]
   coloring:
     default:
@@ -133,7 +133,7 @@
 
 - type: marking
   id: WristWatchHoloRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Arachnid]
   coloring:
     default:
@@ -146,7 +146,7 @@
 
 - type: marking
   id: WristWatchHoloLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Arachnid]
   coloring:
     default:
@@ -159,7 +159,7 @@
 
 - type: marking
   id: WristWatchLeatherRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Arachnid]
   coloring:
     default:
@@ -172,7 +172,7 @@
 
 - type: marking
   id: WristWatchLeatherLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Arachnid]
   coloring:
     default:
@@ -185,7 +185,7 @@
 
 - type: marking
   id: WristWatchColorableRight
-  bodyPart: RHand
+  bodyPart: RArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Diona, Arachnid]
   coloring:
     default:
@@ -200,7 +200,7 @@
 
 - type: marking
   id: WristWatchColorableLeft
-  bodyPart: LHand
+  bodyPart: LArm #inkymed
   groupWhitelist: [Human, Slime, Arachnid, Reptilian, Arachnid]
   coloring:
     default:

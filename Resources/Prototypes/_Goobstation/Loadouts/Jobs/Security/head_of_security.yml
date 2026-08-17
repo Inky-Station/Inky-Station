@@ -27,7 +27,7 @@
   - !type:GroupLoadoutEffect
     proto: MasterHoS
   equipment:
-    shoes: ClothingShoesBootsJackAdvancedFilled
+    shoes: ClothingShoesBootsJackAdvanced # inky
 
 - type: loadout
   id: HeadofSecurityEnvirosuit
@@ -61,3 +61,8 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Plasmaman
+
+- type: loadout # inky
+  id: HoSMJ # inky
+  equipment: # inky
+    jumpsuit: ClothingUniformJumpsuitMilitaryHoS # inky

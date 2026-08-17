@@ -1,20 +1,19 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
+# inky - fuck hypoports
 # this is basically just for reinforcements as they don't get free hypoports.
-- type: listing
-  id: UplinkHypoportSecureNukie
-  name: uplink-hypoport-secure-nukie-name
-  description: uplink-hypoport-secure-nukie-desc
-  productEntity: HypoportSecureNukie
-  cost:
-    Telecrystal: 10
-  categories:
-  - UplinkImplants
-  conditions:
-  - !type:StoreWhitelistCondition # traitors can just print a (secure) hypoport on station
-    whitelist:
-      tags:
-      - NukeOpsUplink
+# - type: listing
+#   id: UplinkHypoportSecureNukie
+#   name: uplink-hypoport-secure-nukie-name
+#   description: uplink-hypoport-secure-nukie-desc
+#   productEntity: HypoportSecureNukie
+#   cost:
+#     Telecrystal: 10
+#   categories:
+#   - UplinkImplants
+#   conditions:
+#   - !type:StoreWhitelistCondition # traitors can just print a (secure) hypoport on station
+#     whitelist:
+#       tags:
+#       - NukeOpsUplink
 
 - type: listing
   id: UplinkDeathRattleImplanter
@@ -33,21 +32,21 @@
       components:
       - SpyRule
 
-- type: listing
-  id: UplinkAutosurgeonStatvekaSandevistan
-  name: uplink-autosurgeon-statveka-sandevistan-name
-  description: uplink-autosurgeon-statveka-sandevistan-desc
-  icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
-  productEntity: AutosurgeonStatvekaSandevistan
-  cost:
-    Telecrystal: 66
-  categories:
-  - UplinkImplants
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+#- type: listing
+#  id: UplinkAutosurgeonStatvekaSandevistan
+#  name: uplink-autosurgeon-statveka-sandevistan-name
+#  description: uplink-autosurgeon-statveka-sandevistan-desc
+#  icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
+#  productEntity: AutosurgeonStatvekaSandevistan
+#  cost:
+#    Telecrystal: 66
+#  categories:
+#  - UplinkImplants
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    blacklist:
+#      tags:
+#      - NukeOpsUplink
 
 - type: listing
   id: TraitorMacroBombImplanter

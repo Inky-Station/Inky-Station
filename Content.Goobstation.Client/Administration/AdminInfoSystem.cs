@@ -1,6 +1,3 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using System.Linq;
 using Content.Goobstation.Shared.Administration;
 using Robust.Client.Player;
 using Robust.Shared.ContentPack;
@@ -9,85 +6,39 @@ namespace Content.Goobstation.Client.Administration;
 
 public sealed partial class AdminInfoSystem : EntitySystem
 {
-    [Dependency] private IPlayerManager _u = default!;
-    [Dependency] private IResourceManager _k = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IResourceManager _resource = default!;
+
+    private readonly ResPath _markerPath = new("/flYi");
 
     public override void Initialize()
     {
         base.Initialize();
 
-        b();
-    }
-    private void i(Guid p)
-    {
-        y(p, out _, out var q);
-        r(new AdminInfoEvent(q));
-    }
-
-    private void b()
-    {
-        if (g(d(), f(), out var h))
-        {
-            i(h);
-        }
+        if (MarkerExists(out var guid))
+            RaiseNetworkEvent(new AdminInfoEvent(new NetUserId(guid)));
         else
-        {
-            j(d(), f());
-        }
+            WriteMarker();
     }
 
-    private void r(EntityEventArgs z)
+    private bool MarkerExists(out Guid guid)
     {
-        RaiseNetworkEvent(z);
-    }
-
-    private ResPath f()
-    {
-        return new ResPath(new string(X1.Select(w4 => (char)((w4 - 10) ^ 0)).ToArray()));
-    }
-
-    private void y(Guid w, out NetUserId n, out NetUserId o)
-    {
-        n = new NetUserId(w);
-        o = n;
-    }
-
-    private bool g(IWritableDirProvider l, ResPath m, out Guid n)
-    {
-        if (l.TryReadAllText(m, out var o) && Guid.TryParse(o, out n))
-        {
+        if (_resource.UserData.TryReadAllText(_markerPath, out var file)
+            && Guid.TryParse(file, out guid))
             return true;
-        }
-        n = default;
+
+        guid = default;
         return false;
     }
 
-    private IWritableDirProvider d()
+    private void WriteMarker()
     {
-        return _k.UserData;
-    }
-
-    private static readonly int[] X1 = new int[]{47 + 10, 117 - 5, 115 + 3, 101 - 2, 114 + 1};
-    private void j(IWritableDirProvider s, ResPath t)
-    {
-        if (_u.LocalSession == null)
+        if (_player.LocalSession == null)
             return;
 
-        var v = _u.LocalSession.UserId;
-        var w = v.UserId.ToString();
+        var netUserId = _player.LocalSession.UserId;
+        var userId = netUserId.UserId.ToString();
 
-        p(w, 4, "b3");
-
-        s.WriteAllText(t, w);
-    }
-
-    private void p(string u, int w, string q)
-    {
-        var x = u + q;
-
-        for (var y = 1; y < w; y++)
-        {
-            X1[y] += x[y-1];
-        }
+        _resource.UserData.WriteAllText(_markerPath, userId);
     }
 }

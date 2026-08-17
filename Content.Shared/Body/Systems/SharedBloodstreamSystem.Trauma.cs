@@ -22,7 +22,7 @@ public abstract partial class SharedBloodstreamSystem
     [Dependency] private ISharedPlayerManager _player = default!;
     [Dependency] private EntityQuery<BloodstreamComponent> _query = default!;
 
-    private float _bloodlossMultiplier = 4f;
+    private float _bloodlossMultiplier = 2.5f; // inky edit
 
     private void InitializeTrauma()
     {

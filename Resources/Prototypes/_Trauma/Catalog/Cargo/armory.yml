@@ -12,6 +12,10 @@
   - DeltaSling
   - Omicron
   - Octarine
+  # inky start - kill chud lock
+  - Green
+  - Blue
+  # inky end
   # intentionally no epsilon, NT won't sell you guns to kill their deathsquads
   category: cargoproduct-category-name-armory
   group: market

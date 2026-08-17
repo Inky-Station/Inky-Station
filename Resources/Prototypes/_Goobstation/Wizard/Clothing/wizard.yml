@@ -48,7 +48,6 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
-        Ballistic: 0.6
         Heat: 0.6
         Caustic: 0.1
         Radiation: 0.1
@@ -65,9 +64,9 @@
     coverage: # full coverage, idk, magic
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Wings
     traumaDeductions: # prevents traumas at all (kinda)
@@ -80,7 +79,6 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
-        Ballistic: 0.6
         Heat: 0.6
         Radiation: 0.1
         Caustic: 0.1
@@ -315,15 +313,14 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymeed
     modifiers:
       coefficients:
         Blunt: 0.45
         Slash: 0.45
         Piercing: 0.45
-        Ballistic: 0.45
         Heat: 0.45
         Radiation: 0
         Caustic: 0.1

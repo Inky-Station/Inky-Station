@@ -16,9 +16,12 @@ using Content.Trauma.Shared.MartialArts.Components;
 
 namespace Content.Trauma.Client.Knowledge;
 
+// inky edit - kill skills
+// do not dare to touch this system, half of it was lazy commented out.
+// I just wanna make it work man - lucifer
 public sealed class KnowledgeSystem : SharedKnowledgeSystem
 {
-    private WeakReference<CharacterWindow>? _activeWindow;
+    // private WeakReference<CharacterWindow>? _activeWindow;
     private bool _showPopups;
     private TimeSpan _nextPopup;
     private TimeSpan _popupCooldown = TimeSpan.FromSeconds(3);
@@ -28,19 +31,19 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
         base.Initialize();
 
         SubscribeLocalEvent<KnowledgeHolderComponent, GetPerformedAttackTypesEvent>(OnGetAttackTypes);
-        SubscribeLocalEvent<KnowledgeHolderComponent, UpdateExperienceEvent>(OnUpdateExperienceEvent);
+        // SubscribeLocalEvent<KnowledgeHolderComponent, UpdateExperienceEvent>(OnUpdateExperienceEvent);
         Subs.CVar(_cfg, TraumaCVars.SkillPopups, x => _showPopups = x, true);
         SubscribeAllEvent<SkillPopupEvent>(OnSkillPopup);
 
-        CharacterWindow.OnOpened += EnsureKnowledgeTab;
-        LobbyUIController.OnProfileEditorCreated += AddProfileEditorTab;
+        // CharacterWindow.OnOpened += EnsureKnowledgeTab;
+        // LobbyUIController.OnProfileEditorCreated += AddProfileEditorTab;
     }
 
     public override void Shutdown()
     {
         base.Shutdown();
-        CharacterWindow.OnOpened -= EnsureKnowledgeTab;
-        LobbyUIController.OnProfileEditorCreated -= AddProfileEditorTab;
+        // CharacterWindow.OnOpened -= EnsureKnowledgeTab;
+        // LobbyUIController.OnProfileEditorCreated -= AddProfileEditorTab;
     }
 
     private void OnGetAttackTypes(Entity<KnowledgeHolderComponent> ent, ref GetPerformedAttackTypesEvent args)
@@ -52,6 +55,7 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
         args.AttackTypes = combo.LastAttacks;
     }
 
+    /*
     private void EnsureKnowledgeTab(CharacterWindow window)
     {
         _activeWindow = new WeakReference<CharacterWindow>(window);
@@ -100,6 +104,7 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
         tab.SetPositionInParent(index);
         TabContainer.SetTabTitle(tab, Loc.GetString("knowledge-editor-tab"));
     }
+    */
 
     /// <summary>
     /// Returns the martial arts that a knowledge entity has, along with some helper data for the client.
@@ -132,6 +137,7 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
             .ToList();
     }
 
+    /*
     public void OnUpdateExperienceEvent(Entity<KnowledgeHolderComponent> ent, ref UpdateExperienceEvent args)
     {
         var localPlayer = _player.LocalEntity;
@@ -143,6 +149,7 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
 
         EnsureKnowledgeTab(window);
     }
+    */
 
     private void OnSkillPopup(SkillPopupEvent args)
     {

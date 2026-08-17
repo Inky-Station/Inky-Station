@@ -5,6 +5,10 @@
   parent: BaseGameRule
   id: BaseHereticRule
   components:
+  # inky
+  - type: DynamicRuleCost
+    cost: 100
+  # /inky
   - type: HereticRule
   - type: GameRule
     minPlayers: 15

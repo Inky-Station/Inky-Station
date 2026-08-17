@@ -24,34 +24,34 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 Name="DollLeftArm"
                 Stretch="KeepAspectCentered"
                 SetSize="64 64"/>
-            <TextureRect
-                Name="DollLeftHand"
-                Stretch="KeepAspectCentered"
-                SetSize="64 64"/>
+            <!-- <TextureRect -->
+            <!--     Name="DollLeftHand" -->
+            <!--     Stretch="KeepAspectCentered" -->
+            <!--     SetSize="64 64"/> -->
             <TextureRect
                 Name="DollRightArm"
                 Stretch="KeepAspectCentered"
                 SetSize="64 64"/>
-            <TextureRect
-                Name="DollRightHand"
-                Stretch="KeepAspectCentered"
-                SetSize="64 64"/>
+            <!-- <TextureRect -->
+            <!--     Name="DollRightHand" -->
+            <!--     Stretch="KeepAspectCentered" -->
+            <!--     SetSize="64 64"/> -->
             <TextureRect
                 Name="DollLeftLeg"
                 Stretch="KeepAspectCentered"
                 SetSize="64 64"/>
-            <TextureRect
-                Name="DollLeftFoot"
-                Stretch="KeepAspectCentered"
-                SetSize="64 64"/>
+            <!-- <TextureRect -->
+            <!--     Name="DollLeftFoot" -->
+            <!--     Stretch="KeepAspectCentered" -->
+            <!--     SetSize="64 64"/> -->
             <TextureRect
                 Name="DollRightLeg"
                 Stretch="KeepAspectCentered"
                 SetSize="64 64"/>
-            <TextureRect
-                Name="DollRightFoot"
-                Stretch="KeepAspectCentered"
-                SetSize="64 64"/>
+            <!-- <TextureRect -->
+            <!--     Name="DollRightFoot" -->
+            <!--     Stretch="KeepAspectCentered" -->
+            <!--     SetSize="64 64"/> -->
         </PanelContainer>
     </Control>
 </widgets:PartStatusControl>

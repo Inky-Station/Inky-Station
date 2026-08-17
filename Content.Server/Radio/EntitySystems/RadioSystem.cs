@@ -38,7 +38,7 @@ public sealed partial class RadioSystem : EntitySystem
     [Dependency] private INetManager _netMan = default!;
     [Dependency] private IReplayRecordingManager _replay = default!;
     [Dependency] private IAdminLogManager _adminLogger = default!;
-    [Dependency] private IRobustRandom _random = default!;
+    // [Dependency] private IRobustRandom _random = default!; // inkymed
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private IChatManager _chatManager = default!;
     [Dependency] private GhostSystem _ghost = default!;

@@ -18,7 +18,7 @@
   - HydroponicsTrayMachineCircuitboard
   - ReagentGrinderIndustrialMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: -2,4
+  position: 0,5 # inky
   technologyPrerequisites:
   - AdvancedEntertainment
   # Goobstation R&D Console rework end
@@ -43,7 +43,7 @@
   - MechEquipmentGrabberSmall
   - VimHarness
   # Goobstation R&D Console rework start
-  position: -6,1
+  position: -5,2 # inky
   technologyPrerequisites:
   - RipleyAPLU
   # Goobstation R&D Console rework end
@@ -89,7 +89,7 @@
     - JukeboxCircuitBoard
     - BorgModuleLollypop # Goobstation
   # Goobstation R&D Console rework start
-  position: 0,3
+  position: 0,4 # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -106,7 +106,7 @@
   - BiofabricatorMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: -2,5
+  position: 0,6 # inky
   technologyPrerequisites:
   - Hydroponics
   # Goobstation R&D Console rework end
@@ -134,9 +134,9 @@
   - FauxTileAstroAsteroidSandBorderless
   - FauxTileDesertAstroSand
   # Goobstation R&D Console rework start
-  position: 1,5
+  position: 0,3 # inky
   technologyPrerequisites:
-  - AudioVisualCommunication
+  - AdvancedEntertainment # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -155,30 +155,30 @@
   - CryostasisBeaker
   - SyringeCryostasis
   # Goobstation R&D Console rework start
-  position: 3,5
+  position: -1,6 # inky
   technologyPrerequisites:
-  - AccessibilityTech
+  - AdvancedTreatment # inky
   # Goobstation R&D Console rework end
 
-# Goob edit
-#- type: technology # Merge with other T2 medical research if possible!
-#  id: MechanizedTreatment
-#  name: research-technology-mechanized-treatment
-#  icon:
-#    sprite: Mobs/Silicon/chassis.rsi
-#    state: medical
-#  discipline: CivilianServices
-#  tier: 2
-#  cost: 5000
-#  recipeUnlocks:
-#  - BorgModuleAdvancedTopical
-#  - AdvancedJetInjector
-#  # Goobstation R&D Console rework start
-#  position: -1, 4
-#  technologyPrerequisites:
-#  - AdvancedEntertainment
-#  - BasicRobotics
-#  # Goobstation R&D Console rework end
+# Goob edit # inky - https://www.youtube.com/watch?v=W44HrKFTPaE
+- type: technology # Merge with other T2 medical research if possible!
+  id: MechanizedTreatment
+  name: research-technology-mechanized-treatment
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: medical
+  discipline: CivilianServices
+  tier: 2
+  cost: 5000
+  recipeUnlocks:
+  - BorgModuleAdvancedTopical
+  - AdvancedJetInjector
+  # Goobstation R&D Console rework start
+  position: -3,4 # inky
+  technologyPrerequisites:
+  - AdvancedTreatment # inky
+  - BasicRobotics
+  # Goobstation R&D Console rework end
 
 - type: technology
   id: AdvancedCleaning
@@ -195,9 +195,9 @@
   - BorgModuleAdvancedCleaning
   - TrashBagHolding
   # Goobstation R&D Console rework start
-  position: 0,4
+  position: -1,3 # inky
   technologyPrerequisites:
-  - AdvancedEntertainment
+  - FauxAstroTiles # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -220,10 +220,10 @@
   - HonkerTargetingElectronics
   - MechEquipmentHorn
   # Goobstation R&D Console rework start
-  position: -8,0
+  position: -5,1 # inky
   technologyPrerequisites:
   - PushHorn
-  - RipleyAPLU
+  # - RipleyAPLU # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -239,7 +239,7 @@
   - WeaponSprayNozzle
   - ClothingBackpackWaterTank
   # Goobstation R&D Console rework start
-  position: 0,5
+  position: -1,2 # inky
   technologyPrerequisites:
   - AdvancedCleaning
   # Goobstation R&D Console rework end
@@ -258,8 +258,7 @@
   # Goobstation R&D Console rework start
   position: 1,6
   technologyPrerequisites:
-  - MeatManipulation
-  - FauxAstroTiles
+  - ExtendedCommunications # inky
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -275,9 +274,9 @@
   - PushHorn
   - BorgModuleAdvancedClowning
   # Goobstation R&D Console rework start
-  position: -7,0
+  position: -4,1 # inky
   technologyPrerequisites:
-  - CritterMechs
+  - RipleyAPLU # inky
   # Goobstation R&D Console rework end
 
 # Tier 3
@@ -314,8 +313,9 @@
   - SyringeBluespace
   - MedkitCombat # Goobstation - remove medkitcombat from static to research
   - VialBluespace # goob edit - bluespace vials
+  - EnergyChemDispenserMachineCircuitboard #Inky
   # Goobstation R&D Console rework start
-  position: 4,5
+  position: -3,3 # inky
   technologyPrerequisites:
-  - BiochemicalStasis
+  - ServiceBluespaceChemistry # inky
   # Goobstation R&D Console rework end

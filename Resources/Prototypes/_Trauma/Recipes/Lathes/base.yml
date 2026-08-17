@@ -12,6 +12,10 @@
   - DeltaSling
   - Omicron
   - Octarine
+  # inky start - kill chud lock
+  - Green
+  - Blue
+  # inky end
 
 - type: latheRecipe
   abstract: true
@@ -26,3 +30,6 @@
   - DeltaSling
   - Omicron
   - Octarine
+  # inky start - kill chud lock
+  - Green
+  # inky end

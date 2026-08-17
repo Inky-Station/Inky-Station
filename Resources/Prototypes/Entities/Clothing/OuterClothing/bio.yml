@@ -13,9 +13,9 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand # inkymed
     - Leg
-    - Foot
+#    - Foot #inkymed
     - Tail
     modifiers:
       coefficients:
@@ -98,16 +98,15 @@
     coverage: # Shitmed
     - Torso
     - Arm
-    - Hand
+#    - Hand #inkymed
     - Leg
-    - Foot
+#    - Foot #inkymed
     - Tail
     modifiers:
       coefficients:
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
-        Ballistic: 0.7 # Trauma
         Heat: 0.8
         Caustic: 0.2
   - type: ZombificationResistance

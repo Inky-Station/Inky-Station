@@ -31,7 +31,7 @@ public sealed partial class GameTicker
     /// </summary>
     [ViewVariables] private string[] _ignoredRules = [];
 
-    [Dependency] private EntityWhitelistSystem _whitelist = null!;
+    // [Dependency] private EntityWhitelistSystem _whitelist = null!; // inky edit TRAUMA FUCKUP
 
     /// <summary>
     ///     A list storing the start times of all game rules that have been started this round.

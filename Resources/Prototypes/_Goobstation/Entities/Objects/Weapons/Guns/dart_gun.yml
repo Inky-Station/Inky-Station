@@ -58,7 +58,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 1
+        Piercing: 1
     angle: -45
   - type: Ammo
     muzzleFlash: null

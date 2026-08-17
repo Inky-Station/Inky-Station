@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <NoWarn>CS0618</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>Content.Inky.Common</RootNamespace>
+  </PropertyGroup>
+  <Import Project="../MSBuild/Content.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="../Content.Common/Content.Common.csproj" />
+  </ItemGroup>
+
+  <Import Project="../RobustToolbox/Imports/Shared.props" />
+  <Import Project="../RobustToolbox/MSBuild/Robust.Properties.targets" />
+  <Import Project="../RobustToolbox/MSBuild/Robust.CompNetworkGenerator.targets" />
+</Project>

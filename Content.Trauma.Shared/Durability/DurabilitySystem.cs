@@ -55,6 +55,8 @@ public sealed partial class DurabilitySystem : EntitySystem
     {
         base.Initialize();
 
+        // inky edit - kill durability
+        /*
         SubscribeLocalEvent<DurabilityComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<DurabilityComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<DurabilityComponent, MeleeHitEvent>(OnMeleeHit);
@@ -69,6 +71,7 @@ public sealed partial class DurabilitySystem : EntitySystem
         SubscribeLocalEvent<DurabilityComponent, RepairItemDoAfterEvent>(OnRepairItemDoAfter);
         SubscribeLocalEvent<DurabilityComponent, RepairToolDoAfterEvent>(OnRepairToolDoAfter);
         SubscribeLocalEvent<CustomDurabilityModifierComponent, DurabilityStateChangedByEvent>(OnStateChangedBy);
+        */ // /inky
     }
 
     private void OnStateChangedBy(Entity<CustomDurabilityModifierComponent> ent, ref DurabilityStateChangedByEvent args)

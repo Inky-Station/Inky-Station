@@ -30,7 +30,7 @@ public sealed partial class BlobTileComponent : Component
             { "Blunt", -4 },
             { "Slash", -4 },
             { "Piercing", -4 },
-            { "Ballistic", -4 },
+            // { "Ballistic", -4 }, inbky
             { "Heat", -4 },
             { "Cold", -4 },
             { "Shock", -4 },

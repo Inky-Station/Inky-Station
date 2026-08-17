@@ -97,6 +97,12 @@
         damage:
           types:
             Poison: 15
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 5
+        heartRestart: true
+        autoStabilisation: true
+  # /inkymed
   tileReactions:
   - !type:ChangeTileReaction # Rusts tile
 

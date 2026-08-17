@@ -53,7 +53,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 12 # This is a super shitty ranged weapon it should not be good DPS wise.
+        Heat: 16 # inky edit
 
 # Longarms
 
@@ -77,7 +77,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 15
+        Heat: 14 # inky edit
 
 - type: entity
   parent: SidearmBulletBase

@@ -5,7 +5,7 @@ namespace Content.Trauma.Shared.Armor;
 /// <summary>
 /// Makes armor values get reduced by precise attacks below a certain distance.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(ArmorPointBlankSystem))]
+[RegisterComponent, NetworkedComponent] // inky - kill Access(typeof(ArmorPointBlankSystem))
 public sealed partial class ArmorPointBlankComponent : Component
 {
     /// <summary>

@@ -17,6 +17,11 @@
       - !type:ModifyStatusEffect
         effectProto: StatusEffectWoozy
         time: 20.0
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 4 # trol
+        higherCap: 165
+      # /inkymed
 
 - type: reagent
   id: Dylovene
@@ -172,6 +177,14 @@
           reagent: Bicaridine
           min: 12 # Trauma - Was 15
       - !type:Drunk
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 4.5 # OD warrior
+        conditions:
+        - !type:ReagentCondition
+          reagent: Bicaridine
+          min: 15
+      # /inkymed
 
 - type: reagent
   id: Cryoxadone
@@ -265,6 +278,14 @@
         - !type:ReagentCondition
           reagent: Dermaline
           min: 10
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 4.5
+        conditions:
+        - !type:ReagentCondition
+          reagent: Dermaline
+          min: 10
+      # /inkymed
 
 - type: reagent
   id: Dexalin
@@ -291,6 +312,14 @@
           types:
             Asphyxiation: 3
             Cold: 1
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -2
+        conditions:
+        - !type:ReagentCondition
+          reagent: Dexalin
+          min: 20
+      # /inkymed
 
 - type: reagent
   id: DexalinPlus
@@ -324,6 +353,14 @@
           types:
             Asphyxiation: 5
             Cold: 3
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: -2
+        conditions:
+        - !type:ReagentCondition
+          reagent: DexalinPlus
+          min: 25
+      # /inkymed
 
 # this ones a doozy
 - type: reagent
@@ -412,6 +449,12 @@
       - !type:ModifyStatusEffect
         effectProto: EpinephrineStatusEffect
       # </Goob>
+      # inkymed
+      - !type:ModifyHeartRate # le magic chem
+        amount: 2
+        heartRestart: true
+        autoStabilisation: true
+      # /inkymed
 
 - type: reagent
   id: Hyronalin
@@ -910,6 +953,13 @@
           Toxin: -2
           Airloss: -2
           Brute: -2
+      # inkymed
+      - !type:ModifyHeartRate
+        amount: 5
+        heartRestart: true
+        autoStabilisation: true
+      # /inkymed
+
 
 - type: reagent
   id: Ultravasculine
@@ -1157,7 +1207,6 @@
         damage:
           types:
             Piercing: -2.5 # 10 per u
-            Ballistic: -2.5 # 10 per u # Trauma
             Radiation: 0.05 # 0.2 per u, 3 for 15u
       - !type:HealthChange
         conditions:

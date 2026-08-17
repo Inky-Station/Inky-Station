@@ -92,7 +92,7 @@
     impactEffect: BulletImpactEffect
     damage:
       types:
-        Ballistic: 14 # Trauma
+        Piercing: 14
     soundHit:
       path: /Audio/Weapons/Guns/Hits/bullet_hit.ogg
   - type: TimedDespawn
@@ -146,7 +146,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 10 # Trauma
+        Piercing: 10
         Heat: 4
   - type: PointLight
     enabled: true
@@ -169,7 +169,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 11 # 20% decrease # Trauma
+        Piercing: 11 # 20% decrease
     increaseOnly: true # Trauma - apply modifiers, but ignore decreases
 
 - type: entity
@@ -995,7 +995,7 @@
     deleteOnCollide: true
     damage:
       types:
-        Ballistic: 0 # Trauma
+        Piercing: 0
   - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity
@@ -1066,7 +1066,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 10 # Trauma
+        Piercing: 10
 
 - type: entity
   id: BulletCannonBall
@@ -1437,7 +1437,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 2 # Trauma
+        Piercing: 2
   - type: StunOnCollide #somewhat mirror to taser stats, meant to be tot 'sidegrade'
     stunAmount: 0
     knockdownAmount: 2.5

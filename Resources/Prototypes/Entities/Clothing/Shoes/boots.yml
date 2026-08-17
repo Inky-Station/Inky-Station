@@ -72,7 +72,7 @@
     modifier: 0.5
 
 - type: entity
-  parent: ClothingShoesMilitaryBase
+  parent: ClothingShoesBaseButcherable #Goobstation # inky
   id: ClothingShoesHighheelBoots
   name: high-heeled boots
   description: Snazy boots for when you want to be stylish, yet prepared.
@@ -132,10 +132,9 @@
   name: cargo winter boots
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Boots/winterbootscargo.rsi
+    sprite: _Goobstation/Clothing/Shoes/Boots/winterbootscargo.rsi # Goob
   - type: Clothing
-    sprite: Clothing/Shoes/Boots/winterbootscargo.rsi
-
+    sprite: _Goobstation/Clothing/Shoes/Boots/winterbootscargo.rsi # Goob
 - type: entity
   parent: ClothingShoesBaseWinterBoots
   id: ClothingShoesBootsWinterEngi

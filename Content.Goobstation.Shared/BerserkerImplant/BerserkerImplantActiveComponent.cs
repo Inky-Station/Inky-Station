@@ -19,7 +19,7 @@ public sealed partial class BerserkerImplantActiveComponent : Component
         {
             { "Slash", 0.4f },
             { "Piercing", 0.4f },
-            { "Ballistic", 0.4f },
+            // { "Ballistic", 0.4f }, // inky edit kill second amendment
             { "Blunt", 0.4f },
             { "Heat", 0.4f },
             { "Shock", 0.4f },

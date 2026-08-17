@@ -134,7 +134,6 @@
         Blunt: -10 # Trauma - was -5, should really just change how healing wounds works...
         Piercing: -10 # Trauma - was -5
         Slash: -10 # Trauma - was -5
-        Ballistic: -10 # Trauma
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
       params:
@@ -181,9 +180,8 @@
     damage:
       types:
         Blunt: -15 # Trauma - was -10
-        Piercing: -15 # Trauma - was -10
-        Slash: -15 # Trauma - was -10
-        Ballistic: -15 # Trauma
+        Piercing: -10 # Trauma - was -10
+        Slash: -10 # Trauma - was -10
     bloodlossModifier: -10 # a suture should stop ongoing bleeding
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
@@ -331,7 +329,6 @@
       types:
         Slash: -10 # Was 5
         Piercing: -15 # Was 10, Buffed due to limb damage changes (Goobstation)
-        Ballistic: -5 # Trauma
     bloodlossModifier: -10
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
@@ -393,7 +390,6 @@
       types: # these are all split across multiple types
         Blunt: -50
         Piercing: -50
-        Ballistic: -50 # Trauma
         Slash: -50
         Heat: -50
         Cold: -50
@@ -436,7 +432,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterDexalin
-  suffix: Dexalin 20u, 7
+  suffix: Dexalin 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-dexalin-20u
@@ -444,7 +440,7 @@
     containers:
       storagebase:
         id: PillDexalin
-        amount: 7
+        amount: 15 # inky
 
 - type: entity
   name: pill
@@ -468,7 +464,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterDylovene
-  suffix: Dylovene 20u, 5
+  suffix: Dylovene 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-dylovene-20u
@@ -476,7 +472,7 @@
     containers:
       storagebase:
         id: PillDylovene
-        amount: 5
+        amount: 15 # inky
 
 - type: entity
   name: pill
@@ -500,7 +496,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterHyronalin
-  suffix: Hyronalin 20u, 5
+  suffix: Hyronalin 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-hyronalin-20u
@@ -508,7 +504,7 @@
     containers:
       storagebase:
         id: PillHyronalin
-        amount: 5
+        amount: 15 # inky
 
 - type: entity
   name: pill
@@ -532,7 +528,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterPotassiumIodide
-  suffix: Potassium iodide 20u, 5
+  suffix: Potassium iodide 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-potassium-iodide-20u
@@ -540,7 +536,7 @@
     containers:
       storagebase:
         id: PillPotassiumIodide
-        amount: 5
+        amount: 15 # inky
 
 - type: entity
   name: pill
@@ -582,7 +578,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterIron
-  suffix: Iron 20u, 5
+  suffix: Iron 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-iron-20u
@@ -590,13 +586,13 @@
     containers:
       storagebase:
         id: PillIron
-        amount: 5
+        amount: 15 # inky
 
 - type: entity
   name: pill canister
   parent: PillCanister
   id: PillCanisterCopper
-  suffix: Copper 20u, 5
+  suffix: Copper 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-copper-20u
@@ -604,7 +600,7 @@
     containers:
       storagebase:
         id: PillCopper
-        amount: 5
+        amount: 15 # inky
 
 - type: entity
   name: pill
@@ -628,7 +624,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterKelotane
-  suffix: Kelotane 20u, 5
+  suffix: Kelotane 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-kelotane-20u
@@ -636,7 +632,7 @@
     containers:
       storagebase:
         id: PillKelotane
-        amount: 5
+        amount: 15 # inky
 
 - type: entity
   name: pill
@@ -660,7 +656,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterDermaline
-  suffix: Dermaline 20u, 5
+  suffix: Dermaline 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-dermaline-20u
@@ -668,7 +664,7 @@
     containers:
       storagebase:
         id: PillDermaline
-        amount: 5
+        amount: 15 # inky
 
 - type: entity
   name: space mirage
@@ -703,7 +699,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterTricordrazine
-  suffix: Tricordrazine 20u, 5
+  suffix: Tricordrazine 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-tricordrazine-20u
@@ -711,7 +707,7 @@
     containers:
       storagebase:
         id: PillTricordrazine
-        amount: 5
+        amount: 15 # inky
 
 - type: entity
   name: pill
@@ -735,7 +731,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterBicaridine
-  suffix: Bicaridine 20u, 5
+  suffix: Bicaridine 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-bicaridine-20u
@@ -743,7 +739,7 @@
     containers:
       storagebase:
         id: PillBicaridine
-        amount: 5
+        amount: 15 # inky
 
 - type: entity
   name: pill
@@ -767,7 +763,7 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisterCharcoal
-  suffix: Charcoal 20u, 3
+  suffix: Charcoal 20u, 15 # inky
   components:
   - type: Label
     localizedLabel: pill-label-charcoal-20u
@@ -775,7 +771,7 @@
     containers:
       storagebase:
         id: PillCharcoal
-        amount: 3
+        amount: 15 # inky
 
 - type: entity
   name: romerol pill
@@ -824,33 +820,33 @@
       storagebase: !type:GroupSelector
         children:
         - id: PillDexalin
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillDylovene
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillHyronalin
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillPotassiumIodide
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillIron
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillCopper
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillKelotane
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillDermaline
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillTricordrazine
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillBicaridine
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillCharcoal
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: PillSpaceDrugs
           weight: 0.75
-          amount: 1, 6
+          amount: 1, 15 # inky
         - id: StrangePill
           weight: 0.75
-          amount: 1, 6
+          amount: 1, 15 # inky
 
 # Syringes
 - type: entity

@@ -10,7 +10,6 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
-        Ballistic: 0.5
         Heat: 0.5
         Caustic: 0.8
       flatReductions:
@@ -39,9 +38,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Wings
   - type: ToggleableClothing
@@ -75,11 +74,10 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
-        Ballistic: 0.7
         Heat: 0.7
         Caustic: 0.7
-      flatReductions:
-        Ballistic: 2
+#      flatReductions:
+#        Ballistic: 2 # inky edit
   - type: ExplosionResistance
     damageCoefficient: 0.50
 
@@ -121,20 +119,19 @@
       coverage:
       - Torso
       - Arm
-      - Hand
+#      - Hand inkymed
       - Leg
-      - Foot
+#      - Foot inkymed
       - Tail
       modifiers:
         coefficients:
           Blunt: 0.4
           Slash: 0.4
           Piercing: 0.4
-          Ballistic: 0.4
           Heat: 0.4
           Caustic: 0.4
-        flatReductions:
-          Ballistic: 3
+#        flatReductions:
+#          Ballistic: 3 # inky enkeeee
       traumaDeductions:
         Dismemberment: 0.4
         OrganDamage: 0.4
@@ -158,11 +155,10 @@
           Blunt: 0.7
           Slash: 0.7
           Piercing: 0.7
-          Ballistic: 0.7
           Heat: 0.7
           Caustic: 0.7
-        flatReductions:
-          Ballistic: 2
+#        flatReductions:
+#          Ballistic: 2 # inky enkeee
       traumaDeductions:
         Dismemberment: 0.2
         OrganDamage: 0.2
@@ -184,11 +180,10 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
-        Ballistic: 0.5
-        Heat: 0.6
+        Heat: 0.5
         Caustic: 0.6
-      flatReductions:
-        Ballistic: 2
+#      flatReductions:
+#        Ballistic: 2 # inky enkeeee
     traumaDeductions:
       Dismemberment: 0.3
       OrganDamage: 0.3
@@ -230,12 +225,11 @@
       coefficients:
         Blunt: 0.6
         Slash: 0.6
-        Piercing: 0.6
-        Ballistic: 0.5
-        Heat: 0.4
+        Piercing: 0.4
+        Heat: 0.5
         Caustic: 0.8
-      flatReductions:
-        Ballistic: 2
+#      flatReductions:
+#        Ballistic: 2 # inky enkeee
   - type: ExplosionResistance
     damageCoefficient: 0
 
@@ -272,12 +266,11 @@
       coefficients:
         Blunt: 0.3
         Slash: 0.3
-        Piercing: 0.3
-        Ballistic: 0.6
+        Piercing: 0.6
         Heat: 0.7
         Caustic: 0
-      flatReductions:
-        Ballistic: 2
+#      flatReductions:
+#        Ballistic: 2 # inky enkee
 
 - type: entity
   parent: [ ArmorHereticFlesh, ClothingOuterArmorHeretic ]
@@ -325,11 +318,10 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
-        Ballistic: 0.5
         Heat: 0.5
         Caustic: 0.5
-      flatReductions:
-        Ballistic: 2
+#      flatReductions:
+#        Ballistic: 2 # inky enkeee
     traumaDeductions:
       Dismemberment: 0.5
       OrganDamage: 0.5
@@ -372,11 +364,11 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
-        Ballistic: 0.6
+#        Ballistic: 0.6
         Heat: 0.5
         Caustic: 0.8
-      flatReductions:
-        Ballistic: 2
+#      flatReductions:
+#        Ballistic: 2
 
 - type: entity
   parent: [ ArmorHereticCosmos, ClothingOuterArmorHeretic ]
@@ -419,14 +411,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.6
+        Blunt: 0.5
+        Slash: 0.5
         Piercing: 0.6
-        Ballistic: 0.6
         Heat: 0.6
-        Caustic: 0.6
-      flatReductions:
-        Ballistic: 2
+        Caustic: 0.
     traumaDeductions:
       Dismemberment: 0.3
       OrganDamage: 0.3
@@ -470,7 +459,6 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
-        Ballistic: 0.7
         Heat: 0.7
         Caustic: 0.7
     traumaDeductions:
@@ -499,9 +487,9 @@
     coverage:
     - Torso
     - Arm
-    - Hand
+#    - Hand inkymed
     - Leg
-    - Foot
+#    - Foot inkymed
     - Tail
     - Wings
   - type: ToggleableClothing

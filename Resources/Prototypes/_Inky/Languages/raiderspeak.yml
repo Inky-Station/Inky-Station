@@ -1,0 +1,88 @@
+- type: language
+  id: RaiderSpeak
+  speech:
+    color: "#656565aa"
+    fontId: Soviet
+    boldFontId: SovietBold
+  obfuscation:
+    !type:PhraseObfuscation
+    proportion: 0.66
+    minPhrases: 1
+    maxPhrases: 6
+    replacement:
+    - гойда
+    - слон
+    - набег
+    - хз
+    - умрешь
+    - прив
+    - нахуй
+    - блять
+    - сука
+    - иншаллах
+    - товарищ
+    - манго
+    - ZOV
+    - наш
+    - овца
+    - овцебык
+    - водка
+    - запад
+    - козел
+
+- type: trait
+  id: RaiderSpeak
+  name: trait-language-raiderspeak-name
+  description: trait-language-raiderspeak-desc
+  category: LanguageTraits
+  cost: 3
+  blacklist:
+    components:
+    - BorgChassis
+    - MindShield
+  components:
+  - type: LanguageSpeaker
+  languagesSpoken:
+  - RaiderSpeak
+  languagesUnderstood:
+  - RaiderSpeak
+
+- type: entity
+  parent: BaseLanguageKnowledge
+  id: LanguageRaiderSpeak
+  components:
+  - type: LanguageKnowledge
+    languageId: RaiderSpeak
+
+- type: entity
+  id: RaiderSpeakTranslator
+  parent: [ TranslatorPoweredBase ]
+  name: raiderspeak translator
+  description: Translates speech between Raiderspeak and Galactic Common. Like a true raider!
+  components:
+  - type: HandheldTranslator
+    spoken:
+    - TauCetiBasic
+    - RaiderSpeak
+    understood:
+    - TauCetiBasic
+    - RaiderSpeak
+
+- type: entity
+  id: MangoTranslator # cant eat. thats it. its so bad holy shit GOIDA
+  name: foreigner mangoe
+  categories: [ HideSpawnMenu ]
+  parent: BaseItem
+  description: MANGO MANGO MANGO
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Kitchen/Plants/mango.rsi
+    state: produce
+
+- type: font # goida
+  id: Soviet
+  path: "/Fonts/_Inky/Soviet/Red October.ttf"
+
+- type: font
+  id: SovietBold
+  path: "/Fonts/_Inky/Soviet/Red October-Fat.ttf"

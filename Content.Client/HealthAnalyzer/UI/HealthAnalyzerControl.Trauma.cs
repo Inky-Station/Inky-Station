@@ -8,6 +8,7 @@ using Content.Medical.Common.Body;
 using Content.Medical.Common.Traumas;
 using Content.Medical.Common.Wounds;
 using Content.Medical.Shared.Traumas;
+using Content.Medical.Shared.Inkymed; // inkymed
 using Content.Medical.Shared.Wounds;
 using Content.Shared.Atmos.Rotting;
 using Content.Shared.Body;
@@ -15,7 +16,9 @@ using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Damage; // inkymed
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Prototypes; // inkymed
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
@@ -34,6 +37,7 @@ public sealed partial class HealthAnalyzerControl
     private BodySystem _body = default!;
     private SharedSolutionContainerSystem _solution = default!;
     private TraumaSystem _trauma = default!;
+
     private WoundSystem _wound = default!;
 
     private EntityQuery<AmputationTraumaComponent> _amputationQuery = default!;
@@ -58,6 +62,12 @@ public sealed partial class HealthAnalyzerControl
 
         _amputationQuery = _entityManager.GetEntityQuery<AmputationTraumaComponent>();
         _boneQuery = _entityManager.GetEntityQuery<BoneComponent>();
+
+        // inkymed
+        _bodySystem = _entityManager.System<BodySystem>();
+        _heartRateSystem = _entityManager.System<HeartRateSystem>();
+        _part = _entityManager.System<CommonBodyPartSystem>();
+        // /inkymed
 
         _bodyPartControls = new Dictionary<ProtoId<OrganCategoryPrototype>, TextureButton>
         {
@@ -158,38 +168,78 @@ public sealed partial class HealthAnalyzerControl
     #region Scan state populate methods
 
     public void PopulateBody(EntityUid target, ref HealthAnalyzerUiState state, bool bloodLevelLow = false)
+{
+    var selectedPart = _entityManager.GetEntity(state.Part);
+    // inkymed
+    var originalTarget = target;
+    // /inkymed
+    if (selectedPart != null)
+        target = selectedPart.Value;
+
+    // inkymed
+    else
     {
-        var selectedPart = _entityManager.GetEntity(state.Part);
-        if (selectedPart != null)
-            target = selectedPart.Value;
-        var isPart = selectedPart != null;
+        var temp = _part.GetBodyParts(target, BodyPartType.Torso).FirstOrNull();
+        if (temp.HasValue)
+            target = temp.Value;
+    }
+    // /inkymed
 
-        if (!_entityManager.TryGetComponent<DamageableComponent>(target, out var damageable))
-            return;
+    var isPart = selectedPart != null;
 
-        ReturnButton.Visible = isPart;
-        PartNameLabel.Visible = isPart;
-        DamageLabelHeading.Visible = true;
-        DamageLabel.Visible = true;
-        var damage = _damageable.GetAllDamage((target, damageable));
-        DamageLabel.Text = damage.GetTotal().ToString();
+    if (!_entityManager.TryGetComponent<DamageableComponent>(target, out var damageable))
+        return;
 
-        var identity = Identity.Name(target, _entityManager);
-        if (isPart)
-            PartNameLabel.Text = identity;
+    ReturnButton.Visible = isPart;
+    PartNameLabel.Visible = isPart;
+    DamageLabelHeading.Visible = true;
+    DamageLabel.Visible = true;
 
-        var damageSortedGroups = _damageable.GetDamagePerGroup((target, damageable))
-            .OrderByDescending(damage => damage.Value)
-            .ToDictionary(x => x.Key, x => x.Value);
+    // inkymed
+    var wounds = _wound.GetAllWounds(target);
+    var damage = new DamageSpecifier();
+    var damagePerGroup = new Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2>();
 
-        var damagePerType = damage.DamageDict;
+    foreach (var wound in wounds)
+    {
+        var woundDamage = wound.Comp.WoundSeverityPoint;
+        var damageType = wound.Comp.DamageType;
 
-        DrawDiagnosticGroups(damageSortedGroups, damagePerType);
+        if (damage.DamageDict.TryGetValue(damageType, out var existingAmount))
+            damage.DamageDict[damageType] = existingAmount + woundDamage;
+        else
+            damage.DamageDict.TryAdd(damageType, woundDamage);
 
-        if (_entityManager.TryGetComponent<DiseaseCarrierComponent>(target, out var carrier))
-        {
-            DrawDiseases(carrier.Diseases.ContainedEntities);
-        }
+        if (!wound.Comp.DamageGroup.HasValue)
+            continue;
+
+        var damageGroup = wound.Comp.DamageGroup.Value;
+        damagePerGroup[damageGroup] = damagePerGroup.GetValueOrDefault(damageGroup) + woundDamage;
+    }
+    // /inkymed
+
+    DamageLabel.Text = damage.GetTotal().ToString();
+
+    var identity = Identity.Name(originalTarget, _entityManager); // inkymed
+    if (isPart)
+    {
+        PartNameLabel.Text = _entityManager.HasComponent<MetaDataComponent>(originalTarget) // inkymed
+            ? identity
+            : Loc.GetString("health-analyzer-window-entity-unknown-value-text");
+    }
+
+    var damageSortedGroups = damagePerGroup
+        .OrderByDescending(damage => damage.Value)
+        .ToDictionary(x => x.Key, x => x.Value);
+
+    var damagePerType = damage.DamageDict;
+
+    DrawDiagnosticGroups(damageSortedGroups, damagePerType);
+
+    if (_entityManager.TryGetComponent<DiseaseCarrierComponent>(target, out var carrier))
+    {
+        DrawDiseases(carrier.Diseases.ContainedEntities);
+    }
 
         ConditionsListContainer.RemoveAllChildren();
 
@@ -250,6 +300,9 @@ public sealed partial class HealthAnalyzerControl
                 });
             }
         }
+        // inkymed
+        PopulateHeartConditions(originalTarget, identity);
+        // /inkymed
     }
 
     public void PopulateOrgans(EntityUid body)

@@ -1,0 +1,36 @@
+# all the store shit is here (or maybe not, todo idk)
+
+- type: currency
+  id: Fury
+  displayName: store-currency-display-fury
+  canWithdraw: false
+
+- type: storeCategory
+  id: WerewolfChoose
+  name: werewolf-store-choose
+  priority: 0
+
+- type: storeCategory
+  id: WerewolfDire
+  name: werewolf-store-dire
+  priority: 1
+
+- type: storeCategory
+  id: WerewolfWhite
+  name: werewolf-store-white
+  priority: 2
+
+- type: storeCategory
+  id: WerewolfBlack
+  name: werewolf-store-black
+  priority: 3
+
+- type: storeCategory
+  id: WerewolfBlackApprentice
+  name: werewolf-store-black-apprentice
+  priority: 98
+
+- type: storeCategory
+  id: WerewolfSide
+  name: werewolf-store-side
+  priority: 99

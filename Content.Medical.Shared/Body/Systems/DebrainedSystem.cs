@@ -56,8 +56,8 @@ public sealed partial class DebrainedSystem : EntitySystem
             return;
 
         RemComp<StunnedComponent>(uid);
-        if (_body.GetOrgan(uid, Heart) != null)
-            RemComp<DelayedDeathComponent>(uid);
+        // if (_body.GetOrgan(uid, Heart) != null) // inky - no
+        RemComp<DelayedDeathComponent>(uid);
     }
 
     private void OnSpeakAttempt(EntityUid uid, DebrainedComponent _, SpeakAttemptEvent args)

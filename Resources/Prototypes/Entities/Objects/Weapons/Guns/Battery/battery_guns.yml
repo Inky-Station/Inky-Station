@@ -261,7 +261,7 @@
     storedOffset: 0,-5
   - type: BatteryAmmoProvider
     proto: LaserGunBullet # Trauma
-    fireCost: 62.5 # Trauma, was 25
+    fireCost: 62.5 # inky edit
   - type: MagazineVisuals
     magState: mag
     steps: 5
@@ -354,7 +354,7 @@
       path: /Audio/_Trauma/Weapons/Guns/Gunshots/laser2.ogg # Trauma
   - type: BatteryAmmoProvider
     proto: LaserGunBullet # Trauma
-    fireCost: 20 # Trauma, was 25, 50 shots
+    fireCost: 62.5 # inky edit?
   - type: Item
     size: Large
   - type: Sprite
@@ -1040,7 +1040,7 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/energy_shotgun.rsi
   - type: Gun
-    fireRate: 1.25 # Trauma, was 2
+    fireRate: 1.5 # Trauma, was 2 # inky
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: BatteryAmmoProvider

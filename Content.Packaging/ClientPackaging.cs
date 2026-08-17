@@ -25,7 +25,7 @@ public static class ClientPackaging
                 ArgumentList =
                 {
                     "build",
-                    Path.Combine("Content.Trauma.Client", "Content.Trauma.Client.csproj"), // Trauma - Trauma.Client depends on everything
+                    Path.Combine("Content.Inky.Client", "Content.Inky.Client.csproj"), // Trauma - Trauma.Client depends on everything // inky edit - fix client crash?
                     "-c", configuration,
                     "--nologo",
                     "/v:m",
@@ -81,7 +81,7 @@ public static class ClientPackaging
 
         // <Trauma> - use DepsHandler instead of manually writing assemblies
         var sourcePath = Path.Combine(contentDir, "bin", "Content.Client");
-        var deps = DepsHandler.Load(Path.Combine(sourcePath, "Content.Trauma.Client.deps.json"));
+        var deps = DepsHandler.Load(Path.Combine(sourcePath, "Content.Inky.Client.deps.json")); // inky edit
         var contentAssemblies = ServerPackaging.GetContentAssemblyNamesToCopy(deps, "Client");
         // </Trauma>
 

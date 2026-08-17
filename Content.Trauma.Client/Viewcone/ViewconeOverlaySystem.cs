@@ -29,7 +29,7 @@ public sealed partial class ViewconeOverlaySystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IEyeManager _eye = default!;
-    [Dependency] private IGameTiming _timing = default!;
+    // [Dependency] private IGameTiming _timing = default!; // inky edit
     [Dependency] private IInputManager _input = default!;
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IOverlayManager _overlay = default!;

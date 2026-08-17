@@ -10,10 +10,10 @@
 
 # Rules
 
-# <Trauma>
-ui-rules-header = Trauma Station Official Server Rules
-ui-rules-header-rp = Trauma Station Roleplay Official Server Rules
-# </Trauma>
+# <inky>
+ui-rules-header = Inky Station Official Server Rules
+ui-rules-header-rp = Inky Station Roleplay Official Server Rules
+# </inky>
 ui-rules-accept = I have read and agree to follow the rules
 ui-rules-wait = The accept button will be enabled after {$time} seconds.
 

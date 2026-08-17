@@ -1,0 +1,9 @@
+- type: entity
+  parent: PosterBase
+  id: PosterLegitInkyUrod
+  name: stupid ugly cat
+  description: This poster depicts a very well regarded cat. He looks ugly.
+  components:
+  - type: Sprite
+    sprite: _Inky/Objects/Structures/posters.rsi
+    state: urod

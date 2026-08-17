@@ -642,9 +642,9 @@
     convertTo: WallCosmicCult
   # </Trauma>
   - type: Sprite
-    sprite: _Trauma/Structures/Walls/solid.rsi # Trauma
+    sprite: Structures/Walls/solid.rsi # inky edit - de-barratry textures
   - type: Icon
-    sprite: _Trauma/Structures/Walls/solid.rsi # Trauma
+    sprite: Structures/Walls/solid.rsi # inky edit - de-barratry textures
     state: rgeneric
   - type: Construction
     graph: Girder
@@ -738,6 +738,10 @@
     drawdepth: Walls
     sprite: Structures/Walls/reinforced_diagonal.rsi
     state: state0
+  - type: IconSmooth # inky
+    mode: Diagonal # inky
+    key: walls # inky
+    base: state # inky
   - type: Icon
     sprite: Structures/Walls/reinforced_diagonal.rsi
     state: state0
@@ -886,7 +890,7 @@
   - type: Icon
     sprite: Structures/Walls/shuttle_diagonal.rsi
     state: state0
-  #- type: Reflect # Trauma - annoying, serves no purpose
+  #- type: Reflect# Trauma - annoying, serves no purpose # inky
   #  reflectProb: 1
   - type: Pullable
   - type: Airtight
@@ -991,7 +995,7 @@
           3: { state: shuttle_construct-3, visible: true}
           4: { state: shuttle_construct-4, visible: true}
           5: { state: shuttle_construct-5, visible: true}
-  #- type: Reflect # Trauma - annoying, serves no purpose
+  #- type: Reflect# Trauma - annoying, serves no purpose # inky
   #  reflectProb: 1
   - type: Fixtures
     fixtures:
@@ -1024,13 +1028,13 @@
         Quantity: 2
   # </Trauma>
   - type: Sprite
-    sprite: _Trauma/Structures/Walls/solid.rsi # Trauma
+    sprite: Structures/Walls/solid.rsi # inky edit - de-barratry textures
   - type: WallReplacementMarker
   - type: Construction
     graph: Girder
     node: wall
   - type: Icon
-    sprite: _Trauma/Structures/Walls/solid.rsi # Trauma
+    sprite: Structures/Walls/solid.rsi # inky edit - de-barratry textures
   - type: RCDDeconstructable
     cost: 6
     delay: 8

@@ -10,6 +10,17 @@
   id: BaseSpeciesMob
   save: false
   components:
+  # inky
+  - type: ConcussionThreshold
+    thresholds:
+      0: Sane
+      5: Minor
+      50: Hard
+      100: Overwhelmed
+    healRate: 3
+    speedModifierThresholds:
+      Hard: 0.7
+  # /inky
   # <Trauma>
   - type: BagAccess
   - type: Targeting
@@ -176,6 +187,10 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      # inky
+      enum.SelfRenamerUIKey.Key:
+        type: SelfRenamerBoundUserInterface
+      # /inky
   - type: Puller
   - type: Speech
     speechSounds: Alto
@@ -248,15 +263,16 @@
       types:
         Blunt: 0.50
         Heat: 0.1
-  #- type: PassiveDamage # Trauma - no
-  #  allowedStates:
-  #  - Alive
-  #  damage:
-  #    types:
-  #      Heat: -0.07
-  #      Blunt: -0.05
-  #      Piercing: -0.05
-  #      Slash: -0.05
+  - type: PassiveDamage # Trauma - no # inky - yes
+    splitBehavior: SplitEnsureAllDamagedAndOrganic # inky
+    allowedStates:
+    - Alive
+    damage:
+      types:
+        Heat: -0.07
+        Blunt: -0.05
+        Piercing: -0.05
+        Slash: -0.05
   - type: Fingerprint
   - type: Blindable
   - type: Temperature

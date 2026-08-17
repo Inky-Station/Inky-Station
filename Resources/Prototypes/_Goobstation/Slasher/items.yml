@@ -70,7 +70,7 @@
         Slash: 0.90
         Piercing: 0.90
         Heat: 0.90
-        Ballistic: 0.90
+        Caustic: 0.90
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -103,7 +103,7 @@
         Slash: 0.90
         Piercing: 0.90
         Heat: 0.90
-        Ballistic: 0.90
+        Caustic: 0.90
   - type: StaminaResistance
     damageCoefficient: 0.5
   - type: ModifyDelayedKnockdown
@@ -117,14 +117,14 @@
   components:
   - type: Armor
     coverage:
-    - Hand
+    - Arm # inkymed
     modifiers:
       coefficients:
         Blunt: 0.90
         Slash: 0.90
         Piercing: 0.90
         Heat: 0.90
-        Ballistic: 0.90
+        Caustic: 0.90
 
 - type: entity
   parent: ClothingShoesLeather
@@ -134,14 +134,14 @@
   components:
   - type: Armor
     coverage:
-    - Foot
+    - Leg # inktmed
     modifiers:
       coefficients:
         Blunt: 0.90
         Slash: 0.90
         Piercing: 0.90
         Heat: 0.90
-        Ballistic: 0.90
+        Caustic: 0.90
 
 - type: entity
   id: SlasherMeatSpike

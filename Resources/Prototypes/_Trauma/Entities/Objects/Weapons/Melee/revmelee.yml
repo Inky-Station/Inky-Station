@@ -333,7 +333,7 @@
       launchForwardsMultiplier: 0
   - type: TriggerOnStepTrigger
   - type: DamageOnTrigger
-    targetPart: Feet
+    targetPart: Legs # inky
     targetUser: true
     damage:
       types:

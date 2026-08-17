@@ -9,4 +9,7 @@ public sealed class GetFlashbangedEvent(float range) : EntityEventArgs, IInvento
     public float ProtectionRange = range;
 
     public SlotFlags TargetSlots => SlotFlags.EARS | SlotFlags.HEAD;
+
+    // inky - concussions
+    public float ConcussionDamage;
 }

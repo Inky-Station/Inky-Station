@@ -1,0 +1,58 @@
+- type: entity
+  parent: BaseWeaponBallisticTurret
+  id: WeaponTurretFunEngi
+  name: engineering sentry
+  description: A turret, made by best of the best from the nanotrasen worst engineering institution.
+  suffix: engi, targets tiders
+  components:
+  - type: NpcFactionMember
+    factions:
+    - FunTurret
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 65
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:TriggerBehavior
+  - type: Gun
+    fireRate: 0.5
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/gun_sentry.ogg
+  - type: BallisticAmmoProvider
+    proto: CartridgePistol
+    capacity: 65
+  - type: Repairable
+    qualityNeeded: "Anchoring"
+    doAfterDelay: 8
+  - type: TriggerOnEmptyGunshot
+
+- type: npcFaction
+  id: FunTurret
+#  friendly:
+#  - NanoTrasen
+#  - Syndicate
+#  - PetsNT
+#  - Revolutionary
+#  - Insurgent
+  hostile:
+  - Wizard
+  - PirateFaction
+  - Lavafauna
+  - AllHostile
+  - Xenoborg
+  - Heretic
+  - Blob
+  - Xeno
+  - Shadowling
+  - Assistant # trol

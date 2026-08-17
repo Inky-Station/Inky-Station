@@ -53,7 +53,7 @@ public sealed partial class ZombieComponent : Component
         {
             {"Slash", 0.5},
             {"Piercing", 0.3},
-            {"Ballistic", 0.3}, // Trauma
+            // {"Ballistic", 0.3}, // Trauma// inky edit kill second amendment
             {"Blunt", 0.1},
         }
     };
@@ -111,7 +111,7 @@ public sealed partial class ZombieComponent : Component
             { "Blunt", -0.4 },
             { "Slash", -0.2 },
             { "Piercing", -0.2 },
-            { "Ballistic", -0.2 }, // Trauma
+            // { "Ballistic", -0.2 }, // Trauma // inky edit kill second amendment
             { "Heat", -0.02 },
             { "Shock", -0.02 }
         }
@@ -135,7 +135,7 @@ public sealed partial class ZombieComponent : Component
             { "Blunt", -25 },
             { "Slash", -25 },
             { "Piercing", -25 },
-            { "Ballistic", -25 }, // Trauma
+            // { "Ballistic", -25 }, // Trauma // inky edit kill second amendment
             { "Heat", -25 },
             { "Shock", -25 }
             // </Trauma>

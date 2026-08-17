@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-
+/* inky
 using Content.Shared.Armor;
 using Content.Trauma.Common.Armor;
 
@@ -35,3 +35,4 @@ public sealed partial class ArmorPointBlankSystem : EntitySystem
         args.Msg.AddMarkupOrThrow($"Protection is [color=red]multplied by {ent.Comp.ResistancePenalty}x[/color] within a {ent.Comp.Range}m range on precise hit");
     }
 }
+*/ // inky
