@@ -220,7 +220,19 @@ public sealed partial class BlockingSystem : EntitySystem
             CantBlockError(user);
             return false;
         }
-        inky end */
+
+        */
+        // shit was moved here because it was broken
+
+        if (_userQuery.TryGetComponent(user, out var blockingUser))
+        {
+            blockingUser.BlockingItem = entity;
+            blockingUser.MovementModifier = entity.Comp.MovementModifier;
+            DirtyFields(user, blockingUser, null,
+                nameof(BlockingUserComponent.BlockingItem),
+                nameof(BlockingUserComponent.MovementModifier));
+        }
+        // /inky
 
         _actionsSystem.SetToggled(entity.Comp.BlockingToggleActionEntity, true);
         _popupSystem.PopupEntity(msgUser, msgOther, user, user);
@@ -241,7 +253,7 @@ public sealed partial class BlockingSystem : EntitySystem
         // inky start
         if (TryComp(user, out MovementSpeedModifierComponent? moveMod))
         {
-            _movement.RefreshMovementSpeedModifiers(user, moveMod); // cursed? i might be retarded here but it works idk
+            _movement.RefreshMovementSpeedModifiers(user); // cursed? i might be retarded here but it works idk
             RaiseLocalEvent(user, new RefreshMovementSpeedModifiersEvent());
         }
         // inky end
@@ -299,7 +311,7 @@ public sealed partial class BlockingSystem : EntitySystem
 
         // inky start
         if (TryComp(user, out MovementSpeedModifierComponent? moveMod))
-            _movement.RefreshMovementSpeedModifiers(user, moveMod);
+            _movement.RefreshMovementSpeedModifiers(user);
         // inky end
 
         return true;
