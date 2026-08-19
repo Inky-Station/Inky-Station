@@ -14,7 +14,9 @@
            VerticalAlignment="Top"
            SeparationOverride="5"
 >
+    <!-- KS14: all top-menu entries use the namespaced Baron sidebar button selector. -->
     <ui:MenuButton
+        StyleClasses="KsBaronSidebarButton"
         Name="EscapeButton"
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/hamburger.svg.192dpi.png'}"
@@ -24,7 +26,9 @@
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonOpenRight}"
         />
+    <!-- KS14 -->
     <ui:MenuButton
+        StyleClasses="KsBaronSidebarButton"
         Name="GuidebookButton"
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/VerbIcons/information.svg.192dpi.png'}"
@@ -34,7 +38,9 @@
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
         />
+    <!-- KS14 -->
     <ui:MenuButton
+        StyleClasses="KsBaronSidebarButton"
         Name="CharacterButton"
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/character.svg.192dpi.png'}"
@@ -44,7 +50,9 @@
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
         />
+    <!-- KS14 -->
     <ui:MenuButton
+        StyleClasses="KsBaronSidebarButton"
         Name="EmotesButton"
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/emotes.svg.192dpi.png'}"
@@ -54,7 +62,9 @@
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
         />
+    <!-- KS14 -->
     <ui:MenuButton
+        StyleClasses="KsBaronSidebarButton"
         Name="CraftingButton"
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/hammer.svg.192dpi.png'}"
@@ -64,7 +74,9 @@
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
         />
+    <!-- KS14 -->
     <ui:MenuButton
+        StyleClasses="KsBaronSidebarButton"
         Name="ActionButton"
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/fist.svg.192dpi.png'}"
@@ -74,6 +86,7 @@
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
         />
+    <!-- KS14 -->
     <!-- <EE> TODO: kill-->
     <ui:MenuButton
         Name="LanguageButton"
@@ -87,6 +100,7 @@
         />
     <!-- </EE> -->
     <ui:MenuButton
+        StyleClasses="KsBaronSidebarButton"
         Name="AdminButton"
         Access="Public"
         Icon="{xe:Tex '/Textures/Interface/gavel.svg.192dpi.png'}"
@@ -95,8 +109,11 @@
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
-        /> <!-- Trauma - made Public -->
+        />
+    <!-- KS14 -->
+    <!-- Trauma - made Public -->
     <ui:MenuButton
+        StyleClasses="KsBaronSidebarButton"
         Name="SandboxButton"
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/sandbox.svg.192dpi.png'}"
@@ -106,7 +123,9 @@
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
         />
+    <!-- KS14 -->
     <ui:MenuButton
+        StyleClasses="KsBaronSidebarButton"
         Name="AHelpButton"
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/info.svg.192dpi.png'}"
