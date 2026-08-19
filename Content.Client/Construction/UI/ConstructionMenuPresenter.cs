@@ -5,6 +5,7 @@ using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Whitelist;
+using Content.Trauma.Common.Knowledge.Systems;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Placement;
@@ -31,6 +32,7 @@ namespace Content.Client.Construction.UI
         [Dependency] private IPlayerManager _playerManager = default!;
         [Dependency] private IClientPreferencesManager _preferencesManager = default!;
         [Dependency] private ILogManager _logManager = default!;
+        [Dependency] private CommonKnowledgeSystem _knowledge = default!;
 
         private readonly SpriteSystem _spriteSystem;
         private readonly ISawmill _sawmill;

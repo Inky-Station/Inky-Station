@@ -196,7 +196,9 @@ public sealed partial class HealthAnalyzerControl
     DamageLabel.Visible = true;
 
     // inkymed
-    var wounds = _wound.GetAllWounds(target);
+    var wounds = isPart
+        ? _wound.GetWoundableWounds(target)
+        : _wound.TryGetBodyWounds(originalTarget, out var bodyWounds) ? bodyWounds : [];
     var damage = new DamageSpecifier();
     var damagePerGroup = new Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2>();
 

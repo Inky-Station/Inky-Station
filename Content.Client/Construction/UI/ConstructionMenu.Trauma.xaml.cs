@@ -10,7 +10,6 @@ namespace Content.Client.Construction.UI;
 // NO FUCK OFF
 public sealed partial class ConstructionMenu
 {
-    /*
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IEntitySystemManager _system = default!;
 
@@ -62,5 +61,4 @@ public sealed partial class ConstructionMenu
             });
         }
     }
-    */
 }

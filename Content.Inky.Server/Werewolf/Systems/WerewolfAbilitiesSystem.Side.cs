@@ -197,11 +197,11 @@ public sealed partial class WerewolfAbilitiesSystem
             return;
 
         var picked = _gambling.Pick(limbs);
-        if (!TryComp<WoundableComponent>(picked.Owner, out var woundable)
-            || !woundable.ParentWoundable.HasValue)
+        if (!TryComp<WoundableComponent>(picked.Owner, out var wound)
+            || _part.GetParentPart(picked.Owner) is not { } parent)
             return;
 
-        _wound.AmputateWoundableSafely(woundable.ParentWoundable.Value, picked.Owner, woundable);
+        _wound.AmputateWoundable(parent, (picked.Owner, wound));
     }
     # endregion
 }

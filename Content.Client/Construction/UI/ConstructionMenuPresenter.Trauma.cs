@@ -14,7 +14,7 @@ internal sealed partial class ConstructionMenuPresenter
     // private CommonKnowledgeSystem _knowledge = default!; // inky edit - kill skills
 
     private bool _autoFocusSearch;
-    // private bool _useSkills; // inky edit - kill skills, linter dies cuz of this
+    private bool _useSkills;
     private Dictionary<EntProtoId, int> _skills = new();
 
     private void InitializeTrauma()
@@ -26,15 +26,14 @@ internal sealed partial class ConstructionMenuPresenter
 
     bool CanUnderstand(ConstructionPrototype recipe)
     {
-        // inky edit - kill skills, let whoever build whatever
-        // if (!_useSkills)
-        //     return true; // for mobs that dont use the knowledge system, let them build anything
-        //
-        // foreach (var (id, needed) in recipe.Theory)
-        // {
-        //     if (!_skills.TryGetValue(id, out var mastery) || mastery < needed)
-        //         return false;
-        // }
+        if (!_useSkills)
+            return true; // for mobs that dont use the knowledge system, let them build anything
+
+        foreach (var (id, needed) in recipe.Theory)
+        {
+            if (!_skills.TryGetValue(id, out var mastery) || mastery < needed)
+                return false;
+        }
 
         return true;
     }
