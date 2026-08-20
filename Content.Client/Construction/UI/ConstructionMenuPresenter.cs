@@ -32,7 +32,7 @@ namespace Content.Client.Construction.UI
         [Dependency] private IPlayerManager _playerManager = default!;
         [Dependency] private IClientPreferencesManager _preferencesManager = default!;
         [Dependency] private ILogManager _logManager = default!;
-        [Dependency] private CommonKnowledgeSystem _knowledge = default!;
+        private CommonKnowledgeSystem _knowledge = default!; // inky
 
         private readonly SpriteSystem _spriteSystem;
         private readonly ISawmill _sawmill;

@@ -18,6 +18,7 @@ internal sealed partial class ConstructionMenuPresenter
 
     private void InitializeTrauma()
     {
+        _knowledge = _systemManager.GetEntitySystem<CommonKnowledgeSystem>(); // inky
         _cfg.OnValueChanged(GoobCVars.AutoFocusSearchOnBuildMenu, x => _autoFocusSearch = x, true);
     }
 

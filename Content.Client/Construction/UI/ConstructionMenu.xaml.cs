@@ -106,7 +106,7 @@ namespace Content.Client.Construction.UI
             RobustXamlLoader.Load(this);
 
             // <Trauma>
-            // _knowledge = _system.GetEntitySystem<CommonKnowledgeSystem>(); // inky edit - kill skills
+            _knowledge = _system.GetEntitySystem<CommonKnowledgeSystem>(); // inky
             // </Trauma>
             Title = Loc.GetString("construction-menu-title");
 
