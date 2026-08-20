@@ -3164,13 +3164,13 @@ entities:
     - type: Transform
       parent: 1
       pos: 9.5,-17.5
-- proto: ClothingNeckCloakCe
-  entities:
-  - uid: 486
-    components:
-    - type: Transform
-      parent: 1
-      pos: 3.5963347,-25.420385
+#- proto: ClothingNeckCloakCe # lol
+#  entities:
+#  - uid: 486
+#    components:
+#    - type: Transform
+#      parent: 1
+#      pos: 3.5963347,-25.420385
 - proto: ClothingNeckCloakTrans
   entities:
   - uid: 487
