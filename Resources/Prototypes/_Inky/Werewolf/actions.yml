@@ -71,6 +71,7 @@
   - type: Action
     useDelay: 30
   - type: Sprite
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
     layers:
     - state: senses
 
