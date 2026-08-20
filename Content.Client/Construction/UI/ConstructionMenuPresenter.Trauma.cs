@@ -11,7 +11,7 @@ namespace Content.Client.Construction.UI;
 internal sealed partial class ConstructionMenuPresenter
 {
     [Dependency] private IConfigurationManager _cfg = default!;
-    // private CommonKnowledgeSystem _knowledge = default!; // inky edit - kill skills
+    private CommonKnowledgeSystem _knowledge = default!;
 
     private bool _autoFocusSearch;
     private bool _useSkills;
@@ -19,8 +19,6 @@ internal sealed partial class ConstructionMenuPresenter
 
     private void InitializeTrauma()
     {
-        // _knowledge = _entManager.System<CommonKnowledgeSystem>(); // inky edit - kill skills
-
         _cfg.OnValueChanged(GoobCVars.AutoFocusSearchOnBuildMenu, x => _autoFocusSearch = x, true);
     }
 

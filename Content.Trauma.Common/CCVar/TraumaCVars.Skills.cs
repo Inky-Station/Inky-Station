@@ -11,18 +11,18 @@ public sealed partial class TraumaCVars
     /// When disabled only languages and martial arts will do anything, their levels will be irrelevant.
     /// </summary>
     public static readonly CVarDef<bool> SkillsEnabled =
-        CVarDef.Create("trauma.skills_enabled", true, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("trauma.skills_enabled", false, CVar.SERVER | CVar.REPLICATED); // inke
 
     /// <summary>
     /// Enables gaining XP and skills during rounds.
     /// Character starting skills are not affected by this.
     /// </summary>
     public static readonly CVarDef<bool> SkillGain =
-        CVarDef.Create("trauma.skill_gain", true, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("trauma.skill_gain", false, CVar.SERVER | CVar.REPLICATED); // inkye
 
     /// <summary>
     /// Client setting to hide all skill-related popups.
     /// </summary>
     public static readonly CVarDef<bool> SkillPopups =
-        CVarDef.Create("trauma.skill_popups", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("trauma.skill_popups", false, CVar.CLIENTONLY | CVar.ARCHIVE); // inky
 }
