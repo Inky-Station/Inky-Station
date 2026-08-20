@@ -33,6 +33,9 @@ public abstract partial class SharedKnowledgeSystem
 
     public override void ApplyProfile(EntityUid target, [ForbidLiteral] ProtoId<KnowledgeProfilePrototype> parentId, KnowledgeProfile profile)
     {
+        if (!SkillsEnabled) // inky
+            return; // inky
+
         if (GetContainer(target) is not { } ent)
             return;
 
