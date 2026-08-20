@@ -188,6 +188,48 @@
         type: ChameleonBoundUserInterface
 
 - type: entity
+  parent: [ ClothingOuterBaseMedium, AllowSuitStorageClothing, BaseSyndicateContraband ]
+  id: ClothingOuterArmorCloakSith
+  name: dark lord cloak
+  description: What began as a simple cosplay cloak was illegally reinforced with armored plates, transforming it into a functional piece of armor. Looks like it's even capable of protecting the user from the lack of pressure in space.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Heretic/Clothing/OuterClothing/void_cloak.rsi
+    layers:
+    - state: icon
+      map: [ "base" ]
+  - type: Clothing
+    sprite: _Goobstation/Heretic/Clothing/OuterClothing/void_cloak.rsi
+  - type: Armor
+    coverage:
+    - Torso
+    - Arm
+    #    - Hand inkymed
+    - Leg
+    #    - Foot inkymed
+    - Tail
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: ToggleableClothing
+    stripDelay: null
+    clothingPrototypes:
+      head: ClothingHeadHatHoodCloakSith
+  - type: ModifyDelayedKnockdown
+    delayDelta: 3
+    knockdownTimeDelta: -3
+  - type: StaminaResistance
+    damageCoefficient: 0.5
+  - type: PressureProtection
+    lowPressureMultiplier: 1000
+  # Intentionally no temperature or high pressure protection
+
+- type: entity
   parent: [BaseSyndicateContraband, ClothingOuterArmourInvisible]
   id: ClothingOuterArmourInvisibleSyndie
   name: redspace assisted armor

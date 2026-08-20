@@ -12,8 +12,8 @@
         Piercing: 0.5
         Heat: 0.5
         Caustic: 0.8
-      flatReductions:
-        Ballistic: 2
+#      flatReductions:
+#        Ballistic: 2
     traumaDeductions:
       Dismemberment: 0.2
       OrganDamage: 0.2

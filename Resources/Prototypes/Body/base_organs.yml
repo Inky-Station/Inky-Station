@@ -205,6 +205,10 @@
   name: left arm
   abstract: true
   components:
+  # inkymed
+  - type: ChildOrgan
+    parents: [ Torso ]
+  # /inkymed
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
@@ -241,6 +245,10 @@
   name: right arm
   abstract: true
   components:
+  # inkymed
+  - type: ChildOrgan
+    parents: [ Torso ]
+  # /inkymed
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
@@ -279,8 +287,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
-  #  - type: ChildOrgan # inkymed
-  #    parents: [ ArmLeft ] # inkymed
+  - type: ChildOrgan
+    parents: [ ArmLeft ]
   # </Shitmed>
   - type: Organ
     category: HandLeft
@@ -311,8 +319,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
-  #  - type: ChildOrgan # inkymed
-  #    parents: [ ArmRight ] # inkymed
+  - type: ChildOrgan
+    parents: [ ArmRight ]
   # </Shitmed>
   - type: Organ
     category: HandRight
@@ -341,6 +349,10 @@
   name: left leg
   abstract: true
   components:
+  # inkymed
+  - type: ChildOrgan
+    parents: [ Torso ]
+  # /inkymed
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
@@ -373,6 +385,10 @@
   name: right leg
   abstract: true
   components:
+  # inkymed
+  - type: ChildOrgan
+    parents: [ Torso ]
+  # /inkymed
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
@@ -407,8 +423,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
-#  - type: ChildOrgan #inkymeed
-#    parents: [ LegLeft ]
+  - type: ChildOrgan
+    parents: [ LegLeft ]
   # </Shitmed>
   - type: Organ
     category: FootLeft
@@ -435,8 +451,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
-#  - type: ChildOrgan
-#    parents: [ LegRight ] #onkymekdff
+  - type: ChildOrgan
+    parents: [ LegRight ]
   # </Shitmed>
   - type: Organ
     category: FootRight

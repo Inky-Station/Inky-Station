@@ -169,6 +169,14 @@
 
 - type: entity
   parent: BaseImplantOnlyImplanterSyndi
+  id: KravMagaImplanter
+  suffix: Krav Maga
+  components:
+  - type: Implanter
+    implant: KravMagaImplant
+
+- type: entity
+  parent: BaseImplantOnlyImplanterSyndi
   id: ClumsyImplanter
   suffix: Clumsy
   components:

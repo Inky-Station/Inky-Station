@@ -53,7 +53,7 @@ public sealed partial class IceCubeSystem : EntitySystem
     /// <summary>
     /// Damage types that can break ice cubes.
     /// </summary>
-    private static readonly HashSet<ProtoId<DamageTypePrototype>> BreakDamages = new() { "Blunt", "Slash", "Piercing", "Ballistic", "Heat" };
+    private static readonly HashSet<ProtoId<DamageTypePrototype>> BreakDamages = new() { "Blunt", "Slash", "Piercing", /* "Ballistic" ,*/ "Heat" };
     private static readonly ProtoId<DamageTypePrototype> Heat = "Heat";
     public static readonly EntProtoId StatusEffectStunned = "StatusEffectStunned";
 

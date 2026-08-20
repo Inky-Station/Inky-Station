@@ -177,5 +177,5 @@
   - !type:GrantSkills
     skills:
       MartialArtLyCqc: 65
-      StrengthKnowledge: 65
-      AthleticsKnowledge: 65
+#      StrengthKnowledge: 65
+#      AthleticsKnowledge: 65

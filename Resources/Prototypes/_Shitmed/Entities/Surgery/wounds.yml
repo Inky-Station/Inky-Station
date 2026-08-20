@@ -110,7 +110,7 @@
   parent: WoundBase
   components:
   - type: Wound
-    damageType: Ballistic
+    damageType: Piercing # inkymed KILLLLL
     scarWound: PiercingScar
     mangleSeverity: Severe
     textString: Ballistic
