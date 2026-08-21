@@ -15,7 +15,7 @@
       Liver: OrganArachnidLiver
       Kidneys: OrganArachnidKidneys
       ArmLeft: OrganArachnidArmLeft
-      HandLeft: OrganArachnidHandLeft
+#      HandLeft: OrganArachnidHandLeft # inkymed
 
 - type: entity
   parent: OrganBloodsuckerStomach

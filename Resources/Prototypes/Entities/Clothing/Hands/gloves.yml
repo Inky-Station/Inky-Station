@@ -24,10 +24,10 @@
     tags:
     - Kangaroo
     - WhitelistChameleon
-  - type: IgniteFromGasImmunity # Goob - Logical? No. Funny as shit? You bet.
-    parts:
-    - HandLeft
-    - HandRight
+#  - type: IgniteFromGasImmunity # Goob - Logical? No. Funny as shit? You bet. # inkymed
+#    parts:
+#    - HandLeft
+#    - HandRight
 
 - type: entity
   parent: ClothingHandsGlovesBoxingBase

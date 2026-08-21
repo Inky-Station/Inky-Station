@@ -55,7 +55,7 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
     private void EnsureKnowledgeTab(CharacterWindow window)
     {
         // inky
-        if (!SkillsEnabled)
+        if (SkillsEnabled)
             return;
         // /inky
 
