@@ -8,17 +8,11 @@ namespace Content.Shared.Construction.Prototypes;
 
 public sealed partial class ConstructionPrototype
 {
-    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<ConstructionPrototype>))]
-    public string[]? Parents { get; private set; }
-
-    [AbstractDataField, NeverPushInheritance]
-    public bool Abstract { get; private set; }
-
     /// <summary>
     /// Knowledge masteries that are required to be able to make this craft.
     /// Mastery is from 0-5.
     /// </summary>
-    [DataField(required: true)]
+    [DataField(required: false)] // inky edit - kill skills
     public Dictionary<EntProtoId, int> Theory = new();
 
     /// <summary>

@@ -1,7 +1,7 @@
-namespace Content.Shared.Blocking;
+namespace Content.Shared.Blocking.Components;
 
 public sealed partial class BlockingUserComponent
 {
-    [DataField]
+    [DataField, AutoNetworkedField] // inky edit
     public float MovementModifier = 1f;
 }

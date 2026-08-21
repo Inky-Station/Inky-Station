@@ -4,26 +4,32 @@
   abstract: true
   id: BaseRedAlert
   requiredAlerts:
-  - red
-  - gamma
-  - delta
-  - omicron
-  - octarine
+  - Red
+  - Gamma
+  - DeltaBlob
+  - DeltaDelam
+  - DeltaNuke
+  - DeltaSling
+  - Omicron
+  - Octarine
   # inky start - kill chud lock
-  - green
-  - blue
+  - Green
+  - Blue
   # inky end
 
 - type: latheRecipe
   abstract: true
   id: BaseBlueAlert
   requiredAlerts:
-  - blue
-  - red
-  - gamma
-  - delta
-  - omicron
-  - octarine
+  - Blue
+  - Red
+  - Gamma
+  - DeltaBlob
+  - DeltaDelam
+  - DeltaNuke
+  - DeltaSling
+  - Omicron
+  - Octarine
   # inky start - kill chud lock
-  - green
+  - Green
   # inky end

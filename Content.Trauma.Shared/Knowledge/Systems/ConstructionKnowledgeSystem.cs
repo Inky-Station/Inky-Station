@@ -24,18 +24,10 @@ public sealed partial class ConstructionKnowledgeSystem : EntitySystem
 
     private static readonly ProtoId<QualityPrototype> BaseQuality = "BaseQuality";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        // SubscribeLocalEvent<KnowledgeHolderComponent, ConstructAttemptEvent>(OnConstructAttempt);
-        // SubscribeLocalEvent<KnowledgeHolderComponent, ConstructedEvent>(OnConstructed);
-        // SubscribeLocalEvent<KnowledgeHolderComponent, ForgingCompletedEvent>(OnForgingCompleted);
-    }
-
+    [SubscribeLocalEvent]
     private void OnConstructAttempt(Entity<KnowledgeHolderComponent> ent, ref ConstructAttemptEvent args)
     {
-        if (args.Cancelled || !ProtoMan.Resolve<ConstructionPrototype>(args.Prototype, out var proto))
+        if (args.Cancelled || !_knowledge.SkillsEnabled || !ProtoMan.Resolve<ConstructionPrototype>(args.Prototype, out var proto))
             return;
 
         if (_knowledge.GetContainer(ent) is not { } brain)
@@ -64,12 +56,11 @@ public sealed partial class ConstructionKnowledgeSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnConstructed(Entity<KnowledgeHolderComponent> ent, ref ConstructedEvent args)
     {
         if (!ProtoMan.Resolve<ConstructionPrototype>(args.Prototype, out var proto))
             return;
-
-        // TODO: grant xp when building shit
 
         // combines practical and theory knowledge together
         var levelDeltas = new Dictionary<EntProtoId, int>();
@@ -105,9 +96,9 @@ public sealed partial class ConstructionKnowledgeSystem : EntitySystem
         _quality.RollQuality((item, quality), ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnForgingCompleted(Entity<KnowledgeHolderComponent> ent, ref ForgingCompletedEvent args)
     {
-        // TODO: grant xp from forging
         var item = args.Target;
         if (EnsureComp<QualityComponent>(item, out var quality))
             return;

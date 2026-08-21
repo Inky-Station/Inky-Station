@@ -35,6 +35,8 @@ public sealed partial class DamageableSystem
         // TargetBodyPart.LeftFoot, // inkymed
         TargetBodyPart.RightLeg,
         // TargetBodyPart.RightFoot // inkymed
+        TargetBodyPart.Wings,
+        TargetBodyPart.Tail,
     ];
 
     /// <summary>
@@ -338,14 +340,5 @@ public sealed partial class DamageableSystem
             default:
                 return damage;
         }
-    }
-
-    public void SetDamageContainerID(Entity<InjurableComponent?> ent, [ForbidLiteral] ProtoId<DamageContainerPrototype> id)
-    {
-        if (!_injurableQuery.Resolve(ent, ref ent.Comp) || ent.Comp.DamageContainer == id)
-            return;
-
-        ent.Comp.DamageContainer = id;
-        Dirty(ent);
     }
 }

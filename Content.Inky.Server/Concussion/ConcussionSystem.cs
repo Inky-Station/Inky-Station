@@ -3,7 +3,6 @@ using Content.Inky.Common.CCVar;
 using Content.Inky.Common.Concussion;
 using Content.Inky.Shared.Concussion;
 using Content.Server.Ghost;
-using Content.Server.Speech.Components;
 using Content.Shared.Alert;
 using Content.Shared.Damage.Components;
 using Content.Shared.EntityEffects;

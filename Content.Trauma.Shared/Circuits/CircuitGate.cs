@@ -59,6 +59,12 @@ public sealed partial class Integer
     public override string ToString()
         => Value.ToString();
 
+    public override bool Equals(object? obj)
+        => obj is Integer i && i.Value == Value;
+
+    public override int GetHashCode()
+        => Value.GetHashCode();
+
     public static readonly Integer Zero = new();
 }
 
@@ -177,10 +183,7 @@ public abstract partial class CircuitGate
 
     protected void SetOutput(int value)
     {
-        if (_output is Integer existing)
-            existing.Value = value;
-        else
-            _output = new Integer(value);
+        _output = new Integer(value);
     }
 
     protected void SetOutput(string value)

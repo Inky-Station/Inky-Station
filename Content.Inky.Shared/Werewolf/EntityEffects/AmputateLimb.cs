@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Wounds;
 using Content.Shared.Body;
 using Content.Shared.EntityEffects;
@@ -23,6 +24,7 @@ public sealed partial class AmputateLimb : EntityEffectBase<AmputateLimb>
 public sealed partial class AmputateLimbEffectSystem : EntityEffectSystem<MetaDataComponent, AmputateLimb>
 {
     [Dependency] private BodySystem _body = default!;
+    [Dependency] private BodyPartSystem _part = default!;
     [Dependency] private WoundSystem _wound = default!;
     [Dependency] private IRobustRandom _random = default!;
 
@@ -48,9 +50,9 @@ public sealed partial class AmputateLimbEffectSystem : EntityEffectSystem<MetaDa
         var picked = _random.Pick(limbs); // in case if someone has two or more of this bodypart, remove a random one
 
         if (!TryComp<WoundableComponent>(picked.Owner, out var wound)
-            || !wound.ParentWoundable.HasValue)
+            || _part.GetParentPart(picked.Owner) is not { } parent)
             return;
 
-        _wound.AmputateWoundableSafely(wound.ParentWoundable.Value, picked.Owner, wound);
+        _wound.AmputateWoundable(parent, (picked.Owner, wound));
     }
 }

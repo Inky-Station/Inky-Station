@@ -1,5 +1,13 @@
 - type: entity
-  parent: BaseAction
+  abstract: true
+  id: ActionBaseWerewolf
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+
+- type: entity
+  parent: [ActionBaseWerewolf, BaseAction]
   id: ActionWerewolfHowl
   name: Howl
   description: Scream as loud as you can, stunning everyone in radius.
@@ -8,9 +16,9 @@
   - type: Action
     useDelay: 30
     itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: howl
+  - type: Sprite
+    layers:
+    - state: howl
   - type: InstantAction
     event: !type:HowlEvent {}
   - type: WerewolfAction
@@ -18,7 +26,9 @@
     requireTransfurmed: true
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfTransfurm
   name: Transfurm
   description: Transfurm into a werewolf. Be warned as you can transfurm back only after 2 minutes.
@@ -26,14 +36,16 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: transfurm
+  - type: Sprite
+    layers:
+    - state: transfurm
   - type: InstantAction
     event: !type:TransfurmEvent {}
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfOpenMutationStore
   name: Open mutation store
   description: Open the mutation menu.
@@ -41,27 +53,32 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: store
+  - type: Sprite
+    layers:
+    - state: store
   - type: InstantAction
     event: !type:WerewolfOpenStoreEvent {}
 
 - type: entity
   id: PulseThermalVisionWerewolf
-  parent: ToggleThermalVision
+  parent:
+  - ToggleThermalVision
+  - ActionBaseWerewolf
   name: Heightened Senses
   description: Gives you 10 seconds of thermal vision
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
     useDelay: 30
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: senses
+  - type: Sprite
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    layers:
+    - state: senses
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfAbsorb
   name: Bite
   description: Bite and rip a limb from your fellow comrade for points.
@@ -70,9 +87,9 @@
   - type: Action
     useDelay: 5
     itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: bite
+  - type: Sprite
+    layers:
+    - state: bite
   - type: TargetAction
     interactOnMiss: false
   - type: EntityTargetAction
@@ -83,7 +100,9 @@
     event: !type:WerewolfDevourEvent {}
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfGut
   name: Gut
   description: Spills one of the chest organs of a deceased crew member onto the floor. Organs that are produced from this ability grant you Fury.
@@ -91,9 +110,9 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: gut
+  - type: Sprite
+    layers:
+    - state: gut
   - type: TargetAction
     interactOnMiss: false
   - type: EntityTargetAction
@@ -107,7 +126,9 @@
     requireTransfurmed: true
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfRegen
   name: increased metabolism
   description: Increase your metabolism, providing healing at the cost of a lot of hunger.
@@ -116,9 +137,9 @@
   - type: Action
     useDelay: 10
     itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: regen
+  - type: Sprite
+    layers:
+    - state: regen
   - type: InstantAction
     event: !type:WerewolfRegenEvent
   - type: WerewolfAction
@@ -126,7 +147,9 @@
 #    requireTransfurmed: true
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfJump
   name: Jump
   description: Stun your enemies with a quick jump. Costs 30 hunger.
@@ -136,10 +159,9 @@
     checkCanInteract: false
     priority: 0
     useDelay: 20
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: ambush
-    itemIconStyle: NoItem
+  - type: Sprite
+    layers:
+    - state: ambush
   - type: TargetAction
     checkCanAccess: false
     range: 15
@@ -152,7 +174,9 @@
 # direwolf specific
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfHowlDire
   name: Roar
   description: Scream as loud as you can, stunning everyone in radius.
@@ -161,9 +185,9 @@
   - type: Action
     useDelay: 30
     itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: howl-red
+  - type: Sprite
+    layers:
+    - state: howl-red
   - type: InstantAction
     event: !type:HowlEvent
       shriekPower: 4
@@ -173,7 +197,9 @@
     requireTransfurmed: true
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfBiteDire
   name: Bleeding bite
   description: Sink your canines into a victim, and steal 30% of their blood. This will heal you slightly.
@@ -182,9 +208,9 @@
   - type: Action
     useDelay: 30
     itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: bleeding-bite
+  - type: Sprite
+    layers:
+    - state: bleeding-bite
   - type: TargetAction
     interactOnMiss: false
   - type: EntityTargetAction
@@ -199,26 +225,28 @@
 
 # white specific
 
-
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfTransfurmWhite
   name: Transfurm
   description: Transfurm into a werewolf. Be warned as you can transfurm back only after 2 minutes.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: transfurm
+  - type: Sprite
+    layers:
+    - state: transfurm
   - type: InstantAction
     event: !type:TransfurmWhiteEvent {}
 
 # black specific
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfBiteBlack
   name: Bleeding bite
   description: Bite a victim, causing massive blood loss. Has a 50% chance to infect the victim into a Werewolf under your rule.
@@ -226,10 +254,9 @@
   components:
   - type: Action
     useDelay: 30
-    itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: black-bite
+  - type: Sprite
+    layers:
+    - state: black-bite
   - type: TargetAction
     interactOnMiss: false
   - type: EntityTargetAction
@@ -243,7 +270,9 @@
     requireTransfurmed: true
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfHowlBlack
   name: Alpha order
   description: Howl and command every werewolf in radius to transform into their superior form, and heal those who already are transformed.
@@ -251,10 +280,9 @@
   components:
   - type: Action
     useDelay: 30
-    itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: howl-green
+  - type: Sprite
+    layers:
+    - state: howl-green
   - type: InstantAction
     event: !type:HowlEvent
       shriekPower: 4
@@ -266,7 +294,9 @@
     requireTransfurmed: true
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfBeckon
   name: Beckon
   description: Silently transmits your location to your allied Werewolves
@@ -275,26 +305,27 @@
   - type: Action
     useDelay: 30
     itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: beckon
+  - type: Sprite
+    layers:
+    - state: beckon
   - type: InstantAction
     event: !type:WerewolfBeckonEvent
   - type: WerewolfAction
     hungerCost: 0
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfBequeath
   name: Bequeath
   description: Crown an Unmutated Werewolf in your pack to become the next Black Wolf in case of your death.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: bequeath
+  - type: Sprite
+    layers:
+    - state: bequeath
   - type: TargetAction
     interactOnMiss: false
   - type: EntityTargetAction
@@ -308,16 +339,17 @@
     requireTransfurmed: true
 
 - type: entity
-  parent: BaseAction
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
   id: ActionWerewolfBlackCall
   name: Black Call
   description: Force transform yourself, and everyone in your pack, permamently. Doubles you and your packs health. Requires a minimum of 4 pack members to use.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    itemIconStyle: NoItem
-    icon:
-      sprite: _Inky/Actions/Werewolf/werewolf.rsi
-      state: call
+  - type: Sprite
+    layers:
+    - state: call
   - type: InstantAction
     event: !type:WerewolfBlackCallEvent {}

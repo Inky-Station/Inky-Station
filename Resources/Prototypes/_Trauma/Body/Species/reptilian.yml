@@ -13,6 +13,26 @@
     secondData: #inkymed im so fucking tired im just gonna do this and not fuck with it
       sprite: _Trauma/empty.rsi
       state: empty
+  - type: BadFood
+  - type: Extractable
+    grindableSolutionName: food
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 12
+      - ReagentId: Fat
+        Quantity: 3
+  - type: Edible
+  - type: Tag
+    tags:
+    - LizardTail
   - type: PullerTail
     speciesWhitelist:
     # need to have a body adapted to controlling a tail properly

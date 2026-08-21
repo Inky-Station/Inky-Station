@@ -198,6 +198,10 @@
     children:
     - id: StrangePill
       prob: 0.15
+    - id: ClothingOuterArmorCamoRU6B2Vest # Inky
+      prob: 0.05
+    - id: ClothingOuterArmorRU6B2Vest # Inky
+      prob: 0.05
     # <Trauma>
     - !type:NestedSelector
       tableId: SprayPaintsDeath

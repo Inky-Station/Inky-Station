@@ -1,0 +1,43 @@
+- type: entity
+  abstract: true
+  id: BaseRU6B2Vest
+  parent: [ClothingOuterArmorBase, BaseSecurityContraband]
+  description: A very old vest used in wars on old earth. You can see that the pouches were removed at the bottom of it.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.75
+        Piercing: 0.70
+        Heat: 0.9
+        Caustic: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.85
+  - type: ClothingSpeedModifier
+    walkModifier: 0.90
+    sprintModifier: 0.90
+  - type: HeldSpeedModifier
+
+- type: entity
+  parent: BaseRU6B2Vest
+  id: ClothingOuterArmorRU6B2Vest
+  name: 6B5-12 ballistic vest
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/ru6b2vest.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/ru6b2vest.rsi
+    
+- type: entity
+  parent: BaseRU6B2Vest
+  id: ClothingOuterArmorCamoRU6B2Vest
+  name: 6B5-12 Camo ballistic vest
+  description: A very old vest used in wars on old earth. You can see that the pouches were removed at the bottom of it. This one has a camo patern.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/ru6b2camo.rsi # forest like camo to not be seen in the station (obviously)
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/ru6b2camo.rsi
+
+  # no fucking idea if it will work

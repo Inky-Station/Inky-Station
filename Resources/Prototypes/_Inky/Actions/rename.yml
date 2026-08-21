@@ -8,7 +8,7 @@
     event: !type:SelfRenamerActionEvent {}
   - type: Action
     useDelay: 5
-    itemIconStyle: BigAction
-    icon:
-      sprite: _RMC14/Objects/Kitchen/Plants/mango.rsi
-      state: produce
+  - type: Sprite
+    sprite: _RMC14/Objects/Kitchen/Plants/mango.rsi
+    layers:
+    - state: produce

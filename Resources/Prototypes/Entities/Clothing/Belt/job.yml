@@ -156,7 +156,7 @@
       - WetFloorSign
       - HolosignProjector
       - Plunger
-      - TrashBagBlue
+      - TrashBagHolding
       - GoldenPlunger
       - WireBrush
       - LightReplacer
@@ -180,10 +180,10 @@
         whitelist:
           tags:
           - TrashBag
-      trashbag_blue:
+      trashbag_holding:
         whitelist:
           tags:
-          - TrashBagBlue
+          - TrashBagHolding
       wetfloorsign:
         whitelist:
           tags:
@@ -227,6 +227,10 @@
   - type: Storage
     whitelist:
       tags:
+      # <Trauma>
+      - Tourniquet
+      - HandheldCrewMonitor
+      # </Trauma>
       - Wrench
       - Bottle
       - Spray
@@ -241,22 +245,18 @@
       - DiscreteHealthAnalyzer
       - SurgeryTool
       - Dropper
-      # <Goob>
-      - Tourniquet
-      - MedicalPatch
-      - HandheldCrewMonitor
-      # </Goob>
       components:
-      - Injector
-      - Pill
-      - HandLabeler
-      # <Goob>
+      # <Trauma>
       - SurgeryTool
       - Defibrillator
       - SyringeGun
       - GunApplySolution # syndicate dart gun
       - SolutionCartridge
-      # </Goob>
+      - MedicalPatch
+      # </Trauma>
+      - Injector
+      - Pill
+      - HandLabeler
   - type: ItemMapper
     sprite: *BeltOverlay
     mapLayers:

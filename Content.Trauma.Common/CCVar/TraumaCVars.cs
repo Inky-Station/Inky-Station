@@ -72,19 +72,6 @@ public sealed partial class TraumaCVars
 
     #region Skills
 
-    /// <summary>
-    /// Enables gaining XP and skills during rounds.
-    /// Character starting skills are not affected by this.
-    /// </summary>
-    public static readonly CVarDef<bool> SkillGain =
-        CVarDef.Create("trauma.skill_gain", false, CVar.SERVER | CVar.REPLICATED); // inky edit - kill skills
-
-    /// <summary>
-    /// Client setting to hide all skill-related popups.
-    /// </summary>
-    public static readonly CVarDef<bool> SkillPopups =
-        CVarDef.Create("trauma.skill_popups", false, CVar.CLIENTONLY | CVar.ARCHIVE); // inky edit - kill skills
-
     #endregion
 
     #region Chat

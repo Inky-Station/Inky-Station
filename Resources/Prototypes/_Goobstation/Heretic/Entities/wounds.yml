@@ -7,10 +7,7 @@
   components:
   - type: Wound
     damageType: Slash
-    woundType: External
-    woundVisibility: Always
-#    scarWound: SlashScar inkymed KILLED SCARZZZZ
-    selfHealMultiplier: 0
+    scarWound: SlashScar
     mangleSeverity: Severe
     canBeHealed: false # Only heals via tend wounds surgery
     textString: weeping-avulsion

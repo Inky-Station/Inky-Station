@@ -1,6 +1,7 @@
 using Content.Inky.Common.Events.Werewolf;
 using Content.Inky.Shared.Werewolf;
 using Content.Inky.Shared.Werewolf.Components;
+using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Wounds;
 using Content.Server.AlertLevel;
 using Content.Server.Chat.Systems;
@@ -11,6 +12,7 @@ using Content.Server.Popups;
 using Content.Server.Station.Systems;
 using Content.Server.Store.Systems;
 using Content.Shared.Actions;
+using Content.Shared.AlertLevel;
 using Content.Shared.Body;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage.Systems;
@@ -49,6 +51,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
     [Dependency] private StationSystem _station = default!;
     [Dependency] private MobThresholdSystem _mobThresholds = default!;
     [Dependency] private ActionContainerSystem _actionContainer = default!;
+    [Dependency] private BodyPartSystem _part = default!;
 
     public override void Initialize()
     {

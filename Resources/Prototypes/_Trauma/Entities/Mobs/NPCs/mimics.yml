@@ -341,8 +341,6 @@
     polymorph: MimicVendor
   - type: DatasetVocalizer
     dataset: MimicMachineAds
-  - type: Advertise
-    pack: MimicMachineAds
   - type: Damageable
     damageModifierSet: FlimsyGlass
   - type: Injurable

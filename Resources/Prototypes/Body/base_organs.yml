@@ -60,7 +60,10 @@
     - Meat
 
 - type: entity
-  parent: OrganBaseExternal # Trauma
+  parent:
+  - OrganBase
+  - OrganBaseParent
+  - OrganBaseExternal # Trauma - torso is root, removed Child
   id: OrganBaseTorso
   name: torso
   abstract: true
@@ -121,7 +124,10 @@
       - Special
 
 - type: entity
-  parent: OrganBaseExternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseParent
+  - OrganBaseChildExternal
   id: OrganBaseHead
   name: head
   abstract: true
@@ -136,8 +142,10 @@
     - Ears
   - type: ChildOrgan
     parents: [ Torso ]
+  - type: Bone
+    integrityCap: 100
+    boneIntegrity: 100
   - type: Woundable
-    boneEntity: BoneNeck
     integrity: 80
     integrityCap: 80
     thresholds:
@@ -156,6 +164,14 @@
   - type: WoundableVisuals
     bleedingOverlay: _Shitmed/Mobs/Effects/bleeding_damage.rsi
   - type: BrainSplatterer
+  - type: BadFood
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 20
+      - ReagentId: GreyMatter
+        Quantity: 10
   # </Trauma>
   - type: Organ
     category: Head
@@ -180,11 +196,19 @@
       - HeadTop
 
 - type: entity
-  parent: OrganBaseArm # Shitmed
+  parent:
+  - OrganBaseArm # Trauma
+  - OrganBase
+  - OrganBaseParent
+  - OrganBaseChildExternal
   id: OrganBaseArmLeft
   name: left arm
   abstract: true
   components:
+  # inkymed
+  - type: ChildOrgan
+    parents: [ Torso ]
+  # /inkymed
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
@@ -212,11 +236,19 @@
       - LArm
 
 - type: entity
-  parent: OrganBaseArm # Shitmed
+  parent:
+  - OrganBaseArm # Trauma
+  - OrganBase
+  - OrganBaseParent
+  - OrganBaseChildExternal
   id: OrganBaseArmRight
   name: right arm
   abstract: true
   components:
+  # inkymed
+  - type: ChildOrgan
+    parents: [ Torso ]
+  # /inkymed
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
@@ -244,7 +276,10 @@
       - RArm
 
 - type: entity
-  parent: OrganBaseHand # Shitmed
+  parent:
+  - OrganBaseHand # Trauma
+  - OrganBase
+  - OrganBaseChildExternal
   id: OrganBaseHandLeft
   name: left hand
   abstract: true
@@ -252,8 +287,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
-  #  - type: ChildOrgan # inkymed
-  #    parents: [ ArmLeft ] # inkymed
+  - type: ChildOrgan
+    parents: [ ArmLeft ]
   # </Shitmed>
   - type: Organ
     category: HandLeft
@@ -273,7 +308,10 @@
       - LHand
 
 - type: entity
-  parent: OrganBaseHand # Shitmed
+  parent:
+  - OrganBaseHand # Trauma
+  - OrganBase
+  - OrganBaseChildExternal
   id: OrganBaseHandRight
   name: right hand
   abstract: true
@@ -281,8 +319,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
-  #  - type: ChildOrgan # inkymed
-  #    parents: [ ArmRight ] # inkymed
+  - type: ChildOrgan
+    parents: [ ArmRight ]
   # </Shitmed>
   - type: Organ
     category: HandRight
@@ -302,11 +340,19 @@
       - RHand
 
 - type: entity
-  parent: OrganBaseLeg # Shitmed
+  parent:
+  - OrganBaseLeg # Trauma
+  - OrganBase
+  - OrganBaseParent
+  - OrganBaseChildExternal
   id: OrganBaseLegLeft
   name: left leg
   abstract: true
   components:
+  # inkymed
+  - type: ChildOrgan
+    parents: [ Torso ]
+  # /inkymed
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
@@ -330,11 +376,19 @@
       - LLeg
 
 - type: entity
-  parent: OrganBaseLeg # Shitmed
+  parent:
+  - OrganBaseLeg # Trauma
+  - OrganBase
+  - OrganBaseParent
+  - OrganBaseChildExternal
   id: OrganBaseLegRight
   name: right leg
   abstract: true
   components:
+  # inkymed
+  - type: ChildOrgan
+    parents: [ Torso ]
+  # /inkymed
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
@@ -358,7 +412,10 @@
       - RLeg
 
 - type: entity
-  parent: OrganBaseFoot # Shitmed
+  parent:
+  - OrganBaseFoot # Trauma
+  - OrganBase
+  - OrganBaseChildExternal
   id: OrganBaseFootLeft
   name: left foot
   abstract: true
@@ -366,8 +423,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Left
-#  - type: ChildOrgan #inkymeed
-#    parents: [ LegLeft ]
+  - type: ChildOrgan
+    parents: [ LegLeft ]
   # </Shitmed>
   - type: Organ
     category: FootLeft
@@ -383,7 +440,10 @@
       - LFoot
 
 - type: entity
-  parent: OrganBaseFoot # Shitmed
+  parent:
+  - OrganBaseFoot # Trauma
+  - OrganBase
+  - OrganBaseChildExternal
   id: OrganBaseFootRight
   name: right foot
   abstract: true
@@ -391,8 +451,8 @@
   # <Shitmed>
   - type: BodyPart
     symmetry: Right
-#  - type: ChildOrgan
-#    parents: [ LegRight ] #onkymekdff
+  - type: ChildOrgan
+    parents: [ LegRight ]
   # </Shitmed>
   - type: Organ
     category: FootRight
@@ -408,13 +468,16 @@
       - RFoot
 
 - type: entity
-  parent: [ OrganBaseInternal, BaseKnowledgeContainer ] # Trauma - internal organ, brain stores knowledge for mobs
+  parent:
+  - BaseKnowledgeContainer # Trauma - brain stores knowledge for mobs
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseBrain
   name: brain
   abstract: true
   components:
   # <Trauma>
-  - type: InternalOrgan
+  - type: InternalChildOrgan
     intCap: 28
     integrity: 28
     integrityThresholds:
@@ -424,7 +487,7 @@
   - type: ChildOrgan
     parents: [ Head ]
   - type: OrganChipContainer
-    limit: 2 # TODO: change to 3 once skillchips are split up more
+    limit: 3
   - type: ContainerContainer
     containers:
       knowledge: !type:Container
@@ -458,7 +521,9 @@
       Taco: Brain
 
 - type: entity
-  parent: OrganBaseInternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseEyes
   name: eyes
   abstract: true
@@ -486,7 +551,9 @@
       - Eyes
 
 - type: entity
-  parent: OrganBaseInternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseTongue
   name: tongue
   abstract: true
@@ -503,7 +570,9 @@
     - state: tongue
 
 - type: entity
-  parent: OrganBaseInternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseAppendix
   name: appendix
   abstract: true
@@ -520,7 +589,9 @@
     - state: appendix
 
 - type: entity
-  parent: OrganBaseInternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseEars
   name: ears
   abstract: true
@@ -538,7 +609,9 @@
     - state: ears
 
 - type: entity
-  parent: OrganBaseInternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseLungs
   name: lungs
   abstract: true
@@ -575,7 +648,9 @@
       canReact: false
 
 - type: entity
-  parent: OrganBaseInternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseHeart
   name: heart
   abstract: true
@@ -596,7 +671,9 @@
     stages: [ Bloodstream ]
 
 - type: entity
-  parent: OrganBaseInternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseStomach
   name: stomach
   abstract: true
@@ -632,7 +709,9 @@
       maxVol: 150 # 1.25 liters which is average for a human
 
 - type: entity
-  parent: OrganBaseInternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseLiver
   name: liver
   abstract: true
@@ -655,7 +734,9 @@
     stages: [ Metabolites ]
 
 - type: entity
-  parent: OrganBaseInternal # Shitmed
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
   id: OrganBaseKidneys
   name: kidneys
   abstract: true
@@ -708,3 +789,29 @@
     sexStateOverrides:
       Male: torso_m
       Female: torso_f
+
+- type: entity
+  abstract: true
+  parent: OrganBase # Trauma
+  id: OrganBaseParent
+  components:
+  - type: ParentOrgan
+  #- type: DetachableOrgan # Trauma - this is very likely fucked
+  #  detachedBody: DetachedBody
+
+- type: entity
+  abstract: true
+  parent: OrganBaseExternal # Trauma
+  id: OrganBaseChildExternal
+  components:
+  - type: ChildOrgan
+  - type: DetachableOrgan
+    detachedBody: DetachedBody
+
+- type: entity
+  abstract: true
+  parent: OrganBase # Trauma
+  id: OrganBaseChildInternal
+  components:
+  - type: ChildOrgan
+  - type: InternalChildOrgan

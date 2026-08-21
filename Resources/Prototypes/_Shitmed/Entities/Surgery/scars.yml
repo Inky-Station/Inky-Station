@@ -1,0 +1,46 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: BluntScar
+  parent: WoundBase
+  components:
+  - type: Wound
+    damageType: Blunt
+    canBeHealed: false
+    isScar: true
+
+- type: entity
+  id: PiercingScar
+  parent: WoundBase
+  components:
+  - type: Wound
+    damageType: Piercing
+    canBeHealed: false
+    isScar: true
+
+- type: entity
+  id: SlashScar
+  parent: WoundBase
+  components:
+  - type: Wound
+    damageType: Slash
+    canBeHealed: false
+    isScar: true
+
+- type: entity
+  id: BurnScar
+  parent: WoundBase
+  components:
+  - type: Wound
+    damageType: Heat
+    canBeHealed: false
+    isScar: true
+
+- type: entity
+  id: RadiationScar
+  parent: WoundBase
+  components:
+  - type: Wound
+    damageType: Radiation
+    canBeHealed: false
+    isScar: true
