@@ -154,7 +154,7 @@ public sealed partial class RespiratorSystem : EntitySystem
                     TryGasp((uid, respirator)); // UPSTREAM NOTICE if anyone changes shit here in upstream, change TryGasp!!!!
                 // /inkymed
 
-                TakeSuffocationDamage((uid, respirator) /* inkymed */, (uid, body) /* /inkymed */);
+                TakeSuffocationDamage((uid, respirator), (uid, body)); // inkymed
                 respirator.SuffocationCycles += 1;
                 continue;
             }

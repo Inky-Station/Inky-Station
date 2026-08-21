@@ -57,19 +57,7 @@ public sealed partial class BrainSystem
         var eqe = EntityQueryEnumerator<BrainComponent>();
         while (eqe.MoveNext(out var uid, out var brain))
         {
-            brain.AirSaturation = Math.Clamp(brain.AirSaturation - brain.AirConsumption, 0f, 1f);
-            Dirty(uid, brain);
-
-            var newLvl = GetOxygenLevel(brain.AirSaturation);
-            if (newLvl == brain.OxygenLevel)
-                continue;
-
-            var oldLvl = brain.OxygenLevel;
-            brain.OxygenLevel = newLvl;
-            Dirty(uid, brain);
-
-            var ev = new BrainOxygenLevelChangedEvent(uid, brain, oldLvl, newLvl);
-            RaiseLocalEvent(uid, ref ev);
+            SetAirSaturation(uid, brain, brain.AirSaturation - brain.AirConsumption);
         }
     }
 
@@ -83,8 +71,7 @@ public sealed partial class BrainSystem
         if (saturation == 0f)
             return;
 
-        ent.Comp.AirSaturation = Math.Clamp(ent.Comp.AirSaturation + saturation, 0f, 1f);
-        Dirty(ent);
+        SetAirSaturation(ent.Owner, ent.Comp, ent.Comp.AirSaturation + saturation);
     }
 
     private float GetSaturation(GasMixture gas, Entity<MetabolizerComponent> lung)
@@ -127,9 +114,9 @@ public sealed partial class BrainSystem
         return saturation;
     }
 
-    private static BrainOxygen GetOxygenLevel(float saturation) // maybe its better to put it inside braincomp but whatever man
+    public BrainOxygen GetOxygenLevel(BrainComponent brain)
     {
-        return saturation switch
+        return brain.AirSaturation switch
         {
             > 0.9f => BrainOxygen.Stable,
             > 0.65f => BrainOxygen.Unstable,
@@ -137,6 +124,20 @@ public sealed partial class BrainSystem
             > 0f => BrainOxygen.Critical,
             _ => BrainOxygen.Fatal,
         };
+    }
+
+    private void SetAirSaturation(EntityUid uid, BrainComponent brain, float saturation)
+    {
+        var oldLvl = GetOxygenLevel(brain);
+        brain.AirSaturation = Math.Clamp(saturation, 0f, 1f);
+        Dirty(uid, brain);
+
+        var newLvl = GetOxygenLevel(brain);
+        if (newLvl == oldLvl)
+            return;
+
+        var ev = new BrainOxygenLevelChangedEvent(uid, brain, oldLvl, newLvl);
+        RaiseLocalEvent(uid, ref ev);
     }
 
     # region statuses

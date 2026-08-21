@@ -12,9 +12,6 @@ public sealed partial class BrainComponent
     [DataField, AutoNetworkedField]
     public float AirConsumption = 0.04f;
 
-    [ViewVariables, AutoNetworkedField]
-    public BrainOxygen OxygenLevel = BrainOxygen.Stable;
-
     [DataField]
     public ProtoId<AlertPrototype>? AutismAlert = "Autism";
 

@@ -1,5 +1,6 @@
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
@@ -24,10 +25,12 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
     private const float AsphyxiationDamage = 16f; // maybe put it somewhere else idek
 
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private StatusEffectsSystem _stfx = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private BrainSystem _brain = default!;
+    [Dependency] private EntityQuery<OrganComponent> _organQ = default!;
 
     private TimeSpan _nextUpdate;
 
@@ -50,26 +53,25 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
         var eqe = EntityQueryEnumerator<BrainComponent>();
         while (eqe.MoveNext(out var uid, out var brain))
         {
-            var target = TryComp<OrganComponent>(uid, out var organ) && organ.Body is { } body
-                ? body // fucking kill yourself
-                : uid;
+            _organQ.TryComp(uid, out var organ);
+            var target = organ?.Body ?? uid;
 
             var intensity = GetIntensity(brain.AirSaturation);
             if (intensity == 0f)
             {
-                _stfx.TrySetStatusEffectDuration(
+                _statusEffects.TrySetStatusEffectDuration(
                 target,
                 Effect,
                 TimeSpan.FromSeconds(10));
                 continue;
             }
 
-            _stfx.TrySetStatusEffectDuration(
+            _statusEffects.TrySetStatusEffectDuration(
                 target,
                 Effect,
                 TimeSpan.FromDays(2) * intensity);
 
-            if (brain.OxygenLevel == BrainOxygen.Critical
+            if (_brain.GetOxygenLevel(brain) == BrainOxygen.Critical
                 && !_mobState.IsDead(target))
             {
                 _damageable.ChangeDamage(
@@ -89,21 +91,19 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
 
     private void OnBrainOxygenLevelChanged(Entity<BrainComponent> ent, ref BrainOxygenLevelChangedEvent args)
     {
-        var target = TryComp<OrganComponent>(ent.Owner, out var organ) && organ.Body is { } body
-            ? body
-            : ent.Owner;
+        _organQ.TryComp(ent.Owner, out var organ);
+        var target = organ?.Body ?? ent.Owner;
 
-        // idek how to make it better
         _alerts.ClearAlert(target, BrainOxygenUnstableAlert);
         _alerts.ClearAlert(target, BrainOxygenDangerousAlert);
         _alerts.ClearAlert(target, BrainOxygenCriticalAlert);
 
-        var alert = args.NewLevel switch
+        ProtoId<AlertPrototype>? alert = args.NewLevel switch
         {
             BrainOxygen.Unstable => BrainOxygenUnstableAlert,
             BrainOxygen.Dangerous => BrainOxygenDangerousAlert,
             BrainOxygen.Critical => BrainOxygenCriticalAlert,
-            _ => default(ProtoId<AlertPrototype>?),
+            _ => null
         };
 
         if (alert is { } alertId)
