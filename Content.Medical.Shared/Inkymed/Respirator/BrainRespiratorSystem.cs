@@ -98,12 +98,12 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
         _alerts.ClearAlert(target, BrainOxygenDangerousAlert);
         _alerts.ClearAlert(target, BrainOxygenCriticalAlert);
 
-        ProtoId<AlertPrototype>? alert = args.NewLevel switch
+        var alert = args.NewLevel switch
         {
             BrainOxygen.Unstable => BrainOxygenUnstableAlert,
             BrainOxygen.Dangerous => BrainOxygenDangerousAlert,
             BrainOxygen.Critical => BrainOxygenCriticalAlert,
-            _ => null
+            _ => default(ProtoId<AlertPrototype>?)
         };
 
         if (alert is { } alertId)
