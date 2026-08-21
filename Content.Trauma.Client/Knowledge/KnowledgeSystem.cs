@@ -54,6 +54,11 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
 
     private void EnsureKnowledgeTab(CharacterWindow window)
     {
+        // inky
+        if (!SkillsEnabled)
+            return;
+        // /inky
+
         _activeWindow = new WeakReference<CharacterWindow>(window);
 
         KnowledgeTab? knowledgeTab = null;
