@@ -77,14 +77,13 @@
   - type: Clothing
     sprite: _Goobstation/Clothing/OuterClothing/Armor/helldiver.rsi
   - type: TemperatureProtection
-    heatingCoefficient: 0.1
-    coolingCoefficient: 0.1
+    coefficient: 0.1
   - type: PointLight
     enabled: false
     color: "#e5af38"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     netsync: false
 
@@ -172,8 +171,7 @@
     damageCoefficient: 0.5
   - type: StripMenuInvisible # No peeking!
   - type: TemperatureProtection
-    heatingCoefficient: 0.8 # Blame it on bluespace.
-    coolingCoefficient: 0.1
+    coefficient: 0.5
 
 - type: entity
   parent: ClothingOuterArmourInvisible
@@ -190,7 +188,7 @@
         type: ChameleonBoundUserInterface
 
 - type: entity
-  parent: [ ClothingOuterBaseMedium, ClothingOuterStorageToggleableBase, AllowSuitStorageClothing, BaseSyndicateContraband ]
+  parent: [ ClothingOuterBaseMedium, AllowSuitStorageClothing, BaseSyndicateContraband ]
   id: ClothingOuterArmorCloakSith
   name: dark lord cloak
   description: What began as a simple cosplay cloak was illegally reinforced with armored plates, transforming it into a functional piece of armor. Looks like it's even capable of protecting the user from the lack of pressure in space.
@@ -206,9 +204,9 @@
     coverage:
     - Torso
     - Arm
-#    - Hand inkymed
+    #    - Hand inkymed
     - Leg
-#    - Foot inkymed
+    #    - Foot inkymed
     - Tail
     modifiers:
       coefficients:
@@ -229,6 +227,12 @@
     damageCoefficient: 0.5
   - type: PressureProtection
     lowPressureMultiplier: 1000
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:Container
+        ents: [ ]
+        showEnts: False
+        occludes: True
   # Intentionally no temperature or high pressure protection
 
 - type: entity
@@ -245,8 +249,7 @@
     delayDelta: 2
     knockdownTimeDelta: -2
   - type: TemperatureProtection # No
-    heatingCoefficient: 1
-    coolingCoefficient: 1
+    coefficient: 1
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
@@ -347,7 +350,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.5
   - type: FireProtection
-    reduction: 0.6
+    reduction: 0.75
 
 - type: entity
   parent: ClothingOuterArmorTemplar

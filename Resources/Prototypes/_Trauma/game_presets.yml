@@ -63,3 +63,25 @@
   # inky
   - FunGameruleChooser
   # /inky
+
+- type: gamePreset
+  id: Spies
+  alias:
+  - spy
+  - spies
+  # inky
+  - tf2
+  - france
+  # /inky
+  name: spies-title
+  description: spies-description
+  showInVote: false
+  rules:
+  - BasicRoundstartVariation
+  - BasicStationEventScheduler
+  - BasicAntagEventScheduler
+  - ModerateAntagEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - SubGamemodesRuleNoSpy
+  - Spies

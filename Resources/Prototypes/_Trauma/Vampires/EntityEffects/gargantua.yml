@@ -73,7 +73,7 @@
     conditions:
     - !type:WhitelistCondition
       whitelist:
-        tags:
+        components:
         - Wall
     damage:
       types:

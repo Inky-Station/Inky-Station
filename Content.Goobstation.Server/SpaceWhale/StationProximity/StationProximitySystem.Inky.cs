@@ -58,12 +58,13 @@ public sealed partial class StationProximitySystem
             RaiseNetworkEvent(new LeviathanMusicStartEvent(), actor.PlayerSession.Channel); // hate
 
             // adrenaline stuff
-            var solution = new Solution();
-            solution.AddReagent(new ReagentId("Adrenaline", null), AdrenalineAmount);
-            if (!_solution.TryGetInjectableSolution(playerUid, out var targetSolution, out _))
-                return;
-
-            _solution.TryAddSolution(targetSolution.Value, solution);
+            // var solution = new Solution();
+            // solution.AddReagent(new ReagentId("Adrenaline", null), AdrenalineAmount);
+            // if (!_solution.TryGetInjectableSolution(playerUid, out var targetSolution, out _))
+            //     return;
+            //
+            // _solution.TryAddSolution(targetSolution.Value, solution);
+            // i am so fuckin gtired right now im just gonna remove it -upstreaming lucifer
             return;
         }
     }

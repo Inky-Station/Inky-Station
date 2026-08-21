@@ -11,7 +11,7 @@ public sealed partial class WoundSystem
 
     private void OnMobThresholdGetWoundableIntegrityEvent(Entity<WoundableComponent> ent, ref MobThresholdGetWoundableIntegrityEvent args)
     {
-        args.Damage = ent.Comp.IntegrityCap - ent.Comp.WoundableIntegrity;
+        args.Damage = ent.Comp.IntegrityCap - ent.Comp.Integrity; // inky todo may be broken
         args.Handled = true;
     }
 }

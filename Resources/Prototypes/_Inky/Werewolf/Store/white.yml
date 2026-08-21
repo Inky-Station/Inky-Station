@@ -96,7 +96,7 @@
 - type: listing
   id: WerewolfWhiteLunar
   name: werewolf-store-white-lunar-name
-  description: werewolf-store-lunar-desc
+  description: werewolf-store-white-lunar-desc
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: lunar-white
@@ -120,7 +120,7 @@
 - type: listing
   id: WerewolfWhiteRevelation
   name: werewolf-store-white-revelation-name
-  description: werewolf-store-revelation-desc # todo werewolf dont forget to say that it blocks you from buying new shit
+  description: werewolf-store-white-revelation-desc
   icon:
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     state: revelation

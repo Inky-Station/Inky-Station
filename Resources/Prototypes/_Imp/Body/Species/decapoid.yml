@@ -47,7 +47,7 @@
 
 - type: entity
   categories: [ HideSpawnMenu ]
-  parent: BaseSpeciesAppearance
+  parent: BaseSpeciesAppearanceDecapoid
   id: AppearanceDecapoid
   name: Decapoid appearance
   components:
@@ -188,8 +188,7 @@
       types:
         Heat : 1
   - type: Temperature
-    currentTemperature: 310
-    specificHeat: 42
+    temperature: 310
   - type: TemperatureSpeed
     thresholds: # lol
       293: 1.0
@@ -215,6 +214,8 @@
   - type: TypingIndicator
     proto: robot
   - type: Exoskeleton # Prevents injections with syringes. Ideally it'd be on their body parts instead but eh.
+  - type: Thirst
+    baseDecayRate: -0.1 # Regen, no thirst
 
 - type: entity
   abstract: true

@@ -99,7 +99,7 @@
     jumpMaxInterval: 15
   - type: WarpPoint
     follow: true
-    location: tesla ball
+    location: location-tesla-ball
   - type: Sprite
     # inky
     noRot: true

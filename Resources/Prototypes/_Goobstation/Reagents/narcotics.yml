@@ -112,11 +112,12 @@
   meltingPoint: 36.0
   metabolisms:
     Bloodstream:
+      metabolismRate: 10 # Trauma
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectBlindness
         type: Add
-        time: 3
+        time: 10
 
 - type: reagent
   id: Amnestizine
@@ -237,9 +238,8 @@
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
         type: Remove
-      - !type:GenericStatusEffect
-        key: Adrenaline
-        component: IgnoreSlowOnDamage
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectAdrenaline
         time: 5
       - !type:TakeStaminaDamage
         amount: -5
@@ -368,9 +368,8 @@
   metabolisms:
     Bloodstream:
       effects:
-      - !type:GenericStatusEffect
-        key: Adrenaline
-        component: IgnoreSlowOnDamage
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectAdrenaline
         time: 1.5
       - !type:HealthChange
         damage:

@@ -10,11 +10,10 @@ namespace Content.Client.Construction.UI;
 // NO FUCK OFF
 public sealed partial class ConstructionMenu
 {
-    /*
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IEntitySystemManager _system = default!;
 
-    private readonly CommonKnowledgeSystem _knowledge = default!;
+    private readonly CommonKnowledgeSystem _knowledge = default!; // inky
 
     // TODO: make this an event a trauma.client system injects with
     public void AddSkillRequirements(ConstructionPrototype proto)
@@ -62,5 +61,4 @@ public sealed partial class ConstructionMenu
             });
         }
     }
-    */
 }
