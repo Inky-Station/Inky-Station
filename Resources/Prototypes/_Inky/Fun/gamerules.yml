@@ -6,7 +6,7 @@
     funOnly: true
     rules:
     - CrematoriumFunRule
-    - FentbotFunRule
+#    - FentbotFunRule # no
     - EngiSentryFunRule
     - FunSkeletonGibRule
     - HeartRipFunRule
