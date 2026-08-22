@@ -11,10 +11,10 @@ using Content.Server.Station.Components;
 
 namespace Content.Goobstation.Server.ItemMiner;
 
-public sealed class TelecrystalMinerSystem : EntitySystem
+public sealed partial class TelecrystalMinerSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly NavMapSystem _navMap = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private NavMapSystem _navMap = default!;
 
     public override void Initialize()
     {
