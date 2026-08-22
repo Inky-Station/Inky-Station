@@ -6,7 +6,7 @@
       amount: 1
     Water:
       amount: 1
-    BakingSoda:
+    SodiumBicarbonate:
       amount: 1
   products:
     CrackCocaine: 2
