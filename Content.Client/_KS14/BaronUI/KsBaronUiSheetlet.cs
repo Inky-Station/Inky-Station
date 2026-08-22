@@ -40,12 +40,12 @@ public sealed class KsBaronUiSheetlet : Sheetlet<PalettedStylesheet>
 
     public override StyleRule[] GetRules(PalettedStylesheet sheet, object config)
     {
-        var regularFont = ResCache.GetFont("/Fonts/_KS14/BaronUI/FontStack-Regular.TTF", 12);
-        var boldFont = ResCache.GetFont("/Fonts/_KS14/BaronUI/FontStack-Bold.ttf", 12);
-        var regularFontSmall = ResCache.GetFont("/Fonts/_KS14/BaronUI/FontStack-Regular.TTF", 10);
-        var regularFontLarge = ResCache.GetFont("/Fonts/_KS14/BaronUI/FontStack-Regular.TTF", 14);
-        var boldFontLarge = ResCache.GetFont("/Fonts/_KS14/BaronUI/FontStack-Bold.ttf", 16);
-        var boldFontLarger = ResCache.GetFont("/Fonts/_KS14/BaronUI/FontStack-Bold.ttf", 20);
+        var regularFont = ResCache.GetFont("/Fonts/NotoSansDisplay/NotoSansDisplay-Regular.ttf", 12); // inky - changed from /Fonts/_KS14/BaronUI/FontStack-Regular.TTF
+        var boldFont = ResCache.GetFont("/Fonts/NotoSansDisplay/NotoSansDisplay-Bold.ttf", 12);
+        var regularFontSmall = ResCache.GetFont("/Fonts/NotoSansDisplay/NotoSansDisplay-Regular.ttf", 10);
+        var regularFontLarge = ResCache.GetFont("/Fonts/NotoSansDisplay/NotoSansDisplay-Regular.ttf", 14);
+        var boldFontLarge = ResCache.GetFont("/Fonts/NotoSansDisplay/NotoSansDisplay-Bold.ttf", 16);
+        var boldFontLarger = ResCache.GetFont("/Fonts/NotoSansDisplay/NotoSansDisplay-Bold.ttf", 20);
         var button1 = MakeBox("button_1.png", 10, 10);
         var button2 = MakeBox("button_2.png", 8, 8);
         // KS14: use the lighter shared button chrome for the general UI treatment.
