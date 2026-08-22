@@ -212,3 +212,13 @@
     Telecrystal: 10 # Trauma - was 2, 5x
   categories:
   - UplinkDisruption
+
+- type: listing
+  id: UplinkTelecrystalMiner
+  name: uplink-TelecrystalMiner-name # Inky
+  description: uplink-TelecrystalMiner-desc
+  productEntity: TCminerFlatpack
+  cost:
+    Telecrystal: 100
+  categories:
+  - UplinkDisruption

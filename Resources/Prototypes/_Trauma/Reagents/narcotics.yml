@@ -245,7 +245,7 @@
   allowedJobs:
   - Chemist
   - Chef
-  flavor: bubbly
+  flavor: bitter
   color: "#CDCDCD"
   boilingPoint: 187.0
   meltingPoint: 98.0
