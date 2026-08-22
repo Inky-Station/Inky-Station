@@ -1,0 +1,14 @@
+- type: reaction # Inky
+  id: CocaineFreebasing
+  minTemp: 470
+  reactants:
+    Cocaine:
+      amount: 1
+    Water:
+      amount: 1
+    BakingSoda:
+      amount: 1
+  products:
+    CrackCocaine: 2
+    # Microplastics: 2 | Shoo bilgate microplastics
+    # VentCrud: 1
