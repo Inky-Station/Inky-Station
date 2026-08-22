@@ -131,17 +131,3 @@
     Cocaine: 1
     Microplastics: 3
     
-- type: reaction
-  id: CocaineFreebasing
-  minTemp: 470
-  reactants:
-    Cocaine:
-      amount: 1
-    Water:
-      amount: 1
-    SodiumBicarbonate:
-      amount: 1
-  products:
-    CrackCocaine: 2
-    # Microplastics: 2 | Shoo bilgate microplastics
-    # VentCrud: 1
