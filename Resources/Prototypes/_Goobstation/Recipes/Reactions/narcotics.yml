@@ -54,17 +54,3 @@
       amount: 2
   products:
     OleoresinCapsaicin: 1
-
-- type: reaction # inky
-  id: BakingSoda
-  reactants:
-    Ammonia:
-      amount: 1
-    Water:
-      amount: 1
-    CarbonDioxide:
-      amount: 1
-    TableSalt:
-      amount: 1
-  products:
-    BakingSoda: 4
