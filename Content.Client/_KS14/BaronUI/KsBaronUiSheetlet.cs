@@ -165,6 +165,9 @@ public sealed class KsBaronUiSheetlet : Sheetlet<PalettedStylesheet>
             E<PanelContainer>().Class(PanelScreen2).Panel(panelScreen2),
             E<PanelContainer>().Class(PanelScreenClean).Panel(panelScreenClean),
             // KS14: make tab panels and their headers inherit Baron chrome instead of the stock treatment.
+            // inky targeting doll is wacky so kys
+            E<PanelContainer>().Class("TargetingDollPanel").Panel(new StyleBoxEmpty()),
+            // /inky
             E<TabContainer>()
                 .Font(regularFont)
                 .Prop(TabContainer.StylePropertyPanelStyleBox, panelDark1Clean)
