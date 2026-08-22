@@ -236,16 +236,3 @@
         time: 3 # 6s per 1u
       # /inkymed
 
-- type: reagent # Baking soda is only used for crack cocaine making / Inky
-  id: BakingSoda
-  name: reagent-name-bakingsoda
-  group: Narcotics
-  desc: reagent-desc-bakingsoda
-  physicalDesc: reagent-physical-desc-crystalline
-  allowedJobs:
-  - Chemist
-  - Chef
-  flavor: bitter
-  color: "#CDCDCD"
-  boilingPoint: 187.0
-  meltingPoint: 98.0
