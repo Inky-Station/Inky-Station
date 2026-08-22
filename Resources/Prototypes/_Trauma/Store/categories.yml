@@ -19,7 +19,9 @@
 
 # Traitor
 
-- type: storeCategory
-  id: UplinkSkills
-  name: store-category-skills
-  priority: 9
+# inky edit kys
+# i prob need to make it be tied to a skill cvar but idc
+#- type: storeCategory
+#  id: UplinkSkills
+#  name: store-category-skills
+#  priority: 9
