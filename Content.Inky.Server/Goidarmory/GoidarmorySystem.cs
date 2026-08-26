@@ -6,6 +6,7 @@ namespace Content.Inky.Server.Goidarmory;
 public sealed partial class GoidarmorySystem : EntitySystem
 {
     [Dependency] private StationSystem _station = default!;
+    
     public override void Initialize()
     {
         base.Initialize();
