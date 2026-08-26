@@ -13,7 +13,7 @@
     - UplinkDisruption
     - UplinkImplants
     - UplinkAllies
-    - UplinkSkills # Trauma
+#    - UplinkSkills # Trauma # inky edit kill skills
     - UplinkWearables
     - UplinkJob
     - UplinkPointless
