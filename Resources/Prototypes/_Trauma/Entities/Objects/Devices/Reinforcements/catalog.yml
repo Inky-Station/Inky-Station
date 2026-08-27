@@ -369,12 +369,12 @@
     sprite: Markers/jobs.rsi
     state: prisoner
   cost:
-    Spesos: 250
+    Spesos: 500 # inky
   categories:
   - ScienceHoP
   restockTime: 0
   resetRestockOnPurchase: true
-  restockAfterPurchase: 60
+  restockAfterPurchase: 180 # inky
 
 # Cargo
 

@@ -35,7 +35,7 @@ public sealed partial class InkyAdminVerbSystem
         {
             Text = Loc.GetString("admin-verbs-smite-autism-name".ToLowerInvariant()),
             Category = VerbCategory.Smite,
-            Icon = new SpriteSpecifier.Texture(new("/Textures/_Inky/Interface/Inkymed/alerts.rsi/autism.png")),
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_Inky/Interface/Inkymed/alerts.rsi"), "autism"),
             Act = () =>
             {
                 if (_body.GetOrgan(args.Target, Brain) is { } brain)

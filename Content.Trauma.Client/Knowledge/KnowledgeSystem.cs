@@ -55,7 +55,7 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
     private void EnsureKnowledgeTab(CharacterWindow window)
     {
         // inky
-        if (SkillsEnabled)
+        if (!SkillsEnabled)
             return;
         // /inky
 
@@ -85,6 +85,11 @@ public sealed class KnowledgeSystem : SharedKnowledgeSystem
 
     private void AddProfileEditorTab(HumanoidProfileEditor editor)
     {
+        // inky
+        if (!SkillsEnabled)
+            return;
+        // /inky
+
         // place it before markings tab
         var above = editor.MarkingsTab;
         var index = above.GetPositionInParent();
