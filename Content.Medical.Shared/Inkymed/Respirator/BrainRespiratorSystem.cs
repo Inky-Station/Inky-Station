@@ -71,7 +71,8 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
                 Effect,
                 TimeSpan.FromDays(2) * intensity);
 
-            if (_brain.GetOxygenLevel(brain) == BrainOxygen.Critical
+            var airsat = _brain.GetOxygenLevel(brain);
+            if ((airsat == BrainOxygen.Critical || airsat == BrainOxygen.Fatal)
                 && !_mobState.IsDead(target))
             {
                 _damageable.ChangeDamage(

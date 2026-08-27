@@ -2,17 +2,20 @@
 using Content.Medical.Common.Body;
 using Content.Medical.Common.Damage;
 using Content.Medical.Common.Targeting;
-using Content.Inky.Common.CCVar;
 using Content.Goobstation.Common.Body.Components;
 using Content.Trauma.Common.MartialArts;
 using Content.Trauma.Common.Body;
 using Content.Shared.Movement.Pulling.Components;
 // </Trauma>
+// inkymed
+using Content.Inky.Common.CCVar;
+using Content.Shared._Shitcod;
+using Robust.Shared.Configuration;
+// /inkymed
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Components;
 using Content.Server.Chat.Systems;
-using Content.Shared._Shitcod;
 using Content.Shared.Body.Systems;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
@@ -35,7 +38,6 @@ using Content.Shared.Mobs.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Robust.Shared.Configuration;
 
 namespace Content.Server.Body.Systems;
 
@@ -193,7 +195,7 @@ public sealed partial class RespiratorSystem : EntitySystem
         if (inhaleEv.Handled && inhaleEv.Succeeded)
         {
             // inkymed
-            if (_complexRespiratorEnabled && gas.TotalMoles >= Atmospherics.OneAtmosphere * volumeEv.Volume / (Atmospherics.R * gas.Temperature)) // kill yourself, i tried to do something here but it just doesnt work and i dont know how to make it work todo inkymed fixme ffffriends!
+            if (_complexRespiratorEnabled && gas.TotalMoles <= Atmospherics.GasMinMoles) // kill yourself, i tried to do something here but it just doesnt work and i dont know how to make it work todo inkymed fixme ffffriends!
                 TryGasp((entity.Owner, entity.Comp)); // aka it should gasp only if theres not enough gas VOLUME you inhaled, couldnt get it done
             // /inkymed
 
