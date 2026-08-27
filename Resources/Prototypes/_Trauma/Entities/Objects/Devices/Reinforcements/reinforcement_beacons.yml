@@ -339,6 +339,9 @@
   suffix: D-Class
   components:
   - type: DelayedGhostRole
+    # inky
+    fast: true
+    # /inky
     name: ghost-role-information-reinforcement-DClass-name
     description: ghost-role-information-DClass-description
     rules: ghost-role-information-freeagent-rules
