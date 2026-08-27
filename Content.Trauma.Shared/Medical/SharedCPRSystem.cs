@@ -211,13 +211,14 @@ public abstract partial class SharedCPRSystem : EntitySystem
             _organQuery.TryComp(lungs, out var organ) &&
             organ.OrganSeverity == OrganSeverity.Normal;
 
+    // inky edit - cant revive
     private bool CanRevive(EntityUid uid)
         // no cpr major reviving ling husks
-        => !_unrevivableQuery.HasComp(uid) &&
+        => false; /* !_unrevivableQuery.HasComp(uid) &&
             // has to be below death threshold
             _threshold.TryGetThresholdForState(uid, MobState.Dead, out var threshold) &&
             _damageQuery.TryComp(uid, out var damage) &&
-            _threshold.CheckVitalDamage((uid, damage)) < threshold;
+            _threshold.CheckVitalDamage((uid, damage)) < threshold; */
 
     private EntityUid? GetLungs(EntityUid mob)
         => _body.GetOrgan(mob, LungsCategory);

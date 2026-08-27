@@ -62,7 +62,7 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
                 _statusEffects.TrySetStatusEffectDuration(
                 target,
                 Effect,
-                TimeSpan.FromSeconds(10));
+                TimeSpan.FromSeconds(5));
                 continue;
             }
 
@@ -72,7 +72,8 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
                 TimeSpan.FromDays(2) * intensity);
 
             var airsat = _brain.GetOxygenLevel(brain);
-            if ((airsat == BrainOxygen.Critical || airsat == BrainOxygen.Fatal)
+            if ((airsat == BrainOxygen.Critical
+                 || airsat == BrainOxygen.Fatal)
                 && !_mobState.IsDead(target))
             {
                 _damageable.ChangeDamage(
