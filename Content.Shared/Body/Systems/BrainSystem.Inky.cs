@@ -118,10 +118,10 @@ public sealed partial class BrainSystem
     {
         return brain.AirSaturation switch
         {
-            > 0.9f => BrainOxygen.Stable,
-            > 0.65f => BrainOxygen.Unstable,
-            > 0.45f => BrainOxygen.Dangerous,
-            > 0f => BrainOxygen.Critical,
+            > 0.96f => BrainOxygen.Stable,
+            > 0.90f => BrainOxygen.Unstable,
+            > 0.80f => BrainOxygen.Dangerous,
+            > 0.60f => BrainOxygen.Critical,
             _ => BrainOxygen.Fatal,
         };
     }

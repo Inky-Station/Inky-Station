@@ -10,7 +10,7 @@ public sealed partial class BrainComponent
     public float AirSaturation = 1f;
 
     [DataField, AutoNetworkedField]
-    public float AirConsumption = 0.04f;
+    public float AirConsumption = 0.02f;
 
     [DataField]
     public ProtoId<AlertPrototype>? AutismAlert = "Autism";

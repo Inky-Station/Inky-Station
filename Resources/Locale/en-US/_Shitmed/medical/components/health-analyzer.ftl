@@ -7,6 +7,12 @@ health-analyzer-window-entity-bpm-stopped-text = Flatlined
 condition-heart-fibrillating = • [color=orange]{$entity}'s heart is fibrillating![/color]
 condition-heart-stopped = • [color=red]{$entity}'s heart has stopped.[/color]
 
+condition-brain-oxygen-Unstable = • [color=yellow]The patient lacks air.[/color]
+condition-brain-oxygen-Dangerous = • [color=orange]The patients brain severely lacks air.[/color]
+condition-brain-oxygen-Critical = • [color=red]The patients brain starts to die off due to a lack of air.[/color]
+condition-brain-oxygen-Fatal = • [color=red]The patients brain does not receive air.[/color]
+condition-body-asphyxiation-severe = • [color=red]The patient has severe hypoxemia.[/color]
+
 # inky end
 condition-body-trauma-BoneDamage-Normal = • The {$woundable} has some very minor bone damage.
 condition-body-trauma-BoneDamage-Damaged = • The {$woundable}'s has some bone damage.

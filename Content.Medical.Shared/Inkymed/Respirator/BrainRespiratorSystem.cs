@@ -22,7 +22,7 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
     private static readonly ProtoId<AlertPrototype> BrainOxygenCriticalAlert = "BrainOxygenCritical";
     private static readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(4);
 
-    private const float AsphyxiationDamage = 16f; // maybe put it somewhere else idek
+    private const float AsphyxiationDamage = 8f; // maybe put it somewhere else idek
 
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private StatusEffectsSystem _statusEffects = default!;
@@ -69,7 +69,7 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
             _statusEffects.TrySetStatusEffectDuration(
                 target,
                 Effect,
-                TimeSpan.FromDays(2) * intensity);
+                TimeSpan.FromMinutes(45) * intensity);
 
             var airsat = _brain.GetOxygenLevel(brain);
             if ((airsat == BrainOxygen.Critical
