@@ -71,7 +71,7 @@ public sealed partial class HealthAnalyzerControl
         }
 
         if (_damageable.GetAllDamage(target).DamageDict.TryGetValue(AsphyxiationDamage, out var asphyxiationDamage)
-            && asphyxiationDamage > 100)
+            && asphyxiationDamage > 75) // i mean
         { // since apstrimyyyy asphyxation and bloodloss are no longer displayed via health analyzer
             ConditionsListContainer.AddChild(new RichTextLabel
             {

@@ -7,6 +7,7 @@ using Content.Shared.Damage.Systems;
 using Content.Medical.Common.Targeting;
 using Content.Shared.Alert;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Speech.Components;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -105,11 +106,17 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
             BrainOxygen.Unstable => BrainOxygenUnstableAlert,
             BrainOxygen.Dangerous => BrainOxygenDangerousAlert,
             BrainOxygen.Critical => BrainOxygenCriticalAlert,
+            BrainOxygen.Fatal => BrainOxygenCriticalAlert,
             _ => default(ProtoId<AlertPrototype>?)
         };
 
         if (alert is { } alertId)
             _alerts.ShowAlert(target, alertId);
+
+        if (args.NewLevel == BrainOxygen.Critical)
+            EnsureComp<SlowAccentComponent>(target); // i... cant... breathe...
+        else
+            RemComp<SlowAccentComponent>(target);
     }
 
 }
