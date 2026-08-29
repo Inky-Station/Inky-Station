@@ -9,7 +9,36 @@
 # Table: null
 
 # inky
-# 2025-08-21
+# 2026-08-29
+# kill skills
+SkillChipHeavy: null
+SkillChipLaser: null
+SkillChipMarksmanship: null
+SkillChipMining: null
+SkillChipTool: null
+SkillChipPistol: null
+SkillChipRifle: null
+SkillChipSMG: null
+SkillChipShotgun: null
+SkillChipSniper: null
+SkillChipBludgeon: null
+SkillChipShortBlade: null
+SkillChipLongBlade: null
+SkillChipNonLethal: null
+SkillChipPolearm: null
+SkillChipUnarmed: null
+SkillChipEnergy: null
+SkillChipShield: null
+SkillChipCombatHOS: null
+SkillChipSyndieSoldierTeamLeader: null
+SkillChipSyndieSoldier: null
+SkillChipSyndieVisitor: null
+SkillChipPirateCaptainScooner: null
+SkillChipPirateScooner: null
+SkillChipBlackmarketeer: null
+SkillChipCossack: null
+# inky
+# 2026-08-21
 ClothingNeckMantleCE: null
 
 # <Trauma> - too lazy to port debugoks multi migration thing
