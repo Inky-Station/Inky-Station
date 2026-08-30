@@ -1,10 +1,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Medical.Common.Body;
+using Content.Medical.Common.Targeting;
 using Content.Medical.Common.Traumas;
 using Content.Shared.Atmos.Rotting;
 using Content.Shared.Body;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
@@ -44,6 +47,12 @@ public abstract partial class SharedCPRSystem : EntitySystem
     [Dependency] private EntityQuery<InternalChildOrganComponent> _organQuery = default!;
     [Dependency] private EntityQuery<RottingComponent> _rottingQuery = default!;
     [Dependency] private EntityQuery<UnrevivableComponent> _unrevivableQuery = default!;
+
+    // inkymed
+    [Dependency] private DamageableSystem _damageable = default!;
+    private static readonly ProtoId<DamageTypePrototype> Asphyxiation = "Asphyxiation";
+    private const int AsphyxiationDamage = -3;
+    // /inkymed
 
     /// <summary>
     /// Modifier for inhale volume on mobs that have CPR being done on them.
@@ -193,6 +202,15 @@ public abstract partial class SharedCPRSystem : EntitySystem
 
         if (rand.Prob(training.InhaleChance) && HasHealthyLungs(ent))
             TryInhale(ent); // technically should be transferring with the performer's lungs but whatever
+
+        // inkymed
+        _damageable.ChangeDamage(
+            ent.Owner,
+            new DamageSpecifier(ProtoMan.Index(Asphyxiation), AsphyxiationDamage),
+            targetPart: TargetBodyPart.Vital,
+            interruptsDoAfters: false,
+            ignoreResistances: true);
+        // /inkymed
 
         var isAlive = mob.CurrentState == MobState.Alive;
         args.Repeat = !isAlive;
