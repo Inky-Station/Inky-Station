@@ -54,6 +54,13 @@
   - 3 flips/1500V - Raises the BPM by 150-200, useful if the patient is flatlined (has 0 BPM)
   - 4 flips/2000V - Raises the BPM by 200-300, useful always never
 
+  <Box>
+    <GuideEntityEmbed Entity="StasisBed" Caption="stasis bed" />
+  </Box>
+
+  If you are having trouble with keeping someone alive, or doing a heart surgery on yourself, try stasis beds!
+  A patient that is on the stasis bed will NOT take any damage from the absence of his heart.
+
 
 
 </Document>
