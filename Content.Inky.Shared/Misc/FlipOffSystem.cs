@@ -18,7 +18,7 @@ public sealed partial class FlipOffSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
 
     private const string Sound = "/Audio/_Inky/Shitpost/boom.ogg";
-    private const string John = "/Textures/_Inky/im not gonna syndiecoat it.png";
+    private const string John = "/Textures/_Inky/imnotgonnasugarcoatit.png";
 
     public override void Initialize()
     {
