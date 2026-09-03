@@ -8,6 +8,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.Body.Components;
 
 [RegisterComponent, NetworkedComponent, Access(typeof(LungSystem))]
+[AutoGenerateComponentState] // inkymed
 public sealed partial class LungComponent : Component
 {
     [DataField]

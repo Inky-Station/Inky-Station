@@ -2,6 +2,9 @@ using Content.Medical.Common.Body;
 using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Inkymed;
 using Content.Shared.Body;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
+using Content.Shared.Damage.Prototypes;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Prototypes;
 
@@ -13,6 +16,10 @@ public sealed partial class HealthAnalyzerControl
     private HeartRateSystem _heartRateSystem = default!;
     private CommonBodyPartSystem _part = default!;
     private static readonly ProtoId<OrganCategoryPrototype> HeartCategory = "Heart";
+    private static readonly ProtoId<OrganCategoryPrototype> BrainCategory = "Brain";
+    private static readonly ProtoId<DamageTypePrototype> AsphyxiationDamage = "Asphyxiation";
+
+    private BrainSystem _brainSystem = default!;
 
     private void PopulateHeartConditions(EntityUid target, string identity)
     {
@@ -45,6 +52,32 @@ public sealed partial class HealthAnalyzerControl
                     Margin = new Thickness(0, 4),
                 });
                 break;
+        }
+    }
+
+    private void PopulateAirSaturationConditions(EntityUid target)
+    {
+        var uid = _bodySystem.GetOrgan(target, BrainCategory);
+        if (uid is { } brain
+            && _entityManager.TryGetComponent<BrainComponent>(brain, out var brainComp))
+        {
+            var oxyLvl = _brainSystem.GetOxygenLevel(brainComp);
+            if (oxyLvl is not BrainOxygen.Stable)
+                ConditionsListContainer.AddChild(new RichTextLabel
+                {
+                    Text = Loc.GetString($"condition-brain-oxygen-{oxyLvl}"),
+                    Margin = new Thickness(0, 4),
+                });
+        }
+
+        if (_damageable.GetAllDamage(target).DamageDict.TryGetValue(AsphyxiationDamage, out var asphyxiationDamage)
+            && asphyxiationDamage > 75) // i mean
+        { // since apstrimyyyy asphyxation and bloodloss are no longer displayed via health analyzer
+            ConditionsListContainer.AddChild(new RichTextLabel
+            {
+                Text = Loc.GetString("condition-body-asphyxiation-severe"),
+                Margin = new Thickness(0, 4),
+            });
         }
     }
 }

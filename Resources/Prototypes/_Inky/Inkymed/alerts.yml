@@ -30,4 +30,26 @@
   name: alerts-lobotomy-name
   description: alerts-lobotomy-desc
 
+- type: alert
+  id: BrainOxygenUnstable
+  icons:
+  - sprite: /Textures/_Inky/Interface/Inkymed/alerts.rsi
+    state: lung-oxy
+  name: alerts-brain-oxygen-unstable-name
+  description: alerts-brain-oxygen-unstable-desc
 
+- type: alert
+  id: BrainOxygenDangerous
+  icons:
+  - sprite: /Textures/_Inky/Interface/Inkymed/alerts.rsi
+    state: lung-oxy-severe
+  name: alerts-brain-oxygen-dangerous-name
+  description: alerts-brain-oxygen-dangerous-desc
+
+- type: alert
+  id: BrainOxygenCritical
+  icons:
+  - sprite: /Textures/_Inky/Interface/Inkymed/alerts.rsi
+    state: lung-oxy-max
+  name: alerts-brain-oxygen-critical-name
+  description: alerts-brain-oxygen-critical-desc

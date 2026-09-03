@@ -13,6 +13,7 @@ using Content.Medical.Shared.Wounds;
 using Content.Shared.Atmos.Rotting;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
@@ -65,6 +66,7 @@ public sealed partial class HealthAnalyzerControl
 
         // inkymed
         _bodySystem = _entityManager.System<BodySystem>();
+        _brainSystem = _entityManager.System<BrainSystem>();
         _heartRateSystem = _entityManager.System<HeartRateSystem>();
         _part = _entityManager.System<CommonBodyPartSystem>();
         // /inkymed
@@ -304,6 +306,7 @@ public sealed partial class HealthAnalyzerControl
         }
         // inkymed
         PopulateHeartConditions(originalTarget, identity);
+        PopulateAirSaturationConditions(originalTarget);
         // /inkymed
     }
 

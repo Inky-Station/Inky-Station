@@ -5,3 +5,10 @@
   components:
   - type: DrowsinessStatusEffect
     timeBetweenIncidents: null
+
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: StatusEffectOxygenDeprived # different from Opiated because it mixes badly
+  components:
+  - type: DrowsinessStatusEffect
+    timeBetweenIncidents: null
