@@ -58,7 +58,10 @@ public abstract partial class SharedKnowledgeSystem : CommonKnowledgeSystem
         Components =
         [
             "LanguageKnowledge",
-            "MartialArtsKnowledge"
+            "MartialArtsKnowledge",
+            // inky
+            "FlipDoStatusEffect" // KILL ME
+            // /inky
         ]
     };
 

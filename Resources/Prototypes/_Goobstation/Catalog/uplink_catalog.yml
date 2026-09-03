@@ -1124,21 +1124,22 @@
   categories:
   - UplinkWeaponry
 
-- type: listing
-  id: UplinkMysteriousScroll
-  name: uplink-sleeping-carp-name
-  description: uplink-sleeping-carp-desc
-  productEntity: SleepingCarpScroll
-  cost:
-    Telecrystal: 65 # inky
-  #discountCategory: null # inky
-  categories:
-  - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+# inky edit
+#- type: listing
+#  id: UplinkMysteriousScroll
+#  name: uplink-sleeping-carp-name
+#  description: uplink-sleeping-carp-desc
+#  productEntity: SleepingCarpScroll
+#  cost:
+#    Telecrystal: 65 # inky
+#  #discountCategory: null # inky
+#  categories:
+#  - UplinkWeaponry
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    blacklist:
+#      tags:
+#      - NukeOpsUplink
 
 # Explosives
 

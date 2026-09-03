@@ -24,7 +24,7 @@
   - !type:IfElse
     condition: !type:CheckCounterStatusEffectCondition
       status: EmoteVomitCounterStatusEffect
-      max: 5
+      max: 10 # inky legit end your existenc4e
     trueEffects:
     - !type:RaiseNetworkEvents
       events:
