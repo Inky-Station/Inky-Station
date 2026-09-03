@@ -1,0 +1,14 @@
+- type: listing
+  id: UplinkFlipOff
+  name: uplink-flip-name
+  description: uplink-flip-desc
+  productEntity: FlipOffManual
+  cost:
+    Telecrystal: 50
+  categories:
+  - UplinkDisruption
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink

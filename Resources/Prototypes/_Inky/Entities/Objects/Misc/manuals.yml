@@ -1,0 +1,30 @@
+- type: entity
+  parent: BaseKnowledge
+  id: MartialArtFlipOff # technically not but
+  components:
+  - type: FlipDoStatusEffect
+  - type: Knowledge
+    category: MeleeCombat
+    experienceCost: 70
+    color: "#c65656"
+    costs: null
+
+- type: entity
+  parent: [BaseItem, BaseSyndicateContraband, BaseBookSounds]
+  id: FlipOffManual
+  name: how to flip off
+  description: A small and handy manual, containing the evil scriptures of how to flip off anything, even as fast as a bullet.
+  components:
+  - type: Sprite
+    sprite: _Inky/Objects/Misc/manuals.rsi
+    layers:
+    - state: icon
+  - type: Item
+    size: Small
+  - type: StaticPrice
+    price: 6500
+  - type: UseRequiresSight
+  - type: KnowledgeGrantOnUse
+    skills:
+      MartialArtFlipOff: 10
+    doAfter: 2

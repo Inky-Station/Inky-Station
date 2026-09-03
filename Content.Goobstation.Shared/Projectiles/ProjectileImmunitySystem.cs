@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Inky.Common.Misc; // inky
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Map;
@@ -64,6 +65,10 @@ public sealed partial class ProjectileImmunitySystem : EntitySystem
 
         if (!ent.Comp.DodgedEntities.Add(projectile))
             return;
+
+        // inky
+        RaiseLocalEvent(ent.Owner, new ProjectileParriedEvent());
+        // /inky
 
         PredictedSpawnAtPosition(effect, new EntityCoordinates(ent, Vector2.Zero));
     }
