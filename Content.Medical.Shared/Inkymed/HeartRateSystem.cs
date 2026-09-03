@@ -1,6 +1,7 @@
 using Content.Inky.Common.Medical;
 using Content.Medical.Shared.Body;
 using Content.Shared.Alert;
+using Content.Shared.Bed.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -92,6 +93,12 @@ public sealed partial class HeartRateSystem : EntitySystem // todo godmode bypas
     // goida idk
     private void OnFindHeart(Entity<BodyComponent> ent, ref FindWorkingHeartEvent args)
     {
+        if (HasComp<StasisBedBuckledComponent>(ent))
+        {
+            args.DoEffects = false;
+            return;
+        }
+
         var hearts = _body.GetOrgans<HeartComponent>(ent.AsType());
         foreach (var heart in hearts)
             if (GetState(heart.Comp) != HeartState.Stopped)

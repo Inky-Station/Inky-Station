@@ -113,7 +113,7 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
                 {
                     var fwhev = new FindWorkingHeartEvent();
                     RaiseLocalEvent(uid, ref fwhev);
-                    if (!fwhev.Found)
+                    if (!fwhev.Found && fwhev.DoEffects)
                         bloodPercentage = 0f;
                 }
                 // /inky
