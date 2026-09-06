@@ -20,3 +20,6 @@ uplink-super-surplus-bundle-desc = Contains 625 telecrystals worth of completely
 
 uplink-syndicate-segway-crate-name = Syndicate Segway
 uplink-syndicate-segway-crate-desc = Be an enemy of the corporation, in style!
+
+uplink-TelecrystalMiner-name = Telecrystal Miner Flatpack
+uplink-TelecrystalMiner-desc = A risky investment for 100 TC's , Consumes 18 Kw and is very loud. Multitool not included.
