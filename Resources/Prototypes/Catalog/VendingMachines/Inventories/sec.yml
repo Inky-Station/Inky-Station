@@ -23,19 +23,19 @@
     # <Trauma>
     BolaEnergy: 5 # was SecurityBola: 6
     PepperSpray: 3
-    SkillChipShield: 2
-    SkillChipBludgeon: 2
-    SkillChipShortBlade: 2
-    SkillChipPolearm: 2
-    SkillChipNonLethal: 2
-    SkillChipPistol: 2
-    SkillChipRifle: 2
-    SkillChipShotgun: 2
-    SkillChipLaser: 2
-    SkillChipMarksmanship: 2
-    SkillChipLongBlade: 2
-    SkillChipUnarmed: 2
-    SkillChipThrowing: 2
+#    SkillChipShield: 2
+#    SkillChipBludgeon: 2
+#    SkillChipShortBlade: 2
+#    SkillChipPolearm: 2
+#    SkillChipNonLethal: 2
+#    SkillChipPistol: 2
+#    SkillChipRifle: 2
+#    SkillChipShotgun: 2
+#    SkillChipLaser: 2
+#    SkillChipMarksmanship: 2
+#    SkillChipLongBlade: 2
+#    SkillChipUnarmed: 2
+#    SkillChipThrowing: 2
     SecHypo: 2
     CartridgeEpinephrine: 2
     CartridgeSaline: 2
