@@ -2,6 +2,7 @@
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
+<!-- inky edit - added TargetingDollPanel everywhere cuz KsBaronUiSheetlet -->
 <widgets:TargetingControl
     xmlns="https://spacestation14.io"
     xmlns:widgets="using:Content.Medical.Client.UserInterface.Systems.Targeting.Widgets"
@@ -15,11 +16,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             Stretch="KeepAspectCentered"
             SetSize="96 96">
             <PanelContainer
+                StyleClasses="TargetingDollPanel"
                 SetSize="57 96"
                 Margin="18 0 0 0"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left">
                 <PanelContainer
+                    StyleClasses="TargetingDollPanel"
                     SetSize="18 39"
                     Margin="0 7 0 0"
                     HorizontalAlignment="Left">
@@ -50,6 +53,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                     <!-- </TextureButton> -->
                 </PanelContainer>
                 <PanelContainer
+                    StyleClasses="TargetingDollPanel"
                     SetSize="51 90"
                     Margin="0 64 0 0"
                     VerticalAlignment="Bottom"
@@ -108,6 +112,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                             HorizontalAlignment="Center"/>
                     </TextureButton>
                     <PanelContainer
+                        StyleClasses="TargetingDollPanel"
                         MinSize="45 42"
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Center">
@@ -125,6 +130,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                         <!--         HorizontalAlignment="Center"/> -->
                         <!-- </TextureButton> -->
                         <PanelContainer
+                            StyleClasses="TargetingDollPanel"
                             MinSize="24 36"
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Right">
@@ -156,6 +162,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                             <!-- </TextureButton> -->
                         </PanelContainer>
                         <PanelContainer
+                            StyleClasses="TargetingDollPanel"
                             MinSize="24 36"
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Left">
@@ -190,6 +197,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                     </PanelContainer>
                 </PanelContainer>
                 <PanelContainer
+                    StyleClasses="TargetingDollPanel"
                     SetSize="18 39"
                     Margin="0 7 0 0"
                     HorizontalAlignment="Right">
