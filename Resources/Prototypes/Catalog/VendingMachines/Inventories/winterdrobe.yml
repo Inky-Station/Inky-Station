@@ -39,6 +39,10 @@
     ClothingNeckScarfStripedCentcom: 3 # Goobstation
     ClothingOuterCoatSpaceAsshole: 1 # Goobstation
     ClothingOuterWinterCosmic: 1 # Goobstation
+    # inky
+    ClothingOuterCoatTransparentBlazer: 1
+    ClothingHeadHatUshankaTransparent: 1
+    # /inky
   # <Trauma>
   emaggedInventory:
     ClothingOuterCoatJacketBiker: 1
