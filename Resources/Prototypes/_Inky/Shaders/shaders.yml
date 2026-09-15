@@ -1,0 +1,8 @@
+- type: shader
+  id: InkyCheckers
+  kind: source
+  path: "/Textures/_Inky/Shaders/checkers.swsl"
+  params:
+    size: 8.0
+    color1: "#BFBFBF"
+    color2: "#8C8C8C"

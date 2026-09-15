@@ -1,0 +1,7 @@
+- type: entity
+  parent: ClothingHeadHatUshanka
+  id: ClothingHeadHatUshankaTransparent
+  name: transparent ushanka
+  description: God bless ouг тeсноlоgies дnd ouг тiмe.
+  components:
+  - type: InkyTransparent

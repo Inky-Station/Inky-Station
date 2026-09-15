@@ -1,0 +1,17 @@
+// Adapted from https://godotshaders.com/shader/simple-checkerboard/
+// Credit to leonharlov.
+
+light_mode unshaded;
+
+uniform highp float size;
+uniform lowp vec4 color1;
+uniform lowp vec4 color2;
+
+void fragment() {
+    highp vec2 pos = floor(FRAGCOORD.xy / size);
+    highp float patternMask = mod(pos.x + mod(pos.y, 2.0), 2.0);
+    lowp vec4 checker = mix(color1, color2, patternMask);
+
+    checker.a *= zTexture(UV).a;
+    COLOR = checker;
+}
