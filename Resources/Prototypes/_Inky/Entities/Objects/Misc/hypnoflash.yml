@@ -3,10 +3,10 @@
   id: HypnoflashSyndicate
   name: hypnoflash
   suffix: syndicate, 1 charge
-  description: A special flash, manufactured by the Brainwashing dot co, capable of erasing temporal memory of anyone it flashes, rendering the first words heard echo through the mind of the flashed.
+  description: A special flash, manufactured by Interdyne, capable of erasing temporal memory of anyone it flashes, rendering the first words heard echo through the mind of the flashed.
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Specific/Antag/hypnoflash.rsi
+    sprite: _Inky/Objects/Antag/hypnoflash.rsi
     layers:
     - state: icon-off
       map: [ "enum.FlashVisualLayers.BaseLayer" ]
@@ -61,7 +61,8 @@
       types:
         Blunt: 12
   - type: Sprite
-    sprite: _Goobstation/Objects/Specific/Antag/briefcase.rsi
+    sprite: _Inky/Objects/Antag/briefcase.rsi
+    state: icon
   - type: GenericVisualizer
     visuals:
       enum.StorageVisuals.Open:
@@ -73,7 +74,7 @@
     storedRotation: -90
     shape:
     - 0,0,1,3
-    sprite: _Goobstation/Objects/Specific/Antag/briefcase.rsi
+    sprite: _Inky/Objects/Antag/briefcase.rsi
   - type: Appearance
 
 - type: entity
@@ -111,7 +112,7 @@
     icon:
       sprite: Mobs/Species/Human/organs.rsi
       state: brain
-    issuer: objective-issuer-hypnotized
+    issuer: Unknown
     difficulty: 1
   - type: HypnotizedCondition
 

@@ -32,9 +32,9 @@ public sealed partial class HypnoflashSystem : EntitySystem
 
     private void OnUseInHand(Entity<HypnoflashComponent> ent, ref UseInHandEvent args)
     {
-        if (args.Handled || ent.Comp.EndTime != null)
-            return;
-        if (TryComp<LimitedChargesComponent>(ent, out var charges)
+        if (args.Handled
+            || ent.Comp.EndTime != null
+            || TryComp<LimitedChargesComponent>(ent, out var charges)
             && _sharedCharges.IsEmpty((ent, charges)))
             return;
 
@@ -86,10 +86,8 @@ public sealed partial class HypnoflashSystem : EntitySystem
 
                 foreach (var gamer in _players)
                 {
-                    if (comp.Blacklist != null && _whitelist.IsValid(comp.Blacklist, gamer))
-                        continue;
-
-                    if (comp.Whitelist != null && !_whitelist.IsValid(comp.Whitelist, gamer))
+                    if (comp.Blacklist != null && _whitelist.IsValid(comp.Blacklist, gamer)
+                        || comp.Whitelist != null && !_whitelist.IsValid(comp.Whitelist, gamer))
                         continue;
 
                     if (comp.CheckEyeProt)

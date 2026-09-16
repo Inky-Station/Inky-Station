@@ -1,19 +1,26 @@
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Objectives.Components;
+using Content.Shared.Objectives.Systems;
 using Content.Shared.Roles;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Inky.Shared.Hypnoflash;
 
 public sealed partial class HypnotizedSystem : EntitySystem
 {
+    private static readonly EntProtoId MutedEffect = "StatusEffectMuted";
+
     [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private SharedObjectivesSystem _objectives = default!;
     [Dependency] private SharedRoleSystem _role = default!;
     [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
     [Dependency] private SharedStunSystem _stunSystem = default!;
     [Dependency] private IGameTiming _timing = default!;
 
@@ -30,14 +37,14 @@ public sealed partial class HypnotizedSystem : EntitySystem
 
     private void OnInit(Entity<HypnotizedComponent> ent, ref ComponentInit args)
     {
-        EnsureComp<MutedComponent>(ent); // so you dont hypnotize yourself by mistake
+        _statusEffects.TrySetStatusEffectDuration(ent, MutedEffect); // so you dont hypnotize yourself by mistake
         EnsureComp<ActiveListenerComponent>(ent);
 
         ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
         _stunSystem.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(4));
     }
 
-    public override void Update(float frameTime) // so you dont stay muted forever idkExpand commentComment on lines R40 to R42Resolved
+    public override void Update(float frameTime) // so you dont stay muted forever idk
     {
         base.Update(frameTime);
 
@@ -62,7 +69,7 @@ public sealed partial class HypnotizedSystem : EntitySystem
         _meta.SetEntityDescription(objectiveId, message);
         _mind.AddObjective(mindId, mind, objectiveId);
 
-        RemCompDeferred<MutedComponent>(ent); // when the mimes talk...
+        _statusEffects.TryRemoveStatusEffect(ent, MutedEffect); // when the mimes talk...
         RemCompDeferred<HypnotizedComponent>(ent);
         RemCompDeferred<ActiveListenerComponent>(ent);
         _stunSystem.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(4));
@@ -71,17 +78,16 @@ public sealed partial class HypnotizedSystem : EntitySystem
     private void OnShutdown(Entity<HypnotizedComponent> ent, ref ComponentShutdown args)
     {
         RemCompDeferred<ActiveListenerComponent>(ent);
-        RemCompDeferred<MutedComponent>(ent);
+        _statusEffects.TryRemoveStatusEffect(ent, MutedEffect);
     }
 
     private void OnGetProgress(EntityUid uid, HypnotizedConditionComponent comp, ref ObjectiveGetProgressEvent args)
-    {
-        args.Progress = 0f; // "Objective X(xx/nxx) of john goida (xx/nxx) didnt set a progress value!" error my assExpand commentComment on line R80Resolved
-    }
+        => args.Progress = 0f; // "Objective X(xx/nxx) of john goida (xx/nxx) didnt set a progress value!" error my ass
+
     private void OnHypnotized(Entity<MindContainerComponent> ent, ref HypnoflashedEvent args)
     {
         EnsureComp<HypnotizedComponent>(ent.Owner);
         if (_mind.TryGetMind(ent.Owner, out var mindId, out var mind))
-            _role.MindAddRole(mindId, "MindRoleHypnotized"); // free agent status, but still must follow his objectives right? change to familiar if shitters be shittersExpand commentComment on line R86Resolved
+            _role.MindAddRole(mindId, "MindRoleHypnotized"); // free agent status, but still must follow his objectives right? change to familiar if shitters be shitters
     }
 }

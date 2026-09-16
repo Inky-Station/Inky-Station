@@ -6,7 +6,7 @@ hypnoflash-latch = The device latches into your hand!
 paper-text-hypnoflash-info = SPESSMAN ARE YOU....
     Feeling restless? Curious?
     Let me tell you about Hypnoflash...
-    Made by BRAINWASHING.CO, powered by the secret force of SYNDICATE.
+    Made by INTERDYNE, powered by the secret force of SYNDICATE.
     It’s more than just a flash -
     It’s a gateway to your mind.
     Close your eyes, listen...
@@ -31,10 +31,10 @@ paper-text-hypnoflash-info = SPESSMAN ARE YOU....
     After the flash, you have 10 seconds to speak the designated objective, that will be encoded into the affected targets brain.
     Chosen objective should be spoken in one sentence in the 10 seconds after the flash was activated. Failure to do so will result in the product malfunction.
 
-    FLASH IS SINGLE USE, UNLESS STATED OTHERWISE BY THE BRAINWASHING.CO IN THE PACKAGING OF SAID DEVICE. BRAINWASHING.CO IS NOT RESPONSIBLE FOR ANY DAMAGES THIS MAY CAUSE OR MAY NOT CAUSE AFTER THE FLASH IS USED.
+    FLASH IS SINGLE USE, UNLESS STATED OTHERWISE BY THE INTERDYNE INC IN THE PACKAGING OF SAID DEVICE. INTERDYNE IS NOT RESPONSIBLE FOR ANY DAMAGES THIS MAY CAUSE OR MAY NOT CAUSE AFTER THE FLASH IS USED.
 
 hypnotized-victim-role-name-freeagent = Hypnotized (free agent)
 
 
 uplink-hypnoflash-name = Hypnoflash bundle
-uplink-hypnoflash-desc = The pinnacle of neuroengineering machine of brainwashing.co. Contains a briefcase with a hypnoflash, a single use device that will hypnotize everyone in its activation radius upon activation. Hypnotized people will follow the first sentence they hear after being flashed.
+uplink-hypnoflash-desc = The Pinnacle of Interdyne's Neuroengineering teams". Contains a briefcase with a hypnoflash, a single use device that will hypnotize everyone in its activation radius upon activation. Hypnotized people will follow the first sentence they hear after being flashed.
