@@ -38,3 +38,4 @@ hypnotized-victim-role-name-freeagent = Hypnotized (free agent)
 
 uplink-hypnoflash-name = Hypnoflash bundle
 uplink-hypnoflash-desc = The Pinnacle of Interdyne's Neuroengineering teams". Contains a briefcase with a hypnoflash, a single use device that will hypnotize everyone in its activation radius upon activation. Hypnotized people will follow the first sentence they hear after being flashed.
+roles-antag-hypnotized = hypnotized

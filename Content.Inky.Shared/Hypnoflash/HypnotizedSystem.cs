@@ -17,7 +17,6 @@ public sealed partial class HypnotizedSystem : EntitySystem
     private static readonly EntProtoId MutedEffect = "StatusEffectMuted";
 
     [Dependency] private SharedMindSystem _mind = default!;
-    [Dependency] private SharedObjectivesSystem _objectives = default!;
     [Dependency] private SharedRoleSystem _role = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private StatusEffectsSystem _statusEffects = default!;
