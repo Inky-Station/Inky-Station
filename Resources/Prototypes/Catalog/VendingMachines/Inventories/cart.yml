@@ -55,17 +55,17 @@
     ClothingHeadsetService: 2
     ClothingHeadsetCargo: 2
     ClothingHeadsetMedical: 2
-    SkillChipEducation: 10
-    SkillChipCombatEducation: 5
-    SkillChipEchelonEducation: 1
-    SkillChipDatabase: 5
-    SkillChipLibrarian: 2
-    SkillChipDoctor: 2
-    SkillChipChef: 2
-    SkillChipClown: 2
-    SkillChipJanitor: 2
-    SkillChipSurgeon: 2
-    SkillChipChemist: 2
+#    SkillChipEducation: 10 # enkee
+#    SkillChipCombatEducation: 5
+#    SkillChipEchelonEducation: 1
+#    SkillChipDatabase: 5
+#    SkillChipLibrarian: 2
+#    SkillChipDoctor: 2
+#    SkillChipChef: 2
+#    SkillChipClown: 2
+#    SkillChipJanitor: 2
+#    SkillChipSurgeon: 2
+#    SkillChipChemist: 2
     # </Trauma>
   contrabandInventory:
     BalloonNT: 2
