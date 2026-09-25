@@ -12,14 +12,9 @@ namespace Content.Inky.Shared.Werewolf.Systems;
 public sealed partial class SharedWerewolfAbilitiesSystem
 {
     private readonly TimeSpan _markNotificationInterval = TimeSpan.FromSeconds(15); // in seconds todo werewolf unhardcode?
-    public void InitializeWhite()
-    {
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, TransfurmWhiteEvent>(TryTransfurmWhite);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfPositionQueryEvent>(OnPosQuery);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfAddCollectivemindEvent>(OnCollectiveMindBuy);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfRevelationEvent>(OnRevelation);
-    }
+    public void InitializeWhite() { }
 
+    [SubscribeLocalEvent]
     private void TryTransfurmWhite(EntityUid uid, WerewolfAbilitiesComponent comp, TransfurmWhiteEvent args)
     {
         if (!_mind.TryGetMind(uid, out var mindId, out _)
@@ -50,6 +45,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnPosQuery(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfPositionQueryEvent args)
     {
         var pos = Transform(uid).MapPosition;
@@ -186,6 +182,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnCollectiveMindBuy(EntityUid uid,
         WerewolfAbilitiesComponent comp,
         WerewolfAddCollectivemindEvent args)
@@ -196,6 +193,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
             _popup.PopupEntity(Loc.GetString(args.Popup), uid, uid, PopupType.Medium);
     }
 
+    [SubscribeLocalEvent]
     private void OnRevelation(EntityUid uid,
         WerewolfAbilitiesComponent comp,
         WerewolfRevelationEvent args)

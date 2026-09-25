@@ -17,14 +17,14 @@ public sealed partial class InkyAdminVerbSystem
 {
     [Dependency] private AntagSelectionSystem _antag = default!;
 
-    private void OnGetAntagVerbs(ref GetAntagVerbsEvent args)
+    private void AddAdminVerbs(GetVerbsEvent<Verb> args)
     {
         if (!HasComp<MindContainerComponent>(args.Target) || !TryComp<ActorComponent>(args.Target, out var targetActor))
             return;
 
         var targetPlayer = targetActor.PlayerSession;
 
-        args.Verbs.Verbs.Add(new()
+        args.Verbs.Add(new()
         {
             Text = Loc.GetString("admin-verb-text-make-werewolf"),
             Category = VerbCategory.Antag,

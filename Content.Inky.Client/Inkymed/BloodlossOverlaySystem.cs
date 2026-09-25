@@ -24,10 +24,10 @@ public sealed partial class BloodlossOverlaySystem : EntitySystem
         _overlay.Intensity = 0f;
         _overlayMan.AddOverlay(_overlay);
 
-        SubscribeLocalEvent<BloodstreamComponent, UpdateBloodstreamOverlayEvent>(OnUpdate);
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(args => Refresh(args.Entity));
     }
 
+    [SubscribeLocalEvent]
     private void OnUpdate(Entity<BloodstreamComponent> ent, ref UpdateBloodstreamOverlayEvent args)
     {
         if (ent.Owner == _playerMan.LocalEntity)

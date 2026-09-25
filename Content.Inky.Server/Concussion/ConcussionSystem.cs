@@ -36,24 +36,8 @@ public sealed partial class ConcussionSystem : SharedConcussionSystem
 
     private ProtoId<AlertPrototype> _alert = "Concussion";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ConcussionThresholdComponent, BeforeExplodeEvent>(OnBeforeExplode);
-        SubscribeLocalEvent<ConcussionThresholdComponent, ConcussionStateChangedEvent>(OnConcussion);
-        SubscribeLocalEvent<ConcussionThresholdComponent, MapInitEvent>(OnMapInit);
-
-        SubscribeLocalEvent<ConcussionThresholdComponent, RejuvenateEvent>(OnRejuvenate);
-        SubscribeLocalEvent<ConcussionThresholdComponent, MindRemovedMessage>(OnMindRemoved);
-        SubscribeLocalEvent<ConcussionThresholdComponent, GhostAttemptHandleEvent>(OnGhostAttempt);
-        SubscribeLocalEvent<ConcussionThresholdComponent, GetFlashbangedEvent>(OnFlashbanged);
-        SubscribeLocalEvent<ConcussionThresholdComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
-
-        SubscribeLocalEvent<ConcussedComponent, ComponentInit>(OnConcussed);
-        SubscribeLocalEvent<ConcussedComponent, ComponentShutdown>(OnDeConcussed);
-    }
     #region logic
+    [SubscribeLocalEvent]
     private void OnMapInit(EntityUid uid, ConcussionThresholdComponent comp, MapInitEvent args)
         => comp.NextUpdate = _timing.CurTime + comp.UpdateInterval;
 
@@ -81,6 +65,7 @@ public sealed partial class ConcussionSystem : SharedConcussionSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnConcussion(EntityUid uid, ConcussionThresholdComponent comp, ConcussionStateChangedEvent args)
     {
         _movement.RefreshMovementSpeedModifiers(uid);
@@ -100,6 +85,7 @@ public sealed partial class ConcussionSystem : SharedConcussionSystem
             _theTowerOfBabel.UpdateEntityLanguages((uid, speaker));
     }
 
+    [SubscribeLocalEvent]
     private void OnBeforeExplode(EntityUid uid, ConcussionThresholdComponent comp, ref BeforeExplodeEvent args)
     {
         if (HasComp<GodmodeComponent>(uid)) // no concussion shite for admins or whatever
@@ -110,15 +96,19 @@ public sealed partial class ConcussionSystem : SharedConcussionSystem
         AddConcussionDamage(uid, comp, concussionDmg); // also the x10 damage multiplier makes any explosion damage absolutely rape anyone
     }
     #endregion
+    [SubscribeLocalEvent]
     private void OnRejuvenate(EntityUid uid, ConcussionThresholdComponent comp, RejuvenateEvent ev)
         => comp.StoredDamage = FixedPoint2.New(1); // to update the overlay
 
+    [SubscribeLocalEvent]
     private void OnMindRemoved(EntityUid uid, ConcussionThresholdComponent comp, MindRemovedMessage ev)
         => comp.StoredDamage = FixedPoint2.New(1);
 
+    [SubscribeLocalEvent]
     private void OnGhostAttempt(EntityUid uid, ConcussionThresholdComponent comp, GhostAttemptHandleEvent ev)
         => comp.StoredDamage = FixedPoint2.New(1);
 
+    [SubscribeLocalEvent]
     private void OnFlashbanged(Entity<ConcussionThresholdComponent> ent, ref GetFlashbangedEvent args)
     {
         if (args.ConcussionDamage <= 0f)
@@ -127,6 +117,7 @@ public sealed partial class ConcussionSystem : SharedConcussionSystem
         AddConcussionDamage(ent.Owner, ent.Comp, args.ConcussionDamage);
     }
 
+    [SubscribeLocalEvent]
     private void OnRefreshSpeed(EntityUid uid, ConcussionThresholdComponent comp, RefreshMovementSpeedModifiersEvent args)
     {
         if (!TryComp<ConcussionThresholdComponent>(uid, out var threshold))
@@ -138,9 +129,11 @@ public sealed partial class ConcussionSystem : SharedConcussionSystem
         args.ModifySpeed(speed, speed);
     }
 
+    [SubscribeLocalEvent]
     private void OnConcussed(EntityUid uid, ConcussedComponent comp, ComponentInit args)
         => _alertsSystem.ShowAlert(uid, _alert);
 
+    [SubscribeLocalEvent]
     private void OnDeConcussed(EntityUid uid, ConcussedComponent comp, ComponentShutdown args)
         => _alertsSystem.ClearAlert(uid, _alert);
 }

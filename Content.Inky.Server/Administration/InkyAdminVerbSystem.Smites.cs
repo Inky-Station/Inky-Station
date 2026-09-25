@@ -21,11 +21,9 @@ public sealed partial class InkyAdminVerbSystem
     [Dependency] private GoobAdminVerbSystem _goida = default!;
 
     /// <inheritdoc/>
-    public void InitializeSmites()
-    {
-        SubscribeLocalEvent<GetVerbsEvent<Verb>>(AddSmiteVerbs);
-    }
+    public void InitializeSmites() { }
 
+    [SubscribeLocalEvent]
     private void AddSmiteVerbs(GetVerbsEvent<Verb> args)
     {
         if (!_goida.SmitesAllowed(args))

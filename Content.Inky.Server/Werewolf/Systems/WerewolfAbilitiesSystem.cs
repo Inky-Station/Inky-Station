@@ -57,17 +57,12 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, TransfurmEvent>(TryTransfurm);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfChangeTypeEvent>(OnChangeType);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfOpenStoreEvent>(OnOpenStore);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, PolymorphedEvent>(OnPolymorphed);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfActionRemoveEvent>(OnActionRemove);
-
         InitializeWerewolfSide();
         InitializeBlack();
     }
 
-    # region basic handlers
+    #region basic handlers
+    [SubscribeLocalEvent]
     private void TryTransfurm(EntityUid uid,
         WerewolfAbilitiesComponent component,
         TransfurmEvent args)
@@ -107,6 +102,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
             EnsureComp<WerewolfAbilitiesComponent>(furry).Transfurmed = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnPolymorphed(EntityUid uid, WerewolfAbilitiesComponent comp, PolymorphedEvent args)
     {
         if (!comp.Transfurmed)
@@ -125,6 +121,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         RaiseLocalEvent(ev); // this is a very lazy solution but hey it works
     }
 
+    [SubscribeLocalEvent]
     private void OnOpenStore(Entity<WerewolfAbilitiesComponent> ent, ref WerewolfOpenStoreEvent args)
     {
         if (ent.Comp.Transfurmed)
@@ -150,6 +147,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         ent.Comp.StoreOpened = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnChangeType(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfChangeTypeEvent args)
     {
         comp.CurrentMutation = args.WerewolfType;
@@ -163,6 +161,7 @@ public sealed partial class WerewolfAbilitiesSystem : EntitySystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnActionRemove(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfActionRemoveEvent args)
     {
         _actionContainer.RemoveAction(args.ActionEnt);

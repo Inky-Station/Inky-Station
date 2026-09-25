@@ -23,9 +23,6 @@ public sealed partial class LeviathanMusicSystem : EntitySystem // i tried to us
     {
         base.Initialize();
 
-        SubscribeNetworkEvent<LeviathanMusicStartEvent>(OnStart);
-        SubscribeNetworkEvent<LeviathanMusicStopEvent>(OnStop);
-
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(_ => StopMusic());
         SubscribeLocalEvent<RoundEndMessageEvent>(_ => StopMusic());
         // SubscribeLocalEvent<ActorComponent, MobStateChangedEvent>(OnPlayerDeath);
@@ -38,6 +35,7 @@ public sealed partial class LeviathanMusicSystem : EntitySystem // i tried to us
         StopMusic();
     }
 
+    [SubscribeNetworkEvent]
     private void OnStart(LeviathanMusicStartEvent _)
     {
         if (_stream != null)
@@ -55,6 +53,7 @@ public sealed partial class LeviathanMusicSystem : EntitySystem // i tried to us
             _stream = (stream.Value.Entity, stream.Value.Component);
     }
 
+    [SubscribeNetworkEvent]
     private void OnStop(LeviathanMusicStopEvent _)
         => StopMusic();
 

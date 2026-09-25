@@ -37,14 +37,7 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
 
     public readonly ProtoId<EntityEffectPrototype> WerewolfSkills = "WerewolfSkills";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<WerewolfRuleComponent, AfterAntagEntitySelectedEvent>(OnSelectAntag);
-        SubscribeLocalEvent<WerewolfInfectionFinishedEvent>(OnInfectionFinished); // goida
-    }
-
+    [SubscribeLocalEvent]
     private void OnSelectAntag(EntityUid uid, WerewolfRuleComponent comp, ref AfterAntagEntitySelectedEvent args)
     {
         MakeWerewolf(args.EntityUid, comp);
@@ -106,6 +99,7 @@ public sealed partial class WerewolfRuleSystem : GameRuleSystem<WerewolfRuleComp
         return true;
     }
 
+    [SubscribeLocalEvent]
     private void OnInfectionFinished(ref WerewolfInfectionFinishedEvent ev)
     {
         var query = QueryActiveRules();

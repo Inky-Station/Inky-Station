@@ -17,13 +17,7 @@ public sealed partial class FunSkeletonGibSystem : GameRuleSystem<FunSkeletonGib
     [Dependency] private MindSystem _mind = default!;
     private readonly SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Goobstation/Voice/badtothebone.ogg");
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<HumanoidProfileComponent, BeingGibbedEvent>(OnGibbed);
-    }
-
+    [SubscribeLocalEvent]
     private void OnGibbed(EntityUid uid, HumanoidProfileComponent comp, ref BeingGibbedEvent args)
     {
         if (!_fun.CheckRule<FunSkeletonGibRuleComponent>())
