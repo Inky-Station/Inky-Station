@@ -12,11 +12,7 @@ public sealed partial class FunnyThingsSystem : EntitySystem
     [Dependency] private IRobustRandom _gambling = default!;
     [Dependency] private GameTicker _gameTicker = default!;
 
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<RoundStartAttemptEvent>(OnRoundStartAttempt);
-    }
-
+    [SubscribeLocalEvent]
     private void OnRoundStartAttempt(RoundStartAttemptEvent ev)
     {
         if (ev.Forced) // integration tests force round starts

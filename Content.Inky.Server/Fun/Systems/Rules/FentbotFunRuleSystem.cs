@@ -8,12 +8,8 @@ namespace Content.Inky.Server.Fun.Systems.Rules;
 public sealed partial class FentbotFunRuleSystem : GameRuleSystem<FentbotFunRuleComponent>
 {
     [Dependency] private FunnyThingsSystem _fun = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
 
-        SubscribeLocalEvent<MedibotComponent, ComponentInit>(OnInit);
-    }
+    [SubscribeLocalEvent]
     private void OnInit(EntityUid uid, MedibotComponent comp, ComponentInit args)
     {
         if (!_fun.CheckRule<FentbotFunRuleComponent>())

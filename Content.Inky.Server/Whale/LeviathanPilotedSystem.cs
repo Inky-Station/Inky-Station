@@ -21,15 +21,7 @@ public sealed partial class LeviathanControlSystem : EntitySystem // half of it 
     private const float TurnSpeed = 1.8f;
     private const float ForwardSpeed = 30f;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<GrapplingProjectileComponent, GrappleEmbedCompletedEvent>(OnGrapple);
-        SubscribeLocalEvent<LeviathanHookComponent, EntityTerminatingEvent>(OnHookGone);
-        SubscribeLocalEvent<LeviathanPilotedComponent, ComponentShutdown>(OnPilotedShutdown);
-    }
-
+    [SubscribeLocalEvent]
     private void OnGrapple(Entity<GrapplingProjectileComponent> hook, ref GrappleEmbedCompletedEvent args)
     {
         if (!args.Shooter.HasValue)
@@ -48,9 +40,11 @@ public sealed partial class LeviathanControlSystem : EntitySystem // half of it 
         StartControl(args.Embedded, args.Shooter.Value, hook);
     }
 
+    [SubscribeLocalEvent]
     private void OnHookGone(Entity<LeviathanHookComponent> hook, ref EntityTerminatingEvent args)
         => EndControl(hook.Comp.Leviathan, hook.Comp.Pilot);
 
+    [SubscribeLocalEvent]
     private void OnPilotedShutdown(Entity<LeviathanPilotedComponent> ent, ref ComponentShutdown args)
         => EndControl(ent.Owner, ent.Comp.Pilot);
 

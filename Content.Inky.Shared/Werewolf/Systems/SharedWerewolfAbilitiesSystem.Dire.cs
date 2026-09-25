@@ -10,12 +10,9 @@ namespace Content.Inky.Shared.Werewolf.Systems;
 
 public partial class SharedWerewolfAbilitiesSystem
 {
-    public void InitializeDire()
-    {
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBleedingBiteEvent>(TryBite);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBleedingBiteDoAfterEvent>(DoBite);
-    }
+    public void InitializeDire() { }
 
+    [SubscribeLocalEvent]
     private void TryBite(EntityUid uid, WerewolfAbilitiesComponent component, WerewolfBleedingBiteEvent args)
     {
         if (TryComp<MobStateComponent>(args.Target, out var mobState) && mobState.CurrentState == MobState.Dead) // to prevent wolves from biting corpses for heals and whatnot
@@ -39,6 +36,7 @@ public partial class SharedWerewolfAbilitiesSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void DoBite(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBleedingBiteDoAfterEvent args)
     {
         if (args.Cancelled || args.Target == null)

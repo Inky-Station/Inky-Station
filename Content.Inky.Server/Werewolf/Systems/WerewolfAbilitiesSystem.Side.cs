@@ -19,14 +19,9 @@ namespace Content.Inky.Server.Werewolf.Systems;
 /// </summary>
 public sealed partial class WerewolfAbilitiesSystem
 {
-    public void InitializeWerewolfSide()
-    {
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfDevourEvent>(TryDevour);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfDevourDoAfterEvent>(DoDevour);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfGutEvent>(TryGut);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfGutDoAfterEvent>(DoGut);
-    }
-    # region devour
+    public void InitializeWerewolfSide() { }
+    #region devour
+    [SubscribeLocalEvent]
     private void TryDevour(EntityUid uid, WerewolfAbilitiesComponent component, WerewolfDevourEvent args)
     {
         var target = args.Target;
@@ -65,6 +60,8 @@ public sealed partial class WerewolfAbilitiesSystem
     }
 
     public ProtoId<DamageGroupPrototype> DevourDamage = "Brute"; // bro
+
+    [SubscribeLocalEvent]
     private void DoDevour(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfDevourDoAfterEvent args)
     {
         if (args.Args.Target == null)
@@ -95,6 +92,7 @@ public sealed partial class WerewolfAbilitiesSystem
         _audio.PlayPvs(comp.RipSound, uid);
     }
 
+    [SubscribeLocalEvent]
     private void TryGut(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfGutEvent args)
     {
         var target = args.Target;
@@ -131,6 +129,7 @@ public sealed partial class WerewolfAbilitiesSystem
 
     #endregion
     #region helpers
+    [SubscribeLocalEvent]
     private void DoGut(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfGutDoAfterEvent args)
     {
         if (args.Args.Target == null)

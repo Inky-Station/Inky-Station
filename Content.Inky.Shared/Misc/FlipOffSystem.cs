@@ -20,12 +20,7 @@ public sealed partial class FlipOffSystem : EntitySystem
     private const string Sound = "/Audio/_Inky/Shitpost/boom.ogg";
     private const string John = "/Textures/_Inky/imnotgonnasugarcoatit.png";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<FlipDoStatusEffectComponent, ProjectileParriedEvent>(OnProjectileParried);
-    }
-
+    [SubscribeLocalEvent]
     private void OnProjectileParried(Entity<FlipDoStatusEffectComponent> ent, ref ProjectileParriedEvent args)
     {
         if (!_net.IsServer

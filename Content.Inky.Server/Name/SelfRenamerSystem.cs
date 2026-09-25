@@ -15,16 +15,16 @@ public sealed partial class SelfRenamerSystem : SharedSelfRenamerSystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SelfRenamerComponent, MapInitEvent>(OnInit);
-        SubscribeLocalEvent<SelfRenamerComponent, SelfRenamerActionEvent>(OnAction);
-
         Subs.BuiEvents<SelfRenamerComponent>(SelfRenamerUIKey.Key, subs => { subs.Event<SelfRenamerNameMessage>(OnNameMessage); });
     }
+
+    [SubscribeLocalEvent]
     private void OnInit(Entity<SelfRenamerComponent> ent, ref MapInitEvent args)
     {
         _actions.AddAction(ent, ref ent.Comp.ActionEntity, ent.Comp.ActionPrototype);
     }
 
+    [SubscribeLocalEvent]
     private void OnAction(Entity<SelfRenamerComponent> ent, ref SelfRenamerActionEvent args)
     {
         if (!TryComp<ActorComponent>(ent, out var actor))

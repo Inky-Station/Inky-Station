@@ -16,15 +16,9 @@ public sealed partial class SharedWerewolfAbilitiesSystem
 {
     private readonly ProtoId<PolymorphPrototype> _werewolfTransformBlack = "WerewolfTransformBlack";
 
-    public void InitializeBlack()
-    {
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBlackBiteEvent>(TryBite);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBlackBiteDoAfterEvent>(DoBite);
+    public void InitializeBlack() { }
 
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBequeathEvent>(OnBequeath);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, MobStateChangedEvent>(OnLeaderDied);
-    }
-
+    [SubscribeLocalEvent]
     private void TryBite(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBlackBiteEvent args)
     {
         if (TryComp<MobStateComponent>(args.Target, out var mobState) && mobState.CurrentState == MobState.Dead)
@@ -62,6 +56,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void DoBite(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBlackBiteDoAfterEvent args)
     {
         if (args.Cancelled
@@ -88,6 +83,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         _audio.PlayPvs(comp.RipSound, uid);
     }
 
+    [SubscribeLocalEvent]
     private void OnBequeath(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBequeathEvent args)
     {
         if (!_mind.TryGetMind(uid, out var leadMind, out _)
@@ -109,6 +105,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         RaiseLocalEvent(uid, new WerewolfActionRemoveEvent(args.Action)); // one time use FUCK THEM PROPER ECS INFRASTRUCTURE NO comp.OneTimeUse
     }
 
+    [SubscribeLocalEvent]
     private void OnLeaderDied(EntityUid uid, WerewolfAbilitiesComponent comp, MobStateChangedEvent args)
     {
         if (args.NewMobState != MobState.Dead)

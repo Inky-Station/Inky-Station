@@ -11,12 +11,9 @@ namespace Content.Inky.Server.Werewolf.Systems;
 public sealed partial class WerewolfAbilitiesSystem
 {
     /// <inheritdoc/>
-    public void InitializeBlack()
-    {
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBeckonEvent>(OnBeckon);
-        SubscribeLocalEvent<WerewolfAbilitiesComponent, WerewolfBlackCallEvent>(OnCall);
-    }
+    public void InitializeBlack() { }
 
+    [SubscribeLocalEvent]
     private void OnBeckon(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBeckonEvent args)
     {
         var locationName = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(uid));
@@ -31,6 +28,7 @@ public sealed partial class WerewolfAbilitiesSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnCall(EntityUid uid, WerewolfAbilitiesComponent comp, WerewolfBlackCallEvent args)
     {
         if (!_mind.TryGetMind(uid, out var leaderMind, out _)

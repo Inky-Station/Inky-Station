@@ -6,12 +6,8 @@ namespace Content.Inky.Shared.LimitedInstances;
 public sealed partial class LimitedInstancesSystem : EntitySystem
 {
     [Dependency] private INetManager _net = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<LimitedInstancesComponent, MapInitEvent>(OnInit);
-    }
 
+    [SubscribeLocalEvent]
     private void OnInit(Entity<LimitedInstancesComponent> ent, ref MapInitEvent args)
     {
         if (ent.Comp.ServerOnly && _net.IsClient)
