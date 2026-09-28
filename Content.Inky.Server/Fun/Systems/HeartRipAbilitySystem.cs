@@ -27,12 +27,7 @@ public sealed partial class HeartRipAbilitySystem : EntitySystem
     [Dependency] private SharedStunSystem _stunSystem = default!;
     [Dependency] private AudioSystem _audio = default!;
 
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<HumanoidProfileComponent, GetVerbsEvent<InnateVerb>>(OnGetVerbs);
-        SubscribeLocalEvent<HeartRipAbilityComponent, HeartRipDoAfterEvent>(OnDoAfter);
-    }
-
+    [SubscribeLocalEvent]
     private void OnGetVerbs(EntityUid uid, HumanoidProfileComponent comp, GetVerbsEvent<InnateVerb> args)
     {
         if (!TryComp<HeartRipAbilityComponent>(args.User, out var ability) || !HasComp<HumanoidProfileComponent>(args.Target))
@@ -65,6 +60,7 @@ public sealed partial class HeartRipAbilitySystem : EntitySystem
         });
     }
 
+    [SubscribeLocalEvent]
     private void OnDoAfter(EntityUid uid, HeartRipAbilityComponent comp, HeartRipDoAfterEvent args)
     {
         if (args.Cancelled

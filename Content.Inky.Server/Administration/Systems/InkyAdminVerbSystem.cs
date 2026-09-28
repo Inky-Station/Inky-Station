@@ -1,13 +1,13 @@
 using Content.Server.Administration.Systems;
+using Content.Shared.Verbs;
 
 namespace Content.Inky.Server.Administration.Systems;
 
 public sealed partial class InkyAdminVerbSystem : EntitySystem
 {
-    public override void Initialize()
+    [SubscribeLocalEvent]
+    private void GetVerbs(GetVerbsEvent<Verb> ev)
     {
-        base.Initialize();
-
-        SubscribeLocalEvent<GetAntagVerbsEvent>(OnGetAntagVerbs);
+        AddAdminVerbs(ev);
     }
 }

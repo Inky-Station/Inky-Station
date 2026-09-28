@@ -17,13 +17,7 @@ public sealed partial class FlipDoStatusEffectSystem : EntitySystem
     [Dependency] private StatusEffectsSystem _status = default!;
     [Dependency] private StandingStateSystem _lastManStanding = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<FlipDoStatusEffectComponent, EmoteEvent>(OnFlip);
-        SubscribeLocalEvent<FlipDoStatusEffectComponent, KnowledgeAddedEvent>(OnKnowledgeAdded);
-    }
-
+    [SubscribeLocalEvent]
     private void OnFlip(Entity<FlipDoStatusEffectComponent> ent, ref EmoteEvent args)
     {
         if (!TryComp<StandingStateComponent>(ent.Owner, out var standing)
@@ -41,6 +35,7 @@ public sealed partial class FlipDoStatusEffectSystem : EntitySystem
         _stamina.TakeStaminaDamage(ent.Owner, ent.Comp.StaminaCost, source: ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnKnowledgeAdded(Entity<FlipDoStatusEffectComponent> ent, ref KnowledgeAddedEvent args)
     {
         EnsureComp<FlipDoStatusEffectComponent>(args.Holder);

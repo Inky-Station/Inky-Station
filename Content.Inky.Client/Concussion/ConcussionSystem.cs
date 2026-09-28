@@ -24,11 +24,10 @@ public sealed partial class ConcussionSystem : SharedConcussionSystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<ConcussionThresholdComponent, AfterAutoHandleStateEvent>(OnStateHandled);
-
         Subs.CVar(_cfg, InkyCVars.ConcussionSound, x => _causeTinitus = x, true);
     }
 
+    [SubscribeLocalEvent]
     private void OnStateHandled(EntityUid uid, ConcussionThresholdComponent comp, ref AfterAutoHandleStateEvent args)
     {
         if (uid != _player.LocalEntity)

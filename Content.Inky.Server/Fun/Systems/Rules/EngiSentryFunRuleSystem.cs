@@ -10,14 +10,7 @@ public sealed partial class EngiSentryFunRuleSystem : GameRuleSystem<EngiSentryF
 {
     [Dependency] private FunnyThingsSystem _fun = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<SpawnOnDamageComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<SpawnOnDamageComponent, DamageChangedEvent>(OnDamaged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(EntityUid uid, SpawnOnDamageComponent comp, ComponentInit args)
     {
         if (!_fun.CheckRule<EngiSentryFunRuleComponent>())
@@ -25,6 +18,7 @@ public sealed partial class EngiSentryFunRuleSystem : GameRuleSystem<EngiSentryF
         comp.Active = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnDamaged(EntityUid uid, SpawnOnDamageComponent comp, DamageChangedEvent args)
     {
         if (!comp.Active

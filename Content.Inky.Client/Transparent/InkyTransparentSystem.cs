@@ -14,30 +14,25 @@ public sealed partial class InkyTransparentSystem : EntitySystem
     [Dependency] private EntityQuery<SpriteComponent> _spriteq = default;
     [Dependency] private SpriteSystem _sprite = default!;
 
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<InkyTransparentComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<InkyTransparentComponent, AppearanceChangeEvent>(OnAppearanceChange);
-        SubscribeLocalEvent<InkyTransparentComponent, HeldVisualsUpdatedEvent>(OnHeldVisualsUpdated);
-        SubscribeLocalEvent<InkyTransparentComponent, EquipmentVisualsUpdatedEvent>(OnEquipmentVisualsUpdated);
-        // idk how to properly remove the shader lol todo inky OnShutdown
-    }
-
+    [SubscribeLocalEvent]
     private void OnStartup(Entity<InkyTransparentComponent> ent, ref ComponentStartup args)
     {
         if (_spriteq.TryComp(ent, out var sprite))
             ApplyShader(sprite);
     }
 
+    [SubscribeLocalEvent]
     private void OnAppearanceChange(Entity<InkyTransparentComponent> ent, ref AppearanceChangeEvent args)
     {
         if (args.Sprite != null)
             ApplyShader(args.Sprite);
     }
 
+    [SubscribeLocalEvent]
     private void OnHeldVisualsUpdated(Entity<InkyTransparentComponent> ent, ref HeldVisualsUpdatedEvent args)
         => ApplyClothing(args.User, args.RevealedLayers);
 
+    [SubscribeLocalEvent]
     private void OnEquipmentVisualsUpdated(Entity<InkyTransparentComponent> ent, ref EquipmentVisualsUpdatedEvent args)
         => ApplyClothing(args.Equipee, args.RevealedLayers);
 

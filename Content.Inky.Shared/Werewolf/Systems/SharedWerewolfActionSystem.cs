@@ -11,13 +11,7 @@ public sealed partial class SharedWerewolfActionSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private HungerSystem _hunger = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<WerewolfActionComponent, ActionAttemptEvent>(OnActionAttempt);
-    }
-
+    [SubscribeLocalEvent]
     private void OnActionAttempt(Entity<WerewolfActionComponent> ent, ref ActionAttemptEvent args)
     {
         var user = args.User;

@@ -21,13 +21,7 @@ public sealed partial class CrematoriumFunRuleSystem : GameRuleSystem<Crematoriu
     private const float CancelProb = 0.8f; // todo put this inside a gamerule idk
     private static readonly ProtoId<LocalizedDatasetPrototype> Dataset = "CrematoriumFun";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ActiveCrematoriumComponent, ComponentInit>(OnInit);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(EntityUid uid, ActiveCrematoriumComponent comp, ComponentInit args)
     {
         if (!_fun.CheckRule<CrematoriumFunRuleComponent>())

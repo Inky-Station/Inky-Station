@@ -9,13 +9,7 @@ public sealed partial class ChafaSystem : EntitySystem
 {
     [Dependency] private IClyde _clyde = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeNetworkEvent<ChafaRequestEvent>(OnChafaRequest);
-    }
-
+    [SubscribeNetworkEvent]
     private async void OnChafaRequest(ChafaRequestEvent ev)
     {
         var capture = await _clyde.ScreenshotAsync(ScreenshotType.Final);

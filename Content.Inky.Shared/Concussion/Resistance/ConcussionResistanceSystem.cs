@@ -4,15 +4,9 @@ using Content.Shared.Inventory;
 
 namespace Content.Inky.Shared.Concussion.Resistance;
 
-public sealed class ConcussionResistanceSystem : EntitySystem
+public sealed partial class ConcussionResistanceSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<ConcussionResistanceComponent, InventoryRelayedEvent<BeforeConcussionDamageEvent>>(OnBeforeDamage);
-        SubscribeLocalEvent<ConcussionResistanceComponent, ExaminedEvent>(OnExamine);
-    }
-
+    [SubscribeLocalEvent]
     private static void OnBeforeDamage(EntityUid uid, ConcussionResistanceComponent comp, ref InventoryRelayedEvent<BeforeConcussionDamageEvent> args)
     {
         var damage = args.Args.Damage;
@@ -26,6 +20,8 @@ public sealed class ConcussionResistanceSystem : EntitySystem
 
         args.Args.Damage = damage;
     }
+
+    [SubscribeLocalEvent]
     private void OnExamine(EntityUid uid, ConcussionResistanceComponent comp, ref ExaminedEvent args)
     {
         if (comp.Resistance <= 0f)

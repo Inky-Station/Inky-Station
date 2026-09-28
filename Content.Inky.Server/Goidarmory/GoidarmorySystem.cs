@@ -6,13 +6,8 @@ namespace Content.Inky.Server.Goidarmory;
 public sealed partial class GoidarmorySystem : EntitySystem
 {
     [Dependency] private StationSystem _station = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
 
-        SubscribeLocalEvent<GoidarmoryComponent, MapInitEvent>(OnMapInit);
-    }
-
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<GoidarmoryComponent> ent, ref MapInitEvent args)
     {
         var xform = Transform(ent);
