@@ -15,7 +15,6 @@
   priority: 1
   text: "/ServerInfo/_Trauma/Guidebook/ServerRules/SpaceLaw/SpaceLaw.xml"
   children:
-  - SpaceLawRightsCharter
 
 - type: guideEntry
   id: SpaceLawCrimeList

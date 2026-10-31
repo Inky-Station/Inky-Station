@@ -42,7 +42,7 @@
   - type: Blocking
     passiveBlockModifier:
       flatReductions:
-        Ballistic: 6
+        Piercing: 6
 
 - type: entity
   abstract: true
@@ -51,7 +51,7 @@
   - type: Repairable
     damage:
       types:
-        Ballistic: -20
+        Piercing: -20
 
 - type: entity
   id: RiotShield
@@ -69,7 +69,7 @@
   - type: Blocking
     passiveBlockModifier:
       flatReductions:
-        Ballistic: 2
+        Piercing: 2
 
 - type: entity
   id: RiotLaserShield
@@ -87,7 +87,7 @@
   - type: Blocking
     passiveBlockModifier:
       flatReductions:
-        Ballistic: 2
+        Piercing: 2
 
 - type: entity
   id: RiotBulletShield
@@ -112,7 +112,7 @@
     passiveBlockModifier:
       flatReductions:
         Piercing: !Remove
-        Ballistic: 25
+#        Ballistic: 25
 
 - type: entity
   id: WoodenBuckler

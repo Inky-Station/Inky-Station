@@ -37,7 +37,7 @@ public sealed partial class CultRuneOfferingComponent : Component
             ["Blunt"] = -40,
             ["Slash"] = -40,
             ["Piercing"] = -40,
-            ["Ballistic"] = -40,
+            // ["Ballistic"] = -40,
             ["Heat"] = -40,
             ["Cold"] = -40,
             ["Shock"] = -40,

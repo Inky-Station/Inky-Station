@@ -91,7 +91,7 @@
     allowRevives: true
   - type: HealthExaminable
     examinableTypes:
-      - Ballistic # Trauma
+#      - Ballistic # Trauma
       - Blunt
       - Slash
       - Piercing
