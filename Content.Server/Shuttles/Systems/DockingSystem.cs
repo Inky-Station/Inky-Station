@@ -110,7 +110,9 @@ public sealed partial class DockingSystem : SharedDockingSystem
             return;
 
         var otherDock = component.DockedWith;
-        var other = Comp<DockingComponent>(otherDock!.Value);
+        if (otherDock == null // inky
+            || !_dockingQuery.TryComp(otherDock.Value, out var other))
+            return; // /inky
 
         Undock(entity);
         Dock((uid, component), (otherDock.Value, other));
