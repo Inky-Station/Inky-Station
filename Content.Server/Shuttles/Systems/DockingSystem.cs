@@ -105,7 +105,8 @@ public sealed partial class DockingSystem : SharedDockingSystem
         var uid = entity.Owner;
         var component = entity.Comp;
 
-        if (!component.Docked)
+        if (!component.Docked
+            || !args.Anchored) // inky
             return;
 
         var otherDock = component.DockedWith;
