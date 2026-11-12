@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared.DisplacementMap;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid;
 using Robust.Shared.Containers;
@@ -20,8 +21,8 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<VisualOrganComponent, BodyRelayedEvent<OrganCopyAppearanceEvent>>(OnVisualOrganCopyAppearance);
-        SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<OrganCopyAppearanceEvent>>(OnMarkingsOrganCopyAppearance);
-        SubscribeLocalEvent<VisualOrganComponent, BodyRelayedEvent<ApplyOrganProfileDataEvent>>(OnVisualOrganApplyProfile);
+        // SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<OrganCopyAppearanceEvent>>(OnMarkingsOrganCopyAppearance);
+        // SubscribeLocalEvent<VisualOrganComponent, BodyRelayedEvent<ApplyOrganProfileDataEvent>>(OnVisualOrganApplyProfile);
         SubscribeLocalEvent<VisualOrganMarkingsComponent, BodyRelayedEvent<ApplyOrganMarkingsEvent>>(OnMarkingsOrganApplyMarkings);
 
         InitializeModifiers();
@@ -80,15 +81,18 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         Dirty(ent);
     }
 
-    protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data)
+    protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data, ProtoId<DisplacementDataPrototype>? displacement)
     {
         ent.Comp.Data = data;
+        ent.Comp.Displacement = displacement;
         Dirty(ent);
     }
 
-    public virtual void SetOrganMarkings(Entity<VisualOrganMarkingsComponent> ent, Dictionary<HumanoidVisualLayers, List<Marking>> markings) // Trauma - made public
+    // Trauma - made public
+    public virtual void SetOrganMarkings(Entity<VisualOrganMarkingsComponent> ent, Dictionary<HumanoidVisualLayers, List<Marking>> markings, Dictionary<HumanoidVisualLayers, DisplacementData> displacement)
     {
         ent.Comp.Markings = markings;
+        ent.Comp.MarkingsDisplacement = displacement.ShallowClone();
         Dirty(ent);
     }
 
@@ -98,63 +102,8 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
             return;
 
         if (other.Layer.Equals(ent.Comp.Layer)) // inkymed - removed !
-            SetOrganAppearance(ent, other.Data); // inkymed - replaced return;
-
-        // inkymed
-        // SetOrganAppearance(ent, other.Data);
-        if (other.SecondData != null && other.SecondLayer != null && other.SecondLayer.Equals(ent.Comp.SecondLayer))
-            SetOrganSecondAppearance(ent, other.SecondData);
+            SetOrganAppearance(ent, other.Data, ent.Comp.Displacement);
         // /inkymed
-    }
-
-    private void OnMarkingsOrganCopyAppearance(Entity<VisualOrganMarkingsComponent> ent, ref BodyRelayedEvent<OrganCopyAppearanceEvent> args)
-    {
-        if (!TryComp<VisualOrganMarkingsComponent>(args.Args.Organ, out var other))
-            return;
-
-        if (!other.MarkingData.Layers.SetEquals(ent.Comp.MarkingData.Layers))
-            return;
-
-        SetOrganMarkings(ent, other.Markings);
-    }
-
-    private void OnVisualOrganApplyProfile(Entity<VisualOrganComponent> ent, ref BodyRelayedEvent<ApplyOrganProfileDataEvent> args)
-    {
-        if (Comp<OrganComponent>(ent).Category is not { } category)
-            return;
-
-        var relevantData = args.Args.Base;
-        if (args.Args.Profiles?.TryGetValue(category, out var profile) == true)
-            relevantData = profile;
-
-        if (relevantData is not { } data)
-            return;
-
-        ent.Comp.Profile = data;
-
-        if (ent.Comp.Layer.Equals(HumanoidVisualLayers.Eyes))
-            SetOrganColor(ent, ent.Comp.Profile.EyeColor);
-        else
-            SetOrganColor(ent, ent.Comp.Profile.SkinColor);
-
-        // inkymed
-        if (ent.Comp.SecondLayer != null)
-            SetOrganSecondColor(ent, ent.Comp.Profile.SkinColor);
-        // /inkymed
-
-        if (ent.Comp.SexStateOverrides is { } overrides && overrides.TryGetValue(data.Sex, out var state))
-        {
-            ent.Comp.Data.State = state;
-            SetOrganAppearance(ent, ent.Comp.Data);
-
-            // inkymed
-            if (ent.Comp.SecondLayer != null && ent.Comp.SecondData != null)
-            {
-                ent.Comp.SecondData.State = state;
-                SetOrganSecondAppearance(ent, ent.Comp.SecondData);
-            }
-            // /inkymed
-        }
     }
 
     private void OnMarkingsOrganApplyMarkings(Entity<VisualOrganMarkingsComponent> ent, ref BodyRelayedEvent<ApplyOrganMarkingsEvent> args)
@@ -191,7 +140,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
             kvp => kvp.Key,
             kvp => ResolveMarkings(kvp.Value, profile.SkinColor, profile.EyeColor, groupProto.Appearances));
 
-        SetOrganMarkings(ent, resolved);
+        SetOrganMarkings(ent, resolved, ent.Comp.MarkingsDisplacement);
     }
 }
 

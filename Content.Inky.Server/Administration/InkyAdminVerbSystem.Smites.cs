@@ -1,4 +1,3 @@
-using Content.Goobstation.Server.Administration.Systems;
 using Content.Inky.Common.Medical;
 using Content.Medical.Common.Body;
 using Content.Shared.Administration;
@@ -18,15 +17,16 @@ namespace Content.Inky.Server.Administration;
 public sealed partial class InkyAdminVerbSystem
 {
     private static readonly ProtoId<OrganCategoryPrototype> Brain = "Brain";
-    [Dependency] private GoobAdminVerbSystem _goida = default!;
-
     /// <inheritdoc/>
     public void InitializeSmites() { }
 
     [SubscribeLocalEvent]
     private void AddSmiteVerbs(GetVerbsEvent<Verb> args)
     {
-        if (!_goida.SmitesAllowed(args))
+        if (!TryComp(args.User, out ActorComponent? actor)
+            || !_admin.HasAdminFlag(actor.PlayerSession, AdminFlags.Fun)
+            || HasComp<MapComponent>(args.Target)
+            || HasComp<MapGridComponent>(args.Target))
             return;
 
         Verb autismspectrumdisorder = new()

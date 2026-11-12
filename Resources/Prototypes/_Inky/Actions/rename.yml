@@ -9,6 +9,6 @@
   - type: Action
     useDelay: 5
   - type: Sprite
-    sprite: _RMC14/Objects/Kitchen/Plants/mango.rsi
+    sprite: _Inky/Shitpost/220.rsi
     layers:
-    - state: produce
+    - state: icon

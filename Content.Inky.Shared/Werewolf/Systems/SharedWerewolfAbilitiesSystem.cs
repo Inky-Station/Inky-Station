@@ -10,6 +10,7 @@ using Content.Shared.Fluids;
 using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Station;
+using Content.Shared.Station.Systems;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
@@ -42,7 +43,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private SharedPuddleSystem _puddle = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private SharedStationSystem _station = default!;
+    [Dependency] private StationSystem _station = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private IRobustRandom _gambling = default!;
 

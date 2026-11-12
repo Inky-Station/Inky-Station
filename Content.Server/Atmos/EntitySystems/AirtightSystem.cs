@@ -19,7 +19,7 @@ namespace Content.Server.Atmos.EntitySystems
             SubscribeLocalEvent<AirtightComponent, ComponentInit>(OnAirtightInit);
             SubscribeLocalEvent<AirtightComponent, ComponentShutdown>(OnAirtightShutdown);
             SubscribeLocalEvent<AirtightComponent, AnchorStateChangedEvent>(OnAirtightPositionChanged);
-            SubscribeLocalEvent<AirtightComponent, ReAnchorEvent>(OnAirtightReAnchor);
+            // SubscribeLocalEvent<AirtightComponent, ReAnchorEvent>(OnAirtightReAnchor); // inky
             SubscribeLocalEvent<AirtightComponent, MoveEvent>(OnAirtightMoved);
         }
 
@@ -72,6 +72,9 @@ namespace Content.Server.Atmos.EntitySystems
             RaiseLocalEvent(uid, ref airtightEv, true);
         }
 
+        /* inky
+        // surely nothing bad will happen!
+
         private void OnAirtightReAnchor(EntityUid uid, AirtightComponent airtight, ref ReAnchorEvent args)
         {
             foreach (var gridId in new[] { args.OldGrid, args.Grid })
@@ -84,6 +87,7 @@ namespace Content.Server.Atmos.EntitySystems
                 RaiseLocalEvent(uid, ref airtightEv, true);
             }
         }
+        */
 
         private void OnAirtightMoved(Entity<AirtightComponent> ent, ref MoveEvent ev)
         {

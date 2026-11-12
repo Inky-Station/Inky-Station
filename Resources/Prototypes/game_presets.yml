@@ -40,23 +40,13 @@
   description: all-at-once-description
   showInVote: false
   rules:
-    # <Trauma>
-    - Thief
-    - HereticRoundstart
-    - BlobGameMode
-    - LoneAbductorSpawn
-    - Changeling
-    - Insurgency
-    - CosmicCult
-    - XenomorphsInfestationRoundstart
-    - Spies
-    # </Trauma>
     - Nukeops
     - Traitor
     - Revolutionary
     - Zombie
     - Wizard
     - Xenoborgs
+    - Changeling
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
@@ -84,26 +74,13 @@
   description: aller-at-once-description
   showInVote: false #Please god dont do this
   rules:
-    # <Trauma>
-    - BasicAntagEventScheduler
-    - ModerateAntagEventScheduler
-    - Thief
-    - HereticRoundstart
-    - BlobGameMode
-    - LoneAbductorSpawn
-    - Changeling
-    - ShadowlingRoundstart
-  #    - Insurgency # inky - kill insurgents
-    - CosmicCult
-    - XenomorphsInfestationRoundstart
-    - Spies
-    # </Trauma>
     - Nukeops
     - Traitor
     - Revolutionary
     - Zombie
     - Wizard
     - Xenoborgs
+    - Changeling
     - BasicStationEventScheduler
     - KesslerSyndromeScheduler
     - MeteorSwarmMildScheduler
@@ -172,11 +149,10 @@
   showInVote: true
   description: secret-description
   rules:
-#  - Insurgency # Trauma # inky kill insurgents
-  - Secret
-  # inky
-  - FunGameruleChooser
-  # /inky
+    - Secret
+    # inky
+    - FunGameruleChooser
+    # /inky
 
 - type: gamePreset
   id: Sandbox
@@ -201,13 +177,9 @@
   description: traitor-description
   showInVote: false
   rules:
-  # <Trauma>
-  - BasicAntagEventScheduler
-  - ModerateAntagEventScheduler
-  # </Trauma>
   - DummyNonAntagChance
   - Traitor
-  - SubGamemodesRule
+  - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -237,13 +209,9 @@
   description: nukeops-description
   showInVote: false
   rules:
-  # <Trauma>
-  - BasicAntagEventScheduler
-  - ModerateAntagEventScheduler
-  # </Trauma>
   - Nukeops
   - DummyNonAntagChance
-  # - SubGamemodesRule
+  - SubGamemodesRuleNoWizard
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -262,13 +230,25 @@
   description: rev-description
   showInVote: false
   rules:
-  # <Trauma>
-  - BasicAntagEventScheduler
-  - ModerateAntagEventScheduler
-  # </Trauma>
   - DummyNonAntagChance
   - Revolutionary
-  - SubGamemodesRule
+  - SubGamemodesRuleNoWizard
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Wizard
+  alias:
+  - wizard
+  name: wizard-title
+  description: wizard-description
+  showInVote: false
+  rules:
+  - Wizard
+  - DummyNonAntagChance
+  - SubGamemodesRuleNoWizard #No Dual Wizards at the start, midround is fine
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -285,15 +265,11 @@
   description: xenoborgs-description
   showInVote: false
   rules:
-  # <Trauma>
-  - BasicAntagEventScheduler
-  - ModerateAntagEventScheduler
-  # </Trauma>
   - Xenoborgs
   - DummyNonAntagChance
-  - SubGamemodesRule
+  - SubGamemodesRuleNoWizardNoXenoborg # no two motherships
   - BasicStationEventScheduler
-  # - MeteorSwarmScheduler - Trauma
+  - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   # inky
@@ -312,10 +288,6 @@
   description: zombie-description
   showInVote: false
   rules:
-  # <Trauma>
-  - BasicAntagEventScheduler
-  - ModerateAntagEventScheduler
-  # </Trauma>
   - Zombie
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
@@ -335,10 +307,6 @@
   description: zombieteors-description
   showInVote: false
   rules:
-  # <Trauma>
-  - BasicAntagEventScheduler
-  - ModerateAntagEventScheduler
-  # </Trauma>
   - Zombie
   - BasicStationEventScheduler
   - KesslerSyndromeScheduler

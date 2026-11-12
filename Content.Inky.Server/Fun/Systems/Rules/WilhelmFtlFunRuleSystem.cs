@@ -1,5 +1,6 @@
 using Content.Inky.Server.Fun.Components.Rules;
 using Content.Server.GameTicking.Rules;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Humanoid;
 using Content.Shared.Shuttles.Components;
 using Robust.Server.Audio;

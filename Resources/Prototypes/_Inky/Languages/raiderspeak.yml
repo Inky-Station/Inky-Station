@@ -76,8 +76,8 @@
   description: MANGO MANGO MANGO
   components:
   - type: Sprite
-    sprite: _RMC14/Objects/Kitchen/Plants/mango.rsi
-    state: produce
+    sprite: _Inky/Shitpost/220.rsi
+    state: icon
 
 - type: font # goida
   id: Soviet

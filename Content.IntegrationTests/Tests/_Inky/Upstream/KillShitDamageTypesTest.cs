@@ -142,7 +142,7 @@ public sealed partial class KillShitDamageTypesTest : GameTest // israelgpt x pa
                     if (mod.Coefficients.ContainsKey(damageType))
                         fail.Add($"{location} shat itself with '{damageType}'");
 
-                    if (mod.FlatReduction.ContainsKey(damageType))
+                    if (mod.FlatReductions.ContainsKey(damageType))
                         fail.Add($"{location} shat itself with '{damageType}'");
                 }
                 break;

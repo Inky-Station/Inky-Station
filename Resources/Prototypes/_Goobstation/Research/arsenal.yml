@@ -84,7 +84,7 @@
   - EnergyMagRifleLethal
   technologyPrerequisites:
   - WeaponLaserCellSMGTech # inky
-  position: 4,-1 # inky
+  position: 5,-1 # inky
 
 # Tier 3
 

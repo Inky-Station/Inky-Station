@@ -8,6 +8,8 @@ using Content.Shared.Body.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -88,7 +90,8 @@ public sealed partial class WerewolfAbilitiesSystem
         mindComp.BittenPeople.Add(args.Args.Target.Value);
         targetComp.BittenBy = mindComp;
 
-        _hunger.ModifyHunger(uid, +80); // todo werewolf maybe put as a var inside a comp or sdome shit
+        if (TryComp<SatiationComponent>(uid, out var satiation))
+            _satiation.ModifyValue((uid, satiation), SatiationSystem.Hunger, +80); // todo werewolf maybe put as a var inside a comp or sdome shit
         _audio.PlayPvs(comp.RipSound, uid);
     }
 
@@ -148,7 +151,8 @@ public sealed partial class WerewolfAbilitiesSystem
         if (_mind.TryGetMind(uid, out var mindId, out _) && TryComp<WerewolfMindComponent>(mindId, out var mindComp))
             mindComp.Currency += comp.AmountGut;
 
-        _hunger.ModifyHunger(uid, 20); // todo werewolf maybe put this inside comp
+        if (TryComp<SatiationComponent>(uid, out var satiation))
+            _satiation.ModifyValue((uid, satiation), SatiationSystem.Hunger, 20); // todo werewolf maybe put this inside comp
         _audio.PlayPvs(comp.RipSound, uid);
     }
 

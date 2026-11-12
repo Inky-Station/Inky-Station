@@ -16,7 +16,7 @@ public sealed partial class TraumaCVars
     /// Whether to disable vision cone overlays.
     /// </summary>
     public static readonly CVarDef<bool> DisableVisionCones =
-        CVarDef.Create("trauma.disable_vision_cones", false, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("trauma.disable_vision_cones", true, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     /// Scale for how strong out-of-vision graininess is, 0 is just pure greyscale.

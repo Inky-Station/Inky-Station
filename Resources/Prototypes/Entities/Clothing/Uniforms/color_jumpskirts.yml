@@ -215,7 +215,7 @@
   parent: [ClothingUniformSkirtBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpskirtColorPink
   name: pink jumpskirt
-  description: Just looking at this makes you feel <i>fabulous</i>.
+  description: Just looking at this makes you feel [italic]fabulous[/italic].
   components:
   - type: Sprite
     sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/color/color.rsi

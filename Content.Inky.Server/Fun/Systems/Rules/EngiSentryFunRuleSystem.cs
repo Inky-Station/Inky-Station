@@ -2,6 +2,7 @@ using Content.Inky.Server.Fun.Components;
 using Content.Inky.Server.Fun.Components.Rules;
 using Content.Server.GameTicking.Rules;
 using Content.Shared.Damage.Systems;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Stacks;
 
 namespace Content.Inky.Server.Fun.Systems.Rules;

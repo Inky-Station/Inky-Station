@@ -1,5 +1,3 @@
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
-
 namespace Content.Inky.Server.Fun.Components.Rules;
 
 /// <summary>

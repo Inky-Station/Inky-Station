@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Inky.Server.Fun.Components.Rules;
 using Content.Server.GameTicking.Rules;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Silicons.Bots;
 
 namespace Content.Inky.Server.Fun.Systems.Rules;

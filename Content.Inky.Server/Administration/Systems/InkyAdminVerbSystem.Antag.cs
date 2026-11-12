@@ -1,13 +1,8 @@
-using Content.Goobstation.Common.Blob;
-using Content.Goobstation.Server.Changeling.GameTicking.Rules;
 using Content.Inky.Shared.Werewolf.Components;
-using Content.Server.Administration.Managers;
-using Content.Server.Administration.Systems;
-using Content.Server.Antag;
+using Content.Shared.Antag;
 using Content.Shared.Database;
 using Content.Shared.Mind.Components;
 using Content.Shared.Verbs;
-using Content.Trauma.Common.Silicon;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 
