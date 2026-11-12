@@ -88,7 +88,6 @@ public sealed partial class DockingSystem : SharedDockingSystem
         }
     }
 
-    /* eeenkee
     [SubscribeLocalEvent]
     private void OnAnchorChange(Entity<DockingComponent> entity, ref AnchorStateChangedEvent args)
     {
@@ -97,22 +96,18 @@ public sealed partial class DockingSystem : SharedDockingSystem
             Undock(entity);
         }
     }
-    */ // eeenkee
 
     [SubscribeLocalEvent]
-    private void OnDockingReAnchor(Entity<DockingComponent> entity, ref AnchorStateChangedEvent args) // inky
+    private void OnDockingReAnchor(Entity<DockingComponent> entity, ref ReAnchorEvent args)
     {
         var uid = entity.Owner;
         var component = entity.Comp;
 
-        if (!component.Docked
-            || !args.Anchored) // inky
+        if (!component.Docked)
             return;
 
         var otherDock = component.DockedWith;
-        if (otherDock == null // inky
-            || !_dockingQuery.TryComp(otherDock.Value, out var other))
-            return; // /inky
+        var other = Comp<DockingComponent>(otherDock!.Value);
 
         Undock(entity);
         Dock((uid, component), (otherDock.Value, other));
