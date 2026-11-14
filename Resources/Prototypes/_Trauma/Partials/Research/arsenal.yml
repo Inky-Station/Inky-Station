@@ -24,7 +24,7 @@
   recipeUnlocks:
   - WeaponMechCombatFiredartLaser
   - PowerCellIonRevolver
-  - WeaponLaserSidearm
+  # - WeaponLaserSidearm # inky edit
   position: 7,0
   technologyPrerequisites:
   - WeaponLaserCellRevolverTech
@@ -32,8 +32,10 @@
 - type: technology
   id: NonlethalAmmunition
   recipeUnlocks:
-  - !Remove WeaponDisabler
-  - !Remove WeaponDisablerSMG
+  # inky edit
+  # - !Remove WeaponDisabler
+  # - !Remove WeaponDisablerSMG
+  # /inky edit
   - WeaponMechCombatDisabler
   position: 6,3
   technologyPrerequisites:
@@ -75,9 +77,11 @@
 
 - type: technology
   id: AdvancedRiotControl
-  recipeUnlocks:
-  - PolymerBaton
-  - SpearTelescopic
+  # inky edit
+  # recipeUnlocks:
+  # - PolymerBaton
+  # - SpearTelescopic
+  # /inky edit
   position: 7,3
   technologyPrerequisites:
   - NonlethalAmmunition
@@ -121,7 +125,7 @@
     state: charging
   cost: 20000
   recipeUnlocks:
-  - !Remove WeaponAdvancedLaser # No longer has a niche
+  # - !Remove WeaponAdvancedLaser # inky edit
   - WeaponMechCombatImmolationGun
   - EnergyMagRifleOverchargeLethal
   - PowerCellOverchargedRevolver
