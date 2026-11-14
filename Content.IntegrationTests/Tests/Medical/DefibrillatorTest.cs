@@ -2,6 +2,10 @@
 // <Trauma>
 using Content.Medical.Common.Targeting;
 // </Trauma>
+// inky edit
+using Content.Medical.Shared.Inkymed;
+using Robust.Shared.GameObjects;
+// /inky edit
 using System.Linq;
 using Content.IntegrationTests.Tests.Helpers;
 using Content.IntegrationTests.Tests.Interaction;
@@ -152,8 +156,19 @@ public sealed class DefibrillatorTest : InteractionTest
         Assert.That(targetMobState.CurrentState, Is.EqualTo(MobState.Dead), "Target mob was not dead before being defibrillated.");
 
         // Spawn a defib, activate it and record everything it says.
-        var defib = await PlaceInHands(DefibrillatorProtoId, enableToggleable: true);
+        var defib = await PlaceInHands(DefibrillatorProtoId, enableToggleable: false); // inky edit
         var sDefib = ToServer(defib);
+        // inky edit
+        await Server.WaitPost(() => SEntMan.System<SharedUserInterfaceSystem>().OpenUi(sDefib, ManualDefibrillatorUiKey.Key, SPlayer));
+        await RunTicks(5);
+        await SendBui(ManualDefibrillatorUiKey.Key,
+            new DefibrillatorChargeSettingMessage(new DefibrillatorChargeSetting
+            {
+                Power = true, Flips = [true, true, true, false],
+            }),
+            defib);
+        await CloseBui(ManualDefibrillatorUiKey.Key, defib);
+        // /inky edit
         await Server.WaitPost(() => SEntMan.EnsureComponent<TestListenerComponent>(sDefib));
         var cooldown = Comp<DefibrillatorComponent>(defib).ZapDelay;
         await RunSeconds((float)cooldown.TotalSeconds);
