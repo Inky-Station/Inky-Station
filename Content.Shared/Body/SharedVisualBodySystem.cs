@@ -107,14 +107,13 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!TryComp<VisualOrganComponent>(args.Args.Organ, out var other))
             return;
 
-        if (other.Layer.Equals(ent.Comp.Layer)) // inkymed - removed !
-            SetOrganAppearance(ent, other.Data, other.Displacement); // inkymed - replaced return;
+        // inkymed edit
+        if (other.Layer.Equals(ent.Comp.Layer))
+            SetOrganAppearance(ent, other.Data, other.Displacement);
 
-        // inkymed
-        // SetOrganAppearance(ent, other.Data);
         if (other.SecondData != null && other.SecondLayer != null && other.SecondLayer.Equals(ent.Comp.SecondLayer))
             SetOrganSecondAppearance(ent, other.SecondData);
-        // /inkymed
+        // /inkymed edit
     }
 
     private void OnMarkingsOrganCopyAppearance(Entity<VisualOrganMarkingsComponent> ent, ref BodyRelayedEvent<OrganCopyAppearanceEvent> args)
