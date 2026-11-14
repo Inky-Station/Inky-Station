@@ -69,13 +69,15 @@
     jumpsuit: ClothingUniformJumpsuitAncient
 
 # Neck
-- type: loadout
-  id: Mantle
-  equipment:
-    neck: ClothingNeckMantle
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterGrey
+# inky edit
+# - type: loadout
+#   id: Mantle
+#   equipment:
+#     neck: ClothingNeckMantle
+#   effects:
+#   - !type:GroupLoadoutEffect
+#     proto: MasterGrey
+# /inky edit
 
 - type: startingGear
   id: Mantle
