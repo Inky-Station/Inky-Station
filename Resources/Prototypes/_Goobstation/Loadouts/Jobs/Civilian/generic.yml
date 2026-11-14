@@ -87,7 +87,7 @@
 - type: loadout # inky
   id: BlueEnvirohelm # inky
   equipment: # inky
-    jumpsuit: ClothingHeadEnvirohelmColorBlue # inky
+    head: ClothingHeadEnvirohelmColorBlue # inky
   effects: # inky
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
@@ -114,7 +114,7 @@
 - type: loadout # inky
   id: DarkBlueEnvirosuit # inky
   equipment: # inky
-    head: ClothingUniformEnvirosuitColorDarkBlue # inky
+    jumpsuit: ClothingUniformEnvirosuitColorDarkBlue # inky
   effects: # inky
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
@@ -438,7 +438,7 @@
 - type: loadout # inky
   id: EnviroslacksHelmGreen # inky
   equipment: # inky
-    jumpsuit: ClothingHeadEnvirohelmEnviroslacksColorGreen # inky
+    head: ClothingHeadEnvirohelmEnviroslacksColorGreen # inky
   effects: # inky
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
@@ -447,7 +447,7 @@
 - type: loadout # inky
   id: EnviroslacksHelmBlue # inky
   equipment: # inky
-    jumpsuit: ClothingHeadEnvirohelmEnviroslacksColorBlue # inky
+    head: ClothingHeadEnvirohelmEnviroslacksColorBlue # inky
   effects: # inky
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
@@ -456,7 +456,7 @@
 - type: loadout # inky
   id: EnviroslacksHelmRed # inky
   equipment: # inky
-    jumpsuit: ClothingHeadEnvirohelmEnviroslacksColorRed # inky
+    head: ClothingHeadEnvirohelmEnviroslacksColorRed # inky
   effects: # inky
   - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change. # inky
     species: # inky
