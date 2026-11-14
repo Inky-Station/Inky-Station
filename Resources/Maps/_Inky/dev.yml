@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 11/12/2026 10:14:46
-  entityCount: 3684
+  entityCount: 3683
 maps:
 - 1
 grids:
@@ -19175,13 +19175,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 33.5,18.5
-- proto: SpawnPointPassenger
-  entities:
-  - uid: 3542
-    components:
-    - type: Transform
-      parent: 2
-      pos: 32.5,18.5
 - proto: SpearUranium
   entities:
   - uid: 2631
