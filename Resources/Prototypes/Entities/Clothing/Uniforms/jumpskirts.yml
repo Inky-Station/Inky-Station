@@ -443,13 +443,13 @@
         color: "#C12D30"
         sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/color/color.rsi # Goob
       - state: overlay-inhand-left
-        sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/Security/security.rsi # Goob
+        sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Security/security.rsi # inky edit
       right:
       - state: inhand-right
         color: "#C12D30"
         sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/color/color.rsi # Goob
       - state: overlay-inhand-right
-        sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/Security/security.rsi # Goob
+        sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Security/security.rsi # inky edit
 
 
 - type: entity
@@ -469,13 +469,13 @@
         color: "#C12D30"
         sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/color/color.rsi # Goob
       - state: overlay-inhand-left
-        sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/Security/warden.rsi # Goob
+        sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Security/warden.rsi # inky edit
       right:
       - state: inhand-right
         color: "#C12D30"
         sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/color/color.rsi # Goob
       - state: overlay-inhand-right
-        sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/Security/warden.rsi # Goob
+        sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Security/warden.rsi # inky edit
 
 
 - type: entity
