@@ -123,16 +123,16 @@
     - SyndicateEngineerSet
 #    - SyndicateDoorKickerSet #inky
 #    - SyndicateWesternSet #inky
-    - SyndicateSpySet
-    - SyndicateHitmanSet
-    - SyndicateImplantsSet
-    - SyndicateHackerSet
-    - SyndicateDeswordSet
-    - SyndicateGrenadierSet
-    - SyndicateFluclearSet
-    - SyndicateFriendshipSet
-    - SyndicateCarpSet
-    - SyndicateSusSet
+#    - SyndicateSpySet
+#    - SyndicateHitmanSet
+#    - SyndicateImplantsSet
+#    - SyndicateHackerSet
+#    - SyndicateDeswordSet
+#    - SyndicateGrenadierSet
+#    - SyndicateFluclearSet
+#    - SyndicateFriendshipSet
+#    - SyndicateCarpSet
+#    - SyndicateSusSet
 #    - SyndicateBuilderSet - Requires Rework pending Miner Removal
     setsToSelect: 3
     spawnedStoragePrototype: CrateSyndicate

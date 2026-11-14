@@ -34,7 +34,7 @@ public sealed partial class ContainmentFieldGeneratorSystem : EntitySystem
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ActivateInWorldEvent>(OnActivate);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, AnchorStateChangedEvent>(OnAnchorChanged);
-        SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ReAnchorEvent>(OnReanchorEvent);
+        // SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ReAnchorEvent>(OnReanchorEvent); // eeenkeee
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, UnanchorAttemptEvent>(OnUnanchorAttempt);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ComponentRemove>(OnComponentRemoved);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, EventHorizonAttemptConsumeEntityEvent>(PreventBreach);
@@ -115,12 +115,18 @@ public sealed partial class ContainmentFieldGeneratorSystem : EntitySystem
     {
         if (!args.Anchored)
             RemoveConnections(generator);
+
+        // inky
+        GridCheck(generator);
+        // /inky
     }
 
+    /* eenkee
     private void OnReanchorEvent(Entity<ContainmentFieldGeneratorComponent> generator, ref ReAnchorEvent args)
     {
         GridCheck(generator);
     }
+    */ // eeenkeee
 
     private void OnUnanchorAttempt(EntityUid uid, ContainmentFieldGeneratorComponent component,
         UnanchorAttemptEvent args)

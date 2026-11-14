@@ -16,17 +16,14 @@ namespace Content.Trauma.Shared.Language.Systems;
 
 public abstract partial class SharedLanguageSystem : CommonLanguageSystem
 {
-    [Dependency] private SharedGameTicker _ticker = default!;
+    [Dependency] private GameTicker _ticker = default!;
     [Dependency] private SharedKnowledgeSystem _knowledge = default!;
 
-    private StringBuilder _builder = new();
+    private readonly StringBuilder _builder = new();
 
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<UniversalLanguageSpeakerComponent, DetermineEntityLanguagesEvent>(OnDetermineUniversalLanguages);
-        SubscribeAllEvent<LanguagesSetMessage>(OnClientSetLanguage);
 
         SubscribeLocalEvent<UniversalLanguageSpeakerComponent, MapInitEvent>((uid, _, _) => UpdateEntityLanguages(uid));
         SubscribeLocalEvent<UniversalLanguageSpeakerComponent, ComponentRemove>((uid, _, _) => UpdateEntityLanguages(uid));
@@ -46,9 +43,15 @@ public abstract partial class SharedLanguageSystem : CommonLanguageSystem
         return proto;
     }
 
-    public override string ObfuscateSpeech(string message, LanguagePrototype language, EntityUid messageSource)
+    public override string ObfuscateSpeech(string message, LanguagePrototype language)
     {
         _builder.Clear();
+        language.Obfuscation.Obfuscate(_builder, message, this, ratio: 1f);
+        return _builder.ToString();
+    }
+
+    public override string ObfuscateSpeech(string message, LanguagePrototype language, EntityUid messageSource)
+    {
         var ratio = 1.0f;
         if (_knowledge.GetContainer(messageSource) is { } brain)
         {
@@ -74,6 +77,7 @@ public abstract partial class SharedLanguageSystem : CommonLanguageSystem
         if (ratio <= 0.0f)
             return message;
 
+        _builder.Clear();
         language.Obfuscation.Obfuscate(_builder, message, this, ratio);
 
         return _builder.ToString();
@@ -92,6 +96,7 @@ public abstract partial class SharedLanguageSystem : CommonLanguageSystem
 
     #region Event handlers
 
+    [SubscribeLocalEvent]
     private void OnDetermineUniversalLanguages(Entity<UniversalLanguageSpeakerComponent> entity, ref DetermineEntityLanguagesEvent ev)
     {
         // We only add it as a spoken language: CanUnderstand checks for ULSC itself.
@@ -99,6 +104,7 @@ public abstract partial class SharedLanguageSystem : CommonLanguageSystem
             ev.SpokenLanguages.Add(PsychomanticPrototype);
     }
 
+    [EventSubscription]
     private void OnClientSetLanguage(LanguagesSetMessage message, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not { } uid)
@@ -246,7 +252,9 @@ public abstract partial class SharedLanguageSystem : CommonLanguageSystem
 
 [ByRefEvent]
 public record struct AddLanguageEvent(ProtoId<LanguagePrototype> Language, bool AddSpoken, bool AddUnderstood, bool Handled = false);
+
 [ByRefEvent]
 public record struct RemoveLanguageEvent(ProtoId<LanguagePrototype> Language, bool RemoveSpoken, bool RemoveUnderstood, bool Handled = false);
+
 [ByRefEvent]
 public record struct UpdateLanguageEvent();

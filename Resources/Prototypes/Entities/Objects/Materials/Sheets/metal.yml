@@ -10,7 +10,6 @@
     sprite: Objects/Materials/Sheets/metal.rsi #inky
   - type: Tag
     tags:
-    - DroneUsable # Trauma
     - Sheet
     - Metal
     - ConstructionMaterial
@@ -116,9 +115,6 @@
       map: ["base"]
   - type: Item
     heldPrefix: brass
-  - type: FloorTile
-    outputs:
-    - PlatingBrass
   - type: Solution
     solution:
       reagents:

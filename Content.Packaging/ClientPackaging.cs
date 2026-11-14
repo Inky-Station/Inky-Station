@@ -19,29 +19,9 @@ public static class ClientPackaging
 
         if (!skipBuild)
         {
-            var startInfo = new ProcessStartInfo
-            {
-                FileName = "dotnet",
-                ArgumentList =
-                {
-                    "build",
-                    Path.Combine("Content.Inky.Client", "Content.Inky.Client.csproj"), // Trauma - Trauma.Client depends on everything // inky edit - fix client crash?
-                    "-c", configuration,
-                    "--nologo",
-                    "/v:m",
-                    "/t:Rebuild",
-                    "/p:FullRelease=true",
-                    "/m"
-                }
-            };
-
-            if (logBuild)
-            {
-                startInfo.ArgumentList.Add($"/bl:{Path.Combine("release", "client.binlog")}");
-                startInfo.ArgumentList.Add("/p:ReportAnalyzer=true");
-            }
-
-            await ProcessHelpers.RunCheck(startInfo);
+            // <Trauma> - replaced copypaste with module helper method
+            await ModulePackaging.BuildModules("Client", configuration, logBuild);
+            // </Trauma>
         }
 
         logger.Info("Packaging client...");
@@ -79,17 +59,15 @@ public static class ClientPackaging
 
         var inputPass = graph.Input;
 
-        // <Trauma> - use DepsHandler instead of manually writing assemblies
+        // <Trauma>
         var sourcePath = Path.Combine(contentDir, "bin", "Content.Client");
-        var deps = DepsHandler.Load(Path.Combine(sourcePath, "Content.Inky.Client.deps.json")); // inky edit
-        var contentAssemblies = ServerPackaging.GetContentAssemblyNamesToCopy(deps, "Client");
+        var contentAssemblies = ModulePackaging.GetContentAssemblyNamesToCopy(sourcePath, "Client"); // inky todo check if im gonna kms
         // </Trauma>
-
         await RobustSharedPackaging.WriteContentAssemblies(
             inputPass,
             contentDir,
             "Content.Client",
-            contentAssemblies, // Trauma - use DepsHandler above
+            contentAssemblies, // Trauma - use ModulePackaging above instead of manually writing assemblies
             cancel: cancel);
 
         await RobustClientPackaging.WriteClientResources(

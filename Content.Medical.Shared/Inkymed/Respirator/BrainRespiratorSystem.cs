@@ -1,4 +1,6 @@
 using Content.Shared.Body;
+using Content.Goobstation.Common.Body.Components;
+using Content.Medical.Common.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
@@ -9,7 +11,6 @@ using Content.Shared.Alert;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Speech.Components;
 using Content.Shared.StatusEffectNew;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Medical.Shared.Inkymed.Respirator;
@@ -56,6 +57,12 @@ public sealed partial class BrainRespiratorSystem : EntitySystem
         {
             _organQ.TryComp(uid, out var organ);
             var target = organ?.Body ?? uid;
+
+            if (HasComp<BreathingImmunityComponent>(target) || HasComp<SpecialBreathingImmunityComponent>(target))
+            {
+                _statusEffects.TryRemoveStatusEffect(target, Effect);
+                continue;
+            }
 
             var intensity = GetIntensity(brain.AirSaturation);
             if (intensity == 0f)

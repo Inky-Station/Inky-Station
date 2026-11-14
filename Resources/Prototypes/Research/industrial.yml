@@ -184,7 +184,7 @@
   - GyroscopeMachineCircuitboard
   - MiniGravityGeneratorCircuitboard
   # Goobstation R&D Console rework start
-  position: 3,-1 # inky
+  position: 3,0 # inky
   technologyPrerequisites:
   - AdvancedToolsTechnology # inky
   # Goobstation R&D Console rework end

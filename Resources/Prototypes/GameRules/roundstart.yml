@@ -7,6 +7,13 @@
     cost: 100
 
 - type: entity
+  id: BaseSilentGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    silent: true
+
+- type: entity
   parent: BaseGameRule
   id: BaseRoundstartAntagRule
   abstract: true
@@ -79,7 +86,7 @@
     - id: WraithRoundstart
       prob: 0.02
     - id: SubChangeling
-      prob: 0.1
+      prob: 0.5
     # </Trauma>
 
 - type: entity
@@ -108,7 +115,7 @@
     - id: SubVampire
       prob: 0.2
     - id: SubChangeling
-      prob: 0.1
+      prob: 0.05
     # </Trauma>
 
 - type: entity
@@ -119,6 +126,8 @@
     rules:
     - id: Thief
       prob: 0.5
+    - id: Changeling
+      prob: 0.25
 
 - type: entity
   parent: BaseGameRule
@@ -234,6 +243,7 @@
   id: BaseTraitorRuleNoObjectives # Trauma - add NoObjectives, added objectives separately
   components:
   # <Trauma>
+  - type: RoundEndJobListingsInfo
   - type: AntagPlayerEffects
     effects:
     - !type:NestedEffect
@@ -294,7 +304,6 @@
   parent: [BaseGameRule, BaseRoundstartAntagRule]
   components:
   # <Trauma>
-  - type: ChangelingRule
   - type: AntagRandomObjectives
     sets:
     - groups: ChangelingObjectiveGroups
@@ -304,8 +313,13 @@
     - !type:NestedEffect
       proto: ChangelingSkills
   # </Trauma>
+  - type: ChangelingRule
   - type: GameRule
-    minPlayers: 25
+    minPlayers: 20
+    delay:
+      min: 240
+      max: 420
+    cancelPresetOnTooFewPlayers: false
   - type: AntagSelection
     lateJoinAdditional: true # Trauma
     selectionTime: PrePlayerSpawn
@@ -317,22 +331,22 @@
       range:
         min: 1
         max: 4 # Trauma - was 3
+  # <Trauma> - replaces random objectives
   - type: AntagObjectives
     objectives:
     - ChangelingSurviveObjective
-    # <Trauma>
     - ChangelingStealDNAObjective
     - ChangelingAbsorbObjective
     - EscapeIdentityObjective
-    # </Trauma>
+  # </Trauma>
+  - type: DynamicRuleCost
+    cost: 75
 
 - type: entity
   id: Revolutionary
   parent: [BaseGameRule, BaseRoundstartAntagRule]
   components:
   # <Trauma>
-  - type: NewAntagOrEvac
-    event: SpawnERTSecurity
   - type: MindshieldRemovingAntag # puts fake mindshields into headrevs that start with a real one
   # </Trauma>
   - type: GameRule
@@ -447,7 +461,7 @@
       proto: Xenoborg
       count: 4
   - type: DynamicRuleCost
-    cost: 200
+    cost: 100
 
 - type: entity
   parent: [ BaseXenoborgsRule, BaseRoundstartAntagRule]
@@ -572,7 +586,7 @@
 # variation passes
 - type: entity
   id: BasicRoundstartVariation
-  parent: BaseGameRule
+  parent: BaseSilentGameRule
   components:
   - type: RoundstartStationVariationRule
     rules:

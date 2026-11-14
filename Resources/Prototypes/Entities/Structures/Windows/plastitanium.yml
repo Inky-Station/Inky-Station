@@ -87,6 +87,11 @@
   # End Frontier # inky
   - type: ExaminableDamage
     messages: null
+  - type: Tag
+    tags:
+    - ForceFixRotations
+    - Window
+    - SmeltingImmune
 
 - type: entity
   id: PlastitaniumWindow
@@ -180,6 +185,11 @@
   # End Frontier # inky
   - type: ExaminableDamage
     messages: null
+  - type: Tag
+    tags:
+    - ForceFixRotations
+    - Window
+    - SmeltingImmune
 
 - type: entity
   id: PlastitaniumWindowDiagonal

@@ -337,7 +337,7 @@
       Brain:
       - type: OhioAccent
       - type: RatvarianLanguage
-      - type: Clumsy
+#      - type: Clumsy
       # inkymed
       - type: Lobotomised
       # /inkymed
@@ -363,7 +363,7 @@
       Brain:
       - type: OhioAccent
       - type: RatvarianLanguage
-      - type: Clumsy
+#      - type: Clumsy
       # inkymed
       - type: Lobotomised
       # /inkymed

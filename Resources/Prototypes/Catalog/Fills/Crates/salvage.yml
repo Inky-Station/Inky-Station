@@ -146,8 +146,6 @@
           prob: 0.01
         - id: ClothingHeadHatDogEars
           prob: 0.01
-        - id: FoodMango #Inky
-          prob: 0.01
           # TRAITOR EQUIPMENT (0.01%)
         - id: Telecrystal50 # Goob - TC inflation
           prob: 0.0001

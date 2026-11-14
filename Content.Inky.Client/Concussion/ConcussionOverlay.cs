@@ -1,5 +1,4 @@
 using System.Numerics;
-using Content.Client.UserInterface.Systems.DamageOverlays.Overlays;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;

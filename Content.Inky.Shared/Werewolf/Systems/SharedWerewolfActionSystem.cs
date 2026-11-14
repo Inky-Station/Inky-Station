@@ -9,7 +9,7 @@ namespace Content.Inky.Shared.Werewolf.Systems;
 public sealed partial class SharedWerewolfActionSystem : EntitySystem
 {
     [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private HungerSystem _hunger = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
 
     [SubscribeLocalEvent]
     private void OnActionAttempt(Entity<WerewolfActionComponent> ent, ref ActionAttemptEvent args)
@@ -28,10 +28,10 @@ public sealed partial class SharedWerewolfActionSystem : EntitySystem
 
         if (comp.HungerCost > 0)
         {
-            if (!TryComp<HungerComponent>(user, out var hunger))
+            if (!TryComp<SatiationComponent>(user, out var hunger))
                 return;
 
-            if (_hunger.GetHunger(hunger) < comp.HungerCost)
+            if (_satiation.GetValueOrNull((user, hunger), SatiationSystem.Hunger) < comp.HungerCost)
             {
                 _popup.PopupClient(Loc.GetString(comp.NoHungerPopup), user, user);
                 args.Cancelled = true;
@@ -39,6 +39,7 @@ public sealed partial class SharedWerewolfActionSystem : EntitySystem
             }
         }
 
-        _hunger.ModifyHunger(user, -comp.HungerCost);
+        if (TryComp<SatiationComponent>(user, out var hunger2))
+            _satiation.ModifyValue((user, hunger2), SatiationSystem.Hunger, -comp.HungerCost);
     }
 }

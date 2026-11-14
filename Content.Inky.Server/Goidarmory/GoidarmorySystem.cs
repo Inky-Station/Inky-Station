@@ -1,5 +1,7 @@
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Shared.Station.Components;
+using Content.Shared.Station.Systems;
 
 namespace Content.Inky.Server.Goidarmory;
 

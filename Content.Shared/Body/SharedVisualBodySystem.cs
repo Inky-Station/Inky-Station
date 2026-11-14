@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared.DisplacementMap;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid;
 using Robust.Shared.Containers;
@@ -80,15 +81,24 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         Dirty(ent);
     }
 
-    protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data)
+    protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data, ProtoId<DisplacementDataPrototype>? displacement)
     {
         ent.Comp.Data = data;
+        ent.Comp.Displacement = displacement;
         Dirty(ent);
     }
 
-    public virtual void SetOrganMarkings(Entity<VisualOrganMarkingsComponent> ent, Dictionary<HumanoidVisualLayers, List<Marking>> markings) // Trauma - made public
+    // Trauma - made public
+    public virtual void SetOrganMarkings(Entity<VisualOrganMarkingsComponent> ent, Dictionary<HumanoidVisualLayers, List<Marking>> markings, Dictionary<HumanoidVisualLayers, DisplacementData> displacement)
+    {
+        SetOrganMarkings(ent, markings, displacement, ent.Comp.HideableLayers);
+    }
+
+    protected virtual void SetOrganMarkings(Entity<VisualOrganMarkingsComponent> ent, Dictionary<HumanoidVisualLayers, List<Marking>> markings, Dictionary<HumanoidVisualLayers, DisplacementData> displacement, HashSet<Enum> hideability)
     {
         ent.Comp.Markings = markings;
+        ent.Comp.MarkingsDisplacement = displacement.ShallowClone();
+        ent.Comp.HideableLayers = hideability;
         Dirty(ent);
     }
 
@@ -97,14 +107,13 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!TryComp<VisualOrganComponent>(args.Args.Organ, out var other))
             return;
 
-        if (other.Layer.Equals(ent.Comp.Layer)) // inkymed - removed !
-            SetOrganAppearance(ent, other.Data); // inkymed - replaced return;
+        // inkymed edit
+        if (other.Layer.Equals(ent.Comp.Layer))
+            SetOrganAppearance(ent, other.Data, other.Displacement);
 
-        // inkymed
-        // SetOrganAppearance(ent, other.Data);
         if (other.SecondData != null && other.SecondLayer != null && other.SecondLayer.Equals(ent.Comp.SecondLayer))
             SetOrganSecondAppearance(ent, other.SecondData);
-        // /inkymed
+        // /inkymed edit
     }
 
     private void OnMarkingsOrganCopyAppearance(Entity<VisualOrganMarkingsComponent> ent, ref BodyRelayedEvent<OrganCopyAppearanceEvent> args)
@@ -115,7 +124,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!other.MarkingData.Layers.SetEquals(ent.Comp.MarkingData.Layers))
             return;
 
-        SetOrganMarkings(ent, other.Markings);
+        SetOrganMarkings(ent, other.Markings, other.MarkingsDisplacement, other.HideableLayers);
     }
 
     private void OnVisualOrganApplyProfile(Entity<VisualOrganComponent> ent, ref BodyRelayedEvent<ApplyOrganProfileDataEvent> args)
@@ -145,7 +154,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (ent.Comp.SexStateOverrides is { } overrides && overrides.TryGetValue(data.Sex, out var state))
         {
             ent.Comp.Data.State = state;
-            SetOrganAppearance(ent, ent.Comp.Data);
+            SetOrganAppearance(ent, ent.Comp.Data, ent.Comp.Displacement);
 
             // inkymed
             if (ent.Comp.SecondLayer != null && ent.Comp.SecondData != null)
@@ -191,7 +200,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
             kvp => kvp.Key,
             kvp => ResolveMarkings(kvp.Value, profile.SkinColor, profile.EyeColor, groupProto.Appearances));
 
-        SetOrganMarkings(ent, resolved);
+        SetOrganMarkings(ent, resolved, ent.Comp.MarkingsDisplacement);
     }
 }
 

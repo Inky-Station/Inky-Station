@@ -13,7 +13,7 @@ public partial class RadiationSystem
         SubscribeLocalEvent<RadiationBlockerComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<RadiationBlockerComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<RadiationBlockerComponent, AnchorStateChangedEvent>(OnAnchorChanged);
-        SubscribeLocalEvent<RadiationBlockerComponent, ReAnchorEvent>(OnReAnchor);
+        // SubscribeLocalEvent<RadiationBlockerComponent, ReAnchorEvent>(OnReAnchor); // inky
 
         SubscribeLocalEvent<RadiationBlockerComponent, DoorStateChangedEvent>(OnDoorChanged);
 
@@ -46,6 +46,7 @@ public partial class RadiationSystem
         }
     }
 
+    /* inky
     private void OnReAnchor(EntityUid uid, RadiationBlockerComponent component, ref ReAnchorEvent args)
     {
         // probably grid was split
@@ -54,6 +55,7 @@ public partial class RadiationSystem
         // and move it to the new one
         AddTile(uid, component);
     }
+    */ // eeenkeee
 
     private void OnDoorChanged(EntityUid uid, RadiationBlockerComponent component, DoorStateChangedEvent args)
     {

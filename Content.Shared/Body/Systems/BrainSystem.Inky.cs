@@ -1,13 +1,12 @@
 using Content.Inky.Common.CCVar;
+using Content.Goobstation.Common.Body.Components;
+using Content.Medical.Common.Body;
 using Content.Inky.Common.Medical;
 using Content.Shared._Shitcod;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
-using Content.Shared.Atmos.EntitySystems;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Events;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.EntityConditions;
 using Content.Shared.EntityEffects.Effects.Body;
 using Content.Shared.Metabolism;
 using Content.Shared.Rejuvenate;
@@ -57,6 +56,10 @@ public sealed partial class BrainSystem
         var eqe = EntityQueryEnumerator<BrainComponent>();
         while (eqe.MoveNext(out var uid, out var brain))
         {
+            var target = _organQ.TryComp(uid, out var organ) ? organ.Body ?? uid : uid;
+            if (HasComp<BreathingImmunityComponent>(target) || HasComp<SpecialBreathingImmunityComponent>(target))
+                continue;
+
             SetAirSaturation(uid, brain, brain.AirSaturation - brain.AirConsumption);
         }
     }
