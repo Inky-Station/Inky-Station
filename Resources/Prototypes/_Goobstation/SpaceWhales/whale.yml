@@ -121,6 +121,11 @@
         damage: 18000 # inky edit (it breaks a lot of shit)
       behaviors:
       - !type:GibBehavior
+  - type: SpawnLootOnDeath
+    table: !type:AllSelector
+      children:
+      - id: FoodMeatDragon
+        rolls: 5, 8
   - type: ContentEye
     maxZoom: 1.5,1.5
     targetZoom: 1.5,1.5
@@ -163,7 +168,7 @@
     - !type:HealthChange
       damage:
         types:
-          Slash: 2000
+          Slash: 1500
   # inky
   - type: LimitedInstances
     key: SpaceLeviathan
@@ -211,7 +216,6 @@
     horizontalRotation: 0
   - type: DoAfter
   - type: Examiner
-  #  - type: Eye
   - type: RequireProjectileTarget
     active: False
   - type: MobState

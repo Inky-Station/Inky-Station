@@ -8,6 +8,7 @@ using Content.Shared.Database;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.Popups;
+using Content.Shared.Temperature.Components;
 using Content.Factory.Common.DeviceLinking;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -30,6 +31,7 @@ public abstract partial class NuclearReactorSystem : EntitySystem
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] protected EntityQuery<NuclearPropertiesComponent> PropsQuery = default!;
     [Dependency] protected EntityQuery<ReactorPartComponent> PartQuery = default!;
+    [Dependency] private EntityQuery<TemperatureComponent> _tempQuery = default!;
 
     public override void Initialize()
     {
@@ -128,12 +130,12 @@ public abstract partial class NuclearReactorSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
-    private void OnSignalReceived(Entity<NuclearReactorComponent> ent, ref SignalReceivedEvent<LogicIntPayload> args)
+    private void OnSignalReceived(Entity<NuclearReactorComponent> ent, ref SignalReceivedEvent<LogicNumberPayload> args)
     {
         if (args.Port != ent.Comp.ControlRodInsertionPort)
             return; // wrong port
 
-        var percent = (float) args.Data.Value;
+        var percent = args.Data.Value;
         SetTargetInsertion(ent, percent * 0.01f);
     }
 
@@ -213,7 +215,7 @@ public abstract partial class NuclearReactorSystem : EntitySystem
 
             array[i] = new ReactorSlotBUIData
             {
-                Temperature = partComp.Temperature,
+                Temperature = _tempQuery.Comp(part).Temperature,
                 NeutronCount = neutrons,
                 NeutronRadioactivity = props.NeutronRadioactivity,
                 Radioactivity = props.Radioactivity,
@@ -290,7 +292,7 @@ public abstract partial class NuclearReactorSystem : EntitySystem
         ent.Comp.AvgInsertion = value;
         DirtyField(ent, ent.Comp, nameof(NuclearReactorComponent.AvgInsertion));
 
-        var payload = new LogicIntPayload(percent);
+        var payload = new LogicNumberPayload(percent);
         _device.InvokePort(ent.Owner, ent.Comp.ControlRodsAvgPort, ref payload);
     }
 
@@ -307,7 +309,7 @@ public abstract partial class NuclearReactorSystem : EntitySystem
             return;
 
         ent.Comp.LastSentTemp = floored;
-        var payload = new LogicIntPayload(floored);
+        var payload = new LogicNumberPayload(floored);
         _device.InvokePort(ent.Owner, ent.Comp.CasingTempPort, ref payload);
     }
 
@@ -319,7 +321,7 @@ public abstract partial class NuclearReactorSystem : EntitySystem
         ent.Comp.ThermalPower = power;
         DirtyField(ent, ent.Comp, nameof(NuclearReactorComponent.ThermalPower));
 
-        var payload = new LogicIntPayload(power);
+        var payload = new LogicNumberPayload(power);
         _device.InvokePort(ent.Owner, ent.Comp.ThermalPowerPort, ref payload);
     }
 
