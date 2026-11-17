@@ -1,0 +1,58 @@
+- type: entity
+  id: WerewolfHell
+  parent:
+  - BaseWerewolf
+  name: hellhound
+  categories: [ HideSpawnMenu ]
+  description: Some call it the Reapers hound, you can probably understand why.
+  components:
+  - type: Sprite
+    sprite: _Inky/Mobs/Werewolf/Mutations/hell.rsi
+    state: wolf
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.45
+        Heat: 0.1
+  - type: FireProtection
+    reduction: 1 # hes literally a being of fire
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/Guns/Hits/energy_meat1.ogg
+      params:
+        variation: 0.250
+        volume: -10
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Heat: 5
+        Slash: 12
+  - type: Damageable
+    damageModifierSet: WerewolfHell
+  - type: IgnitionSource
+    temperature: 400
+    ignited: true
+
+- type: entity
+  id: WerewolfHellBurn
+  parent: WerewolfHell
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EffectsOnMeleeHit
+    targetEffects:
+    - !type:Flammable # copypasted from ash blade pls test if its too much/too little
+      multiplier: 2.5
+      fireProtectionPenetration: 0.35
+    - !type:Ignite
+
+- type: damageModifierSet
+  id: WerewolfHell
+  coefficients:
+    Blunt: 0.55         # -%10
+    Slash: 0.55         # -%10
+    Piercing: 0.55      # -%10
+    Heat: 0.25          # +%10 hes hot. . .
+    Cold: 1.2           # hotass should suffer from cold more
+    Holy: 1.1           # *immitates scottish accent* HES A DEVIL, A DEVIL! ! !

@@ -1,0 +1,42 @@
+- type: listing
+  id: WerewolfHell
+  name: werewolf-store-choose-hell-name
+  description: werewolf-store-choose-hell-desc
+  icon:
+    sprite: _Inky/Mobs/Werewolf/Mutations/hell.rsi
+    state: icon
+  productEvent: !type:WerewolfChangeTypeEvent
+    werewolfType: WerewolfTransformHell
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfChoose
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    blacklist:
+    - WerewolfWhite
+    - WerewolfDirewolf
+    - WerewolfBlack
+
+- type: listing
+  id: WerewolfHellBurn
+  name: werewolf-store-hell-burn-name
+  description: werewolf-store-hell-burn-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi/werewolf.rsi
+    state: thousand_degrees
+  productEvent: !type:WerewolfChangeTypeEvent
+    werewolfType: WerewolfTransformHellBurn
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 5
+  categories:
+  - WerewolfHell
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# MolotovFire

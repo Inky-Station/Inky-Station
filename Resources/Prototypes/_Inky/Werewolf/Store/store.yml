@@ -26,6 +26,11 @@
   priority: 3
 
 - type: storeCategory
+  id: WerewolfHell
+  name: werewolf-store-hell
+  priority: 4
+
+- type: storeCategory
   id: WerewolfBlackApprentice
   name: werewolf-store-black-apprentice
   priority: 98
