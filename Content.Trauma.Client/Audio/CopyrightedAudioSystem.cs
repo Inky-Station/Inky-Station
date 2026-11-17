@@ -69,7 +69,7 @@ public sealed partial class CopyrightedAudioSystem : EntitySystem
 
         // prevent server state trolling it (jukebox mostly)
 #if !USE_ROBUST
-        EntityManager.SetComponentNetSync(uid, audio, !muted);
+        // EntityManager.SetComponentNetSync(uid, audio, !muted); // inky edit
 #endif
         audio.NetSyncEnabled = !muted;
     }
