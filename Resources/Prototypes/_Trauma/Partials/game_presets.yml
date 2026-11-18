@@ -7,7 +7,7 @@
   - HereticRoundstart
   - BlobGameMode
   - LoneAbductorSpawn
-  - !Remove Changeling
+  # - !Remove Changeling # inky edit
   - ChangelingRuleRoundstart
   - InsurgencyRuleRandom
   - CosmicCult
@@ -24,7 +24,7 @@
   - HereticRoundstart
   - BlobGameMode
   - LoneAbductorSpawn
-  - !Remove Changeling
+  # - !Remove Changeling # inky edit
   - ChangelingRuleRoundstart
   - ShadowlingRoundstart
   - InsurgencyRuleRandom
