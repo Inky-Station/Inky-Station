@@ -17,5 +17,6 @@ public sealed partial class EntryPoint : GameShared // todo inky eeenkeee DOESNT
     public override void Init()
     {
         _proto.PartialDirectory(new("/Prototypes/_Trauma/Partials"), 1);
+        _proto.PartialDirectory(new("/Prototypes/_Inky/Partials"), 2);
     }
 }
