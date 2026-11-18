@@ -12,8 +12,8 @@
       Head: OrganXenomorphHead
       ArmLeft: OrganXenomorphArmLeft
       ArmRight: OrganXenomorphArmRight
-      HandRight: OrganXenomorphHandRight
-      HandLeft: OrganXenomorphHandLeft
+      # HandRight: OrganXenomorphHandRight # inky edit
+      # HandLeft: OrganXenomorphHandLeft # inky edit
       LegLeft: OrganXenomorphLegLeft
       LegRight: OrganXenomorphLegRight
       FootLeft: OrganXenomorphFootLeft

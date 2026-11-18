@@ -129,8 +129,16 @@
   components:
   - type: BodyPart
     symmetry: Left
-    slots:
-    - HandLeft
+    # inky edit
+    # slots:
+    # - HandLeft
+    # /inky edit
+  # inky
+  - type: HandOrgan
+    handID: left
+    data:
+      location: Left
+  # /inky
 
 - type: entity
   parent: !Clear
@@ -142,8 +150,16 @@
   components:
   - type: BodyPart
     symmetry: Right
-    slots:
-    - HandRight
+    # inky edit
+    # slots:
+    # - HandRight
+    # /inky edit
+  # inky
+  - type: HandOrgan
+    handID: right
+    data:
+      location: Right
+  # inky
 
 - type: entity
   parent: !Clear
