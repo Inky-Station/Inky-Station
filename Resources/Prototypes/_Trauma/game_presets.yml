@@ -17,7 +17,7 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
-  - Insurgency
+  - InsurgencyRuleRandom
   # inky
   - FunGameruleChooser # chudshift 90% of the time
   # /inky
@@ -83,5 +83,5 @@
   - ModerateAntagEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
-  - SubGamemodesRuleNoSpy
-  - Spies
+  - SubGamemodesRule
+  - SpyRuleRoundstart

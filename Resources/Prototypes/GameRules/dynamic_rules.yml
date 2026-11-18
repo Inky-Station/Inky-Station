@@ -79,7 +79,7 @@
         - id: Xenoborgs
           weight: 5
         # <Trauma>
-        - id: Changeling # inky - enabled
+        - id: ChangelingRuleRoundstart # inky edit - was Changeling
           weight: 25
           conditions:
           - !type:HasBudgetCondition

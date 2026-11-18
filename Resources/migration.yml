@@ -99,6 +99,9 @@ MailTeleporter: CargoMailTeleporter
 MailMetricsCartridge: null
 ComputerShuttleSalvage: ComputerShuttleMiningLavaland # 2 maps had this for some reason...
 
+# 2026-01-10
+ChemDispenser: EnergyChemDispenser
+
 # 2026-01-19 Goob reference purge
 PlushieBingleYakub: null
 PosterContrabandGoobYakub: null
@@ -218,12 +221,12 @@ PoweredFloorLight: null
 WallXenoMembrane: ResinMembrane
 WallXenoResin: WallResin
 WallXenoResinThick: WallResin
+
+# 2026-10-10
+CrateEngineeringSingularityCollector: null
+RadiationCollector: null
+RadiationCollectorFlatpack: null
 # </Trauma>
-
-# Goobstation - Submarine from DeltaV
-
-# 2026-01-10 Goobstation Change Mapped Chem to Energy Chem by default
-# ChemDispenser: EnergyChemDispenser - inky
 
 AirlockBoxerGlassLocked: AirlockServiceGlassLocked
 AirlockClownGlassLocked: AirlockServiceGlassLocked
@@ -610,8 +613,8 @@ FoodDonutBlumpkin: FoodDonutBluePumpkin
 FoodDonutJellyBlumpkin: FoodDonutJellyBluePumpkin
 
 # 2024-02-19
-#Drone: null
-#SpawnMobDrone: null
+Drone: null
+SpawnMobDrone: null
 #Onestar: null # I dont think this is even mapped, but just in case
 
 # 2024-02-22

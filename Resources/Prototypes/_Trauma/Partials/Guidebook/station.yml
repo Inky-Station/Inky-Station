@@ -14,7 +14,7 @@
   id: SpaceLaw
   priority: 1
   text: "/ServerInfo/_Trauma/Guidebook/ServerRules/SpaceLaw/SpaceLaw.xml"
-  children:
+  # children: # inky edit - Trauma wtf???
 
 - type: guideEntry
   id: SpaceLawCrimeList

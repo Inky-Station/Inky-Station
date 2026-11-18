@@ -26,7 +26,6 @@ namespace Content.Server.NodeContainer.EntitySystems
             SubscribeLocalEvent<NodeContainerComponent, ComponentStartup>(OnStartupEvent);
             SubscribeLocalEvent<NodeContainerComponent, ComponentShutdown>(OnShutdownEvent);
             SubscribeLocalEvent<NodeContainerComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
-            // SubscribeLocalEvent<NodeContainerComponent, ReAnchorEvent>(OnReAnchor); // inky
             SubscribeLocalEvent<NodeContainerComponent, MoveEvent>(OnMoveEvent);
             SubscribeLocalEvent<NodeContainerComponent, ExaminedEvent>(OnExamine);
         }
@@ -164,17 +163,6 @@ namespace Content.Server.NodeContainer.EntitySystems
                     _nodeGroupSystem.QueueNodeRemove(node);
             }
         }
-
-        /* inky
-        private void OnReAnchor(EntityUid uid, NodeContainerComponent component, ref ReAnchorEvent args)
-        {
-            foreach (var node in component.Nodes.Values)
-            {
-                _nodeGroupSystem.QueueNodeRemove(node);
-                _nodeGroupSystem.QueueReflood(node);
-            }
-        }
-        */
 
         private void OnMoveEvent(EntityUid uid, NodeContainerComponent container, ref MoveEvent ev)
         {

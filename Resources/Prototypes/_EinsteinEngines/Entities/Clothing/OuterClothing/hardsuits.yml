@@ -26,10 +26,11 @@
     - Tail
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.5
-        Heat: 0.5
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        # Ballistic: 0.6 # inky edit
+        Heat: 0.6
         Radiation: 0.1
       #flatReductions: # This is done so shotguns are worse against armor # inky - no
       #  Piercing: 3
@@ -84,16 +85,19 @@
 #    - Foot #inkymed
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.5
-        Heat: 0.5
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.65
+        # Ballistic: 0.65 # inky edit
+        Heat: 0.65
         Radiation: 0.1
-      #flatReductions: # This is done so shotguns are worse against armor # inky - no
-      #  Piercing: 3
+      # inky edit - no
+      # flatReductions: # This is done so shotguns are worse against armor
+      #   Ballistic: 2
+      # /inky edit
   - type: ClothingSpeedModifier
-    walkModifier: 0.8
-    sprintModifier: 0.8
+    walkModifier: 0.85
+    sprintModifier: 0.85
   - type: ToggleableClothing
     clothingPrototypes: #goobstation change
       head: ClothingHeadHelmetHardsuitCombatMedical
@@ -128,16 +132,17 @@
 #    - Foot inkymed
     modifiers:
       coefficients:
-        Blunt: 0.3
-        Slash: 0.3
-        Piercing: 0.3
-        Heat: 0.5
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        # Ballistic: 0.5 # inky edit
+        Heat: 0.65
         Radiation: 0.1
       #flatReductions: # This is done so shotguns are worse against armor # inky - no
       #  Piercing: 3
   - type: ClothingSpeedModifier
-    walkModifier: 0.60
-    sprintModifier: 0.60
+    walkModifier: 0.65
+    sprintModifier: 0.65
   - type: ToggleableClothing
     clothingPrototypes: #goobstation change
       head: ClothingHeadHelmetHardsuitCombatRiot

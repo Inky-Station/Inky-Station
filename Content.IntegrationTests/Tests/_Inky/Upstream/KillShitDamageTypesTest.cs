@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Content.IntegrationTests.Fixtures;
 using Content.Shared.Damage;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 using Robust.Shared.Reflection;
 
 namespace Content.IntegrationTests.Tests._Inky.Upstream;
@@ -104,6 +99,10 @@ public sealed partial class KillShitDamageTypesTest : GameTest // israelgpt x pa
 
         foreach (var prop in type.GetProperties(MemberFlags))
         {
+            if (prop.PropertyType != typeof(DamageSpecifier) &&
+                !typeof(DamageModifierSet).IsAssignableFrom(prop.PropertyType))
+                continue;
+
             if (prop.GetIndexParameters().Length > 0)
                 continue;
 
