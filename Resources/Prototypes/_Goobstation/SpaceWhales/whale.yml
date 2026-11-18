@@ -126,6 +126,11 @@
       children:
       - id: FoodMeatDragon
         rolls: 5, 8
+      # inky
+      - id: MaterialLeviathanScale1
+      - id: MaterialLeviathanScale1
+      # /inky
+    deleteOnDeath: true # inky
   - type: ContentEye
     maxZoom: 1.5,1.5
     targetZoom: 1.5,1.5
@@ -192,12 +197,6 @@
         - LowImpassable
         - MidImpassable
         - WallLayer
-  - type: SpawnLootOnDeath
-    table: !type:AllSelector
-      children:
-      - id: MaterialLeviathanScale1
-      - id: MaterialLeviathanScale1
-    deleteOnDeath: true
   - type: NoSlip
   - type: MovementAlwaysTouching
   - type: CanMoveInAir
