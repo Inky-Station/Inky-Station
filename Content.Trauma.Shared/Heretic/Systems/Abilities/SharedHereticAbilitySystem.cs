@@ -4,7 +4,6 @@ using Content.Goobstation.Common.Religion;
 using Content.Medical.Common.Damage;
 using Content.Medical.Common.Targeting;
 using Content.Medical.Shared.Traumas;
-using Content.Medical.Shared.Wounds;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
 using Content.Shared.Body;
@@ -22,6 +21,7 @@ using Content.Shared.Emp;
 using Content.Shared.Ensnaring;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
+using Content.Shared.Flash;
 using Content.Shared.Jaunt;
 using Content.Shared.Magic.Events;
 using Content.Shared.Mind;
@@ -31,8 +31,8 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
 using Content.Shared.StatusEffect;
+using Content.Shared.Store;
 using Content.Shared.Stunnable;
-using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Trauma.Common.CollectiveMind;
@@ -43,7 +43,9 @@ using Content.Trauma.Shared.Heretic.Events;
 using Content.Trauma.Shared.Heretic.Systems.PathSpecific.Cosmos;
 using Content.Trauma.Shared.Heretic.Systems.PathSpecific.Void;
 using Content.Trauma.Shared.Wizard.FadingTimedDespawn;
+using Content.Trauma.Shared.Wizard.SanguineStrike;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
@@ -67,6 +69,7 @@ public abstract partial class SharedHereticAbilitySystem : EntitySystem
     [Dependency] protected ExamineSystemShared Examine = default!;
     [Dependency] protected SharedPopupSystem Popup = default!;
 
+    [Dependency] private SharedStoreSystem _store = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private ThrowingSystem _throw = default!;
@@ -77,15 +80,13 @@ public abstract partial class SharedHereticAbilitySystem : EntitySystem
     [Dependency] private PullingSystem _pulling = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedStunSystem _stun = default!;
-    [Dependency] private SharedEyeSystem _eye = default!;
     [Dependency] private DamageableSystem _dmg = default!;
     [Dependency] private MobThresholdSystem _mobThreshold = default!;
     [Dependency] private BodySystem _body = default!;
-    [Dependency] private SharedBloodstreamSystem _blood = default!;
+    [Dependency] private BloodstreamSystem _blood = default!;
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private SharedEmpSystem _emp = default!;
     [Dependency] private SharedMindSystem _mind = default!;
-    [Dependency] private TagSystem _tag = default!;
     [Dependency] private SharedCuffableSystem _cuffs = default!;
     [Dependency] private SharedEnsnareableSystem _snare = default!;
     [Dependency] private SharedMansusGraspSystem _grasp = default!;
@@ -93,6 +94,9 @@ public abstract partial class SharedHereticAbilitySystem : EntitySystem
     [Dependency] private TraumaSystem _trauma = default!;
     [Dependency] private SharedGhoulSystem _ghoul = default!;
     [Dependency] private SharedFadingTimedDespawnSystem _fadeDespawn = default!;
+    [Dependency] private SharedSanguineStrikeSystem _lifesteal = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedFlashSystem _flash = default!;
 
     [Dependency] private EntityQuery<GhoulComponent> _ghoulQuery = default!;
 
@@ -100,7 +104,6 @@ public abstract partial class SharedHereticAbilitySystem : EntitySystem
 
     public static readonly DamageSpecifier AllDamage = new();
 
-    private static EntProtoId JauntMutedEffect = "StatusEffectMutedJaunt";
     public static ProtoId<CollectiveMindPrototype> MansusLinkMind = "MansusLink";
 
     public override void Initialize()
@@ -112,6 +115,19 @@ public abstract partial class SharedHereticAbilitySystem : EntitySystem
         SubscribeBlade();
 
         CacheDamageTypes();
+    }
+
+    [SubscribeLocalEvent]
+    private void OnStore(EventHereticOpenStore args)
+    {
+        if (!TryUseAbility(args))
+            return;
+
+        if (!Heretic.TryGetHereticComponent(args.Performer, out _, out var ent) ||
+            Heretic.GetHereticStore(ent) is not { } store)
+            return;
+
+        _store.ToggleUi(args.Performer, store, store);
     }
 
     [SubscribeLocalEvent]
@@ -162,7 +178,7 @@ public abstract partial class SharedHereticAbilitySystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnActionAttempt(Entity<HereticActionComponent> ent, ref ActionAttemptEvent args)
     {
-        if (StatusNew.HasEffectComp<BlockHereticActionsStatusEffectComponent>( args.User))
+        if (StatusNew.HasEffectComp<BlockHereticActionsStatusEffectComponent>(args.User))
             args.Cancelled = true;
     }
 
@@ -184,7 +200,7 @@ public abstract partial class SharedHereticAbilitySystem : EntitySystem
             if (checkNullRod)
             {
                 var ev = new BeforeCastTouchSpellEvent(look, false);
-                RaiseLocalEvent(look, ev, true);
+                RaiseLocalEvent(look, ref ev, true);
                 if (ev.Cancelled)
                     continue;
             }
@@ -205,12 +221,6 @@ public abstract partial class SharedHereticAbilitySystem : EntitySystem
         if (result && handle)
             args.Handled = true;
         return result;
-    }
-
-    [SubscribeLocalEvent]
-    private void OnJauntInit(Entity<JauntComponent> ent, ref ComponentInit args)
-    {
-        StatusNew.TryAddStatusEffect(ent.Owner, JauntMutedEffect, out _, null);
     }
 
     [SubscribeLocalEvent]

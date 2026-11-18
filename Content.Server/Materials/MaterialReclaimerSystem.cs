@@ -139,7 +139,10 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
 
         var item = active.Processing[i];
         if (Deleted(item))
+        {
+            active.Processing.RemoveAt(i);
             return false;
+        }
         // </Trauma>
 
         // scales the output if the process was interrupted.
@@ -153,7 +156,7 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
 
         // if it got deleted (always will for items) stop processing it
         // keep processing mobs stacking slash damage
-        if (Deleted(item))
+        if (TerminatingOrDeleted(item))
             active.Processing.RemoveAt(i);
         // </Trauma>
 
@@ -233,19 +236,7 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
             _materialStorage.TryChangeMaterialAmount(reclaimer, material, outputAmount, storage);
         }
 
-        foreach (var (storedMaterial, storedAmount) in storage.Storage)
-        {
-            var stacks = _materialStorage.SpawnMultipleFromMaterial(storedAmount,
-                storedMaterial,
-                xform.Coordinates,
-                out var materialOverflow);
-            var amountConsumed = storedAmount - materialOverflow;
-            _materialStorage.TryChangeMaterialAmount(reclaimer, storedMaterial, -amountConsumed, storage);
-            foreach (var stack in stacks)
-            {
-                _stack.TryMergeToContacts(stack);
-            }
-        }
+        _materialStorage.EjectAllMaterial(reclaimer, xform.Coordinates, storage, true);
     }
 
     private void SpawnChemicalsFromComposition(EntityUid reclaimer,

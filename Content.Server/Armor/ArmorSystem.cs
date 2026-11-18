@@ -7,6 +7,7 @@ namespace Content.Server.Armor;
 /// <inheritdoc/>
 public sealed partial class ArmorSystem : SharedArmorSystem
 {
+    /* Trauma - no more free money
     public override void Initialize()
     {
         base.Initialize();
@@ -22,10 +23,11 @@ public sealed partial class ArmorSystem : SharedArmorSystem
             args.Price += component.PriceMultiplier * damageType.ArmorPriceCoefficient * 45 * (1 - modifier.Value);
         }
 
-        foreach (var modifier in component.Modifiers.FlatReduction)
+        foreach (var modifier in component.Modifiers.FlatReductions)
         {
             var damageType = ProtoMan.Index<DamageTypePrototype>(modifier.Key);
             args.Price += component.PriceMultiplier * damageType.ArmorPriceFlat * modifier.Value;
         }
     }
+    */
 }

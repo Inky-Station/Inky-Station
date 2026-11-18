@@ -1,6 +1,5 @@
 // <Trauma>
 using Content.Trauma.Common.Knowledge;
-using Robust.Shared.Timing;
 // </Trauma>
 using System.Linq;
 using Content.Shared.Actions;
@@ -24,6 +23,7 @@ using Content.Shared.Toggleable;
 using Content.Shared.Verbs;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Timing;
 using Robust.Shared.Toolshed.Syntax;
 using Robust.Shared.Utility;
 
@@ -32,9 +32,9 @@ namespace Content.Shared.Blocking;
 public sealed partial class BlockingSystem : EntitySystem
 {
     // <Trauma>
-    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
     // </Trauma>
+    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private ActionContainerSystem _actionContainer = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private ExamineSystemShared _examine = default!;
@@ -56,29 +56,7 @@ public sealed partial class BlockingSystem : EntitySystem
     [Dependency] private MovementSpeedModifierSystem _movement = default!;
     // /inky
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        InitializeUser();
-
-        // inky
-        InitializeInky();
-        // /inky
-
-        SubscribeLocalEvent<BlockingComponent, ItemToggledEvent>(OnItemToggled);
-        SubscribeLocalEvent<BlockingComponent, GotEquippedHandEvent>(OnEquip);
-        SubscribeLocalEvent<BlockingComponent, GotUnequippedHandEvent>(OnUnequip);
-        SubscribeLocalEvent<BlockingComponent, DroppedEvent>(OnDrop);
-
-        SubscribeLocalEvent<BlockingComponent, GetItemActionsEvent>(OnGetActions);
-        SubscribeLocalEvent<BlockingComponent, ToggleActionEvent>(OnToggleAction);
-
-        SubscribeLocalEvent<BlockingComponent, ComponentShutdown>(OnShutdown);
-
-        SubscribeLocalEvent<BlockingComponent, GetVerbsEvent<ExamineVerb>>(OnVerbExamine);
-        SubscribeLocalEvent<BlockingComponent, MapInitEvent>(OnMapInit);
-    }
-
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<BlockingComponent> entity, ref MapInitEvent args)
     {
         if (!CanBlock(entity.AsNullable()))
@@ -88,6 +66,7 @@ public sealed partial class BlockingSystem : EntitySystem
         DirtyField(entity, entity.Comp, nameof(BlockingComponent.BlockingToggleActionEntity));
     }
 
+    [SubscribeLocalEvent]
     private void OnItemToggled(Entity<BlockingComponent> entity, ref ItemToggledEvent args)
     {
         if (!_handsSystem.IsHeld(entity.Owner, out var holder))
@@ -99,6 +78,7 @@ public sealed partial class BlockingSystem : EntitySystem
             StopBlocking(entity, holder.Value);
     }
 
+    [SubscribeLocalEvent]
     private void OnEquip(Entity<BlockingComponent> entity, ref GotEquippedHandEvent args)
     {
         if (_timing.ApplyingState || !CanBlock(entity.AsNullable())) // Trauma - check applyingstate because you cant AddComp while resetting entities
@@ -107,21 +87,25 @@ public sealed partial class BlockingSystem : EntitySystem
         StartBlocking(entity, args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnUnequip(Entity<BlockingComponent> entity, ref GotUnequippedHandEvent args)
     {
         StopBlocking(entity, args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnDrop(Entity<BlockingComponent> entity, ref DroppedEvent args)
     {
         StopBlocking(entity, args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnGetActions(Entity<BlockingComponent> entity, ref GetItemActionsEvent args)
     {
         args.AddAction(ref entity.Comp.BlockingToggleActionEntity, entity.Comp.BlockingToggleAction);
     }
 
+    [SubscribeLocalEvent]
     private void OnToggleAction(Entity<BlockingComponent> entity, ref ToggleActionEvent args)
     {
         if (args.Handled || !CanBlock(entity.AsNullable()))
@@ -152,6 +136,7 @@ public sealed partial class BlockingSystem : EntitySystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<BlockingComponent> entity, ref ComponentShutdown args)
     {
         //In theory the user should not be null when this fires off
@@ -344,7 +329,7 @@ public sealed partial class BlockingSystem : EntitySystem
         DirtyField(entity, entity.Comp, nameof(BlockingComponent.User));
 
         //To make sure that this bodytype doesn't get set as anything but the original
-        if (EnsureComp<BlockingUserComponent>(user, out var userComp))
+        if (_timing.ApplyingState || EnsureComp<BlockingUserComponent>(user, out var userComp))
             return;
 
         userComp.BlockingItem = entity;
@@ -399,6 +384,7 @@ public sealed partial class BlockingSystem : EntitySystem
         return entity.Comp.IsRaised ? entity.Comp.ActiveBlockModifier ?? entity.Comp.PassiveBlockModifier : entity.Comp.PassiveBlockModifier;
     }
 
+    [SubscribeLocalEvent]
     private void OnVerbExamine(Entity<BlockingComponent> entity, ref GetVerbsEvent<ExamineVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess)
@@ -437,7 +423,7 @@ public sealed partial class BlockingSystem : EntitySystem
             ));
         }
 
-        foreach (var flat in modifiers.FlatReduction)
+        foreach (var flat in modifiers.FlatReductions)
         {
             msg.PushNewline();
             msg.AddMarkupOrThrow(Robust.Shared.Localization.Loc.GetString("blocking-reduction-trauma", // Trauma - use custom examine

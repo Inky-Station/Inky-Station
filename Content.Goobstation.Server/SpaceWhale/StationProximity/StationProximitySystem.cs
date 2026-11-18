@@ -3,13 +3,13 @@
 using System.Linq;
 using Content.Goobstation.Common.CCVar;
 using Content.Server.Popups;
-using Content.Server.Station.Components;
 using Content.Goobstation.Server.MobCaller;
 using Content.Shared.Coordinates;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
+using Content.Shared.Station.Components;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
@@ -50,9 +50,6 @@ public sealed partial class StationProximitySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SpaceWhaleTargetComponent, MobStateChangedEvent>(OnTargetDeath);
-        SubscribeLocalEvent<SpaceWhaleTargetComponent, ComponentShutdown>(OnTargetShutdown);
-
         Subs.CVar(_cfg, GoobCVars.SpaceWhaleSpawn, x => _spaceWhaleEnabled = x, true);
         Subs.CVar(_cfg, GoobCVars.SpaceWhaleSpawnDistance, x => _spaceWhaleSpawnDistance = x, true);
 
@@ -61,6 +58,7 @@ public sealed partial class StationProximitySystem : EntitySystem
         // /inky
     }
 
+    [SubscribeLocalEvent]
     private void OnTargetDeath(Entity<SpaceWhaleTargetComponent> ent, ref MobStateChangedEvent args)
     {
         if (args.NewMobState == MobState.Alive)
@@ -73,6 +71,15 @@ public sealed partial class StationProximitySystem : EntitySystem
         // /inky
     }
 
+    [SubscribeLocalEvent]
+    private void OnTargetMove(Entity<SpaceWhaleTargetComponent> ent, ref MoveEvent args)
+    {
+        // prevents the shitty mob caller hack from spawning them on station because the update loop only runs every minute
+        // have to check it at all times to immediately stop it, this is a rare thing anyways
+        CheckHumanoidProximity((ent, args.Component));
+    }
+
+    [SubscribeLocalEvent]
     private void OnTargetShutdown(Entity<SpaceWhaleTargetComponent> ent, ref ComponentShutdown args)
     {
         StopFollowing(ent.Owner);
@@ -130,10 +137,11 @@ public sealed partial class StationProximitySystem : EntitySystem
 
         while (stationQuery.MoveNext(out var uid, out _, out var grid, out var xform))
         {
+            var ent = (uid, grid, xform);
             if (_stations.TryGetValue(xform.MapID, out var stations))
-                stations.Add((uid, grid, xform));
+                stations.Add(ent);
             else
-                _stations[xform.MapID] = [(uid, grid, xform)];
+                _stations[xform.MapID] = [ent];
         }
 
         if (_stations.Count == 0)
@@ -168,10 +176,11 @@ public sealed partial class StationProximitySystem : EntitySystem
             var stationWorldPos = _transform.GetWorldPosition(xform);
             var distance = (humanoidWorldPos - stationWorldPos).Length();
 
-            if (grid.LocalAABB.Size.Length() > 0)
+            var size = grid.LocalAABB.Size.Length();
+            if (size > 0)
             {
                 // it needs to be halved to get correct measurements
-                var gridRadius = grid.LocalAABB.Size.Length() / 2f;
+                var gridRadius = size / 2f;
                 distance = Math.Max(0, distance - gridRadius);
             }
 

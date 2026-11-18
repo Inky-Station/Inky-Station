@@ -8,7 +8,7 @@ public sealed partial class EntityWhitelistSystem : EntitySystem
 {
     [Dependency] private TagSystem _tag = default!;
 
-    [Dependency] private EntityQuery<ItemComponent> _itemQuery;// inky edit TRAUMA FUCKUPt
+    [Dependency] private EntityQuery<ItemComponent> _itemQuery = default!;
 
     private CompName _itemComponentName = default;
     private CompName _tagComponentName = default;

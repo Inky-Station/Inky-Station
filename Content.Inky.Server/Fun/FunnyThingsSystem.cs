@@ -1,6 +1,7 @@
 using Content.Inky.Common.CCVar;
 using Content.Inky.Server.Fun.Components.Rules;
 using Content.Server.GameTicking;
+using Content.Shared.GameTicking;
 using Robust.Shared.Configuration;
 using Robust.Shared.Random;
 

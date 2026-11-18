@@ -135,13 +135,6 @@
 
 - type: entity
   parent: BaseLanguageKnowledge
-  id: LanguageDroneTalk
-  components:
-  - type: LanguageKnowledge
-    languageId: DroneTalk
-
-- type: entity
-  parent: BaseLanguageKnowledge
   id: LanguagePsychomantic
   components:
   - type: LanguageKnowledge
@@ -314,3 +307,10 @@
   components:
   - type: LanguageKnowledge
     languageId: Miltech
+
+- type: entity
+  parent: BaseLanguageKnowledgeAntag
+  id: LanguageZombish
+  components:
+  - type: LanguageKnowledge
+    languageId: Zombish

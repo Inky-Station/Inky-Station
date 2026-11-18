@@ -8,12 +8,14 @@
     damageRecovery: !type:DamageSpecifier
   - type: Barotrauma
     damage: !type:DamageSpecifier
-  - type: Hunger
-  - type: Thirst
+  - type: Satiation
+    satiations: {}
   - type: Reproductive
     offspring: []
     partnerWhitelist: !type:EntityWhitelist
   - type: ReproductivePartner
+  - type: SatiationProduction
+  - type: EntityProducerAction
   - type: Temperature
   - type: Pacified
   - type: Xenomorph
@@ -32,6 +34,5 @@
   - type: HereticMinion
   - type: WeakToHoly
   - type: GhostTakeoverAvailable
-  - type: HereticBladeUserBonusDamage
   - type: HolyIgniteOnCollide
   - type: HolyFlammable

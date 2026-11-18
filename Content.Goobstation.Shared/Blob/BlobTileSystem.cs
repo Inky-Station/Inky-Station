@@ -12,8 +12,10 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
+using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Verbs;
+using Content.Trauma.Common.Fluids;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map.Components;
@@ -25,20 +27,26 @@ namespace Content.Goobstation.Shared.Blob;
 
 public sealed partial class BlobTileSystem : EntitySystem
 {
+    [Dependency] private BlobCoreSystem _core = default!;
     [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private INetManager _net = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private SharedBlobCoreSystem _core = default!;
     [Dependency] private SharedEntityEffectsSystem _effects = default!;
     [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private NpcFactionSystem _faction = default!;
     [Dependency] private EntityQuery<BlobCoreComponent> _coreQuery = default!;
     [Dependency] private EntityQuery<BlobObserverComponent> _observerQuery = default!;
+    [Dependency] private EntityQuery<BlobTileComponent> _tileQuery = default!;
+    [Dependency] private EntityQuery<DestructibleComponent> _destructibleQuery = default!;
     [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
 
     private static readonly ProtoId<NpcFactionPrototype> BlobFaction = "Blob";
+
+    private HashSet<Entity<BlobTileComponent>> _tiles = new();
 
     [SubscribeLocalEvent]
     private void OnGetVerbs(Entity<BlobTileComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
@@ -50,7 +58,7 @@ public sealed partial class BlobTileSystem : EntitySystem
         if (ent.Comp.Core == null || observer.Core is not { } core)
             return;
 
-        if (Transform(ent).Anchored)
+        if (!Transform(ent).Anchored)
             return;
 
         var current = ProtoMan.Index(ent.Comp.Tile);
@@ -99,13 +107,36 @@ public sealed partial class BlobTileSystem : EntitySystem
         if (chem.DestructionEffects is not { } effects)
             return;
 
-        _effects.ApplyEffects(ent, effects, predicted: false); // destruction prediction when
+        _effects.TryApplyEffects(ent, effects, predicted: false); // destruction prediction when
+    }
+
+    [SubscribeLocalEvent]
+    private void OnDamageDealt(Entity<BlobTileComponent> ent, ref DamageDealtEvent args)
+    {
+        if (args.Origin is not { } origin ||
+            !args.Damage.AnyPositive() ||
+            ent.Comp.Core is not { } core ||
+            !_coreQuery.TryComp(core, out var coreComp))
+            return;
+
+        var chem = ProtoMan.Index(coreComp.CurrentChem);
+        if (chem.DamagedEffects is not { } effects)
+            return;
+
+        _effects.ApplyEffects(ent, effects, user: origin);
     }
 
     [SubscribeLocalEvent]
     private void OnNodePulse(Entity<BlobTileComponent> ent, ref BlobNodePulseEvent args)
     {
         args.Handled |= NodePulse(ent, args.Core, args.Chem, args.Handled);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnSplashAttempt(Entity<BlobTileComponent> ent, ref SplashAttemptEvent args)
+    {
+        // blob tiles cant splash eachother with chems
+        args.Cancelled |= _tileQuery.HasComp(args.Target);
     }
 
     /// <summary>
@@ -119,14 +150,26 @@ public sealed partial class BlobTileSystem : EntitySystem
             healing *= chem.HealingScale;
         _damage.ChangeDamage(ent.Owner, healing);
 
-        if (lazy)
-            return false;
+        return !lazy && TryGrow(ent, core, chem, out _, predicted: false);
+    }
 
+    public bool TryGrow(Entity<BlobTileComponent> ent, out EntityUid? newTile, bool attack = true, bool doEffects = true, bool predicted = true)
+    {
+        newTile = null;
+        return ent.Comp.Core is { } core &&
+            _coreQuery.TryComp(core, out var coreComp) &&
+            TryGrow(ent, (core, coreComp), ProtoMan.Index(coreComp.CurrentChem), out newTile, attack, doEffects, predicted);
+    }
+
+    public bool TryGrow(Entity<BlobTileComponent> ent, Entity<BlobCoreComponent> core, BlobChemPrototype chem,
+        out EntityUid? newTile, bool attack = true, bool doEffects = true, bool predicted = true)
+    {
+        newTile = null;
         var xform = Transform(ent);
         if (xform.GridUid is not { } gridUid || !_gridQuery.TryComp(gridUid, out var grid))
             return false;
 
-        if (_core.GetNearNode(xform.Coordinates, core.Comp.TilesRadiusLimit) is not { } node)
+        if (_core.GetNearNode(xform.Coordinates, core, core.Comp.TilesRadiusLimit) is not { } node)
             return false;
 
         var mobTile = _map.GetTileRef(gridUid, grid, xform.Coordinates);
@@ -156,19 +199,23 @@ public sealed partial class BlobTileSystem : EntitySystem
             if (!mobAdjacentTiles.Contains(innerTile.GridIndices))
                 continue;
 
-            var spawn = true;
+            var pos = _map.GridTileToWorld(gridUid, grid, innerTile.GridIndices);
+            _tiles.Clear();
+            _lookup.GetEntitiesInRange(pos, 0.35f, _tiles, LookupFlags.Dynamic | LookupFlags.StaticSundries);
+            // can't ever spawn a tile if there's another one there, even if it's unanchored
+            var spawn = _tiles.Count == 0;
             foreach (var uid in _map.GetAnchoredEntities(gridUid, grid, innerTile.GridIndices))
             {
-                if (HasComp<BlobTileComponent>(uid))
-                    spawn = false;
-
-                if (!HasComp<DestructibleComponent>(uid))
+                if (_tileQuery.HasComp(uid) || !_destructibleQuery.HasComp(uid))
                     continue;
 
-                DoLunge(ent, uid);
-                _damage.TryChangeDamage(uid, chem.Damage);
-                if (_net.IsClient && _timing.IsFirstTimePredicted) // all clients will predict it
-                    _audio.PlayPvs(core.Comp.AttackSound, uid);
+                if (attack)
+                {
+                    DoLunge(ent, uid);
+                    _damage.TryChangeDamage(uid, chem.Damage);
+                    if (!predicted || _net.IsClient && _timing.IsFirstTimePredicted)
+                        _audio.PlayPvs(core.Comp.AttackSound, uid);
+                }
                 return true;
             }
 
@@ -177,7 +224,8 @@ public sealed partial class BlobTileSystem : EntitySystem
 
             // spawn a new blob tile there
             var coords = _map.ToCoordinates(gridUid, innerTile.GridIndices, grid);
-            if (_core.TransformBlobTile(null, core.AsNullable(), node, ent.Comp.SpreadTile, coords))
+            newTile = _core.TransformBlobTile(null, core.AsNullable(), node, ent.Comp.SpreadTile, coords, doEffects);
+            if (newTile != null)
                 break;
         }
 
@@ -189,11 +237,20 @@ public sealed partial class BlobTileSystem : EntitySystem
         var coords = Transform(target).Coordinates;
         var current = ProtoMan.Index(target.Comp.Tile);
         if (current.Upgrade is not { } nextId ||
-            !TryComp<BlobCoreComponent>(core, out var coreComp) ||
-            _core.GetNearNode(coords, coreComp.TilesRadiusLimit) is not { } node)
+            !TryComp<BlobCoreComponent>(core, out var coreComp))
             return;
 
-        _core.TransformBlobTile(target.AsNullable(), (core, coreComp), node, nextId, coords);
+        if (_core.GetNearNode(coords, core, coreComp.TilesRadiusLimit) is not { } node)
+        {
+            _popup.PopupEntity("There's no node nearby!", target, observer, PopupType.SmallCaution);
+            return;
+        }
+
+        var cost = ProtoMan.Index(nextId).Cost;
+        if (!_core.TryUseAbility((core, coreComp), cost, coords))
+            return;
+
+        _core.TransformBlobTile(target.AsNullable(), (core, coreComp), node, nextId, coords, doEffects: false);
     }
 
     public bool IsEmptySpecial(Entity<BlobNodeComponent> node, ProtoId<BlobTilePrototype> tile)
@@ -218,11 +275,12 @@ public sealed partial class BlobTileSystem : EntitySystem
             // client predicts this lunge either via interaction or node update loop
             RaiseLocalEvent(ev);
         }
-        else if (user != null)
+        else
         {
             // server tells clients about another player's interaction
             var filter = Filter.Pvs(from);
-            filter.RemovePlayerByAttachedEntity(user.Value);
+            if (user != null)
+                filter.RemovePlayerByAttachedEntity(user.Value);
             RaiseNetworkEvent(ev, filter);
         }
     }

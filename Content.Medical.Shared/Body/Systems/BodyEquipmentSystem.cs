@@ -102,7 +102,7 @@ public sealed partial class BodyEquipmentSystem : EntitySystem
         {
             foreach (var slot in slots)
             {
-                _inventory.DropSlotContents(ent, slot, ent.Comp);
+                _inventory.DropSlotContents(ent, slot);
             }
         }
     }

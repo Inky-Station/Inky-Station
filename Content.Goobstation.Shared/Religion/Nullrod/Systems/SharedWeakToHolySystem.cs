@@ -6,8 +6,10 @@ using Content.Shared.Bible.Components;
 using Content.Shared.Body;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Components;
+using Content.Shared.Timing.Systems;
 using Content.Shared.Weapons.Melee.Events;
+using System.Linq;
 
 namespace Content.Goobstation.Shared.Religion.Nullrod.Systems;
 
@@ -31,7 +33,7 @@ public abstract partial class SharedWeakToHolySystem : EntitySystem
             !HasComp<BibleUserComponent>(args.User))
             return;
 
-        _goobBible.TryDoSmite(ent, args.User, args.HitEntities[0], useDelay);
+        _goobBible.TryDoSmite(ent, args.User, args.HitEntities.First(), useDelay);
     }
 
     [SubscribeLocalEvent]
@@ -82,10 +84,10 @@ public abstract partial class SharedWeakToHolySystem : EntitySystem
 
         DamageModifierSet modifierSet = new()
         {
-            Coefficients = new Dictionary<string, float>
+            Coefficients = new()
             {
-                { "Holy", holyCoefficient },
-            },
+                { "Holy", holyCoefficient }
+            }
         };
 
         args.Damage = DamageSpecifier.ApplyModifierSet(args.Damage, modifierSet);

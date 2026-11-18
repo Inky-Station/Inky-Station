@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Follower;
 using Content.Shared.Hands.EntitySystems;
@@ -41,6 +42,7 @@ public sealed partial class ProtectiveBladeSystem : EntitySystem
     [Dependency] private StatusEffectsSystem _status = default!;
     [Dependency] private SharedHereticSystem _heretic = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedSacramentsSystem _sacraments = default!;
 
     public static readonly EntProtoId<ProtectiveBladeComponent> BladePrototype = "HereticProtectiveBlade";
     public static readonly EntProtoId BladeProjecilePrototype = "HereticProtectiveBladeProjectile";
@@ -51,18 +53,6 @@ public sealed partial class ProtectiveBladeSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<ProtectiveBladeComponent, ComponentShutdown>(OnBladeShutdown);
-        SubscribeLocalEvent<ProtectiveBladeComponent, StoppedFollowingEntityEvent>(OnStopFollowing);
-
-        SubscribeLocalEvent<ProtectiveBladesComponent, ProtectiveBladeUsedEvent>(OnBladeUsed);
-        SubscribeLocalEvent<ProtectiveBladesComponent, BeforeDamageChangedEvent>(OnTakeDamage);
-        SubscribeLocalEvent<ProtectiveBladesComponent, BeforeHarmfulActionEvent>(OnBeforeHarmfulAction,
-            after: [typeof(SharedHereticAbilitySystem), typeof(RiposteeSystem), typeof(SharedUnfathomableCurioSystem)]);
-        SubscribeLocalEvent<ProtectiveBladesComponent, ProjectileReflectAttemptEvent>(OnProjectileReflectAttempt);
-        SubscribeLocalEvent<ProtectiveBladesComponent, HitScanReflectAttemptEvent>(OnHitscanReflectAttempt);
-
-        SubscribeLocalEvent<StatusEffectContainerComponent, ProtectiveBladeUsedEvent>(OnStatusBladeUsed);
 
         CommandBinds.Builder
             .BindAfter(ContentKeyFunctions.ThrowItemInHand,
@@ -103,6 +93,7 @@ public sealed partial class ProtectiveBladeSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnStatusBladeUsed(Entity<StatusEffectContainerComponent> ent, ref ProtectiveBladeUsedEvent args)
     {
         if (!_status.TryEffectsWithComp<AddProtectiveBladesStatusEffectComponent>(ent, out var effects))
@@ -117,18 +108,21 @@ public sealed partial class ProtectiveBladeSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnStopFollowing(Entity<ProtectiveBladeComponent> ent, ref StoppedFollowingEntityEvent args)
     {
         var ev = new ProtectiveBladeUsedEvent(ent);
         RaiseLocalEvent(ent.Comp.User, ref ev);
     }
 
+    [SubscribeLocalEvent]
     private void OnBladeShutdown(Entity<ProtectiveBladeComponent> ent, ref ComponentShutdown args)
     {
         var ev = new ProtectiveBladeUsedEvent(ent);
         RaiseLocalEvent(ent.Comp.User, ref ev);
     }
 
+    [SubscribeLocalEvent]
     private void OnBladeUsed(Entity<ProtectiveBladesComponent> ent, ref ProtectiveBladeUsedEvent args)
     {
         ent.Comp.Blades.Remove(args.Used);
@@ -155,7 +149,6 @@ public sealed partial class ProtectiveBladeSystem : EntitySystem
         if (session?.AttachedEntity is not { Valid: true } player || !Exists(player) ||
             !coords.IsValid(EntityManager) || !_heretic.IsHereticOrGhoul(player) ||
             !TryComp(player, out ProtectiveBladesComponent? blades) ||
-            IsSacramentsActive(player) ||
             _status.HasStatusEffect(player, blades.BlockShootStatus))
             return false;
 
@@ -166,9 +159,10 @@ public sealed partial class ProtectiveBladeSystem : EntitySystem
         return false;
     }
 
+    [SubscribeLocalEvent]
     private void OnProjectileReflectAttempt(Entity<ProtectiveBladesComponent> ent, ref ProjectileReflectAttemptEvent args)
     {
-        if (args.Cancelled || !RefreshBlades(ent) || IsSacramentsActive(ent))
+        if (args.Cancelled || !RefreshBlades(ent) || _sacraments.ShouldBlockDamage(ent.Owner, args.Component.Shooter))
             return;
 
         foreach (var blade in ent.Comp.Blades)
@@ -185,9 +179,10 @@ public sealed partial class ProtectiveBladeSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnHitscanReflectAttempt(Entity<ProtectiveBladesComponent> ent, ref HitScanReflectAttemptEvent args)
     {
-        if (args.Reflected || !RefreshBlades(ent) || IsSacramentsActive(ent))
+        if (args.Reflected || !RefreshBlades(ent) || _sacraments.ShouldBlockDamage(ent.Owner, args.Shooter))
             return;
 
         foreach (var blade in ent.Comp.Blades)
@@ -213,26 +208,29 @@ public sealed partial class ProtectiveBladeSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent(after: [typeof(SharedHereticAbilitySystem), typeof(RiposteeSystem), typeof(SharedUnfathomableCurioSystem)])]
     private void OnBeforeHarmfulAction(Entity<ProtectiveBladesComponent> ent, ref BeforeHarmfulActionEvent args)
     {
-        if (args.Cancelled || !RefreshBlades(ent) || IsSacramentsActive(ent))
+        if (args.Cancelled || ent.Owner == args.User || !args.CanRiposte || !RefreshBlades(ent) || _sacraments.ShouldBlockDamage(ent.Owner, args.User))
             return;
 
         PredictedQueueDel(ent.Comp.Blades[0]);
 
-        _audio.PlayPvs(BladeBlockSound, ent);
+        _audio.PlayPredicted(BladeBlockSound, ent, args.User);
 
         args.Cancelled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnTakeDamage(Entity<ProtectiveBladesComponent> ent, ref BeforeDamageChangedEvent args)
     {
-        if (args.Cancelled || args.Damage.GetTotal() < 5 || !RefreshBlades(ent) || IsSacramentsActive(ent))
+        if (args.Cancelled || ent.Owner == args.Origin || args.Damage.HasFlag(DamageSpecifier.DamageFlags.NoParry) ||
+            args.Damage.GetTotal() < 5 || !RefreshBlades(ent) || _sacraments.ShouldBlockDamage(ent.Owner, args.Origin))
             return;
 
         PredictedQueueDel(ent.Comp.Blades[0]);
 
-        _audio.PlayPvs(BladeBlockSound, ent);
+        _audio.PlayPredicted(BladeBlockSound, ent, args.Origin);
 
         args.Cancelled = true;
     }
@@ -273,10 +271,5 @@ public sealed partial class ProtectiveBladeSystem : EntitySystem
 
         _status.TryUpdateStatusEffectDuration(origin, origin.Comp.BlockShootStatus, out _, origin.Comp.BladeShootDelay);
         return true;
-    }
-
-    private bool IsSacramentsActive(EntityUid uid)
-    {
-        return TryComp(uid, out SacramentsOfPowerComponent? sacraments) && sacraments.State == SacramentsState.Open;
     }
 }

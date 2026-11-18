@@ -18,7 +18,7 @@ public sealed partial class DivineInterventionComponent : Component
     /// Which effect to display.
     /// </summary>
     [DataField]
-    public EntProtoId EffectProto = "EffectSpark";
+    public EntProtoId EffectProto = "EffectSparks";
 
     /// <summary>
     /// Which loc string to display.
@@ -27,8 +27,14 @@ public sealed partial class DivineInterventionComponent : Component
     public LocId DenialString = "nullrod-spelldenial-popup";
 
     /// <summary>
-    /// Valid inventory slots for spell denial when equipped
+    /// Valid inventory slots for spell denial when equipped.
     /// </summary>
     [DataField]
     public SlotFlags ValidSpellDenialSlots = SlotFlags.NONE;
+
+    /// <summary>
+    /// True if it is consumable, like holymelon.
+    /// </summary>
+    [DataField]
+    public bool SingleUse = false;
 }

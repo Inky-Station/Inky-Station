@@ -13,7 +13,8 @@ using Content.Shared.Database;
 using Content.Shared.FixedPoint;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Systems;
-using Content.Trauma.Common.Bulletholes;
+using Content.Trauma.Common.Projectiles;
+using Content.Trauma.Common.Teleportation;
 using Content.Trauma.Shared.Executions;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
@@ -47,13 +48,23 @@ public sealed partial class PredictedProjectileSystem : EntitySystem
     [Dependency] private EntityQuery<FixturesComponent> _fixturesQuery = default!;
 
     [SubscribeLocalEvent]
-    private void OnStartCollide(EntityUid uid, ProjectileComponent component, ref StartCollideEvent args)
+    private void OnStartCollide(Entity<ProjectileComponent> ent, ref StartCollideEvent args)
     {
         // This is so entities that shouldn't get a collision are ignored.
         if (args.OurFixtureId != SharedProjectileSystem.ProjectileFixture || !args.OtherFixture.Hard)
             return;
 
-        DoHit((uid, component, args.OurBody), args.OtherEntity, args.OtherFixture);
+        DoHit((ent, ent.Comp, args.OurBody), args.OtherEntity);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnPortalTeleported(Entity<ProjectileComponent> ent, ref PortalTeleportedEvent args)
+    {
+        if (ent.Comp.IgnoredEntities.Count == 0)
+            return;
+
+        ent.Comp.IgnoredEntities.Clear();
+        Dirty(ent);
     }
 
     [SubscribeLocalEvent]
@@ -73,10 +84,10 @@ public sealed partial class PredictedProjectileSystem : EntitySystem
     {
         if (!_query.TryComp(uid, out var comp) ||
             !_physicsQuery.TryComp(uid, out var physics) ||
-            FindHardFixture(target) is not { } otherFixture)
+            FindHardFixture(target) == null)
             return;
 
-        DoHit((uid, comp, physics), target, otherFixture);
+        DoHit((uid, comp, physics), target);
     }
 
     private Fixture? FindHardFixture(EntityUid uid)
@@ -96,7 +107,7 @@ public sealed partial class PredictedProjectileSystem : EntitySystem
     /// <summary>
     /// Process a hit for a projectile and a target entity.
     /// </summary>
-    public void DoHit(Entity<ProjectileComponent, PhysicsComponent> ent, EntityUid target, Fixture otherFixture)
+    public void DoHit(Entity<ProjectileComponent, PhysicsComponent> ent, EntityUid target)
     {
         var (uid, comp, ourBody) = ent;
         if (comp is { Weapon: null, OnlyCollideWhenShot: true })
@@ -117,18 +128,25 @@ public sealed partial class PredictedProjectileSystem : EntitySystem
             _projectile.SetShooter(uid, comp, target);
             _gun.SetTarget(uid, null, out _);
             comp.IgnoredEntities.Clear();
+            Dirty(uid, comp);
             return;
         }
 
         var shooter = comp.Shooter;
+
+        var targetEv = new GotHitByProjectileEvent(uid, shooter);
+        RaiseLocalEvent(target, ref targetEv);
+        if (targetEv.Cancelled)
+        {
+            AfterProjectileHit(null, FixedPoint2.Zero);
+            return;
+        }
+
         var damageEv = new BeforeProjectileHitEvent(comp.Damage, target, shooter);
         RaiseLocalEvent(uid, ref damageEv);
         var dmg = damageEv.Damage * _damageable.UniversalProjectileDamageModifier;
         var ev = new ProjectileHitEvent(dmg, target, shooter);
         RaiseLocalEvent(uid, ref ev);
-
-        var targetEv = new GotHitByProjectileEvent(uid);
-        RaiseLocalEvent(target, ref targetEv);
 
         var otherName = ToPrettyString(target);
         var damageRequired = _destructible.DestroyedAt(target);
@@ -143,49 +161,59 @@ public sealed partial class PredictedProjectileSystem : EntitySystem
             targetPart = executed.TargetPart;
 
         var canMiss = executed == null; // if you are executing someone its PB, no missing
-        if (_damageable.TryChangeDamage((target, damageable), ev.Damage, out var damage, comp.IgnoreResistances, origin: shooter, targetPart: targetPart, canMiss: canMiss, increaseOnly: comp.IncreaseOnly)
-            && Exists(shooter))
+        if (_damageable.TryChangeDamage((target, damageable), ev.Damage, out var damage, comp.IgnoreResistances, origin: shooter, targetPart: targetPart, canMiss: canMiss, increaseOnly: comp.IncreaseOnly))
         {
             if (!Deleted(target) && _net.IsServer) // intentionally not predicting so you know if color flashes its 100% a hit
             {
                 _color.RaiseEffect(Color.Red, new List<EntityUid> { target }, Filter.Pvs(target, entityManager: EntityManager));
             }
 
+            var shotByString = Exists(comp.Shooter)
+                ? $"{ToPrettyString(comp.Shooter!.Value):user}"
+                : "a now deleted entity (grenade?)";
+
             _adminLogger.Add(LogType.BulletHit,
                 LogImpact.Medium,
-                $"Projectile {ToPrettyString(uid):projectile} shot by {ToPrettyString(shooter):user} hit {otherName:target} and dealt {damage:damage} damage");
+                $"Projectile {ToPrettyString(uid):projectile} shot by {shotByString} hit {otherName:target} and dealt {damage:damage} damage");
         }
 
-        if (TryPenetrate((uid, comp), target, damage, damageRequired))
-        {
-            comp.ProjectileSpent = false;
-            comp.IgnoredEntities.Add(target);
-        }
-        else
-            comp.ProjectileSpent = true;
+        AfterProjectileHit(damage, damageRequired);
 
-        if (!Deleted(target))
-        {
-            _gun.PlayImpactSound(target, damage, comp.SoundHit, comp.ForceSound);
+        return;
 
-            if (!ourBody.LinearVelocity.IsLengthZero() && _timing.IsFirstTimePredicted)
-                _recoil.KickCamera(target, ourBody.LinearVelocity.Normalized());
-        }
-
-        if (comp.DeleteOnCollide && comp.ProjectileSpent)
+        void AfterProjectileHit(DamageSpecifier? dmg, FixedPoint2 dmgRequired)
         {
-            var deleteEv = new DeletingProjectileEvent(uid);
-            RaiseLocalEvent(ref deleteEv);
-            PredictedQueueDel(uid);
-        }
+            if (TryPenetrate((uid, comp), target, dmg, dmgRequired))
+            {
+                comp.ProjectileSpent = false;
+                comp.IgnoredEntities.Add(target);
+                Dirty(ent);
+            }
+            else if (!comp.ProjectileSpent)
+            {
+                comp.ProjectileSpent = true;
+                Dirty(ent);
+            }
 
-        if (comp.ImpactEffect != null && TryComp(uid, out TransformComponent? xform) && _timing.IsFirstTimePredicted)
-        {
-            RaiseLocalEvent(new ImpactEffectEvent(comp.ImpactEffect, GetNetCoordinates(xform.Coordinates)));
+            if (!Deleted(target))
+            {
+                _gun.PlayImpactSound(target, dmg, comp.SoundHit, comp.ForceSound);
+
+                if (!ourBody.LinearVelocity.IsLengthZero() && _timing.IsFirstTimePredicted)
+                    _recoil.KickCamera(target, ourBody.LinearVelocity.Normalized());
+            }
+
+            if (comp.DeleteOnCollide && comp.ProjectileSpent)
+                PredictedQueueDel(uid);
+
+            if (comp.ImpactEffect != null && TryComp(uid, out TransformComponent? xform) && _timing.IsFirstTimePredicted)
+            {
+                RaiseLocalEvent(new ImpactEffectEvent(comp.ImpactEffect, GetNetCoordinates(xform.Coordinates)));
+            }
         }
     }
 
-    private bool TryPenetrate(Entity<ProjectileComponent> projectile, EntityUid target, DamageSpecifier damage, FixedPoint2 damageRequired)
+    private bool TryPenetrate(Entity<ProjectileComponent> projectile, EntityUid target, DamageSpecifier? damage, FixedPoint2 damageRequired)
     {
         var comp = projectile.Comp;
 
@@ -205,6 +233,9 @@ public sealed partial class PredictedProjectileSystem : EntitySystem
             return true;
         }
         // </Goob>
+
+        if (damage == null)
+            return false;
 
         if (damage.GetTotal() <= FixedPoint2.Zero)
             return false;

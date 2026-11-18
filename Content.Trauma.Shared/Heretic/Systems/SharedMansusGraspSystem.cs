@@ -17,7 +17,8 @@ using Content.Shared.Popups;
 using Content.Shared.Speech.EntitySystems;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Components;
+using Content.Shared.Timing.Systems;
 using Content.Shared.Trigger;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Whitelist;
@@ -106,9 +107,8 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
         if (!_heretic.TryGetRitual((mind, heretic), BladeBladeRitualTag, out var ritual))
             return false;
 
-        var xformQuery = GetEntityQuery<TransformComponent>();
         var containerEnt = uid;
-        if (_container.TryGetOuterContainer(uid, xformQuery.Comp(uid), out var container, xformQuery))
+        if (_container.TryGetOuterContainer(uid, Transform(uid), out var container))
             containerEnt = container.Owner;
 
         var success = false;
@@ -124,7 +124,7 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
                 infused.AvailableCharges >= infused.MaxCharges)
                 continue;
 
-            if (!_container.TryGetOuterContainer(blade, xformQuery.Comp(blade), out var bladeContainer, xformQuery))
+            if (!_container.TryGetOuterContainer(blade, Transform(blade), out var bladeContainer))
                 continue;
 
             if (bladeContainer.Owner != containerEnt)
@@ -191,7 +191,7 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
         return MathHelper.Lerp(ent.Comp.MinRange, ent.Comp.MaxRange, blend);
     }
 
-    public TimeSpan CalculateAreaGraspCooldown(float baseCooldown, int hitCount, float range, float multiplier = 2f)
+    public TimeSpan CalculateAreaGraspCooldown(float baseCooldown, int hitCount, float range, float multiplier = 1f)
     {
         var cd = baseCooldown *
                  (1f + multiplier * MathF.Pow(range, 0.8f) * (1f - 1f / (MathF.Pow(hitCount, 0.8f) + 1f)));
@@ -489,7 +489,7 @@ public abstract partial class SharedMansusGraspSystem : EntitySystem
             args.User)
         {
             BreakOnDamage = true,
-            BreakOnHandChange = true,
+            NeedHand = true,
             BreakOnMove = true,
             CancelDuplicate = false,
             MultiplyDelay = false,

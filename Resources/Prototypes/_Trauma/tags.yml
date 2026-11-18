@@ -12,6 +12,39 @@
   id: AirlockAssembly # Used for airlock assemblies so that heretic void conduit can damage them
 
 - type: Tag
+  id: AnomalyCoreBluespace # Construction: reactive teleport armor
+
+- type: Tag
+  id: AnomalyCoreElectricity # Construction: reactive tesla armor
+
+- type: Tag
+  id: AnomalyCoreFlesh # Construction: reactive aberration armor
+
+- type: Tag
+  id: AnomalyCoreFlora # Construction: reactive hallucinating armor
+
+- type: Tag
+  id: AnomalyCoreGravity # Construction: reactive repulsive armor
+
+- type: Tag
+  id: AnomalyCoreIce # Construction: reactive cryogenic armor
+
+- type: Tag
+  id: AnomalyCoreLiquid # Construction: reactive healing armor
+
+- type: Tag
+  id: AnomalyCorePyroclastic # Construction: reactive incendiary armor
+
+- type: Tag
+  id: AnomalyCoreRock # Construction: reactive rock armor
+
+- type: Tag
+  id: AnomalyCoreShadow # Construction: reactive stealth armor
+
+- type: Tag
+  id: AnomalyCoreTech # Construction: reactive table armor
+
+- type: Tag
   id: AnvilTop # Construction: Anvil, added to AnvilTop after cooling it down
 
 - type: Tag
@@ -172,6 +205,9 @@
 ## G ##
 
 - type: Tag
+  id: GrenadeIgnoreCosmicField # Heretic: cosmic fields will not defuse this grenade
+
+- type: Tag
   id: Gunpowder # Storage whitelist: GunpowderBottle
 
 - type: Tag
@@ -196,6 +232,9 @@
   id: MagazineTurret # Ammo whitelist: WeaponTurretRevolutionarySMG
 
 - type: Tag
+  id: MansusGraspAction # Heretic: whitelist for ritual rune to recharge mansus grasp when standing on it
+
+- type: Tag
   id: LizardTail
 
 - type: Tag
@@ -204,18 +243,13 @@
 ## M ##
 
 - type: Tag
-  id: MimeMask # Heretic: RitualEnvyKnife
-
-- type: Tag
   id: MimicToolbox # Emote: Tweak
 
 - type: Tag
-  id: MagicMushroom
-
-## O ##
+  id: Mimana # For ranching, Used by clown hens to produce mime eggs
 
 - type: Tag
-  id: OrganEggSack # Construction: DuckBot
+  id: MagicMushroom
 
 ## P ##
 
@@ -248,13 +282,16 @@
   id: Peanut
 
 - type: Tag
+  id: Rag # Heretic: ritual ingredients
+
+- type: Tag
+  id: Raptor
+
+- type: Tag
   id: RCD # Construction: RevPrinter, not given to RPD so RCDComponent cant be used
 
 - type: Tag
   id: RechargingBoard # Construction: WeaponGaussgunImprov, WeaponGaussgunPistol
-
-- type: Tag
-  id: Raptor
 
 - type: Tag
   id: RevArmorPlate # Construction: ClothingShoesBootsRevSteel, ClothingOuterVestWebRev, Killdozer, T45Armor

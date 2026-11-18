@@ -87,7 +87,7 @@ public sealed partial class QualitySystem : EntitySystem
     private void OnExplosionResistApplyQuality(Entity<ExplosionResistanceComponent> ent, ref ApplyQualityEvent args)
     {
         var modifier = args.Modifier(args.Proto.ExplosionResist);
-        ent.Comp.DamageCoefficient *= modifier;
+        ent.Comp.DamageCoefficient = Math.Min(ent.Comp.DamageCoefficient * modifier, 1f);
         Dirty(ent);
     }
 
@@ -168,9 +168,9 @@ public sealed partial class QualitySystem : EntitySystem
             {
                 passive.Coefficients[key] = number * modifierMinus;
             }
-            foreach (var (key, number) in passive.FlatReduction)
+            foreach (var (key, number) in passive.FlatReductions)
             {
-                passive.FlatReduction[key] = number * modifierPlus;
+                passive.FlatReductions[key] = number * modifierPlus;
             }
         }
 
@@ -180,9 +180,9 @@ public sealed partial class QualitySystem : EntitySystem
             {
                 active.Coefficients[key] = number * modifierMinus;
             }
-            foreach (var (key, number) in active.FlatReduction)
+            foreach (var (key, number) in active.FlatReductions)
             {
-                active.FlatReduction[key] = number * modifierPlus;
+                active.FlatReductions[key] = number * modifierPlus;
             }
         }
         Dirty(ent);

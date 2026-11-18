@@ -15,7 +15,7 @@ uplink-slayer-coat-name = S.L.A.Y.E.R Overcoat
 uplink-slayer-coat-desc = The S.L.A.Y.E.R. Overcoat has been specially engineered to be worn over the shoulders, and protects its wearer against explosions! Comes with a constant feed to Nanotrasen camera routers and an inbuilt link to the station radio, so stealth is never an option for the operative wearing it!
 
 uplink-bomb-collar-name = Bomb Collar Kit
-uplink-bomb-collar-desc = The perfect way to coerce someone into doing you a favour. You know... because of the implication.
+uplink-bomb-collar-desc = The perfect way to coerce someone into doing you a favour. You know... because of the implication. Pretty useless, unless worn by someone.
 
 uplink-clothing-no-slips-shoes-name-trauma = No-Slip Shoes
 
@@ -26,3 +26,6 @@ uplink-clothing-chameleon-thieving-gloves-desc = Discreetly steal from pockets a
 
 uplink-holster-name = Shoulder Holster
 uplink-holster-desc = A deep shoulder holster capable of holding many types of ballistics.
+
+uplink-chameleon-eva-suit-name = Chameleon EVA Bundle
+uplink-chameleon-eva-suit-desc = Be prepared for any sort of low pressure situation. Can take the appearance of any suit or coat!

@@ -1,4 +1,7 @@
-using Content.Medical.Common.Targeting; // Shitmed Change
+// <Trauma>
+using Robust.Shared.Containers;
+using Content.Medical.Common.Targeting;
+// </Trauma>
 using Content.Shared.Damage.Components;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Timing;
@@ -7,20 +10,35 @@ namespace Content.Shared.Damage.Systems;
 
 public sealed partial class PassiveDamageSystem : EntitySystem
 {
+    [Dependency] private SharedContainerSystem _container = default!; // Trauma
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private IGameTiming _timing = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
+    #region Subscriptions
 
-        SubscribeLocalEvent<PassiveDamageComponent, MapInitEvent>(OnPendingMapInit);
+    [SubscribeLocalEvent]
+    private void OnPendingMapInit(Entity<PassiveDamageComponent> ent, ref MapInitEvent args)
+    {
+        ent.Comp.NextDamage = _timing.CurTime + TimeSpan.FromSeconds(1f);
+        Dirty(ent);
     }
 
-    private void OnPendingMapInit(EntityUid uid, PassiveDamageComponent component, MapInitEvent args)
+    [SubscribeLocalEvent]
+    private void OnDamageTaken(Entity<PassiveDamageComponent> ent, ref DamageDealtEvent args)
     {
-        component.NextDamage = _timing.CurTime + TimeSpan.FromSeconds(1f);
+        if (ent.Comp.IntervalHaltOnDamageTaken == TimeSpan.Zero || !args.Damage.AnyPositive())
+            return;
+
+        var proposedUpdateTime = _timing.CurTime + ent.Comp.IntervalHaltOnDamageTaken;
+        if (proposedUpdateTime > ent.Comp.NextDamage)
+        {
+            ent.Comp.NextDamage = proposedUpdateTime;
+            Dirty(ent);
+        }
+
     }
+
+    #endregion
 
     // Every tick, attempt to damage entities
     public override void Update(float frameTime)
@@ -36,8 +54,14 @@ public sealed partial class PassiveDamageSystem : EntitySystem
             if (comp.NextDamage > curTime)
                 continue;
 
+            // <Trauma>
+            if (comp.PauseWhenStored && _container.TryGetContainingContainer(uid, out _)) // Prevents damage if PauseWhenContained bool is true and entity is inside a container
+                continue;
+            // </Trauma>
+
             // Set the next time they can take damage
             comp.NextDamage = curTime + TimeSpan.FromSeconds(1f);
+            Dirty(uid, comp);
 
             // Goobstation
             if (comp.AllowedStates == null || !TryComp<MobStateComponent>(uid, out var mobState))

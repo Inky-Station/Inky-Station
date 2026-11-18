@@ -2,6 +2,7 @@
 
 using System.Linq;
 using Content.Goobstation.Common.Weapons.Ranged;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Inventory;
 using Content.Shared.StatusEffectNew;
@@ -24,6 +25,7 @@ public sealed partial class HollowWeaveSystem : EntitySystem
 
     [Dependency] private EntityQuery<RemoveOnAttackStatusEffectComponent> _removeQuery = default!;
     [Dependency] private EntityQuery<StatusEffectComponent> _statusQuery = default!;
+    [Dependency] private EntityQuery<StatusEffectContainerComponent> _statusContainerQuery = default!;
 
 
     public override void Initialize()
@@ -51,8 +53,11 @@ public sealed partial class HollowWeaveSystem : EntitySystem
 
     private void RemoveStatus<T>(Entity<RemoveOnAttackStatusEffectComponent> ent, ref StatusEffectRelayedEvent<T> args)
     {
+        if (!_statusContainerQuery.TryComp(args.AppliedTo, out var status))
+            return;
+
         var now = _timing.CurTime;
-        if (args.Container.Comp.ActiveStatusEffects?.ContainedEntities.Where(
+        if (status.ActiveStatusEffects?.ContainedEntities.Where(
             x => _removeQuery.TryComp(x, out var comp) && now >= _statusQuery.Comp(x).StartEffectTime + comp.RemoveThreshold) is not { } effects)
             return;
 
@@ -64,7 +69,7 @@ public sealed partial class HollowWeaveSystem : EntitySystem
 
     private void OnTakeDamage(Entity<HollowWeaveComponent> ent, ref BeforeDamageChangedEvent args)
     {
-        if (args.Cancelled || args.Damage.GetTotal() < 5)
+        if (args.Cancelled || args.Damage.GetTotal() < 5 || args.Damage.HasFlag(DamageSpecifier.DamageFlags.NoParry))
             return;
 
         if (TryEvadeAttack(ent, args.Target, args.Origin))

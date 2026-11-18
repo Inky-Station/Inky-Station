@@ -35,6 +35,9 @@ public sealed partial class HereticActionComponent : Component
 public sealed partial class EldritchInfluenceDoAfterEvent : SimpleDoAfterEvent;
 
 [Serializable, NetSerializable]
+public sealed partial class EldritchPaperDoAfterEvent : SimpleDoAfterEvent;
+
+[Serializable, NetSerializable]
 public sealed partial class DrawRitualRuneDoAfterEvent : DoAfterEvent
 {
     public NetCoordinates Coords;
@@ -162,7 +165,7 @@ public sealed partial class EventHereticNightwatcherRebirth : InstantActionEvent
     {
         DamageDict =
         {
-            { "Heat", 20 },
+            { "Heat", 30 },
         },
     };
 
@@ -292,8 +295,6 @@ public sealed partial class HereticBladePassiveRiposteEvent : HereticKnowledgeEv
 
 // lock
 public sealed partial class EventHereticShapeshift : InstantActionEvent;
-
-public sealed partial class HereticXRayVisionEvent : HereticKnowledgeEvent;
 
 public sealed partial class HereticAscensionLockEvent : HereticKnowledgeEvent;
 
@@ -439,10 +440,10 @@ public sealed partial class EventHereticCleave : EntityTargetActionEvent
     {
         DamageDict =
         {
-            { "Blunt", 4f },
-            { "Slash", 4f },
-            { "Piercing", 4f },
-            { "Bloodloss", 3f },
+            { "Blunt", 5f },
+            { "Slash", 5f },
+            { "Piercing", 5f },
+            { "Bloodloss", 5f },
         },
     };
 
@@ -506,12 +507,10 @@ public sealed partial class EventHereticRealignment : InstantActionEvent
 public abstract partial class InstantWorldTargetActionEvent : WorldTargetActionEvent;
 
 [Serializable, NetSerializable]
-public sealed class LaserBeamEndpointPositionEvent(NetEntity uid, MapCoordinates coords, bool shouldFire)
+public sealed class LaserBeamEndpointPositionEvent(NetCoordinates coords, bool shouldFire)
     : EntityEventArgs
 {
-    public NetEntity Uid = uid;
-
-    public MapCoordinates Coordinates = coords;
+    public NetCoordinates Coordinates = coords;
 
     public bool ShouldFire = shouldFire;
 }
@@ -525,4 +524,7 @@ public partial class HereticKnowledgeEvent : EntityEventArgs
 
     [DataField]
     public ComponentRegistry AddedComponents = new();
+
+    [DataField]
+    public List<EntProtoId> StatusEffects = new();
 }

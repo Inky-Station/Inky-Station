@@ -33,6 +33,7 @@
           # Engineering
           ChiefEngineer: [ 1, 1 ]
           AtmosphericTechnician: [ 2, 2 ]
+          Roboticist: [ 2, 2 ]
           StationEngineer: [ 3, 3 ]
           TechnicalAssistant: [ 2, 2 ]
           # Medical
@@ -46,6 +47,7 @@
           ResearchDirector: [ 1, 1 ]
           Scientist: [ 4, 4 ]
           ResearchAssistant: [ 2, 2 ]
+          Geneticist: [ 2, 2 ]
           # Security
           HeadOfSecurity: [ 1, 1 ]
           Warden: [ 1, 1 ]
@@ -65,6 +67,7 @@
           Chaplain: [ 1, 1 ]
           Librarian: [ 1, 1 ]
           Lawyer: [ 1, 1 ]
+          DClass: [ -1, -1 ]
       - type: StationBlobConfig
         stageBegin: 25
         stageCritical: 350

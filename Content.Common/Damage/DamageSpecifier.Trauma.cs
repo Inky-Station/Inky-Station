@@ -84,25 +84,35 @@ public sealed partial class DamageSpecifier
             result.Coefficients.Add(type, MathF.Pow(coef, inversePen));
         }
 
-        foreach (var (type, flat) in modifierSet.FlatReduction)
+        foreach (var (type, flat) in modifierSet.FlatReductions)
         {
             // Negative flat reductions are not modified by this
             if (flat <= 0)
             {
-                result.FlatReduction.Add(type, flat);
+                result.FlatReductions.Add(type, flat);
                 continue;
             }
 
-            result.FlatReduction.Add(type, flat * inversePen);
+            result.FlatReductions.Add(type, flat * inversePen);
         }
 
         return result;
+    }
+
+    public bool HasFlag(DamageFlags flag)
+    {
+        return (Flags & flag) != 0;
     }
 
     [Flags, Serializable, NetSerializable]
     public enum DamageFlags : byte
     {
         None = 0,
+        // Damage dealt while user was aiming directly at target
         PreciseHit = 1 << 0,
+        // Damage dealt by marital art combo
+        MartialArtCombo = 1 << 1,
+        // Damage cannot be blocked/parried
+        NoParry = 1 << 2,
     }
 }

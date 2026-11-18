@@ -12,8 +12,11 @@ heretic-knowledge-loss = You're forgotten something
 
 heretic-clothing-component-fail = Cannot wear this!
 heretic-clothing-component-equip = You can feel yourself unravelling while you equip the {$item}!
+heretic-clothing-component-wear = You can feel yourself unravelling while wearing the {$item}!
 
 heretic-protective-blade-component-no-targets = No targets!
+
+heretic-sacraments-can-attack = You can now safely attack {$heretic}!
 
 rust-corruption-silicon-damage = You are being corrupted by the rust!
 
@@ -70,3 +73,7 @@ lionhunter-rifle-examine-message =
     Only special hunter's ammunition has this effect.
 
 lionhunter-rifle-aim-message = taking aim...
+
+eldritch-paper-examine-message = You can see a drawing of [color=cyan]{THE($item)}[/color] on the card.
+eldritch-paper-name-empty = eldritch card
+eldritch-paper-name-full = eldritch card ({$item})

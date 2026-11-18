@@ -4,10 +4,9 @@ using Content.Shared.Inventory;
 
 namespace Content.Goobstation.Shared.Flashbang;
 
-public sealed class GetFlashbangedEvent(float range) : EntityEventArgs, IInventoryRelayEvent
+[ByRefEvent]
+public record struct GetFlashbangedEvent(float ProtectionRange) : IInventoryRelayEvent
 {
-    public float ProtectionRange = range;
-
     public SlotFlags TargetSlots => SlotFlags.EARS | SlotFlags.HEAD;
 
     // inky - concussions

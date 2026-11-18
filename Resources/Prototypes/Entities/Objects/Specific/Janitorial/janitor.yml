@@ -54,7 +54,6 @@
     tags:
       - Mop
       - MopBasic
-      - DroneUsable # Goobstation
   - type: GuideHelp
     guides:
     - Janitorial
@@ -111,7 +110,6 @@
       tags:
         - Mop
         - MopAdv
-        - DroneUsable # Goobstation
     - type: PhysicalComposition #Goobstation - Recycle update
       materialComposition:
         Plastic: 100
@@ -358,8 +356,10 @@
       delay: 1.5
     - type: Tag
       tags:
+        # <Trauma>
+        - Rag
+        # </Trauma>
         - Mop
-        - DroneUsable # Goobstation
     - type: FloorCleaner # Goobstation
     - type: Fiber
       fiberColor: fibers-white
@@ -371,6 +371,7 @@
   name: wire brush
   description: A bristly steel wire brush, perfect for scraping away even the toughest patches of rust.
   components:
+  - type: ToolTileCompatible # Trauma
   - type: Sprite
     sprite: Objects/Specific/Janitorial/wirebrush.rsi
     state: icon

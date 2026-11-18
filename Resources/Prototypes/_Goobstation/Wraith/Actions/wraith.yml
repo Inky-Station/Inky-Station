@@ -15,6 +15,17 @@
   - type: Sprite
     sprite: _Goobstation/Wraith/actions.rsi
 
+- type: entity
+  abstract: true
+  parent: BaseWraithAction
+  id: BaseCorporealWraithAction
+  components:
+  - type: ActionUserWhitelist
+    whitelist:
+      components:
+      - Corporeal
+    onFailPopup: wraith-must-be-corporeal
+
 - type: entity # Unused - Requires Rework of ghost system to allow re-usable actions
   parent: ActionToggleGhostHearing
   id: ActionToggleGhostHearingWraith
@@ -73,7 +84,7 @@
     event: !type:BloodWritingEvent
 
 - type: entity
-  parent: BaseWraithAction
+  parent: BaseCorporealWraithAction
   id: ActionAbsorbCorpse
   name: Absorb corpse
   description: Steal life essence from a corpse. You cannot use this on a skeleton!
@@ -81,7 +92,7 @@
   - type: Action
     sound: !type:SoundPathSpecifier
       path: /Audio/_Goobstation/Wraith/wraithsoulsucc1.ogg
-    useDelay: 45
+    useDelay: 30
     itemIconStyle: BigAction
   - type: Sprite
     layers:
@@ -103,11 +114,6 @@
     wpConsume: 20
   - type: ActionUseDelayOnUse
     useDelayAccumulator: 35
-  - type: ActionUserWhitelist
-    whitelist:
-      components:
-      - Corporeal
-    popup: wraith-must-be-corporeal
 
 - type: entity
   parent: BaseWraithAction
@@ -119,7 +125,7 @@
     sound: !type:SoundPathSpecifier
       path: /Audio/_Goobstation/Wraith/wraithspook1.ogg
     itemIconStyle: BigAction
-    useDelay: 30
+    useDelay: 5
   - type: Sprite
     layers:
     - state: spook
@@ -131,7 +137,7 @@
     wpConsume: 20
 
 - type: entity
-  parent: BaseWraithAction
+  parent: BaseCorporealWraithAction
   id: ActionDecay
   name: Decay
   description: Cause a human to lose stamina, or an object to malfunction.
@@ -139,7 +145,7 @@
   - type: Action
     sound: !type:SoundPathSpecifier
       path: /Audio/_Goobstation/Wraith/wraithstaminadrain.ogg
-    useDelay: 60
+    useDelay: 25
     itemIconStyle: BigAction
   - type: Sprite
     layers:
@@ -150,25 +156,19 @@
     canTargetSelf: false
     blacklist:
       components:
-      - BorgChassis
       - BibleUser
     event: !type:DecayEvent
   - type: ActionWraithPoints
     wpConsume: 30
-  - type: ActionUserWhitelist
-    whitelist:
-      components:
-      - Corporeal
-    popup: wraith-must-be-corporeal
 
 - type: entity
-  parent: BaseWraithAction
+  parent: BaseCorporealWraithAction
   id: ActionCommand
   name: Command
   description: Command a few objects to hurl themselves at the target location.
   components:
   - type: Action
-    useDelay: 40
+    useDelay: 30
     itemIconStyle: BigAction
   - type: Sprite
     layers:
@@ -183,14 +183,9 @@
     event: !type:WraithCommandEvent
   - type: ActionWraithPoints
     wpConsume: 70
-  - type: ActionUserWhitelist
-    whitelist:
-      components:
-      - Corporeal
-    popup: wraith-must-be-corporeal
 
 - type: entity
-  parent: [ BaseWraithAction, ActionAnimateSpell ]
+  parent: BaseWraithAction
   id: ActionAnimateObject
   name: Animate object
   description: Animate an inanimate object to attack nearby humans.
@@ -198,12 +193,86 @@
   - type: Action
     sound: !type:SoundPathSpecifier
       path: /Audio/_Goobstation/Wraith/wraithlivingobject.ogg
-    useDelay: 60
+    useDelay: 45
+    itemIconStyle: BigAction
   - type: Sprite
     layers:
     - state: anim_object
   - type: ActionWraithPoints
     wpConsume: 200
+  - type: ActionRequirements
+    conditions:
+      Target:
+      - !type:AnchoredCondition
+        inverted: true
+    failPopup: animate-object-event-anchored
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Animateable
+    blacklist:
+      components:
+      - MindContainer
+      - NukeDisk
+      - GravityGenerator
+      - AnomalyGenerator
+      - TegGenerator
+      - TegCirculator
+      - XenoArtifact
+      - MaterialReclaimer
+      - StationAlertLevelLock
+    event: !type:ChangeComponentsSpellEvent
+      toAdd:
+      - type: Animate
+      - type: MindContainer
+      - type: InputMover
+      - type: MobMover
+      - type: MovementSpeedModifier
+      - type: HTN
+        rootTask:
+          task: SimpleHostileCompound
+      - type: CombatMode
+      - type: MeleeWeapon
+        animation: WeaponArcPunch
+        wideAnimation: WeaponArcPunch
+        altDisarm: false
+        soundHit: /Audio/Weapons/smash.ogg
+        range: 1.2
+        angle: 0.0
+        damage:
+          types:
+            Blunt: 10
+      - type: NpcFactionMember
+        factions:
+        - Wraith
+      - type: NoSlip
+      - type: MovementAlwaysTouching
+      - type: CanMoveInAir
+      - type: Damageable
+        damageModifierSet: ManifestedSpirit
+      - type: Injurable
+        damageContainer: ManifestedSpirit
+      - type: Destructible
+        thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 100
+          behaviors:
+          - !type:DoActsBehavior
+            acts: ["Destruction"]
+          - !type:PlaySoundBehavior
+            sound:
+              collection: MetalBreak
+      - type: Hands
+      - type: CanEscapeInventory
+      - type: MobCollision
+      toRemove:
+      - RequireProjectileTarget
+      - BlockMovement
+      - Item
+      - MeleeRequiresWield
 
 - type: entity
   parent: BaseWraithAction
@@ -212,7 +281,7 @@
   description: Possess and control an everyday object. Freakout level high.
   components:
   - type: ActionWraithPoints
-    wpConsume: 666
+    wpConsume: 450
   - type: Action
     itemIconStyle: BigAction
     useDelay: 150
@@ -272,7 +341,7 @@
         thresholds:
         - trigger:
             !type:DamageTrigger
-            damage: 30
+            damage: 100
           behaviors:
           - !type:DoActsBehavior
             acts: ["Destruction"]
@@ -296,7 +365,7 @@
   parent: BaseWraithAction
   id: ActionWraithEvolve
   name: Evolve
-  description: Choose a form to evolve into once you have absorbed at least 3 souls.
+  description: Choose a form to evolve into.
   components:
   - type: Action
     useDelay: 0
@@ -310,7 +379,7 @@
 
 # Harbinger Actions
 - type: entity
-  parent: BaseWraithAction
+  parent: BaseCorporealWraithAction
   id: ActionRaiseSkeleton
   name: Raise skeleton
   description: Raise a skeletonized dead body or fill a locker with an indurable skeletal servant.
@@ -335,14 +404,9 @@
     event: !type:RaiseSkeletonEvent
   - type: ActionWraithPoints
     wpConsume: 120
-  - type: ActionUserWhitelist
-    whitelist:
-      components:
-      - Corporeal
-    popup: wraith-must-be-corporeal
 
 - type: entity
-  parent: BaseWraithAction
+  parent: BaseCorporealWraithAction
   id: ActionSummonVoidPortal
   name: Summon void portal
   description: Summon a void portal from which otherworldly creatures pour out.
@@ -353,17 +417,12 @@
   - type: Action
     sound: !type:SoundPathSpecifier
       path: /Audio/_Goobstation/Wraith/wraithportal.ogg
-    useDelay: 180
+    useDelay: 150
   - type: Sprite
     layers:
     - state: open_portal
   - type: InstantAction
     event: !type:SummonPortalEvent
-  - type: ActionUserWhitelist
-    whitelist:
-      components:
-      - Corporeal
-    popup: wraith-must-be-corporeal
   - type: ActionWraithPoints
     wpConsume: 150
 
@@ -374,7 +433,7 @@
   description: Attempt to breach the veil between worlds to allow a lesser void creature to enter this realm.
   components:
   - type: Action
-    useDelay: 150
+    useDelay: 120
   - type: Sprite
     layers:
     - state: summon_creature
@@ -422,7 +481,6 @@
       components:
       - WeakToHoly
     canTargetSelf: false
-    event: !type:ApplyCurseActionEvent
   - type: CurseAction # refreshes all curses when a curse is used
   - type: ActionWraithPoints
     wpConsume: 40
@@ -554,7 +612,7 @@
   description: Attempt to breach the veil between worlds to allow a plague rat to enter this realm.
   components:
   - type: Action
-    useDelay: 150
+    useDelay: 240
   - type: Sprite
     layers:
     - state: summon_rats

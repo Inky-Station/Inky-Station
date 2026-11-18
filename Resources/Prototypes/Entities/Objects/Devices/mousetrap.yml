@@ -9,9 +9,6 @@
       materialComposition:
         Steel: 12
         Wood: 25
-    - type: Tag
-      tags:
-      - DroneUsable
     # </Trauma>
     - type: Sprite
       sprite: Objects/Devices/mousetrap.rsi
@@ -27,6 +24,9 @@
         - Mousetrap
     - type: Mousetrap
       massBalance: 0 # Trauma - make it not instagib mice
+    - type: ItemToggleExaminableStatus
+      onText: item-toggle-examined-active
+      offText: item-toggle-examined-not-active
     - type: ItemToggle
       soundActivate: "/Audio/Items/Handcuffs/cuff_end.ogg"
       soundDeactivate: "/Audio/Items/snap.ogg"

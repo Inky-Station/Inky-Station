@@ -8,6 +8,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Stacks;
+using Content.Shared.Whitelist;
 using Content.Trauma.Common.Knowledge.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
@@ -20,7 +21,9 @@ namespace Content.Goobstation.Shared.Enchanting.Systems;
 /// </summary>
 public sealed partial class EnchanterSystem : EntitySystem
 {
+    [Dependency] private CommonKnowledgeSystem _knowledge = default!;
     [Dependency] private EnchantingSystem _enchanting = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
     [Dependency] private IGameTiming _timing = default!;
     // [Dependency] private INetManager _net = default!; // inky edit TRAUMA FUCKUP
     // [Dependency] private IRobustRandom _random = default!; // inky edit TRAUMA FUCKUP
@@ -28,22 +31,12 @@ public sealed partial class EnchanterSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedStackSystem _stack = default!;
-    [Dependency] private CommonKnowledgeSystem _knowledge = default!;
 
     private List<EntProtoId<EnchantComponent>> _pool = new();
 
     private static readonly EntProtoId MagicalLiteracy = "MagicalLiteracyKnowledge";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<EnchanterComponent, ExaminedEvent>(OnExamined);
-
-        SubscribeLocalEvent<EnchantingToolComponent, ExaminedEvent>(OnToolExamined);
-        SubscribeLocalEvent<EnchantingToolComponent, BeforeRangedInteractEvent>(OnBeforeInteract);
-    }
-
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<EnchanterComponent> ent, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
@@ -52,6 +45,7 @@ public sealed partial class EnchanterSystem : EntitySystem
         args.PushMarkup(Loc.GetString("enchanter-examine"));
     }
 
+    [SubscribeLocalEvent]
     private void OnToolExamined(Entity<EnchantingToolComponent> ent, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
@@ -60,19 +54,35 @@ public sealed partial class EnchanterSystem : EntitySystem
         args.PushMarkup(Loc.GetString("enchanting-tool-examine"));
     }
 
+    [SubscribeLocalEvent]
     private void OnBeforeInteract(Entity<EnchantingToolComponent> ent, ref BeforeRangedInteractEvent args)
     {
         if (!args.CanReach || args.Target is not {} item)
             return;
 
         // do nothing if used without an altar
-        if (_enchanting.FindTable(item) == null)
+        if (_enchanting.FindTable(item) is not {} table)
             return;
 
         args.Handled = true;
 
-        // need an enchanter on the altar as well as the target
+        // check tool whitelist
         var user = args.User;
+        if (_whitelist.IsWhitelistFail(ent.Comp.UserWhitelist, user))
+        {
+            _popup.PopupEntity("You are not worthy of using this tome...", user, user, PopupType.MediumCaution);
+            return;
+        }
+
+        // check altar whitelist
+        if (TryComp<EnchantingTableComponent>(table, out var tableComp) &&
+            _whitelist.IsWhitelistFail(tableComp.UserWhitelist, user))
+        {
+            _popup.PopupEntity("You are not worthy of using this altar...", user, user, PopupType.MediumCaution);
+            return;
+        }
+
+        // need an enchanter on the altar as well as the target
         if (_enchanting.FindEnchanter(item) is not {} enchanter)
         {
             _popup.PopupEntity(Loc.GetString("enchanting-tool-no-enchanter"), user, user);

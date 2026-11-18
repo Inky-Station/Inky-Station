@@ -3,19 +3,22 @@
 using Content.Goobstation.Shared.Blob.Components;
 using Content.Shared.Destructible;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Shared.Blob;
 
 public sealed partial class BlobNodeSystem : EntitySystem
 {
+    [Dependency] private BlobCoreSystem _core = default!;
+    [Dependency] private BlobMobSystem _blobMob = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _net = default!;
     [Dependency] private MobStateSystem _mob = default!;
-    [Dependency] private SharedBlobCoreSystem _core = default!;
-    [Dependency] private SharedBlobMobSystem _blobMob = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private EntityQuery<BlobCoreComponent> _coreQuery = default!;
     [Dependency] private EntityQuery<BlobTileComponent> _tileQuery = default!;
@@ -25,6 +28,7 @@ public sealed partial class BlobNodeSystem : EntitySystem
 
     private HashSet<Entity<BlobMobComponent>> _mobs = new();
     private HashSet<Entity<BlobTileComponent>> _tiles = new();
+    private List<Entity<BlobTileComponent>> _tilesSorted = new();
 
     public void PulseNode(Entity<BlobNodeComponent> ent, Entity<BlobCoreComponent> core, BlobChemPrototype chem)
     {
@@ -64,8 +68,17 @@ public sealed partial class BlobNodeSystem : EntitySystem
         var coords = Transform(ent).Coordinates;
         _tiles.Clear();
         _lookup.GetEntitiesInRange(coords, ent.Comp.PulseRadius, _tiles);
+        _tiles.RemoveWhere(t => t.Comp.Core != core.Owner); // don't pulse other blobs' tiles
+
+        // sorted so client and server update them in the order with the same RNG seed
+        _tilesSorted.Clear();
+        _tilesSorted.AddRange(_tiles);
+        _tilesSorted.Sort((a, b) => GetNetEntity(a).CompareTo(GetNetEntity(b)));
+        var rand = SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(ent));
+        rand.Shuffle(_tilesSorted); // have random tiles grow before preventing others rather than only the oldest ones growing
+
         var ev = new BlobNodePulseEvent(core, chem);
-        foreach (var tile in _tiles)
+        foreach (var tile in _tilesSorted)
         {
             RaiseLocalEvent(tile, ref ev);
         }
@@ -77,6 +90,9 @@ public sealed partial class BlobNodeSystem : EntitySystem
     {
         base.Update(frameTime);
 
+        if (_net.IsClient)
+            return;
+
         var now = _timing.CurTime;
         var query = EntityQueryEnumerator<BlobNodeComponent>();
         foreach (var ent in query)
@@ -85,7 +101,6 @@ public sealed partial class BlobNodeSystem : EntitySystem
                 continue;
 
             ent.Comp.NextPulse = now + ent.Comp.PulseFrequency;
-            Dirty(ent);
 
             if (_tileQuery.CompOrNull(ent)?.Core is not { } core ||
                 !_coreQuery.TryComp(core, out var coreComp))

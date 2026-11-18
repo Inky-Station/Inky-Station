@@ -121,3 +121,5 @@
   - type: Construction
     graph: scraphelmet
     node: scraphelmet
+  - type: ImageOverlay
+    pathToOverlayImage: "/Textures/Clothing/Head/Helmets/scrapHelmetOverlayTexture.png"

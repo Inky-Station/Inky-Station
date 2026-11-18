@@ -18,37 +18,26 @@ namespace Content.Goobstation.Server.Virology;
 public sealed partial class VirologyMachinesSystem : EntitySystem
 {
     [Dependency] private AudioSystem _audio = default!;
-    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private ItemSlotsSystem _slots = default!;
     [Dependency] private PaperSystem _paper = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private PowerReceiverSystem _power = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private EntityQuery<VirologyMachineComponent> _query = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<VirologyMachineComponent, ComponentInit>(OnComponentInit);
-        SubscribeLocalEvent<VirologyMachineComponent, EntInsertedIntoContainerMessage>(OnSwabInserted);
-        SubscribeLocalEvent<VirologyMachineComponent, VirologyMachineCheckEvent>(OnAnalyzerCheck);
-        SubscribeLocalEvent<VirologyMachineComponent, VirologyMachineDoneEvent>(OnMachineDone);
-        SubscribeLocalEvent<VirologyMachineComponent, GetVerbsEvent<AlternativeVerb>>(AddAltVerb);
-    }
+    private StringBuilder _report = new();
 
     public override void Update(float frameTime)
     {
+        base.Update(frameTime);
+
         var query = EntityQueryEnumerator<ActiveVirologyMachineComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            // TODO: kys israelgpt using events that 1 thing handles IN AN UPDATE LOOP
-            var checkEv = new VirologyMachineCheckEvent();
-            RaiseLocalEvent(uid, ref checkEv);
-            if (checkEv.Cancelled)
+            if (!_slots.TryGetSlot(uid, VirologyMachineComponent.SwabSlotId, out var slot) || !slot.HasItem)
             {
-                SetAppearance(uid, false);
-                var doneEv = new VirologyMachineDoneEvent(false);
-                RaiseLocalEvent(uid, doneEv);
+                MachineDone((uid, comp), false);
                 continue;
             }
 
@@ -61,9 +50,7 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
 
             if (_timing.CurTime > comp.EndTime)
             {
-                SetAppearance(uid, false);
-                var doneEv = new VirologyMachineDoneEvent(true);
-                RaiseLocalEvent(uid, doneEv);
+                MachineDone((uid, comp), true);
                 continue;
             }
 
@@ -71,6 +58,7 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnSwabInserted(Entity<VirologyMachineComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
         if (args.Container.ID != VirologyMachineComponent.SwabSlotId)
@@ -87,34 +75,36 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
         active.EndTime = _timing.CurTime + ent.Comp.AnalysisDuration;
     }
 
+    [SubscribeLocalEvent]
     private void OnComponentInit(Entity<VirologyMachineComponent> ent, ref ComponentInit args)
     {
-        if (_itemSlots.TryGetSlot(ent, VirologyMachineComponent.SwabSlotId, out var slot))
-            ent.Comp.SwabSlot = slot;
-        else
-            _itemSlots.AddItemSlot(ent, VirologyMachineComponent.SwabSlotId, ent.Comp.SwabSlot);
-    }
-
-    private void OnAnalyzerCheck(Entity<VirologyMachineComponent> ent, ref VirologyMachineCheckEvent args)
-    {
-        args.Cancelled = !_itemSlots.TryGetSlot(ent, VirologyMachineComponent.SwabSlotId, out var slot) || slot.Item == null;
-    }
-
-    private void OnMachineDone(Entity<VirologyMachineComponent> ent, ref VirologyMachineDoneEvent args)
-    {
-        RemCompDeferred<ActiveVirologyMachineComponent>(ent);
-
-        ent.Comp.SoundEntity = _audio.Stop(ent.Comp.SoundEntity);
-
-        if (!args.Success
-            || !_itemSlots.TryGetSlot(ent, VirologyMachineComponent.SwabSlotId, out var slot)
-            || slot.Item == null)
+        if (!TryComp<ItemSlotsComponent>(ent, out var slots))
             return;
 
-        if (!ent.Comp.Vaccinator) // TODO: kys israelgpt blindly using events with 0 human thought then pulling this shit
-            AnalyzeSwab(ent, (slot.Item.Value, null));
+        // TODO: kys israelgpt
+        if (_slots.TryGetSlot((ent, slots), VirologyMachineComponent.SwabSlotId, out var slot))
+            ent.Comp.SwabSlot = slot;
         else
-            CreatePen(ent, (slot.Item.Value, null));
+            _slots.AddItemSlot((ent, slots), VirologyMachineComponent.SwabSlotId, ent.Comp.SwabSlot);
+    }
+
+    private void MachineDone(Entity<ActiveVirologyMachineComponent> ent, bool success)
+    {
+        RemCompDeferred(ent, ent.Comp);
+        if (!_query.TryComp(ent, out var comp))
+            return;
+
+        comp.SoundEntity = _audio.Stop(comp.SoundEntity);
+
+        if (!success ||
+            !_slots.TryGetSlot(ent.Owner, VirologyMachineComponent.SwabSlotId, out var slot) ||
+            slot.Item is not { } item)
+            return;
+
+        if (!comp.Vaccinator) // TODO: kys israelgpt blindly using events with 0 human thought then pulling this shit
+            AnalyzeSwab((ent, comp), item);
+        else
+            CreatePen((ent, comp), item);
     }
 
     private void CreatePen(Entity<VirologyMachineComponent> ent, Entity<DiseaseSwabComponent?> swab)
@@ -133,7 +123,7 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
             vaccineComponent.DiseaseUid = swab.Comp.DiseaseUid.Value;
         }
 
-        _itemSlots.TryEject(ent, ent.Comp.SwabSlot, null, out _);
+        _slots.TryEject(ent.Owner, ent.Comp.SwabSlot, null, out _);
     }
 
     private void AnalyzeSwab(Entity<VirologyMachineComponent> ent, Entity<DiseaseSwabComponent?> swab)
@@ -142,22 +132,22 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
             return;
 
         // build the report
-        var report = new StringBuilder();
-        report.AppendLine(Loc.GetString("disease-analyzer-report-title"));
-        report.AppendLine(Loc.GetString("disease-analyzer-report-genotype", ("genotype", disease.Genotype)));
-        report.AppendLine(Loc.GetString("disease-analyzer-report-type", ("type", ProtoMan.Index(disease.DiseaseType).LocalizedName)));
-        report.AppendLine(Loc.GetString("disease-analyzer-report-infection-rate", ("rate", disease.InfectionRate)));
-        report.AppendLine(Loc.GetString("disease-analyzer-report-immunity-gain", ("rate", disease.ImmunityGainRate)));
-        report.AppendLine(Loc.GetString("disease-analyzer-report-mutation-rate", ("rate", disease.MutationRate)));
-        report.AppendLine(Loc.GetString("disease-analyzer-report-complexity", ("complexity", disease.Complexity)));
+        _report.Clear();
+        _report.AppendLine(Loc.GetString("disease-analyzer-report-title"));
+        _report.AppendLine(Loc.GetString("disease-analyzer-report-genotype", ("genotype", disease.Genotype)));
+        _report.AppendLine(Loc.GetString("disease-analyzer-report-type", ("type", ProtoMan.Index(disease.DiseaseType).LocalizedName)));
+        _report.AppendLine(Loc.GetString("disease-analyzer-report-infection-rate", ("rate", disease.InfectionRate)));
+        _report.AppendLine(Loc.GetString("disease-analyzer-report-immunity-gain", ("rate", disease.ImmunityGainRate)));
+        _report.AppendLine(Loc.GetString("disease-analyzer-report-mutation-rate", ("rate", disease.MutationRate)));
+        _report.AppendLine(Loc.GetString("disease-analyzer-report-complexity", ("complexity", disease.Complexity)));
 
-        report.AppendLine(Loc.GetString("disease-analyzer-report-effects-header"));
+        _report.AppendLine(Loc.GetString("disease-analyzer-report-effects-header"));
         foreach (var effectUid in disease.Effects.ContainedEntities)
         {
             var meta = MetaData(effectUid);
             if (TryComp<DiseaseEffectComponent>(effectUid, out var effectComp) && meta.EntityPrototype != null)
             {
-                report.AppendLine(Loc.GetString("disease-analyzer-report-effect-line",
+                _report.AppendLine(Loc.GetString("disease-analyzer-report-effect-line",
                     ("effect", meta.EntityName),
                     ("description", meta.EntityDescription),
                     ("severity", effectComp.Severity)));
@@ -165,9 +155,9 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
         }
         // print the report
         var printed = Spawn(ent.Comp.PaperPrototype, Transform(ent).Coordinates);
-        _paper.SetContent((printed, EnsureComp<PaperComponent>(printed)), report.ToString());
+        _paper.SetContent((printed, EnsureComp<PaperComponent>(printed)), _report.ToString());
 
-        _itemSlots.TryEject(ent, ent.Comp.SwabSlot, null, out _);
+        _slots.TryEject(ent.Owner, ent.Comp.SwabSlot, null, out _);
         _audio.PlayPvs(ent.Comp.AnalyzedSound, ent);
     }
 
@@ -176,6 +166,7 @@ public sealed partial class VirologyMachinesSystem : EntitySystem
         _appearance.SetData(uid, DiseaseMachineVisuals.IsRunning, state);
     }
 
+    [SubscribeLocalEvent]
     private void AddAltVerb(Entity<VirologyMachineComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract)

@@ -15,14 +15,6 @@
   - type: EmitSoundOnLand
     sound:
       collection: SnipersDrop
-  - type: MeleeWeapon
-    damage:
-      types:
-        Blunt: 12
-    angle: 0
-    wideAnimationRotation: 90 # -90 if it takes bayonets (hits with muzzle) 90 if not (hits with butt)
-    soundHit:
-      collection: MetalThud
   - type: WeaponClass
     class: Sniper
   # </Trauma>
@@ -71,8 +63,6 @@
   - type: Item  # Goob edit
     size: Large
     storedRotation: 45
-  - type: ScannableForPoints # goob edit
-    points: 2
   # </Trauma>
   - type: Sprite
     sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
@@ -111,7 +101,7 @@
   - type: SolutionTransfer
     maxTransferAmount: 2
   - type: Tool
-    qualities: Slicing
+    qualities: [ Slicing ]
     speedModifier: 0.5 #It's a bayonet
   - type: GunRequiresWield
   - type: StaticPrice
@@ -133,7 +123,7 @@
     sprite: Objects/Weapons/Guns/Snipers/heavy_sniper.rsi
   - type: GunRequiresWield
   - type: Gun
-    fireRate: 0.4 # Trauma, was 0.8
+    fireRate: 0.5
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto

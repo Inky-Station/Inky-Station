@@ -35,9 +35,6 @@
       cpu_supply: "#A46106"
   - type: StaticPrice
     price: 250
-  - type: Tag
-    tags:
-    - DroneUsable # Goobstation
 
 - type: entity
   parent: BaseFlatpack
@@ -54,7 +51,6 @@
     price: 75
   - type: Tag # Goobstation - stupid chuds didnt add the tag
     tags:
-    - DroneUsable
     - SolarAssemblyFlatpack
 
 - type: entity
@@ -307,3 +303,41 @@
   - type: GuideHelp
     guides:
     - FoodRecipes
+
+- type: entity
+  parent: [ BaseFlatpack, BaseXenoborgContraband ]
+  id: XenoborgExtractorFlatpack
+  name: xenoborg extractor flatpack
+  description: A flatpack used for constructing a xenoborg extractor.
+  components:
+  - type: Sprite
+    layers:
+    - state: base-xenoborg
+    - state: overlay
+      color: "#452dfa"
+    - state: icon-xenoborg-extractor
+  - type: Item
+    size: Normal
+  - type: Flatpack
+    entity: XenoborgExtractor
+  - type: GuideHelp
+    guides:
+    - Xenoborgs
+
+- type: entity
+  parent: BaseFlatpack
+  id: MachineAnomalyVesselFlatpack
+  name: anomaly vessel flatpack
+  description: A flatpack used for constructing an anomaly vessel.
+  components:
+  - type: Flatpack
+    entity: MachineAnomalyVessel
+  - type: GuideHelp
+    guides:
+    - ScannersAndVessels
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#D381C9"
+    - state: icon-default

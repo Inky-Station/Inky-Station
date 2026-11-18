@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  abstract: true
+  parent: BasePistolWhip
+  id: WeaponEnergyCrossbowBase
+  components:
+  - type: WeaponClass
+    class: Pistol
+  - type: MeleeWeapon
+    resetOnHandSelected: false
+  - type: Gun
+    resetOnHandSelected: false

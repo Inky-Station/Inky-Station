@@ -430,12 +430,14 @@
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitKimono
   name: kimono
-  description: Traditional chinese clothing.
+  description: Traditional Japanese clothing.
   components:
   - type: Sprite
     sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/Civilian/kimono.rsi # Goob
-  - type: Clothing
-    sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/kimono.rsi # Goob
+  # inky edit
+  # - type: Clothing
+  #   sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/kimono.rsi # Goob
+  # /inky edit
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase] # Goob
