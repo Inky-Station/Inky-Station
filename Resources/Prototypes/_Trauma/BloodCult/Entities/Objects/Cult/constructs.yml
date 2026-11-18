@@ -232,7 +232,7 @@
         Blunt: -1
         Slash: -1
         Piercing: -1
-        Ballistic: -1
+        # Ballistic: -1 # inky edit
 
 - type: entity
   parent: ConstructWraithBase

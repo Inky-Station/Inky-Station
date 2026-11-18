@@ -34,7 +34,7 @@
   - type: Projectile
     damage:
       types:
-        Ballistic: 16
+        Piercing: 16 # inky edit - was ballistic
   - type: PreventCollide
     whitelist:
       components:
