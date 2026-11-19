@@ -3,6 +3,8 @@ collective-mind-lunarmind = LunarMind
 werewolf-beckon-message = {$name} beckons the pack to {$location}.
 
 role-subtype-werewolf = Werewolf
+objective-issuer-werewolf = Werewolf
+guide-entry-werewolf = Werewolf Combat Techniques
 roles-antag-werewolf-name = Werewolf
 roles-antag-werewolf-desc = Whether by infection or hereditary genes, you’ve been given the curse and/or gift of Lycanthropy! Aren’t you special?
 werewolf-role-greeting = I am the Werewolf. Unbeknownst to my employers, I have been cursed with Lycanthropy. I must ensure my survival on this station, and keep well fed. Secrecy is my weapon, I must ensure that nobody finds out my real identity.

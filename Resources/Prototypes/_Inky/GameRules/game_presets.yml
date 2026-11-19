@@ -1,0 +1,18 @@
+- type: gamePreset
+  id: Werewolves
+  alias:
+  - werewolf
+  - werewolves
+  name: werewolves-title
+  description: werewolves-description
+  showInVote: false
+  rules:
+  - BasicRoundstartVariation
+  - BasicStationEventScheduler
+  - BasicAntagEventScheduler
+  - ModerateAntagEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - SubGamemodesRule
+  - WerewolfRoundstart
+  - FunGameruleChooser

@@ -26,6 +26,7 @@
     - id: LoneAbductorSpawn
     - id: ParadoxCloneSpawn
     - id: MorphMidroundRule
+    - id: WerewolfMidround # inky
 
 - type: entityTable
   id: ModerateAntagEventsTrauma

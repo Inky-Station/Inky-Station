@@ -10,7 +10,7 @@
     species:
     - IPC
     - Plasmaman
-  guides: [  ]
+  guides: [ LyCqc ]
   creditImage: /Textures/_Trauma/EndCredits/Antags/zombies.png # todo werewolf
 
 - type: antagSpecifier
