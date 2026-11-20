@@ -68,7 +68,6 @@
       components:
       - Ghoul
       - BorgChassis
-      - Drone
   - !type:MobStateCondition
     mobstate: Alive
     inverted: true
@@ -175,7 +174,6 @@
       components:
       - Ghoul
       - BorgChassis
-      - Drone
   effects:
   - !type:CreateFleshMimic
 
@@ -219,6 +217,12 @@
   - !type:ModifyStatusEffect
     effectProto: StatusEffectProjectileImmunity
     time: 0.5
+
+- type: entityEffect
+  id: UnboltAndToggleDoor
+  effects:
+  - !type:SetBoltsDown
+  - !type:ToggleDoorState
 
 - type: entityCondition
   id: CosmicFieldNearby

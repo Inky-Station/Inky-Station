@@ -1,0 +1,17 @@
+- type: entity
+  parent: [ BaseMidroundAntagRule, BaseWerewolfRule ]
+  id: WerewolfMidround
+  components:
+  - type: StationEvent
+    weight: 4
+    earliestStart: 30
+    minimumPlayers: 20
+    duration: null
+  - type: AntagSelection
+    antags:
+    - !type:LinearAntagCount
+      proto: Werewolf
+      range:
+        min: 2
+        max: 5
+      playerRatio: 12

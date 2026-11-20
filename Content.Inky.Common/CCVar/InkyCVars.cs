@@ -11,8 +11,8 @@ public sealed partial class InkyCVars
     public static readonly CVarDef<float> FunProb =
         CVarDef.Create("inky.fun_value", 0.1f, CVar.SERVER); // 10%
 
-    public static readonly CVarDef<int> MaxSpaceWhales =
-        CVarDef.Create("inky.max_space_whales", 1, CVar.SERVER);
+    public static readonly CVarDef<bool> SpaceWhaleAllowStationApproach =
+        CVarDef.Create("inky.space_whale_allow_station_approach", false, CVar.SERVERONLY);
 
     public static readonly CVarDef<bool> ViewConesEnabled =
         CVarDef.Create("trauma.viewcones_enabled", false, CVar.SERVER | CVar.REPLICATED);

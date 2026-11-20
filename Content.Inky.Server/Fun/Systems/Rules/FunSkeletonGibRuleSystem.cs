@@ -5,6 +5,7 @@ using Content.Server.Polymorph.Systems;
 using Content.Shared.GameTicking.Rules;
 using Content.Shared.Gibbing;
 using Content.Shared.Humanoid;
+using Content.Shared.Mind.Components;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 
@@ -22,6 +23,9 @@ public sealed partial class FunSkeletonGibSystem : GameRuleSystem<FunSkeletonGib
     private void OnGibbed(EntityUid uid, HumanoidProfileComponent comp, ref BeingGibbedEvent args)
     {
         if (!_fun.CheckRule<FunSkeletonGibRuleComponent>())
+            return;
+
+        if (HasComp<TransferMindOnGibComponent>(uid))
             return;
 
         if (!_mind.TryGetMind(uid, out var mindId, out var mindComp))

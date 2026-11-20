@@ -1,0 +1,23 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseWerewolfObjective
+  components:
+  - type: Objective
+    issuer: Werewolf
+  - type: RoleRequirement
+    roles:
+    - WerewolfRole
+
+- type: entity
+  parent: [BaseWerewolfObjective, BaseLivingObjective]
+  id: EscapeWerewolfShuttleObjective
+  name: Escape to CentComm alive and unrestrained via the escape shuttle.
+  description: Return to your old life.
+  components:
+  - type: Objective
+    difficulty: 1.3
+    icon:
+      sprite: Structures/Furniture/chairs.rsi
+      state: shuttle
+  - type: EscapeShuttleCondition

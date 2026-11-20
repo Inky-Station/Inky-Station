@@ -34,7 +34,7 @@
     tags:
     - Sheet
     - Metal
-    - DroneUsable
+    # - DroneUsable # inky edit
     - ConstructionMaterial
     - Steel
   # </Trauma>

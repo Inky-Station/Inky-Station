@@ -20,8 +20,8 @@ using Content.Shared.Movement.Systems;
 using Robust.Shared.Map;
 // inky
 using Robust.Shared.Player;
+using Content.Inky.Common.CCVar;
 using Content.Inky.Common.Whale;
-using Content.Lavaland.Shared.Audio;
 // /inky
 
 namespace Content.Goobstation.Server.SpaceWhale.StationProximity;
@@ -39,9 +39,12 @@ public sealed partial class StationProximitySystem : EntitySystem
     [Dependency] private MovementSpeedModifierSystem _moveSpeed = default!;
 
     private bool _spaceWhaleEnabled;
-    private float _spaceWhaleSpawnDistance; // inky edit
+    // inky edit
+    private float _spaceWhaleSpawnDistance;
+    private bool _spaceWhaleAllowStationApproach;
+    // /inky edit
 
-    private static readonly TimeSpan CheckDelay = TimeSpan.FromSeconds(60);
+    private static readonly TimeSpan CheckDelay = TimeSpan.FromSeconds(20); // inky edit
     private TimeSpan _nextCheck = TimeSpan.Zero;
 
     private readonly Dictionary<MapId, HashSet<Entity<MapGridComponent, TransformComponent>>> _stations = new();
@@ -50,17 +53,16 @@ public sealed partial class StationProximitySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SpaceWhaleTargetComponent, MobStateChangedEvent>(OnTargetDeath);
-        SubscribeLocalEvent<SpaceWhaleTargetComponent, ComponentShutdown>(OnTargetShutdown);
-
         Subs.CVar(_cfg, GoobCVars.SpaceWhaleSpawn, x => _spaceWhaleEnabled = x, true);
         Subs.CVar(_cfg, GoobCVars.SpaceWhaleSpawnDistance, x => _spaceWhaleSpawnDistance = x, true);
+        Subs.CVar(_cfg, InkyCVars.SpaceWhaleAllowStationApproach, x => _spaceWhaleAllowStationApproach = x, true); // inky
 
         // inky
         InitializeInky();
         // /inky
     }
 
+    [SubscribeLocalEvent]
     private void OnTargetDeath(Entity<SpaceWhaleTargetComponent> ent, ref MobStateChangedEvent args)
     {
         if (args.NewMobState == MobState.Alive)
@@ -73,6 +75,15 @@ public sealed partial class StationProximitySystem : EntitySystem
         // /inky
     }
 
+    [SubscribeLocalEvent]
+    private void OnTargetMove(Entity<SpaceWhaleTargetComponent> ent, ref MoveEvent args)
+    {
+        // prevents the shitty mob caller hack from spawning them on station because the update loop only runs every minute
+        // have to check it at all times to immediately stop it, this is a rare thing anyways
+        CheckHumanoidProximity((ent, args.Component));
+    }
+
+    [SubscribeLocalEvent]
     private void OnTargetShutdown(Entity<SpaceWhaleTargetComponent> ent, ref ComponentShutdown args)
     {
         StopFollowing(ent.Owner);
@@ -87,7 +98,11 @@ public sealed partial class StationProximitySystem : EntitySystem
         {
             foreach (var item in caller.SpawnedEntities)
             {
-                EnsureComp<TimedDespawnComponent>(item).Lifetime = 60f; // inky edit
+                // inky edit
+                var despawnDelay = (float) ent.Comp.DespawnDelay.TotalSeconds;
+                EnsureComp<TimedDespawnComponent>(item).Lifetime = despawnDelay;
+                // /inky edit
+
                 _moveSpeed.ChangeBaseSpeed(item, 11, 30, 1);
                 _moveSpeed.RefreshMovementSpeedModifiers(item);
 
@@ -130,10 +145,11 @@ public sealed partial class StationProximitySystem : EntitySystem
 
         while (stationQuery.MoveNext(out var uid, out _, out var grid, out var xform))
         {
+            var ent = (uid, grid, xform);
             if (_stations.TryGetValue(xform.MapID, out var stations))
-                stations.Add((uid, grid, xform));
+                stations.Add(ent);
             else
-                _stations[xform.MapID] = [(uid, grid, xform)];
+                _stations[xform.MapID] = [ent];
         }
 
         if (_stations.Count == 0)
@@ -168,20 +184,23 @@ public sealed partial class StationProximitySystem : EntitySystem
             var stationWorldPos = _transform.GetWorldPosition(xform);
             var distance = (humanoidWorldPos - stationWorldPos).Length();
 
-            if (grid.LocalAABB.Size.Length() > 0)
+            var size = grid.LocalAABB.Size.Length();
+            if (size > 0)
             {
                 // it needs to be halved to get correct measurements
-                var gridRadius = grid.LocalAABB.Size.Length() / 2f;
+                var gridRadius = size / 2f;
                 distance = Math.Max(0, distance - gridRadius);
             }
 
             closestDistance = Math.Min(closestDistance, distance);
         }
 
-        if (closestDistance <= _spaceWhaleSpawnDistance)
-            RemCompDeferred<SpaceWhaleTargetComponent>(ent);
-        else
+        // inky edit
+        if (closestDistance > _spaceWhaleSpawnDistance)
             HandleFarFromStation(ent);
+        else if (!_spaceWhaleAllowStationApproach)
+            RemCompDeferred<SpaceWhaleTargetComponent>(ent);
+        // /inky edit
     }
 
     private void HandleFarFromStation(EntityUid ent)

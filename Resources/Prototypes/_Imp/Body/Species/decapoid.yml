@@ -260,6 +260,9 @@
   # inky
   components:
   - type: HandOrgan
+    handID: left
+    data:
+      location: Left
     startingItem: DecapoidClawItem
   # /inky
 

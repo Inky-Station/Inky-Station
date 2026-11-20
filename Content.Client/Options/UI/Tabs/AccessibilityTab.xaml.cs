@@ -38,6 +38,7 @@ public sealed partial class AccessibilityTab : Control
         Control.AddOptionCheckBox(CCVars.ChatAutoFillHighlights, AutoFillHighlightsCheckBox);
         Control.AddOptionColorSlider(CCVars.ChatHighlightsColor, HighlightsColorSlider);
         // <Trauma>
+        Control.AddOptionCheckBox(TraumaCVars.NoRadiationNoise, DisableRadiationNoiseCheckBox);
         Control.AddOptionCheckBox(TraumaCVars.ChatHighlightSound, HighlightSoundCheckBox);
         // Control.AddOptionCheckBox(TraumaCVars.SkillPopups, SkillPopupsCheckBox); // inky - kill skills
         Control.AddOptionCheckBox(TraumaCVars.PlayMovieEndCredits, MovieCreditsCheckBox);

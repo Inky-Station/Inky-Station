@@ -19,15 +19,9 @@ cooldown = 5
 pvs_enter_budget = 300 # 200 by default
 log_late_msg = false # pointless log spam why is this on in release
 
-[adminlogs]
-high_log_playtime = 2 # this kills the raider
-
 [afk]
 time = 1500 # 25m
 confirm_timeout = 90 # 1.5m
-
-[playtest]
-explosion_damage_modifier = 0.3
 
 [biomass]
 easy_mode = false # woodchipper is actually dangerous
@@ -35,6 +29,7 @@ easy_mode = false # woodchipper is actually dangerous
 [ic]
 ssd_sleep = false # chuddy and doesnt account for NPCs
 flavor_text = true # Born to larp
+punctuation = true # extreme role play
 
 [infolinks]
 bug_report = "https://github.com/Trauma-Station/Trauma-Station/issues/created_by/choose"
