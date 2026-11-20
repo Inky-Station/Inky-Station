@@ -9,7 +9,7 @@ using Robust.Server.GameObjects;
 
 namespace Content.Inky.Server.CombatModeVisuals;
 
-public sealed partial class CombatModeVisualsSystem : SharedCombatModeVisualsSystem
+public sealed partial class CombatModeVisualsSystem : EntitySystem
 {
     [Dependency] private AppearanceSystem _appearance = default!;
 

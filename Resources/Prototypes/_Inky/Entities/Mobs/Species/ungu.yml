@@ -7,7 +7,6 @@
   parent: [ AppearanceUngu, BaseSpeciesMobOrganic ]
   id: BaseMobUngu
   components:
-  - type: CowToolProficiency
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.7
   - type: GenericVisualizer
