@@ -11,6 +11,6 @@ public abstract class SharedCombatModeVisualsSystem : EntitySystem
     [Serializable, NetSerializable]
     public enum CombatModeVisualsVisuals : byte
     {
-        Combat
+        Combat,
     }
 }

@@ -13,22 +13,16 @@ public sealed partial class CombatModeVisualsSystem : SharedCombatModeVisualsSys
 {
     [Dependency] private AppearanceSystem _appearance = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CombatModeVisualsComponent, CombatModeToggledEvent>(OnCombatToggle);
-        SubscribeLocalEvent<CombatModeVisualsComponent, MobStateChangedEvent>(OnMobStateChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnCombatToggle(Entity<CombatModeVisualsComponent> ent, ref CombatModeToggledEvent args)
     {
         _appearance.SetData(ent, CombatModeVisualsVisuals.Combat, args.Activated);
     }
 
+    [SubscribeLocalEvent]
     private void OnMobStateChanged(EntityUid ent, CombatModeVisualsComponent component, MobStateChangedEvent args)
     {
-        if (args.NewMobState == MobState.Critical || args.NewMobState == MobState.Dead)
+        if (args.NewMobState is MobState.Critical or MobState.Dead)
             _appearance.SetData(ent, CombatModeVisualsVisuals.Combat, false);
     }
 }

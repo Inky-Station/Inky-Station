@@ -19,14 +19,7 @@ public abstract partial class SharedCombatModeSprintSystem : EntitySystem
     [Dependency] private DamageOnHighSpeedImpactSystem _impact = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<CombatModeSprintComponent, CombatModeToggledEvent>(OnToggleCombat);
-        SubscribeLocalEvent<CombatModeSprintComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovespeed);
-    }
-
+    [SubscribeLocalEvent]
     private void OnToggleCombat(Entity<CombatModeSprintComponent> ent, ref CombatModeToggledEvent args)
     {
         _movementSpeed.RefreshMovementSpeedModifiers(ent.Owner);
@@ -36,6 +29,7 @@ public abstract partial class SharedCombatModeSprintSystem : EntitySystem
             _popup.PopupEntity(Loc.GetString(ent.Comp.EndCombatMessage, ("name", Identity.Entity(ent, EntityManager))), ent, Filter.PvsExcept(ent), true);
     }
 
+    [SubscribeLocalEvent]
     private void OnRefreshMovespeed(EntityUid ent, CombatModeSprintComponent component, RefreshMovementSpeedModifiersEvent args)
     {
         if (_combatMode.IsInCombatMode(ent))

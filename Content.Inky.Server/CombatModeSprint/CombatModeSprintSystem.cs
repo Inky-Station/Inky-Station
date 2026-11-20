@@ -6,7 +6,4 @@ using Content.Inky.Shared.CombatModeSprint;
 
 namespace Content.Inky.Server.CombatModeSprint;
 
-public sealed partial class CombatModeSprintSystem : SharedCombatModeSprintSystem
-{
-
-}
+public sealed partial class CombatModeSprintSystem : SharedCombatModeSprintSystem;
