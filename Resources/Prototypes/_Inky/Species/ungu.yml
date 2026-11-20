@@ -19,5 +19,9 @@
   youngAge: 60
   oldAge: 150
   maxAge: 200
-  defaultSoundsBySex: [ UnisexUngu, UnisexUngu, UnisexUngu ]
-  voices: [ UnisexUngu ]
+  defaultSoundsBySex:
+  - UnisexUngu
+  - UnisexUngu
+  - UnisexUngu
+  voices:
+  - UnisexUngu
