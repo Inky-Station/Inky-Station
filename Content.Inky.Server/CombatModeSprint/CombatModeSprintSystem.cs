@@ -6,10 +6,8 @@ using Content.Goobstation.Common.DoAfter;
 using Content.Inky.Shared.CombatModeSprint;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
-using Content.Shared.IdentityManagement;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
-using Robust.Shared.Player;
 
 namespace Content.Inky.Server.CombatModeSprint;
 
@@ -21,29 +19,31 @@ public sealed partial class CombatModeSprintSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
 
     [SubscribeLocalEvent]
-    private void OnToggleCombat(Entity<CombatModeSprintComponent> ent, ref CombatModeToggledEvent args)
+    private void OnToggleCombat(EntityUid uid, CombatModeSprintComponent component, ref CombatModeToggledEvent args)
     {
-        _movementSpeed.RefreshMovementSpeedModifiers(ent.Owner);
-        if (ent.Comp.BeginCombatMessage != null && _combatMode.IsInCombatMode(ent))
-            _popup.PopupEntity(Loc.GetString(ent.Comp.BeginCombatMessage, ("name", Identity.Entity(ent, EntityManager))), ent, Filter.PvsExcept(ent), true);
-        if (ent.Comp.EndCombatMessage != null && !_combatMode.IsInCombatMode(ent))
-            _popup.PopupEntity(Loc.GetString(ent.Comp.EndCombatMessage, ("name", Identity.Entity(ent, EntityManager))), ent, Filter.PvsExcept(ent), true);
+        if (args.Activated &&
+            component.CombatImpact is {} impact)
+        {
+            _impact.ChangeCollide(uid,
+                impact.MinimumSpeed,
+                impact.StunSeconds,
+                impact.DamageCooldown,
+                impact.SpeedDamageFactor);
+        }
+
+        _movementSpeed.RefreshMovementSpeedModifiers(uid);
+
+        if (!args.Activated)
+            return;
+
+        var message = Loc.GetString("begin-combat-popup", ("name", MetaData(uid).EntityName));
+        _popup.PopupEntity(message, uid, uid);
     }
 
     [SubscribeLocalEvent]
-    private void OnRefreshMovespeed(EntityUid ent, CombatModeSprintComponent component, RefreshMovementSpeedModifiersEvent args)
+    private void OnRefreshMovespeed(EntityUid uid, CombatModeSprintComponent component, RefreshMovementSpeedModifiersEvent args)
     {
-        if (_combatMode.IsInCombatMode(ent))
-        {
+        if (_combatMode.IsInCombatMode(uid))
             args.ModifySpeed(component.SprintCoefficient);
-            if (component.DoImpactDamage)
-                _impact.ChangeCollide(ent, component.MinimumSpeed, component.StunSeconds, component.DamageCooldown, component.SpeedDamage);
-        }
-        else
-        {
-            args.ModifySpeed(1f);
-            if (component.DoImpactDamage)
-                _impact.ChangeCollide(ent, component.DefaultMinimumSpeed, component.DefaultStunSeconds, component.DefaultDamageCooldown, component.DefaultSpeedDamage);
-        }
     }
 }

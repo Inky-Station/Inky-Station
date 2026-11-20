@@ -14,15 +14,15 @@ public sealed partial class CombatModeVisualsSystem : EntitySystem
     [Dependency] private AppearanceSystem _appearance = default!;
 
     [SubscribeLocalEvent]
-    private void OnCombatToggle(Entity<CombatModeVisualsComponent> ent, ref CombatModeToggledEvent args)
+    private void OnCombatToggle(EntityUid uid, CombatModeVisualsComponent component, CombatModeToggledEvent args)
     {
-        _appearance.SetData(ent, CombatModeVisualsVisuals.Combat, args.Activated);
+        _appearance.SetData(uid, CombatModeVisualsVisuals.Combat, args.Activated);
     }
 
     [SubscribeLocalEvent]
-    private void OnMobStateChanged(EntityUid ent, CombatModeVisualsComponent component, MobStateChangedEvent args)
+    private void OnMobStateChanged(EntityUid uid, CombatModeVisualsComponent component, MobStateChangedEvent args)
     {
         if (args.NewMobState is MobState.Critical or MobState.Dead)
-            _appearance.SetData(ent, CombatModeVisualsVisuals.Combat, false);
+            _appearance.SetData(uid, CombatModeVisualsVisuals.Combat, false);
     }
 }

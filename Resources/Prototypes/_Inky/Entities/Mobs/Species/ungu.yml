@@ -9,6 +9,7 @@
   components:
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.7
+  - type: CombatModeVisuals
   - type: GenericVisualizer
     visuals:
       enum.CombatModeVisualsVisuals.Combat:
@@ -16,11 +17,15 @@
           True: { sprite: _Inky/Mobs/Species/Ungu/parts.rsi, state: angry, visible: true }
           False: { visible: false }
   - type: CombatModeSprint
-    stunSeconds: 1
-    doImpactDamage: true
-    beginCombatMessage: "ungu-begin-combat-popup"
+    combatImpact:
+      minimumSpeed: 3
+      speedDamageFactor: 1
+      soundHit:
+        path: /Audio/Effects/hit_kick.ogg
+      damage:
+        types:
+          Blunt: 5
   - type: CombatMode
-  - type: CombatModeVisuals
   - type: MeleeWeapon
     attackRate: 0.6
     soundHit:
