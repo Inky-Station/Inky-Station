@@ -11,6 +11,6 @@ public sealed partial class ClientNuclearMachineSystem : NuclearMachineSystem
     [SubscribeLocalEvent]
     private void OnExamined(Entity<NuclearMachineComponent> ent, ref ClientExaminedEvent args)
     {
-        SpawnAttachedTo(ent.Comp.ArrowPrototype, new EntityCoordinates(ent, 0, 0)); // inky edit trauma fuckup
+        SpawnAttachedTo(ent.Comp.ArrowPrototype, new EntityCoordinates(ent, 0, 0));
     }
 }

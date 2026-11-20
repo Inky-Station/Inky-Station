@@ -33,6 +33,13 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
 
+    - name: Wait for linter
+      uses: lewagon/wait-on-check-action@v1.9.1
+      with:
+        ref: ${{ github.ref }}
+        check-name: "YAML Linter" # same as the workflows jobs.build.name field
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Build Packaging
       run: dotnet build Content.Packaging --configuration Release --no-restore /m
 
@@ -42,12 +49,7 @@ jobs:
     - name: Switch to client engine
       # never compile our shared engine code, it may have changed ABI so client would break
       # only networking has to stay identical
-      run: |
-        cd RobustToolbox
-        ENGINE_TAG=$(git describe --tags --abbrev=0)
-        cd ..
-        rm -rf RobustToolbox
-        git clone --recursive https://github.com/space-wizards/RobustToolbox -b $ENGINE_TAG
+      run: Tools/switch_robust_toolbox.sh
 
     - name: Package client
       run: dotnet run --project Content.Packaging client --no-wipe-release

@@ -5,6 +5,12 @@ namespace Content.IntegrationTests.Fixtures;
 
 public abstract partial class GameTest
 {
+    protected EntityUid SGetEntity(NetEntity ent)
+        => SEntMan.GetEntity(ent);
+
+    protected EntityUid? SGetEntity(NetEntity? ent)
+        => SEntMan.GetEntity(ent);
+
     protected EntityUid SSpawn([ForbidLiteral] EntProtoId id, EntityCoordinates coords)
         => SEntMan.SpawnAtPosition(id, coords);
 
@@ -16,16 +22,33 @@ public abstract partial class GameTest
         SEntMan.DeleteEntity(uid);
     }
 
+    protected void SDel(NetEntity? ent)
+    {
+        SEntMan.DeleteEntity(SGetEntity(ent));
+    }
+
     protected void CDel(EntityUid? uid)
     {
         CEntMan.DeleteEntity(uid);
     }
 
+    protected MetaDataComponent SMetaData(EntityUid uid)
+        => SEntMan.GetComponent<MetaDataComponent>(uid);
+
+    protected MetaDataComponent CMetaData(EntityUid uid)
+        => CEntMan.GetComponent<MetaDataComponent>(uid);
+
+    protected string SName(EntityUid uid)
+        => SMetaData(uid).EntityName;
+
+    protected string CName(EntityUid uid)
+        => CMetaData(uid).EntityName;
+
     protected EntityPrototype? SPrototype(EntityUid uid)
-        => SEntMan.GetComponentOrNull<MetaDataComponent>(uid)?.EntityPrototype;
+        => SMetaData(uid).EntityPrototype;
 
     protected EntityPrototype? CPrototype(EntityUid uid)
-        => CEntMan.GetComponentOrNull<MetaDataComponent>(uid)?.EntityPrototype;
+        => CMetaData(uid).EntityPrototype;
 
     protected bool SDeleted(EntityUid uid)
         => Deleted(SEntMan, uid);

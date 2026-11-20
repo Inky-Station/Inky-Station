@@ -27,9 +27,6 @@
     - Recyclable
     - HamsterWearable
     - WhitelistChameleon
-  - type: PhysicalComposition #Goobstation - Recycle update
-    materialComposition:
-      Cloth: 25
 
 - type: entity
   parent: ClothingHeadHatBeret
@@ -709,7 +706,6 @@
     tags:
     - ClothMade
     - WhitelistChameleon
-    - DroneUsable
     - Ushanka
 
 - type: entity
@@ -1287,7 +1283,6 @@
     - CorgiWearable
     - WhitelistChameleon
     - HamsterWearable
-    - DroneUsable # Goobstation
 
 - type: entity
   parent: ClothingHeadHatPartyRed
@@ -1541,20 +1536,6 @@
     tags:
     - PetWearable
     - CorgiWearable
-  - type: KnowledgeGrantOnWear # Trauma
-    conditions:
-    # Kept you waiting, huh?
-    - !type:NameContainsCondition
-      name: Snake
-    - !type:SpeciesCondition
-      species: Human
-    - !type:SexCondition
-      sex: Male
-    - !type:HasMarking
-      organ: Head
-      marking: FacePaintSplitter
-    skills:
-      MartialArtCQC: 26
 
 - type: entity
   parent: ClothingHeadBase

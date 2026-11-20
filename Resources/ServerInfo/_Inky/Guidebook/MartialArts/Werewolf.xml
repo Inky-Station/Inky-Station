@@ -1,0 +1,45 @@
+<Document>
+
+  # Werewolf Combat Techniques
+
+  <Box>
+    <GuideEntityEmbed Entity="WerewolfWerewolf" Caption=""/>
+  </Box>
+
+  Werewolves are stealthy nocturnal predators, hiding among the crew until the time is right. After transforming, they gain the
+  [textlink="martial art" link="MartialArts"] Lycanthrope CQC, a set of vicious techniques that tear flesh and break bones.
+
+  ## Combo attacks
+
+  ### Open Veins
+
+  <Box>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="grab"/>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="harm"/>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="harm"/>
+  </Box>
+
+  Mauls the victim with claws, dealing Slash damage and causing severe bleeding.
+
+  ### Vicious Toss
+
+  <Box>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="disarm"/>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="grab"/>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="disarm"/>
+  </Box>
+
+  Hurls the opponent a considerable distance and knocks them down.
+
+  ### Dismemberment
+
+  <Box>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="disarm"/>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="harm"/>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="disarm"/>
+    <TextureEmbed Sprite="_Goobstation/Interface/Misc/intents.rsi" State="harm"/>
+  </Box>
+
+  Tears off one of the opponent's arms. Does not work a second time on someone whose arm you have already torn off.
+
+</Document>

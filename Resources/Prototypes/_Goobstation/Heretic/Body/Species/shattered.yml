@@ -254,6 +254,8 @@
     species: Shattered
   - type: Woundable
     canBleed: false
+    traumaDeductions:
+      Dismemberment: 1
   - type: WoundableVisuals
     damageGroupColors:
       Brute: "#000000"
@@ -288,8 +290,6 @@
       Severe: 75
       Critical: 38
       Mangled: 0
-    traumaDeductions:
-      Dismemberment: 0.5
 
 - type: entity
   parent: [ OrganBaseArmLeft, OrganShatteredExternal ]
@@ -304,8 +304,6 @@
       Severe: 75
       Critical: 38
       Mangled: 0
-    traumaDeductions:
-      Dismemberment: 1.0
 
 - type: entity
   parent: [ OrganBaseArmRight, OrganShatteredExternal ]
@@ -320,8 +318,6 @@
       Severe: 75
       Critical: 38
       Mangled: 0
-    traumaDeductions:
-      Dismemberment: 1.0
 
 - type: entity
   parent: [ OrganBaseHandLeft, OrganShatteredExternal ]
@@ -336,8 +332,6 @@
       Severe: 45
       Critical: 22
       Mangled: 0
-    traumaDeductions:
-      Dismemberment: 1.0
 
 - type: entity
   parent: [ OrganBaseHandRight, OrganShatteredExternal ]
@@ -352,8 +346,6 @@
       Severe: 45
       Critical: 22
       Mangled: 0
-    traumaDeductions:
-      Dismemberment: 1.0
 
 - type: entity
   parent: [ OrganBaseLegLeft, OrganShatteredExternal ]
@@ -368,8 +360,6 @@
       Severe: 75
       Critical: 38
       Mangled: 0
-    traumaDeductions:
-      Dismemberment: 0.5
 
 - type: entity
   parent: [ OrganBaseLegRight, OrganShatteredExternal ]
@@ -384,8 +374,6 @@
       Severe: 75
       Critical: 38
       Mangled: 0
-    traumaDeductions:
-      Dismemberment: 0.5
 
 - type: entity
   parent: [ OrganBaseFootLeft, OrganShatteredExternal ]
@@ -400,8 +388,6 @@
       Severe: 45
       Critical: 22
       Mangled: 0
-    traumaDeductions:
-      Dismemberment: 0.5
 
 - type: entity
   parent: [ OrganBaseFootRight, OrganShatteredExternal ]
@@ -416,5 +402,3 @@
       Severe: 45
       Critical: 22
       Mangled: 0
-    traumaDeductions:
-      Dismemberment: 0.5

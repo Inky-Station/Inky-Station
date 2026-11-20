@@ -15,7 +15,14 @@ public sealed partial class TraumaCVars
 
     /// <summary>
     /// If true, the server will automatically start a map vote on round restart
+    /// This will also clear forced map because admin tooling is abysmal dogshit.
     /// </summary>
     public static readonly CVarDef<bool> AutomaticMapVote =
         CVarDef.Create("trauma.automatic_map_vote", true, CVar.SERVER);
+
+    /// <summary>
+    /// How much to delay the vote after a server restart, so we don't force 50 players to play on Reach.
+    /// </summary>
+    public static readonly CVarDef<TimeSpan> AutoMapVoteDelay =
+        CVarDef.Create("trauma.automatic_map_vote_delay", TimeSpan.FromMinutes(1), CVar.SERVER);
 }

@@ -17,7 +17,7 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - SubGamemodesRule
-  - Changeling
+  - ChangelingRuleRoundstart
   # inky
   - FunGameruleChooser
   # /inky
@@ -178,7 +178,6 @@
   name: xenomorph-title
   description: xenomorph-description
   showInVote: false
-  minPlayers: 30
   rules:
   - BasicRoundstartVariation
   - BasicStationEventScheduler

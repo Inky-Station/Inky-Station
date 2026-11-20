@@ -46,7 +46,7 @@
     - Zombie
     - Wizard
     - Xenoborgs
-    - Changeling
+    - ChangelingRuleRoundstart # inky edit - was Changeling
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
@@ -56,7 +56,7 @@
     - HereticRoundstart # inky edit - trauma fuckup
     - BlobGameMode
     - LoneAbductorSpawn
-    - Changeling
+    - ChangelingRuleRoundstart # inky edit - was Changeling
 #    - Insurgency # inky - kill insurgents
     # </Trauma>
   # inky
@@ -80,7 +80,7 @@
     - Zombie
     - Wizard
     - Xenoborgs
-    - Changeling
+    - ChangelingRuleRoundstart # inky edit - was Changeling
     - BasicStationEventScheduler
     - KesslerSyndromeScheduler
     - MeteorSwarmMildScheduler
