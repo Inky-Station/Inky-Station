@@ -323,14 +323,7 @@ public sealed partial class CarryingSystem : CommonCarryingSystem
             !_carriedQuery.HasComp(carrier) &&
             !_carriedQuery.HasComp(carried) &&
             // finally check that there are enough free hands
-            _hands.CountFreeHands(carrier) >= GetFreeHandsRequired(carrier, carried.Comp);
-    }
-
-    private int GetFreeHandsRequired(EntityUid carrier, CarriableComponent carried)
-    {
-        return HasComp<CarrierOneHandComponent>(carrier) && !carried.OneHandOverride
-            ? 1
-            : carried.FreeHandsRequired;
+            _hands.CountFreeHands(carrier) >= carried.Comp.FreeHandsRequired;
     }
 
     [SubscribeLocalEvent]
