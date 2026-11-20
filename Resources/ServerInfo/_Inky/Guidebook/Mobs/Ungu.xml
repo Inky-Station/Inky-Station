@@ -1,0 +1,13 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+
+<Document>
+  # Ungu
+
+  <Box>
+    <GuideEntityEmbed Entity="AppearanceUngu" Caption=""/>
+  </Box>
+
+  Ungu are a powerful, broad-shouldered species. They move slowly outside combat mode. Toggle [color=yellow]Combat Mode[/color] to pick up speed, but watch your corners. Hitting a wall at high speed can hurt and briefly stun you.
+
+  Use [color=yellow]Dash[/color] to charge up to four tiles in the direction you're facing. The charge can damage targets and breakable obstacles in your path. Dash requires gravity and has a 25-second cooldown.
+</Document>

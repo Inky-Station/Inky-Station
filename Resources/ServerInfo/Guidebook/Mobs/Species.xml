@@ -19,5 +19,8 @@
   <Box>
     <GuideEntityEmbed Entity="AppearanceIPC" Caption="IPC"/>
   <GuideEntityEmbed Entity="MobDecapoid" Caption="Decapoid"/>
+  <!-- inky -->
+  <GuideEntityEmbed Entity="AppearanceUngu" Caption="Ungu"/>
+  <!-- /inky -->
   </Box>
 </Document>
