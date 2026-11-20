@@ -84,13 +84,6 @@
   offset: 0, 0.125
 
 - type: typingIndicator
-  id: ungu
-  spritePath: /Textures/_Impstation/Effects/speech.rsi
-  typingState: ungu
-  idleState: ungu
-  offset: 0, 0.125
-
-- type: typingIndicator
   id: regal
   typingState: regal0
   idleState: regal3
