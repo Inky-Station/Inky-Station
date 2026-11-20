@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  save: false
   name: Urist McHooves
   parent: BaseMobUngu
   id: MobUngu

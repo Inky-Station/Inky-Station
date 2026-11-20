@@ -25,12 +25,8 @@
       damage:
         types:
           Blunt: 5
-  - type: CombatMode
   - type: MeleeWeapon
     attackRate: 0.6
-    soundHit:
-      collection: Punch
-    angle: 30
     animation: WeaponArcPunch
     damage:
       types:
@@ -67,8 +63,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 300 #STOP! BEING! 500!!!
-        restitution: 0.0
+        density: 300
         mask:
         - MobMask
         layer:
@@ -85,9 +80,6 @@
   - type: TemperatureDamage
     heatDamageThreshold: 320
     coldDamageThreshold: 200
-    coldDamage:
-      types:
-        Cold: 0.1 #per second, scales with temperature & other constants
     heatDamage:
       types:
         Heat: 3.0 #per second, scales with temperature & other constants
@@ -96,19 +88,6 @@
       reagents:
       - ReagentId: Blood
         Quantity: 300
-  - type: DamageVisuals
-    thresholds: [ 10, 20, 30, 50, 70, 100 ]
-    targetLayers:
-    - "enum.HumanoidVisualLayers.Chest"
-    - "enum.HumanoidVisualLayers.Head"
-    - "enum.HumanoidVisualLayers.LArm"
-    - "enum.HumanoidVisualLayers.RArm"
-    - "enum.HumanoidVisualLayers.LLeg"
-    - "enum.HumanoidVisualLayers.RLeg"
-    damageOverlayGroups:
-      Brute:
-        sprite: _Inky/Mobs/Effects/ungu_brute_damage.rsi
-        color: "#ff624a"
   - type: Speech
     speechSounds: Ungu
     allowedEmotes: ['Moo']

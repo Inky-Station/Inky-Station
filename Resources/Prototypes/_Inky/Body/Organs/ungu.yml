@@ -50,7 +50,6 @@
   - type: VisualOrgan
     data:
       sprite: _Inky/Mobs/Species/Ungu/parts.rsi
-      state: eyes
   - type: VisualOrganMarkings
     markingData:
       group: Ungu

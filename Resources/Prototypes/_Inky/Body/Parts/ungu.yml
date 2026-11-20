@@ -23,6 +23,13 @@
   parent: [ OrganBaseTorso, OrganUnguExternal ]
   id: OrganUnguTorso
   components:
+  - &ungu_wound_visuals
+    type: WoundableVisuals
+    damageGroupSprites:
+      Brute: _Inky/Mobs/Effects/ungu_brute_damage.rsi
+      Burn: _Shitmed/Mobs/Effects/burn_damage.rsi
+    damageGroupColors:
+      Brute: "#ff624a"
   - type: VisualOrganMarkings
     markingData:
       layers: [ Chest, Tail, Overlay, TailOverlay, UndergarmentTop, UndergarmentBottom, Special ]
@@ -31,6 +38,7 @@
   parent: [ OrganBaseHead, OrganUnguExternal ]
   id: OrganUnguHead
   components:
+  - *ungu_wound_visuals
   - type: VisualOrganMarkings
     hideableLayers:
     - enum.HumanoidVisualLayers.Hair
@@ -42,6 +50,7 @@
   parent: [ OrganBaseArmLeft, OrganUnguExternal ]
   id: OrganUnguArmLeft
   components:
+  - *ungu_wound_visuals
   - type: VisualOrganMarkings
     markingData:
       layers: [ LArm, LHand ]
@@ -50,6 +59,7 @@
   parent: [ OrganBaseArmRight, OrganUnguExternal ]
   id: OrganUnguArmRight
   components:
+  - *ungu_wound_visuals
   - type: VisualOrganMarkings
     markingData:
       layers: [ RArm, RHand ]
@@ -58,6 +68,7 @@
   parent: [ OrganBaseLegLeft, OrganUnguExternal ]
   id: OrganUnguLegLeft
   components:
+  - *ungu_wound_visuals
   - type: Leg
     sprintSpeed: 2.9
     walkSpeed: 1.3
@@ -71,6 +82,7 @@
   parent: [ OrganBaseLegRight, OrganUnguExternal ]
   id: OrganUnguLegRight
   components:
+  - *ungu_wound_visuals
   - type: Leg
     sprintSpeed: 2.9
     walkSpeed: 1.3

@@ -9,7 +9,6 @@
   prototype: MobUngu
   dollPrototype: AppearanceUngu
   skinColoration: Hues
-  defaultSkinTone: "#FFFFFF"
   maleFirstNames: NamesUnguFirst
   femaleFirstNames: NamesUnguFirst
   lastNames: NamesUnguLast
