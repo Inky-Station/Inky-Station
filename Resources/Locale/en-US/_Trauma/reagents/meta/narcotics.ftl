@@ -6,3 +6,6 @@ reagent-desc-crack = A crystalized form of cocaine that is far more potent and a
 
 reagent-name-cocaslurry = coca slurry
 reagent-desc-cocaslurry = A slurry made from grinding coca leaves. Nowhere nearly as stimulating as it's refined counterparts.
+
+reagent-name-bakingsoda = baking soda
+reagent-desc-bakingsoda = A wide spread household product that can be used in the production of crack cocaine.
