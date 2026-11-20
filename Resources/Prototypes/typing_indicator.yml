@@ -85,8 +85,9 @@
 
 - type: typingIndicator
   id: ungu
-  typingState: default0
-  idleState: default3
+  spritePath: /Textures/_Impstation/Effects/speech.rsi
+  typingState: ungu
+  idleState: ungu
   offset: 0, 0.125
 
 - type: typingIndicator

@@ -10,17 +10,15 @@
   components:
   - type: Item
     size: Normal
-  - type: Sprite
-    state: stomach
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      stomach:
-        maxVol: 200
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: UncookedAnimalProteins
-          Quantity: 12
+    - SolutionUnguStomach
+  - type: Solution
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 12
   - type: Stomach
     isSpecialDigestibleExclusive: true
     specialDigestible:
@@ -33,17 +31,26 @@
       - Ruminant
       - Wheat
       - Vegetable
-      - UnguFood
       - Flower
       - Mushroom
-  - type: Metabolizer
-    maxReagents: 3
-    metabolizerTypes: [ Human ]
-    groups:
-    - id: Food
-    - id: Drink
-  - type: Tag
-    tags:
-    - Meat
-    - Organ
-    - Stomach
+
+- type: entity
+  parent: SolutionStomach
+  id: SolutionUnguStomach
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    solution:
+      maxVol: 200
+
+- type: entity
+  parent: OrganHumanEyes
+  id: OrganUnguEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Impstation/Mobs/Species/Ungu/parts.rsi
+      state: eyes
+  - type: VisualOrganMarkings
+    markingData:
+      group: Ungu

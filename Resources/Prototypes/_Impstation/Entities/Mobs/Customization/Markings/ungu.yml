@@ -7,8 +7,7 @@
 - type: marking
   id: ChestSplotchesLUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: TorsoSplotchesL
@@ -16,8 +15,7 @@
 - type: marking
   id: ChestSplotchesRUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: TorsoSplotchesR
@@ -25,8 +23,7 @@
 - type: marking
   id: BackSpotUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: BackSpotBig
@@ -34,8 +31,7 @@
 - type: marking
   id: BackStripesUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: BackStripes
@@ -43,8 +39,7 @@
 - type: marking
   id: BellyUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Belly
@@ -52,8 +47,7 @@
 - type: marking
   id: ChestFluffUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: ChestFluff
@@ -61,8 +55,7 @@
 - type: marking
   id: DormantUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Dormant
@@ -70,8 +63,7 @@
 - type: marking
   id: Elated1Ungu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Elated_1
@@ -79,8 +71,7 @@
 - type: marking
   id: Elated2Ungu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Elated_2
@@ -88,8 +79,7 @@
 - type: marking
   id: Tormented1Ungu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Tormented_1
@@ -97,8 +87,7 @@
 - type: marking
   id: Tormented2Ungu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Tormented_2
@@ -106,8 +95,7 @@
 - type: marking
   id: SpikesUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Spikes
@@ -115,8 +103,7 @@
 - type: marking
   id: TransUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Trans
@@ -124,8 +111,7 @@
 - type: marking
   id: FinUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Fin
@@ -133,8 +119,7 @@
 - type: marking
   id: LimpitUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Limpit
@@ -142,8 +127,7 @@
 - type: marking
   id: HeartUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Heart
@@ -151,8 +135,7 @@
 - type: marking
   id: StitchBellyUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: StitchBelly
@@ -160,8 +143,7 @@
 - type: marking
   id: ExoUngu
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/chest.rsi
     state: Exo
@@ -171,8 +153,7 @@
 - type: marking
   id: EarsLongUngu
   bodyPart: HeadSide
-  markingCategory: HeadSide
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: EarsLong
@@ -182,8 +163,7 @@
 - type: marking
   id: EarsHorseUngu
   bodyPart: HeadSide
-  markingCategory: HeadSide
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: HorseEars
@@ -191,8 +171,7 @@
 - type: marking
   id: HeadSplotchLUngu
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: HeadSplotchL
@@ -200,8 +179,7 @@
 - type: marking
   id: HeadSplotchRUngu
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: HeadSplotchR
@@ -209,8 +187,7 @@
 - type: marking
   id: EarsFloppyUngu
   bodyPart: HeadSide
-  markingCategory: HeadSide
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: EarsFloppy
@@ -220,8 +197,7 @@
 - type: marking
   id: BellUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Bell
@@ -231,8 +207,7 @@
 - type: marking
   id: ChompersUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Chompers
@@ -240,8 +215,7 @@
 - type: marking
   id: TusksUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Tusks
@@ -249,8 +223,7 @@
 - type: marking
   id: WalrusUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Walrus
@@ -258,8 +231,7 @@
 - type: marking
   id: AntlersUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Antlers
@@ -267,8 +239,7 @@
 - type: marking
   id: LEyeHorn
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: LEyeHorn
@@ -276,8 +247,7 @@
 - type: marking
   id: REyeHorn
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: REyeHorn
@@ -285,8 +255,7 @@
 - type: marking
   id: EarsPigUngu
   bodyPart: HeadSide
-  markingCategory: HeadSide
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: EarsPig
@@ -294,8 +263,7 @@
 - type: marking
   id: EarsSmallUngu
   bodyPart: HeadSide
-  markingCategory: HeadSide
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: EarsSmall
@@ -305,8 +273,7 @@
 - type: marking
   id: EarsUpUngu
   bodyPart: HeadSide
-  markingCategory: HeadSide
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: EarsUp
@@ -316,8 +283,7 @@
 - type: marking
   id: HornsLongUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: HornsLong
@@ -325,8 +291,7 @@
 - type: marking
   id: EyebrowsUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Eyebrows
@@ -334,8 +299,7 @@
 - type: marking
   id: HornsNubUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: HornsNub
@@ -343,8 +307,7 @@
 - type: marking
   id: CryUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Leaking_Eyes
@@ -352,8 +315,7 @@
 - type: marking
   id: HornsHawkUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Horn_Hawk
@@ -361,8 +323,7 @@
 - type: marking
   id: HornUniUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Uni_Horn
@@ -370,8 +331,7 @@
 - type: marking
   id: HornsProstheticUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: Prosthetic_Horns
@@ -379,8 +339,7 @@
 - type: marking
   id: HornsRinoUngu
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/head.rsi
     state: HornsRino
@@ -390,8 +349,7 @@
 - type: marking
   id: SnootUngu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
     state: Snoot
@@ -399,8 +357,7 @@
 - type: marking
   id: NoseRingUngu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
     state: NoseRing
@@ -408,10 +365,11 @@
 - type: marking
   id: SnoutElephantUngu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: true
-  followSkinColor: true
+  coloring:
+    default:
+      type: !type:SkinColoring
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
     state: SnoutElephant
@@ -419,10 +377,11 @@
 - type: marking
   id: SnoutHippoUngu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: true
-  followSkinColor: true
+  coloring:
+    default:
+      type: !type:SkinColoring
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
     state: SnoutHippo
@@ -430,10 +389,11 @@
 - type: marking
   id: SnoutPigUngu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: true
-  followSkinColor: true
+  coloring:
+    default:
+      type: !type:SkinColoring
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
     state: SnoutPig
@@ -441,8 +401,7 @@
 - type: marking
   id: SnoutBoarUngu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
@@ -453,10 +412,11 @@
 - type: marking
   id: SnoutTapirUngu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: true
-  followSkinColor: true
+  coloring:
+    default:
+      type: !type:SkinColoring
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
     state: SnoutTapir
@@ -464,10 +424,11 @@
 - type: marking
   id: SnoutWhale1Ungu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: true
-  followSkinColor: true
+  coloring:
+    default:
+      type: !type:SkinColoring
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
     state: SnoutWhale1
@@ -475,10 +436,11 @@
 - type: marking
   id: SnoutWhale2Ungu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: true
-  followSkinColor: true
+  coloring:
+    default:
+      type: !type:SkinColoring
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
     state: SnoutWhale2
@@ -486,8 +448,7 @@
 - type: marking
   id: SnoutBelugaUngu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
@@ -498,8 +459,7 @@
 - type: marking
   id: SnoutOrcaUngu
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: false
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/snout.rsi
@@ -512,8 +472,7 @@
 - type: marking
   id: EyesCyclopsUngu
   bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/eyes.rsi
     state: EyesCyclops
@@ -523,30 +482,30 @@
 - type: marking
   id: EyesCyclopsGlowUngu
   bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/eyes.rsi
     state: EyesCyclops
   - sprite: _Impstation/Mobs/Customization/Ungu/eyes.rsi
     state: EyesCyclopsWhite
-  shader: unshaded
+  shaders:
+    EyesCyclops: unshaded
+    EyesCyclopsWhite: unshaded
 
 - type: marking
   id: EyesDotsGlowUngu
   bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/eyes.rsi
     state: EyesDots
-  shader: unshaded
+  shaders:
+    EyesDots: unshaded
 
 - type: marking
   id: EyesWaterUngu
   bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/eyes.rsi
     state: EyesWater
@@ -554,10 +513,11 @@
 - type: marking
   id: EyesLarsonUngu
   bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   forcedColoring: true
-  followSkinColor: true
+  coloring:
+    default:
+      type: !type:SkinColoring
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/eyes.rsi
     state: EyesLarson
@@ -569,8 +529,7 @@
 - type: marking
   id: RArmFluffUngu
   bodyPart: RArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: RArmFluff
@@ -578,8 +537,7 @@
 - type: marking
   id: RArmSplotchUngu
   bodyPart: RArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: RArmSplotch
@@ -587,8 +545,7 @@
 - type: marking
   id: RArmStripesUngu
   bodyPart: RArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: RArmStripes
@@ -596,8 +553,7 @@
 - type: marking
   id: RArmStitchUngu
   bodyPart: RArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: RArmStitch
@@ -605,8 +561,7 @@
 - type: marking
   id: PRArmUngu
   bodyPart: RArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: PRArm
@@ -614,8 +569,7 @@
 - type: marking
   id: SkinRArmUngu
   bodyPart: RArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: SkinRArm
@@ -623,8 +577,7 @@
 - type: marking
   id: RArmSpotUngu
   bodyPart: RArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: RArmSpotBig
@@ -634,8 +587,7 @@
 - type: marking
   id: PRHandUngu
   bodyPart: RHand
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: PRHand
@@ -643,8 +595,7 @@
 - type: marking
   id: SkinRHandUngu
   bodyPart: RHand
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: SkinRHand
@@ -654,8 +605,7 @@
 - type: marking
   id: LArmSplotchUngu
   bodyPart: LArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: LArmSplotch
@@ -663,8 +613,7 @@
 - type: marking
   id: LArmFluffUngu
   bodyPart: LArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: LArmFluff
@@ -672,8 +621,7 @@
 - type: marking
   id: LArmStripesUngu
   bodyPart: LArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: LArmStripes
@@ -681,8 +629,7 @@
 - type: marking
   id: LArmStitchUngu
   bodyPart: LArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: LArmStitch
@@ -690,8 +637,7 @@
 - type: marking
   id: SkinLArmUngu
   bodyPart: LArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: SkinLArm
@@ -699,8 +645,7 @@
 - type: marking
   id: PLArmUngu
   bodyPart: LArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: PLArm
@@ -708,8 +653,7 @@
 - type: marking
   id: LArmSpotUngu
   bodyPart: LArm
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: LArmSpotBig
@@ -719,8 +663,7 @@
 - type: marking
   id: PLHandUngu
   bodyPart: LHand
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: PLHand
@@ -728,8 +671,7 @@
 - type: marking
   id: SkinLHandUngu
   bodyPart: LHand
-  markingCategory: Arms
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/arms.rsi
     state: SkinLHand
@@ -739,8 +681,7 @@
 - type: marking
   id: RLegSplotchUngu
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: RLegSplotch
@@ -748,8 +689,7 @@
 - type: marking
   id: RLegSplotchesUngu
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: RLegSplotches
@@ -757,8 +697,7 @@
 - type: marking
   id: RLegFluffUngu
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: RLegFluff
@@ -766,8 +705,7 @@
 - type: marking
   id: RLegStripesUngu
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: RLegStripes
@@ -775,8 +713,7 @@
 - type: marking
   id: RLegStitchUngu
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: StitchRLeg
@@ -784,8 +721,7 @@
 - type: marking
   id: PRLegUngu
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: PRLeg
@@ -793,8 +729,7 @@
 - type: marking
   id: RLegSpotUngu
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: RLegSpotBig
@@ -802,8 +737,7 @@
 - type: marking
   id: SkinRLegUngu
   bodyPart: RLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: SkinRLeg
@@ -813,8 +747,7 @@
 - type: marking
   id: HoovesBigUngu
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: HoovesBig
@@ -822,8 +755,7 @@
 - type: marking
   id: RHoofBigUngu
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: HoofBigR
@@ -831,8 +763,7 @@
 - type: marking
   id: HoovesUngu
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: Hooves
@@ -840,8 +771,7 @@
 - type: marking
   id: RHoofUngu
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: HoofR
@@ -849,8 +779,7 @@
 - type: marking
   id: PRHoofUngu
   bodyPart: RFoot
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: PRHoof
@@ -860,8 +789,7 @@
 - type: marking
   id: LLegSplotchUngu
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: LLegSplotch
@@ -869,8 +797,7 @@
 - type: marking
   id: LLegSplotchesUngu
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: LLegSplotches
@@ -878,8 +805,7 @@
 - type: marking
   id: LLegStripesUngu
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: LLegStripes
@@ -887,8 +813,7 @@
 - type: marking
   id: LLegFluffUngu
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: LLegFluff
@@ -896,8 +821,7 @@
 - type: marking
   id: SkinLLegUngu
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: SkinLLeg
@@ -905,8 +829,7 @@
 - type: marking
   id: PLLegUngu
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: PLLeg
@@ -914,8 +837,7 @@
 - type: marking
   id: LLegStitchUngu
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: StitchLLeg
@@ -923,8 +845,7 @@
 - type: marking
   id: LLegSpotUngu
   bodyPart: LLeg
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: LLegSpotBig
@@ -934,8 +855,7 @@
 - type: marking
   id: LHoofBigUngu
   bodyPart: LFoot
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: HoofBigL
@@ -943,8 +863,7 @@
 - type: marking
   id: LHoofUngu
   bodyPart: LFoot
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: HoofL
@@ -952,8 +871,7 @@
 - type: marking
   id: PLHoofUngu
   bodyPart: LFoot
-  markingCategory: Legs
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/legs.rsi
     state: PLHoof
@@ -962,9 +880,8 @@
 
 - type: marking
   id: PantsUngu
-  bodyPart: Underwear
-  markingCategory: Underwear
-  speciesRestriction: [ Ungu ]
+  bodyPart: UndergarmentBottom
+  groupWhitelist: [ Ungu ]
   coloring:
     default:
       type:
@@ -976,9 +893,8 @@
 
 - type: marking
   id: BloomersUngu
-  bodyPart: Underwear
-  markingCategory: Underwear
-  speciesRestriction: [ Ungu ]
+  bodyPart: UndergarmentBottom
+  groupWhitelist: [ Ungu ]
   coloring:
     default:
       type:
@@ -990,9 +906,8 @@
 
 - type: marking
   id: ShortsUngu
-  bodyPart: Underwear
-  markingCategory: Underwear
-  speciesRestriction: [ Ungu ]
+  bodyPart: UndergarmentBottom
+  groupWhitelist: [ Ungu ]
   coloring:
     default:
       type:
@@ -1006,9 +921,8 @@
 
 - type: marking
   id: BraStraplessUngu
-  bodyPart: Undershirt
-  markingCategory: Undershirt
-  speciesRestriction: [ Ungu ]
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Ungu ]
   coloring:
     default:
       type:
@@ -1020,9 +934,8 @@
 
 - type: marking
   id: BraUngu
-  bodyPart: Undershirt
-  markingCategory: Undershirt
-  speciesRestriction: [ Ungu ]
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Ungu ]
   coloring:
     default:
       type:
@@ -1034,9 +947,8 @@
 
 - type: marking
   id: BinderUngu
-  bodyPart: Undershirt
-  markingCategory: Undershirt
-  speciesRestriction: [ Ungu ]
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Ungu ]
   coloring:
     default:
       type:
@@ -1048,9 +960,8 @@
 
 - type: marking
   id: TeeUngu
-  bodyPart: Undershirt
-  markingCategory: Undershirt
-  speciesRestriction: [ Ungu ]
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Ungu ]
   coloring:
     default:
       type:
@@ -1062,9 +973,8 @@
 
 - type: marking
   id: TeeCroppedUngu
-  bodyPart: Undershirt
-  markingCategory: Undershirt
-  speciesRestriction: [ Ungu ]
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Ungu ]
   coloring:
     default:
       type:
@@ -1076,9 +986,8 @@
 
 - type: marking
   id: VestUngu
-  bodyPart: Undershirt
-  markingCategory: Undershirt
-  speciesRestriction: [ Ungu ]
+  bodyPart: UndergarmentTop
+  groupWhitelist: [ Ungu ]
   coloring:
     default:
       type:
@@ -1093,8 +1002,7 @@
 - type: marking
   id: TailLongUngu
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/tail.rsi
     state: TailLong
@@ -1105,8 +1013,7 @@
 - type: marking
   id: TailNubUngu
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/tail.rsi
     state: TailNub
@@ -1114,8 +1021,7 @@
 - type: marking
   id: TailFluffyUngu
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/tail.rsi
     state: TailFluffy_1
@@ -1125,8 +1031,7 @@
 - type: marking
   id: TailBoneUngu
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/tail.rsi
     state: Bone_Tail
@@ -1134,8 +1039,7 @@
 - type: marking
   id: TailBushyUngu
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/tail.rsi
     state: Bushy_Tail
@@ -1143,8 +1047,7 @@
 - type: marking
   id: TailProstheticUngu
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/tail.rsi
     state: Prosthetic_Tail
@@ -1154,8 +1057,7 @@
 - type: marking
   id: StrandUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Single_Strand
@@ -1163,8 +1065,7 @@
 - type: marking
   id: StrandsUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Strands
@@ -1172,8 +1073,7 @@
 - type: marking
   id: TonsureUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Tonsure
@@ -1181,8 +1081,7 @@
 - type: marking
   id: HeadFluffUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: HeadFluff
@@ -1190,8 +1089,7 @@
 - type: marking
   id: ManeUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Mane
@@ -1199,8 +1097,7 @@
 - type: marking
   id: WoolyLongUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Wooly_Long
@@ -1208,8 +1105,7 @@
 - type: marking
   id: WoolyMediumUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Wooly_Medium
@@ -1217,8 +1113,7 @@
 - type: marking
   id: WoolyShortUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Wooly_Short
@@ -1226,8 +1121,7 @@
 - type: marking
   id: RegalManeUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: RegalMane
@@ -1235,8 +1129,7 @@
 - type: marking
   id: LooseManeUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: LooseMane
@@ -1244,8 +1137,7 @@
 - type: marking
   id: PonyUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Pony
@@ -1253,8 +1145,7 @@
 - type: marking
   id: BunUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Bun
@@ -1262,8 +1153,7 @@
 - type: marking
   id: BraidedManeUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: BraidedMane
@@ -1271,8 +1161,7 @@
 - type: marking
   id: PonytailUngu
   bodyPart: Hair
-  markingCategory: Hair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/hair.rsi
     state: Ponytail
@@ -1282,8 +1171,7 @@
 - type: marking
   id: LongChopsUngu
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/beard.rsi
     state: LongChops
@@ -1291,8 +1179,7 @@
 - type: marking
   id: ShortChopsUngu
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/beard.rsi
     state: ShortChops
@@ -1300,8 +1187,7 @@
 - type: marking
   id: ThickBraidUngu
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/beard.rsi
     state: ThickBraid
@@ -1309,8 +1195,7 @@
 - type: marking
   id: TwinBraidsUngu
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/beard.rsi
     state: TwinBraids
@@ -1318,8 +1203,7 @@
 - type: marking
   id: WoolyUngu
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [ Ungu ]
+  groupWhitelist: [ Ungu ]
   sprites:
   - sprite: _Impstation/Mobs/Customization/Ungu/beard.rsi
     state: Wooly

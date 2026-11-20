@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Common.DoAfter;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
 using Content.Shared.IdentityManagement;
@@ -13,42 +14,41 @@ namespace Content.Shared._Impstation.CombatModeSprint;
 
 public abstract class SharedCombatModeSprintSystem : EntitySystem
 {
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combatMode = default!;
-    [Dependency] private readonly DamageOnHighSpeedImpactSystem _impact = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!;
+    [Dependency] private SharedCombatModeSystem _combatMode = default!;
+    [Dependency] private DamageOnHighSpeedImpactSystem _impact = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CombatModeSprintComponent, ToggleCombatActionEvent>(OnToggleCombat);
+        SubscribeLocalEvent<CombatModeSprintComponent, CombatModeToggledEvent>(OnToggleCombat);
         SubscribeLocalEvent<CombatModeSprintComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovespeed);
     }
 
-    private void OnToggleCombat(Entity<CombatModeSprintComponent> ent, ref ToggleCombatActionEvent args)
+    private void OnToggleCombat(Entity<CombatModeSprintComponent> ent, ref CombatModeToggledEvent args)
     {
-        _movementSpeed.RefreshMovementSpeedModifiers(ent);
+        _movementSpeed.RefreshMovementSpeedModifiers(ent.Owner);
         if (ent.Comp.BeginCombatMessage != null && _combatMode.IsInCombatMode(ent))
             _popup.PopupEntity(Loc.GetString(ent.Comp.BeginCombatMessage, ("name", Identity.Entity(ent, EntityManager))), ent, Filter.PvsExcept(ent), true);
         if (ent.Comp.EndCombatMessage != null && !_combatMode.IsInCombatMode(ent))
             _popup.PopupEntity(Loc.GetString(ent.Comp.EndCombatMessage, ("name", Identity.Entity(ent, EntityManager))), ent, Filter.PvsExcept(ent), true);
     }
 
-    private void OnRefreshMovespeed(Entity<CombatModeSprintComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
+    private void OnRefreshMovespeed(EntityUid ent, CombatModeSprintComponent component, RefreshMovementSpeedModifiersEvent args)
     {
         if (_combatMode.IsInCombatMode(ent))
         {
-            args.ModifySpeed(ent.Comp.SprintCoefficient);
-            if (ent.Comp.DoImpactDamage)
-                _impact.ChangeCollide(ent, ent.Comp.MinimumSpeed, ent.Comp.StunSeconds, ent.Comp.DamageCooldown, ent.Comp.SpeedDamage);
+            args.ModifySpeed(component.SprintCoefficient);
+            if (component.DoImpactDamage)
+                _impact.ChangeCollide(ent, component.MinimumSpeed, component.StunSeconds, component.DamageCooldown, component.SpeedDamage);
         }
         else
         {
             args.ModifySpeed(1f);
-            if (ent.Comp.DoImpactDamage)
-                _impact.ChangeCollide(ent, ent.Comp.DefaultMinimumSpeed, ent.Comp.DefaultStunSeconds, ent.Comp.DefaultDamageCooldown, ent.Comp.DefaultSpeedDamage);
+            if (component.DoImpactDamage)
+                _impact.ChangeCollide(ent, component.DefaultMinimumSpeed, component.DefaultStunSeconds, component.DefaultDamageCooldown, component.DefaultSpeedDamage);
         }
     }
 }
-
