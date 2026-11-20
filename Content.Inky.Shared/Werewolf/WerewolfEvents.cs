@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
+using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -18,6 +19,18 @@ public sealed partial class HowlEvent : InstantActionEvent
     public bool HealNearby;
     [DataField]
     public bool PackOnly = true;
+
+    /// <summary>
+    /// Effects applied in radius to those nearby
+    /// </summary>
+    [DataField]
+    public EntityEffect[]? TargetEffects;
+
+    /// <summary>
+    /// Effects applied to the howler bgi,,igbiggbgggbg,..,hgghhhgghghhhhhhhhhhhhhh
+    /// </summary>
+    [DataField]
+    public EntityEffect[]? UserEffects;
 }
 
 public sealed partial class TransfurmEvent : InstantActionEvent
@@ -55,6 +68,11 @@ public sealed partial class WerewolfAmbushActionEvent : WorldTargetActionEvent
 {
     [DataField]
     public float JumpSpeed = 15f;
+
+    [DataField]
+    public EntProtoId? EntitySpawnOnEvent; // I HATE NAMING BRO WHATEVER
+    [DataField]
+    public TimeSpan EntitySpawnTimer = TimeSpan.FromSeconds(1.2);
 }
 
 [Serializable, NetSerializable]
@@ -105,3 +123,4 @@ public sealed class WerewolfActionRemoveEvent(EntityUid actionEnt) : EntityEvent
 {
     public readonly EntityUid ActionEnt = actionEnt;
 }
+public sealed partial class WerewolfBanishEvent : EntityTargetActionEvent;

@@ -4,7 +4,9 @@ using Content.Shared.Actions;
 using Content.Shared.Camera;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Coordinates;
 using Content.Shared.DoAfter;
+using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Mind;
@@ -14,12 +16,17 @@ using Content.Shared.Station.Systems;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
+using Content.Shared.Trigger.Components.Effects;
+using Content.Shared.Trigger.Components.Triggers;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
+using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Inky.Shared.Werewolf.Systems;
 
@@ -31,6 +38,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
     [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
     [Dependency] private SharedCameraRecoilSystem _recoil = default!;
+    [Dependency] private SharedEntityEffectsSystem _effects = default!;
     [Dependency] private EntityLookupSystem _entityLookup = default!;
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
@@ -46,6 +54,8 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
     [Dependency] private StationSystem _station = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private IRobustRandom _gambling = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private float _updateTimer = 0f;
     /*
@@ -60,12 +70,14 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
     {
         InitializeDire();
         InitializeWhite();
-        InitializeBlack();
+        InitializeBlack(); // todo werewolf kill these
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+        UpdateHell();
+
         _updateTimer += frameTime;
         if (_updateTimer < 0.5f)
             return;
@@ -145,6 +157,13 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
             _stun.TryKnockdown(victim, TimeSpan.FromSeconds(args.StunDuration), true);
         }
 
+        if (args.UserEffects is { } userEffects)
+            _effects.ApplyEffects(uid, userEffects, user: uid);
+
+        if (args.TargetEffects is { } targetEffects)
+            foreach (var target in _entityLookup.GetEntitiesInRange(uid, args.ShriekPower))
+                _effects.ApplyEffects(target, targetEffects, user: uid);
+
         if (args.ForceTransfurm || args.HealNearby)
         {
             var pack = args.PackOnly && _mind.TryGetMind(uid, out var mindId, out _) && TryComp<WerewolfMindComponent>(mindId, out var mindComp)
@@ -180,6 +199,13 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
             return;
 
         _throwing.TryThrow(uid, args.Target, args.JumpSpeed, uid, 10F);
+
+        // hate. . .
+        if (args.EntitySpawnOnEvent != null)
+        {
+            EnsureComp<SpawnEntitiesOnStepComponent>(uid).Prototype = "MolotovHellFire";
+            Timer.Spawn(args.EntitySpawnTimer, () => { RemComp<SpawnEntitiesOnStepComponent>(uid); }); // FUCK FORMATTING
+        }
         // todo PlayPVS
         args.Handled = true;
     }
