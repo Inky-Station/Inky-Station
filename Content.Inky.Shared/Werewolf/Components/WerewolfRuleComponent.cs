@@ -13,7 +13,8 @@ public sealed partial class WerewolfRuleComponent : Component
         "WerewolfChoose",
         "WerewolfDire",
         "WerewolfWhite",
-        "WerewolfBlack"
+        "WerewolfBlack",
+        "WerewolfHell"
     };
 
     public readonly ProtoId<StoreCategoryPrototype> StoreSide = new("WerewolfSide");

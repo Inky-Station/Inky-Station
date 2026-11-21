@@ -19,6 +19,7 @@
     blacklist:
     - WerewolfWhite
     - WerewolfBlack
+    - WerewolfHell
 
 - type: listing
   id: WerewolfHowlUpgrade

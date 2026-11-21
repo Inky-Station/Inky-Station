@@ -5,6 +5,9 @@
   components:
   - type: Sprite
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
+  - type: Action
+    useDelay: 30
+    itemIconStyle: NoItem
 
 - type: entity
   parent: [ActionBaseWerewolf, BaseAction]
@@ -13,9 +16,6 @@
   description: Scream as loud as you can, stunning everyone in radius.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
-    useDelay: 30
-    itemIconStyle: NoItem
   - type: Sprite
     layers:
     - state: howl
@@ -35,7 +35,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    itemIconStyle: NoItem
+    useDelay: 0
   - type: Sprite
     layers:
     - state: transfurm
@@ -51,8 +51,6 @@
   description: Open the mutation menu.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
-    itemIconStyle: NoItem
   - type: Sprite
     layers:
     - state: store
@@ -68,8 +66,6 @@
   description: Gives you 10 seconds of thermal vision
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
-    useDelay: 30
   - type: Sprite
     sprite: _Inky/Actions/Werewolf/werewolf.rsi
     layers:
@@ -86,7 +82,6 @@
   components:
   - type: Action
     useDelay: 5
-    itemIconStyle: NoItem
   - type: Sprite
     layers:
     - state: bite
@@ -108,8 +103,6 @@
   description: Spills one of the chest organs of a deceased crew member onto the floor. Organs that are produced from this ability grant you Fury.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
-    itemIconStyle: NoItem
   - type: Sprite
     layers:
     - state: gut
@@ -136,7 +129,6 @@
   components:
   - type: Action
     useDelay: 10
-    itemIconStyle: NoItem
   - type: Sprite
     layers:
     - state: regen
@@ -182,9 +174,6 @@
   description: Scream as loud as you can, stunning everyone in radius.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
-    useDelay: 30
-    itemIconStyle: NoItem
   - type: Sprite
     layers:
     - state: howl-red
@@ -205,9 +194,6 @@
   description: Sink your canines into a victim, and steal 30% of their blood. This will heal you slightly.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
-    useDelay: 30
-    itemIconStyle: NoItem
   - type: Sprite
     layers:
     - state: bleeding-bite
@@ -235,6 +221,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
+    useDelay: 0
   - type: Sprite
     layers:
     - state: transfurm
@@ -252,8 +239,6 @@
   description: Bite a victim, causing massive blood loss. Has a 50% chance to infect the victim into a Werewolf under your rule.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
-    useDelay: 30
   - type: Sprite
     layers:
     - state: black-bite
@@ -278,8 +263,6 @@
   description: Howl and command every werewolf in radius to transform into their superior form, and heal those who already are transformed.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
-    useDelay: 30
   - type: Sprite
     layers:
     - state: howl-green
@@ -302,9 +285,6 @@
   description: Silently transmits your location to your allied Werewolves
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
-    useDelay: 30
-    itemIconStyle: NoItem
   - type: Sprite
     layers:
     - state: beckon
@@ -322,7 +302,6 @@
   description: Crown an Unmutated Werewolf in your pack to become the next Black Wolf in case of your death.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
   - type: Sprite
     layers:
     - state: bequeath
@@ -347,9 +326,83 @@
   description: Force transform yourself, and everyone in your pack, permamently. Doubles you and your packs health. Requires a minimum of 4 pack members to use.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Action
   - type: Sprite
     layers:
     - state: call
   - type: InstantAction
     event: !type:WerewolfBlackCallEvent {}
+
+# hell
+
+- type: entity
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
+  id: ActionWerewolfJumpHell
+  name: Blitz And Burn
+  description: Jump and burn your foes!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    checkCanInteract: false
+    priority: 0
+    useDelay: 20
+  - type: Sprite
+    layers:
+    - state: burn
+  - type: TargetAction
+    checkCanAccess: false
+    range: 15
+  - type: WorldTargetAction
+    event: !type:WerewolfAmbushActionEvent
+      entitySpawnOnEvent: MolotovFire # MolotovHellFire ?
+  - type: WerewolfAction
+    hungerCost: 30
+    requireTransfurmed: true
+
+- type: entity
+  parent: [ActionBaseWerewolf, BaseAction]
+  id: ActionWerewolfHowlHell
+  name: Gather the Damned
+  description: Howl, setting people around you on fire.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - state: damn
+  - type: InstantAction
+    event: !type:HowlEvent
+      targetEffects:
+      - !type:Flammable # copypasted from ash blade pls test if its too much/too little
+        multiplier: 2.5
+        fireProtectionPenetration: 0.35
+      - !type:Ignite
+  - type: WerewolfAction
+    hungerCost: 30
+    requireTransfurmed: true
+
+- type: entity
+  parent:
+  - BaseAction
+  - ActionBaseWerewolf
+  id: ActionWerewolfBanish
+  name: Banish
+  description: Strike a target in range, stunning it accordingly to how much 'on fire' they are.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 45
+  - type: Sprite
+    layers:
+    - state: banish
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - MobState
+    canTargetSelf: false
+    event: !type:WerewolfBanishEvent {}
+  - type: WerewolfAction
+    hungerCost: 20
+    requireTransfurmed: false # TROLLFACE

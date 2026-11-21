@@ -1,0 +1,110 @@
+- type: listing
+  id: WerewolfHell
+  name: werewolf-store-choose-hell-name
+  description: werewolf-store-choose-hell-desc
+  icon:
+    sprite: _Inky/Mobs/Werewolf/Mutations/hell.rsi
+    state: icon
+  productEvent: !type:WerewolfChangeTypeEvent
+    werewolfType: WerewolfTransformHell
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 15
+  categories:
+  - WerewolfChoose
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    blacklist:
+    - WerewolfWhite
+    - WerewolfDirewolf
+    - WerewolfBlack
+
+- type: listing
+  id: WerewolfHellBurn
+  name: werewolf-store-hell-burn-name
+  description: werewolf-store-hell-burn-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: thousand-degrees
+  productEvent: !type:WerewolfChangeTypeEvent
+    werewolfType: WerewolfTransformHellBurn
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 5
+  categories:
+  - WerewolfHell
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfHell
+
+# MolotovFire
+- type: listing
+  id: WerewolfHellAmbush
+  name: werewolf-store-jump-hell-name
+  description: werewolf-store-jump-hell-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: burn
+  productEvent: !type:WerewolfUpgradeAbilityEvent
+    newActionId: ActionWerewolfJumpHell
+    oldActionId: ActionWerewolfJump
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 6
+  categories:
+  - WerewolfHell
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfSideAmbush
+
+- type: listing
+  id: WerewolfHowlHell
+  name: werewolf-store-howl-hell-name
+  description: werewolf-store-howl-hell-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: damn
+  productEvent: !type:WerewolfUpgradeAbilityEvent
+    oldActionId: ActionWerewolfHowl
+    newActionId: ActionWerewolfHowlHell
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 7
+  categories:
+  - WerewolfHell
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfHell
+
+- type: listing
+  id: WerewolfBanish
+  name: werewolf-store-banish-name
+  description: werewolf-store-banish-desc
+  icon:
+    sprite: _Inky/Actions/Werewolf/werewolf.rsi
+    state: banish
+  productEvent: !type:WerewolfUpgradeAbilityEvent
+    newActionId: ActionWerewolfBanish
+  raiseProductEventOnUser: true
+  cost:
+    Fury: 10
+  categories:
+  - WerewolfHell
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyBeforeCondition
+    whitelist:
+    - WerewolfHell
+
