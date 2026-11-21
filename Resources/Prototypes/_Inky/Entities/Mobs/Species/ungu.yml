@@ -1,0 +1,116 @@
+# SPDX-FileCopyrightText: 2026 Impstation contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  abstract: true
+  parent: [ AppearanceUngu, BaseSpeciesMobOrganic ]
+  id: BaseMobUngu
+  components:
+  - type: StatusIcon
+    bounds: -0.5,-0.5,0.5,0.7
+  - type: CombatModeVisuals
+  - type: GenericVisualizer
+    visuals:
+      enum.CombatModeVisualsVisuals.Combat:
+        combat:
+          True: { sprite: _Inky/Mobs/Species/Ungu/parts.rsi, state: angry, visible: true }
+          False: { visible: false }
+  - type: CombatModeSprint
+    combatImpact:
+      minimumSpeed: 3
+      speedDamageFactor: 1
+      soundHit:
+        path: /Audio/Effects/hit_kick.ogg
+      damage:
+        types:
+          Blunt: 5
+  - type: MeleeWeapon
+    attackRate: 0.6
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 8
+        Structural: 12
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 12
+        Structural: 20
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Critical
+      200: Dead
+  - type: StaminaDamageOnHit
+    damage: 18
+  - type: Satiation
+    satiations:
+      Hunger:
+        prototype: UnguHunger
+      Thirst:
+        prototype: NormalSatiationThirst
+  - type: Icon
+    sprite: _Inky/Mobs/Species/Ungu/parts.rsi
+    state: full
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 300
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Vocal
+    emoteSounds: UnisexUngu
+  - type: BodyEmotes
+    soundsId: UnguBodyEmotes
+  - type: Damageable
+    damageModifierSet: Ungu
+  - type: Temperature
+    temperature: 310.15
+    specificHeat: 42
+  - type: TemperatureDamage
+    heatDamageThreshold: 320
+    coldDamageThreshold: 200
+    heatDamage:
+      types:
+        Heat: 3.0 #per second, scales with temperature & other constants
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 300
+  - type: Speech
+    speechSounds: Ungu
+    allowedEmotes: ['Moo']
+  - type: TypingIndicator
+    proto: ungu
+  - type: JumpAbility
+    action: ActionDash
+    jumpDistance: 4
+    jumpSound:
+      path: /Audio/Weapons/punchmiss.ogg
+      params:
+        pitch: .5
+        volume: -3
+        variation: 0.05
+
+- type: satiation
+  parent: NormalSatiationHunger
+  id: UnguHunger
+  maximumValue: 150
+  baseChangeRate: -0.0124
+  thresholds:
+    Overfed: 150
+    Okay: 100
+    Peckish: 50
+    Starving: 25
+    Dead: 0
