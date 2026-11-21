@@ -1,0 +1,6 @@
+- type: typingIndicator
+  id: ungu
+  spritePath: /Textures/_Inky/Effects/speech.rsi
+  typingState: ungu
+  idleState: ungu
+  offset: 0, 0.125

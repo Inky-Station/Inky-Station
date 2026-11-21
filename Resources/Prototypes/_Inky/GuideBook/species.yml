@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: guideEntry
+  id: Ungu
+  name: species-name-ungu
+  text: "/ServerInfo/_Inky/Guidebook/Mobs/Ungu.xml"

@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 Impstation contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: species
+  id: Ungu
+  name: species-name-ungu
+  roundStart: true
+  prototype: MobUngu
+  dollPrototype: AppearanceUngu
+  skinColoration: Hues
+  maleFirstNames: NamesUnguFirst
+  femaleFirstNames: NamesUnguFirst
+  lastNames: NamesUnguLast
+  sexes:
+  - Unsexed
+  - Male
+  - Female
+  youngAge: 60
+  oldAge: 150
+  maxAge: 200
+  defaultSoundsBySex:
+  - UnisexUngu
+  - UnisexUngu
+  - UnisexUngu
+  voices:
+  - UnisexUngu
