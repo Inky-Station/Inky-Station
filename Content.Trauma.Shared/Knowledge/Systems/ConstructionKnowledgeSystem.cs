@@ -59,6 +59,11 @@ public sealed partial class ConstructionKnowledgeSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnConstructed(Entity<KnowledgeHolderComponent> ent, ref ConstructedEvent args)
     {
+        // inky
+        if (!_knowledge.SkillsEnabled)
+            return;
+        // /inky
+
         if (!ProtoMan.Resolve<ConstructionPrototype>(args.Prototype, out var proto))
             return;
 
