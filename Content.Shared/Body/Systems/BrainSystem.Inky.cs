@@ -143,6 +143,15 @@ public sealed partial class BrainSystem
         RaiseLocalEvent(uid, ref ev);
     }
 
+    public void SetAirConsumption(Entity<BrainComponent?> brain, float airConsumption)
+    {
+        if (!Resolve(brain, ref brain.Comp, false))
+            return;
+
+        brain.Comp.AirConsumption = airConsumption;
+        Dirty(brain);
+    }
+
     # region statuses
     private void UpdateBrainAlert(
         EntityUid uid,
