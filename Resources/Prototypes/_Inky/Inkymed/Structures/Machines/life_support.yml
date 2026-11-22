@@ -52,15 +52,31 @@
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot { }
+
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: PowerCellDraw
+    drawRate: 2
+  - type: ToggleCellDraw
+  - type: ItemToggle
+    onUse: false
+
+- type: entity
+  id: StructureLifeSupportFilled
+  parent: StructureLifeSupport
+  suffix: Battery
+  components:
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
-  - type: PowerCellSlot
-    cellSlotId: cell_slot
-  - type: PowerCellDraw
-    drawRate: 1
-  - type: ToggleCellDraw
-  - type: ItemToggle
-    onUse: false
+
+- type: entity
+  parent: BaseFlatpack
+  id: LifeSupportFlatpack
+  name: life support flatpack
+  description: A flatpack used for constructing a life support machine
+  components:
+  - type: Flatpack
+    entity: StructureLifeSupport
