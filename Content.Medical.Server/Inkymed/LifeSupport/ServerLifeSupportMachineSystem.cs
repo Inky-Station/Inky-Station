@@ -57,8 +57,8 @@ public sealed partial class ServerLifeSupportMachineSystem : LifeSupportMachineS
     }
 
     /// <summary>
-    /// Saves the patient's current organ values, scales each heart's rate update modifier by the machine's
-    /// multiplier, and sets each brain's air consumption to the negative of its current absolute value.
+    /// Saves each organ's original value before applying support for the first time in the current session.
+    /// Scales the heart's rate update modifier and sets the brain's air consumption to the negative of its absolute value.
     /// </summary>
     private void ApplyModif(Entity<LifeSupportMachineComponent> ent, EntityUid patient)
     {
@@ -67,15 +67,21 @@ public sealed partial class ServerLifeSupportMachineSystem : LifeSupportMachineS
 
         foreach (var heart in _body.GetOrgans<HeartComponent>((patient, body)))
         {
-            ent.Comp.OriginalHeartModifiers[heart.Owner] = heart.Comp.RateUpdateModifier;
-            heart.Comp.RateUpdateModifier *= ent.Comp.HeartRateUpdateMultiplier;
+            var modifier = heart.Comp.RateUpdateModifier;
+            if (!ent.Comp.OriginalHeartModifiers.TryAdd(heart.Owner, modifier))
+                continue;
+
+            heart.Comp.RateUpdateModifier = modifier * ent.Comp.HeartRateUpdateMultiplier;
             Dirty(heart);
         }
 
         foreach (var brain in _body.GetOrgans<BrainComponent>((patient, body)))
         {
-            ent.Comp.OriginalBrainModifier[brain.Owner] = brain.Comp.AirConsumption;
-            var ev = new SetBrainAirConsumptionEvent(-MathF.Abs(brain.Comp.AirConsumption));
+            var consumption = brain.Comp.AirConsumption;
+            if (!ent.Comp.OriginalBrainModifier.TryAdd(brain.Owner, consumption))
+                continue;
+
+            var ev = new SetBrainAirConsumptionEvent(-MathF.Abs(consumption));
             RaiseLocalEvent(brain.Owner, ref ev);
         }
     }
