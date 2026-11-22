@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent:
   - StructureWheeled
@@ -52,7 +54,6 @@
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot { }
-
   - type: PowerCellSlot
     cellSlotId: cell_slot
   - type: PowerCellDraw
@@ -71,35 +72,3 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
-
-- type: entity
-  parent: BaseFlatpack
-  id: LifeSupportFlatpack
-  name: life support flatpack
-  description: A flatpack used for constructing a life support machine
-  components:
-  - type: Flatpack
-    entity: StructureLifeSupport
-
-- type: cargoProduct
-  id: LifeSupportCrate
-  icon:
-    sprite: _Inky/Inkymed/Structures/Machines/lifesupport.rsi
-    state: base
-  product: CrateLifeSupport
-  cost: 4500
-  category: cargoproduct-category-name-medical
-  group: market
-
-- type: entity
-  parent: [ CrateMedicalSecure, BaseMedicalContraband ]
-  id: CrateLifeSupport
-  name: life support crate
-  description: Contains one flatpack for the life support machine, as well as a high capacity power cell.
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:AllSelector
-        children:
-        - id: LifeSupportFlatpack
-        - id: PowerCellMedium

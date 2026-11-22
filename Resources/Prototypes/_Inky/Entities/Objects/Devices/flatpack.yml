@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseFlatpack
+  id: LifeSupportFlatpack
+  name: life support flatpack
+  description: A flatpack used for constructing a life support machine
+  components:
+  - type: Flatpack
+    entity: StructureLifeSupport
