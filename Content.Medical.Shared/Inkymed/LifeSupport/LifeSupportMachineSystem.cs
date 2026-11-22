@@ -1,6 +1,6 @@
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
+using Content.Shared.Body.Events;
 using Content.Shared.DragDrop;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Physics;
@@ -19,7 +19,6 @@ public abstract partial class LifeSupportMachineSystem : EntitySystem
 
     [Dependency] private SharedJointSystem _joints = default!;
     [Dependency] private BodySystem _body = default!;
-    [Dependency] private BrainSystem _brain = default!;
 
     [SubscribeLocalEvent]
     private void OnToggled(Entity<LifeSupportMachineComponent> ent, ref ItemToggledEvent args)
@@ -116,7 +115,8 @@ public abstract partial class LifeSupportMachineSystem : EntitySystem
         foreach (var brain in _body.GetOrgans<BrainComponent>((patient, body)))
         {
             ent.Comp.OriginalBrainModifier[brain.Owner] = brain.Comp.AirConsumption;
-            _brain.SetAirConsumption(brain.AsNullable(), -MathF.Abs(brain.Comp.AirConsumption));
+            var ev = new SetBrainAirConsumptionEvent(-MathF.Abs(brain.Comp.AirConsumption));
+            RaiseLocalEvent(brain.Owner, ref ev);
         }
     }
 
@@ -133,10 +133,11 @@ public abstract partial class LifeSupportMachineSystem : EntitySystem
 
         foreach (var (brainUid, airConsumption) in ent.Comp.OriginalBrainModifier)
         {
-            if (!TryComp<BrainComponent>(brainUid, out var brain))
+            if (!HasComp<BrainComponent>(brainUid))
                 continue;
 
-            _brain.SetAirConsumption((brainUid, brain), airConsumption);
+            var ev = new SetBrainAirConsumptionEvent(airConsumption);
+            RaiseLocalEvent(brainUid, ref ev);
         }
 
         ent.Comp.OriginalHeartModifiers.Clear();

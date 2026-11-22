@@ -6,6 +6,7 @@ using Content.Shared._Shitcod;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Events;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects.Effects.Body;
 using Content.Shared.Metabolism;
@@ -34,6 +35,7 @@ public sealed partial class BrainSystem
         SubscribeLocalEvent<BodyComponent, SaturateBrainEvent>(_body.RelayEvent);
         SubscribeLocalEvent<BrainComponent, BodyRelayedEvent<SaturateBrainEvent>>(OnSaturateBrain);
         SubscribeLocalEvent<BrainComponent, RejuvenateEvent>(OnRejuv);
+        SubscribeLocalEvent<BrainComponent, SetBrainAirConsumptionEvent>(OnSetAirConsumption);
     }
 
     private void OnRejuv(Entity<BrainComponent> ent, ref RejuvenateEvent ev)
@@ -143,12 +145,9 @@ public sealed partial class BrainSystem
         RaiseLocalEvent(uid, ref ev);
     }
 
-    public void SetAirConsumption(Entity<BrainComponent?> brain, float airConsumption)
+    private void OnSetAirConsumption(Entity<BrainComponent> brain, ref SetBrainAirConsumptionEvent args)
     {
-        if (!Resolve(brain, ref brain.Comp, false))
-            return;
-
-        brain.Comp.AirConsumption = airConsumption;
+        brain.Comp.AirConsumption = args.AirConsumption;
         Dirty(brain);
     }
 
