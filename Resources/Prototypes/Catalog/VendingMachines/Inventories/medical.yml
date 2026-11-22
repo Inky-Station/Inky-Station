@@ -39,6 +39,9 @@
 - type: vendingMachineInventory
   id: NanoMedPlusInventory
   startingInventory:
+    # inky
+    LifeSupportFlatpack: 1
+    # /inky
     # Medical Essential Gear
     ClothingBeltMedicalFilled: 2
     # Shared Essential

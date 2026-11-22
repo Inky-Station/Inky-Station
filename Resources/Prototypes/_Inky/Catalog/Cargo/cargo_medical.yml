@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: cargoProduct
+  id: LifeSupportCrate
+  icon:
+    sprite: _Inky/Inkymed/Structures/Machines/lifesupport.rsi
+    state: base
+  product: CrateLifeSupport
+  cost: 4500
+  category: cargoproduct-category-name-medical
+  group: market

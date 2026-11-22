@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "modification of medivent.rsi made by @LuciferEOS on github",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "base"
+    },
+      {
+          "name": "on-indifferent"
+      },
+    {
+      "name": "on-alive",
+      "delays": [
+        [
+            0.3,
+            0.3,
+            0.3,
+            0.3
+        ]
+      ]
+    },
+      {
+          "name": "on-crit",
+          "delays": [
+              [
+                  0.3,
+                  0.3,
+                  0.3,
+                  0.3
+              ]
+          ]
+      },
+      {
+
+      "name": "on-dead",
+      "delays": [
+          [
+              0.3,
+              0.3
+          ]
+      ]
+      }
+  ]
+}

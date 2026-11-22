@@ -1,0 +1,74 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent:
+  - StructureWheeled
+  - BaseStructureDynamic
+  id: StructureLifeSupport
+  name: life support
+  description: A tv mounted on wheels, capable of oxygenizing and improving heart state of those who are connected. Has a short wire.
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Inky/Inkymed/Structures/Machines/lifesupport.rsi
+    layers:
+    - state: base
+    - map: [ "indifferent" ]
+      state: on-indifferent
+      shader: unshaded
+      visible: false
+    - map: [ "alive" ]
+      state: on-alive
+      shader: unshaded
+      visible: false
+    - map: [ "dead" ]
+      state: on-dead
+      shader: unshaded
+      visible: false
+    - map: [ "critical" ]
+      state: on-crit
+      shader: unshaded
+      visible: false
+  - type: Appearance
+  - type: Pullable
+  - type: GenericVisualizer
+    visuals:
+      enum.LifeSupportVisuals.Indifferent: #guh
+        indifferent:
+          True: { visible: true }
+          False: { visible: false }
+      enum.LifeSupportVisuals.Alive:
+        alive:
+          True: { visible: true }
+          False: { visible: false }
+      enum.LifeSupportVisuals.Critical:
+        critical:
+          True: { visible: true }
+          False: { visible: false }
+      enum.LifeSupportVisuals.Dead:
+        dead:
+          True: { visible: true }
+          False: { visible: false }
+  - type: LifeSupportMachine
+  - type: InteractionOutline
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot { }
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: PowerCellDraw
+    drawRate: 2
+  - type: ToggleCellDraw
+  - type: ItemToggle
+    onUse: false
+
+- type: entity
+  id: StructureLifeSupportFilled
+  parent: StructureLifeSupport
+  suffix: Battery
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
