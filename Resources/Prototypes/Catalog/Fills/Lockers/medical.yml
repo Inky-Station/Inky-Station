@@ -138,11 +138,6 @@
   components:
   - type: StorageFill
     contents:
-      # inky
-      - id: LifeSupportFlatpack
-      - id: PowerCellMedium
-      - id: Multitool
-      # /inky
       # <Trauma>
       - id: TelescopicMace
       - id: HoloprojectorMedical
