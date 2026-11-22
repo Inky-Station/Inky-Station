@@ -46,9 +46,9 @@ public sealed partial class ServerLifeSupportMachineSystem : LifeSupportMachineS
 
         var jointComp = EnsureComp<JointComponent>(ent.Owner);
         var joint = _joints.CreateDistanceJoint(ent.Owner, patient, id: LifeSupportJoint);
-        joint.MaxLength = 1f;
         joint.MinLength = 0f;
-        joint.Stiffness = 0.5f;
+        joint.MaxLength = ent.Comp.JointMaxLength;
+        joint.Stiffness = ent.Comp.JointStiffness;
         Dirty(ent.Owner, jointComp);
 
         if (TryComp<ItemToggleComponent>(ent.Owner, out var toggle) && toggle.Activated)
@@ -63,7 +63,7 @@ public sealed partial class ServerLifeSupportMachineSystem : LifeSupportMachineS
         foreach (var heart in _body.GetOrgans<HeartComponent>((patient, body)))
         {
             ent.Comp.OriginalHeartModifiers[heart.Owner] = heart.Comp.RateUpdateModifier;
-            heart.Comp.RateUpdateModifier /= 2f;
+            heart.Comp.RateUpdateModifier *= ent.Comp.HeartRateUpdateMultiplier;
             Dirty(heart);
         }
 

@@ -9,6 +9,15 @@ public sealed partial class LifeSupportMachineComponent : Component
     [DataField]
     public SpriteSpecifier RopeSprite = new SpriteSpecifier.Rsi(new ResPath("_RMC14/Objects/phone/phone.rsi"), "rope"); // trol
 
+    [DataField]
+    public float JointMaxLength = 1f;
+
+    [DataField]
+    public float JointStiffness = 0.5f;
+
+    [DataField]
+    public float HeartRateUpdateMultiplier = 0.5f;
+
     [DataField, AutoNetworkedField]
     public EntityUid? Connectee;
 
