@@ -7,27 +7,19 @@ using Content.Shared.Physics;
 using Content.Medical.Shared.Body;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
 
 namespace Content.Medical.Shared.Inkymed.LifeSupport;
 
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed partial class LifeSupportMachineSystem : EntitySystem
+public abstract partial class LifeSupportMachineSystem : EntitySystem
 {
     private const string LifeSupportJoint = "life-support";
 
     [Dependency] private SharedJointSystem _joints = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private BodySystem _body = default!;
     [Dependency] private BrainSystem _brain = default!;
-
-    [SubscribeLocalEvent]
-    private void OnMapInit(Entity<LifeSupportMachineComponent> ent, ref MapInitEvent args)
-        => UpdateVisuals(ent);
 
     [SubscribeLocalEvent]
     private void OnToggled(Entity<LifeSupportMachineComponent> ent, ref ItemToggledEvent args)
@@ -37,23 +29,13 @@ public sealed partial class LifeSupportMachineSystem : EntitySystem
         else if (!args.Activated)
             ResetModifs(ent);
 
-        UpdateVisuals(ent, args.Activated);
+        Dirty(ent);
     }
 
     [SubscribeLocalEvent]
     private void OnShutdown(Entity<LifeSupportMachineComponent> ent, ref ComponentShutdown args)
     {
         ResetModifs(ent);
-    }
-
-    public override void Update(float frameTime)
-    {
-        var eqe = EntityQueryEnumerator<LifeSupportMachineComponent, ItemToggleComponent>();
-        while (eqe.MoveNext(out var uid, out var lifeSupport, out var toggle))
-        {
-            var ent = (uid, lifeSupport);
-            UpdateVisuals(ent, toggle.Activated);
-        }
     }
 
     [SubscribeLocalEvent]
@@ -85,7 +67,6 @@ public sealed partial class LifeSupportMachineSystem : EntitySystem
             ResetModifs(ent);
             ent.Comp.Connectee = null;
             Dirty(ent);
-            UpdateVisuals(ent);
 
             if (connectee == args.Target)
             {
@@ -114,45 +95,8 @@ public sealed partial class LifeSupportMachineSystem : EntitySystem
             ApplyModif(ent, args.Target);
 
         Dirty(ent);
-        UpdateVisuals(ent);
 
         args.Handled = true;
-    }
-
-    private void UpdateVisuals(Entity<LifeSupportMachineComponent> ent, bool? activated = null)
-    {
-        activated ??= TryComp<ItemToggleComponent>(ent.Owner, out var toggle) && toggle.Activated;
-        var state = GetVisualState(ent, activated.Value);
-
-        _appearance.SetData(ent, LifeSupportVisuals.Indifferent, state == LifeSupportVisuals.Indifferent);
-        _appearance.SetData(ent, LifeSupportVisuals.Alive, state == LifeSupportVisuals.Alive); // WHATEVER MAN IT WORKS
-        _appearance.SetData(ent, LifeSupportVisuals.Critical, state == LifeSupportVisuals.Critical);
-        _appearance.SetData(ent, LifeSupportVisuals.Dead, state == LifeSupportVisuals.Dead);
-    }
-
-    private LifeSupportVisuals? GetVisualState(Entity<LifeSupportMachineComponent> ent, bool activated)
-    {
-        if (!activated)
-            return null;
-
-        if (ent.Comp.Connectee is not { } connectee)
-            return LifeSupportVisuals.Indifferent;
-
-        if (!TryComp<BodyComponent>(connectee, out var body))
-            return LifeSupportVisuals.Dead;
-
-        foreach (var heart in _body.GetOrgans<HeartComponent>((connectee, body)))
-        {
-            if (heart.Comp.CurrentRate <= 0)
-                return LifeSupportVisuals.Dead;
-
-            var (min, max) = heart.Comp.FibrillationCaps;
-            return heart.Comp.CurrentRate < min || heart.Comp.CurrentRate > max
-                ? LifeSupportVisuals.Critical
-                : LifeSupportVisuals.Alive;
-        }
-
-        return LifeSupportVisuals.Dead;
     }
 
     private void ApplyModif(Entity<LifeSupportMachineComponent> ent, EntityUid patient)
