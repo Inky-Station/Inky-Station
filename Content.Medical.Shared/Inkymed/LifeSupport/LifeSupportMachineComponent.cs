@@ -1,7 +1,10 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 namespace Content.Medical.Shared.Inkymed.LifeSupport;
 
 /// <summary>
-/// This is used for...
+/// Stores the life support machine's connection settings, its networked patient reference,
+/// and the organ values saved by the server while support is active.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class LifeSupportMachineComponent : Component
@@ -21,7 +24,14 @@ public sealed partial class LifeSupportMachineComponent : Component
     [DataField, AutoNetworkedField]
     public EntityUid? Connectee;
 
+    /// <summary>
+    /// Heart rate update modifiers saved before applying life support, keyed by heart entity.
+    /// </summary>
     public readonly Dictionary<EntityUid, float> OriginalHeartModifiers = new();
+
+    /// <summary>
+    /// Brain air consumption values saved before applying life support, keyed by brain entity.
+    /// </summary>
     public readonly Dictionary<EntityUid, float> OriginalBrainModifier = new();
 }
 

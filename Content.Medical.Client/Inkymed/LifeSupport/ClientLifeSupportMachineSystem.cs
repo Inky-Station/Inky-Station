@@ -23,7 +23,7 @@ public sealed partial class ClientLifeSupportMachineSystem : LifeSupportMachineS
             var state = GetVisualState((uid, lifeSupport), toggle.Activated);
 
             _appearance.SetData(uid, LifeSupportVisuals.Indifferent, state == LifeSupportVisuals.Indifferent);
-            _appearance.SetData(uid, LifeSupportVisuals.Alive, state == LifeSupportVisuals.Alive); // WHATEVER MAN IT WORKS
+            _appearance.SetData(uid, LifeSupportVisuals.Alive, state == LifeSupportVisuals.Alive);
             _appearance.SetData(uid, LifeSupportVisuals.Critical, state == LifeSupportVisuals.Critical);
             _appearance.SetData(uid, LifeSupportVisuals.Dead, state == LifeSupportVisuals.Dead);
         }
@@ -45,6 +45,15 @@ public sealed partial class ClientLifeSupportMachineSystem : LifeSupportMachineS
         args.Handled = true;
     }
 
+    /// <summary>
+    /// Selects the monitor indicator using the first heart found in the connected patient's body.
+    /// </summary>
+    /// <returns>
+    /// <see langword="null"/> when switched off, <see cref="LifeSupportVisuals.Indifferent"/> without a patient,
+    /// or <see cref="LifeSupportVisuals.Dead"/> if the patient has no body, no heart, or a non-positive heart rate.
+    /// A positive rate outside the fibrillation limits is <see cref="LifeSupportVisuals.Critical"/>.
+    /// A positive rate within those limits is <see cref="LifeSupportVisuals.Alive"/>.
+    /// </returns>
     private LifeSupportVisuals? GetVisualState(Entity<LifeSupportMachineComponent> ent, bool activated)
     {
         if (!activated)

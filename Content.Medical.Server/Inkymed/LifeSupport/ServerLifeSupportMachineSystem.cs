@@ -33,6 +33,7 @@ public sealed partial class ServerLifeSupportMachineSystem : LifeSupportMachineS
         ResetModifs(ent);
     }
 
+    /// <inheritdoc/>
     protected override void OnConnecteeChanged(Entity<LifeSupportMachineComponent> ent, EntityUid? previous)
     {
         if (previous != null)
@@ -55,6 +56,10 @@ public sealed partial class ServerLifeSupportMachineSystem : LifeSupportMachineS
             ApplyModif(ent, patient);
     }
 
+    /// <summary>
+    /// Saves the patient's current organ values, scales each heart's rate update modifier by the machine's
+    /// multiplier, and sets each brain's air consumption to the negative of its current absolute value.
+    /// </summary>
     private void ApplyModif(Entity<LifeSupportMachineComponent> ent, EntityUid patient)
     {
         if (!TryComp<BodyComponent>(patient, out var body))
@@ -75,6 +80,10 @@ public sealed partial class ServerLifeSupportMachineSystem : LifeSupportMachineS
         }
     }
 
+    /// <summary>
+    /// Restores the saved rate update modifiers and air consumption values for organs that still have
+    /// their respective components, then clears the saved values.
+    /// </summary>
     private void ResetModifs(Entity<LifeSupportMachineComponent> ent)
     {
         foreach (var (heartUid, rateUpdateModifier) in ent.Comp.OriginalHeartModifiers)
