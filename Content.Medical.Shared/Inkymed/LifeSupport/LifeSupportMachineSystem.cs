@@ -51,7 +51,9 @@ public abstract partial class LifeSupportMachineSystem : EntitySystem
 
     [SubscribeLocalEvent]
     private void OnCanDrag(Entity<LifeSupportMachineComponent> ent, ref CanDragEvent args) // why is it so shit  bro
-        => args.Handled = true;
+    {
+        args.Handled = true;
+    }
 
     [SubscribeLocalEvent]
     private void OnDragDropDragged(Entity<LifeSupportMachineComponent> ent, ref DragDropDraggedEvent args)
