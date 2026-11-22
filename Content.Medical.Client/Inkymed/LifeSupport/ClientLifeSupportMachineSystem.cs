@@ -3,6 +3,7 @@
 using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Inkymed.LifeSupport;
 using Content.Shared.Body;
+using Content.Shared.DragDrop;
 using Content.Shared.Item.ItemToggle.Components;
 
 namespace Content.Medical.Client.Inkymed.LifeSupport;
@@ -26,6 +27,22 @@ public sealed partial class ClientLifeSupportMachineSystem : LifeSupportMachineS
             _appearance.SetData(uid, LifeSupportVisuals.Critical, state == LifeSupportVisuals.Critical);
             _appearance.SetData(uid, LifeSupportVisuals.Dead, state == LifeSupportVisuals.Dead);
         }
+    }
+
+    [SubscribeLocalEvent]
+    private void OnCanDrag(Entity<LifeSupportMachineComponent> ent, ref CanDragEvent args)
+    {
+        args.Handled = true;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnCanDropDragged(Entity<LifeSupportMachineComponent> ent, ref CanDropDraggedEvent args)
+    {
+        if (args.Handled || !HasComp<BodyComponent>(args.Target))
+            return;
+
+        args.CanDrop = true;
+        args.Handled = true;
     }
 
     private LifeSupportVisuals? GetVisualState(Entity<LifeSupportMachineComponent> ent, bool activated)
