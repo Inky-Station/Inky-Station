@@ -25,20 +25,11 @@ public sealed partial class LifeSupportMachineSystem : EntitySystem
     [Dependency] private BodySystem _body = default!;
     [Dependency] private BrainSystem _brain = default!;
 
-    /// <inheritdoc/>
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<LifeSupportMachineComponent, CanDropDraggedEvent>(OnCanDropDragged);
-        SubscribeLocalEvent<LifeSupportMachineComponent, DragDropDraggedEvent>(OnDragDropDragged);
-        SubscribeLocalEvent<LifeSupportMachineComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<LifeSupportMachineComponent, ItemToggledEvent>(OnToggled);
-        SubscribeLocalEvent<LifeSupportMachineComponent, CanDragEvent>(OnCanDrag);
-        SubscribeLocalEvent<LifeSupportMachineComponent, ComponentShutdown>(OnShutdown);
-    }
-
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<LifeSupportMachineComponent> ent, ref MapInitEvent args)
         => UpdateVisuals(ent);
 
+    [SubscribeLocalEvent]
     private void OnToggled(Entity<LifeSupportMachineComponent> ent, ref ItemToggledEvent args)
     {
         if (args.Activated && ent.Comp.Connectee is { } patient)
@@ -49,6 +40,7 @@ public sealed partial class LifeSupportMachineSystem : EntitySystem
         UpdateVisuals(ent, args.Activated);
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<LifeSupportMachineComponent> ent, ref ComponentShutdown args)
     {
         ResetModifs(ent);
@@ -64,6 +56,7 @@ public sealed partial class LifeSupportMachineSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnCanDropDragged(Entity<LifeSupportMachineComponent> ent, ref CanDropDraggedEvent args)
     {
         if (args.Handled
@@ -74,10 +67,11 @@ public sealed partial class LifeSupportMachineSystem : EntitySystem
         args.Handled = true;
     }
 
-
+    [SubscribeLocalEvent]
     private void OnCanDrag(Entity<LifeSupportMachineComponent> ent, ref CanDragEvent args) // why is it so shit  bro
         => args.Handled = true;
 
+    [SubscribeLocalEvent]
     private void OnDragDropDragged(Entity<LifeSupportMachineComponent> ent, ref DragDropDraggedEvent args)
     {
         if (args.Handled
