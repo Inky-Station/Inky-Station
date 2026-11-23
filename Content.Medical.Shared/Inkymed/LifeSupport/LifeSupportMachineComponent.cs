@@ -38,6 +38,13 @@ public sealed partial class LifeSupportMachineComponent : Component
 [Serializable, NetSerializable]
 public enum LifeSupportVisuals : byte
 {
+    ScreenState,
+}
+
+[Serializable, NetSerializable]
+public enum LifeSupportScreenState : byte
+{
+    Off,
     Indifferent,
     Dead,
     Alive,

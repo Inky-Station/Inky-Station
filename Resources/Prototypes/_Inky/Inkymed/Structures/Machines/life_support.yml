@@ -4,6 +4,7 @@
   parent:
   - StructureWheeled
   - BaseStructureDynamic
+  - PowerCellSlotHighItem
   id: StructureLifeSupport
   name: life support
   description: A tv mounted on wheels, capable of oxygenizing and improving heart state of those who are connected. Has a short wire.
@@ -13,49 +14,26 @@
     sprite: _Inky/Inkymed/Structures/Machines/lifesupport.rsi
     layers:
     - state: base
-    - map: [ "indifferent" ]
-      state: on-indifferent
+    - map: [ "screen" ]
+      state: off
       shader: unshaded
-      visible: false
-    - map: [ "alive" ]
-      state: on-alive
-      shader: unshaded
-      visible: false
-    - map: [ "dead" ]
-      state: on-dead
-      shader: unshaded
-      visible: false
-    - map: [ "critical" ]
-      state: on-crit
-      shader: unshaded
-      visible: false
   - type: Appearance
-  - type: Pullable
   - type: GenericVisualizer
     visuals:
-      enum.LifeSupportVisuals.Indifferent: #guh
-        indifferent:
-          True: { visible: true }
-          False: { visible: false }
-      enum.LifeSupportVisuals.Alive:
-        alive:
-          True: { visible: true }
-          False: { visible: false }
-      enum.LifeSupportVisuals.Critical:
-        critical:
-          True: { visible: true }
-          False: { visible: false }
-      enum.LifeSupportVisuals.Dead:
-        dead:
-          True: { visible: true }
-          False: { visible: false }
+      enum.LifeSupportVisuals.ScreenState:
+        screen:
+          Off: { state: off }
+          Indifferent: { state: on-indifferent }
+          Alive: { state: on-alive }
+          Critical: { state: on-crit }
+          Dead: { state: on-dead }
   - type: LifeSupportMachine
   - type: InteractionOutline
-  - type: ContainerContainer
-    containers:
-      cell_slot: !type:ContainerSlot { }
-  - type: PowerCellSlot
-    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: null
   - type: PowerCellDraw
     drawRate: 2
   - type: ToggleCellDraw

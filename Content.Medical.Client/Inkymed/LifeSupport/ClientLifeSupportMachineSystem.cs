@@ -21,11 +21,7 @@ public sealed partial class ClientLifeSupportMachineSystem : LifeSupportMachineS
         while (eqe.MoveNext(out var uid, out var lifeSupport, out var toggle))
         {
             var state = GetVisualState((uid, lifeSupport), toggle.Activated);
-
-            _appearance.SetData(uid, LifeSupportVisuals.Indifferent, state == LifeSupportVisuals.Indifferent);
-            _appearance.SetData(uid, LifeSupportVisuals.Alive, state == LifeSupportVisuals.Alive);
-            _appearance.SetData(uid, LifeSupportVisuals.Critical, state == LifeSupportVisuals.Critical);
-            _appearance.SetData(uid, LifeSupportVisuals.Dead, state == LifeSupportVisuals.Dead);
+            _appearance.SetData(uid, LifeSupportVisuals.ScreenState, state);
         }
     }
 
@@ -48,34 +44,28 @@ public sealed partial class ClientLifeSupportMachineSystem : LifeSupportMachineS
     /// <summary>
     /// Selects the monitor indicator using the first heart found in the connected patient's body.
     /// </summary>
-    /// <returns>
-    /// <see langword="null"/> when switched off, <see cref="LifeSupportVisuals.Indifferent"/> without a patient,
-    /// or <see cref="LifeSupportVisuals.Dead"/> if the patient has no body, no heart, or a non-positive heart rate.
-    /// A positive rate outside the fibrillation limits is <see cref="LifeSupportVisuals.Critical"/>.
-    /// A positive rate within those limits is <see cref="LifeSupportVisuals.Alive"/>.
-    /// </returns>
-    private LifeSupportVisuals? GetVisualState(Entity<LifeSupportMachineComponent> ent, bool activated)
+    private LifeSupportScreenState GetVisualState(Entity<LifeSupportMachineComponent> ent, bool activated)
     {
         if (!activated)
-            return null;
+            return LifeSupportScreenState.Off;
 
         if (ent.Comp.Connectee is not { } connectee)
-            return LifeSupportVisuals.Indifferent;
+            return LifeSupportScreenState.Indifferent;
 
         if (!TryComp<BodyComponent>(connectee, out var body))
-            return LifeSupportVisuals.Dead;
+            return LifeSupportScreenState.Dead;
 
         foreach (var heart in _body.GetOrgans<HeartComponent>((connectee, body)))
         {
             if (heart.Comp.CurrentRate <= 0)
-                return LifeSupportVisuals.Dead;
+                return LifeSupportScreenState.Dead;
 
             var (min, max) = heart.Comp.FibrillationCaps;
             return heart.Comp.CurrentRate < min || heart.Comp.CurrentRate > max
-                ? LifeSupportVisuals.Critical
-                : LifeSupportVisuals.Alive;
+                ? LifeSupportScreenState.Critical
+                : LifeSupportScreenState.Alive;
         }
 
-        return LifeSupportVisuals.Dead;
+        return LifeSupportScreenState.Dead;
     }
 }

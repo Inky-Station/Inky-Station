@@ -49,6 +49,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Medical.Common.Body; // inky
 
 namespace Content.Server.Zombies;
 
@@ -146,6 +147,7 @@ public sealed partial class ZombieSystem
 
         //we need to basically remove all of these because zombies shouldn't
         //get diseases, breath, be thirst, be hungry, die in space, get double sentience, have offspring or be paraplegic.
+        EnsureComp<BreathingImmunityComponent>(target); // inky
         RemComp<RespiratorComponent>(target);
         RemComp<BarotraumaComponent>(target);
         RemComp<SatiationComponent>(target);
