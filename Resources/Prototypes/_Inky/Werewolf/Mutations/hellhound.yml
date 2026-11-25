@@ -2,6 +2,7 @@
   id: WerewolfHell
   parent:
   - BaseWerewolf
+  - BaseWerewolfUnholy
   name: hellhound
   categories: [ HideSpawnMenu ]
   description: Some call it the Reapers hound, you can probably understand why.
@@ -26,8 +27,6 @@
       params:
         variation: 0.250
         volume: -10
-    angle: 30
-    animation: WeaponArcClaw
     damage:
       types:
         Heat: 5

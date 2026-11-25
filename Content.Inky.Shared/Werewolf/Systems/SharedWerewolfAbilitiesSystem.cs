@@ -155,14 +155,13 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
 
             _stun.TryUpdateStunDuration(victim, TimeSpan.FromSeconds(args.StunDuration));
             _stun.TryKnockdown(victim, TimeSpan.FromSeconds(args.StunDuration), true);
+
+            if (args.TargetEffects is { } targetEffects)
+                _effects.ApplyEffects(victim, targetEffects, user: uid);
         }
 
         if (args.UserEffects is { } userEffects)
             _effects.ApplyEffects(uid, userEffects, user: uid);
-
-        if (args.TargetEffects is { } targetEffects)
-            foreach (var target in _entityLookup.GetEntitiesInRange(uid, args.ShriekPower))
-                _effects.ApplyEffects(target, targetEffects, user: uid);
 
         if (args.ForceTransfurm || args.HealNearby)
         {
@@ -200,10 +199,9 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
 
         _throwing.TryThrow(uid, args.Target, args.JumpSpeed, uid, 10F);
 
-        // hate. . .
-        if (args.EntitySpawnOnEvent != null)
+        if (args.EntitySpawnOnEvent is { } firePrototype)
         {
-            EnsureComp<SpawnEntitiesOnStepComponent>(uid).Prototype = "MolotovHellFire";
+            EnsureComp<SpawnEntitiesOnStepComponent>(uid).Prototype = firePrototype;
             Timer.Spawn(args.EntitySpawnTimer, () => { RemComp<SpawnEntitiesOnStepComponent>(uid); }); // FUCK FORMATTING
         }
         // todo PlayPVS

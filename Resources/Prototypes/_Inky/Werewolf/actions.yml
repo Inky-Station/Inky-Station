@@ -1,6 +1,7 @@
 - type: entity
   abstract: true
   id: ActionBaseWerewolf
+  parent: BaseAction
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -10,7 +11,7 @@
     itemIconStyle: NoItem
 
 - type: entity
-  parent: [ActionBaseWerewolf, BaseAction]
+  parent: ActionBaseWerewolf
   id: ActionWerewolfHowl
   name: Howl
   description: Scream as loud as you can, stunning everyone in radius.
@@ -26,9 +27,7 @@
     requireTransfurmed: true
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfTransfurm
   name: Transfurm
   description: Transfurm into a werewolf. Be warned as you can transfurm back only after 2 minutes.
@@ -43,9 +42,7 @@
     event: !type:TransfurmEvent {}
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfOpenMutationStore
   name: Open mutation store
   description: Open the mutation menu.
@@ -72,9 +69,7 @@
     - state: senses
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfAbsorb
   name: Bite
   description: Bite and rip a limb from your fellow comrade for points.
@@ -95,9 +90,7 @@
     event: !type:WerewolfDevourEvent {}
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfGut
   name: Gut
   description: Spills one of the chest organs of a deceased crew member onto the floor. Organs that are produced from this ability grant you Fury.
@@ -119,9 +112,7 @@
     requireTransfurmed: true
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfRegen
   name: increased metabolism
   description: Increase your metabolism, providing healing at the cost of a lot of hunger.
@@ -139,9 +130,7 @@
 #    requireTransfurmed: true
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfJump
   name: Jump
   description: Stun your enemies with a quick jump. Costs 30 hunger.
@@ -166,9 +155,7 @@
 # direwolf specific
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfHowlDire
   name: Roar
   description: Scream as loud as you can, stunning everyone in radius.
@@ -186,9 +173,7 @@
     requireTransfurmed: true
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfBiteDire
   name: Bleeding bite
   description: Sink your canines into a victim, and steal 30% of their blood. This will heal you slightly.
@@ -212,9 +197,7 @@
 # white specific
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfTransfurmWhite
   name: Transfurm
   description: Transfurm into a werewolf. Be warned as you can transfurm back only after 2 minutes.
@@ -231,9 +214,7 @@
 # black specific
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfBiteBlack
   name: Bleeding bite
   description: Bite a victim, causing massive blood loss. Has a 50% chance to infect the victim into a Werewolf under your rule.
@@ -255,9 +236,7 @@
     requireTransfurmed: true
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfHowlBlack
   name: Alpha order
   description: Howl and command every werewolf in radius to transform into their superior form, and heal those who already are transformed.
@@ -277,9 +256,7 @@
     requireTransfurmed: true
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfBeckon
   name: Beckon
   description: Silently transmits your location to your allied Werewolves
@@ -294,9 +271,7 @@
     hungerCost: 0
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfBequeath
   name: Bequeath
   description: Crown an Unmutated Werewolf in your pack to become the next Black Wolf in case of your death.
@@ -318,9 +293,7 @@
     requireTransfurmed: true
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfBlackCall
   name: Black Call
   description: Force transform yourself, and everyone in your pack, permamently. Doubles you and your packs health. Requires a minimum of 4 pack members to use.
@@ -335,9 +308,7 @@
 # hell
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfJumpHell
   name: Blitz And Burn
   description: Jump and burn your foes!
@@ -361,7 +332,7 @@
     requireTransfurmed: true
 
 - type: entity
-  parent: [ActionBaseWerewolf, BaseAction]
+  parent: ActionBaseWerewolf
   id: ActionWerewolfHowlHell
   name: Gather the Damned
   description: Howl, setting people around you on fire.
@@ -382,9 +353,7 @@
     requireTransfurmed: true
 
 - type: entity
-  parent:
-  - BaseAction
-  - ActionBaseWerewolf
+  parent: ActionBaseWerewolf
   id: ActionWerewolfBanish
   name: Banish
   description: Strike a target in range, stunning it accordingly to how much 'on fire' they are.

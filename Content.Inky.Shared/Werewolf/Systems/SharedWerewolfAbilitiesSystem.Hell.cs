@@ -14,7 +14,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem
         if (TryComp<FlammableComponent>(args.Target, out var flammable)
             && flammable.FireStacks > 0) // umhmmmm
         {
-            var duration = TimeSpan.FromMilliseconds(500f * MathF.Max(flammable.FireStacks, 0f));
+            var duration = TimeSpan.FromSeconds(args.Duration * MathF.Max(flammable.FireStacks, 0f));
             _stun.TryUpdateStunDuration(args.Target, duration);
             _stun.TryKnockdown(args.Target, duration);
         }

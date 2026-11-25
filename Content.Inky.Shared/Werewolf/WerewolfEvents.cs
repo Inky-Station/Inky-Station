@@ -123,4 +123,9 @@ public sealed class WerewolfActionRemoveEvent(EntityUid actionEnt) : EntityEvent
 {
     public readonly EntityUid ActionEnt = actionEnt;
 }
-public sealed partial class WerewolfBanishEvent : EntityTargetActionEvent;
+
+public sealed partial class WerewolfBanishEvent : EntityTargetActionEvent
+{
+    [DataField]
+    public float Duration = 0.5f;
+}
