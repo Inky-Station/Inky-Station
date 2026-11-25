@@ -60,6 +60,7 @@
 #    - Insurgency # inky - kill insurgents
     # </Trauma>
   # inky
+    - WerewolfRoundstart
     - FunGameruleChooser
   # /inky
 
@@ -89,6 +90,7 @@
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
   # inky
+    - WerewolfRoundstart
     - FunGameruleChooser
   # /inky
 
