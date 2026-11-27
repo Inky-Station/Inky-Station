@@ -31,9 +31,8 @@
     walkModifier: 0.7
     sprintModifier: 0.7
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitAtmos
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitAtmos
   - type: Tag
     tags:
     - CorgiWearable
@@ -69,9 +68,8 @@
     walkModifier: 0.85
     sprintModifier: 0.85
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitEngineering
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitEngineering
   - type: Tag
     tags:
     - CorgiWearable
@@ -106,9 +104,8 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitSpatio
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSpatio
   - type: Tag
     tags:
     - Hardsuit
@@ -144,9 +141,8 @@
     walkModifier: 0.9 # inky edit
     sprintModifier: 0.9 # inky edit
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitSalvage
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSalvage
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.5
   - type: ModifyDelayedKnockdown # Goobstation
@@ -186,9 +182,8 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitGoliath
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitGoliath
   - type: Construction
     graph: HardsuitGoliath
     node: hardsuitGoliath
@@ -242,9 +237,8 @@
         Radiation: 0.01
   - type: ExplosionResistance
     damageCoefficient: 0.2
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitMaxim
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitMaxim
 
 #Security Hardsuit (goob - not used)
 - type: entity
@@ -282,9 +276,8 @@
     walkModifier: 0.75
     sprintModifier: 0.75
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitSecurity
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSecurity
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.5
   - type: ModifyDelayedKnockdown # Goobstation
@@ -328,9 +321,8 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitBrigmedic
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitBrigmedic
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.5
   - type: ModifyDelayedKnockdown # Goobstation
@@ -373,9 +365,8 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitWarden
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitWarden
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.5
   - type: ModifyDelayedKnockdown # Goobstation
@@ -415,9 +406,8 @@
     walkModifier: 0.9 #Goob - Modsuit Rebalance
     sprintModifier: 0.9 #Goob - Modsuit Rebalance
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitCap
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitCap
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.5
   - type: ModifyDelayedKnockdown # Goobstation
@@ -458,9 +448,8 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitEngineeringWhite
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitEngineeringWhite
   - type: ClothingGrantComponent # Goobstation - Make sure the CE doesn't get cooked by supermatter
     component:
     - type: RadStormImmune
@@ -502,9 +491,8 @@
     walkModifier: 0.95
     sprintModifier: 0.95
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitMedical
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitMedical
   - type: Tag
     tags:
     - CorgiWearable
@@ -549,9 +537,8 @@
     - HighRiskItem
     - CorgiWearable
     - Hardsuit
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitRd
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitRd
   - type: StaticPrice
     price: 750
   - type: StealTarget
@@ -595,8 +582,7 @@
     sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: ToggleableClothing
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitSecurityRed
+    clothingPrototype: ClothingHeadHelmetHardsuitSecurityRed
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 3
     knockdownTimeDelta: -3
@@ -632,9 +618,8 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitLuxury
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitLuxury
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 3
     knockdownTimeDelta: -3
@@ -685,9 +670,8 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitSyndie
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSyndie
   - type: Tag
     tags:
     - MonkeyWearable
@@ -712,9 +696,8 @@
     sprite: Clothing/OuterClothing/Hardsuits/syndiemedic.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Hardsuits/syndiemedic.rsi
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitSyndieMedic
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSyndieMedic
   - type: Tag
     tags:
     - Hardsuit
@@ -775,9 +758,8 @@
     - CorgiWearable
     - Hardsuit
     - WhitelistChameleon
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitSyndieElite
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSyndieElite
 
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseSyndicateContraband]
@@ -817,9 +799,8 @@
     walkModifier: 1 # Trauma, was 0.9 # inky
     sprintModifier: 1 # Trauma, was 0.9 # inky
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitSyndieCommander
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSyndieCommander
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 3
     knockdownTimeDelta: -3
@@ -868,9 +849,8 @@
     walkModifier: 0.65
     sprintModifier: 0.65
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitCybersun
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitCybersun
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 3
     knockdownTimeDelta: -3
@@ -917,9 +897,8 @@
     sprintModifier: 0.9 # Goob edit
   - type: HeldSpeedModifier
   - type: WizardClothes # Goobstation
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitWizard
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitWizard
   - type: ModifyDelayedKnockdown # Goobstation
     cancel: true
   - type: StaminaResistance # Goobstation
@@ -960,9 +939,8 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitLing
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitLing
   - type: ModifyDelayedKnockdown
     cancel: true
   - type: StaminaResistance
@@ -998,9 +976,8 @@
     walkModifier: 0.6
     sprintModifier: 0.6
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitPirateEVA
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitPirateEVA
   - type: StaticPrice
     price: 0
   - type: ModifyDelayedKnockdown # Goobstation
@@ -1041,9 +1018,8 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitPirateCap
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitPirateCap
   - type: StaticPrice
     price: 0
   - type: ModifyDelayedKnockdown # Goobstation
@@ -1068,9 +1044,8 @@
     size: Huge
     shape:
     - 0,0,3,3
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitERTLeader
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitERTLeader
 
 #ERT Chaplain Hardsuit
 - type: entity
@@ -1087,9 +1062,8 @@
     size: Huge
     shape:
     - 0,0,3,3
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitERTChaplain
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitERTChaplain
 
 #ERT Engineer Hardsuit
 - type: entity
@@ -1106,9 +1080,8 @@
     size: Huge
     shape:
     - 0,0,3,3
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitERTEngineer
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitERTEngineer
   - type: FireProtection
     reduction: 1 # Trauma - was 0.8, 1.25x for limb coverage
 
@@ -1127,9 +1100,8 @@
     size: Huge
     shape:
     - 0,0,3,3
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitERTMedical
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitERTMedical
 
 #ERT Security Hardsuit
 - type: entity
@@ -1146,9 +1118,8 @@
     size: Huge
     shape:
     - 0,0,3,3
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitERTSecurity
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitERTSecurity
   - type: Tag
     tags:
     - Hardsuit
@@ -1169,9 +1140,8 @@
     size: Huge
     shape:
     - 0,0,3,3
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitERTJanitor
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitERTJanitor
 
 #Deathsquad
 - type: entity # Goobstation - Start
@@ -1225,8 +1195,7 @@
     sprintModifier: 1.0
   - type: HeldSpeedModifier
   - type: ToggleableClothing
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitDeathsquad
+    clothingPrototype: ClothingHeadHelmetHardsuitDeathsquad
   - type: ModifyDelayedKnockdown # Goobstation - End
     cancel: true
   - type: Tag
@@ -1267,9 +1236,8 @@
     walkModifier: 1.0
     sprintModifier: 1.0
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetCBURN
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetCBURN
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 3
     knockdownTimeDelta: -3
@@ -1307,9 +1275,8 @@
   - type: Construction
     graph: ClownHardsuit
     node: clownHardsuit
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitClown
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitClown
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: -1
     knockdownTimeDelta: 1
@@ -1328,9 +1295,8 @@
   - type: Construction
     graph: MimeHardsuit
     node: mimeHardsuit
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitMime
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitMime
 
 #Santa's Hardsuit
 - type: entity
@@ -1359,6 +1325,5 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
-  - type: ToggleableClothing # Goobstation - Modsuits change
-    clothingPrototypes:
-      head: ClothingHeadHelmetHardsuitSanta
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitSanta

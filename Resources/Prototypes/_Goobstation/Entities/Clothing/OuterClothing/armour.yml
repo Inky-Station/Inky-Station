@@ -138,8 +138,7 @@
         Slash: 0.9
         Heat: 0.8
   - type: ToggleableClothing
-    clothingPrototypes:
-      head: ClothingHeadHatHoodWinterCapFancy
+    clothingPrototype: ClothingHeadHatHoodWinterCapFancy
 
 # CentralCommand
 
@@ -218,8 +217,7 @@
     damageCoefficient: 0.6
   - type: ToggleableClothing
     stripDelay: null
-    clothingPrototypes:
-      head: ClothingHeadHatHoodCloakSith
+    clothingPrototype: ClothingHeadHatHoodCloakSith # inky edit
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
@@ -229,10 +227,7 @@
     lowPressureMultiplier: 1000
   - type: ContainerContainer
     containers:
-      toggleable-clothing: !type:Container
-        ents: [ ]
-        showEnts: False
-        occludes: True
+      toggleable-clothing: !type:ContainerSlot {} # inky edit
   # Intentionally no temperature or high pressure protection
 
 - type: entity
@@ -396,9 +391,7 @@
   - type: Clothing
     sprite: _ShitChap/Clothing/OuterClothing/Misc/adept.rsi
   - type: ToggleableClothing
-    stripDelay: null
-    clothingPrototypes:
-      head: ClothingHeadHatHelmetAdept
+    clothingPrototype: ClothingHeadHatHelmetAdept
 
 - type: entity
   parent: ClothingOuterArmorTemplar
@@ -422,9 +415,7 @@
   - type: Clothing
     sprite: _ShitChap/Clothing/OuterClothing/Misc/monkrobe.rsi
   - type: ToggleableClothing
-    stripDelay: null
-    clothingPrototypes:
-      head: ClothingHeadHatHelmetMonk
+    clothingPrototype: ClothingHeadHatHelmetMonk
 
 - type: entity
   parent: ClothingOuterArmorTemplar
