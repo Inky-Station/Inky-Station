@@ -202,7 +202,7 @@ public sealed partial class SharedWerewolfAbilitiesSystem : EntitySystem
         if (args.EntitySpawnOnEvent is { } firePrototype)
         {
             EnsureComp<SpawnEntitiesOnStepComponent>(uid).Prototype = firePrototype;
-            Timer.Spawn(args.EntitySpawnTimer, () => { RemComp<SpawnEntitiesOnStepComponent>(uid); }); // FUCK FORMATTING
+            Timer.Spawn(args.EntitySpawnTimer, () => RemComp<SpawnEntitiesOnStepComponent>(uid)); // FUCK FORMATTING
         }
         // todo PlayPVS
         args.Handled = true;
