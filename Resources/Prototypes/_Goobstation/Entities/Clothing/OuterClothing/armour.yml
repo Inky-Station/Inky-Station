@@ -217,8 +217,7 @@
     damageCoefficient: 0.6
   - type: ToggleableClothing
     stripDelay: null
-    clothingPrototypes:
-      head: ClothingHeadHatHoodCloakSith
+    clothingPrototype: ClothingHeadHatHoodCloakSith # inky edit
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
