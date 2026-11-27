@@ -215,7 +215,7 @@
     storedOffset: 0,-5
   - type: BatteryAmmoProvider
     proto: LaserGunBullet # Trauma
-    fireCost: 62.5 # inky edit
+    fireCost: 62.5 # Trauma, was 25
   - type: MagazineVisuals
     magState: mag
     steps: 5
@@ -994,7 +994,7 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/energy_shotgun.rsi
   - type: Gun
-    fireRate: 1.5 # Trauma, was 2 # inky
+    fireRate: 1.5 # inky edit
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: BatteryAmmoProvider
