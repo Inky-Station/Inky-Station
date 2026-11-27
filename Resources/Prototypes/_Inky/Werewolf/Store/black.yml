@@ -19,6 +19,7 @@
     blacklist:
     - WerewolfWhite
     - WerewolfDirewolf
+    - WerewolfHell
 
 - type: listing
   id: WerewolfBiteBlack

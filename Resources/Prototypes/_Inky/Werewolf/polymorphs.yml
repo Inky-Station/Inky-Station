@@ -1,3 +1,11 @@
+# I LOVE COPYPASTE
+# I LOVE COPYPASTE
+# I LOVE COPYPASTE
+# I LOVE COPYPASTE
+# I LOVE COPYPASTE
+# todo inky werewolf KILL MEEEEE KILL MEEEEEEE STAB ME WITH KNIVES KILL MEEEEEE KILLL MEEEEEEEEEEEEEEE! ! ! ! ! !
+
+
 - type: polymorph
   id: WerewolfTransformBasic
   configuration:
@@ -111,3 +119,42 @@
     - component: WerewolfBit
     - component: WerewolfInfectionImmune
     - component: Satiation
+
+- type: polymorph
+  id: WerewolfTransformHell
+  configuration:
+    entity: WerewolfHell
+    forced: true
+    revertOnCrit: true
+    revertOnDeath: false
+    inventory: None
+    transferName: false
+    transferDamage: true
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
+    componentsToTransfer:
+    - component: WerewolfAbilities
+    - component: Store
+    - component: CollectiveMind
+    - component: WerewolfBit
+    - component: WerewolfInfectionImmune
+    - component: Satiation
+
+- type: polymorph
+  id: WerewolfTransformHellBurn
+  configuration:
+    entity: WerewolfHellBurn
+    forced: true
+    revertOnCrit: true
+    revertOnDeath: false
+    inventory: None
+    transferName: false
+    transferDamage: true
+    polymorphSound: /Audio/_Goobstation/Changeling/Effects/armour_transform.ogg
+    componentsToTransfer:
+    - component: WerewolfAbilities
+    - component: Store
+    - component: CollectiveMind
+    - component: WerewolfBit
+    - component: WerewolfInfectionImmune
+    - component: Satiation
+
