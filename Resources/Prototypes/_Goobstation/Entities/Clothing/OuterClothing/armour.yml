@@ -227,10 +227,7 @@
     lowPressureMultiplier: 1000
   - type: ContainerContainer
     containers:
-      toggleable-clothing: !type:Container
-        ents: [ ]
-        showEnts: False
-        occludes: True
+      toggleable-clothing: !type:ContainerSlot {} # inky edit
   # Intentionally no temperature or high pressure protection
 
 - type: entity
