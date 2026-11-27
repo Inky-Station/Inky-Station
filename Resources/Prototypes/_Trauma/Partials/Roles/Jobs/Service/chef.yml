@@ -10,7 +10,11 @@
     chips:
     - SkillChipEducation
     - SkillChipShortBlade
-    - SkillChipChef
+  # inky
+  - !type:GiveKnowledgeSpecial
+    skills:
+      MartialArtCQCChef: 65
+  # /inky
 
 - type: startingGear
   id: ChefGear
